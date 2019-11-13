@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ArxAppType>arx</ArxAppType>
+    <RDS>BGY</RDS>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <!-- <UseOfAtl>false</UseOfAtl> -->
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="Globals">
+    <TargetName Condition="'$(RDS)'!=''">$(RDS)$(ProjectName)</TargetName>
+    <ProjectGuid>{23A38C65-9D97-455E-B665-2CCCAD21A8D2}</ProjectGuid>
+    <ProjectName>Parking_cad</ProjectName>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Autodesk.arx-2018.props" />
+  </ImportGroup>
+  <PropertyGroup Label="Configuration">
+    <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v90'">v90</PlatformToolset>
+    <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v100'">v100</PlatformToolset>
+    <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v110'">v110</PlatformToolset>
+    <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v140'">v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions Condition="'$(Platform)'=='x64'">_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(UseOfMfc)'=='Dynamic'">_ALLOW_RTCc_IN_STL;_AFXEXT;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <!-- Added to avoid Narrow conversion warnings introduced in VS2015 /Wv:xx[.yy[.zzzzz],  is CL version -->
+      <AdditionalOptions>/Wv:17.00.61030 %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</TreatWarningAsError>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Ws2_32.lib;Wldap32.lib;libcurl.lib;libeay32.lib;ssleay32.lib;zlibstat.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)libcurl\lib\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Ws2_32.lib;Wldap32.lib;libcurl.lib;libeay32.lib;ssleay32.lib;zlibstat.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)libcurl\lib\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ws2_32.lib;Wldap32.lib;libcurl.lib;libeay32.lib;ssleay32.lib;zlibstat.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)libcurl\lib\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Ws2_32.lib;Wldap32.lib;libcurl.lib;libeay32.lib;ssleay32.lib;zlibstat.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)libcurl\lib\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\ArxTools\ArxProgressBar.cpp" />
+    <ClCompile Include="..\..\ArxTools\Convertor.cpp" />
+    <ClCompile Include="..\..\ArxTools\DBHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\DelayExecuter.cpp" />
+    <ClCompile Include="..\..\ArxTools\GeHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\gpc.cpp" />
+    <ClCompile Include="..\..\ArxTools\JigHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\LineSelect.cpp" />
+    <ClCompile Include="..\..\ArxTools\LoadCuix.cpp" />
+    <ClCompile Include="..\..\ArxTools\Opera.cpp" />
+    <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp" />
+    <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp" />
+    <ClCompile Include="..\..\ArxTools\win_iconv.cpp" />
+    <ClCompile Include="..\base64\base64.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\cipher_des.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\cipher_padding.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\DesHelper.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\utils.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\HttpHelper\HttpHelper.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\HttpHelper\url.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\HttpHelper\UrlCoding.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\JigHelper\JigHelper.cpp" />
+    <ClCompile Include="..\JigHelper\SDBDumyJigEntity.cpp" />
+    <ClCompile Include="..\jsoncpp\src\json_reader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\jsoncpp\src\json_value.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\jsoncpp\src\json_writer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\pystring\pystring.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\restclient-cpp\source\connection.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\restclient-cpp\source\helpers.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\restclient-cpp\source\restclient.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="acrxEntryPoint.cpp" />
+    <ClCompile Include="ArxDialog.cpp" />
+    <ClCompile Include="Authenticate.cpp" />
+    <ClCompile Include="DlgWaiting.cpp" />
+    <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="EquipmentroomTool.cpp" />
+    <ClCompile Include="HardDiskSerial.cpp" />
+    <ClCompile Include="MyEdit.cpp" />
+    <ClCompile Include="OperaEquipmentroomRelated.cpp" />
+    <ClCompile Include="OperaFirePoolSet.cpp" />
+    <ClCompile Include="OperaFirePumpHouseSet.cpp" />
+    <ClCompile Include="OperaLifePumpHouseSet.cpp" />
+    <ClCompile Include="OperaLivingWaterTankSet.cpp" />
+    <ClCompile Include="OperaParkingSpaceShow.cpp" />
+    <ClCompile Include="OperaVillageSet.cpp" />
+    <ClCompile Include="Parking_cad.cpp" />
+    <ClCompile Include="PictureEx.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\ArxTools\ArxProgressBar.h" />
+    <ClInclude Include="..\..\ArxTools\AutoRegCmd.h" />
+    <ClInclude Include="..\..\ArxTools\ClassFactory.h" />
+    <ClInclude Include="..\..\ArxTools\Convertor.h" />
+    <ClInclude Include="..\..\ArxTools\DBHelper.h" />
+    <ClInclude Include="..\..\ArxTools\DelayExecuter.h" />
+    <ClInclude Include="..\..\ArxTools\GeHelper.h" />
+    <ClInclude Include="..\..\ArxTools\gpc.h" />
+    <ClInclude Include="..\..\ArxTools\iconv.h" />
+    <ClInclude Include="..\..\ArxTools\JigHelper.h" />
+    <ClInclude Include="..\..\ArxTools\LineSelect.h" />
+    <ClInclude Include="..\..\ArxTools\LoadCuix.h" />
+    <ClInclude Include="..\..\ArxTools\Opera.h" />
+    <ClInclude Include="..\..\ArxTools\PointInPolygon.h" />
+    <ClInclude Include="..\..\ArxTools\RTreeEx.h" />
+    <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h" />
+    <ClInclude Include="..\base64\base64.h" />
+    <ClInclude Include="..\DES_CBC_5\cipher_des.h" />
+    <ClInclude Include="..\DES_CBC_5\cipher_padding.h" />
+    <ClInclude Include="..\DES_CBC_5\cipher_params.h" />
+    <ClInclude Include="..\DES_CBC_5\DesHelper.h" />
+    <ClInclude Include="..\DES_CBC_5\utils.h" />
+    <ClInclude Include="..\HttpHelper\HttpHelper.h" />
+    <ClInclude Include="..\HttpHelper\url.hpp" />
+    <ClInclude Include="..\HttpHelper\UrlCoding.h" />
+    <ClInclude Include="..\JigHelper\JigHelper.h" />
+    <ClInclude Include="..\JigHelper\SDBDumyJigEntity.h" />
+    <ClInclude Include="..\jsoncpp\src\json_tool.h" />
+    <ClInclude Include="..\jsoncpp\src\version.h" />
+    <ClInclude Include="..\pystring\pystring.h" />
+    <ClInclude Include="ArxDialog.h" />
+    <ClInclude Include="Authenticate.h" />
+    <ClInclude Include="DlgWaiting.h" />
+    <ClInclude Include="DocData.h" />
+    <ClInclude Include="EquipmentroomTool.h" />
+    <ClInclude Include="HardDiskSerial.h" />
+    <ClInclude Include="MyEdit.h" />
+    <ClInclude Include="OperaEquipmentroomRelated.h" />
+    <ClInclude Include="OperaFirePoolSet.h" />
+    <ClInclude Include="OperaFirePumpHouseSet.h" />
+    <ClInclude Include="OperaLifePumpHouseSet.h" />
+    <ClInclude Include="OperaLivingWaterTankSet.h" />
+    <ClInclude Include="OperaParkingSpaceShow.h" />
+    <ClInclude Include="OperaVillageSet.h" />
+    <ClInclude Include="PictureEx.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\ArxTools\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\ArxTools\DBHelper.inl" />
+    <None Include="..\..\ArxTools\设置环境变量.bat" />
+    <None Include="..\jsoncpp\src\json_valueiterator.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Parking_cad.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="ArxProject2.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,195 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "ArxProject2 ObjectARX application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "ArxProject2"
+            VALUE "LegalCopyright", "Copyright ?2012"
+            VALUE "OriginalFilename", "BGYArxProject2.arx"
+            VALUE "ProductName", "ArxProject2 Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ARX_MODAL DIALOGEX 0, 0, 367, 246
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "智能地库生成"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "生成车位",IDOK,162,225,50,14
+    RTEXT           "车位排布方向：",IDC_STATIC,17,16,95,12
+    RTEXT           "单车位长度：",IDC_STATIC,17,40,95,12
+    CONTROL         "默认（不靠墙5.1m，靠墙5.3m）",IDC_RADIO_Default,"Button",BS_AUTORADIOBUTTON,118,40,135,12
+    CONTROL         "其他，请输入不靠墙车位长度",IDC_RADIO_OtherLength,"Button",BS_AUTORADIOBUTTON,118,58,127,12
+    EDITTEXT        IDC_EDIT_Length,274,59,56,14,ES_AUTOHSCROLL
+    LTEXT           "m",IDC_STATIC_m,332,59,12,12
+    RTEXT           "单车位宽度：",IDC_STATIC,17,84,95,12
+    EDITTEXT        IDC_EDIT_WIDTH,118,82,56,14,ES_AUTOHSCROLL
+    RTEXT           "车道宽度：",IDC_STATIC,196,84,78,12
+    EDITTEXT        IDC_EDIT_LaneWidth,274,82,56,14,ES_AUTOHSCROLL
+    RTEXT           "方柱长度：",IDC_STATIC,17,108,95,12
+    RTEXT           "方柱宽度：",IDC_STATIC,196,108,78,12
+    EDITTEXT        IDC_EDIT_SquarecolumnLength,118,106,56,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SquareColumnWidth,274,106,56,14,ES_AUTOHSCROLL
+    RTEXT           "请选择建筑外轮廓图层：",IDC_STATIC,17,131,95,12
+    RTEXT           "请选择剪力墙图层：",IDC_STATIC,196,131,78,12
+    PUSHBUTTON      "拾取车位排布起点：",IDC_BUTTON_GetStartPoint,22,159,90,14
+    PUSHBUTTON      "拾取地库退线：",IDC_BUTTON_GetRetreatline,22,183,90,14
+    CONTROL         "是否需要分区",IDC_CHECK_Partition,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,45,207,67,10
+    COMBOBOX        IDC_COMBO_Direction,118,16,64,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OutlineLayer,118,131,64,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_ShearwallLayer,274,131,64,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_StartPoint,118,159,220,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_RetreatLine,118,183,220,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "m",IDC_STATIC,176,84,12,12
+    LTEXT           "m",IDC_STATIC,176,108,12,12
+    LTEXT           "m",IDC_STATIC,332,84,12,12
+    LTEXT           "m",IDC_STATIC,332,108,12,12
+END
+
+IDD_DLG_WAITTING_SHOW_RES DIALOGEX 0, 0, 263, 67
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOPMOST
+CAPTION "等待计算完毕"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_STC_GIF,"Static",SS_BLACKRECT,43,11,48,36
+    LTEXT           "正在等待计算结果……",IDC_STATIC,111,25,149,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ARX_MODAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 360
+        VERTGUIDE, 182
+        VERTGUIDE, 338
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 239
+    END
+
+    IDD_DLG_WAITTING_SHOW_RES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 256
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 60
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ARX_MODAL AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_WAITTING_SHOW_RES AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_PROJNAME            "ArxProject2"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
