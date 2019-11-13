@@ -180,6 +180,12 @@
     <ClCompile Include="PictureEx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\ArxTools\FileHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\MixedHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -316,6 +322,12 @@
     </ClInclude>
     <ClInclude Include="StdAfx.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\FileHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\MixedHelper.h">
+      <Filter>ArxTools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -27,15 +27,15 @@ bool Authenticate::setDesKey(const std::string& key)
 
 void Authenticate::loadLicenseFile(const std::string& file)
 {
-	 std::string sLicenseText = Authenticate::ReadText(file.c_str());
-	 std::vector<std::string> licenseTexts;
-	 pystring::splitlines(sLicenseText, licenseTexts);
-	 for (int i=0; i<licenseTexts.size(); ++i)
-	 {
-		 std::string license = pystring::replace(licenseTexts[i], " ", "");
-		 if (!license.empty())
+	std::string sLicenseText = Authenticate::ReadText(file.c_str());
+	std::vector<std::string> licenseTexts;
+	pystring::splitlines(sLicenseText, licenseTexts);
+	for (int i = 0; i < licenseTexts.size(); ++i)
+	{
+		std::string license = pystring::replace(licenseTexts[i], " ", "");
+		if (!license.empty())
 			appendLicense(license);
-	 }
+	}
 }
 
 bool Authenticate::appendLicense(const std::string& code)
@@ -45,7 +45,7 @@ bool Authenticate::appendLicense(const std::string& code)
 	base64_decode(code.c_str(), code.size(), (unsigned char*)sDeBase64, nDeBase64Len);
 	char sDeDes[1024];
 	int nDeDesLen = 0;
-	GL::DES_cbc_decrypt(sDeBase64, nDeBase64Len, sDeDes, nDeDesLen, 
+	GL::DES_cbc_decrypt(sDeBase64, nDeBase64Len, sDeDes, nDeDesLen,
 		m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 	sDeDes[nDeDesLen] = '\0';
 
@@ -64,14 +64,14 @@ bool Authenticate::appendLicense(const std::string& code)
 	else if (splits.size() == 2)
 	{
 		LICENSE_INFO li;
-		sscanf(splits[1].c_str(), "%ul", &li.expireTime);
+		sscanf(splits[1].c_str(), "%u", &li.expireTime);
 		m_licences.insert(std::make_pair(splits[0].c_str(), li));
 		return true;
 	}
 	else if (splits.size() == 3)
 	{
 		LICENSE_INFO li;
-		sscanf(splits[1].c_str(), "%ul", &li.expireTime);
+		sscanf(splits[1].c_str(), "%u", &li.expireTime);
 		li.userName = splits[2].c_str();
 		m_licences.insert(std::make_pair(splits[0].c_str(), li));
 		return true;
@@ -93,15 +93,15 @@ int Authenticate::check(const std::string& userName/*=""*/)
 
 	time_t timep;
 	struct tm *p;
-	time (&timep);
-	p=gmtime(&timep);
+	time(&timep);
+	p = gmtime(&timep);
 	char szBuf[64];
-	sprintf(szBuf, "%d%02d%02d", 1900+p->tm_year, 1+p->tm_mon, p->tm_mday);
+	sprintf(szBuf, "%d%02d%02d", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday);
 	DWORD nowTime;
-	sscanf(szBuf, "%ul", &nowTime);
+	sscanf(szBuf, "%u", &nowTime);
 	if (itFinder->second.expireTime != 0 && nowTime > itFinder->second.expireTime)
 		return 3;
-	
+
 	if (!userName.empty() && itFinder->second.userName != userName)
 		return 4;
 
@@ -112,7 +112,7 @@ int Authenticate::check(const std::string& userName/*=""*/)
 std::string Authenticate::localEncode(DWORD expireTime, const std::string& userName)
 {
 	char szBuff[20];
-	sprintf(szBuff, "%ul", expireTime);
+	sprintf(szBuff, "%u", expireTime);
 	return localEncode(szBuff, userName);
 }
 
@@ -131,7 +131,7 @@ std::string Authenticate::localEncode(const std::string& expireTime, const std::
 std::string Authenticate::encode(const std::string& serial, DWORD expireTime, const std::string& userName)
 {
 	char szBuff[20];
-	sprintf(szBuff, "%ul", expireTime);
+	sprintf(szBuff, "%u", expireTime);
 	return encode(serial, szBuff, userName);
 }
 
@@ -154,7 +154,7 @@ std::string Authenticate::encode(const std::string& serial, const std::string& e
 	char mmCode[1024];
 	int nOutLen = 0;
 	GL::DES_cbc_encrypt(sData.c_str(), sData.size(), mmCode, nOutLen, m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
-	char szBase64[1024*2];
+	char szBase64[1024 * 2];
 	int nBase64 = 0;
 	base64_encode((const unsigned char*)mmCode, nOutLen, szBase64, nBase64);
 	szBase64[nBase64] = '\0';
@@ -165,7 +165,7 @@ std::string Authenticate::encode(const std::string& serial, const std::string& e
 std::string Authenticate::ReadText(const char * path)
 {
 	FILE *f = NULL;
-	long sz; 
+	long sz;
 
 	if (!path)
 	{
@@ -180,7 +180,7 @@ std::string Authenticate::ReadText(const char * path)
 		return "";
 	}
 
-	do 
+	do
 	{
 		if (fseek(f, 0, SEEK_END) < 0)
 		{

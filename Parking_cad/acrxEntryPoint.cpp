@@ -45,6 +45,9 @@ public:
 		//授权检查
 		Authenticate auth;
 		auth.setDesKey("#B-G-Y++");
+		
+		std::string s = auth.localEncode(20191201, "李明生");
+
 		AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
 		auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
 		int res = auth.check();

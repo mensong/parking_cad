@@ -252,6 +252,8 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 
 			}
 
+			Doc_Locker _locker;
+
 			for (int a = 0;a < parkingPts.length();a++)
 			{
 				//double = (rotation/180)*Π(顺时针和逆时针)
@@ -321,8 +323,7 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 	if (reader.parse(json, root))
 	{
 #ifdef _DEBUG
-		size_t len = json.size();
-		WriteFile("result.json", json.c_str(), len, 0, false);
+		WriteFile("result.json", json.c_str(), json.size(), NULL, 0, false);
 #endif
 
 		int status = root["status"].asInt();
@@ -340,7 +341,6 @@ void CDlgWaiting::parkingShow(AcGePoint2d& parkingShowPt,double& parkingShowRota
 {
 	AcDbObjectId ttId;
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
-	Doc_Locker _locker;
 
 	layerSet(_T("parkings"), 254);
 
@@ -353,7 +353,6 @@ void CDlgWaiting::parkingShow(AcGePoint2d& parkingShowPt,double& parkingShowRota
 
 void CDlgWaiting::axisShow(AcGePoint2dArray& axisPts)
 {
-	Doc_Locker _locker;
 	layerSet(_T("axis"), 1);
 	AcGePoint3d ptStart(axisPts[0].x, axisPts[0].y, 0);
 	AcGePoint3d ptEnd(axisPts[1].x, axisPts[1].y, 0);
@@ -364,7 +363,6 @@ void CDlgWaiting::axisShow(AcGePoint2dArray& axisPts)
 
 void CDlgWaiting::laneShow(AcGePoint2dArray& lanePts)
 {
-	Doc_Locker _locker;
 	layerSet(_T("lane"), 30);
 	AcGePoint3d ptStart(lanePts[0].x, lanePts[0].y, 0);
 	AcGePoint3d ptEnd(lanePts[1].x, lanePts[1].y, 0);
@@ -375,7 +373,6 @@ void CDlgWaiting::laneShow(AcGePoint2dArray& lanePts)
 
 void CDlgWaiting::scopeShow(AcGePoint2dArray& park_columnPts)
 {
-	Doc_Locker _locker;
 	layerSet(_T("scope"), 6);
 	AcDbPolyline *pPoly = new AcDbPolyline(park_columnPts.length());
 	double width = 0;//线宽
@@ -390,7 +387,6 @@ void CDlgWaiting::scopeShow(AcGePoint2dArray& park_columnPts)
 
 void CDlgWaiting::pillarShow(AcGePoint2dArray& onePillarPts)
 {
-	Doc_Locker _locker;
 	layerSet(_T("pillar"), 2);
 	AcDbPolyline *pPoly = new AcDbPolyline(onePillarPts.length());
 	double width = 0;//线宽
@@ -423,14 +419,14 @@ bool CDlgWaiting::layerSet(CString layerName,int layerColor)
 			return false;
 		}
 		es = acdbHostApplicationServices()->workingDatabase()->setClayer(layerId);//设为当前图层
+		pLayerTbl->close();
 		if (es != eOk)
 		{
-			pLayerTbl->close();
 			return false;
 		}
-		pLayerTbl->close();
 		return true;
 	}
+
 	AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
 	pLayerTblRcd->setName(layerName);
 	AcDbObjectId layerTblRcdId;
@@ -452,7 +448,6 @@ bool CDlgWaiting::layerSet(CString layerName,int layerColor)
 
 void CDlgWaiting::setAxisLayerClose()
 {
-	Doc_Locker _locker;
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
