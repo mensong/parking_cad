@@ -1,3 +1,7 @@
 /.vs/Parking_cad/v14/*.suo
 /Parking_cad/*.dwl
 /Parking_cad/*.dwl2
+/ipch
+/Parking_cad/x64
+/Parking_cad.VC.db
+/*.opendb

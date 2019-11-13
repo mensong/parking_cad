@@ -85,7 +85,9 @@ AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaNa
 	pPoly->addVertexAt(2, squarePt3, 0, width, width);
 	pPoly->addVertexAt(3, squarePt4, 0, width, width);
 	pPoly->setClosed(true);
-	AcDbObjectId squareId = PostToModelSpace(pPoly);
+	AcDbObjectId squareId;
+	DBHelper::AppendToDatabase(squareId, pPoly);
+	pPoly->close();
 	//插入拓展数据
 	DBHelper::AddXData(squareId, _T("设备房类型"), areaName);
 	useJigIds.append(squareId);
@@ -135,22 +137,10 @@ AcDbObjectId CEquipmentroomTool::CreateText(const AcGePoint3d& ptInsert,
 	CString text, double height, AcDbObjectId style, double rotation)
 {
 	AcDbText *pText = new AcDbText(ptInsert, text, style, height, rotation);
-	return CEquipmentroomTool::PostToModelSpace(pText);
-}
-
-AcDbObjectId CEquipmentroomTool::PostToModelSpace(AcDbEntity* pEnt)
-{
-	AcDbBlockTable *pBlockTable;
-	acdbHostApplicationServices()->workingDatabase()
-		->getBlockTable(pBlockTable, AcDb::kForRead);
-	AcDbBlockTableRecord *pBlockTableRecord;
-	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord, AcDb::kForWrite);
-	AcDbObjectId entId;
-	pBlockTableRecord->appendAcDbEntity(entId, pEnt);
-	pBlockTable->close();
-	pBlockTableRecord->close();
-	pEnt->close();
-	return entId;
+	AcDbObjectId id;
+	DBHelper::AppendToDatabase(pText);
+	pText->close();
+	return id;
 }
 
 void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d basePoint, double sideLength)

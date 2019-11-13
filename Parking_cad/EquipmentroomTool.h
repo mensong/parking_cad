@@ -22,7 +22,6 @@ public:
 	static AcDbObjectId CreateText(const AcGePoint3d& ptInsert, CString text, double height,
 		AcDbObjectId style = AcDbObjectId::kNull, double rotation = 0);
 
-	static AcDbObjectId PostToModelSpace(AcDbEntity* pEnt);
 	/*jig展示效果*/
 	static void jigShow(AcDbObjectIdArray useJigIds, double sideLength);
 

@@ -285,7 +285,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 	CAcUiDialog::OnTimer(nIDEvent);
 }
 
-int CDlgWaiting::getStatus(std::string& josn, CString& sMsg)
+int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 {
 	if (ms_uuid == "")
 	{
@@ -313,13 +313,18 @@ int CDlgWaiting::getStatus(std::string& josn, CString& sMsg)
 	}
 	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
 
-	josn = http.response.body;
+	json = http.response.body;
 
 	Json::Reader reader;
 	Json::Value root;
 	//从字符串中读取数据
-	if (reader.parse(josn, root))
+	if (reader.parse(json, root))
 	{
+#ifdef _DEBUG
+		size_t len = json.size();
+		WriteFile("result.json", json.c_str(), len, 0, false);
+#endif
+
 		int status = root["status"].asInt();
 		sMsg = GL::Utf82WideByte(root["message"].asString().c_str()).c_str();
 		return status;

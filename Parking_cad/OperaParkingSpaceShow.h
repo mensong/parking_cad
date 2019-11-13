@@ -7,7 +7,6 @@ public:
 	COperaParkingSpaceShow();
 	~COperaParkingSpaceShow();
 	virtual void Start();
-	virtual bool WillStart();
 
 private:
 	AcGeTol m_tol;

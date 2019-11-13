@@ -77,3 +77,5 @@ extern AcApDataManager<CDocData> DocVars ;
 
 #pragma pack (pop)
 
+size_t WriteFile(const char * path, const char * writeContent, size_t & in_outLen,
+	int start = -1, bool bInsert = true, bool bDelTail = true);

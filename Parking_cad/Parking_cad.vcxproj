@@ -76,6 +76,9 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</TreatWarningAsError>
     </ClCompile>
     <Link>
     </Link>
@@ -158,8 +161,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\JigHelper\JigHelper.cpp" />
-    <ClCompile Include="..\JigHelper\SDBDumyJigEntity.cpp" />
     <ClCompile Include="..\jsoncpp\src\json_reader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -252,8 +253,6 @@
     <ClInclude Include="..\HttpHelper\HttpHelper.h" />
     <ClInclude Include="..\HttpHelper\url.hpp" />
     <ClInclude Include="..\HttpHelper\UrlCoding.h" />
-    <ClInclude Include="..\JigHelper\JigHelper.h" />
-    <ClInclude Include="..\JigHelper\SDBDumyJigEntity.h" />
     <ClInclude Include="..\jsoncpp\src\json_tool.h" />
     <ClInclude Include="..\jsoncpp\src\version.h" />
     <ClInclude Include="..\pystring\pystring.h" />

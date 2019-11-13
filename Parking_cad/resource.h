@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ 生成的包含文件。
-// 供 ArxProject2.rc 使用
+// 供 Parking_cad.rc 使用
 //
 #define IDS_PROJNAME                    100
 #define IDC_RADIO1                      100
