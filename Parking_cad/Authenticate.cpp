@@ -9,6 +9,7 @@
 
 
 Authenticate::Authenticate(void)
+	: m_checkedExpireTime(0)
 {
 }
 
@@ -57,6 +58,7 @@ bool Authenticate::appendLicense(const std::string& code)
 	if (splits.size() == 1)
 	{
 		LICENSE_INFO li;
+		li.licenceCode = code;
 		li.expireTime = 0;
 		m_licences.insert(std::make_pair(splits[0].c_str(), li));
 		return true;
@@ -64,6 +66,7 @@ bool Authenticate::appendLicense(const std::string& code)
 	else if (splits.size() == 2)
 	{
 		LICENSE_INFO li;
+		li.licenceCode = code;
 		sscanf(splits[1].c_str(), "%u", &li.expireTime);
 		m_licences.insert(std::make_pair(splits[0].c_str(), li));
 		return true;
@@ -71,6 +74,7 @@ bool Authenticate::appendLicense(const std::string& code)
 	else if (splits.size() == 3)
 	{
 		LICENSE_INFO li;
+		li.licenceCode = code;
 		sscanf(splits[1].c_str(), "%u", &li.expireTime);
 		li.userName = splits[2].c_str();
 		m_licences.insert(std::make_pair(splits[0].c_str(), li));
@@ -82,6 +86,11 @@ bool Authenticate::appendLicense(const std::string& code)
 
 int Authenticate::check(const std::string& userName/*=""*/)
 {
+	m_checkedSerial.clear();
+	m_checkedUser.clear();
+	m_checkedLicenceCode.clear();
+	m_checkedExpireTime = 0;
+
 	char serialNum[MAX_PATH];
 	ULONG len = HardDiskSerial::GetSerial(serialNum, MAX_PATH, 0);
 	if (len == 0)
@@ -105,8 +114,32 @@ int Authenticate::check(const std::string& userName/*=""*/)
 	if (!userName.empty() && itFinder->second.userName != userName)
 		return 4;
 
-	return 0;
+	m_checkedSerial = serialNum;
+	m_checkedUser = itFinder->second.userName.c_str();
+	m_checkedLicenceCode = itFinder->second.licenceCode;
+	m_checkedExpireTime = itFinder->second.expireTime;
 
+	return 0;
+}
+
+const std::string& Authenticate::getCheckedLicenceCode()
+{
+	return m_checkedLicenceCode;
+}
+
+const std::string& Authenticate::getCheckedSerial()
+{
+	return m_checkedSerial;
+}
+
+const std::string& Authenticate::getCheckedUser()
+{
+	return m_checkedUser;
+}
+
+DWORD Authenticate::getCheckedExpireTime()
+{
+	return m_checkedExpireTime;
 }
 
 std::string Authenticate::localEncode(DWORD expireTime, const std::string& userName)

@@ -73,6 +73,12 @@ public:
 			return AcRx::kRetError;
 		}
 
+		std::string user = auth.getCheckedUser();
+		std::string serial = auth.getCheckedSerial();
+		std::string license = auth.getCheckedLicenceCode();
+		DWORD		expireTime = auth.getCheckedExpireTime();
+		acutPrintf(_T("\n授权信息 - 用户名:%s  到期时间:%u\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
+
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode =AcRxArxApp::On_kInitAppMsg (pkt) ;
 		
