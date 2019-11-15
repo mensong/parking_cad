@@ -178,34 +178,37 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			std::vector<AcGePoint2dArray> lanesPoints;
 			AcGePoint2dArray scopePts;
 			std::vector<AcGePoint2dArray> pillarPoints;
+			std::vector<AcGePoint2dArray> arrowPoints;
 			if (reader.parse(json, root))
 			{
 
-				if (root["result"]["parkings"].isArray())
+				Json::Value& parkings = root["result"]["parkings"];
+				if (parkings.isArray())
 				{
-					int nArraySize = root["result"]["parkings"].size();
+					int nArraySize = parkings.size();
 					for (int i = 0; i < nArraySize; i++)
 					{
-						double ptX = root["result"]["parkings"][i]["position"][0].asDouble();
-						double ptY = root["result"]["parkings"][i]["position"][1].asDouble();
+						double ptX = parkings[i]["position"][0].asDouble();
+						double ptY = parkings[i]["position"][1].asDouble();
 						AcGePoint2d pt(ptX,ptY);
 						parkingPts.append(pt);
-						double direction = root["result"]["parkings"][i]["direction"].asDouble();
+						double direction = parkings[i]["direction"].asDouble();
 						parkingDirections.push_back(direction);
 					}
 				}
 
-				if (root["result"]["axis"].isArray())
+				Json::Value& axis = root["result"]["axis"];
+				if (axis.isArray())
 				{
-					int nAxisSize = root["result"]["axis"].size();
-					for (int j = 0;j < nAxisSize;j++)
+					int nAxisSize = axis.size();
+					for (int j = 0; j < nAxisSize; j++)
 					{
-						double ptX1 = root["result"]["axis"][j][0][0].asDouble();
-						double ptY1 = root["result"]["axis"][j][0][1].asDouble();
-						double ptX2 = root["result"]["axis"][j][1][0].asDouble();
-						double ptY2 = root["result"]["axis"][j][1][1].asDouble();
-						AcGePoint2d startPt(ptX1,ptY1);
-						AcGePoint2d endPt(ptX2,ptY2);
+						double ptX1 = axis[j][0][0].asDouble();
+						double ptY1 = axis[j][0][1].asDouble();
+						double ptX2 = axis[j][1][0].asDouble();
+						double ptY2 = axis[j][1][1].asDouble();
+						AcGePoint2d startPt(ptX1, ptY1);
+						AcGePoint2d endPt(ptX2, ptY2);
 						AcGePoint2dArray axisPts;
 						axisPts.append(startPt);
 						axisPts.append(endPt);
@@ -213,15 +216,16 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 					}
 				}
 
-				if (root["result"]["lane"].isArray())
+				Json::Value& lane = root["result"]["lane"];
+				if (lane.isArray())
 				{
-					int nLaneSize = root["result"]["lane"].size();
+					int nLaneSize = lane.size();
 					for (int m = 0; m < nLaneSize; m++)
 					{
-						double ptX1 = root["result"]["lane"][m][0][0].asDouble();
-						double ptY1 = root["result"]["lane"][m][0][1].asDouble();
-						double ptX2 = root["result"]["lane"][m][1][0].asDouble();
-						double ptY2 = root["result"]["lane"][m][1][1].asDouble();
+						double ptX1 = lane[m][0][0].asDouble();
+						double ptY1 = lane[m][0][1].asDouble();
+						double ptX2 = lane[m][1][0].asDouble();
+						double ptY2 = lane[m][1][1].asDouble();
 						AcGePoint2d startPt(ptX1, ptY1);
 						AcGePoint2d endPt(ptX2, ptY2);
 						AcGePoint2dArray lanePts;
@@ -231,39 +235,62 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 					}
 				}
 
-				if (root["result"]["scope"].isArray())
+				Json::Value& scope = root["result"]["scope"];
+				if (scope.isArray())
 				{
-					int nPark_columSize = root["result"]["scope"].size();
-					for (int n = 0;n < nPark_columSize;n++)
+					int nPark_columSize = scope.size();
+					for (int n = 0; n < nPark_columSize; n++)
 					{
-						double ptX = root["result"]["scope"][n][0].asDouble();
-						double ptY = root["result"]["scope"][n][1].asDouble();
-						AcGePoint2d plinePt(ptX,ptY);
+						double ptX = scope[n][0].asDouble();
+						double ptY = scope[n][1].asDouble();
+						AcGePoint2d plinePt(ptX, ptY);
 						scopePts.append(plinePt);
 					}
 				}
 
-				if (root["result"]["pillar"].isArray())
+				Json::Value& pillar = root["result"]["pillar"];
+				if (pillar.isArray())
 				{
-					int npillarSize = root["result"]["pillar"].size();
-					for (int k = 0;k < npillarSize;k++)
+					int npillarSize = pillar.size();
+					for (int k = 0; k < npillarSize; k++)
 					{
 						AcGePoint2dArray onePillarPts;
-						if (root["result"]["pillar"][k].isArray())
+						if (pillar[k].isArray())
 						{
-							int onepillarSize = root["result"]["pillar"][k].size();
-							for (int g = 0;g < onepillarSize;g++)
+							int onepillarSize = pillar[k].size();
+							for (int g = 0; g < onepillarSize; g++)
 							{
-								double ptX = root["result"]["pillar"][k][g][0].asDouble();
-								double ptY = root["result"]["pillar"][k][g][1].asDouble();
+								double ptX = pillar[k][g][0].asDouble();
+								double ptY = pillar[k][g][1].asDouble();
 								AcGePoint2d tempPt(ptX, ptY);
 								onePillarPts.append(tempPt);
-							}				
+							}
 						}
 						pillarPoints.push_back(onePillarPts);
 					}
 				}
 
+				Json::Value& arrow = root["result"]["arrow"];
+				if (arrow.isArray())
+				{
+					int narrowSize = arrow.size();
+					for (int k = 0; k < narrowSize; k++)
+					{
+						AcGePoint2dArray oneArrowPts;
+						if (arrow[k].isArray())
+						{
+							int nonearrowSize = arrow[k].size();
+							for (int g = 0; g < nonearrowSize; g++)
+							{
+								double ptX = arrow[k][g][0].asDouble();
+								double ptY = arrow[k][g][1].asDouble();
+								AcGePoint2d tempPt(ptX, ptY);
+								oneArrowPts.append(tempPt);
+							}
+						}
+						arrowPoints.push_back(oneArrowPts);
+					}
+				}
 			}
 
 			Doc_Locker _locker;
@@ -290,6 +317,11 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			for (int d = 0;d < pillarPoints.size();d++)
 			{
 				pillarShow(pillarPoints[d]);
+			}
+
+			for (int e = 0; e < arrowPoints.size(); e++)
+			{
+				arrowShow(arrowPoints[e]);
 			}
 
 			setAxisLayerClose();
@@ -370,7 +402,7 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 	}
 }
 
-void CDlgWaiting::parkingShow(AcGePoint2d& parkingShowPt,double& parkingShowRotation)
+void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation)
 {
 	AcDbObjectId ttId;
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
@@ -384,7 +416,7 @@ void CDlgWaiting::parkingShow(AcGePoint2d& parkingShowPt,double& parkingShowRota
 	DBHelper::InsertBlkRef(ttId,_T("parking_1"), mat);
 } 
 
-void CDlgWaiting::axisShow(AcGePoint2dArray& axisPts)
+void CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 {
 	layerSet(_T("axis"), 1);
 	AcGePoint3d ptStart(axisPts[0].x, axisPts[0].y, 0);
@@ -394,7 +426,7 @@ void CDlgWaiting::axisShow(AcGePoint2dArray& axisPts)
 	pLine->close();
 }
 
-void CDlgWaiting::laneShow(AcGePoint2dArray& lanePts)
+void CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
 {
 	layerSet(_T("lane"), 30);
 	AcGePoint3d ptStart(lanePts[0].x, lanePts[0].y, 0);
@@ -404,7 +436,7 @@ void CDlgWaiting::laneShow(AcGePoint2dArray& lanePts)
 	pLine->close();
 }
 
-void CDlgWaiting::scopeShow(AcGePoint2dArray& park_columnPts)
+void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
 {
 	layerSet(_T("scope"), 6);
 	AcDbPolyline *pPoly = new AcDbPolyline(park_columnPts.length());
@@ -418,7 +450,7 @@ void CDlgWaiting::scopeShow(AcGePoint2dArray& park_columnPts)
 	pPoly->close();
 }
 
-void CDlgWaiting::pillarShow(AcGePoint2dArray& onePillarPts)
+void CDlgWaiting::pillarShow(const AcGePoint2dArray& onePillarPts)
 {
 	layerSet(_T("pillar"), 2);
 	AcDbPolyline *pPoly = new AcDbPolyline(onePillarPts.length());
@@ -432,7 +464,21 @@ void CDlgWaiting::pillarShow(AcGePoint2dArray& onePillarPts)
 	pPoly->close();
 }
 
-bool CDlgWaiting::layerSet(CString layerName,int layerColor)
+void CDlgWaiting::arrowShow(const AcGePoint2dArray& oneArrowPts)
+{
+	layerSet(_T("arrow"), 7);
+	AcDbPolyline *pPoly = new AcDbPolyline(oneArrowPts.length());
+	double width = 0;//线宽
+	for (int i = 0; i < oneArrowPts.length(); i++)
+	{
+		pPoly->addVertexAt(0, oneArrowPts[i], 0, width, width);
+	}
+	pPoly->setClosed(true);
+	DBHelper::AppendToDatabase(pPoly);
+	pPoly->close();
+}
+
+bool CDlgWaiting::layerSet(const CString& layerName,const int& layerColor)
 {
 	// 判断是否存在名称为“设备房”的图层
 	AcDbLayerTable *pLayerTbl;
