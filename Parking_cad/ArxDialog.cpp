@@ -31,9 +31,19 @@
 #include <fstream>
 #include <iostream>
 #include <json/json.h>
-#include "../HttpHelper/HttpHelper.h"
 #include "DlgWaiting.h"
 #include "Convertor.h"
+#include "ModulesManager.h"
+#include "OperaParkingSpaceShow.h"
+
+#ifndef _ttof
+#ifdef UNICODE
+#define _ttof _wtof
+#else
+#define _ttof atof
+#endif
+#endif
+
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CArxDialog, CAcUiDialog)
 
@@ -51,10 +61,15 @@ END_MESSAGE_MAP()
 CArxDialog::CArxDialog (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog (CArxDialog::IDD, pParent, hInstance) {
 }
 
+CArxDialog::~CArxDialog(){
+
+	COperaParkingSpaceShow::ms_dlg = NULL;
+}
+
 //-----------------------------------------------------------------------------
 void CArxDialog::loadoutlineLayers()
 {
-	Doc_Locker _locker;
+	Doc_Locker _locker;	
 
 	AcDbLayerTable* pLT = NULL;
 	if (acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead) != Acad::eOk)
@@ -125,9 +140,9 @@ void CArxDialog::loadshearwallLayers()
 	if (pLT)
 		pLT->close();
 
-	if (!mStr_shearwallLayer.IsEmpty())
+	if (!m_sShearwallLayer.IsEmpty())
 	{
-		int n = m_shearwallLayer.FindStringExact(0, mStr_shearwallLayer);
+		int n = m_shearwallLayer.FindStringExact(0, m_sShearwallLayer);
 		if (n >= 0)
 			m_shearwallLayer.SetCurSel(n);
 	}
@@ -141,11 +156,11 @@ void CArxDialog::loaddirectionCombo()
 	m_directionCombo.SetItemData(nRow, 0);
 	m_directionCombo.SetCurSel(nRow);
 
-	if (directionCombo != -1)
+	if (m_nDirectionCombo != -1)
 	{
 		for (int i = 0; i < m_directionCombo.GetCount(); ++i)
 		{
-			if (m_directionCombo.GetItemData(i) == directionCombo)
+			if (m_directionCombo.GetItemData(i) == m_nDirectionCombo)
 				m_directionCombo.SetCurSel(i);
 		}
 	}
@@ -170,6 +185,22 @@ void CArxDialog::DoDataExchange (CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_CHECK_Partition, m_checkPartition);
 }
 
+void CArxDialog::OnOK()
+{
+	CAcUiDialog::OnOK();
+
+	this->DestroyWindow();
+	delete this;
+}
+
+void CArxDialog::OnCancel()
+{
+	CAcUiDialog::OnOK();
+
+	this->DestroyWindow();
+	delete this;
+}
+
 //-----------------------------------------------------------------------------
 //----- Needed for modeless dialogs to keep focus.
 //----- Return FALSE to not keep the focus, return TRUE to keep the focus
@@ -191,7 +222,7 @@ BOOL CArxDialog::OnInitDialog()
 		m_outlineLayer.SetCurSel(nIdxLayer);
 	m_outlineLayer.SetDroppedWidth(200);
 
-	int mIdxLayer = m_shearwallLayer.FindStringExact(0, mStr_shearwallLayer);
+	int mIdxLayer = m_shearwallLayer.FindStringExact(0, m_sShearwallLayer);
 	if (mIdxLayer > -1)
 		m_shearwallLayer.SetCurSel(mIdxLayer);
 	m_shearwallLayer.SetDroppedWidth(200);
@@ -289,7 +320,7 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 		tempStr_X.Format(_T("%.2f"), GetretreatlinePts[yy].x);
 		tempStr_Y.Format(_T("%.2f"), GetretreatlinePts[yy].y);
 
-		m_StrRetreatLine += "(" + tempStr_X + "," + tempStr_Y + ")";
+		m_StrRetreatLine += CString(_T("(")) + tempStr_X + _T(",") + tempStr_Y + _T(")");
 		m_editRetreatLine.SetWindowText(m_StrRetreatLine);
 	}
 }
@@ -518,20 +549,27 @@ void CArxDialog::setInitData()
 
 std::string CArxDialog::postToAIApi(const std::string& sData)
 {
-	HttpHelper http;
-	int code = http.post("http://10.8.212.187/park", sData.c_str(), sData.size(), true, "application/json");
+	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
+	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
+	if (!fn_post)
+		return "";
+	int code = fn_post("http://10.8.212.187/park", sData.c_str(), sData.size(), true, "application/json");
 	if (code!=200)
 	{
 		return "";
 	}
-	std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
 
-	std::string josn = http.response.body;
+	typedef const char* (*FN_getBody)(int&);
+	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
+	if (!fn_getBody)
+		return "";
+	int len = 0;
+	std::string json = fn_getBody(len);
 
 	Json::Reader reader;
 	Json::Value root;
 	//从字符串中读取数据
-	if (reader.parse(josn, root))
+	if (reader.parse(json, root))
 	{
 		
 		if (root["status"].isInt())
@@ -566,16 +604,16 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 		CompleteEditorCommand();
 		m_strXPt.Format(_T("%.2f"), pt[X]);
 		m_strYPt.Format(_T("%.2f"), pt[Y]);
-		m_StrStartPoint = "(" + m_strXPt + "," + m_strYPt + ")";
+		m_sStartPoint = _T("(") + m_strXPt + _T(",") + m_strYPt + _T(")");
 		//显示点的坐标	 
-		m_editStartPoint.SetWindowText(m_StrStartPoint);
+		m_editStartPoint.SetWindowText(m_sStartPoint);
 		startPtx = pt[X];
 		startPty = pt[Y];
 	}
 	else
 	{
-		m_StrStartPoint = "选取了无效的点";
-		m_editStartPoint.SetWindowText(m_StrStartPoint);
+		m_sStartPoint = "选取了无效的点";
+		m_editStartPoint.SetWindowText(m_sStartPoint);
 	}
 }
 
@@ -716,7 +754,9 @@ void CArxDialog::OnBnClickedOk()
 	
 	std::string uuid = postToAIApi(root.toStyledString());
 	CDlgWaiting::setUuid(uuid);
-	CDlgWaiting::Show(true);
+	//CDlgWaiting::Show(true);
+	CDlgWaiting dlg;
+	dlg.DoModal();
 
 	////输出到文件
 	//Json::StyledWriter sw;

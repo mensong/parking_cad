@@ -30,19 +30,23 @@
 #include "Resource.h"
 #include "MyEdit.h"
 #include <vector>
+
 //-----------------------------------------------------------------------------
-class CArxDialog : public CAcUiDialog {
+class CArxDialog
+	: public CAcUiDialog 
+{
 	DECLARE_DYNAMIC (CArxDialog)
 
 public:
 	CArxDialog (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
+	~CArxDialog();
 
 	enum { IDD = IDD_ARX_MODAL} ;
 
 	CString m_sOutlineLayer;
-	CString mStr_shearwallLayer;
-	int directionCombo;
-	CString m_StrStartPoint;
+	CString m_sShearwallLayer;
+	int m_nDirectionCombo;
+	CString m_sStartPoint;
 	CString m_strXPt;
 	CString m_strYPt;
 	double startPtx;
@@ -52,7 +56,6 @@ public:
 	double defaultLength;//默认单车位不靠墙长度
 	double defaultCloseWallLength;//默认单车位靠墙长度
 	bool isPartition;
-
 	CString m_strWidth;
 	CString m_StrLaneWidth;
 	CString m_StrSquarcolumnLength;
@@ -66,17 +69,17 @@ protected:
 	bool compare(AcGePoint2dArray& targetPts, AcGePoint2d &comparePt);
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, bool bClosed = true);
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, std::vector<int>& types);
-
 	void setInitData();
-
 	std::string postToAIApi(const std::string& js);
 
 protected:
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange (CDataExchange *pDX) ;
+	virtual void OnOK();
+	virtual void OnCancel();
 	afx_msg LRESULT OnAcadKeepFocus (WPARAM, LPARAM) ;
-
 	DECLARE_MESSAGE_MAP()
+
 private:
 	// 建筑外轮廓图层
 	CComboBox m_outlineLayer;
@@ -92,13 +95,15 @@ private:
 	CEdit m_editStartPoint;
 	// 地库退线
 	CEdit m_editRetreatLine;
+
 public:
 	afx_msg void OnBnClickedButtonGetretreatline();
 	afx_msg void OnBnClickedButtonGetstartpoint();
 	afx_msg void OnBnClickedOk();
-
 	afx_msg void OnBnClickedRadioOtherlength();
 	afx_msg void OnBnClickedRadioDefault();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+
 private:
 	// 不靠墙车位长度编辑框
 	CMyEdit m_editLength;
@@ -111,9 +116,6 @@ private:
 	// 方柱宽度编辑框
 	CMyEdit m_SquareColumnWidth;
 	// 是否分区选择框
-	CButton m_checkPartition;
-public:
-	afx_msg void OnTimer(UINT_PTR nIDEvent);
-	
+	CButton m_checkPartition;	
 	
 } ;

@@ -19,8 +19,8 @@ void DES_cbc_encrypt(const std::string& inputFile, const std::string& outputFile
 	ifstream in;
 	ofstream out;
 
-	in.open(inputFile, ios::binary | ios::in | ios::ate);
-	out.open(outputFile, ios::binary | ios::out);
+	in.open(inputFile.c_str(), ios::binary | ios::in | ios::ate);
+	out.open(outputFile.c_str(), ios::binary | ios::out);
 	if (!in) {
 		cerr << "Error: missing file " << inputFile << endl;
 		exit(1);
@@ -72,8 +72,8 @@ void DES_cbc_decrypt(const std::string& inputFile, const std::string& outputFile
 	ifstream in;
 	ofstream out;
 
-	in.open(inputFile, ios::binary | ios::in | ios::ate);
-	out.open(outputFile, ios::binary | ios::out);
+	in.open(inputFile.c_str(), ios::binary | ios::in | ios::ate);
+	out.open(outputFile.c_str(), ios::binary | ios::out);
 	if (!in) {
 		cout << "Error: missing file " << inputFile << endl;
 		exit(1);

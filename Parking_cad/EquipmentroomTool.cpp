@@ -4,6 +4,8 @@
 #include "JigHelper.h"
 #include "RTreeEx.h"
 #include "DBHelper.h"
+#include <algorithm>
+#include "GeHelper.h"
 
 CEquipmentroomTool::CEquipmentroomTool()
 {
@@ -165,7 +167,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		return;
 	}
 	pBlkTbl->close();
-	AcDbBlockTableRecordIterator *pItr = nullptr;		                	            //块表记录遍历器
+	AcDbBlockTableRecordIterator *pItr = NULL;		                	            //块表记录遍历器
 	if (pBlkTblRcd->newIterator(pItr) != Acad::eOk)
 	{
 		acutPrintf(_T("创建块表记录遍历器失败！"));
@@ -173,7 +175,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		return;
 	}
 	pBlkTblRcd->close();
-	AcDbEntity *pEnt = nullptr;//遍历的临时实体指针
+	AcDbEntity *pEnt = NULL;//遍历的临时实体指针
 	for (pItr->start(); !pItr->done(); pItr->step())
 	{
 		if (pItr->getEntity(pEnt, AcDb::kForRead) != Acad::eOk)
@@ -190,12 +192,12 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 			AcGePoint2d start2dPt(startPt.x, startPt.y);
 			AcGePoint2d end2dPt(endPt.x, endPt.y);
 			AcGeLineSeg2d* pgeLine = new AcGeLineSeg2d(start2dPt, end2dPt);
-			AcDbExtents2d geLineExt;
-			geLineExt.addPoint(start2dPt);
-			geLineExt.addPoint(end2dPt);
+			AcDbExtents geLineExt;
+			geLineExt.addPoint(GeHelper::PT23(start2dPt));
+			geLineExt.addPoint(GeHelper::PT23(end2dPt));
 
-			AcGePoint2d maxPoint = geLineExt.maxPoint();
-			AcGePoint2d minPoint = geLineExt.minPoint();
+			AcGePoint3d minPoint = geLineExt.minPoint();
+			AcGePoint3d maxPoint = geLineExt.maxPoint();
 			double positionMin[2];
 			double positionMax[2];
 			positionMin[0] = minPoint.x;
@@ -222,12 +224,12 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 					endPoint = line.endPoint();
 
 					AcGeLineSeg2d* pgePLine = new AcGeLineSeg2d(startPoint, endPoint);
-					AcDbExtents2d gePLineExt;
-					gePLineExt.addPoint(startPoint);
-					gePLineExt.addPoint(endPoint);
+					AcDbExtents gePLineExt;
+					gePLineExt.addPoint(GeHelper::PT23(startPoint));
+					gePLineExt.addPoint(GeHelper::PT23(endPoint));
 
-					AcGePoint2d maxtempPoint = gePLineExt.maxPoint();
-					AcGePoint2d mintempPoint = gePLineExt.minPoint();
+					AcGePoint3d maxtempPoint = gePLineExt.maxPoint();
+					AcGePoint3d mintempPoint = gePLineExt.minPoint();
 					double positionTempMin[2];
 					double positionTempMax[2];
 					positionTempMin[0] = mintempPoint.x;
@@ -511,13 +513,14 @@ double CEquipmentroomTool::getMinDistance(AcGePoint2d squarePoint, std::vector<A
 		double distance = squarePoint.distanceTo(RectClosedPt);
 		distanceVector.push_back(distance);
 	}
+
 	if (distanceVector.size() == 0)
 	{
 		return 0;
 	}
 	else
 	{
-		auto smallest = std::min_element(distanceVector.begin(), distanceVector.end());
+		std::vector<double>::iterator smallest = std::min_element(distanceVector.begin(), distanceVector.end());
 		double result = *smallest;
 		return result;
 	}
@@ -652,11 +655,6 @@ void CEquipmentroomTool::setEntToLayer(AcDbObjectIdArray objectIds)
 		{
 			pEnty->setLayer(_T("设备房")); //设置实体所在的图层
 			pEnty->close();
-		}
-		else
-		{
-			pEnty->close();
-			continue;		
 		}
 		//打开失败不需要关闭实体
 	}	

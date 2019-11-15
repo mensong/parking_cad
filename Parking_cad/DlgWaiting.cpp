@@ -4,12 +4,14 @@
 #include "stdafx.h"
 #include "DlgWaiting.h"
 #include "afxdialogex.h"
-#include <atomic>
+//#include <atomic>
 #include "DBHelper.h"
 #include "ArxDialog.h"
-#include "..\HttpHelper\HttpHelper.h"
 #include "Convertor.h"
 #include <json/json.h>
+#include "ModulesManager.h"
+#include <process.h>
+#include "GeHelper.h"
 
 std::string CDlgWaiting::ms_uuid;
 
@@ -33,7 +35,7 @@ static UINT WINAPI _ThreadAnimation(LPVOID pParam)
 void CDlgWaiting::Show(bool bShow/* = true*/)
 {
 
-	if (g_dlg == NULL)
+	if (g_dlg == NULL && bShow)
 	{
 		g_dlg = new CDlgWaiting;
 		unsigned int nDummy;
@@ -60,6 +62,7 @@ void CDlgWaiting::Show(bool bShow/* = true*/)
 		if (g_nShowedCount < 1)
 		{
 			Destroy();
+			g_nShowedCount = 0;
 		}
 	}
 }
@@ -103,8 +106,8 @@ BOOL CDlgWaiting::OnInitDialog()
 {
 	BOOL bRet = CAcUiDialog::OnInitDialog();
 
-	CString strFile = DBHelper::GetArxDir() + _T("\\loading.gif");
-	if (m_ctrlGif.Load(strFile))
+	AcString strFile = DBHelper::GetArxDir() + _T("\\loading.gif");
+	if (m_ctrlGif.Load(strFile.constPtr()))
 	{
 		m_ctrlGif.Draw();
 	}
@@ -154,7 +157,8 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		if (status==2)
 		{
 			KillTimer(nIDEvent);
-			CDlgWaiting::Show(false);
+			//CDlgWaiting::Show(false);
+			this->OnOK();
 
 			Json::Reader reader;
 			Json::Value root;
@@ -229,6 +233,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 						scopePts.append(plinePt);
 					}
 				}
+
 				if (root["result"]["pillar"].isArray())
 				{
 					int npillarSize = root["result"]["pillar"].size();
@@ -254,32 +259,40 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 
 			Doc_Locker _locker;
 
-			for (int a = 0;a < parkingPts.length();a++)
+			for (int a=0; a<parkingPts.length(); a++)
 			{
 				//double = (rotation/180)*Π(顺时针和逆时针)
-				double rotation = ((360-parkingDirections[a]) / 180)*3.1415926;
+				double rotation = ((360-parkingDirections[a]) / 180)*ARX_PI;
 				parkingShow(parkingPts[a], rotation);
 			}
+
 			for (int b = 0;b < axisesPoints.size();b++)
 			{
 				axisShow(axisesPoints[b]);
 			}
+
 			for (int c = 0;c < lanesPoints.size();c++)
 			{
 				laneShow(lanesPoints[c]);
 			}
+
 			scopeShow(scopePts);
+
 			for (int d = 0;d < pillarPoints.size();d++)
 			{
 				pillarShow(pillarPoints[d]);
 			}
+
 			setAxisLayerClose();
+
+			DBHelper::CallCADCommand(_T("Redraw"));
 		}
 		else if(status==3)
 		{
 			KillTimer(nIDEvent);
 			acedAlert(sMsg);
-			CDlgWaiting::Show(false);
+			//CDlgWaiting::Show(false);
+			this->OnOK();
 		}
 		return;
 	}
@@ -295,18 +308,18 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 		return 3;
 	}
 
-	//std::map<std::string, std::string> fields;
-	//fields.insert(std::pair<std::string, std::string>("uuid",uuid));
-
-	HttpHelper http;
-	//int code = http.post("http://10.8.212.187/park", sData.c_str(), sData.size(), true, "application/json");
-	
-	//int code = http.get("http://10.8.212.187/park",fields,true);
-
 	std::string httpUrl = "http://10.8.212.187/query/";
 	std::string tempUrl = httpUrl + ms_uuid;
 	const char * sendUrl = tempUrl.c_str();
-	int code = http.get(sendUrl, true);
+	
+	typedef int (*FN_get)(const char* url, bool dealRedirect);
+	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
+	if (!fn_get)
+	{
+		sMsg = _T("Http模块加载失败！");
+		return 3;
+	}
+	int code = fn_get(sendUrl, true);
 
 	if (code != 200)
 	{
@@ -315,7 +328,15 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 	}
 	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
 
-	json = http.response.body;
+	typedef const char* (*FN_getBody)(int&);
+	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
+	if (!fn_getBody)
+	{
+		sMsg = _T("网络或服务器错误。");
+		return 3;
+	}
+	int len = 0;
+	json = fn_getBody(len);
 
 	Json::Reader reader;
 	Json::Value root;
@@ -405,7 +426,7 @@ bool CDlgWaiting::layerSet(CString layerName,int layerColor)
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
-	es = acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
 	if (es != eOk)
 	{
 		return false;
@@ -418,7 +439,7 @@ bool CDlgWaiting::layerSet(CString layerName,int layerColor)
 			pLayerTbl->close();
 			return false;
 		}
-		es = acdbHostApplicationServices()->workingDatabase()->setClayer(layerId);//设为当前图层
+		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
 		pLayerTbl->close();
 		if (es != eOk)
 		{
@@ -438,7 +459,7 @@ bool CDlgWaiting::layerSet(CString layerName,int layerColor)
 	// 将新建的层表记录添加到层表中
 	pLayerTblRcd->close();
 	pLayerTbl->close();
-	es = acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);//设为当前图层
+	es = acdbCurDwg()->setClayer(layerTblRcdId);//设为当前图层
 	if (es != eOk)
 	{
 		return false;
@@ -451,7 +472,7 @@ void CDlgWaiting::setAxisLayerClose()
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
-	es = acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
 	if (es != eOk)
 	{
 		return ;

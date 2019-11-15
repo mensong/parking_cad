@@ -76,3 +76,7 @@
 extern AcApDataManager<CDocData> DocVars ;
 
 #pragma pack (pop)
+
+#include <string>
+
+std::string getHttpModule();

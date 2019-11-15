@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ArxTools">
+      <UniqueIdentifier>{b99a6d86-3c5f-4f2c-ae34-c8303c933340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Auth">
+      <UniqueIdentifier>{577de806-eea0-4d83-a0b7-c2b0a774a4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Auth\Auth">
+      <UniqueIdentifier>{d530155d-6624-4aed-947d-6f7189b4b4f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Auth\base64">
+      <UniqueIdentifier>{1de35ea9-2eb9-424e-80fe-a33cff635533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Auth\DES">
+      <UniqueIdentifier>{df908d81-c760-425b-a6e8-815e9455d635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jsoncpp">
+      <UniqueIdentifier>{1b07ff92-494b-4c38-a23f-0e584607c233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pystring">
+      <UniqueIdentifier>{441b7562-b790-4ec4-897d-470d1398f5d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\ArxTools\ArxProgressBar.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\CadPreviewCtrl.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\Convertor.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\DBHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\DelayExecuter.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\FileHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\GeHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\gpc.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\JigHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\LineSelect.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\LoadCuix.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\MixedHelper.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\Opera.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ArxTools\win_iconv.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base64\base64.cpp">
+      <Filter>Auth\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\cipher_des.cpp">
+      <Filter>Auth\DES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\cipher_padding.cpp">
+      <Filter>Auth\DES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\DesHelper.cpp">
+      <Filter>Auth\DES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DES_CBC_5\utils.cpp">
+      <Filter>Auth\DES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsoncpp\src\json_reader.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsoncpp\src\json_value.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsoncpp\src\json_writer.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pystring\pystring.cpp">
+      <Filter>pystring</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\ArxDialog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgWaiting.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DocData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\ModulesManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\MyEdit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaLifePumpHouseSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaLivingWaterTankSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaParkingSpaceShow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\Parking_cad.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\PictureEx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\StdAfx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\Authenticate.cpp">
+      <Filter>Auth\Auth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp">
+      <Filter>Auth\Auth</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\AutoRegCmd.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\CadPreviewCtrl.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\ClassFactory.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\Convertor.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\DBHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\DelayExecuter.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\FileHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\GeHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\gpc.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\iconv.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\JigHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\LineSelect.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\LoadCuix.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\MixedHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\Opera.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\PointInPolygon.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\RTreeEx.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base64\base64.h">
+      <Filter>Auth\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DES_CBC_5\cipher_des.h">
+      <Filter>Auth\DES</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DES_CBC_5\cipher_padding.h">
+      <Filter>Auth\DES</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DES_CBC_5\cipher_params.h">
+      <Filter>Auth\DES</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DES_CBC_5\DesHelper.h">
+      <Filter>Auth\DES</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DES_CBC_5\utils.h">
+      <Filter>Auth\DES</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsoncpp\src\json_tool.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsoncpp\src\version.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\pystring\pystring.h">
+      <Filter>pystring</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ArxDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgWaiting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DocData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\EquipmentroomTool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ModulesManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\MyEdit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaLifePumpHouseSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaLivingWaterTankSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaVillageSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\PictureEx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\StdAfx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\HardDiskSerial.h">
+      <Filter>Auth\Auth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\Authenticate.h">
+      <Filter>Auth\Auth</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\ArxTools\DBHelper.inl">
+      <Filter>ArxTools</Filter>
+    </None>
+    <None Include="..\..\ArxTools\设置环境变量.bat">
+      <Filter>ArxTools</Filter>
+    </None>
+    <None Include="..\jsoncpp\src\json_valueiterator.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\ArxTools\readme.txt">
+      <Filter>ArxTools</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

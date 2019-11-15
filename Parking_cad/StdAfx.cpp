@@ -25,5 +25,10 @@
 //------  StdAfx.obj will contain the pre-compiled type information
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
+#include "DBHelper.h"
 
 
+std::string getHttpModule()
+{
+	return DBHelper::GetArxDirA() + "LibcurlHttp.dll";
+}

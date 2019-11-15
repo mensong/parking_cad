@@ -28,6 +28,7 @@
 #include "Authenticate.h"
 #include "DBHelper.h"
 #include "Convertor.h"
+#include "ModulesManager.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -88,6 +89,7 @@ public:
 
 		// TODO: Unload dependencies here
 		CDlgWaiting::Destroy();
+		ModulesManager::Relaese();
 
 		return (retCode) ;
 	}

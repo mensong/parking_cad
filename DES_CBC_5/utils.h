@@ -6,7 +6,6 @@
 #ifndef utils_hpp
 #define utils_hpp
 
-#include <stdint.h>
 #include <string>
 
 using namespace std;
@@ -18,6 +17,15 @@ using namespace std;
 #if defined(_MSC_VER)
 #define strtoull _strtoui64
 #endif
+
+typedef signed char        int8_t;
+typedef short              int16_t;
+typedef int                int32_t;
+typedef long long          int64_t;
+typedef unsigned char      uint8_t;
+typedef unsigned short     uint16_t;
+typedef unsigned int       uint32_t;
+typedef unsigned long long uint64_t;
 
 // 64-bit ntohl(): convert values between host and big-/little-endian byte order
 // https://stackoverflow.com/questions/809902/64-bit-ntohl-in-c
