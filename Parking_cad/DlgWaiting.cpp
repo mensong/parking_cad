@@ -129,6 +129,17 @@ BOOL CDlgWaiting::PreTranslateMessage(MSG* pMsg)
 	return CAcUiDialog::PreTranslateMessage(pMsg);
 }
 
+void CDlgWaiting::OnOK()
+{
+	CAcUiDialog::OnOK();
+	delete this;
+}
+
+void CDlgWaiting::OnCancel()
+{
+	//CAcUiDialog::OnCancel();
+}
+
 BEGIN_MESSAGE_MAP(CDlgWaiting, CAcUiDialog)
 	ON_WM_TIMER()
 END_MESSAGE_MAP()
@@ -157,9 +168,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		if (status==2)
 		{
 			KillTimer(nIDEvent);
-			//CDlgWaiting::Show(false);
-			this->OnOK();
-
+			
 			Json::Reader reader;
 			Json::Value root;
 			//从字符串中读取数据
@@ -286,6 +295,9 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			setAxisLayerClose();
 
 			DBHelper::CallCADCommand(_T("Redraw"));
+
+			//CDlgWaiting::Show(false);
+			this->OnOK();
 		}
 		else if(status==3)
 		{

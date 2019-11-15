@@ -750,9 +750,14 @@ void CArxDialog::OnBnClickedOk()
 	
 	std::string uuid = postToAIApi(root.toStyledString());
 	CDlgWaiting::setUuid(uuid);
+
 	//CDlgWaiting::Show(true);
-	CDlgWaiting dlg;
-	dlg.DoModal();
+	//CDlgWaiting dlg;
+	//dlg.DoModal();
+	CAcModuleResourceOverride resOverride;//资源定位
+	CDlgWaiting* pWaitDlg = new CDlgWaiting;
+	pWaitDlg->Create(CDlgWaiting::IDD, acedGetAcadDwgView());
+	pWaitDlg->ShowWindow(SW_SHOW);
 
 	////输出到文件
 	//Json::StyledWriter sw;

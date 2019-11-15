@@ -24,8 +24,8 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
 	virtual BOOL OnInitDialog();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
-	//virtual void OnOK() {}
-	virtual void OnCancel() {}
+	virtual void OnOK();
+	virtual void OnCancel();
 	DECLARE_MESSAGE_MAP()
 
 public:
