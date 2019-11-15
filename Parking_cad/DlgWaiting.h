@@ -35,12 +35,13 @@ public:
 	int getStatus(std::string& josn, CString& sMsg);
 	
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
-	void parkingShow(AcGePoint2d& parkingShowPt, double& parkingShowRotation);
-	void axisShow(AcGePoint2dArray& axisPts);
-	void laneShow(AcGePoint2dArray& lanePts);
-	void scopeShow(AcGePoint2dArray& park_columnPts);
-	void pillarShow(AcGePoint2dArray& onePillarPts);
+	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation);
+	void axisShow(const AcGePoint2dArray& axisPts);
+	void laneShow(const AcGePoint2dArray& lanePts);
+	void scopeShow(const AcGePoint2dArray& park_columnPts);
+	void pillarShow(const AcGePoint2dArray& onePillarPts);
+	void arrowShow(const AcGePoint2dArray& oneArrowPts);
 
-	bool layerSet(CString layerName,int layerColor);
+	bool layerSet(const CString& layerName,const int& layerColor);
 	void setAxisLayerClose();
 };

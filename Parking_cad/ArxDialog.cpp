@@ -554,7 +554,7 @@ std::string CArxDialog::postToAIApi(const std::string& sData)
 	int code = fn_post("http://10.8.212.187/park", sData.c_str(), sData.size(), true, "application/json");
 	if (code!=200)
 	{
-		return "";
+		return "网络或服务器错误";
 	}
 
 	typedef const char* (*FN_getBody)(int&);
@@ -580,14 +580,16 @@ std::string CArxDialog::postToAIApi(const std::string& sData)
 		}
 		else
 		{
-			return "";
+			return "没有该字段";
 		}
 		//std::string messgae = root["messgae"].asString();
 		std::string result = root["result"].asString();	
 		return result;
 	}
-
-	return "";
+	else
+	{
+		return "json解析错误";
+	}	
 }
 
 void CArxDialog::OnBnClickedButtonGetstartpoint()
@@ -747,8 +749,27 @@ void CArxDialog::OnBnClickedOk()
 	params["start_point"] = Json::Value(startpoint);
 	//子节点挂到根节点上
 	root["params"] = Json::Value(params);
-	
+	Json::Value auth;
+	auth["computer_id"] = "0000";
+	auth["user_id"] = "1111";
+	root["auth"] = auth;
+
 	std::string uuid = postToAIApi(root.toStyledString());
+	if (uuid == "网络或服务器错误")
+	{
+		acedAlert(_T("网络或服务器错误!"));
+		return;
+	}
+	else if (uuid == "json解析错误")
+	{
+		acedAlert(_T("json解析错误!"));
+		return;
+	}
+	else if (uuid == "没有该字段")
+	{
+		acedAlert(_T("没有该字段!"));
+		return;
+	}
 	CDlgWaiting::setUuid(uuid);
 
 	//CDlgWaiting::Show(true);
