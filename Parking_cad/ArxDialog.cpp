@@ -35,6 +35,7 @@
 #include "Convertor.h"
 #include "ModulesManager.h"
 #include "OperaParkingSpaceShow.h"
+#include "Authenticate.h"
 
 #ifndef _ttof
 #ifdef UNICODE
@@ -43,6 +44,8 @@
 #define _ttof atof
 #endif
 #endif
+
+extern Authenticate g_auth;
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CArxDialog, CAcUiDialog)
@@ -543,6 +546,9 @@ void CArxDialog::setInitData()
 
 	m_StrSquareColumnWidth = "0.6";
 	m_SquareColumnWidth.SetWindowText(m_StrSquareColumnWidth);
+
+	m_strUserId =  g_auth.getCheckedUser();
+	m_strComputerId =  g_auth.getCheckedSerial();
 }
 
 std::string CArxDialog::postToAIApi(const std::string& sData)
@@ -750,8 +756,10 @@ void CArxDialog::OnBnClickedOk()
 	//子节点挂到根节点上
 	root["params"] = Json::Value(params);
 	Json::Value auth;
-	auth["computer_id"] = "0000";
-	auth["user_id"] = "1111";
+	//CString strUserId = GL::Ansi2WideByte(m_strUserId.c_str()).c_str();
+	//CString strComputerId = GL::Ansi2WideByte(m_strComputerId.c_str()).c_str();
+	auth["computer_id"] = GL::Ansi2Utf8(m_strComputerId.c_str());
+	auth["user_id"] = GL::Ansi2Utf8(m_strUserId.c_str());
 	root["auth"] = auth;
 
 	std::string uuid = postToAIApi(root.toStyledString());

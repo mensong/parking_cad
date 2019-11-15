@@ -61,6 +61,8 @@ public:
 	CString m_StrSquarcolumnLength;
 	CString m_StrSquareColumnWidth;
 	AcGePoint2dArray GetretreatlinePts;//装取去完重的有效点
+	std::string m_strComputerId;
+	std::string m_strUserId;
 
 protected:
 	void loadoutlineLayers();
