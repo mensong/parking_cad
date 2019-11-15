@@ -422,7 +422,6 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 	entIds = DBHelper::GetEntitiesByLayerName(layername);
 	if (entIds.length() == 0)
 	{
-		acutPrintf(_T("\n获取该图层还未放置设备房！"));
 		return outputPoints;
 	}
 
@@ -431,8 +430,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 		AcDbEntity* pEntity = NULL;
 		if (acdbOpenAcDbEntity(pEntity, entIds[i], kForRead) != eOk)							//这里是可读
 		{
-			acutPrintf(_T("\n获取单个实体指针失败！"));
-			return outputPoints;
+			continue;
 		}
 
 		if (pEntity->isKindOf(AcDbPolyline::desc()))
@@ -648,12 +646,10 @@ void CArxDialog::OnBnClickedOk()
 	if (1 == m_checkPartition.GetCheck())
 	{
 		isPartition = true;
-		acutPrintf(_T("\n选择了分区"));
 	}
 	else
 	{
 		isPartition = false;
-		acutPrintf(_T("\n选择了不分区"));
 	}
 	int direction = 0;
 	CString showDirection;
