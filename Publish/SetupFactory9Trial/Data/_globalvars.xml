@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Globals>
+  <GlobalVar>
+    <Name>_CommandLineArgs</Name>
+    <Hint>The command line arguments passed to the setup/uninstall.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_DesktopFolder</Name>
+    <Hint>The per-user desktop folder.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_DesktopFolderCommon</Name>
+    <Hint>The system's common desktop folder.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_DisableCloseButton</Name>
+    <Hint>Whether the close button (X) will be enabled on screens at runtime.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_DoingUninstall</Name>
+    <Hint>Whether the setup is currently uninstalling.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_InstallStages</Name>
+    <Hint>A table which can be used to turn install stages off.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_IR_ProductID</Name>
+    <Hint>The Indigo Rose product ID of the currently running runtime.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_NeedsReboot</Name>
+    <Hint>Whether the setup/uninstall needs to reboot in order to complete.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_ProgramFilesFolder</Name>
+    <Hint>The system's program files folder.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_ProgramFilesFolder64</Name>
+    <Hint>On 64-bit systems this is the 64-bit program files folder. Equal to _ProgramFilesFolder on 32-bit systems. </Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_SilentInstall</Name>
+    <Hint>Whether the setup is running in silent mode.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_SourceDrive</Name>
+    <Hint>The drive that the setup/uninstall is being run from.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_SourceFilename</Name>
+    <Hint>The full path and filename to the setup/uninstall executable that is running.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_SourceFolder</Name>
+    <Hint>The folder that the setup/uninstall is being run from.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_SuppressUninstallDataDuplicateCheck</Name>
+    <Hint>Whether to suppress duplicate file checking when writing out file data to the uninstall configuration file.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_SystemFolder</Name>
+    <Hint>The system's windows system folder.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_tblErrorMessages</Name>
+    <Hint>The error messages table.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_TempFolder</Name>
+    <Hint>The system's temporary folder.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_TempLaunchFolder</Name>
+    <Hint>The setup's temporary launch folder.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_UninstallStages</Name>
+    <Hint>A table which can be used to turn uninstall stages off.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_UsePerUserFolders</Name>
+    <Hint>Whether to use the per user or all users folders for shortcuts.</Hint>
+  </GlobalVar>
+  <GlobalVar>
+    <Name>_WindowsFolder</Name>
+    <Hint>The system's windows folder.</Hint>
+  </GlobalVar>
+</Globals>

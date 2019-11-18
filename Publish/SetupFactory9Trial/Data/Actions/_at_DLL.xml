@@ -1,0 +1,69 @@
+<ActionTemplates>
+   <Action>
+      <Name>DLL.CallFunction</Name>
+      <Description>Calls a function in a dynamically linked library (DLL). It can be used to extend Setup Factory's functionality with your own functions.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The path to the DLL file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_TempFolder.."\\Myfile.dll"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>FunctionName</Name>
+            <Description>The name of the function within the DLL.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"MyFunctionName"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Parameters</Name>
+            <Description>The comma-separated list of parameters that you want to pass to the function.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ReturnType</Name>
+            <Description>The type of value returned from the function.</Description>
+            <Type>number</Type>
+            <Default>0</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>DLL_RETURN_TYPE_INTEGER</Default>
+               <DataType>combo</DataType>
+               <Constraints>DLL_RETURN_TYPE_INTEGER,DLL_RETURN_TYPE_LONG,DLL_RETURN_TYPE_STRING</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CallConvention</Name>
+            <Description>The calling convention that Setup Factory will use when calling the DLL function.</Description>
+            <Type>number</Type>
+            <Default>0</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>DLL_CALL_CDECL</Default>
+               <DataType>combo</DataType>
+               <Constraints>DLL_CALL_CDECL,DLL_CALL_STDCALL</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

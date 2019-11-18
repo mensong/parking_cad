@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Turkish</Name>
+<Default>0</Default>
+<Primary>31</Primary>
+<Secondary/>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Kurulumu</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Kýsayol Klasörü</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Kýsayollarýn nereye yüklenmesini istiyorsunuz?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Ýleri &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Geri</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Ý&amp;ptal</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Yardým</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Kýsayol simgeleri, aþaðýda belirtilen klasörde oluþturulacaktýr. Eðer bu klasörü varsayýlan klasör olarak kullanmak istemiyorsanýz, yeni bir isim yazabilirsiniz veya listeden mevcut bir klasör seçebilirsiniz.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Kýsayol Klasörü:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Kýsayollarý sadece mevcut kullanýcý için yükle</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Kýsayollarý tüm kullanýcýlar için kullanýlabilir yap</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

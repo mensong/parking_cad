@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+      <Name>Swedish</Name>
+      <Primary>29</Primary>
+      <Secondary>
+         <ID>1</ID>
+         <ID>2</ID>
+      </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Lyckades</MSG_SUCCESS>
+      <MSG_ERROR>Fel</MSG_ERROR>
+      <MSG_NOTICE>Notera</MSG_NOTICE>
+      <MSG_WARNING>Varning</MSG_WARNING>
+      <MSG_YES>Ja</MSG_YES>
+      <MSG_NO>Nej</MSG_NO>
+      <MSG_YES_TOALL>Ja till alla</MSG_YES_TOALL>
+      <MSG_TO>Till</MSG_TO>
+      <MSG_FROM>Från</MSG_FROM>
+      <MSG_BROWSE>Utforska...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Avbryt</MSG_CANCEL>
+      <MSG_PATH>Sökväg</MSG_PATH>
+      <MSG_SEARCH_MASK>Sök</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Alla filer</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Letar efter fil</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bytes</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Bekräfta</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Installationen är inte klar! Vill du verkligen avbryta?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Är du säker på att du vill fortsätta installationen?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Det finns inte tillräckligt med ledigt utrymme för att installera %ProductName% på vald hårddisk.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Kopierar</MSG_COPYING>
+      <MSG_DELETING>Tar bort</MSG_DELETING>
+      <MSG_SEARCHING>Söker</MSG_SEARCHING>
+      <MSG_READING>Läser</MSG_READING>
+      <MSG_QUERYING_INTERNET>Kontrollerar på Internet</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Flyttar</MSG_MOVING>
+      <MSG_SAVING>Sparar</MSG_SAVING>
+      <MSG_INSERTDISK>Sätt i disk</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Laddar ner</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Laddar ner fil...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Laddar ner fil, den totala storleken är okänd. Antal Kb nedladdat hittills: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Bestämmer värdnamn.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Värdnamn bestämt.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Ansluter till server.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Ansluten till server.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Stänger anslutning till server.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Anslutning till servern stängdes.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Åtgärd utförd.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Omdirigerar.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Beräknad tid kvar</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/Sek</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Startar...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Installerar...</MSG_INSTALLING>
+      <MSG_SKIPPING>Hoppar över...</MSG_SKIPPING>
+      <MSG_SEEKING>Söker...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Ogiltig post</MSG_INVALID_ENTRY>
+      <MSG_THE>The </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> fältet får inte vara tomt.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Förbereder installationen...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Installerar filer...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Skapar avinstallering...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Skapar genvägar...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Kontrollerar filbestämmelser...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Kontrollerar mapptillstånd...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Kontrollerar tillgängligt diskutrymme...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Tar bort filer...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Tar bort genvägar...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Skapar datamapp för avinstallation...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Skapar datafil för avinstallation...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Skapar kontrollfil för avinstallation...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Skapar avinstallationsfil...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Kopierar skärmbildfiler...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Kopierar plugins...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Kopierar supportfiler...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Skapar post i Kontrollpanelen...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Skapar genväg för avinstallation...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Okänt</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Ingen</MSG_OS_NONE>
+      <MSG_OS_ALL>Alla</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(inget SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(eller nyare)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Följande minimikrav för systemet uppfylldes inte för den här installationen:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Operativsystem</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Skärmbredd</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Skärmhöjd</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Färgdjup</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Användarbehörighet</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administratör</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Installationsprogrammet kommer nu att avbrytas.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Klicka OK för att fortsätta eller Avbryt för att avsluta installationen.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>För mer information kontakta:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Den här installationen går ut om</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>dagar och kommer inte att fungera efter det.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Den här installationen kommer att fungera</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>gånger till innan den går ut.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Sätt i disk #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Om filerna på den här disken hittas på annat ställe, till exempel på en annan disk, skriv in den fullständiga sökvägen eller klicka på Utforska för att välja sökväg.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Installationsprogrammet vill installera en fil men en fil med samma namn existerar redan i ditt system.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Installationsprogrammet vill installera en fil men en nyare fil med samma namn existerar redan i ditt system.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Vill du skriva över följande fil?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Följande fil används och kan inte uppdateras:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Stäng alla andra program och välj Försök igen.  Välj Avbryt för att installera den här filen vid omstart.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Vill du skriva över följande fil?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Applikationen vill installera en fil men en fil med samma namn finns redan på ditt system.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Applikationen vill installera en fil men en NYARE fil med samma namn finns redan på ditt system.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Installationsprogrammet kunde inte starta om datorn.  Stäng alla öppna program och välj Försök igen.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Denna fil används och kan inte raderas. Stäng ovanstående fil och välj Försök igen. Välj Ignorera för att fortsätta och automatiskt ta bort filen vid nästa omstart. Välj Avbryt för att stoppa avinstallationen.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Denna fil kan inte raderas. Välj Försök igen för att prova igen. Välj Ignorera för att fortsätta och automatiskt ta bort filen vid nästa omstart. Välj Avbryt för att stoppa avinstallationen.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Avinstallationsprogrammet vill ta bort följande delade systemfil:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Inget annat program har registrerats som användare av filen men det kan fortfarande finnas en möjlighet att ett annat program behöver den för att fungera.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Vill du ta bort filen?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Omstart fungerade inte. Stäng alla öppna program och välj Försök igen.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Din dator måste startas om för att avsluta installationen. Vill du starta om nu?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Din dator måste startas om för att avsluta avinstallationen. Vill du starta om nu?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Välj en post i listan.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Utrymme som krävs på disken:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Tillgängligt utrymme på disken:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Kunde inte skapa en loggfil: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Integritetskontroll av arkivfilen misslyckades. Installationsfilen är inte komplett, troligtvis på grund av en ofullständig nedladdning eller korrupt fil.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Kontrollera att din disk sitter i diskenheten! Följande fil kan inte hittas:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Kunde inte ladda en plugin</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Installationsprogrammet kan inte öppna följande arkivfil (Du har kanske fel disk i diskenheten)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Installationsprogrammet kan inte allokera tillräckligt med minne för att expandera filer.  Installationen avbryts.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Installationsprogrammet kan inte skapa följande mapp:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Ett filuppackningsfel har uppstått</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Kunde inte öppna utdatafil</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Kunde inte öppna indatafil</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Läs/skrivfel</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>File CRC mismatch - Dataintegritetsfel</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disken är full.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Okänt uppackningsfel</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Fel, hoppar över fil</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Minnesallokeringsfel</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Fel vid läsning av fil</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Fel vid skrivning till fil</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Okänt filkopieringsfel</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Kunde inte skapa avinstallationspost</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Fel i LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Fel i GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Felaktig kod returnerad av DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Kunde inte registrera COM (ActiveX) control:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Kunde inte registrera Type Library:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Slut på minne</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Ett eller flera av argumenten är felaktiga.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Funktionen kunde inte skriva till filen.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Type library kunde inte öppnas.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Funktionen kunde inte läsa från filen.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Type library har ett äldre format.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>LCID kunde inte hittas i OLE-supported DLLs.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Type library eller DLL kunde inte laddas.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Systemets registerdatabas kunde inte öppnas.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Default FACILITY_STORAGE-fel.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Kunde inte skapa datamapp för avinstallation:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Kunde inte skapa datafil för avinstallation:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Kunde inte öppna avinstallationsfilen för läsning:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Kunde inte öppna avinstallationsfilen för skrivning:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Kunde inte öppna konfigurationsfilen för skrivning:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Avinstallationsfilen kunde inte skrivas ut, den används redan. Stäng alla öppna avinstallationer och välj Försök igen för att fortsätta. Välj Avbryt för att avsluta.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Kunde inte öppna och skriva till registernyckeln för avinstallation:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Kunde inte skriva registervärde för avinstallation:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Kunde inte skapa genväg till avinstallation:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Kunde inte spara variabler för sessionen</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Du har inte behörighet att registrera delade filer på detta system. Den här installationen bör göras med Administratörsbehörighet.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Du har inte behörighet att registrera COM (ActiveX) kontroller på detta system. Den här installationen bör göras med Administratörsbehörighet.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Du har inte behörighet att registrera Type Libraries på detta system. Den här installationen bör göras med Administratörsbehörighet.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Ovantående COM (ActiveX) kontroll kunde inte avregistreras. Filen kommer inte att raderas.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Ogiltig avinstallationsdatapost.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Datapost för avinstallation kunde inte hittas.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Okänt fel.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Den angivna filen kunde inte hittas.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Misslyckades med att ladda fil.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Misslyckades med att spara fil.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Angiven sökväg kunde inte hittas.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>Exe-filen är ogiltig (non-Win32 .exe eller fel i .exe image).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Operativsystemet nekade åtkomst till den angivna filen.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Filnamsändelsen är ej komplett, eller ogiltig.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   DDE-transaktionen kunde inte avslutas för att andra DDE-transaktioner behandlades samtidigt.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>DDE-transaktionen misslyckades</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>DDE-transaktionen kunde inte avslutas på grund av time out.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Det angivna dynamic-link-biblioteket hittades inte.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Det finns inget program associerat med den angivna filnamnsändelsen. Detta fel uppstår också om du försöker skriva ut en fil som inte är utskrivbar.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Det fanns inte tillräckligt med minne för att slutföra åtgärden.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Filkörningen misslyckades.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Ett delningsfel uppstod.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Kunde inte bestämma viewer class-namn.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Kunde inte bestämma viewer command-rad.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Den associerade viewern var inte en körbar fil.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Den associerade körbara filen för viewer existerar inte.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Ogiltig källa specificerad.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Ogiltig destination specificerad.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Källfil(er) existerar inte.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Destinationskatalogen existerar inte.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Misslyckades med att kopiera en eller flera filer.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Misslyckades med att radera en eller flera filer.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Misslyckades med att schemalägga radering vid omstart.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Misslyckades med att schemalägga flyttning vid omstart.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Åtgärden avbröts av användaren.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Ett fel uppstod när det kallades på callback-funktionen.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Fel, callback-funktionen hittades inte.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Kunde inte hämta versionsinformationens storlek.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Kunde inte hämta information om filversion.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Angivet filnamn innehåller ogiltiga tecken.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Destinationsfilen finns redan.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Ett okänt fel uppstod.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Kör vid omstart-kommandot misslyckades, kunde inte öppna registernyckel.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Kör vid omstart-kommandot misslyckades, kunde inte bestämma värde.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Kunde inte bestämma filens attribut.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Kunde inte bestämma filens komprimerade attribut.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Kunde inte skapa destinationsfolder.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Kunde inte skapa säkerhetskopia av en eller flera filer.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Slut på minne.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Du har inte behörighet att installera filer till ovanstående mapp. Denna installation bör göras av en användare med korrekt behörighet såsom en systemadministratör.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Installationen kan inte fortsätta eftersom ovanstående diskenhet inte existerar.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Det finns inte tillräckligt med utrymme på ovanstående disk för att installera de nödvändiga filerna.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Det finns ingen kontroll med angivet ID på den nuvarande skärmen.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Den angivna kontrollen är av fel typ för att utföra den här åtgärden.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Det finns ingen nuvarande skärm.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Den angivna kontrollen kunde inte hittas.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Kunde inte visa kontroll.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Filen är för stor för att kunna läsas.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Den angivna filen kunde inte öppnas.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Undantag avvisat av intern kontroll.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Åtgärden kan inte utföras på avstängd kontroll.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Kunde inte visa statusdialog.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Kunde inte gömma statusdialog.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Kunde inte bestämma statustext i statusdialogen.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Kunde inte bestämma progressmätarens omfång i statusdialogen.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Kunde inte bestämma progressmätarens position i statusdialogen.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Kunde inte bestämma meddelandetexten i statusdialogen.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Kunde inte bestämma titeltexten i statusdialogen.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Kunde inte läsa progressmätarens position.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Kunde inte radera den angivna INI-filsektionen.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Kunde inte radera det angivna INI-filvärdet.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Kunde inte skriva det angivna värdet.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Kunde inte skapa den angivna registernyckeln.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Kunde inte radera den angivna registernyckeln.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Kunde inte radera det angivna registervärdet.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Den angivna sub-nyckeln existerar inte.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Kunde inte hämta sub-nycklarnas namn.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Kunde inte hämta det angivna värdets data.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Kunde inte hämta värdenas namn.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Kunde inte hämta registervärdets typ.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Kunde inte bestämma det angivna registervärdets data.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Kunde inte lägga till posten till List Box control.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Kunde inte infoga post till List Box control.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indexet är utanför omfång.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Kunde inte hämta versionsinformation om operativsystemet.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Kunde inte starta om systemet. Operativsystemsinformation inte tillgänglig.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Kunde inte starta om systemet.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Fel i LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress misslyckades.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Felkod returnerades av DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Fel när det kallades på LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Fel när det kallades på RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Fel, fontnamnet kan inte vara tomt.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Felaktigt fontnamn.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Misslyckades med att lägga till fonten i systemets fonttabell.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Misslyckades med att lägga till fonten i registret.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Misslyckades med att ta bort fonten från systemets fonttabell.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Misslyckades med att ta bort fonten från registret.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Kunde inte hämta användarinformation.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Okänt datumformat angivet.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Okänt tidsformat angivet.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Kan inte bestämma språk ID.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Kan inte bestämma display-info.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Servern kunde inte avsluta registreringen av alla type libraries som används av dess classes.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Servern kunde inte avsluta registreringen av alla object classes.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Servern kunde inte ta bort poster från alla type libraries som används av dess classes.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Servern kunde inte ta bort alla poster från object classes.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Felkod returnerades av DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Fel, systemåterställning kan inte användas i felsäkert läge.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Fel, disken är full och systemåterställning har satts i standby-läge.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Fel, det väntande filnamnsbytet existerar redan.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Ett internt fel har uppstått.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Fel, ogiltigt sekvensnummer.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Systemåterställningstjänsten är avstängd.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Fel, systemåterställningen har tagit för lång tid (timed out).</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Kunde inte öppna textfil.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Textfilen är för stor för att kunna läsas.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Fel, kunde inte spara textfil.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Fel, fönsternamn är inte giltigt.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Fel, kunde inte gömma fönstret.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Fel, kunde inte maximera fönstret.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Fel, kunde inte minimera fönstret.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Fel, kunde inte återställa fönstret.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Fel, kunde inte visa fönstret.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Fel, kunde inte öppna CD-enhet, åtgärden stöds inte.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Fel, kunde inte beräkna ledigt utrymme.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Fel, kunde inte beräkna totalt utrymme.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Fel, kunde inte beräkna använt utrymme.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Kunde inte skapa mapp.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Den angivna mappen finns inte.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Den angivna sökvägen pekar inte till en mapp.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Kunde inte radera mapp.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Kunde inte bestämma nuvarande mapp.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Destinationsmappen existerar redan.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Mappnamnet innehåller ogiltiga tecken.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Kunde inte radera basmappen.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Kunde inte skapa mapp till genvägen.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Kunde inte skapa länk för genvägen.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Fel, genvägsbeskrivningen är längre än 250 tecken.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Genväg kunde inte raderas.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Okänd shell-mapp.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Mappen som returnerades är ogiltig.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Kunde inte ladda angiven DLL.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Kunde inte hitta den angivna funktionen i DLL-filen.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Kunde inte skapa en Internetsession.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Kunde inte skapa en HTTP-förbindelse.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Kunde inte öppna request.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Send request misslyckades.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Kunde inte öppna destinationsfilen för skrivning.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Ogiltig HTTP-respons från servern.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Ett fel uppstod under nedladdningen av information från servern.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Ett fel uppstod under försök till skrivning till destinationsfilen.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Användaren har avbrutit HTTP-åtgärden.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Ett fel uppstod under skrivningen till minnet. (Out of memory?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Ett fel uppstod när proxy username skulle definieras.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Ett fel uppstod när proxy password skulle definieras.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Servern förstod inte begäran. (Bad Syntax)</ERR_WEB_400>
+      <ERR_WEB_403>Åtkomst förbjuden.</ERR_WEB_403>
+      <ERR_WEB_404>Den begärda URL-adressen hittades inte på servern.</ERR_WEB_404>
+      <ERR_WEB_500>Ett internt serverfel har uppstått.</ERR_WEB_500>
+      <ERR_WEB_503>Serverns kapacitet är full.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Kunde inte registrera window class för att skapa splash dialog.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Kunde inte skapa splash dialog-bild.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Ett fel uppstod vid försök att bestämma nuvarande skärmnamn. No current screen.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Kunde inte ladda värde.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Kunde inte spara värde.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Fel, kunde inte bestämma applikationens fönsternamn.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Package hittades inte.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Ett internt fel uppstod när den angivna funktionen bestämdes.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Ett runtime-fel uppstod när det kallades på funktionen.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Ett minnesallokeringsfel uppstod när det kallades på funktionen.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Ett ogiltigt index har angivits. Index måste vara högre än, eller lika med -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Den angivna sökvägen är längre än MAX_PATH, eller 260 tecken.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Ogiltig konfigurationsfil för avinstallation.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Ogiltigt table data.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Åtgärd inte tillgänglig vid avinstallation.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Den angivna kategorin kunde inte hittas.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Kunde inte bestämma kategorins egenskaper.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Det här installationsprogrammet har gått ut och kommer nu att avbrytas.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Det här installationsprogrammet har redan körts det tillåtna antalet gånger och kommer nu att avbrytas.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Det här installationsprogrammet kunde inte öppna registret för skrivning och kommer nu att avbrytas.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Det angivna matematiska värdet är inte giltigt för den givna funktionen.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Ogiligt serienummer.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Misslyckades med att bestämma volyminformation.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Ogiltigt textscrollningssätt.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Sökvägar kan inte innehålla något av följande tecken:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Det visas inget fönster just nu.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Screen jump misslyckades.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Ett fel uppstod vid upprepning av tjänsterna.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Ett fel uppstod vid förfrågan till tjänsterna.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Tjänsten kunde inte hittas.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Fortsätt-kommandeot misslyckades.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Stopp-kommandot misslyckades.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Start-kommandot misslyckades.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Paus-kommandot misslyckades.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Radera-kommandot misslyckades.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Skapa-kommandot misslyckades.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Angivet namn till specificerad service control manager-databas är inte åtkomstberättigat.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Ett cirkulärt serviceberoende specificerades.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Displaynamnet existerar redan i service control manager-databasen, antingen som ett servicenamn eller som ett annat displaynamn.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Angivet namn till specificerad service control manager-databas är ogiltigt.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Angivet servicenamn är ogiltigt.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>En parameter som angavs är ogiltig.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Det angivna användarkontonamnet existerar inte.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Den angivna servicen existerar redan i denna databas.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Ett allmänt ODBC-fel inträffade.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Bufferlängden var ogiltig.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>hWnd-värdet var ogiltigt.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>String-värdet var ogiltigt.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Den angivna typen av begäran var ogiltig.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Komponenten hittades inte i registret.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Driver-argumentet var ogiltigt, det kunde inte hittas i registret.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Det fanns ett ogiltigt keyword=name pair.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>Ogiltig DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>Ogiltig INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Åtgärden som begärdes av Request parameter misslyckades.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>En ogiltig sökväg angavs.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Ett fel uppstod vid laddning av driver eller translator library.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>En ogiltig lista av keyword=name pairs användes.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Ogiltig loggfil.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Begäran avbröts av användaren.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Ett fel uppstod vid ökning eller minskning av component usage count.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Misslyckades med att skapa DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Misslyckades med att skriva sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Misslyckades med att ta bort DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>En funktion misslyckades på grund av för lite minne.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Output-strängen avkortades.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Misslyckades med att ladda ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>GetProc-kommandot misslyckades.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Dialogrutor kan inte visas under en tyst installation eller avinstallation.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Den angivna sökvägen är inte giltig.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Fältet kan inte vara tomt.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Följande tecken är inte tillåtna:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Strängen innehåller inte giltig base-64-kodad data.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Ett fel uppstod när försök gjordes att avkoda base-64-kodad sträng (vanligtvis är den korrupt - det kanske saknas bytes i strängen?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Ogiltig file header - det är inte en Indigo Rose blowfish-fil.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Okompatibel blowfish-fil. (Antingen har filen skadats eller så använder den ett okompatibelt block padding-schema.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Det gick inte att ladda XML-filen.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Det gick inte att spara XML-filen.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Inget giltigt XML-dokument laddades. (Dokumentet är tomt eller felaktigt formaterat.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Den angivna sökvägen till XML-dokumentet är inte giltig eller hittades inte.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Ett fel uppstod när värdet skrevs.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Ett fel uppstod när attributet skrevs.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Ogiltigt attributnamn. (Attributnamn får inte innehålla mellanrum.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Det specificerade elementet kunde inte tas bort.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Det specificerade attributet kunde inte tas bort.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Det finns inga element under den specificerade XML-sökvägen.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Elementet under den specificerade XML-sökvägen har inga attribut.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Ett fel uppstod när XML infogades.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Ogiltig tilläggsmetod.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

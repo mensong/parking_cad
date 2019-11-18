@@ -1,0 +1,163 @@
+<DependencyTemplate>
+<Dependency>
+<Name>Visual Basic 6.0 (SP6)</Name>
+<RuntimeTempFolder>vb6sp6</RuntimeTempFolder>
+<RevisionDate>Thursday, October 07, 2004</RevisionDate>
+<Description>Installs runtime files required by Visual Basic 6.0 (SP6) applications. 
+
+All programs developed with Microsoft Visual Basic 6.0 require a set of core run time files in order to run. These files include:
+
+Asycfilt.dll           2.40.4275.1 
+Comcat.dll          4.71.1460.1
+Msvbvm60.dll     6.0.97.82 
+Oleaut32.dll        2.40.4275.1 
+Olepro32.dll        5.0.4275.1 
+Stdole2.tlb          2.40.4275.1 
+
+
+NOTE: Please be aware that in addition to these core runtime files you will need to include the executable file(s) that you created with Visual Basic as well as other support files in your project. Also be aware that Visual Basic programs often use other controls outside of the core set of runtime files.
+
+For more information about Visual Basic 6 (SP6)  please see:
+
+Microsoft Knowledge Base Article - 290887 - VBRun60sp6.exe installs Visual Basic 6.0 SP6 run-time files
+http://support.microsoft.com/default.aspx?scid=kb;en-us;290887</Description>
+<DetectScript>function IsVB6SP6Installed()
+	-- Get the version of file msvbvm60.dll
+	local strVisualBasicRuntimeFile = _SystemFolder.."\\msvbvm60.dll";
+	
+	if(not File.DoesExist(strVisualBasicRuntimeFile))then
+
+		-- log: msvbvm60.dll could not be found, so the runtime will be installed.
+		SetupData.WriteToLogFile("Info\tVB6 SP6 Module: No version of msvbvm60.dll was found. The VB6 SP6 runtime will be installed.\r\n", true);
+	
+		-- msvbvm60.dll is not installed, so install the module.
+		return false;
+	end
+	
+	tblFileInfo = File.GetVersionInfo(strVisualBasicRuntimeFile);
+	if(not tblFileInfo)then
+	
+		-- log: couldn't get version info for msvbvm50.dll, so the runtime will be installed.
+		SetupData.WriteToLogFile("Info\tVB6 SP6 Module: Unable to get version info for msvbvm60.dll. The VB6 SP6 runtime will be installed.\r\n", true);
+	
+		-- The version information could not be retrieved from msvbvm60.dll, so install the run time.
+		return false;
+	end
+	
+	local nCompareResult = String.CompareFileVersions(tblFileInfo.FileVersion,"6.0.97.82");
+	if(nCompareResult == -1)then
+	
+		-- log: looks like the msvbvm60.dll is OFN
+		SetupData.WriteToLogFile("Info\tVB6 SP6 Module: Older version of msvbvm60.dll detected. The VB6 SP6 runtime will be installed.\r\n", true);
+	
+		-- The installed version is older than the newest version, so install the module.
+		return false;
+	else
+
+		-- log: looks like the msvbvm60.dll is up to date
+		SetupData.WriteToLogFile("Info\tVB6 SP6 Module: Current version of msvbvm60.dll detected. The VB6 SP6 runtime is already installed.\r\n", true);
+
+		-- The installed version is up to date, so don't install the module.
+		return true;
+	end
+end
+</DetectScript>
+<DetectFunction>IsVB6SP6Installed</DetectFunction>
+<InstallScript>-- Variables used in the installation actions:
+local strMessage = 
+[[Setup has detected that your Microsoft Visual Basic 6.0 run-time files are out of date.
+Click OK to install this technology now or Cancel to abort the setup.]];
+local strDialogTitle = "Technology Required";
+local bShowUserPrompt = true; -- set this to true to ask user whether to install the module
+local bRunInstallFile = true; -- sets default choice (whether to run the setup by default)
+local strRuntimeSupportFolder = SessionVar.Expand("%TempLaunchFolder%\\vb6sp6");
+local strFileToRun = strRuntimeSupportFolder.."\\VBRun60sp6.exe";
+
+-----------------------------------------------------------------------------------------
+
+-- log: the VB6 installation has started.
+SetupData.WriteToLogFile("Success\tVB6 SP6 Module: Installation script started.\r\n", true);
+
+-- Delete temporary file and runtime support folder (with error checking)
+local function PerformCleanUp()
+
+	File.Delete(strFileToRun);
+
+	error = Application.GetLastError();
+	if error ~= 0 then
+		SetupData.WriteToLogFile("Error\tVB6 SP6 Module: Unable to delete temp file (".._tblErrorMessages[error]..")\r\n", true);
+	end
+
+	Folder.Delete(strRuntimeSupportFolder);
+
+	error = Application.GetLastError();
+	if error ~= 0 then
+		SetupData.WriteToLogFile("Error\tVB6 SP6 Module: Unable to delete temp folder (".._tblErrorMessages[error]..")\r\n", true);
+	end
+end
+
+-- Check if the dialog should be displayed asking whether or not they want to install the module.
+if(bShowUserPrompt)then
+	local nDialogResult = Dialog.Message(strDialogTitle,strMessage,MB_OKCANCEL,MB_ICONEXCLAMATION);
+	if(nDialogResult == IDOK)then
+		-- The user chose to install the module.
+		bRunInstallFile = true;
+
+		-- log: the user wants to install it
+		SetupData.WriteToLogFile("Success\tVB6 SP6 Module: User confirmation received, we are ready to install.\r\n", true);
+
+	else
+		-- The user chose not to install the module.
+		bRunInstallFile = false;
+
+		-- log: the user said no
+		SetupData.WriteToLogFile("Success\tVB6 SP6 Module: User chose NOT to install the module.\r\n", true);
+	end
+end
+
+
+-- Check if the user wants to install the runtime.
+if(bRunInstallFile)then
+
+	-- log: go go go!
+	SetupData.WriteToLogFile("Success\tVB6 SP6 Module: Running VB6 installer.\r\n", true);
+
+	-- The "/R:N" command line switch tells the VB install not to show the
+	-- reboot screen if necessary. We will detect that through the setup's
+	-- process return code and set the internal _NeedsReboot variable if necessary
+	-- Note: You can add the command line swicth "/Q" to run the install in silent mode
+	local nResult = File.Run(strFileToRun,"/R:N","",SW_SHOWNORMAL,true);
+	if(nResult == 3010)then
+		-- VB install indicated that it needs reboot to be complete
+		-- Set Setup Factory's reboot variable so that the reboot is just
+		-- performed at the end of the install
+		_NeedsReboot = true;
+
+		-- log: need to reboot
+		SetupData.WriteToLogFile("Success\tVB6 SP6 Module: VB6 installer has signalled that it needs to reboot.\r\n", true);
+
+	end
+	
+	-- Delete the runtime installer file and remove the temp folder
+	PerformCleanUp();
+	
+	-- log: all done!
+	SetupData.WriteToLogFile("Success\tVB6 SP6 Module: VB6 runtime installation complete.\r\n", true);
+	
+else
+	-- The user chose not to install the runtime so delete the run time installer file,
+	-- remove the temp folder and then exit the setup.
+	PerformCleanUp();
+
+	-- log: all done!
+	SetupData.WriteToLogFile("Success\tVB6 SP6 Module: VB6 runtime was not installed.\r\n", true);
+
+	Application.Exit();
+
+end
+</InstallScript>
+<SupportFiles>
+<File>#SUFDIR#\Dependencies\vb6sp6\VBRun60sp6.exe</File>
+</SupportFiles>
+</Dependency>
+</DependencyTemplate>

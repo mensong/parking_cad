@@ -1,0 +1,574 @@
+<ActionTemplates>
+  <Action>
+    <Name>DlgBillboard.AddImage</Name>
+    <Description>Adds an image to a billboard control.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FilePath</Name>
+        <Description>The path to the image file to add.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default/>
+          <DataType>string</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Position</Name>
+        <Description>The position in the list to add the image.</Description>
+        <Type>number</Type>
+        <Default>-1</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>-1</Default>
+          <DataType>number</DataType>
+          <Constraints>-1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.DeleteImage</Name>
+    <Description>Deletes an image from a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Position</Name>
+        <Description>The position of the image in the list to delete.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>-1</Default>
+          <DataType>number</DataType>
+          <Constraints>-1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.FillFromFolder</Name>
+    <Description>Fills a billboard control's images from a folder.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FolderPath</Name>
+        <Description>The folder containing images to add to the billboard control.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\My Folder"</Default>
+          <DataType>string</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>EmptyFirst</Name>
+        <Description>Whether the billboard control should be emptied first.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>combo</DataType>
+          <Constraints>true,false</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Recurse</Name>
+        <Description>Whether the folder should be recursed.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>combo</DataType>
+          <Constraints>true,false</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GetCurrentImage</Name>
+    <Description>Get the index of the current image in a billboard control.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GetImagePath</Name>
+    <Description>Gets the path to an image in a billboard control.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Position</Name>
+        <Description>The position of the image to get the path of.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>1</Default>
+          <DataType>number</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GetPos</Name>
+    <Description>Returns the X and Y screen coordinates of a billboard control in pixels.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GetProperties</Name>
+    <Description>Returns a table containing the properties of the specified billboard control.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GetSize</Name>
+    <Description>Returns the pixel dimensions of a billboard control.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GetImageCount</Name>
+    <Description>Returns the number of images in a billboard control.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.GoToImage</Name>
+    <Description>Navigate to a specific image in a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Position</Name>
+        <Description>The position of the image to navigate to.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>-1</Default>
+          <DataType>number</DataType>
+          <Constraints>-1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.IsEnabled</Name>
+    <Description>Returns true if a specific billboard control is enabled, or false if it's disabled.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.IsVisible</Name>
+    <Description>Returns true if a specific billboard control is visible, and false if it isn't.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.Navigate</Name>
+    <Description>Navigates to an image in a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>NavigateType</Name>
+        <Description>The type of navigation to perform.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>BILLBOARD_NEXT</Default>
+          <DataType>combo</DataType>
+          <Constraints>BILLBOARD_FIRST,BILLBOARD_LAST,BILLBOARD_NEXT,BILLBOARD_PREV,BILLBOARD_RANDOM</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.Pause</Name>
+    <Description>Pauses a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.Play</Name>
+    <Description>Plays a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.SetEnabled</Name>
+    <Description>Sets the enabled/disabled state of a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Enabled</Name>
+        <Description>Whether to make the billboard control enabled or disabled.</Description>
+        <Type>boolean</Type>
+        <Default>true</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>true</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.SetPos</Name>
+    <Description>Sets the X and Y pixel coordinates of a billboard control relative to the screen.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>X</Name>
+        <Description>The new X pixel coordinate (horizontal position) to set for the billboard control. This is the X coordinate of the upper left hand corner of the control's bounding box relative to the current screen.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>0</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Y</Name>
+        <Description>The new Y pixel coordinate (vertical position) to set for the billboard control. This is the Y coordinate of the upper left hand corner of the control's bounding box relative to the current screen.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>0</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.SetProperties</Name>
+    <Description>Sets the properties of a billboard control on the current screen.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Properties</Name>
+        <Description>A table containing the properties you want to modify in the billboard control, indexed by name.</Description>
+        <Type>table</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>nil</Default>
+          <DataType>table</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.SetSize</Name>
+    <Description>Sets the size of a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Width</Name>
+        <Description>The new width of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>100</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Height</Name>
+        <Description>The new height of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>100</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>DlgBillboard.SetVisible</Name>
+    <Description>Sets the visibility of a billboard control.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ControlID</Name>
+        <Description>The numeric ID of the billboard control.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default />
+          <DataType>Billboard</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Visible</Name>
+        <Description>Whether to make the billboard control visible or invisible.</Description>
+        <Type>boolean</Type>
+        <Default>true</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>true</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+</ActionTemplates>

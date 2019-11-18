@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Norwegian</Name>
+<Default>0</Default>
+<Primary>20</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Installasjon av %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Alternativer</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Velg det alternativ du ønsker og klikk Neste for å fortsette.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Neste &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Tilbake</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Avbryt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjelp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Vennligst velg blant følgende alternativer:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>OBS: Du kan velge så mange alternativer som du ønsker.
+</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+<IDS_CTRL_CHECK_BOX_01>Alternativ 01</IDS_CTRL_CHECK_BOX_01>
+<IDS_CTRL_CHECK_BOX_02>Alternativ 02</IDS_CTRL_CHECK_BOX_02>
+<IDS_CTRL_CHECK_BOX_03>Alternativ 03</IDS_CTRL_CHECK_BOX_03>
+<IDS_CTRL_CHECK_BOX_04>Alternativ 04</IDS_CTRL_CHECK_BOX_04>
+</Messages>
+</SUF70Messages>

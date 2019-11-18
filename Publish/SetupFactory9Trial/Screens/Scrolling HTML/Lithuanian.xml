@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Lithuanian</Name>
+<Default>0</Default>
+<Primary>39</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ádiegimo programa</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Svarbi informacija</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Praðome perskaityti ðià informacijà.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Toliau &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atgal</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Atða&amp;ukti</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Pagalba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;HTML teksto atvaizdavimas&lt;/h1&gt;
+
+&lt;p&gt;Jûs galite naudoti pagrindines HTML þymes (tags), kurias palaiko Internet Explorer:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Pusjuodis&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;Kursyvas&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="green"&gt;Ðriftø spalvos&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="2"&gt;Ðriftø dydþiai&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.indigorose.com"&gt;Nuorodos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Jûs netgi galite naudoti &lt;span class="hilite"&gt;CSS (kaskadinës stiliø lentelës)&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+body {
+    background-color: #E8F0FD;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 125%;
+    font-family: Arial, sans-serif;
+    color: blue;
+}
+
+.hilite {
+    background: #f0f090 none;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 90%;
+}
+&lt;/style&gt;
+
+&lt;/html&gt;
+</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

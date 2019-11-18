@@ -1,0 +1,262 @@
+<ActionTemplates>
+   <Action>
+      <Name>DlgComboBox.AddItem</Name>
+      <Description>Adds an item to a sorted combo box control. If the control is not sorted, the item will be added to the end.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control that you want to add an item to.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ItemText</Name>
+            <Description>The text of the item you want to add.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+            	<Default>"Sample Text"</Default>
+            	<DataType>string</DataType>
+           	 <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgComboBox.GetItemData</Name>
+      <Description>Gets the associated data string of an item in a combo box control on the current screen.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control whose item data you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index (line number) of the combo box item whose data you want. The first item in the list has an index of 1.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgComboBox.GetItemText</Name>
+      <Description>Returns the text of an item in a combo box control on the current screen.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control whose item text you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index (line number) of the combo box item whose text you want. The first item in the list has an index of 1.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgComboBox.GetProperties</Name>
+      <Description>Gets the properties of a combo box control on the current screen.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control whose properties you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgComboBox.InsertItem</Name>
+      <Description>Inserts an item into a combo box control.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control you want to insert the item into.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index (line number) to insert the new item. Use an index of -1 to insert at the end of the list.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ItemText</Name>
+            <Description>The item text to display for the new item.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Sample Text"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgComboBox.RemoveItem</Name>
+      <Description>Removes an item from a combo box control.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control you want to remove an item from.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index (line number) of the item to remove from the combo box. The first item in the list has an index of 1. You can use an index of -1 to remove all items from the list.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+      <Action>
+      <Name>DlgComboBox.SetItemData</Name>
+      <Description>Sets a combo box control's item data on the current screen to a string that can later be retrieved.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control whose item data you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index (line number) of the combo box item whose data you want to set. The first item in the list has an index of 1.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ItemData</Name>
+            <Description>The text you want to set the item's associated data to.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Item Data String"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+      <Action>
+      <Name>DlgComboBox.SetProperties</Name>
+      <Description>Sets the properties of a combo box control on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the combo box control whose properties you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ComboBox</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Properties</Name>
+            <Description>A table containing the combo box control properties indexed by "Enabled", "Text" and "Visible".</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

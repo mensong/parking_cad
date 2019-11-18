@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF7TopicIDMap>
+<Topic>
+	<ID>CONTENTS</ID>
+	<Path>/Introduction/Introduction.htm</Path>
+</Topic>
+<Topic>
+	<ID>USERS_GUIDE</ID>
+	<Path>/Users_Guide/Introduction.htm</Path>
+</Topic>
+<Topic>
+	<ID>WHATS_NEW</ID>
+	<Path>/Introduction/What_s_New_in_Setup_Factory_9.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJECT_PROP_GENERAL</ID>
+	<Path>/Program_Reference/Project_Properties/General.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJECT_PROP_STATISTICS</ID>
+	<Path>/Program_Reference/Project_Properties/Statistics.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILE_PROP_GENERAL</ID>
+	<Path>/Program_Reference/Files/Properties/Single/General.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILE_PROP_SHORTCUTS</ID>
+	<Path>/Program_Reference/Files/Properties/Single/Shortcuts.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILE_PROP_ADVANCED</ID>
+	<Path>/Program_Reference/Files/Properties/Single/Advanced.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILE_PROP_CONDITIONS</ID>
+	<Path>/Program_Reference/Files/Properties/Single/Conditions.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILE_PROP_PACKAGES</ID>
+	<Path>/Program_Reference/Files/Properties/Single/Packages.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILE_PROP_NOTES</ID>
+	<Path>/Program_Reference/Files/Properties/Single/Notes.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FILE_PROP_GENERAL</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/General.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FILE_PROP_SHORTCUTS</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/Shortcuts.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FILE_PROP_ADVANCED</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/Advanced.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FILE_PROP_CONDITIONS</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/Conditions.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FILE_PROP_PACKAGES</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/Packages.htm</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_MULTIPLE_VALUES</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/Edit_Multiple_Values.htm</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_MULTIPLE_INSTALL_ORDER_VALUES</ID>
+	<Path>/Program_Reference/Files/Properties/Multiple/Edit_Multiple_Install_Order_Values.htm</Path>
+</Topic>
+<Topic>
+	<ID>FOLDER_REF_PROP_GENERAL</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Single/General.htm</Path>
+</Topic>
+<Topic>
+	<ID>FOLDER_REF_PROP_ADVANCED</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Single/Advanced.htm</Path>
+</Topic>
+<Topic>
+	<ID>FOLDER_REF_PROP_CONDITIONS</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Single/Conditions.htm</Path>
+</Topic>
+<Topic>
+	<ID>FOLDER_REF_PROP_PACKAGES</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Single/Packages.htm</Path>
+</Topic>
+<Topic>
+	<ID>FOLDER_REF_PROP_NOTES</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Single/Notes.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FOLDER_REF_PROP_GENERAL</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Multiple/General.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FOLDER_REF_PROP_ADVANCED</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Multiple/Advanced.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FOLDER_REF_PROP_CONDITIONS</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Multiple/Conditions.htm</Path>
+</Topic>
+<Topic>
+	<ID>MULT_FOLDER_REF_PROP_PACKAGES</ID>
+	<Path>/Program_Reference/Folder_References/Properties/Multiple/Packages.htm</Path>
+</Topic>
+<Topic>
+	<ID>SESSION_VARIABLES</ID>
+	<Path>/Program_Reference/Project_Settings/Session_Variables.htm</Path>
+</Topic>
+<Topic>
+	<ID>LOGS</ID>
+	<Path>/Program_Reference/Project_Settings/Logs.htm</Path>
+</Topic>
+<Topic>
+	<ID>REQUIREMENTS</ID>
+	<Path>/Program_Reference/Project_Settings/Requirements.htm</Path>
+</Topic>
+<Topic>
+	<ID>ADVANCED</ID>
+	<Path>/Program_Reference/Project_Settings/Advanced.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJECT_SETTINGS_SKIN</ID>
+	<Path>/Program_Reference/Project_Settings/Skin.htm</Path>
+</Topic>
+<Topic>
+	<ID>BACKGROUND_WINDOW</ID>
+	<Path>/Program_Reference/Project_Settings/Background.htm</Path>
+</Topic>
+<Topic>
+	<ID>THEME</ID>
+	<Path>/Program_Reference/Screens/Theme.htm</Path>
+</Topic>
+<Topic>
+	<ID>THEME_PROPERTIES</ID>
+	<Path>/Program_Reference/Screens/Theme_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCREEN_GALLERY</ID>
+	<Path>/Program_Reference/Screens/Screen_Gallery.htm</Path>
+</Topic>
+<Topic>
+	<ID>EXPORT_LANGUAGE_FILE</ID>
+	<Path>/Program_Reference/Screens/Export_Language_File.htm</Path>
+</Topic>
+<Topic>
+	<ID>ADD_TO_GALLERY</ID>
+	<Path>/Program_Reference/Screens/Add_to_Gallery.htm</Path>
+</Topic>
+<Topic>
+	<ID>BEFORE_INSTALLING</ID>
+	<Path>/Program_Reference/Screens/Before_Installing.htm</Path>
+</Topic>
+<Topic>
+	<ID>WHILE_INSTALLING</ID>
+	<Path>/Program_Reference/Screens/While_Installing.htm</Path>
+</Topic>
+<Topic>
+	<ID>AFTER_INSTALLING</ID>
+	<Path>/Program_Reference/Screens/After_Installing.htm</Path>
+</Topic>
+<Topic>
+	<ID>STATIC_TEXT_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Static_Text/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>STATIC_TEXT_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Static_Text/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>STATIC_TEXT_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Static_Text/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>STATIC_TEXT_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Static_Text/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>BUTTONS_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Buttons/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>BUTTONS_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Buttons/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>BUTTONS_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Buttons/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>BUTTONS_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/BUttons/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>BUTTON_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/BUttons/Button_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_PROGRESS_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom_Progress/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_PROGRESS_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom_Progress/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_PROGRESS_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Custom_Progress/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_PROGRESS_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Custom_Progress/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_BILLBOARD_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Billboard_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_BUTTON_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Button_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_CHECK_BOX_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Check_Box_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_COMBO_BOX_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Combo_Box_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_EDIT_FIELD_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Edit_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_GROUP_BOX_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Group_Box_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_LIST_BOX_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/List_Box_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_PROGRESS_BAR_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Progress_Bar_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_RADIO_BUTTON_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Radio_Button_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_SCROLLABLE_TEXT_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Scrollable_Text_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_SELECT_PACKAGES_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Select_Package_Tree_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CUSTOM_STATIC_TEXT_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Custom/Text_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_FIELD_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Edit_Fields/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_FIELD_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Edit_Fields/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_FIELD_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Edit_Fields/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_FIELD_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Edit_Fields/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>EDIT_FIELD_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Edit_Fields/Edit_Field_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>LICENSE_AGREEMENT_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/License_Agreement/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>LICENSE_AGREEMENT_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/License_Agreement/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>LICENSE_AGREEMENT_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/License_Agreement/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>LICENSE_AGREEMENT_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/License_Agreement/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_INSTALL_FOLDER_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Install_Folder/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_INSTALL_FOLDER_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Install_Folder/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_INSTALL_FOLDER_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Install_Folder/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_INSTALL_FOLDER_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Install_Folder/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_SHORTCUT_FOLDER_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Shortcut_Folder/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_SHORTCUT_FOLDER_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Shortcut_Folder/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_SHORTCUT_FOLDER_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Shortcut_Folder/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_SHORTCUT_FOLDER_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Shortcut_Folder/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>PROGRESS_BARS_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Progress_Bars/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROGRESS_BARS_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Progress_Bars/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>PROGRESS_BARS_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Progress_Bars/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>PROGRESS_BARS_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Progress_Bars/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>RADIO_BUTTONS_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Radio_Buttons/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>RADIO_BUTTONS_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Radio_Buttons/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>RADIO_BUTTONS_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Radio_Buttons/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>RADIO_BUTTONS_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Radio_Buttons/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>RADIO_BUTTON_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Radio_Buttons/Radio_Button_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>COMBO_BOXES_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Combo_Boxes/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>COMBO_BOXES_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Combo_Boxes/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>COMBO_BOXES_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Combo_Boxes/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>COMBO_BOXES_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Combo_Boxes/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>COMBO_BOX_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Combo_Boxes/Combo_Box_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>LIST_BOX_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/List_Box/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>LIST_BOX_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/List_Box/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>LIST_BOX_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/List_Box/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>LIST_BOX_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/List_Box/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_PACKAGES_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Packages/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_PACKAGES_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Packages/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_PACKAGES_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Packages/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>SELECT_PACKAGES_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Packages/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>CATEGORY_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Select_Packages/Category_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CHECK_BOXES_SCREEN_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Check_Boxes/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>CHECK_BOXES_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Check_Boxes/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>CHECK_BOXES_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Check_Boxes/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>CHECK_BOXES_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Check_Boxes/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>CHECK_BOX_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Check_Boxes/Check_Box_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_PROGRESS_PROPERTIES</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text_Progress/Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_PROGRESS_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text_Progress/Properties.htm#Attributes</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_PROGRESS_STYLE</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text_Progress/Properties.htm#Style</Path>
+</Topic>
+<Topic>
+	<ID>SCROLLING_TEXT_PROGRESS_ACTIONS</ID>
+	<Path>/Program_Reference/Screen_Types/Scrolling_Text_Progress/Properties.htm#Actions</Path>
+</Topic>
+<Topic>
+	<ID>SCREEN_ATTRIBUTES</ID>
+	<Path>/Program_Reference/Screen_Types/Screen_Attributes.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCREEN_EVENTS</ID>
+	<Path>/Program_Reference/Screen_Types/Screen_Events.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJECT_ON_STARTUP</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#Project_On_Startup</Path>
+</Topic>
+<Topic>
+	<ID>ON_PRE_INSTALL</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#On_Pre_Install</Path>
+</Topic>
+<Topic>
+	<ID>ON_INSTALL_ERROR</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#On_Install_Error</Path>
+</Topic>
+<Topic>
+	<ID>ON_POST_INSTALL</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#On_Post_Install</Path>
+</Topic>
+<Topic>
+	<ID>PROJECT_ON_SHUTDOWN</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#Project_On_Shutdown</Path>
+</Topic>
+<Topic>
+	<ID>INSERT_FILE_REFERENCE</ID>
+	<Path>/Program_Reference/Action_Editor/Insert_File_Reference.htm</Path>
+</Topic>
+<Topic>
+	<ID>SERIAL_NUMBERS</ID>
+	<Path>/Program_Reference/Security/Serial_Numbers.htm</Path>
+</Topic>
+<Topic>
+	<ID>EXPIRATION</ID>
+	<Path>/Program_Reference/Security/Expiration.htm</Path>
+</Topic>
+<Topic>
+	<ID>SERIAL_NUMBERS_LIST_PROPERTIES</ID>
+	<Path>/Program_Reference/Security/Serial_Number_List_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>GENERATE_SERIAL_NUMBER</ID>
+	<Path>/Program_Reference/Security/Generate_Serial_Number.htm</Path>
+</Topic>
+<Topic>
+	<ID>PACKAGE_SETTINGS</ID>
+	<Path>/Program_Reference/Packages/Settings.htm</Path>
+</Topic>
+<Topic>
+	<ID>PACKAGE_PROPERTIES</ID>
+	<Path>/Program_Reference/Packages/Package_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>LANGUAGES</ID>
+	<Path>/Program_Reference/Languages/Settings.htm</Path>
+</Topic>
+<Topic>
+	<ID>ADD_NEW_LANGUAGE</ID>
+	<Path>/Program_Reference/Languages/Add_New_Language.htm</Path>
+</Topic>
+<Topic>
+	<ID>UNINSTALL_SETTINGS</ID>
+	<Path>/Program_Reference/Uninstall/Settings/Settings.htm</Path>
+</Topic>
+<Topic>
+	<ID>UNINSTALL_CONTROL_PANEL</ID>
+	<Path>/Program_Reference/Uninstall/Settings/Control_Panel.htm</Path>
+</Topic>
+<Topic>
+	<ID>UNINSTALL_SHORTCUT</ID>
+	<Path>/Program_Reference/Uninstall/Settings/Shortcut.htm</Path>
+</Topic>
+<Topic>
+	<ID>UNINSTALL_LOGS</ID>
+	<Path>/Program_Reference/Uninstall/Settings/Logs.htm</Path>
+</Topic>
+<Topic>
+	<ID>BEFORE_UNINSTALLING</ID>
+	<Path>/Program_Reference/Uninstall/Screens/Before_Uninstalling.htm</Path>
+</Topic>
+<Topic>
+	<ID>WHILE_UNINSTALLING</ID>
+	<Path>/Program_Reference/Uninstall/Screens/While_Uninstalling.htm</Path>
+</Topic>
+<Topic>
+	<ID>AFTER_UNINSTALLING</ID>
+	<Path>/Program_Reference/Uninstall/Screens/After_Uninstalling.htm</Path>
+</Topic>
+<Topic>
+	<ID>UNINSTALL_ON_STARTUP</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#Uninstall_On_Startup</Path>
+</Topic>
+<Topic>
+	<ID>ON_PRE_UNINSTALL</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#On_Pre_Uninstall</Path>
+</Topic>
+<Topic>
+	<ID>ON_UNINSTALL_ERROR</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#On_Uninstall_Error</Path>
+</Topic>
+<Topic>
+	<ID>ON_POST_UNINSTALL</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#On_Post_Uninstall</Path>
+</Topic>
+<Topic>
+	<ID>UNINSTALL_ON_SHUTDOWN</ID>
+	<Path>/Program_Reference/Action_Editor/Events.htm#Uninstall_On_Shutdown</Path>
+</Topic>
+<Topic>
+	<ID>DEPENDENCY_MODULES</ID>
+	<Path>/Program_Reference/Resources/Dependency_Modules.htm</Path>
+</Topic>
+<Topic>
+	<ID>ADD_DEPENDENCY_MODULE</ID>
+	<Path>/Program_Reference/Resources/Add_Dependency_Module.htm</Path>
+</Topic>
+<Topic>
+	<ID>DEPENDENCY_INFORMATION</ID>
+	<Path>/Program_Reference/Resources/Dependency_Module_Properties/Information.htm</Path>
+</Topic>
+<Topic>
+	<ID>DEPENDENCY_DETECTION</ID>
+	<Path>/Program_Reference/Resources/Dependency_Module_Properties/Detection.htm</Path>
+</Topic>
+<Topic>
+	<ID>DEPENDENCY_INSTALLATION</ID>
+	<Path>/Program_Reference/Resources/Dependency_Module_Properties/Installation.htm</Path>
+</Topic>
+<Topic>
+	<ID>DEPENDENCY_FILES</ID>
+	<Path>/Program_Reference/Resources/Dependency_Module_Properties/Files.htm</Path>
+</Topic>
+<Topic>
+	<ID>DEPENDENCY_BUILD</ID>
+	<Path>/Program_Reference/Resources/Dependency_Module_Properties/Build.htm</Path>
+</Topic>
+<Topic>
+	<ID>PRIMER_FILES</ID>
+	<Path>/Program_Reference/Resources/Primer_Files.htm</Path>
+</Topic>
+<Topic>
+	<ID>PRIMER_FILE_PROPERTIES</ID>
+	<Path>/Program_Reference/Resources/Primer_File_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>GLOBAL_FUNCTIONS</ID>
+	<Path>/Program_Reference/Resources/Global_Functions.htm</Path>
+</Topic>
+<Topic>
+	<ID>ACTION_PLUGINS</ID>
+	<Path>/Program_Reference/Resources/Plugins.htm</Path>
+</Topic>
+<Topic>
+	<ID>ADD_ACTION_PLUGIN</ID>
+	<Path>/Program_Reference/Resources/Add_Action_Plugin.htm</Path>
+</Topic>
+<Topic>
+	<ID>PLUGIN_BUILD_CONFIGURATIONS</ID>
+	<Path>/Program_Reference/Resources/Plugin_Build_Configurations.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCRIPT_FILES</ID>
+	<Path>/Program_Reference/Resources/Script_Files.htm</Path>
+</Topic>
+<Topic>
+	<ID>GLOBAL_SCRIPT_FILE_PROPERTIES</ID>
+	<Path>/Program_Reference/Resources/Global_Script_File_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>SETUP_FILE</ID>
+	<Path>/Program_Reference/Build_Settings/Setup_File.htm</Path>
+</Topic>
+<Topic>
+	<ID>CODE_SIGNING</ID>
+	<Path>/Program_Reference/Build_Settings/Code_Signing.htm</Path>
+</Topic>
+<Topic>
+	<ID>BUILD_RESOURCES</ID>
+	<Path>/Program_Reference/Build_Settings/Resources.htm</Path>
+</Topic>
+<Topic>
+	<ID>CONSTANTS</ID>
+	<Path>/Program_Reference/Build_Settings/Constants.htm</Path>
+</Topic>
+<Topic>
+	<ID>PRE_POST_BUILD</ID>
+	<Path>/Program_Reference/Build_Settings/Pre_Post_Build.htm</Path>
+</Topic>
+<Topic>
+	<ID>NEW_BUILD_CONFIGURATION</ID>
+	<Path>/Program_Reference/Build_Settings/New_Build_Configuration.htm</Path>
+</Topic>
+<Topic>
+	<ID>GENERATE_PROJECT_REPORT</ID>
+	<Path>/Program_Reference/Tools/Generate_Project_Report.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCAN_DEPENDENCIES</ID>
+	<Path>/Program_Reference/Tools/Scan_Dependencies.htm</Path>
+</Topic>
+<Topic>
+	<ID>SCAN_VISUAL_BASIC_PROJECT</ID>
+	<Path>/Program_Reference/Tools/Scan_Visual_Basic_Project.htm</Path>
+</Topic>
+<Topic>
+	<ID>CALCULATE_FILE_CRC</ID>
+	<Path>/Program_Reference/Tools/Calculate_File_CRC.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILTERS_MANAGER</ID>
+	<Path>/Program_Reference/Filters_Manager/Filters.htm</Path>
+</Topic>
+<Topic>
+	<ID>FILTER_PROPERTIES</ID>
+	<Path>/Program_Reference/Filters_Manager/Filter_Properties.htm</Path>
+</Topic>
+<Topic>
+	<ID>HOW_DO_I</ID>
+	<Path>/How_do_I/How_do_I.htm</Path>
+</Topic>
+<Topic>
+	<ID>ORDERING_INFORMATION</ID>
+	<Path>/Program_Reference/Ordering_Information.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_BUILD</ID>
+	<Path>/Program_Reference/Preferences/Build_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_CODE_SIGNING</ID>
+	<Path>/Program_Reference/Preferences/Code_Signing_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_DOCUMENT</ID>
+	<Path>/Program_Reference/Preferences/Document_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_FILES</ID>
+	<Path>/Program_Reference/Preferences/Files_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_FILE_OPTIONS</ID>
+	<Path>/Program_Reference/Preferences/Options_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_DROP</ID>
+	<Path>/Program_Reference/Preferences/Drop_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_LANGUAGES</ID>
+	<Path>/Program_Reference/Preferences/Languages_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_ENVIRONMENT</ID>
+	<Path>/Program_Reference/Preferences/Environment_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_FOLDERS</ID>
+	<Path>/Program_Reference/Preferences/Folder_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_SCRIPT_EDITOR</ID>
+	<Path>/Program_Reference/Preferences/Script_Editor_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_SPELL_CHECKER</ID>
+	<Path>/Program_Reference/Preferences/Spell_Checker_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_STARTUP</ID>
+	<Path>/Program_Reference/Preferences/Startup_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>PREFERENCES_UPDATES</ID>
+	<Path>/Program_Reference/Preferences/Updates_Preferences.htm</Path>
+</Topic>
+<Topic>
+	<ID>ACTION_EDITOR_GENERAL</ID>
+	<Path>/Program_Reference/Action_Editor/Overview.htm</Path>
+</Topic>
+<Topic>
+	<ID>IMPORT_REGISTRY_VALUES</ID>
+	<Path>/Program_Reference/Action_Editor/Import_Registry_Key_Values.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJECT_WIZARD_START</ID>
+	<Path>/Program_Reference/Project_Wizard/Start_a_New_Project.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_GENERAL_INFORMATION</ID>
+	<Path>/Program_Reference/Project_Wizard/General_Information.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_PLATFORM</ID>
+	<Path>/Program_Reference/Project_Wizard/Platform.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_WINDOW_SETTINGS</ID>
+	<Path>/Program_Reference/Project_Wizard/Window_Settings.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_SOURCE_FOLDER</ID>
+	<Path>/Program_Reference/Project_Wizard/Source_Folder.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_THEME</ID>
+	<Path>/Program_Reference/Project_Wizard/Theme.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_MULTILINGUAL</ID>
+	<Path>/Program_Reference/Project_Wizard/Multilingual.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_DEPENDENCIES</ID>
+	<Path>/Program_Reference/Project_Wizard/Runtime_Support.htm</Path>
+</Topic>
+<Topic>
+	<ID>PROJ_WIZ_OPTIONAL_FEATURES</ID>
+	<Path>/Program_Reference/Project_Wizard/Optional_Features.htm</Path>
+</Topic>
+<Topic>
+	<ID>COLUMNS_ARCHIVE</ID>
+	<Path>/Program_Reference/Program_Menus/Columns_Archive.htm</Path>
+</Topic>
+<Topic>
+	<ID>COLUMNS_EXTERNAL</ID>
+	<Path>/Program_Reference/Program_Menus/Columns_External.htm</Path>
+</Topic>
+<Topic>
+	<ID>WINDOWS_VISTA</ID>
+	<Path>/Program_Reference/Installing_on_Windows_Vista_or_Later.htm</Path>
+</Topic>
+</SUF7TopicIDMap>

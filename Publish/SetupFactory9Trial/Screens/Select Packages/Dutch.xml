@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Selectie van programmonderdelen</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Selecteer de programmonderdelen die u wenst te installeren.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Doorgaan &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Annuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Programmonderdelen:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Totale vereiste ruimte: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_BODY/>
+</Messages>
+</SUF70Messages>

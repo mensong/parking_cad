@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Opties</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Selecteer de optie die u wenst en klik op Doorgaan om verder te gaan.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Doorgaan &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Annuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_LABEL_01>Selecteer een optie of voer een antwoord in:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_COMBOBOX_01_DEFAULT/>
+<IDS_CTRL_COMBOBOX_01_ITEMS>Item A
+Item B
+Item C</IDS_CTRL_COMBOBOX_01_ITEMS>
+<IDS_CTRL_STATICTEXT_LABEL_02>Selecteer een optie:</IDS_CTRL_STATICTEXT_LABEL_02>
+<IDS_CTRL_COMBOBOX_02_DEFAULT/>
+<IDS_CTRL_COMBOBOX_02_ITEMS>Rock
+Paper
+Scissors</IDS_CTRL_COMBOBOX_02_ITEMS>
+</Messages>
+</SUF70Messages>

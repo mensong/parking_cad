@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Japanese</Name>
+<Primary>17</Primary>
+<Secondary><ID>1</ID></Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ƒZƒbƒgƒAƒbƒv</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ƒCƒ“ƒXƒg[ƒ‹‚Ì€”õŠ®—¹</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>%ProductName% %ProductVer% ‚ÌƒCƒ“ƒXƒg[ƒ‹‚Ì€”õ‚ªŠ®—¹‚µ‚Ü‚µ‚½B</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&ŽŸ‚Ö &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &–ß‚é</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&·¬Ý¾Ù</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&ÍÙÌß</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>ƒCƒ“ƒXƒg[ƒ‰[‚Í%ProductName% ‚ÌƒCƒ“ƒXƒg[ƒ‹‚É•K—v‚Èî•ñ‚ð‘S‚ÄŽæ“¾‚µ‚Ü‚µ‚½B
+
+
+ˆÈ‰º‚ÌÝ’è‚ªŽg—p‚³‚ê‚Ü‚·:
+
+ƒCƒ“ƒXƒg[ƒ‹æƒtƒHƒ‹ƒ_: %AppFolder%
+
+ƒVƒ‡[ƒgƒJƒbƒgƒtƒHƒ‹ƒ_: %AppShortcutFolderName%
+
+
+ŽŸ‚Ö‚ðƒNƒŠƒbƒN‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹‚ð‘±s‚µ‚Ä‰º‚³‚¢B</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>ƒ^ƒCƒgƒ‹</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

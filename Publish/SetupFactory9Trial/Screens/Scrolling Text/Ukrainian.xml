@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Ukrainian</Name>
+		<Default>0</Default>
+		<Primary>34</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Встановлення %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Інформація</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Будь ласка, прочитайте наступну інформацію.</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далі &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Відміна</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Довідка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_SCROLLTEXT_BODY>Будь ласка, наберіть тут ваш текст...</IDS_CTRL_SCROLLTEXT_BODY>
+		<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+	</Messages>
+</SUF70Messages>

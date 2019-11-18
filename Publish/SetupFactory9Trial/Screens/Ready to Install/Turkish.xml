@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Turkish</Name>
+<Default>0</Default>
+<Primary>31</Primary>
+<Secondary/>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Kurulumu</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Yüklemeye Hazýr</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Þimdi %ProductName% %ProductVer% programýný yüklemek için hazýrsýnýz.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Ýleri &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Geri</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Ý&amp;ptal</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Yardým</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Yükleyici þimdi bilgisayarýnýza %ProductName% programýný yüklemek için yeterli bilgiye sahip.
+
+
+Aþaðýdaki ayarlarý kullanýlacaktýr:
+
+Yükleme Klasörü:        %AppFolder%
+
+Kýsayol Klasörü:    %AppShortcutFolderName%
+
+
+Yüklemeye devam etmek için Ýleri 'ye basýnýz.</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Baþlýk</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

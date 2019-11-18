@@ -1,0 +1,363 @@
+<ActionTemplates>
+   <Action>
+      <Name>Service.Continue</Name>
+      <Description>Continues a specific service.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The display name that will be used in order to find the service.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"ServiceDisplayName"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The key name that will be used in order to find the service if it could not be found based upon the DisplayName.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>o</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Service.Create</Name>
+      <Description>Creates a service on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The fully qualified path to the service binary file, with or without arguments.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\Windows\\Service.exe"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The localizable string that user interface programs use to identify the service.</Description>
+            <Type>string</Type>
+            <Default>"Service1"</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Service1"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The string that the system will use to install the service.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ServiceType</Name>
+            <Description>The type of service.</Description>
+            <Type>number</Type>
+            <Default>SERVICE_WIN32_OWN_PROCESS</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>SERVICE_WIN32_OWN_PROCESS</Default>
+               <DataType>combo</DataType>
+               <Constraints>SERVICE_WIN32_OWN_PROCESS,SERVICE_WIN32_SHARE_PROCESS,SERVICE_KERNEL_DRIVER,SERVICE_FILE_SYSTEM_DRIVER</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>AllowDesktopInteraction</Name>
+            <Description>Enables a Win32-based service process to interact with the desktop.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>combo</DataType>
+               <Constraints>true,false</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>StartType</Name>
+            <Description>Specifies when to start the service.</Description>
+            <Type>number</Type>
+            <Default>SERVICE_DEMAND_START</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>SERVICE_DEMAND_START</Default>
+               <DataType>combo</DataType>
+               <Constraints>SERVICE_BOOT_START,SERVICE_SYSTEM_START,SERVICE_AUTO_START,SERVICE_DEMAND_START,SERVICE_DISABLED</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ErrorControl</Name>
+            <Description>Specifies the severity of the error if this service fails to start during startup.</Description>
+            <Type>number</Type>
+            <Default>SERVICE_ERROR_NORMAL</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>SERVICE_ERROR_NORMAL</Default>
+               <DataType>combo</DataType>
+               <Constraints>SERVICE_ERROR_IGNORE,SERVICE_ERROR_NORMAL,SERVICE_ERROR_SEVERE,SERVICE_ERROR_CRITICAL,SERVICE_ERROR_NORMAL</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>LoadOrderGroup</Name>
+            <Description>The name of the load ordering group of which this service is a member.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>GroupTag</Name>
+            <Description>The tag value unique to the load order group.</Description>
+            <Type>number</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Dependencies</Name>
+            <Description>A numerically indexed table containing the names of services or load order groups that must be loaded before this service can start.</Description>
+            <Type>table</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ServiceStartName</Name>
+            <Description>A string that names this services, its value is dependent upon the service type.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Password</Name>
+            <Description>The password for the service.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Service.Delete</Name>
+      <Description>Deletes a specific service from the service database.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The display name that will be used in order to find the service.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Service1"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The key name that will be used in order to find the service if it could not be found based upon the DisplayName.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>o</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Service.Pause</Name>
+      <Description>Pauses a specific service on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The display name that will be used in order to find the service.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Service1"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The key name that will be used in order to find the service if it could not be found based upon the DisplayName.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>o</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Service.Query</Name>
+      <Description>Queries the system for the status of a specific service.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The display name that will be used in order to find the service.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Service1"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The key name that will be used in order to find the service if it could not be found based upon the DisplayName.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>o</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Service.Start</Name>
+      <Description>Starts a service on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The display name that will be used in order to find the service.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Service1"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The key name that will be used in order to find the service if it could not be found based upon the DisplayName.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>o</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Arguments</Name>
+            <Description>A numerically index table of arguments to be passed to the service when it starts</Description>
+            <Type>table</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Service.Stop</Name>
+      <Description>Stops a service on the local system</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>DisplayName</Name>
+            <Description>The display name that will be used in order to find the service.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Service1"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>KeyName</Name>
+            <Description>The key name that will be used in order to find the service if it could not be found based upon the DisplayName.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>o</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>WaitTime</Name>
+            <Description>The number of seconds to wait for the service to stop.</Description>
+            <Type>number</Type>
+            <Default>0</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>0</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

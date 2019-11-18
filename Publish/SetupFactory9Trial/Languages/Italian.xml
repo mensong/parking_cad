@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+      <Name>Italian</Name>
+      <Primary>16</Primary>
+      <Secondary>
+        <ID>1</ID>
+        <ID>2</ID>
+      </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Successo</MSG_SUCCESS>
+      <MSG_ERROR>Errore</MSG_ERROR>
+      <MSG_NOTICE>Notifica</MSG_NOTICE>
+      <MSG_WARNING>Attenzione</MSG_WARNING>
+      <MSG_YES>Sì</MSG_YES>
+      <MSG_NO>No</MSG_NO>
+      <MSG_YES_TOALL>Sì, tutti</MSG_YES_TOALL>
+      <MSG_TO>A</MSG_TO>
+      <MSG_FROM>Da</MSG_FROM>
+      <MSG_BROWSE>Sfoglia...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Annulla</MSG_CANCEL>
+      <MSG_PATH>Percorso</MSG_PATH>
+      <MSG_SEARCH_MASK>Cerca</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Tutti i file</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Ricerca dei file</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bytes</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Conferma</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>L'installazione non è completata! Sei sicuro di voler uscire?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Sei sicuro di voler procedere all'installazione?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Non c'è spazio sufficiente per installare %ProductName% sul drive selezionato.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Copia in corso...</MSG_COPYING>
+      <MSG_DELETING>Eliminazione in corso...</MSG_DELETING>
+      <MSG_SEARCHING>Ricerca in corso...</MSG_SEARCHING>
+      <MSG_READING>Lettura</MSG_READING>
+      <MSG_QUERYING_INTERNET>Interrogazione di Internet</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Trasferimento in corso...</MSG_MOVING>
+      <MSG_SAVING>Salvataggio in corso...</MSG_SAVING>
+      <MSG_INSERTDISK>Inserire il disco</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Scaricamento in corso...</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Scaricamento file...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Scaricamento file, le dimensioni totali sono sconosciute. Kb scaricati: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Risoluzione nome host.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Nome host risolto.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Connessione al server...</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Connesso al server.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Chiusura connessione al server...</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Connessione chiusa con il server.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Richiesta completata.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Redirezionamento...</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Tempo al termine stimato</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/Sec</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Inizializzazione...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Installazione...</MSG_INSTALLING>
+      <MSG_SKIPPING>Saltare...</MSG_SKIPPING>
+      <MSG_SEEKING>Ricerca...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Ingresso non valido</MSG_INVALID_ENTRY>
+      <MSG_THE>Il campo </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> non può essere vuoto.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Preparazione all'installazione...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Installazione dei file...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Creazione Uninstaller...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Creazione dei collegamenti...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Controllo delle condizioni dei file...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Controllo dei permessi delle cartelle...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Controllo dello spazio libero su disco...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Rimozione dei file...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Rimozione dei collegamenti...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Creazione della cartella dei dati per la disinstallazione...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Creazione dei file per la disinstallazione...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Creazione del controllo dei file per la disinstallazione...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Creazione del programma per la disinstallazione...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Copia dei file immagine...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Copia dei plugins...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Copia dei file di supporto...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Creazione degli ingressi del pannello di controllo...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Creazione del collegamento per la disinstallazione...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Sconosciuto</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Nessuno</MSG_OS_NONE>
+      <MSG_OS_ALL>Tutti</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(no SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(o successivo)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>I seguenti requisiti minimi di sistema richiesti per questo setup non sono compatibili:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Sistema operativo</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Larghezza schermo</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Altezza schermo</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Profondità di colore</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Permessi dell'utente</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Amministratore</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Il setup terminerà ora.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Clicca OK per continuare oppure Annulla per uscire dall'installazione.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Per maggiori informazioni, contattare:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Il setup scadrà in</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>giorni e non potrà più essere modificato dopop quel termine.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Il setup sarà avviato</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>più volte prima di scadere.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Prego inserire il Disco #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Se i file del disco si trovano in un'altra locazione, per esempio, su un altro drive, inserire il percorso completo o clicca sul pulsante Sfoglia per selezionare il percorso.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Il programma stà cercando di installare un file, ma un file più recente con lo stesso nome esiste già sul suo sistema.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Il programma stà cercando di installare un file, ma un file con lo stesso nome esiste già sul suo sistema.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Vuoi sovrascrivere il file seguente?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Il file seguente è in uso e non può essere aggiornato:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Chiudere tutte le altre applicazioni e scegliere Riprova, o scegliere Annulla per installare questo file al prossimo riavvio del sistema.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Vuoi sovrascrivere il seguente file?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>L'applicazione ha riscontrato che il file che si vuole installare esiste giê sul tuo sistema.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>L'applicazione ha riscontrato che nel tuo sistema esiste una versione PIU' aggiornata del file che si vuole installare.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Il programma non può riavviare il sistema. Chiudere tutte le applicazioni e scegliere Riprova.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Il file è in uso e non può essere cancellato. Cliccare su Riprova per provare ancora. Clicca su Ignora per continuare e cancellare il file al prossimo riavvio del sistema. clicca su Annulla per fermare la disinstallazione.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Questo file non può essere cancellato. cliccare su Riprova per provare ancora. Clicca su Ignora per continuare e cancellare il file al prossimo riavvio del sistema. clicca su Annulla per fermare la disinstallazione.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Il programma vuole rimuovere i seguenti file di sistema condivisi:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Nessun altro programma sembra utilizzare questi file anche se c'è la possibilità che qualche altro programma ne abbia bisogno.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Continuare la rimozione dei file?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Riavvio del sistema fallito. Chiudere tutte le applicazioni aperte e scegliere Riprova.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Il computer deve essere riavviato per completare l'installazione. Vuoi riavviare il sistema adesso?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Il computer deve essere riavviato per completare la disinstallazione. Vuoi riavviare il sistema adesso?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Seleziona un oggetto dalla lista.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Spazio richiesto sul disco:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Spazio disponibile sul disco:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Non può essere creato il file log: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Controllo integrità archivio fallito. Il file setup non è completo, probabilmente a causa di un download incompleto o di un file danneggiato.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Prego assicurarsi che il disco sia inserito! Il seguente file non può essere trovato:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Caricamento plugin fallito</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Il programma non può aprire il seguente file di archivio (probabilmente hai inserito il disco sbagliato)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Il programma non può allocare sufficiente memoria per decomprimere i file. Il Setup sarà terminato.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Il programma non può creare la seguente cartella:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Si è verificato un errore di decompressione</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Il file di output non può essere aperto</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Il file di input non può essere aperto</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Errore di Lettura/Scrittura</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>Accoppiamento errato del file CRC - Errore di integrità dati</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Il disco è pieno.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Errore di decompressione sconosciuto</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>rrore nel saltare un file</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Errore di allocazione della memoria</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Errore di lettura dal file</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Errore di scrittura al file</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Errore della copia file sconosciuto</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Non può essere creato l'ingresso per la disinstallazione</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Errore in LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Errore in GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Errore codice ritornato da DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Errore nel registrare il controllo ActiveX:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Errore nel registrare il tipo di libreria:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Memoria insufficiente</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Uno o più argomenti non sono validi.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>La funzione non può scrivere nel file.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Il tipo di libreria non può essere aperto.</ERR_TLB_STATE>
+      <ERR_TLB_READ>La funzione non può essere letta dal file.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Il tipo di libreria ha un vecchio formato.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>L'LCID non può essere trovato nelle DLL supportate da OLE.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Il tipo di libreria o DLL non può essere caricata.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Il database di registrazione del sistema non può essere aperto.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Errore del FACILITY_STORAGE di default.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Impossibile creare la cartella per la disinstallazione:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Impossibile creare i file per la disinstallazione:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Impossibile aprire l'esecutibile della disinstallazione per la lettura:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Impossibile aprire l'esecutibile della disinstallazione per la scrittura:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Impossibile aprire il file di configurazione per la scrittura:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Il file esecutivo della disinstallazione non può essere scritto perchè è già in uso. Chiudere tutte le applicazioni aperte e clicca su Riprova. Clicca su Annulla per uscire.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Impossibile aprire la chiave di Registro per scrivere:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Impossibile scrivere il valore nel Registro per la disinstallazione:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Impossibile creare i collegamenti per la disinstallazione:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Impossibile salvare le variabile di sessione</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Non hai i privilegi per registrare i file di condivisione su questo sistema. Questa installazione dovrebbe essere avviata con i privilegi dell'Amministratore.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Non hai i privilegi per registrare i controlli ActiveX su questo sistema. Questa installazione dovrebbe essere avviata con i privilegi dell'Amministratore.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Non hai i privilegi per registrare tipi di librerie su questo sistema. Questa installazione dovrebbe essere avviata con i privilegi dell'Amministratore.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>I controlli ActiveX non possono essere registrati. Il file non verrà rimosso.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Tipo di oggetto dati per la disinstallazione non valido.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>L'oggetto dati per la disinstallazione non è stato trovato.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Errore sconosciuto.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Il file specificato non può essere trovato.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Caricamento file fallito.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Salvataggio file fallito.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Il percorso specificato non è stato trovato.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>Il file .exe non è valido (.exe non-Win32 oppure vi è un errore nell'immagine .exe).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Il sistema operativo ha negato l'accesso al file specificato.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>L'associazione del nome file è incompleto o non valido.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   La transazione DDE non può essere completata perché altre transazione DDE stanno per essere processate.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>La transazione DDE è fallita</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>La transazione DDE non può essere completata perché il tempo a disposizione è scaduto.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Il collegamento dinamico alla libreria specificato non è stato trovato.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Non esiste nessuna applicazione associata all'estensione del nome file dato. Questo errore si ripresenterà anche se si chiederà di stampare un file che non è stampabile.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Non c'è abbastanza memoria per completare l'operazione.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Esecuzione del file fallita.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Si è verificata una violazione di condivisione.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Impossibile determinare il nome della classe.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Impossibile determinare la linea di comando.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Il tipo di associazione non è un file esecutivo.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Il tipo di associazione esecutivo non esiste.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>L'origine specificato non è valido.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>La destinazione specificata non è valida.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>I file di origine non esistono.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>La cartella di destinazione non esiste.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Impossibile copiare uno o più file.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Impossibile cancellare uno o più file.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Cancellazione del file durante il riavvio non riuscita.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Spostamento del file durante il riavvio non riuscita.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operazione annullata dall'utente.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Si è verificato un errore mentre si stava richiamando la funzione.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Errore, la funzione precedente non può essere trovata.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Impossibile determinare le dimensioni del file.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Impossibile stabilire la versione del file.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Il nome del file specificato contiene caratteri non validi.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Il file di destinazione esiste già.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Si è verificato un errore sconosciuto.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Comando di avvio o riavvio fallito, impossibile aprire la chiave.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Comando di avvio o riavvio fallito, impossibile impostare il valore.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Impossibile impostare gli attributi del file.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Impossibile impostare gli attributi compressi del file.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Impossibile creare la cartella di destinazione.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Impossibile creare una copia di backup di uno o più file.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Memoria insufficiente.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Non hai i privilegi per installare i file nella cartella specificata. Questo setup dovrebbe essere avviato da un utente che abbia i privilegi di amministratore.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Il programma non può continuare perché il drive specificato non esiste.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Non c'è abbastanza spazio libero sul disco specificato per installare i file richiesti.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Non c'è un controllo per l'ID specificato nella schermata corrente.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Il controllo specificato è del tipo errato per questa azione.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Non c'è nessuna schermata corrente.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Il controllo specificato non può essere trovato.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Impossibile mostrare i controlli.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Il file è troppo grande per essere letto.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Il file specificato non può essere aperto.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Eccezione lanciata dal controllo interno.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>L'azione non puòò essere compiuta con i controlli disabilitati.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Impossibile mostrare la barra di stato.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Impossibile nascondere la barra di stato.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Impossibile impostare il testo sulla finestra di dialogo.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Impossibile impostare il campo della barra di progresso sulla finestra di dialogo.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Impossibile impostare la posizione della barra di progresso sulla finestra di dialogo.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Impossibile impostare il messaggio di testo sulla finestra di dialogo.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Impossibile impostare il testo del titolo sulla finestra di dialogo.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Impossibile avere la posizione della barra di progresso.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Impossibile cancellare la sezione del file INI specificato.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Impossibile cancellare il valore del file INI specificato.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Impossibile impostare il valore specificato.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Impossibile creare la chiave di Registro specificata.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Impossibile cancellare la chiave di Registro specificata.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Impossibile cancellare il valore del Registro specificato.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>La sotto-chiave specificata non esiste.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Impossibile ottenere i nomi della sotto-chiave.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Impossibile ottenere i dati del valore specificato.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Impossibile ottenre il nome del valore.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Impossibile ottenere il tipo del valore del Registro.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Impossibile impostare i dati del valore del Registro specificato.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Impossibile aggiungere oggetti alla List Box.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Impossibile inserire oggetti nella List Box.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indice oltre il limite.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Impossibile avere le informazioni della versione del Sistema operativo.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Impossibile riavviare il sistema. Informazioni del Sistema operativo non disponibili.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Impossibile riavviare il sistema.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Errore in LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress fallito.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Errore nel codice di ritorno di DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Errore indirizzo in LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Errore indirizzo in RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Errore, il nome del font non può essere vuoto.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Nome font specificato non valido.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Inserimento del font nella tabella di sistema dei font non riuscita.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Inserimento del font nel registro non riuscita.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Impossibile rimuovere il font dalla tabella di sistema dei font.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Impossibile rimuovere ill font dal registro.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Impossibile recuperare le informazioni dell'utente.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Il formato dati specificato è sconosciuto.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Il formato tempo specificato è sconosciuto.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Impossibile determinare l'ID del linguaggio predefinito.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Impossibile determinare le informazioni del display.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Il server è impossibilitato a completare la registrazione di tutti i tipi di librerie usati dalle sue classi.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Il server è impossibilitato a completare la registrazione di tutti gli oggetti classificati.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Il server è impossibilitato a rimuovere gli ingressi di tutti i tipi di librerie usati dalle sue classi.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Il server è impossibilitato a rimuovere gli ingressi di tutti gli ogetti classificati.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Errore nel codice di ritorno di DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Errore, impossibile ripristinare il sistema mentre si è in modalitê provvisoria.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Errore, il disco è pieno e il ripristino del sistema è stato messo in modalitê standby.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Errore, l'operazione di rinominazione del file giê esistente è in attesa...</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Si è verificato un errore interno.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Sequenza numerica errata.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Il servizio di ripristino di configurazione del sistema è disabilitato.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Errore, il tempo concesso per l'operazione di ripristino del sistema è scaduto.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Impossibile aprire il file di testo.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Il file di testo è troppo grande per essere letto.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Errore, impossibile salvare il file di testo.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Errore, la finestra non è valida.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Errore, impossibile nascondere la finestra.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Errore, impossibile ingrandire la finestra.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Errore, impossibile minimizzare la finestra.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Errore, impossibile ripristinare la finestra.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Errore, impossibile mostrare la finestra.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Errore, impossibile espellere il disco, azione non supportata.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Errore, impossibile calcolare lo spazio libero.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Errore, impossibile calcolare le dimensioni totali.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Errore, impossibile calcolare lo spazio usato.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Impossibile creare la cartellar.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>La cartella specificata non esiste.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Il percorso specificato non è indirizzato ad una cartella.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Impossibile cancellare la cartella.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Impossibile impostare la cartella corrente.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>La cartella di destinazione esiste già.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Il nome della cartella contiene caratteri non validi.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Impossibile cancellare la cartella base.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Impossibile creare la cartella per la scorciatoia.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Impossibile creare il link per la scorciatoia.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Errore, la descrizione del collegamento è più lungo di 250 caratteri.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Il collegamento non può essere cancellato.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Cartella shell sconosciuta.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>La cartella di ritorno non è valida.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Impossibile caricare le DLL specificate.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Impossibile trovare la funzione specificata con le DLL.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Creazione della sessione Internet fallita.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>La connessione HTTP creata è fallita.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Impossibile aprire la richiesta.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Invio richiesta fallita.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Impossibile aprire il file di destinazione per la scrittura.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Risposta HTTP non valida dal server.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Si è verificato un errore mentre si stavano scaricando informazioni dal server.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Si è verificato un errore mentre si stava tentando di scrivere al file di destinazione.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>L'utente ha annullato l'azione HTTP.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Si è verificato un errore durante il processo di memorizzazione (Memoria insufficiente?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Si è verificato un errore mentre si stava tentando di impostare il nome utente al proxy.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Si è verificato un errore mentre si stava tentando di impostare la password al proxy.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>La richiesta non può essere processata dal server. (Sintassi errata)</ERR_WEB_400>
+      <ERR_WEB_403>Accesso negato.</ERR_WEB_403>
+      <ERR_WEB_404>L'URL specificato non è stato trovato sul server.</ERR_WEB_404>
+      <ERR_WEB_500>Si è verificato un errore interno del server.</ERR_WEB_500>
+      <ERR_WEB_503>Il server è pieno.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Impossibile registrare la finestra per creare la finestra di presentazione.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Impossibile creare un'immagine alla finestra di dialogo.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Si è verificato un errore mentre si stava rinominando la schermata corrente. Nessuna schermata corrente.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Impossibile caricare il valore.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Impossibile salvare il valore.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Errore, l'applicazione non può essere eseguita in finestra.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Pacchetto non trovato.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Si è verificato un errore durante la risoluzione della funzione specificata.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Si è verificato un errore di runtime durante la chiamata della funzione.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Si è verificato un errore di allocazione della memoria mentre era in corso la chiamata della funzione.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>E' stato specificato un indice non valido. Gli indici devono essere maggiori o uguali a -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Il percorso specificato è più lungo di MAX_PATH, o di 260 caratteri.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>File di configurazione della disinstallazione non è valida.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Tabella dati non valida.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Azione non disponibile durante la disinstallazione.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>La categoria specificata non può essere trovata.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Non si possono impostare le proprietà di categoria.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Questo programma è scaduto e ora verrà terminato.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Questo setup è stato avviato per il massimo numero di volte consentito e adesso sarà terminato.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Questo setup non può aprire il Registro per la scrittua e verrà terminato adesso.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Il valore matematico specificato non è valido per la funzione data.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Numero seriale non valido.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Impossibile ricevere le informazioni di volume.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Modalità testo scorrevole non valido.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>I percorsi non possono contenere i seguenti caratteri:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Al momento non è visualizzata nessuna schermata.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Salto schermata fallita.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Si è verificato un errore mentre si stava interagendo con i servizi.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Si è verificato un errore mentre si stava tentando di interrogare i servizi.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Il servizio potrebbe non essere stato trovato.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Il comando Continua è fallito.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Il comando Interrompi è fallito.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Il comando Inizia è fallito.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Il comando Pausa è fallito.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Il comando Cancella è fallito.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Il comando Crea è fallito.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>The handle to the specified service control manager database does not have access.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>A circular service dependency was specified.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>The display name already exists in the service control manager database either as a service name or as another display name.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>The handle to the specified service control manager database is invalid.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>The specified service name is invalid.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>A parameter that was specified is invalid.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>The user account name specified does not exist.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>The specified service already exists in this database.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>A general ODBC error occured.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>La lunghezza del buffer non è valido.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>Il valore hWnd non è valido.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Il valore non è valido.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Il tipo di richiesta specificato non è valido.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Il componente non è stato trovato nel registro.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>L'argomento non è valido, potrebbe non essere stato trovato nel registro.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>La coppia keyword=name non è valida.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>DSN non valido.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>INF non valido.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>L'operazione eseguita dai parametri richiesti è fallita.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>E' stato specificato un percorso non valido.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Si è verificato un errore mentre si stava tentando di caricare il driver o la libreria di traduzione.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>E' stato utilizzato una doppia lista di keyword=name non valida.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>File log non valido.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>La richiesta è stata cancellata dall'utente.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Si è verificato un errore mentre si stava tentando di incrementare o decrementare l'utilizzo di un componente.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Impossibile creare il DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Impossibile scrivere i file sull'informazione del sistema.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Impossibile rimuovere il DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>Una funzione è fallità perché non vi era abbastanza memoria.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>La stringa di uscita era troncata.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Impossibile caricare le librerie ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>Il comando GetProc è fallito.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Le finestre di dialogo non possono essere visualizzate durante un'installazione o disinstallazione in modalità silenziosa.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Il percorso specificato non è valido.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Il campo non può essere vuoto.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>I seguenti caratteri non sono validi:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>String does not contain valid base-64 encoded data.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Error while attempting to decode base-64 encoded string (usually means string is corrupt - missing bytes in string?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Invalid file header - not an Indigo Rose blowfish file.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Incompatible blowfish file. (The file has either been damaged or it uses an incompatible block padding scheme.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Error loading XML file.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Error saving XML file.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>No valid XML document loaded. (The document is empty or not well formed.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>The specified XML path is not valid or was not found.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>An error occurred while trying to set the value.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>An error occurred while trying to set the attribute.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Invalid attribute name. (Attribute names cannot contain spaces.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>The specified element could not be removed.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>The specified attribute could not be removed.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>There are no elements below the specified XML path.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>The element at the specified XML path does not have any attributes.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>An error occurred while trying to insert XML.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Invalid insertion mode.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

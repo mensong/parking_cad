@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Ukrainian</Name>
+		<Default>0</Default>
+		<Primary>34</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Встановлення %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Інформація</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Будь ласка, прочитайте наступну інформацію.</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далі &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Відміна</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Довідка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_SCROLLTEXT_BODY>&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Зразок HTML-текста&lt;/h1&gt;
+
+&lt;p&gt;Ви можете користуватися будь-якими основними тегами HTML, які підтримуються Інтернет-браузером, такими як:&lt;/p&gt;
+
+&lt;p&gt;Зображення шрифту:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Жирный&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;Похилий&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Колір шрифту:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font color="green"&gt;Колір шрифту&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="blue"&gt;Колір шрифту&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="red"&gt;Колір шрифту&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="yellow"&gt;Колір шрифту&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Розмір шрифту:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font size="2"&gt;Розмір шрифту 2&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="3"&gt;Розмір шрифту 3&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="4"&gt;Розмір шрифту 4&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Гіперпосилання на сторінці:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.indigorose.com"&gt;Гіперпосилання&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ви навіть можете використовувати &lt;span class="hilite"&gt;CSS (каскадні таблиці стилів)&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+body {
+    background-color: #E8F0FD;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 125%;
+    font-family: Arial, sans-serif;
+    color: blue;
+}
+
+.hilite {
+    background: #f0f090 none;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 90%;
+}
+&lt;/style&gt;
+
+&lt;/html&gt;
+</IDS_CTRL_SCROLLTEXT_BODY>
+		<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+	</Messages>
+</SUF70Messages>

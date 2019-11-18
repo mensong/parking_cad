@@ -1,0 +1,569 @@
+<ActionTemplates>
+  <Action>
+    <Name>Dialog.ComboBox</Name>
+    <Description>Presents an combo box dialog to collect information from the user.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Title</Name>
+        <Description> The text to be displayed on the title bar of the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Select Data"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Prompt</Name>
+        <Description>The text that will appear above the combo box.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Select your answer:"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Items</Name>
+        <Description>A numerically indexed list of items that will be available in the combo box.</Description>
+        <Type>table</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>{"First Element","Second Element","Third Element"}</Default>
+          <DataType>table</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>DefaultItem</Name>
+        <Description>The default item that should be selected in the combo box. Use an empty string ("") for nothing to be selected.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>SortItems</Name>
+        <Description>Whether the items in the drop-down list should be sorted or not.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Editable</Name>
+        <Description>Whether the combo box text should be editable or if the user has to choose an item from the list.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Icon</Name>
+        <Description>The icon to display on the dialog.</Description>
+        <Type>number</Type>
+        <Default>MB_ICONQUESTION</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_ICONQUESTION</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.FileBrowse</Name>
+    <Description>Presents a file browse dialog to the user to collect the paths to one or more files.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>FileOpen</Name>
+        <Description>Whether to make the dialog a "file open" dialog.</Description>
+        <Type>boolean</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>true</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Title</Name>
+        <Description>The text to be displayed on the dialog title bar.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Locate File"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>DefaultFolder</Name>
+        <Description>The default folder to browse.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_DesktopFolder</Default>
+          <DataType>proj_folder</DataType>
+          <Constraints />
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FileFilters</Name>
+        <Description>The file type filters that will be used in the browse. Defaults to "All Files (*.*)|*.*|".</Description>
+        <Type>string</Type>
+        <Default>"All Files (*.*)|*.*|"</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>"All Files (*.*)|*.*|"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Filename</Name>
+        <Description>The file name that initially appears in the file name edit box.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FileExtension</Name>
+        <Description>The default file extension. This will be appended to the filename in the file name edit box if the user does not supply an extension.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>"dat"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>MultipleSelect</Name>
+        <Description>Whether to allow multiple selection of files.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FileMustExist</Name>
+        <Description>Whether to make sure that the file name in the edit field of the dialog exists when the user clicks "Open" or "Save."</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.FolderBrowse</Name>
+    <Description>Presents a folder browse dialog to the user to collect the path to a folder.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Prompt</Name>
+        <Description>The message text on the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Please select a folder:"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>DefaultFolder</Name>
+        <Description>The default folder to browse.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_DesktopFolder</Default>
+          <DataType>proj_folder</DataType>
+          <Constraints />
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.Input</Name>
+    <Description>Presents an input dialog to collect information from the user.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Title</Name>
+        <Description> The text to be displayed on the title bar of the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Enter Data"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Prompt</Name>
+        <Description>The text that will appear above the edit field.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your answer:"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>DefaultText</Name>
+        <Description>The default text to display in the edit field. Defaults to an empty string (no text).</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Icon</Name>
+        <Description>The icon to display on the dialog.</Description>
+        <Type>number</Type>
+        <Default>MB_ICONQUESTION</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_ICONQUESTION</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.MaskedInput</Name>
+    <Description>Presents an input dialog to collect information from the user in a specific format.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Title</Name>
+        <Description>The text to be displayed in the title bar of the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Enter Data"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Prompt</Name>
+        <Description>The text to be displayed above the edit field.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your phone number:"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Mask</Name>
+        <Description>The input mask that will be used to control input into the edit field.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"(###) ###-####"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>DefaultText</Name>
+        <Description>The default text to display in the edit field. Defaults to an empty string (no text).</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>"2045559923"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Icon</Name>
+        <Description>The icon to display on the dialog.</Description>
+        <Type>number</Type>
+        <Default>MB_ICONQUESTION</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_ICONQUESTION</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>PlaceHolder</Name>
+        <Description>The text used as a placeholder for the input mask. </Description>
+        <Type>string</Type>
+        <Default>" "</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>" "</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.Message</Name>
+    <Description>Presents a dialog to the user with an informative message on it.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Title</Name>
+        <Description>The text that will appear in the dialog title bar.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Notice"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Text</Name>
+        <Description>The text that will appear on the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your message here."</Default>
+          <DataType>multiline</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Type</Name>
+        <Description>The type of dialog to display.</Description>
+        <Type>number</Type>
+        <Default>MB_OK</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_OK</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_OK,MB_OKCANCEL,MB_ABORTRETRYIGNORE,MB_YESNOCANCEL,MB_YESNO,MB_RETRYCANCEL</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Icon</Name>
+        <Description>The icon to display on the dialog.</Description>
+        <Type>number</Type>
+        <Default>MB_ICONINFORMATION</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_ICONINFORMATION</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>DefaultButton</Name>
+        <Description>The button that will get the focus by default.</Description>
+        <Type>number</Type>
+        <Default>MB_DEFBUTTON1</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_DEFBUTTON1</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_DEFBUTTON1,MB_DEFBUTTON2,MB_DEFBUTTON3</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.PasswordInput</Name>
+    <Description>Presents a "hidden input" dialog to collect a password from the user.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Title</Name>
+        <Description>The dialog title.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Enter Data"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Prompt</Name>
+        <Description>The text that will appear above the edit field.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your answer:"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Icon</Name>
+        <Description>The icon to display on the dialog.</Description>
+        <Type>number</Type>
+        <Default>MB_ICONQUESTION</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_ICONQUESTION</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.TimedMessage</Name>
+    <Description>Presents a timed dialog to the user with an informative message on it.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Title</Name>
+        <Description>The text to be displayed on the title bar of the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Please Wait..."</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Text</Name>
+        <Description>The text to be displayed on the dialog.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Working..."</Default>
+          <DataType>multiline</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Time</Name>
+        <Description>The amount of time to make the dialog visible, in milliseconds.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>2000</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Icon</Name>
+        <Description>The icon to display on the dialog.</Description>
+        <Type>number</Type>
+        <Default>MB_ICONINFORMATION</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>MB_ICONINFORMATION</Default>
+          <DataType>combo</DataType>
+          <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Dialog.SplashImage</Name>
+    <Description>Displays a splash dialog containing an image.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>MediaFile</Name>
+        <Description>The path to the image file. Click the browse button to select a file.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_TempLaunchFolder.."\\MyImage.png"</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>Images</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Time</Name>
+        <Description>The amount of time to display the dialog (in seconds).</Description>
+        <Type>number</Type>
+        <Default>0</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>0</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>AllowClickToSkip</Name>
+        <Description>Whether the user can close the splash screen by clicking on it.</Description>
+        <Type>boolean</Type>
+        <Default>true</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>true</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+</ActionTemplates>

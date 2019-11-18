@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Russian</Name>
+		<Primary>25</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<MSG_SUCCESS>Выполнено</MSG_SUCCESS>
+		<MSG_ERROR>Ошибка</MSG_ERROR>
+		<MSG_NOTICE>Уведомление</MSG_NOTICE>
+		<MSG_WARNING>Предупреждение</MSG_WARNING>
+		<MSG_YES>Да</MSG_YES>
+		<MSG_NO>Нет</MSG_NO>
+		<MSG_YES_TOALL>Да для всех</MSG_YES_TOALL>
+		<MSG_TO>К</MSG_TO>
+		<MSG_FROM>От</MSG_FROM>
+		<MSG_BROWSE>Обзор...</MSG_BROWSE>
+		<MSG_OK>OK</MSG_OK>
+		<MSG_CANCEL>Отмена</MSG_CANCEL>
+		<MSG_PATH>Путь</MSG_PATH>
+		<MSG_SEARCH_MASK>Найти</MSG_SEARCH_MASK>
+		<MSG_SEARCH_ALL>Все файлы</MSG_SEARCH_ALL>
+		<MSG_SEARCH_FILE>Поиск файла</MSG_SEARCH_FILE>
+		<MSG_SIZE_BYTES>байт</MSG_SIZE_BYTES>
+		<MSG_SIZE_KILOBYTES>Кб</MSG_SIZE_KILOBYTES>
+		<MSG_SIZE_MEGABYTES>Мб</MSG_SIZE_MEGABYTES>
+		<MSG_SIZE_GIGABYTES>Гб</MSG_SIZE_GIGABYTES>
+		<MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+		<MSG_CONFIRM>Подтверждение</MSG_CONFIRM>
+		<MSG_CONFIRM_ABORT>Установка не завершена! Вы действительно хотите отменить установку %ProductName% на ваш компьютер?</MSG_CONFIRM_ABORT>
+		<MSG_CONFIRM_CONTINUE>Вы уверены, что хотите продолжить установку?</MSG_CONFIRM_CONTINUE>
+		<MSG_NOT_ENOUGH_FREE_SPACE>На выбранном диске недостаточно места для установки %ProductName%.</MSG_NOT_ENOUGH_FREE_SPACE>
+		<MSG_COPYING>Копирование</MSG_COPYING>
+		<MSG_DELETING>Удаление</MSG_DELETING>
+		<MSG_SEARCHING>Поиск</MSG_SEARCHING>
+		<MSG_READING>Чтение</MSG_READING>
+		<MSG_QUERYING_INTERNET>Обращение к Интернету</MSG_QUERYING_INTERNET>
+		<MSG_MOVING>Перемещение</MSG_MOVING>
+		<MSG_SAVING>Сохранение</MSG_SAVING>
+		<MSG_INSERTDISK>Вставьте Диск</MSG_INSERTDISK>
+		<MSG_DOWNLOADING>Загрузка</MSG_DOWNLOADING>
+		<MSG_DOWNLOADING_FILE>Загрузка файла...</MSG_DOWNLOADING_FILE>
+		<MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Загрузка файла, общий размер неизвестен. Загружено Кб: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+		<MSG_RESOLVING_HOST_NAME>Определяется имя хоста.</MSG_RESOLVING_HOST_NAME>
+		<MSG_HOST_NAME_RESOLVED>Получено имя хоста.</MSG_HOST_NAME_RESOLVED>
+		<MSG_CONNECTING_TO_SERVER>Подключаюсь к серверу.</MSG_CONNECTING_TO_SERVER>
+		<MSG_CONNECTED_TO_SERVER>Есть соединение с сервером.</MSG_CONNECTED_TO_SERVER>
+		<MSG_CLOSING_CONNECTION>Закрываю соединение с сервером.</MSG_CLOSING_CONNECTION>
+		<MSG_CONNECTION_CLOSED>Соединение с сервером закрыто.</MSG_CONNECTION_CLOSED>
+		<MSG_STATUS_REQUEST_COMPLETE>Запрос завершен.</MSG_STATUS_REQUEST_COMPLETE>
+		<MSG_REDIRECTING>Переадресовка</MSG_REDIRECTING>
+		<MSG_ESTIMATED_TIME_LEFT>Оставшееся расчетное время</MSG_ESTIMATED_TIME_LEFT>
+		<MSG_KB_PER_SEC>Кб/сек.</MSG_KB_PER_SEC>
+		<MSG_INITIALIZING>Инициализация...</MSG_INITIALIZING>
+		<MSG_INSTALLING>Установка...</MSG_INSTALLING>
+		<MSG_SKIPPING>Пропуск...</MSG_SKIPPING>
+		<MSG_SEEKING>Поиск...</MSG_SEEKING>
+		<MSG_INVALID_ENTRY>Неверные данные</MSG_INVALID_ENTRY>
+		<MSG_THE>Это </MSG_THE>
+		<MSG_FIELD_CANNOT_BE_EMPTY>поле не может быть пустым.</MSG_FIELD_CANNOT_BE_EMPTY>
+		<MSG_PROG_PREPARING>Подготовка к установке...</MSG_PROG_PREPARING>
+		<MSG_PROG_INSTALLING_FILES>Установка файлов...</MSG_PROG_INSTALLING_FILES>
+		<MSG_PROG_CREATING_UNINSTALL>Создание программы удаления...</MSG_PROG_CREATING_UNINSTALL>
+		<MSG_PROG_CREATING_SHORTCUTS>Создание ярлыков...</MSG_PROG_CREATING_SHORTCUTS>
+		<MSG_PROG_CHECKING_FILES>Проверка состояния файла...</MSG_PROG_CHECKING_FILES>
+		<MSG_PROG_CHECKING_FOLDERS>Проверка свойств папки...</MSG_PROG_CHECKING_FOLDERS>
+		<MSG_PROG_CHECKING_DRIVESPACE>Проверка свободного места на диске...</MSG_PROG_CHECKING_DRIVESPACE>
+		<MSG_PROG_UNINSTALL_REMOVING_FILES>Удаление файлов...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+		<MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Удаление ярлыков...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+		<MSG_PROG_UNINSTALL_CREATEFOLDER>Создание папки данных для удаления...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+		<MSG_PROG_UNINSTALL_CREATEDATFILE>Создание файла данных для удаления...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+		<MSG_PROG_UNINSTALL_CREATECONTROLFILE>Создание управляющего файла для удаления...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+		<MSG_PROG_UNINSTALL_CREATEEXE>Создание программы удаления...</MSG_PROG_UNINSTALL_CREATEEXE>
+		<MSG_PROG_UNINSTALL_COPYIMAGES>Копирование файлов экранных изображений...</MSG_PROG_UNINSTALL_COPYIMAGES>
+		<MSG_PROG_UNINSTALL_COPYPLUGINS>Копирование модулей...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+		<MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Копирование вспомогательных файлов...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+		<MSG_PROG_UNINSTALL_CREATECPENTRY>Создание элемента панели управления...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+		<MSG_PROG_UNINSTALL_CREATESC>Создание ярлыка программы удаления...</MSG_PROG_UNINSTALL_CREATESC>
+		<MSG_OS_UNKNOWN>Неизвестно</MSG_OS_UNKNOWN>
+		<MSG_OS_W95>Windows 95</MSG_OS_W95>
+		<MSG_OS_W98>Windows 98</MSG_OS_W98>
+		<MSG_OS_WME>Windows ME</MSG_OS_WME>
+		<MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+		<MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+		<MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+		<MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+		<MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+		<MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+		<MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+		<MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+		<MSG_OS_W7>Windows 7</MSG_OS_W7>
+		<MSG_OS_W8>Windows 8</MSG_OS_W8>
+		<MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+		<MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	    <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	    <MSG_OS_W10>Windows 10</MSG_OS_W10>
+		<MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+		<MSG_OS_NONE>Ни одна</MSG_OS_NONE>
+		<MSG_OS_ALL>Все</MSG_OS_ALL>
+		<MSG_OS_PART_A>a</MSG_OS_PART_A>
+		<MSG_OS_PART_B>b</MSG_OS_PART_B>
+		<MSG_OS_PART_C>c</MSG_OS_PART_C>
+		<MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+		<MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+		<MSG_OS_PART_NOSERVPACK>(без SP)</MSG_OS_PART_NOSERVPACK>
+		<MSG_OS_PART_ORNEWER>(или новее)</MSG_OS_PART_ORNEWER>
+		<MSG_SYSREQ_NOTMET>Не выполнены следующие минимальные системные требования для установки:</MSG_SYSREQ_NOTMET>
+		<MSG_SYSREQ_OS>Операционная система</MSG_SYSREQ_OS>
+		<MSG_SYSREQ_RAM>Оперативная память</MSG_SYSREQ_RAM>
+		<MSG_SYSREQ_SCREENWIDTH>Ширина экрана</MSG_SYSREQ_SCREENWIDTH>
+		<MSG_SYSREQ_SCREENHEIGHT>Высота экрана</MSG_SYSREQ_SCREENHEIGHT>
+		<MSG_SYSREQ_COLORDEPTH>Глубина цвета</MSG_SYSREQ_COLORDEPTH>
+		<MSG_SYSREQ_USERPERMISSION>Права пользователя</MSG_SYSREQ_USERPERMISSION>
+		<MSG_SYSREQ_SYSTEMADMIN>Администратор</MSG_SYSREQ_SYSTEMADMIN>
+		<MSG_SYSREQ_ABORT>Установка будет прекращена.</MSG_SYSREQ_ABORT>
+		<MSG_SYSREQ_WARN>Нажмите на кнопку "OK" для продолжения или на кнопку "Отмена" для прекращения установки.</MSG_SYSREQ_WARN>
+		<MSG_EXP_CONTACT_START>За дополнительной информацией, пожалуйста, обращайтесь:</MSG_EXP_CONTACT_START>
+		<MSG_EXP_DAYSLEFT>Срок действия установки завершится через</MSG_EXP_DAYSLEFT>
+		<MSG_EXP_DAYSLEFT2>дней и по истечении этого срока она работать больше не будет.</MSG_EXP_DAYSLEFT2>
+		<MSG_EXP_USESLEFT>Эту установку можно будет запустить еще</MSG_EXP_USESLEFT>
+		<MSG_EXP_USESLEFT2>раз до окончания периода действия.</MSG_EXP_USESLEFT2>
+		<MSG_ASK_FOR_DISK>Пожалуйста, вставьте Диск #</MSG_ASK_FOR_DISK>
+		<MSG_NEW_LOCATION>Если файлы с этого диска могут находиться в другом месте, например, на другом диске, введите полный путь или нажмите на кнопку "Обзор" для выбора пути.</MSG_NEW_LOCATION>
+		<MSG_FILE_EXISTS_ANY>Программа установки пытается записать файл, однако файл с этим именем уже имеется в вашей системе.</MSG_FILE_EXISTS_ANY>
+		<MSG_FILE_EXISTS_NEWER>Программа установки пытается записать файл, однако в вашей системе имеется БОЛЕЕ НОВЫЙ файл с этим именем.</MSG_FILE_EXISTS_NEWER>
+		<MSG_FILE_OVERWRITE_CONFIRM>Вы действительно хотите перезаписать следующий файл?</MSG_FILE_OVERWRITE_CONFIRM>
+		<MSG_FILE_EXISTS_INUSE>Следующий файл используется и не может быть обновлен:</MSG_FILE_EXISTS_INUSE>
+		<MSG_FILE_EXISTS_RETRY>Закройте все другие приложения и нажмите кнопку "Повторить". Нажмите кнопку "Отмена" для установки данного файла после перезагрузки системы.</MSG_FILE_EXISTS_RETRY>
+		<MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Вы хотите перезаписать существующий файл?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+		<MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Приложение пытается записать файл, однако файл с этим именем уже имеется в вашей системе.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+		<MSG_INSTALL_FILE_OLDER_MSG>Приложение пытается записать файл, однако в вашей системе имеется БОЛЕЕ НОВЫЙ файл с этим именем.</MSG_INSTALL_FILE_OLDER_MSG>
+		<MSG_RESTART_RETRY>Программе установки не удается перезагрузить систему. Закройте все приложения и нажмите кнопку "Повторить".</MSG_RESTART_RETRY>
+		<MSG_UNINSTALLFILE_INUSE>Данный файл используется и не может быть удален. Закройте его и нажмите кнопку "Повторить". Нажмите кнопку "Пропустить" для продолжения и удаления данного файла после перезагрузки системы. Нажмите кнопку "Отмена" для прекращения удаления.</MSG_UNINSTALLFILE_INUSE>
+		<MSG_UNINSTALLFILE_NOREMOVE>Не удается выполнить удаление файла. Нажмите кнопку "Повторить" для повторной попытки. Нажмите кнопку "Пропустить" для продолжения и удаления данного файла после перезагрузки системы. Нажмите кнопку "Отмена" для прекращения удаления.</MSG_UNINSTALLFILE_NOREMOVE>
+		<MSG_UNINSTALL_REMOVE_SHARED>Будет выполнено удаление следующих общих системных файлов:</MSG_UNINSTALL_REMOVE_SHARED>
+		<MSG_UNINSTALL_NO_APP_USE>Не найдена ни одна программа, использующая его, однако не исключена возможность, что он нужен другой программе для работы.</MSG_UNINSTALL_NO_APP_USE>
+		<MSG_UNINSTALL_OK_REMOVE>Можно удалить этот файл?</MSG_UNINSTALL_OK_REMOVE>
+		<MSG_REBOOT_FAILED>Не удалось выполнить перезагрузку системы. Закройте все открытые приложения и нажмите кнопку "Повторить".</MSG_REBOOT_FAILED>
+		<MSG_REBOOT_NEEDED>Для завершения установки необходимо перезагрузить компьютер. Выполнить перезагрузку системы сейчас?</MSG_REBOOT_NEEDED>
+		<MSG_REBOOT_NEEDED_UNINSTALL>Вы должны перезагрузить компьютер для завершения удаления. Вы хотите перезагрузить систему сейчас?</MSG_REBOOT_NEEDED_UNINSTALL>
+		<MSG_LIST_BOX_SELECT_AN_ITEM>Пожалуйста, выберите элемент из списка.</MSG_LIST_BOX_SELECT_AN_ITEM>
+		<MSG_REQUIRED_DRIVE>Требуется на диске:</MSG_REQUIRED_DRIVE>
+		<MSG_AVAILABLE_DRIVE>Свободно на диске:</MSG_AVAILABLE_DRIVE>
+		<ERR_LOG_INIT_FAILED>Не удалось создать лог-файл: </ERR_LOG_INIT_FAILED>
+		<ERR_ARCHIVE_INTEGRITY>Не удалось выполнить проверку целостности архива. Установка не завершена, возможно, из-за поврежденного файла.</ERR_ARCHIVE_INTEGRITY>
+		<ERR_MISSING_EXTERNAL_FILE>Пожалуйста, убедитесь, что диск находится в дисководе! Не удается найти следующий файл:</ERR_MISSING_EXTERNAL_FILE>
+		<ERR_PLUGIN_LOAD_FAILED>Не удалось загрузить плагин</ERR_PLUGIN_LOAD_FAILED>
+		<ERR_WRONG_DISK>Программа установки не может открыть следующий файл (возможно, вы поставили не тот диск)</ERR_WRONG_DISK>
+		<ERR_MEMORY_ALLOCATE_DECOMPRESS>Программе установки недостаточно места для распаковки файлов. Инсталляция будет прекращена.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+		<ERR_CREATE_FOLDER>Программе установки не удается создать следующую папку:</ERR_CREATE_FOLDER>
+		<ERR_DECOMPRESS_DETECTED>Во время распаковки произошла ошибка</ERR_DECOMPRESS_DETECTED>
+		<ERR_OPEN_OUTPUT>Не удалось открыть выходной файл</ERR_OPEN_OUTPUT>
+		<ERR_OPEN_INPUT>Не удалось открыть входной файл</ERR_OPEN_INPUT>
+		<ERR_DECOMPRESS_RW>Ошибка Чтения/Записи</ERR_DECOMPRESS_RW>
+		<ERR_DECOMPRESS_CRC>Неверная CRC-сумма файла - Ошибка целостности данных</ERR_DECOMPRESS_CRC>
+		<ERR_DECOMPRESS_DISKFULL>На диске нет места.</ERR_DECOMPRESS_DISKFULL>
+		<ERR_DECOMPRESS_UNKNOWN>Неизвестная ошибка при распаковке</ERR_DECOMPRESS_UNKNOWN>
+		<ERR_ARCHIVE_SKIPPING_FILE>Ошибка пропуска файла</ERR_ARCHIVE_SKIPPING_FILE>
+		<ERR_MEMORY_ALLOCATION>Ошибка распределения памяти</ERR_MEMORY_ALLOCATION>
+		<ERR_FILE_READ>Ошибка чтения из файла</ERR_FILE_READ>
+		<ERR_FILE_WRITE>Ошибка записи в файл</ERR_FILE_WRITE>
+		<ERR_COPY_GENERAL>Неизвестная ошибка копирования файлов</ERR_COPY_GENERAL>
+		<ERR_CREATE_UNINSTALL_ENTRY>Не удалось создать элемент удаления</ERR_CREATE_UNINSTALL_ENTRY>
+		<ERR_DLL_REG_LOAD>Ошибка в LoadLibrary()</ERR_DLL_REG_LOAD>
+		<ERR_DLL_REG_GETPROC>Ошибка в GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+		<ERR_DLL_REG_FAIL>Код ошибки, полученный от DllRegisterServer</ERR_DLL_REG_FAIL>
+		<ERR_REGISTER_COM>Ошибка регистрации компонента COM (ActiveX):</ERR_REGISTER_COM>
+		<ERR_REGISTER_TLB>Ошибка регистрации Type Library:</ERR_REGISTER_TLB>
+		<ERR_TLB_MEM>Недостаточно памяти</ERR_TLB_MEM>
+		<ERR_TLB_ARGS>Один или несколько аргументов неверны.</ERR_TLB_ARGS>
+		<ERR_TLB_IO>Функция не может записать данные в файл.</ERR_TLB_IO>
+		<ERR_TLB_STATE>Не удается открыть данные Type Library.</ERR_TLB_STATE>
+		<ERR_TLB_READ>Функция не может прочитать данные из файла.</ERR_TLB_READ>
+		<ERR_TLB_FORMAT>Type Library имеет устаревший формат.</ERR_TLB_FORMAT>
+		<ERR_TLB_LCID>Не удается найти LCID в динамических библиотеках (DLL), поддерживающих OLE.</ERR_TLB_LCID>
+		<ERR_TLB_LOAD>Не удается загрузить Type Library или DLL.</ERR_TLB_LOAD>
+		<ERR_TLB_REGISTRY>Не удается открыть системную базу регистрации данных.</ERR_TLB_REGISTRY>
+		<ERR_TLB_DEFAULT>Ошибка выполнения FACILITY_STORAGE.</ERR_TLB_DEFAULT>
+		<ERR_CREATEUNINSTALL_DATAFOLDER>Не удалось создать папку удаления:</ERR_CREATEUNINSTALL_DATAFOLDER>
+		<ERR_CREATEUNINSTALL_DATAFILE>Не удалось создать данные удаления:</ERR_CREATEUNINSTALL_DATAFILE>
+		<ERR_CREATEUNINSTALL_OPEN_EXE_READ>Не удалось открыть программу удаления для чтения:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+		<ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Не удалось открыть программу удаления для записи:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+		<ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Не удалось открыть файл профиля для записи:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+		<ERR_CREATEUNINSTALL_SHARINGVIOLATION>Не удается записать программу удаления, так как она уже используется. Закройте все приложения и нажмите кнопку "Повторить". Нажмите кнопку "Отмена" для прекращения.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+		<ERR_CREATEUNINSTALL_CREATEREGKEY>Не удалось открыть ключ реестра для записи:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+		<ERR_CREATEUNINSTALL_WRITEREGVALUE>Не удалось выполнить запись значения в реестр:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+		<ERR_CREATEUNINSTALL_CREATESC>Не удалось создать ярлык удаления:</ERR_CREATEUNINSTALL_CREATESC>
+		<ERR_CREATEUNINSTALL_SETSESSIONVAR>Не удалось сохранить рабочие переменные</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+		<ERR_NOPERMISSION_REG_SHAREDFILECOUNT>У вас нет прав на регистрацию общих файлы в данной системе. Для выполнения этой операции требуются права Администратора.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+		<ERR_NOPERMISSION_REG_COM>У вас нет прав на регистрацию COM-компонентов (ActiveX) в данной системе. Для выполнения этой операции требуются права Администратора.</ERR_NOPERMISSION_REG_COM>
+		<ERR_NOPERMISSION_REG_TLB>У вас нет прав на регистрацию Type Librarie в данной системе. Для выполнения этой операции требуются права Администратора.</ERR_NOPERMISSION_REG_TLB>
+		<ERR_UNINSTALL_UNREGISTER_COM>Не удается отменить регистрацию вышеупомянутого COM-компонента (ActiveX). Данный файл не будет удален.</ERR_UNINSTALL_UNREGISTER_COM>
+		<ERR_INVALID_ITEM_TYPE>Неверный тип элемента данных удаления.</ERR_INVALID_ITEM_TYPE>
+		<ERR_ITEM_NOT_FOUND>Не найден элемент данных удаления.</ERR_ITEM_NOT_FOUND>
+		<ERR_UNKNOWN>Неизвестная ошибка.</ERR_UNKNOWN>
+		<ERR_SPECIFIED_FILE_NOT_FOUND>Не удается найти указанный файл.</ERR_SPECIFIED_FILE_NOT_FOUND>
+		<ERR_FAILED_TO_LOAD_FILE>Не удалось загрузить файл.</ERR_FAILED_TO_LOAD_FILE>
+		<ERR_FAILED_TO_SAVE_FILE>Не удалось записать файл.</ERR_FAILED_TO_SAVE_FILE>
+		<ERR_SPECIFIED_PATH_NOT_FOUND>Указанный путь не найден.</ERR_SPECIFIED_PATH_NOT_FOUND>
+		<ERR_SPECIFIED_EXE_FILE_INVALID>Неверный исполняемый ехе-файл (не является Win32-приложением или ошибка ехе-образа).</ERR_SPECIFIED_EXE_FILE_INVALID>
+		<ERR_OS_DENIED_FILE_ACCESS>Отказано в доступе к указанному файлу.</ERR_OS_DENIED_FILE_ACCESS>
+		<ERR_FILE_NAME_ASSOCIATION_INVALID>Ассоциация с именем файла является неполной или неверной.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+		<ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>Не удается завершить передачу DDE, так как выполняются другие транзакции DDE.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+		<ERR_DDE_TRANSACTION_FAILED>Транзакция DDE не удалась</ERR_DDE_TRANSACTION_FAILED>
+		<ERR_DDE_TRANSACTION_TIMEOUT>Не удается завершить передачу DDE из-за превышения времения ожидания.</ERR_DDE_TRANSACTION_TIMEOUT>
+		<ERR_DLL_NOT_FOUND>Указанная DLL не найдена.</ERR_DLL_NOT_FOUND>
+		<ERR_NON_EXISTANT_FILE_ASSOCIATION>Не найдена программа, открывающая данное расширение файла. Данная ошибка также появляется при попытке распечатать файл, который Не удалось распечатать.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+		<ERR_INSUFFICIENT_MEMORY>Недостаточно памяти для завершения операции.</ERR_INSUFFICIENT_MEMORY>
+		<ERR_FILE_EXECUTION_FAILED>Ошибка запуска файла.</ERR_FILE_EXECUTION_FAILED>
+		<ERR_FILE_EXECUTION_FAILED_ELEVATION>Ошибка при выполнении файла, требуются повышенные права.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+		<ERR_SHARING_VIOLATION>Нарушение режима совместного использования.</ERR_SHARING_VIOLATION>
+		<ERR_INVALID_VIEWER_CLASS_NAME>Не удалось определить имя класса программы просмотра.</ERR_INVALID_VIEWER_CLASS_NAME>
+		<ERR_INVALID_VIEWER_COMMAND_LINE>Не удалось определить командную строку программы просмотра.</ERR_INVALID_VIEWER_COMMAND_LINE>
+		<ERR_INVALID_ASSOCIATED_VIEWER>Программа просмотра не является исполняемым файлом.</ERR_INVALID_ASSOCIATED_VIEWER>
+		<ERR_NON_EXISTANT_VIEWER_EXE>Не существует данной программы просмотра.</ERR_NON_EXISTANT_VIEWER_EXE>
+		<ERR_INVALID_SOURCE_SPECIFIED>Указан неверный источник.</ERR_INVALID_SOURCE_SPECIFIED>
+		<ERR_INVALID_DESTINATION_SPECIFIED>Указан неверный адресат.</ERR_INVALID_DESTINATION_SPECIFIED>
+		<ERR_SOURCE_FILE_NON_EXISTANT>Исходный файл(ы) не существует.</ERR_SOURCE_FILE_NON_EXISTANT>
+		<ERR_DESTINATION_DIR_NON_EXISTANT>Конечной папки не существует.</ERR_DESTINATION_DIR_NON_EXISTANT>
+		<ERR_COPY_FAILED>Не удалось скопировать один или несколько файлов.</ERR_COPY_FAILED>
+		<ERR_DELETE_FAILED>Не удалось удалить один или несколько файлов.</ERR_DELETE_FAILED>
+		<ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Не удалось запланировать удаление после перезагрузки.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+		<ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Не удалось запланировать перемещение после перезагрузки.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+		<ERR_USER_ABORTED_OPERATION>Операция прервана пользователем.</ERR_USER_ABORTED_OPERATION>
+		<ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Ошибка при обращении к функции обратного вызова.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+		<ERR_CALL_BACK_FUNCTION_NOT_FOUND>Ошибка, функция обратного вызова не найдена.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+		<ERR_VERSION_INFO_SIZE>Не удалось получить информацию о размере версии.</ERR_VERSION_INFO_SIZE>
+		<ERR_FILE_VERSION_INFO>Не удалось получить версию файла.</ERR_FILE_VERSION_INFO>
+		<ERR_FILENAME_INVALID_CHARACTERS>Указанное имя файла содержит неверные символы.</ERR_FILENAME_INVALID_CHARACTERS>
+		<ERR_DESTINATION_FILE_EXISTS>Конечный файл уже существует.</ERR_DESTINATION_FILE_EXISTS>
+		<ERR_UNKNOWN_ERROR>Неизвестная ошибка.</ERR_UNKNOWN_ERROR>
+		<ERR_KEY_RUN_ON_REBOOT_FAILED>Ошибка запуска после перезагрузки, не удалось открыть раздел реестра.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+		<ERR_VALUE_RUN_ON_REBOOT_FAILED>Ошибка запуска после перезагрузки, не удалось записать значение в реестр.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+		<ERR_SET_FILE_ATTRIBUTE_FAIL>Не удалось изменить атрибуты файла.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+		<ERR_SET_COMPRESSED_FAIL>Не удалось изменить атрибуты упакованного файла.</ERR_SET_COMPRESSED_FAIL>
+		<ERR_CREATE_DESTINATION_FOLDER_FAIL>Не удалось создать конечную папку.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+		<ERR_BACKUP_FAIL>Не удалось создать резервную копию одного или нескольких файлов.</ERR_BACKUP_FAIL>
+		<ERR_OUT_OF_MEMORY>Недостаточно памяти.</ERR_OUT_OF_MEMORY>
+		<ERR_FOLDER_PERMISSION_INSTALL_FILES>У вас недостаточно прав для установки файлов в выбранную папку. Запустите установку с правами администратора.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+		<ERR_DRIVE_NOTEXIST>Не удается продолжить установку, так как выбранный логический диск не существует.</ERR_DRIVE_NOTEXIST>
+		<ERR_DRIVE_NOTENOUGHSPACE>На выбранном диске недостаточно свободного места для установки требуемых файлов.</ERR_DRIVE_NOTENOUGHSPACE>
+		<ERR_GEN_OBJECT_ID_NOT_FOUND>На данной странице диалога отсутствует компонент с указанным ID.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+		<ERR_GEN_OBJECT_WRONG_TYPE>Тип выбранного компонента для данной операции неверен.</ERR_GEN_OBJECT_WRONG_TYPE>
+		<ERR_GEN_NO_CURRENT_SCREEN>Этой страницы диалога не существует.</ERR_GEN_NO_CURRENT_SCREEN>
+		<ERR_GEN_OBJECT_NOT_FOUND>Не удается найти указанный компонент.</ERR_GEN_OBJECT_NOT_FOUND>
+		<ERR_GEN_ERROR_DISPLAYING_DIALOG>Не удалось отобразить компонент.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+		<ERR_GEN_FILE_TO_LARGE>Файл слишком велик для чтения.</ERR_GEN_FILE_TO_LARGE>
+		<ERR_GEN_ERROR_OPENING_FILE>Не удается открыть указанный файл .</ERR_GEN_ERROR_OPENING_FILE>
+		<ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Исключение, полученное от внутреннего компонента.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+		<ERR_GEN_OBJECT_DISABLED>Не удалось выполнить процедуру с недоступным компонентом.</ERR_GEN_OBJECT_DISABLED>
+		<ERR_SDLG_SHOWING>Не удалось отобразить диалоговое окно.</ERR_SDLG_SHOWING>
+		<ERR_SDLG_HIDING>Не удалось скрыть диалоговое окно.</ERR_SDLG_HIDING>
+		<ERR_SDLG_SETTING_STATUS_TEXT>Не удалось установить текст в диалоговом окне.</ERR_SDLG_SETTING_STATUS_TEXT>
+		<ERR_SDLG_SETTING_RANGE>Не удалось установить диапазон индикатора прогресса в диалоговом окне.</ERR_SDLG_SETTING_RANGE>
+		<ERR_SDLG_SETTING_POSITION>Не удалось установить координаты индикатора прогресса в диалоговом окне.</ERR_SDLG_SETTING_POSITION>
+		<ERR_SDLG_SETTING_MESSAGE_TEXT>Не удалось установить текст сообщения в диалоговом окне.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+		<ERR_SDLG_SETTING_TITLE>Не удалось установить текст заголовка в диалоговом окне.</ERR_SDLG_SETTING_TITLE>
+		<ERR_SDLG_GETTING_POSITION>Не удалось получить координаты индикатора прогресса.</ERR_SDLG_GETTING_POSITION>
+		<ERR_INI_DELETE_FILE>Не удалось удалить указанный раздел INI-файла.</ERR_INI_DELETE_FILE>
+		<ERR_INI_DELETE_VALUE>Не удалось удалить указанное значение INI-файла.</ERR_INI_DELETE_VALUE>
+		<ERR_INI_SET_VALUE>Не удалось установить указанное значение.</ERR_INI_SET_VALUE>
+		<ERR_REG_CREATE_KEY>Не удалось создать указанный раздел реестра.</ERR_REG_CREATE_KEY>
+		<ERR_REG_DELETE_KEY>Не удалось удалить указанный раздел реестра.</ERR_REG_DELETE_KEY>
+		<ERR_REG_DELETE_VALUE>Не удалось удалить указанное значение реестра.</ERR_REG_DELETE_VALUE>
+		<ERR_REG_NON_EXISTANT_SUB_KEY>Указанный подраздел реестра не существует.</ERR_REG_NON_EXISTANT_SUB_KEY>
+		<ERR_REG_GET_SUB_KEY_NAME>Не удалось получить имена подразделов реестра.</ERR_REG_GET_SUB_KEY_NAME>
+		<ERR_REG_GET_VALUE_DATA>Не удалось получить указанное значение реестра.</ERR_REG_GET_VALUE_DATA>
+		<ERR_REG_GET_VALUE_NAME>Не удалось получить имя значения реестра.</ERR_REG_GET_VALUE_NAME>
+		<ERR_REG_GET_VALUE_TYPE>Не удалось получить тип значения реестра.</ERR_REG_GET_VALUE_TYPE>
+		<ERR_REG_SET_VALUE_DATA>Не удалось установить указанное значение реестра.</ERR_REG_SET_VALUE_DATA>
+		<ERR_LB_ADD_ITEM>Не удалось добавить элемент в компонент List Box.</ERR_LB_ADD_ITEM>
+		<ERR_LB_INSERT_ITEM>Не удалось вставить элемент в компонент List Box.</ERR_LB_INSERT_ITEM>
+		<ERR_LB_INDEX_OUT_OF_RANGE>Индекс вне диапазона.</ERR_LB_INDEX_OUT_OF_RANGE>
+		<ERR_SYS_GET_OS_VERSION>Не удалось получить версию ОС.</ERR_SYS_GET_OS_VERSION>
+		<ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Не удалось перезагрузить систему. Информация об ОС недоступна.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+		<ERR_SYS_REBOOT_SYSTEM>Не удалось перезагрузить систему.</ERR_SYS_REBOOT_SYSTEM>
+		<ERR_SYS_LOADLIBRARY_FAILURE>Ошибка в LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+		<ERR_SYS_GETPROCADDRESS_FAILED>Ошибка в GetProcAddress.</ERR_SYS_GETPROCADDRESS_FAILED>
+		<ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Код ошибки, полученный от DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+		<ERR_SYS_CALL_LOADTYPELIB>Ошибка при вызове LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+		<ERR_SYS_CALL_REGISTERTYPELIB>Ошибка при вызове RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+		<ERR_SYS_EMPTY_FONT_NAME>Ошибка, имя шрифта не может быть пустым.</ERR_SYS_EMPTY_FONT_NAME>
+		<ERR_SYS_INVALID_FONT_NAME>Неверное имя шрифта.</ERR_SYS_INVALID_FONT_NAME>
+		<ERR_SYS_ADD_FONT_FAILURE_TABLE>Ошибка добавления шрифта в системную таблицу шрифтов.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+		<ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Ошибка добавления шрифта в реестр.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+		<ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Ошибка удаления шрифта из системной таблицы шрифтов.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+		<ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Ошибка удаления шрифта из реестра.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+		<ERR_SYS_RETRIEVE_USER_INFO>Не удалось получить сведения о пользователе.</ERR_SYS_RETRIEVE_USER_INFO>
+		<ERR_SYS_UNKNOWN_DATE_FORMAT>Указан неизвестный формат даты.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+		<ERR_SYS_UNKNOWN_TIME_FORMAT>Указан неизвестный формат времени.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+		<ERR_SYS_UNKNOWN_LANG_ID>Не удалось определить ID языка по умолчанию.</ERR_SYS_UNKNOWN_LANG_ID>
+		<ERR_SYS_UNKNOWN_DISPLAY_INFO>Не удалось определить сведения о дисплее.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+		<ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Серверу не удалось завершить регистрацию всех типовых библиотек, используемых его классами.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+		<ERR_SYS_OBJECT_CLASS_REGISTRATION>Серверу не удалось завершить регистрацию всех объектов классов.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+		<ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Серверу не удалось удалить все элементы из всех типовых библиотек, используемых его классами.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+		<ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Серверу не удалось удалить все элементы всех объектов классов.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+		<ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Код ошибки, полученный от DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+		<ERR_SYS_RESTORE_SAFE_MODE>Ошибка, не удалось осуществить востановление системы при запуске в безопасном режиме.</ERR_SYS_RESTORE_SAFE_MODE>
+		<ERR_SYS_RESTORE_DISK_FULL>Ошибка, диск полон, и востановление системы отложено.</ERR_SYS_RESTORE_DISK_FULL>
+		<ERR_SYS_RESTORE_FILE_EXISTS>Ошибка, операция по переименованию, ждущего обработки файла, уже задана.</ERR_SYS_RESTORE_FILE_EXISTS>
+		<ERR_SYS_RESTORE_INTERNAL_ERROR>Произошла внутренняя ошибка.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+		<ERR_SYS_RESTORE_INVALID_DATA>Ошибка, неверный серийный номер.</ERR_SYS_RESTORE_INVALID_DATA>
+		<ERR_SYS_RESTORE_SERVICE_DISABLED>Операция по восстановлению системы недоступна.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+		<ERR_SYS_RESTORE_TIMEOUT>Ошибка, операция по восстановлению системы превысила время ожидания.</ERR_SYS_RESTORE_TIMEOUT>
+		<ERR_SYS_ACCESS_PROCESSES>Отказ в доступе к числу запущенных процессов.</ERR_SYS_ACCESS_PROCESSES>
+		<ERR_SYS_ENUMERATE_PROCESSES>Отказ при перечислении процессов.</ERR_SYS_ENUMERATE_PROCESSES>
+		<ERR_SYS_PROCESS_HANDLE>Отказ при получении дескриптора процесса.</ERR_SYS_PROCESS_HANDLE>
+		<ERR_SYS_WOW64_NOT_64BIT>Ошибка, операционная система не является 64-бит.</ERR_SYS_WOW64_NOT_64BIT>
+		<ERR_SYS_WOW64_DISABLE_FSREDIRECT>Отказ при отключении перенаправление файловой системы.</ERR_SYS_WOW64_DISABLE_FSREDIRECT>
+		<ERR_SYS_WOW64_REVERT_FSREDIRECT>Отказ при восстановлении перенаправления файловой системы.</ERR_SYS_WOW64_REVERT_FSREDIRECT>
+		<ERR_SYS_WOW64_NOREVERTFSPOINTER>Ошибка, недопустимое значение перенаправления восстановления файловой системы.</ERR_SYS_WOW64_NOREVERTFSPOINTER>
+		<ERR_SYS_WOW64_INITIALIZE_MANAGER>Не удалось инициализировать Wow64 менеджер.</ERR_SYS_WOW64_INITIALIZE_MANAGER>
+		<ERR_TXT_OPENING_TEXTFILE>Не удалось открыть текстовый файл.</ERR_TXT_OPENING_TEXTFILE>
+		<ERR_TXT_FILE_TOO_LARGE>Текстовый файл слишком велик для чтения.</ERR_TXT_FILE_TOO_LARGE>
+		<ERR_TXT_SAVING>Ошибка, не удалось сохранить текстовый файл.</ERR_TXT_SAVING>
+		<ERR_WND_INVALID_HANDLE>Ошибка, неверный дескриптор окна.</ERR_WND_INVALID_HANDLE>
+		<ERR_WND_HIDE_WINDOW>Ошибка, не удалось скрыть окно.</ERR_WND_HIDE_WINDOW>
+		<ERR_WND_MAXIMIZE_WINDOW>Ошибка, не удалось развернуть окно.</ERR_WND_MAXIMIZE_WINDOW>
+		<ERR_WND_MINIMIZE_WINDOW>Ошибка, не удалось свернуть окно.</ERR_WND_MINIMIZE_WINDOW>
+		<ERR_WND_RESTORE_WINDOW>Ошибка, не удалось восстановить окно.</ERR_WND_RESTORE_WINDOW>
+		<ERR_WND_SHOW_WINDOW>Ошибка, не удалось отобразить окно.</ERR_WND_SHOW_WINDOW>
+		<ERR_DRV_EJECT>Ошибка, не удалось извлечь диск, данная функция не поддерживается.</ERR_DRV_EJECT>
+		<ERR_DRV_CALCULATING_FREE_SPACE>Ошибка, не удалось вычислить размер свободного пространства.</ERR_DRV_CALCULATING_FREE_SPACE>
+		<ERR_DRV_CALCULATING_TOTAL_SIZE>Ошибка, не удалось вычислить общий размер пространства.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+		<ERR_DRV_CALCULATING_USED_SPACE>Ошибка, не удалось вычислить размер используемого пространства.</ERR_DRV_CALCULATING_USED_SPACE>
+		<ERR_FLD_CREATE_FOLDER>Не удалось создать папку.</ERR_FLD_CREATE_FOLDER>
+		<ERR_FLD_FOLDER_DOES_NOT_EXIST>Указанной папки не существует.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+		<ERR_FLD_PATH>Выбранный путь не указывает на папку.</ERR_FLD_PATH>
+		<ERR_FLD_DELETE>Не удалось удалить папку.</ERR_FLD_DELETE>
+		<ERR_FLD_SET_CURRENT>Не удалось изменить текущую папку.</ERR_FLD_SET_CURRENT>
+		<ERR_FLD_DESTINATION_EXISTS>Итоговая папка уже существует.</ERR_FLD_DESTINATION_EXISTS>
+		<ERR_FLD_NAME_HAS_INVALID_CHAR>Имя папки содержит недопустимые символы.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+		<ERR_FLD_DELETE_BASE>Не удалось удалить основную папку.</ERR_FLD_DELETE_BASE>
+		<ERR_SHL_CREATE_FOLDER>Не удалось создать папку для ярлыка.</ERR_SHL_CREATE_FOLDER>
+		<ERR_SHL_CREATE_LINK>Не удалось создать ссылку для ярлыка.</ERR_SHL_CREATE_LINK>
+		<ERR_SHL_DESCRIPTION_TOO_LONG>Ошибка, описание ярлыка превышает 250 символов.</ERR_SHL_DESCRIPTION_TOO_LONG>
+		<ERR_SHL_DELETE_SHORTCUT>Не удалось удалить ярлык.</ERR_SHL_DELETE_SHORTCUT>
+		<ERR_SHL_UNKNOWN_SHELL_FOLDER>Неизвестная папка оболочки.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+		<ERR_SHL_INVALID_FOLDER>Недопустимый возврат папки.</ERR_SHL_INVALID_FOLDER>
+		<ERR_DLL_LOAD>Ошибка загрузки указанного DLL файла.</ERR_DLL_LOAD>
+		<ERR_DLL_FIND_FUNCTION>Указанная функция не найдена в DLL файле.</ERR_DLL_FIND_FUNCTION>
+		<ERR_WEB_CREATE_INTERNET_SESSION>Не удалось открыть сеанс связи с Интернетом.</ERR_WEB_CREATE_INTERNET_SESSION>
+		<ERR_WEB_CREATE_HTTP_CONNECTION>Не удалось открыть соединение HTTP.</ERR_WEB_CREATE_HTTP_CONNECTION>
+		<ERR_WEB_OPEN_REQUEST>Не удалось создать запрос.</ERR_WEB_OPEN_REQUEST>
+		<ERR_WEB_SEND_REQUEST>Посылка запроса не удалась.</ERR_WEB_SEND_REQUEST>
+		<ERR_WEB_DESTINATION_FILE_OPEN>Не удалось открыть файл для записи.</ERR_WEB_DESTINATION_FILE_OPEN>
+		<ERR_WEB_INVALID_HTTP_RESPONSE>Неверный HTTP-ответ от сервера.</ERR_WEB_INVALID_HTTP_RESPONSE>
+		<ERR_WEB_DOWNLOAD_FILE_ERROR>Ошибка при загрузке информации с сервера.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+		<ERR_WEB_FILE_WRITE>Ошибка при попытке записи в конечный файл.</ERR_WEB_FILE_WRITE>
+		<ERR_WEB_USER_ABORT>Пользователь отменил процедуру HTTP.</ERR_WEB_USER_ABORT>
+		<ERR_WEB_WRITE_MEMORY>Произошла ошибка при попытке записи. (Недостаточно памяти?)</ERR_WEB_WRITE_MEMORY>
+		<ERR_WEB_SET_PROXY_USERNAME>Произошла ошибка при попытке установить имя пользователя для соединения через прокси.</ERR_WEB_SET_PROXY_USERNAME>
+		<ERR_WEB_SET_PROXY_PASSWORD>Произошла ошибка при попытке установить пароль для соединения через прокси.</ERR_WEB_SET_PROXY_PASSWORD>
+		<ERR_WEB_400>Данный запрос не распознается сервером (неверный синтаксис).</ERR_WEB_400>
+		<ERR_WEB_403>Доступ запрещен.</ERR_WEB_403>
+		<ERR_WEB_404>Запрошенный адрес не найден на сервере.</ERR_WEB_404>
+		<ERR_WEB_500>Произошла внутренняя ошибка сервера.</ERR_WEB_500>
+		<ERR_WEB_503>Сервер переполнен.</ERR_WEB_503>
+		<ERR_DLG_REGISTER_CREATE_SPLASH>Не удалось зарегистрировать класс окна для создания всплывающего диалога.</ERR_DLG_REGISTER_CREATE_SPLASH>
+		<ERR_DLG_CREATE_IMAGE>Не удалось создать образ всплывающего диалога.</ERR_DLG_CREATE_IMAGE>
+		<ERR_APP_PAGE_NAME>Ошибка при получении имени текущей страницы диалога. Страница отсутствует.</ERR_APP_PAGE_NAME>
+		<ERR_APP_LOAD_VALUE>Не удалось загрузить значение.</ERR_APP_LOAD_VALUE>
+		<ERR_APP_SAVE_VALUE>Не удалось сохранить значение.</ERR_APP_SAVE_VALUE>
+		<ERR_APP_WND_HANDLE>Ошибка, не удалось получить дескриптор окна программы.</ERR_APP_WND_HANDLE>
+		<ERR_PACKAGE_NOT_FOUND>Компонент не найден.</ERR_PACKAGE_NOT_FOUND>
+		<ERR_FCN_INTERNAL_ERROR>Внутренняя ошибка при выполнении указанной функции.</ERR_FCN_INTERNAL_ERROR>
+		<ERR_FCN_RUNTIME_ERROR>Ошибка выполнения программы при обращении к функции.</ERR_FCN_RUNTIME_ERROR>
+		<ERR_FCN_MEMORY_ALLOCATION_ERROR>Ошибка распределения памяти при обращении к функции.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+		<ERR_STR_INVALID_INDEX>Указан неверный индекс. Индекс должен быть больше или равен -1.</ERR_STR_INVALID_INDEX>
+		<ERR_STR_LONG_PATH>Указанный путь длиннее, чем MAX_PATH, или 260 символов.</ERR_STR_LONG_PATH>
+		<ERR_INVALID_UNINSTALL_CONFIGFILE>Неверный конфигурационный файл удаления.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+		<ERR_INVALID_TABLE_DATA>Неверные данные из таблицы.</ERR_INVALID_TABLE_DATA>
+		<ERR_ACTION_NOTATUNINSTALL>Во время удаления операция недоступна.</ERR_ACTION_NOTATUNINSTALL>
+		<ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Не удается найти указанную категорию.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+		<ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Не удалось установить свойства указанной категории.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+		<ERR_SETUP_EXPIRED>Срок действия установки закончился, поэтому процесс будет прерван.</ERR_SETUP_EXPIRED>
+		<ERR_SETUP_USES>Количество запусков установки превысило максимально разрешенное число, поэтому процесс будет прерван.</ERR_SETUP_USES>
+		<ERR_SETUP_USES_NOREG>Программе установки не удалось выполнить запись данных в реестр, поэтому процесс будет прерван.</ERR_SETUP_USES_NOREG>
+		<ERR_MATH_VALUE_NOT_VALID>Указанное значение неверно для данной функции.</ERR_MATH_VALUE_NOT_VALID>
+		<ERR_INVALID_SERIAL>Неверный серийный номер.</ERR_INVALID_SERIAL>
+		<ERR_DRV_GETTING_VOLUME_INFO>Ошибка при получении информации о томе.</ERR_DRV_GETTING_VOLUME_INFO>
+		<ERR_SCROLLING_TEXT_INVALID_MODE>Недопустимый режим текстовой прокрутки.</ERR_SCROLLING_TEXT_INVALID_MODE>
+		<ERR_PATH_INVALID_CHARACTERS>Путь не может содержать следующие символы: / * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+		<ERR_NO_SCREEN_DISPLAYED>Нет ни одной страницы диалога на текущем экране.</ERR_NO_SCREEN_DISPLAYED>
+		<ERR_SCREEN_JUMP>Ошибка при переходе на другую страницу диалога.</ERR_SCREEN_JUMP>
+		<ERR_SERVICE_ITERATE_FAILED>Ошибка при попытке выполнить служебную операцию.</ERR_SERVICE_ITERATE_FAILED>
+		<ERR_SERVICE_QUERY_FAILED>Ошибка при запросе к служебной программе.</ERR_SERVICE_QUERY_FAILED>
+		<ERR_SERVICE_NOT_FOUND>Данная служебная программа не найдена.</ERR_SERVICE_NOT_FOUND>
+		<ERR_SERVICE_CONTINUE_FAILED>Ошибка процедуры продолжения.</ERR_SERVICE_CONTINUE_FAILED>
+		<ERR_SERVICE_STOP_FAILED>Ошибка процедуры остановки.</ERR_SERVICE_STOP_FAILED>
+		<ERR_SERVICE_START_FAILED>Ошибка процедуры начала.</ERR_SERVICE_START_FAILED>
+		<ERR_SERVICE_PAUSE_FAILED>Ошибка процедуры паузы.</ERR_SERVICE_PAUSE_FAILED>
+		<ERR_SERVICE_DELETE_FAILED>Ошибка процедуры удаления.</ERR_SERVICE_DELETE_FAILED>
+		<ERR_SERVICE_CREATE_FAILED>Ошибка процедуры создания.</ERR_SERVICE_CREATE_FAILED>
+		<ERR_SERVICE_ACCESS_DENIED>Дескриптор указанной управляющей базы данных недоступен.</ERR_SERVICE_ACCESS_DENIED>
+		<ERR_SERVICE_CIRCULAR_DEPENDENCY>Была обнаружена циклическая зависимость служебной программы.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+		<ERR_SERVICE_DUP_NAME>Данное имя дисплея уже существует в управляющей базе данных, либо как имя служебной программы, либо как другое имя дисплея.</ERR_SERVICE_DUP_NAME>
+		<ERR_SERVICE_INVALID_HANDLE>Дескриптор указанной управляющей базы данных неверен.</ERR_SERVICE_INVALID_HANDLE>
+		<ERR_SERVICE_INVALID_NAME>Указанное имя служебной программы неверно.</ERR_SERVICE_INVALID_NAME>
+		<ERR_SERVICE_INVALID_PARAMETER>Указанный параметр неверен.</ERR_SERVICE_INVALID_PARAMETER>
+		<ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Указанное имя пользователя не найдено.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+		<ERR_SERVICE_SERVICE_EXISTS>Указанная служебная программа уже существует в этой базе данных.</ERR_SERVICE_SERVICE_EXISTS>
+		<ERR_ODBC_GENERAL>Общая ошибка ODBC.</ERR_ODBC_GENERAL>
+		<ERR_ODBC_INVALID_BUFF_LEN>Недопустимый размер буфера.</ERR_ODBC_INVALID_BUFF_LEN>
+		<ERR_ODBC_INVALID_HWND>Недопустимое значение hWnd.</ERR_ODBC_INVALID_HWND>
+		<ERR_ODBC_INVALID_STR>Недопустимое строковое значение.</ERR_ODBC_INVALID_STR>
+		<ERR_ODBC_INVALID_REQUEST_TYPE>Неверный указанный тип запроса.</ERR_ODBC_INVALID_REQUEST_TYPE>
+		<ERR_ODBC_COMPONENT_NOT_FOUND>Данный компонент не найден в реестре.</ERR_ODBC_COMPONENT_NOT_FOUND>
+		<ERR_ODBC_INVALID_NAME>Неверный параметр драйвера, он не найден в реестре.</ERR_ODBC_INVALID_NAME>
+		<ERR_ODBC_INVALID_KEYWORD_VALUE>Недопустимое значение пары keyword=name.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+		<ERR_ODBC_INVALID_DSN>Неверный DSN.</ERR_ODBC_INVALID_DSN>
+		<ERR_ODBC_INVALID_INF>Неверный INF.</ERR_ODBC_INVALID_INF>
+		<ERR_ODBC_REQUEST_FAILED>Ошибка в параметре запроса при выполнении операции.</ERR_ODBC_REQUEST_FAILED>
+		<ERR_ODBC_INVALID_PATH>Указан неверный путь.</ERR_ODBC_INVALID_PATH>
+		<ERR_ODBC_LOAD_LIBRARY_FAILED>Ошибка при попытке загрузить драйвер или библиотеку перевода.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+		<ERR_ODBC_INVALID_PARAM_SEQUENCE>Использован недопустимый список значений для пары keyword=name.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+		<ERR_ODBC_INVALID_LOG_FILE>Ошибка лог-файла.</ERR_ODBC_INVALID_LOG_FILE>
+		<ERR_ODBC_USER_CANCELED>Запрос был отменен конечным пользователем.</ERR_ODBC_USER_CANCELED>
+		<ERR_ODBC_USAGE_UPDATE_FAILED>Ошибка при попытке увеличить или уменьшить число используемых компонентов.</ERR_ODBC_USAGE_UPDATE_FAILED>
+		<ERR_ODBC_CREATE_DSN_FAILED>Ошибка создания DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+		<ERR_ODBC_WRITING_SYSINFO_FAILED>Ошибка записи sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+		<ERR_ODBC_REMOVE_DSN_FAILED>Ошибка удаления DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+		<ERR_ODBC_OUT_OF_MEM>Ошибка процедуры из-за нехватки памяти.</ERR_ODBC_OUT_OF_MEM>
+		<ERR_ODBC_OUTPUT_STRING_TRUNCATED>Строка вывода была сокращена.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+		<ERR_ODBC_DLL_LOAD_FAILED>Ошибка при загрузке ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+		<ERR_ODBC_GET_PROC_FAILED>Ошибка в команде GetProc.</ERR_ODBC_GET_PROC_FAILED>
+		<ERR_DLG_SILENT_MODE>Не удалось отобразить диалоги в течении фоновой установки или удалении.</ERR_DLG_SILENT_MODE>
+		<ERR_INVALID_PATH>Выбранный путь неверен.</ERR_INVALID_PATH>
+		<ERR_FIELD_CANNOT_BE_EMPTY>Данное поле не может быть пустым.</ERR_FIELD_CANNOT_BE_EMPTY>
+		<ERR_INVALID_CHARACTERS>Не разрешается использовать следующие символы:</ERR_INVALID_CHARACTERS>
+		<ERR_CRYPTO_INVALID_BASE64_STRING>Строка не содержит допустимые base-64 кодированные данные.</ERR_CRYPTO_INVALID_BASE64_STRING>
+		<ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Ошибка при попытке расшифровать base-64 кодированный текст (возможно, что текст поврежден - недостающие байты в тексте?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+		<ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Неверный заголовок файла - это не шифрованный файл Indigo Rose.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+		<ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Несовместимый шифр файла. (Файл либо поврежден, либо использует несовместимую схему замещения блоков.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+		<ERR_XML_LOAD_FAILED>Ошибка загрузки файла XML.</ERR_XML_LOAD_FAILED>
+		<ERR_XML_SAVE_FAILED>Ошибка сохранения файла XML.</ERR_XML_SAVE_FAILED>
+		<ERR_XML_NOT_WELL_FORMED>Не загружен XML документ. (Документ пуст или в имеет неверный формат.)</ERR_XML_NOT_WELL_FORMED>
+		<ERR_XML_INVALID_PATH>Указанный XML-путь неверен или не найден.</ERR_XML_INVALID_PATH>
+		<ERR_XML_SET_VALUE_FAILED>Ошибка при попытке задать значение.</ERR_XML_SET_VALUE_FAILED>
+		<ERR_XML_SET_ATTRIBUTE_FAILED>Ошибка при попытке задать атрибут.</ERR_XML_SET_ATTRIBUTE_FAILED>
+		<ERR_XML_INVALID_ATTRIBUTE_NAME>Неверное имя атрибута. (Имена атрибутов не могут содержать пробелы.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+		<ERR_XML_REMOVE_ELEMENT_FAILED>Не удается удалить указанный элемент.</ERR_XML_REMOVE_ELEMENT_FAILED>
+		<ERR_XML_REMOVE_ATTRIBUTE_FAILED>Не удается удалить указанный атрибут.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+		<ERR_XML_NO_ELEMENTS>Нет элементов по указанному XML-пути.</ERR_XML_NO_ELEMENTS>
+		<ERR_XML_NO_ATTRIBUTES>Элемент по указанному XML-пути не имеет никаких атрибутов.</ERR_XML_NO_ATTRIBUTES>
+		<ERR_XML_INSERT_FAILED>Ошибка при попытке вставить XML.</ERR_XML_INSERT_FAILED>
+		<ERR_XML_INVALID_INSERTION_MODE>Неверный режим вставки.</ERR_XML_INVALID_INSERTION_MODE>
+		<ERR_MSI_MSINOTINSTALLED>Ошибка при загрузке MSI.DLL. Сервис Windows Installer не установлен.</ERR_MSI_MSINOTINSTALLED>
+		<ERR_MSI_FUNCTIONNOTFOUND>Ошибка при загрузке функции из MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+		<ERR_MSI_INSTALL_USEREXIT>Пользователь отменил установку.</ERR_MSI_INSTALL_USEREXIT>
+		<ERR_MSI_INSTALL_FAILURE>В процессе установки произошла фатальная ошибка.</ERR_MSI_INSTALL_FAILURE>
+		<ERR_MSI_INSTALL_SUSPEND>Установка отложена, не завершена.</ERR_MSI_INSTALL_SUSPEND>
+		<ERR_MSI_UNKNOWN_PRODUCT>Ошибка - неизвестная программа.</ERR_MSI_UNKNOWN_PRODUCT>
+		<ERR_MSI_UNKNOWN_FEATURE>Ошибка - неизвестная функция.</ERR_MSI_UNKNOWN_FEATURE>
+		<ERR_MSI_UNKNOWN_COMPONENT>Ошибка - неизвестный компонент.</ERR_MSI_UNKNOWN_COMPONENT>
+		<ERR_MSI_UNKNOWN_PROPERTY>Ошибка - неизвестное свойство.</ERR_MSI_UNKNOWN_PROPERTY>
+		<ERR_MSI_INVALID_HANDLE_STATE>Дескриптор имеет недопустимое состояние.</ERR_MSI_INVALID_HANDLE_STATE>
+		<ERR_MSI_BAD_CONFIGURATION>Неверные конфигурационные данные MSI.</ERR_MSI_BAD_CONFIGURATION>
+		<ERR_MSI_INDEX_ABSENT>Отсутствует описание компонента.</ERR_MSI_INDEX_ABSENT>
+		<ERR_MSI_INSTALL_SOURCE_ABSENT>Недоступен источник установки для данной программы.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+		<ERR_MSI_PRODUCT_UNINSTALLED>Программа удалена.</ERR_MSI_PRODUCT_UNINSTALLED>
+		<ERR_MSI_BAD_QUERY_SYNTAX>Синтаксис SQL-запроса недопустим или не поддерживается.</ERR_MSI_BAD_QUERY_SYNTAX>
+		<ERR_MSI_INVALID_FIELD>Данное поле записи не существует.</ERR_MSI_INVALID_FIELD>
+		<ERR_MSI_INSTALL_SERVICE_FAILURE>Не удается получить доступ к сервису Windows Installer.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+		<ERR_MSI_INSTALL_PACKAGE_VERSION>Ошибка версии пакета.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+		<ERR_MSI_INSTALL_ALREADY_RUNNING>Другая установка уже запущена.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+		<ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>Не удалось открыть этот пакет установки.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+		<ERR_MSI_INSTALL_PACKAGE_INVALID>Не удалось открыть этот пакет установки, возможно он ошибочный.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+		<ERR_MSI_INSTALL_UI_FAILURE>Ошибка при запуске пользовательского интерфейса Windows Installer.</ERR_MSI_INSTALL_UI_FAILURE>
+		<ERR_MSI_INSTALL_LOG_FAILURE>Ошибка при открытии лог-файла установки.</ERR_MSI_INSTALL_LOG_FAILURE>
+		<ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>Языковой модуль этого пакета установки не поддерживается вашей операционной системой.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+		<ERR_MSI_INSTALL_PACKAGE_REJECTED>Установка запрещена системной политикой безопасности.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+		<ERR_MSI_FUNCTION_NOT_CALLED>Не удается выполнить функцию.</ERR_MSI_FUNCTION_NOT_CALLED>
+		<ERR_MSI_FUNCTION_FAILED>Ошибка при выполнении функции.</ERR_MSI_FUNCTION_FAILED>
+		<ERR_MSI_INVALID_TABLE>Была определена недопустимая или неизвестная таблица.</ERR_MSI_INVALID_TABLE>
+		<ERR_MSI_DATATYPE_MISMATCH>Получены данные ошибочного типа.</ERR_MSI_DATATYPE_MISMATCH>
+		<ERR_MSI_UNSUPPORTED_TYPE>Данные этого типа не поддерживаются.</ERR_MSI_UNSUPPORTED_TYPE>
+		<ERR_MSI_CREATE_FAILED>Ошибка при запуске сервиса Windows Installer.</ERR_MSI_CREATE_FAILED>
+		<ERR_MSI_INSTALL_TEMP_UNWRITABLE>Папка "Temp" либо полна, либо недоступна.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+		<ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>Этот пакет установки не поддерживается данной платформой.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+		<ERR_MSI_INSTALL_NOTUSED>Установленный компонент не используется на этом компьютере.</ERR_MSI_INSTALL_NOTUSED>
+		<ERR_MSI_INSTALL_TRANSFORM_FAILURE>Произошла ошибка при внесении изменений.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+		<ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>Не удалось открыть этот пакет исправлений.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+		<ERR_MSI_PATCH_PACKAGE_INVALID>Не удалось открыть этот пакет исправлений, возможно он ошибочный.</ERR_MSI_PATCH_PACKAGE_INVALID>
+		<ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>Этот пакет исправлений не удалось обработать с помощью сервиса Windows Installer или он не поддерживается.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+		<ERR_MSI_PRODUCT_VERSION>Другая версия этой программы уже установлена.</ERR_MSI_PRODUCT_VERSION>
+		<ERR_MSI_INVALID_COMMAND_LINE>Неверный аргумент командной строки.</ERR_MSI_INVALID_COMMAND_LINE>
+		<ERR_MSI_INSTALL_REMOTE_DISALLOWED>Установка через сессию клиента терминального сервера для данного пользователя не разрешена.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+		<ERR_MSI_SUCCESS_REBOOT_INITIATED>Программа установки инициировала перезапуск.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+		<ERR_MSI_PATCH_TARGET_NOT_FOUND>Программа установки не может установить пакет обновлений, потому что обновляемая программа, либо не найдена, либо данный пакет предназначен для другой версии программы.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+		<ERR_MSI_PATCH_PACKAGE_REJECTED>Установка данного пакет исправлений не разрешена системной политикой безопасности.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+		<ERR_MSI_INSTALL_TRANSFORM_REJECTED>Одна или более пользовательских настроек не разрешены системной политикой безопасности.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+		<ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer не разрешает установку с удаленного рабочего стола.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+		<ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>Данный пакет исправлений не является пакетом исправлений, который можно удалять.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+		<ERR_MSI_UNKNOWN_PATCH>Данный пакет исправлений не может быть применен к данной программе. Неизвестный пакет.</ERR_MSI_UNKNOWN_PATCH>
+		<ERR_MSI_PATCH_NO_SEQUENCE>Не найдена правильная последовательность набора пакетов исправлений.</ERR_MSI_PATCH_NO_SEQUENCE>
+		<ERR_MSI_PATCH_REMOVAL_DISALLOWED>Удаление пакета исправлений было запрещено системной политикой безопасности.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+		<ERR_MSI_INVALID_PATCH_XML>Данные пакета исправлений XML ошибочны.</ERR_MSI_INVALID_PATCH_XML>
+		<ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Администратор не смог установить пакет исправлений для выделенной программы в профиле пользователя или в профиле компьютера.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+		<ERR_MSI_INVALID_PARAMETER>Функции был передан ошибочный параметр.</ERR_MSI_INVALID_PARAMETER>
+		<ERR_MSI_MORE_DATA>Буфер слишком мал для хранения всех данных.</ERR_MSI_MORE_DATA>
+		<ERR_MSI_SUCCESS_REBOOT_REQUIRED>Требуется перезапуск для завершения процесса установки.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+		<ERR_ARCHIVE_CREATE_DEST_FOLDER>Ошибка при создании целевой директории.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+		<ERR_ARCHIVE_FIND_FILE>Файл в архиве не найден.</ERR_ARCHIVE_FIND_FILE>
+		<ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Ошибка при извлечении несжатого файла из архива.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+		<ERR_ARCHIVE_EXTRACT_COMPRESSED>Ошибка при извлечении сжатого файла из архива.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+		<ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Ошибочный путь командной строки EXTRACTMSI.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+		<ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Ошибка при запуске скрипта общих функций.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+		<ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Ошибка при запуске программы установки, неверная командная строка MSIExec.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+		<ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Ошибка при запуске программы установки.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+		<ERR_SCRIPT_MSI_FILE_NOT_FOUND>Файл установки не найден.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+		<ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Ошибочный адрес загрузки установки.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+		<ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Ошибка при загрузке файла установки.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+		<ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Ошибка при создании каталога начальной загрузки.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER> 
+		<ERR_SCRIPT_EXTRACT_SETUP_FAILED>Ошибка при извлечении файлов установки.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+		<ERR_MSI_FILE_INVALID>Ошибка в файле MSI, либо неверное описание параметров версии.</ERR_MSI_FILE_INVALID>
+		<ERR_MSI_INVALID_DATA>Файл MSI содержит недопустимые данные.</ERR_MSI_INVALID_DATA>
+		<ERR_MSI_FAIL>Произошла неизвестная ошибка.</ERR_MSI_FAIL>
+		<ERR_MSI_INVALID_HANDLE>Используется ошибочный дескриптор.</ERR_MSI_INVALID_HANDLE>
+		<ERR_FILE_EXECUTION_FAILED_ELEVATION>Ошибка при выполнении файла, требуются повышенные права.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+	</Messages>
+</SUF70Messages>

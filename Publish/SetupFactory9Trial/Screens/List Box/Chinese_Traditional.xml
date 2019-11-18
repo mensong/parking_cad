@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Chinese (Traditional)</Name>
+<Default>0</Default>
+<Primary>4</Primary>
+<Secondary>
+<ID>1</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ¦w¸Ëµ{¦¡</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>¿ï¶µ</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>¿ï¾Ü¤@­Ó¶µ¥Ø¨Ã«ö¤U¤@¨BÄ~Äò</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&¤U¤@¨B &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &ªð¦^</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&¨ú®ø</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&À°§U</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>½Ð¦b¤U¦C¿ï¾Ü¤@­Ó¶µ¥Ø: </IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_LISTBOX>¥ÛÀY
+¥¬
+°Å¤M</IDS_CTRL_LISTBOX>
+</Messages>
+</SUF70Messages>

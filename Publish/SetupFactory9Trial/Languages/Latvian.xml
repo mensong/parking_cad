@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+<Name>Latvian</Name>
+<Primary>38</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+      <MSG_SUCCESS>Veiksmîgi pabeigts</MSG_SUCCESS>
+      <MSG_ERROR>Kïûda</MSG_ERROR>
+      <MSG_NOTICE>Ziòojums</MSG_NOTICE>
+      <MSG_WARNING>brîdinâjums</MSG_WARNING>
+      <MSG_YES>Jâ</MSG_YES>
+      <MSG_NO>Nç</MSG_NO>
+      <MSG_YES_TOALL>Jâ visiem</MSG_YES_TOALL>
+      <MSG_TO>Kam</MSG_TO>
+      <MSG_FROM>No</MSG_FROM>
+      <MSG_BROWSE>Pârlûkot...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Atcelt</MSG_CANCEL>
+      <MSG_PATH>Ceïð</MSG_PATH>
+      <MSG_SEARCH_MASK>Meklçðana</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Visi faili</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Meklçt failu</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>baiti</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Apstiprinât</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Programmas instalâcija nav pabeigta! Vai jûs tieðâm vçlaties pârtraukt procesu?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Vai jûs esiet pârliecinâts, ka vçlaties turpinât instalâciju?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Uz izvçlçtâ diska nepietiek vietas, lai uzstâdîtu %ProductName% .</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Kopçðana</MSG_COPYING>
+      <MSG_DELETING>Dzçðana</MSG_DELETING>
+      <MSG_SEARCHING>Meklçðana</MSG_SEARCHING>
+      <MSG_MOVING>Pârvietoðana</MSG_MOVING>
+      <MSG_SAVING>Saglabâðana</MSG_SAVING>
+      <MSG_INSERTDISK>Ievietojiet disku</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Lejupielâde</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Lejupielâdç failu...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Lejupielâdç failu, kopçjais izmçrs nav zinâms.Lejupielâdçts Kb: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Nosaka hosta vârdu.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Hosta vârds noteikts.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Pieslçdzos serverim.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Pieslçgts serverim.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Pârtraucu savienojumu ar serveri.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Pârtraukts savienojums ar serveri.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Pieprasîjums izpildîts.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Pâradresâcija.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Atlikuðais aprçíinâtais laiks</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/Sec</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Inicializâcija...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Uzstâdîðana...</MSG_INSTALLING>
+      <MSG_SKIPPING>Izlaiðana...</MSG_SKIPPING>
+      <MSG_SEEKING>Meklçðana...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Nepreizs datu ievads</MSG_INVALID_ENTRY>
+      <MSG_THE>Ðis </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> lauks nevar bût neaizpildîts.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Sagatavoðanâs uzstâdîðanai...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Uzstâdu failus...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Atinstalçðanas programmas izveidoðana...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Îsinâjumikonu Veidoðana...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Pârbauda faila stâvokli...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Pârbauda mapes piekïuves atïaujas...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Pârbauda brîvo vietu uz diska...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Failu dzçðana...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Îsinâjumikonu dzçðana...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Veido atinstalçðanas programmas datu mapi...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Veido atinstalçðanas programmas datu failu...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Veido atinstalçðanas programmas kontroles failu...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Veido atinstalçðanas programmu...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Ekrâna izskata failu kopçðana...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Spraudòu (plugins) kopçðana...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Atbalsta failu kopçðana...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Kontroles paneïa elementa izveide...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Veido atinstalçðanas programmas îsinâjumikonu...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Nezinâms</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Neviens</MSG_OS_NONE>
+      <MSG_OS_ALL>Visas</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(bez SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(vai jaunâka)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Programmas uzstâdîðanai nav izpildîtas sekojoðas minimâlâs sistçmas prasîbas:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Operçtâjsistçma</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>Operatîvâ atmiòa</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Ekrâna platums</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Ekrâna augstums</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Krâsu piesâtinâtîba</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Lietotâja tiesîbas</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administrators</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Programmas uzstâdîðana tûlît tiks pârtraukta.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Spiediet uz pogas OK, lai turpinâtu vai uz pogas Atcelt, lai pârtrauktu programmas uzstâdîðanu.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Pçc papildus informâcijas lûdzu griezties:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Ðis programmas uzstâdîjums ir derîgs</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>dienas un tas nedarbosies pçc ðî termiòa beigâm.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Ðo programmas uzstâdîjumu var palaist</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>reizes lîdz tam beigsies derîgums.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Lûdzu ievietojiet disku #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Ja faili no ðî diska var atrasties citâ vietâ, piemçram, uz cita diska, ievadiet pilnu ceïu vai nospiediet pogu Pârlûkot, lai norâdîtu ceïu lîdz tiem.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Uzstâdîðanas programma mçìina ierakstît failu, bet fails ar ðâdu nosaukumu jau atrodas jûsu sistçmâ.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Uzstâdîðanas programma mçìina ierakstît failu, bet JAUNÂKS fails ar ðâdu nosaukumu jau atrodas jûsu sistçmâ.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Vai jûs tieðâm vçlaties pârrakstît sekojoðo failu?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Sekojoðais fails paðlaik tiek lietots un nevar tikt atjauninâts:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Aizveriet visas citas programmas un nospiediet pogu Atkârtot. Spiediet uz pogas Atcelt, lai uzstâdîtu ðo failu pçc sistçmas pârstartçðanas.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Vai jûs vçlaties pârrakstît sekojoðo failu?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Uzstâdîðanas programma vçlas ierakstît failu, bet fails ar ðâdu nosaukumu jau atrodas jûsu sistçmâ.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Uzstâdîðanas programma mçìina ierakstît failu, bet JAUNÂKS fails ar ðâdu nosaukumu jau atrodas jûsu sistçmâ.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Uzstâdîðanas programma nevar pârstartçt sistçmu. Aizveriet visas atvçrtâs programmas un nospiediet pogu Atkârtot.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Ðis fails tiek izmantots un nevar tikt dzçsts. Aizveriet to un nospiediet pogu Atkârtot atkârtotam mçìinâjumam. Spiediet pogu Ignorçt, lai turpinâtu un dzçstu ðo failu pçc sistçmas pârstartçðanas. Spiediet pogu Atcelt, lai pârtrauktu programmas atinstalçðanu.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Ðo failu nav iespçjams izdzçst. Spiediet pogu Atkârtot atkârtotam mçìinâjumam. Spiediet pogu Ignorçt, lai turpinâtu un dzçstu ðo failu pçc sistçmas pârstartçðanas. Spiediet pogu Atcelt, lai pârtrauktu programmas atinstalçðanu.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Atinstalçðanas programma dzçsîs sekojoðu koplietoðanas sistçmas failu:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Nav atrasta neviena programma, kura ir reìistrçta tâ izmantoðanai, bet nav izslçgta iespçja, ka tas vajadzîgs kâdas citas programmas darbam.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Vai drîkst dzçst ðo failu?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Sistçmas pârstartçðana neizdevâs. Aizveriet visas atvçrtâs programmas un nospiediet pogu Atkârtot.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Jums ir nepiecieðams pârstartçt datoru, lai pabeigtu programmas uzstâdîðanu. Vai jûs gribat pârstartçt sistçmu ðobrîd?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Jums ir nepiecieðams pârstartçt datoru, lai pabeigtu atinstalçðanu. Vai jûs gribat pârstartçt sistçmu ðobrîd?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Lûdzu, izvçlieties punktu no saraksta.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Nepiecieðamâ vieta uz diska:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Brîva vieta uz diska:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Nevaru izveidot þurnâla failu: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Arhîva integritâtes pârbaude nav izdevusies. Uzstâdîðanas process nav pabeigts, iespçjams nepilnîgi lejupielâdçta vai bojâta faila dçï.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Lûdzu, pârliecinieties vai disks atrodas disku lasîtâjâ! Nevaru atrast sekojoðu failu:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Neizdodas ielâdçt plaginu</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Uzstâdîðanas programma nevar atvçrt sekojoðo arhîva failu (Iespçjams, jûs ielikât neîsto disku)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Uzstâdîðanas programmai nepietiek vietas, lai dekompresçtu failus. Programmas uzstâdîðana tiks pârtraukta.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Uzstâdîðanas programma nevar izveidot sekojoðo mapi:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Notikusi dekompresçðanas procesa kïûda</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Nevaru atvçrt rezultâta failu</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Nevaru atvçrt datu ievades failu</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Lasîðanas/Rakstîðanas kïûda</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>Faila kontrolsummas(CRC) neatbilstîba - Datu integritâtes kïûda</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disks ir pilns.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Nezinâma dekompresçðanas kïûda</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Kïûda izlaiþot failu</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Atmiòas lokalizâcijas kïûda</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Faila nolasîðanas kïûda</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Faila rakstîðanas kïûda</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Nezinâma faila kopçðanas kïûda</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Nevaru izveidot atinstalçðanas elementu</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Kïûda LoadLibrary() funkcijâ</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Kïûda GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Kïûdas kods saòemts no DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Kïûda reìistrçjot komponentu COM (ActiveX):</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Kïûda reìistrçjot Tipu Bibliotçku:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Nepietiek atmiòas</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Viens vai vairâki argumeti ir kïûdaini.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Funcija nevar ierakstît datus failâ.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Nevaru atvçrt ðo Tipu Bibliotçku.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Funcija nevar nolasît datus no faila.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Ðai Tipu Bibliotçkai ir novecojis formâts.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>Nevaru atrast LCID dinamiskajâs bibliotçkâs, kas atbalsta OLE.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Nevaru ielâdçt doto Tipu vai Dinamisko(DLL) Bibliotçku.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Nevaru atvçrt sistçmas reìistrâcijas datu bâzi.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Kïûda pçc noklusçjuma FACILITY_STORAGE.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Nevaru izveidot atinstalçðanas mapi:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Nevaru izveidot atinstalçðanas datu failu:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Nevaru atvçrt nolasîðanai atinstalçðanas programmu:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Nevaru ierakstît atinstalçðanas programmu:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Nevaru ierakstît konfigurâcijas programmu:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Atinstalçðanas programma nevar bût ierakstîta, tâ kâ tâ jau tiek izmantota. Aizveriet visas atinstalçðanas programmas un spiediet pogu Atkârtot lai turpinâtu. Spiediet pogu Atcelt lai pârtrauktu.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Nevar ierakstît atinstalçðanas sadaïu sistçmas reìistrâ:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Nevar ierakstît atinstalçðanas vçrtîbas(value) sistçmas reìistrâ:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Nevar izveidot atinstalçðanas saîsinâjumikonu:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Nevar saglabât darba sesijas mainîgos</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Jums nav piekïuves tiesîbu reìistrçt koplietoðanas failus ðajâ sistçmâ. Programmas uzstâdîðanai jânorisinâs ar Administratora piekïuves tiesîbâm.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Jums nav piekïuves tiesîbu reìistrçt COM (ActiveX) komponentus ðajâ sistçmâ. Programmas uzstâdîðanai jânorisinâs ar Administratora piekïuves tiesîbâm.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Jums nav piekïuves tiesîbu reìistrçt Tipu Bibliotçkas ðajâ sistçmâ. Programmas uzstâdîðanai jânorisinâs ar Administratora piekïuves tiesîbâm.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Nav iespçjams atcelt augstâkminçtâ COM (ActiveX) komponenta reìistrâciju sistçmâ. Ðis fails netiks izdzçsts.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Nepareizs atinstalçðanas datu elementa tips.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Nav atrasts atinstalçðanas datu elements.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Nezinâma kïûda.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Neiespçjami atrast norâdîto failu.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Faila ielâde nav izdevusies.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Saglabâðana failâ nav izdevusies.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Norâdîtais ceïð nav atrasts.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>Izpildâmais fails .exe nav pareizs (nav Win32 .exe formâtâ vai kïûda .exe formâtâ).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Operçtâjsistçma nedod pieeju norâdîtajam failam.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Asociâcija ar faila vârdu ir nepabeigta vai nepareiza.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   DDE transakcija nevar bût pabeigta, tâ kâ izpildâs citas DDE transakcijas.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>DDE transakcija neizdevâs</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>DDE transakcija nevar bût pabeigta, jo ir pârsniegts gaidîðanas laiks.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Norâdîtâ dinamiskâs-saites bibliotçka nav atrasta.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Nav atrasta programma, kas atvçrtu ðo faila paplaðinâjumu. Ðâ kïûda parâdâs arî pie mçìinâjuma izdrukât failu, kuru nav iespçjams izdrukât.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Nepietiek atmiòas, lai pabeigtu operâciju.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Faila izpildîðanâs nav izdevusies.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Savstarpçjâs lietoðanas reþîma pârkâpums.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Neiespçjami noteikt programmas klases nosaukumu.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Neiespçjami noteikt programmas komandrindu.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Asociçtâ apskates programma nav izpildâmais fails.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Apskates programmas izpildâmais fails neeksistç.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Norâdîts nepareizs sâkotnçjais avots.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Norâdîts nepareizs mçríis.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Izejas fails(i) neeksistç.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Mçría mape neeksistç.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Neizdevâs nokopçt vienu vai vairâkus failus.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Neizdevâs izdzçst vienu vai vairâkus failus.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Neizdevâs saplânot dzçðanu pçc pârstartçðanas.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Neizdevâs saplânot pârvietoðanu pçc pârstartçðanas.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operâciju pârtraucis lietotâjs.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Kïûda grieþoties pie atpakaïizsaukðanas (callback) funkcijas.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Kïûda, atpakaïizsaukðanas (callback) funkcija nav atrasta.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Nav iespçjams iegût versijas informâcijas lielumu.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Nav iespçjams iegût faila versijas informâciju.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Norâdîtais faila vârds satur neatïautus simbolus.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Mçría fails jau eksistç.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Nezinâma kïûda.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Palaiðanas komanda pçc pârstartçðanâs neizdevâs, neiespçjami atvçrt reìistra sadaïu(key).</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Palaiðanas komanda pçc pârstartçðanâs neizdevâs, neiespçjami ierakstît vçrtîbu(value) reìistrâ.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Nav iespçjams izmainît faila atribûtus.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Nav iespçjams izmainît kompresçta faila atribûtus.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Nevar izveidot mçría mapi.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Nevar izveidot rezerves kopiju vienam vai vairâkiem failiem.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Nepietiek atmiòas.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Jums nav tiesîbu uzstâdît failus izvçlçtajâ mapç. Uzstâdîðanas programmu ir jâlaiþ lietotâjam ar sistçmas administratora piekïuves tiesîbâm.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Programmas uzstâdîðana nevar turpinâties, tâ kâ izvçlçtais loìiskais disks neeksistç.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Uz izvçlçtâ diska nav pietiekami daudz brîvas vietas nepiecieðamo failu uzstâdîðanai.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Uz ðîs ekrâna formas nav komponenta ar norâdîto ID.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Ðai operâcijai izvçlçtâ komponenta tips nav pareizs.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Ðâda ekrâna forma neeksistç.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Nevar atrast norâdîto komponentu.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Nevar parâdît komponentu.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Fails ir par lielu nolasîðanai.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Nevar atvçrt norâdîto failu.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Kïûda saòemot iztvçrumu (exception) no iekðçjâ komponenta.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Nav iespçjams izpildît procedûru ar nepieejamu komponentu.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Nav iespçjams parâdît statusa dialogu.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Nav iespçjams noslçpt statusa dialogu.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Nav iespçjams izmainît tekstu statusa dialogâ.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Nav iespçjams uzstâdît progresa indikatora diapazonu statusa dialogâ.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Nav iespçjams uzstâdît progresa indikatora koordinâtes statusa dialogâ.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Nav iespçjams izmainît ziòojuma tekstu statusa dialogâ.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Nav iespçjams izmainît statusa dialoga virsraksta tekstu.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Nav iespçjams iegût progresa indikatora koordinâtes.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Nav iespçjams dzçst norâdîto INI faila sadaïu.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Nav iespçjams dzçst norâdîto INI faila vçrtîbu.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Nav iespçjams izmainît norâdîto vçrtîbu.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Nav iespçjams izveidot norâdîto Reìistra sadaïu (key).</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Nav iespçjams dzçst norâdîto Reìistra sadaïu (key).</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Nav iespçjams dzçst norâdîto Reìistra vçrtîbu (value).</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Norâdîtâ Reìistra apakðsadaïa neeksistç.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Nav iespçjams iegût Reìistra apakðsadaïu nosaukumus.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Nav iespçjams iegût norâdîtâs Reìistra vçrtîbas datus.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Nav iespçjams iegût Reìistra vçrtîbas nosaukumu.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Nav iespçjams iegût Reìistra vçrtîbas tipu.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Nav iespçjams uzstâdît norâdîtâs Reìistra vçrtîbas datus.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Nav iespçjams pievienot elementu Saraksta komponentam.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Nav iespçjams ievietot elementu Saraksta komponentam.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indekss ârpus diapazona robeþâm.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Nav iespçjams iegût Operçtâjsistçmas versiju.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Nav iespçjams pârstartçt sistçmu. Nav pieejama operçtâjsistçmas versija.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Nav iespçjams pârstartçt sistçmu.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>LoadLibrary() kïûda.</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress kïûda.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Kïûdas kods, saòemts no DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Kïûda, vçrðoties pie LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Kïûda, vçrðoties pie RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Kïûda, nav aizpildîts fonta nosaukums.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Nederîgs fonta nosaukums.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Kïûda fontu pievienojot sistçmas fontu tabulai.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Kïûda fontu pievienojot sistçmas reìistrâ.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Kïûda fontu dzçðot no sistçmas fontu tabulas.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Kïûda fontu dzçðot no sistçmas reìistra.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Nav iespçjams atjaunot informâciju par lietotâju.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Norâdîtais datuma formâts nav zinâms.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Norâdîtais laika formâts nav zinâms.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Nav iespçjams noteikt valodas ID pçc noklusçjuma.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Nav iespçjams noteikt informâciju par displeju.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Serveris nevarçja pabeigt visu tipu bibliotçku reìistrâciju, kuru klases tas izmanto.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Serveris nevarçja pabeigt visu objektu klaðu reìistrâciju.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Serveris nevarçja nodzçst visus elementus no visâm tipu bibliotçkâm, kuru klases tas izmanto.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Serveris nevarçja nodzçst visus elementus no visu objektu klasçm.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Kïûdas kods, saòemts no DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Kïûda, nevar veikt sistçmas atjaunoðanu, kamçr sistçma darbojas droðajâ reþîmâ(safe mode).</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Kïûda, disks ir pilns un sistçmas atjaunoðanas process ir apturçts.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Kïûda, plânotâ failu pârsaukðanas darbîba jau pastâv.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Notikusi iekðçja kïûda.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Kïûda, nepareizs secîbas numurs.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Sistçmas atjaunoðanas serviss ir atslçgts.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Kïûda, sistçmas atjaunoðanas darbîbai atvçlçtais laiks ir beidzies.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Nav iespçjams atvçrt teksta failu.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Teksta fails ir pârâk liels, lai tiktu nolasîts.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Kïûda, nav iespçjams saglabât teksta failu.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Kïûda, loga deskriptors (window handle) ir nepareizs.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Kïûda, nav iespçjams paslçpt logu.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Kïûda, nav iespçjams palielinât logu.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Kïûda, nav iespçjams samazinât logu.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Kïûda, nav iespçjams atjaunot loga izmçru.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Kïûda, nav iespçjams parâdît logu.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Kïûda, nav iespçjams atvçrt diskdzini, ðâda darbîba netiek atbalstîta.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Kïûda, nav iespçjams aprçíinât brîvo vietu uz diska.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Kïûda, nav iespçjams aprçíinât kopçjo vietu uz diska.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Kïûda, nav iespçjams aprçíinât aizòemto vietu uz diska.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Nav iespçjams izveidot mapi.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Norâdîtâ mape neeksistç.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Izvçlçtais ceïð nenorâda uz mapi.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Nav iespçjams izdzçst mapi.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Neizdevâs norâdît esoðo mapi.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Mçría mape jau eksistç.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Mapes nosaukums satur neatïautus simbolus.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Nav iespçjams nodzçst galveno mapi.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Nav iespçjams izveidot mapi îsinâjumikonai.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Nav iespçjams izveidot norâdi uz îsinâjumikonu.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Kïûda, îsinâjumikonas apraksts pârsniedz 250 simbolus.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Nav iespçjams dzçst îsinâjumikonu.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Nezinâma sistçmas(shell) mape.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Saòemtâ mape ir nepareiza.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Kïûda ielâdçjot norâdîto DLL.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Norâdîtâ funkcija nav atrasta DLL.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Neizdevâs izveidot savienojumu ar Internetu.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Neizdevâs izveidot HTTP savienojumu.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Nav iespçjams atvçrt pieprasîjumu.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Pieprasîjuma nosûtîðana neizdevâs.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Nav iespçjams ierakstît mçría failâ.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Nepareiza HTTP atbilde no servera.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Kïûda nolasot informâciju no servera.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Kïûda mçìinâjumâ ierakstît mçría failâ.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Lietotâjs atcçlis HTTP procedûru.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Kïûda mçìinot ierakstît atmiòâ. (Nepietiek atmiòas?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Kïûda mçìinot norâdît proxy lietotâja vârdu.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Kïûda mçìinot norâdît proxy lietotâja paroli.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Pieprasîjums nav saprotams serverim. (Slikta Sintakse)</ERR_WEB_400>
+      <ERR_WEB_403>Piekïuve aizliegta.</ERR_WEB_403>
+      <ERR_WEB_404>Pieprasîtais URL nav atrodams uz servera.</ERR_WEB_404>
+      <ERR_WEB_500>Iekðçja servera kïûda.</ERR_WEB_500>
+      <ERR_WEB_503>Nav iespçjams pieslçgties. Serveris ir noslogots.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Nav iespçjams piereìistrçt loga klasi izlecoðâ(splash) dialoga izveidoðanai. </ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Nav iespçjams izveidot izlecoðâ(splash) dialoga attçlu.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Kïûda iegûstot aktuâlâ ekrâna nosaukumu. Nav aktuâlâ ekrâna.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Nav iespçjams ielâdçt vçrtîbu.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Nav iespçjams saglabât vçrtîbu.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Kïûda, nav iespçjams saòemt programmas loga deskriptoru (window handle).</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Pakete nav atrasta.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Iekðçja kïûda izpildot norâdîto funkciju.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Programmas izpildes kïûda izsaucot funkciju.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Atmiòas sadalîðanas kïûda izsaucot funkciju.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Norâdîts nepareizs indekss. Indeksam jâbût lielâkam vai vienâdam ar -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Norâdîtais ceïð garâks par MAX_PATH, vai 260 simboliem.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Nepareizs atinstalçðanas konfigurâcijas fails.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Nepareizi tabulas dati.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Atinstalçðanas laikâ darbîba nav pieejama.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Nav iespçjams atrast norâdîto kategoriju.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Nav iespçjams mainît norâdîtâs kategorijas îpaðîbas.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Uzstâdîðanas programmas derîguma termiòð beidzies, un tâs uzstâdîðana tiks pârtraukta.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Uzstâdîðanas programma tika palaista maksimâli atïauto reiþu skaitu, un tâs uzstâdîðana tiks pârtraukta.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Uzstâdîðanas programma nevar ierakstît datus sistçmas reìistrâ, un tâs uzstâdîðana tiks pârtraukta.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Norâdîtâ vçrtîba ir nepareiza dotajai funkcijai.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Nepareizs sçrijas numurs.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Kïûda saòemot apjoma(volume) informâciju.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Nepareizs teksta ritinâðanas reþîms.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Ceïð nevar saturçt sekojoðus simbolus:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Nav aktuâla atvçrta ekrâna.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Kïûda pârejot uz citu ekrânu.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Kïûda mçìinot izpildît programmas servisa darbîbas.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Kïûda izsaucot servisa programmu.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Norâdîtâ servisa programma nav atrasta.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Turpinâjuma procedûras kïûda.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Apstâdinâðanas procedûras kïûda.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Sâkðanas procedûras kïûda.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Apturçðanas (pauzes) procedûras kïûda.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Dzçðanas procedûras kïûda.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Izveidoðanas procedûras kïûda.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Norâdîtâ servisa kontroles vadîbas datu bâzes identifikatoram nav pieejas.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Noteikta cikla servisa atkarîba.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Nosaukums jau eksistç servisa kontroles vadîbas datu bâzç kâ servisa vârds vai sakrît ar citu tâdu paðu vardu.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Norâdîtâ servisa kontroles vadîbas datu bâzes identifikators ir nekorekts.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Norâdîtâ servisa nosaukums ir nekorekts.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Norâdîtais parametrs ir nekorekts.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Norâdîtais lietotâja vârds neeksistç.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Norâdîtais serviss jau eksistç ðajâ datu bâzç.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Vispârîga ODBC kïûda.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Nepareizs bufera lielums.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>Nepareiza hWnd vçrtîba.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Nepareiza teksta vçrtîba.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Nepareizs norâdîtais pieprasîjuma tips.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Norâdîtais komponents nav atrasts sistçmas reìistrâ.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Nepareizs draivera parametrs, tas nav atrasts sistçmas reìistrâ.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Nepareizs atslçgas vârda=nosaukuma pâris.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>Nepareizs DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>Nepareizs INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Procedûras kïûda, radusies palaiþot pieprasîjuma parametru.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>Norâdîts nepareizs ceïð.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Kïûda mçìinot ielâdçt draiveri vai tulkoðanas bibliotçku.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>Nepareizs atslçgas vârda=nosaukuma pâru saraksts.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Nepareizs notikumu þurnâla fails.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Pieprasîjumu pârtraucis gala lietotâjs.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Kïûda mçìinot palielinât vai samazinât izmantojamo komponentu skaitu.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Kïûda veidojot DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Kïûda rakstot sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Kïûda dzçðot DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>Procedûras kïûda, nepietiek atmiòas.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Izejoðâ teksta rinda tika saîsinâta.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Kïûda ielâdçjot ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>GetProc komandas kïûda.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Nav iespçjams parâdît dialogus pie programmas uzstâdîðanas vai dzçðanas, fona darbîbas reþîmâ.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Izvçlçtais ceïð nav pareizs.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Norâdîtais lauks nevar bût tukðs.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Nedrîkst izmantot sekojoðus simbolus:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Teksta rinda nesatur derîgus base-64 kodçjuma datus.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Kïûda mçìinot dekodçt base-64 kodçtu teksta rindu (parasti tas nozîmç ka teksta rinda ir bojâta - iztrûkst baiti?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Nepareizs faila virsraksts - ðis nav Indigo Rose blowfish fails.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Nesavietojams blowfish fails. (Fails vai nu ir bojâts vai ir nesavietojams.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Kïûda ielâdçjot XML failu.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Kïûda saglabâjot XML failu.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Ielâdçts nederîgs XML dokuments. (Dokuments ir tukðs vai nav pareizi noformçts.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Norâdîtais XML ceïð nav pareizs vai nav norâdîts.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Kïûda mçìinot uzstâdît vçrtîbu.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Kïûda mçìinot uzstâdît îpaðîbu.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Kïûdains îpaðîbas nosaukums. (Îpaðîbu nosaukumi nevar saturçt tukðumus.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Izvçlçtais elements nevar tikt izdzçsts.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Izvçlçtâ îpaðîba nevar tikt izdzçsta.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Norâdîtais XML ceïð nesatur elementus.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Norâdîtâ XML ceïa elementam nav nevienas îpaðîbas.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Kïûda mçìinot ievietot XML.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Nepareizs ievietoðanas reþîms.</ERR_XML_INVALID_INSERTION_MODE>
+  <ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+  <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+  <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+  <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+  <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+  <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+  <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+  <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+  <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+  <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+  <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+  <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+  <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+  <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+  <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+  <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+  <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+  <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+  <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+  <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+  <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+  <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+  <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+  <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+  <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+  <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+  <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+  <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+  <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+  <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+  <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+  <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+  <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+  <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+  <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+  <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+  <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+  <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+  <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+  <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+  <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+  <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+  <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+  <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+  <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+  <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+  <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+  <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+  <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+  <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+  <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+  <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+  <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+  <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+  <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+  <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+  <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+  <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+  <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+  <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+  <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+  <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+  <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+  <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+  <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+  <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+  <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+  <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+  <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+  <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+  <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+  <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+  <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+<ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Latvian</Name>
+<Default>0</Default>
+<Primary>38</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% uzstâdîðanas programma</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Îsinâjumikonu mape</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Kur jûs vçlaties uzstâdît îsinâjumikonas?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Tâlâk &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atpakaï</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>At&amp;celt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Palîdzîba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Îsinâjumikonas tiks izveidotas norâdîtajâ mapç. Ja jûs nevçlaties izmantot mapi pçc noklusçjuma, vai nu ievadiet jaunu nosaukumu, vai izvçlieties eksistçjoðu mapi no saraksta.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Îsinâjumikonu mape:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Izveidot îsinâjumikonas dotajam sistçmas lietotâjam</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Izveidot îsinâjumikonas pieejamas visiem sistçmas lietotâjiem</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

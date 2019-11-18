@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Polish</Name>
+<Default>0</Default>
+<Primary>21</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalacja %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Folder Docelowy</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Gdzie chcesz zinstalowaæ %ProductName%?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalej &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Powrót</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Anu&luj</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Po&moc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>Zm&ieñ...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Oprogramowanie zostanie zainstalowane w poni¿szym folderze. Aby podaæ inn¹ lokalizacjê, wpisz now¹ œcie¿kê albo naciœnij Zmieñ, aby wybraæ ju¿ istniej¹cy folder.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Zainstaluj %ProductName% w:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Wymagana iloœæ wolnego miejsca: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Iloœæ wolnego miejsca na wybranym dysku: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

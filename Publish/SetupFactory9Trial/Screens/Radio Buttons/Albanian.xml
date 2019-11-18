@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Albanian</Name>
+<Default>0</Default>
+<Primary>28</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalimi i %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Opcionet</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Selekto një opcion dhe pastaj kliko vazhdo për të vazhduar.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&vazhdo &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Prapa</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulo</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Ndihmë</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ju lutemi selektoni një nga opcionet e mëposhtme: </IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_RADIO_BUTTON_01>Opcioni 01</IDS_CTRL_RADIO_BUTTON_01>
+<IDS_CTRL_RADIO_BUTTON_02>Opcioni 02</IDS_CTRL_RADIO_BUTTON_02>
+<IDS_CTRL_RADIO_BUTTON_03>Opcioni 03</IDS_CTRL_RADIO_BUTTON_03>
+<IDS_CTRL_RADIO_BUTTON_04>Opcioni 04</IDS_CTRL_RADIO_BUTTON_04>
+</Messages>
+</SUF70Messages>

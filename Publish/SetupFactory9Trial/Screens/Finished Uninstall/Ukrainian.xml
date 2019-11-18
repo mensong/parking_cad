@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Ukrainian</Name>
+		<Default>0</Default>
+		<Primary>34</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Видалення %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Видалення завершено</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Видалення успішно завершено.</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Кінець</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Відміна</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Довідка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_BODY>Видалення %ProductName% %ProductVer% з вашого комп'ютера успiшно завершено.
+
+
+
+
+
+
+
+
+Натисніть "Кінець", щоб закрити Майстра видалення.</IDS_CTRL_STATICTEXT_BODY>
+		<IDS_CTRL_HEADINGTEXT_BODY>Видалення завершено!</IDS_CTRL_HEADINGTEXT_BODY>
+	</Messages>
+</SUF70Messages>

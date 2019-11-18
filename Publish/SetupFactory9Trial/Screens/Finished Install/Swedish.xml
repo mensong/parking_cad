@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Swedish</Name>
+<Default>0</Default>
+<Primary>29</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installation</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installationen avslutades</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Installationen är färdig.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Avsluta</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Föregående</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Avbryt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjälp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Installationen av %ProductName% %ProductVer% är färdig.
+
+Tack för att du valde %ProductName%!
+
+Klicka Avsluta för att stänga installationsprogrammet.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Installationen är färdig</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

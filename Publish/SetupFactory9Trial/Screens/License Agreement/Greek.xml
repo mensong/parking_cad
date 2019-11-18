@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>ÄéåõèÝôçóç åãêáôÜóôáóçò %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>¢äåéá Ôåëéêïý ×ñÞóôç</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ðáñáêáëþ äéáâÜóôå ðñïóåêôéêÜ ôçí ðáñáêÜôù Üäåéá ôåëéêïý ÷ñÞóôç.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÓõíÝ&÷åéá &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; Åðéóôñï&öÞ</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>ÂïÞ&èåéá</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Åäþ åéóÜãåôå ôï êåßìåíï ôçò Üäåéáò ôåëéêïý ÷ñÞóôç...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>Óõìöùíþ êáé áðïäÝ÷ïìáé ôïõò üñïõò áõôÞò ôçò Üäåéáò ÷ñÞóçò</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>Äåí óõìöùíþ ïýôå áðïäÝ÷ïìáé ôïõò üñïõò áõôÞò ôçò Üäåéáò ÷ñÞóçò</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

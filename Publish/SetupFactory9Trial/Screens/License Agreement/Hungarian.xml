@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Hungarian</Name>
+<Default>0</Default>
+<Primary>14</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Telepítõ</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Licenc feltételek</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Kérem figyelmesen olvassa el az alábbi licenc feltételeket.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Tovább &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Vissza</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Mégsem</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Segítség</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Ide szúrhatja be az Ön licenc feltételeit tartalmazó szöveget...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>Elfogadom a licenc feltételeket</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>Nem fogadom el a licenc feltételeket</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

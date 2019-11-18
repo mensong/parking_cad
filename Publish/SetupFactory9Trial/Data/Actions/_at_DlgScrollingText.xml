@@ -1,0 +1,107 @@
+<ActionTemplates>
+   <Action>
+      <Name>DlgScrollingText.AppendLine</Name>
+      <Description>Appends a new line to the current text in a scrolling text control.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the scrolling text control that you want to add a new line to.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ScrollingText</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Line</Name>
+            <Description>The line of text you want to add.</Description>
+            <Type>string</Type>
+            <Default>""</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>""</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>AddNewLine</Name>
+            <Description>Whether to add the text on a new line in the scrolling text window.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ScrollToEnd</Name>
+            <Description>Whether to scroll to the end of the text window after the text has been added.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgScrollingText.GetProperties</Name>
+      <Description>Gets the properties of a scrolling text control on the current screen.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the scrolling text control whose properties you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ScrollingText</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+      <Action>
+      <Name>DlgScrollingText.SetProperties</Name>
+      <Description>Sets the properties of a scrolling text control on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the scrolling text control whose properties you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ScrollingText</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Properties</Name>
+            <Description>A table containing the scrolling text control properties indexed by "Enabled", "Mode", "Text" and "Visible".</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>*.*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

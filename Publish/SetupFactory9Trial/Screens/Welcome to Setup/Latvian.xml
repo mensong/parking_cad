@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Latvian</Name>
+<Default>0</Default>
+<Primary>38</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% uzstâdîðanas programma</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Esiet sveicinâti</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Esiet sveicinâti %ProductName% %ProductVer% uzstâdîðanas programmâ</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Tâlâk &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atpakaï</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>At&amp;celt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Palîdzîba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Esiet sveicinâti %ProductName% %ProductVer% uzstâdîðanas programmâ.
+
+Mçs iesakâm aizvçrt visas programmas pirms turpinât darbu pie programmas uzstâdîðanas.
+
+Ja jums ir palaistas citas programmas, nospiediet pogu Atcelt, aizveriet tâs un palaidiet uzstâdîðanas programmu no jauna.
+
+Citâdi, spiediet Tâlâk, lai turpinâtu.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Esiet sveicinâti</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

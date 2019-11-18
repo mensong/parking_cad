@@ -33,7 +33,7 @@ public:
 	CPictureEx m_ctrlGif;
 	bool m_bIsReady;
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
-	int getStatus(std::string& josn, CString& sMsg);
+	int getStatus(std::string& josn, std::string& sMsg);
 	
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
 	static std::string ms_geturl;//从初始化类取到配置文件中的IP地址接口

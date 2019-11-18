@@ -1,0 +1,42 @@
+<SUF70Messages>
+<Language>
+<Name>Spanish</Name>
+<Default>0</Default>
+<Primary>10</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+<ID>7</ID>
+<ID>8</ID>
+<ID>9</ID>
+<ID>10</ID>
+<ID>11</ID>
+<ID>12</ID>
+<ID>13</ID>
+<ID>14</ID>
+<ID>15</ID>
+<ID>16</ID>
+<ID>17</ID>
+<ID>18</ID>
+<ID>19</ID>
+<ID>20</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Programa de instalación de %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Borrando %ProductName%</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Por favor, espere...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_LABEL_01> </IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_LABEL_02> </IDS_CTRL_STATICTEXT_LABEL_02>
+<IDS_CTRL_PROGRESS_BAR_01/>
+<IDS_CTRL_STATICTEXT_LABEL_03>Progreso Dos</IDS_CTRL_STATICTEXT_LABEL_03>
+<IDS_CTRL_STATICTEXT_LABEL_04/>
+<IDS_CTRL_PROGRESS_BAR_02/>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Licentieovereenkomst</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Lees de volgende licentieovereenkomst zorgvuldig door.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Doorgaan &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Annuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Plaats hier de text van u licentieovereenkomst...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>Ik ga akkoord met de voorwaarden van de licentieoverenkomst</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>Ik ga niet akkoord met de voorwaarden van de licentieoverenkomst</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

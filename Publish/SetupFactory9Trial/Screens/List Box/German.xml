@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>German</Name>
+<Default>0</Default>
+<Primary>7</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Optionen</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Wählen Sie eine Option und klicken Sie auf Weiter, um fortzufahren.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Weiter &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Zurück</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Abbrechen</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hilfe</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Bitte wählen Sie eine der folgenden Optionen aus: </IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_LISTBOX>Stein
+Papier
+Schere</IDS_CTRL_LISTBOX>
+</Messages>
+</SUF70Messages>

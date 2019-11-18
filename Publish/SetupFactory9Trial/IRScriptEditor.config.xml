@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IRScriptEditor>
+	<ActionsFolder Path="Data\Actions" />
+	<ConstantsFile Path="Data\_constants.xml" />
+	<GlobalVarsFile Path="Data\_globalvars.xml" />
+	<HelpFile Path="Docs\sufhelp.chm" ActionsPath="/Program_Reference/Actions" HelpTitle="Setup Factory" />
+</IRScriptEditor>

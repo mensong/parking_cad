@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Serbian</Name>
+<Default>0</Default>
+<Primary>26</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Podešavanje</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Ugovor o Licensi</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Molim procitajte pažljivo sledeci ugovor o licensi.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalje &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Nazad</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Prekini</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Pomoc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Unesite ovde tekst vašeg ugovora o licensi...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>Slažem se sa uslovima koji su navedeni u clanovima ovog ugovora o licensi</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>Ne slažem se sa uslovima koji su navedeni u clanovima ovog ugovora o licensi</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

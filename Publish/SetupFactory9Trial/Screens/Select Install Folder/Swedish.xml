@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Swedish</Name>
+<Default>0</Default>
+<Primary>29</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installation</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installationsmapp</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Var vill du att %ProductName% ska installeras?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Nästa &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Föregående</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Avbryt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjälp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>Ä&ndra...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Mjukvaran kommer att installeras i mappen nedan. För att ändra mapp, skriv in en ny sökväg eller klicka Ändra för att välja en annan mapp.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Installera %ProductName% i:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Utrymme som behövs: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Tillgängligt utrymme på vald disk: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

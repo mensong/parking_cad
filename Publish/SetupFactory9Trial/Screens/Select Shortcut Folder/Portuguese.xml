@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+	<Language>
+		<Name>Portuguese</Name>
+		<Default>0</Default>
+		<Primary>22</Primary>
+		<Secondary>
+			<ID>1</ID>
+			<ID>2</ID>
+		</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Instalação de %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Pasta de atalhos</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Onde você deseja instalar os atalhos?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Avançar &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Retornar</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>A&juda</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Os ícones dos atalhos serão criados na pasta indicada abaixo. Se você não deseja utilizar a pasta padrão, pode digitar um novo nome ou selecionar uma pasta existente da lista.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Pasta de atalhos:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_RADIOBTN_PERUSER>Instalar os atalhos somente para o usuário atual</IDS_CTRL_RADIOBTN_PERUSER>
+		<IDS_CTRL_RADIOBTN_ALLUSERS>Disponibilizar os atalhos para todos os usuários</IDS_CTRL_RADIOBTN_ALLUSERS>
+		<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+	</Messages>
+</SUF70Messages>

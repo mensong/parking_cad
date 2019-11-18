@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Finnish</Name>
+<Default>0</Default>
+<Primary>11</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Asennus</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Lisenssisopimus</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Lue seuraava lisenssisopimus huolella.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Seuraava &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Takaisin</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Peruuta</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Apu</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Syötä lisenssisopimuksesi teksti tähän...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>Suostun tämän lisenssisopimuksen ehtoihin</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>En suostu tämän lisenssisopimuksen ehtoihin</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

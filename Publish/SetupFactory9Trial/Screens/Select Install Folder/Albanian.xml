@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Albanian</Name>
+<Default>0</Default>
+<Primary>28</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalimi i %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Folder i Imstalimit</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ku dëshiron që %ProductName% të instalohet?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Vazhdo &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Prapa</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulo</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Ndihmë</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>Sh&fleto...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ky softuare do të instalohet në folderin e mëposhtëm. Që të zgjedhësh lokacion diferent, ju duhet të shënoni një rrugë të re, ose kliko Shfleto për të zgjedhur ndonjë folder tjetër.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Instalo %ProductName% në:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Hapësira që kërkohet: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Hapësira në drajvin e selektuar: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

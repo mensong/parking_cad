@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Serbian</Name>
+<Default>0</Default>
+<Primary>26</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Podešavanje</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Tekst zaglavlja</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Tekst podnaslova</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalje &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Nazad</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Prekini</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Pomoc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_BUTTON_01>Dugme 01</IDS_CTRL_BUTTON_01>
+<IDS_CTRL_STATICTEXT_LABEL_01>Koristite ovaj tekst da bi van opisao šta se dešava kada kliknete na dugme 01.</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_BUTTON_02>Dugme 02</IDS_CTRL_BUTTON_02>
+<IDS_CTRL_STATICTEXT_LABEL_02>Koristite ovaj tekst da bi van opisao šta se dešava kada kliknete na dugme 02.</IDS_CTRL_STATICTEXT_LABEL_02>
+</Messages>
+</SUF70Messages>

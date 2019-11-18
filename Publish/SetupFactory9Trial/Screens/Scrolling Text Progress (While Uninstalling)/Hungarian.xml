@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Hungarian</Name>
+<Default>0</Default>
+<Primary>14</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Eltávolító</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>%ProductName% eltávolítása</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Kérem várjon...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>&Mégsem</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_SCROLLTEXT_BODY/>
+</Messages>
+</SUF70Messages>

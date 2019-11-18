@@ -1,0 +1,5 @@
+All Files (*.*)|*.*|
+Executable Files (.exe;.dll;.ocx)|*.exe;*.dll;*.ocx|
+Document Files (.doc;.txt;.wri;.xls;.pdf)|*.doc;*.txt;*.wri;*.xls;*.pdf|
+Graphic Files (.bmp;.gif;.jpg;.pcx;.png;.tga;.tif)|*.bmp;*.gif;*.jpg;*.pcx;*.png;*.tga;*.tif|
+Web Files (.htm;.html;.htx;.asp;.alx;.stm;.shtml)|*.htm;*.html;*.htx;*.asp;*.alx;*.stm;*.shtml|

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+      <Name>Norwegian</Name>
+      <Primary>20</Primary>
+      <Secondary>
+         <ID>1</ID>
+         <ID>2</ID>
+      </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Vellykket</MSG_SUCCESS>
+      <MSG_ERROR>Feil</MSG_ERROR>
+      <MSG_NOTICE>Bemerk</MSG_NOTICE>
+      <MSG_WARNING>Advarsel</MSG_WARNING>
+      <MSG_YES>Ja</MSG_YES>
+      <MSG_NO>Nei</MSG_NO>
+      <MSG_YES_TOALL>Ja til alt</MSG_YES_TOALL>
+      <MSG_TO>Til</MSG_TO>
+      <MSG_FROM>Fra</MSG_FROM>
+      <MSG_BROWSE>Bla...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Avbryt</MSG_CANCEL>
+      <MSG_PATH>Sti</MSG_PATH>
+      <MSG_SEARCH_MASK>Søk</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Alle filer</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Leter etter fil</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bytes</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Bekreft</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Installasjonsprogrammet er ikke ferdig. Vil du virkelig avbryte?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Er du sikker på at du vil fortsette med installasjonen?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Det er ikke nok plass til å installere %ProductName% på den valgte stasjonen.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Kopierer</MSG_COPYING>
+      <MSG_DELETING>Sletter</MSG_DELETING>
+      <MSG_SEARCHING>Leter etter</MSG_SEARCHING>
+      <MSG_READING>Leser</MSG_READING>
+      <MSG_QUERYING_INTERNET>Forespørsel til Internett</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Flytter</MSG_MOVING>
+      <MSG_SAVING>Lagrer</MSG_SAVING>
+      <MSG_INSERTDISK>Sett in disk</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Laster ned</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Laster ned fil...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Laster ned fil, total størrelse er ukjent. Kb lastet ned så langt: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Finner vertsnavn.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Vertsnavn funnet.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Kobler til server.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Tilkoblet server.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Lukker forbindelsen til server.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Serveren er frakoblet.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Forespørselen er fullført.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Omdirigerer.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Anslått gjenværende tid</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/sek</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Starter opp...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Installerer...</MSG_INSTALLING>
+      <MSG_SKIPPING>Hopper over...</MSG_SKIPPING>
+      <MSG_SEEKING>Søker...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Ugyldig opplysning</MSG_INVALID_ENTRY>
+      <MSG_THE></MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY>-feltet kan ikke være tomt.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Forbereder installasjonen...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Installerer filer...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Skaper avinstallasjonsprogram...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Skaper snarveier...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Undersøker filbetingelser...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Undersøker adgang til mapper...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Undersøker ledig diskplass...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Fjerner filer...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Fjerner snarveier...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Oppretter mappe for avinstallasjonsdata...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Oppretter fil med avinstallasjonsdata...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Oppretter kontroll for avinstallasjon...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Oppretter programfil for avinstallasjon...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Kopierer skjermbildefiler...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Kopierer tilleggsmoduler...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Kopierer hjelpefiler...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Oppretter oppføring i kontrollpanelet...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Oppretter snarvei for avinstallasjon...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Ukjent</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Intet</MSG_OS_NONE>
+      <MSG_OS_ALL>Alle</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(ingen SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(eller nyere)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Følgende minimumskrav for denne installasjonen er ikke oppfylt:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Operativsystem</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Skjermbredde</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Skjermhøyde</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Fargedybde</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Brukeradgang</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administrator</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Installasjonen vil nå bli avbrutt.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Klikk OK for å fortsette eller Avbryt for å stoppe installasjonen.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>For mer informasjon, vennligst kontakt:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Installasjonsprogrammet vil utløpe  om</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2> dager og vil deretter ikke virke lengre.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Installasjon kan nå gjennomføres</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>gang(er) før programmet utløper.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Sett inn disk #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Hvis filene på denne disken kan finnes et annet sted, for eksempel på en annen stasjon, oppgi da full sti eller klikk Bla-knappen for å velge stien.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Installasjonsprogrammet skal installere en fil, men det finnes allerede en fil med samme navn.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Installasjonsprogrammet skal installere en fil, men det finnes allerede en NYERE fil med samme navn.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Ønsker du å overskrive følgende fil?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Følgende fil er i bruk og kan ikke oppdateres:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Avslutt alle andre programmer og velg Prøv igjen. Velg Avbryt for å installere filen ved omstart av maskinen.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Vil du overskrive følgende fil?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Programmet vil installere en fil, men det finnes allerede en fil med samme navn.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Programmet vil installere en fil, men det finnes allerede en NYERE fil med samme navn.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Installasjonsprogrammet klarte ikke å gjennomføre omstart av maskinen. Avslutt alle åpne programmer og velg Prøv igjen.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Denne filen er i bruk og kan ikke slettes. Lukk filen og klikk Prøv igjen. Klikk Ignorer for å fortsette, filen vil da bli slettet ved neste omstart av maskinen. Klikk Annuller for å stoppe avinstallasjonen.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Denne filen kan ikke slettes. Klikk Prøv igjen for nytt forsøk. Klikk Ignorer for å fortsette, filen vil da bli slettet ved neste omstart av maskinen. Klikk Annuller for å stoppe avinstallasjonen.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Avinstallasjonsprogrammet vil fjerne følgende delte systemfiler:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Ingen andre programmer har registrert sin bruk av filen, men det er likevel mulig at et annet program vil kreve denne filen for at det skal virke.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Er det OK å fjerne filen?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Mislykket omstart av maskinen. Lukk alle åpne programmer og velg Prøv igjen.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Maskinen må startes på nytt for å fullføre installasjon. Vil du restarte nå?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Maskinen må startes på nytt for å fullføre avinstallasjonen. Vil du restarte nå?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Vennligst velg en post i listen.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Plass som kreves på stasjonen:</MSG_REQUIRED_DRIVE> 
+      <MSG_AVAILABLE_DRIVE>Tilgjengelig plass på stasjonen:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Klarte ikke å opprette loggfil: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Mislykket integritetskontroll av arkivet. Installasjonen er ikke fullført, muligens på grunn av ufullstendig nedlasting eller ødelagt fil.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Vennligst påse at disken er på plass i stasjonen! Følgende fil kunne ikke finnes:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Mislykket forsøk på å laste tilleggsmodul</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Installasjonsprogrammet kan ikke åpne følgende arkivfil (du kan ha satt inn feil disk):</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Installasjonsprogrammet fant ikke nok minne til å dekomprimere filene. Programmet vil nå bli avbrutt.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Installasjonsprogrammet klarte ikke å opprette følgende mappe:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>En dekompresjonsfeil har oppstått</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Klarte ikke å åpne resultatfilen</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Klarte ikke å åpne kildefilen</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Skrive-/lesefeil</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>Filens CRC stemmer ikke - Data integritetsfeil</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disken er full.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Ukjent dekompresjonsfeil</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Feil - hopper over filen</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Feil ved minnetildeling</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Feil ved lesing fra fil</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Feil ved skriving til fil</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Ukjent feil ved filkopiering</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Klarte ikke å opprette oppføring for avinstallasjon</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Feil i LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Feil i GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>DllRegisterServer returnerte feilkode</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Mislykket registrering av COM (ActiveX) kontroll:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Mislykket registrering av typebibliotek:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Utilstrekkelig minne</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Ett eller flere av argumentene er ugyldige.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Funksjonen klarte ikke å skrive til filen.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Typebiblioteket kunne ikke åpnes.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Funksjonen klarte ikke å lese fra filen.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Typebiblioteket har et eldre format.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>Kunne ikke finne LCID i OLE-støttede DLL-filer.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Typebiblioteket eller DLL kunne ikke lastes.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Klarte ikke å åpne systemets registreringsdatabase.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Standard FACILITY_STORAGE feil.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Klarte ikke å opprette mappe for avinstallasjonsdata:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Klarte ikke å opprette fil med avinstallasjonsdata:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Klarte ikke å åpne den kjørbare filen for avinstallasjon:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Klarte ikke å åpne for skriving til den kjørbare filen for avinstallasjon:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Klarte ikke å åpne for skriving til konfigurasjonsfilen:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Den kjørbare filen for avinstallasjon kunne ikke skrives ut fordi den allerede er i bruk. Lukk alle åpne programmer og klikk Prøv igjen for å fortsette. Klikk Avbryt for å avslutte.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Klarte ikke å skrive til registernøkkelen for avinstallasjon:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Klarte ikke å skrive avinstallasjonsverdi i registeret:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Klarte ikke å opprette snarvei for avinstallasjon:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Klarte ikke å lagre prosjektvariabler (Session Variables)</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Du har ikke tillatelse til å registrere antall delte filer på denne maskinen. Installasjonen må kjøres av bruker med administratorrettigheter.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Du har ikke tillatelse til å registrere COM (ActiveX) kontroller på denne maskinen. Installasjonen må kjøres av bruker med administratorrettigheter.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Du har ikke tillatelse til å registrere typebiblioteker på denne maskinen. Installasjonen må kjøres av bruker med administratorrettigheter.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Den viste COM (ActiveX) kontrollen kunne ikke avregistreres. Filen vil ikke bli fjernet.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Ugyldig posttype for avinstallasjonsdata.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Post for avinstallasjonsdata ble ikke funnet.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Ukjent feil.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Kunne ikke finne den oppgitte filen.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Mislykket forsøk på å laste fil.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Mislykket forsøk på å lagre fil.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Kunne ikke finne den oppgitte stien.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>.exe-filen er ugyldig (ikke en Win32-fil eller feil i .exe-gjengivelsen).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Operativsystemet nektet tilgang til den angitte filen.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Tilknytningen for fillnavnet er ufullstendig eller ugyldig.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   DDE-transaksjonen kunne ikke fullføres fordi andre DDE-transaksjoner var til behandling.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>Mislykket DDE-transaksjon</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>DDE-transaksjonen kunne ikke fullføres fordi tidsfristen ble overskredet. </ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Fant ikke den oppgitte DLL-filen.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Den oppgitte filnavnendelsen er ikke tilknyttet noe program. Denne feilmeldingen vil også bli vist om du forsøker å skrive ut en ikke-skrivbar fil.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Ikke nok minne til å fullføre operasjonen.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Mislykket kjøring av fil.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Delingskonflikt oppsto.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Klarte ikke å finne klassenavn for leseprogram.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Klarte ikke å finne kommandolinjen for leseprogram.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Tilknyttet leseprogram var ikke en kjørbar fil.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Kjørbar fil for tilknyttet leseprogram finnes ikke.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Oppgitt kilde er ugyldig.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Oppgitt mottakssted er ugyldig.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Kilefil(ene) finnes ikke.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Mottaksmappen finnes ikke.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Mislykket kopiering av en eller flere filer.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Mislykket sletting av en eller flere filer.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Klarte ikke å registrere sletting ved omstart av maskinen.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Klarte ikke å registrere flytting ved omstart av maskinen.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operasjonen ble avbrutt av bruker.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Det oppsto en feil ved oppkall av tilbakesendende funksjon (callback function).</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Feil, kunne ikke finne den tilbakesendende funksjonen (callback function).</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Klarte ikke å fastslå størrelsen på versjonsinformasjonen.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Klarte ikke å finne opplysningene med informasjon om filen.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Oppgitt filnavn inneholder ugyldige karakterer.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Mottaksfilen finnes fra før.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>En ukjent feil oppsto.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Kjøring ved omstart feilet, kunne ikke åpne nøkkelen.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Kjøring ved omstart feilet, kunne ikke skrive verdien.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Klarte ikke å skrive filens attributter.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Klarte ikke å skrive filens kompresjonsattributter.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Klarte ikke å opprette mottaksmappen.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Klarte ikke å lagre sikkerhetskopi av en eller flere filer.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Utilstrekkelig minne.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Du har ikke tillatelse til å installere filer i den oppgitte mappen. Installasjonsprogrammet må kjøres av en bruker med tilstrekkelige tillatelser slik som en systemadministrator.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Installasjonsprogrammet kan ikke fortsette fordi den oppgitte stasjonen ikke finnes.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Det er ikke nok plass på oppgitt stasjon til å installere de nødvendige filene.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Dette skjermbildet har ingen kontroll med den oppgitte ID.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Den oppgitte kontrollen er av feil type i forhold til denne handlingen.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Intet aktivt skjermbilde.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Klarte ikke å finne oppgitt kontroll.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Klarte ikke å vise kontrollen.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Filen er for stor til å kunne leses.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Klarte ikke å åpne den oppgitte filen.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Unormalt avvik rapportert av intern kontroll.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Kan ikke utføre handling på deaktivert kontroll.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Klarte ikke å vise statusdialogen.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Klarte ikke å skjule statusdialogen.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Klarte ikke å angi statusteksten på statusdialogen.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Klarte ikke å angi fremdriftsindikatorens område.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Klarte ikke å angi fremdriftsindikatorens posisjon på statusdialogen.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Klarte ikke å angi meldingsteksten på statusdialogen.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Klarte ikke å angi tittelteksten på statusdialogen.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Klarte ikke å avlese fremdriftsindikatorens posisjon.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Klarte ikke å slette den oppgitte INI-fil seksjonen.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Klarte ikke å slette den oppgitte INI-fil verdien.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Klarte ikke å skrive den oppgitte verdien.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Klarte ikke å opprette den oppgitte registernøkkelen.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Klarte ikke å slette den oppgitte registernøkkelen.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Klarte ikke å slette den oppgitte registerverdien.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Den oppgitte undernøkkelen finnes ikke.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Klarte ikke å få tak i navn på undernøkler.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Klarte ikke å lese dataene for oppgitt verdi.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Klarte ikke å få tak i navnene på verdiene.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Klarte ikke å avlese typen av registerverdier.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Klarte ikke å skrive dataene for den oppgitte registerverdien.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Klarte ikke å tilføye post til listebokskontrollen.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Klarte ikke å sette inn post i listebokskontrollen.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indeks utenfor gyldig område.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Klarte ikke å lese versjonsinformasjonen.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Klarte ikke å gjennomføre omstart. OS-informasjon er ikke tilgjengelig.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Klarte ikke å omstarte maskinen.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Feil i LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress feilet.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>DllRegisterServer returnerte feilkode.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Feil ved forsøk på oppkall av LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Feil ved forsøk på oppkall av RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Feil, skrifttypenavnet kan ikke være tomt.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Ugyldig navn på skrifttype.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Mislykket forsøk på å legge til skrifttype i systemets skrifttypetabell.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Mislykket forsøk på å legge til skrifttype i registeret.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Mislykket forsøk på å fjerne skrifttype fra systemets skrifttypetabell.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Mislykket forsøk på å fjerne skrifttype fra registeret.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Klarte ikke å lese brukerinformasjonen.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Det oppgitte datoformatet er ukjent.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Det oppgitte tidsformatet er ukjent.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Ikke i stand til å bestemme språk-ID.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Ikke i stand til å lese opplysninger om skjermen.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Serveren var ikke i stand til å fullføre registrering av alle typebiblioteker anvendt av klassene.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Serveren var ikke i stand til å fullføre registreringen av alle objektklassene.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Serveren var ikke i stand til å fjerne oppføringene av alle typebibliotekene anvendt av klassene.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Serveren var ikke i stand til å fjerne oppføringene av alle objektklassene.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>DllUnregisterServer returnerte feilkode.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Feil, kan ikke gjenopprette systeminnstillinger når Windows kjører i sikker modus.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Feil, disken er full og systemgjenoppretting er satt på vent.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Feil, den ventende omdøping av fil eksisterer allerede.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Det har oppstått en intern feil.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Feil, ugyldig sekvensnummer.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Funksjonen for systemgjenoppretting er slått av.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Feil, maksimumstiden for systemgjenoppretting er utløpt.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Klarte ikke å åpne tekstfil.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Tekstfilen er for stor til å kunne leses.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Feil, klarte ikke å lagre tekstfil.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Feil, vinduhåndterer (window handle) er ikke gyldig.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Feil, klarte ikke å skjule vindu.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Feil, klarte ikke å maksimere vindu.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Feil, klarte ikke å minimere vindu.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Feil, klarte ikke å gjenopprette vindu.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Feil, klarte ikke å vise vindu.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Feil, klarte ikke å løse ut stasjonen, handlingen er ikke støttet.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Feil, klarte ikke å kalkulere ledig plass.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Feil, klarte ikke å kalkulere samlet størrelse.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Feil, klarte ikke å kalkulere anvendt plass.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Klarte ikke å opprette mappe.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Den oppgitte mappen finnes ikke.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Den oppgitte stien peker ikke til en mappe.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Klarte ikke å slette mappe.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Klarte ikke å skifte aktiv mappe.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Mottaksmappen finnes fra før.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Mappenavnet inneholder ugyldige karakterer.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Klarte ikke å slette basemappe.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Klarte ikke å opprette mappe for snarveien.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Klarte ikke å opprette peker i snarveien.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Feil, snarveibeskrivelsen har mer enn 250 karakterer.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Klarte ikke å slette snarveien.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Ukjent skallmappe.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Mappesvaret er ugyldig.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Mislykket forsøk på å laste oppgitt DLL.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Fant ikke oppgitt funksjon i DLL-biblioteket.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Klarte ikke å opprette Internett-forbindelse.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Mislykket forsøk på å opprette HTTP-forbindelse.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Mislykket "Open" anmodning.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Mislykket "Send" anmodning.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Klarte ikke å åpne mottaksfilen for skriving.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Ugyldig HTTP-svar fra serveren.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Det oppsto en feil under nedlasting fra serveren.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Det oppsto en feil under skriving til mottaksfilen.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>HTTP-handlingen ble avbrutt av bruker.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Det oppsto en feil under lagring i hukommelsen. (Er minnet brukt opp?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Det oppsto en feil ved forsøk på å sette proxy brukernavn.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Det oppsto en feil ved forsøk på å sette proxy passord.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Forespørselen ble ikke forstått av serveren. (Uriktig syntaks)</ERR_WEB_400>
+      <ERR_WEB_403>Nektet tilgang.</ERR_WEB_403>
+      <ERR_WEB_404>Fant ikke oppgitt URL (adresse) på serveren.</ERR_WEB_404>
+      <ERR_WEB_500>Det har oppstått en intern feil på serveren.</ERR_WEB_500>
+      <ERR_WEB_503>Serverkapasiteten er brukt opp.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Klarte ikke å registrere vinduklasse for å skape splash dialog.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Klarte ikke å opprette bilde for splashdialog.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Det oppsto en feil ved avlesing av navn for aktivt skjermbilde. Intet aktivt skjermbilde.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Klarte ikke å laste verdi.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Klarte ikke å lagre verdi.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Feil, klarte ikke å avlese applikasjonens vinduhåndterer (window handle).</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Pakken ble ikke funnet.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Det oppsto en intern feil under utførelsen av den oppgitte funksjonen.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>En kjøretidsfeil oppsto ved oppkall av funksjonen.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>En minnetildelingsfeil oppsto under oppkall av funksjonen.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Ugyldig indeks er oppgitt. Indeksangivelser må være større enn eller lik -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Oppgitt sti er lenger enn MAX_PATH, eller 260 karakterer.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Ugyldig konfigurasjonsfil for avinstallasjonen.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Ugyldige tabelldata.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Ugyldig handling under avinstallasjon.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Fant ikke den oppgitte kategorien.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Klarte ikke å sette egenskapene for kategorien.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Installasjonsprogrammet har løpt ut på dato og vil nå bli avsluttet.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Installasjonsprogrammet er allerede anvendt det maksimalt tillatte antall ganger, og vil nå bli avsluttet.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Installasjonsprogrammet klarte ikke å åpne systemregisteret for skriving. Det vil derfor nå bli avsluttet.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Den oppgitte matematiske verdien er ikke gyldig i denne funksjonen.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Ugyldig serienummer.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Klarte ikke å lese informasjon om innholdet.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Ugyldig modus for rullende tekst.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>En sti kan ikke inneholde noen av disse karakterene:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Det vises ikke noe skjermbilde i øyeblikket.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Mislykket forsøk på å skifte til annet skjermbilde.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Det oppsto en feil ved repeterende bruk av tjeneste.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Det oppsto en feil ved forespørsel til tjeneste.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Kunne ikke finne tjenesten.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Kommando "Continue" feilet.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Kommando "Stop" feilet.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Kommando "Start" feilet.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Kommando "Pause" feilet.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Kommando "Delete" feilet.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Kommando "Create" feilet.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Tilgang nektet. Vinduhåndtereren (window handle) har ikke adgang til databasen for tjenestekontroll.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Sirkulær tjenesteavhengighet er angitt.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Visningsnavnet eksisterer allerede i databasen for tjenestekontroll (enten som tjenestenavn eller visningsnavn).</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Ugyldig pekerreferanse (handle) til den oppgitte databasen for tjenestekontroll.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Oppgitt tjenestenavn er ugyldig.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Oppgitt parameter er ugyldig.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Det oppgitte brukerkontonavnet eksisterer ikke.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Den oppgitte tjenesten finnes allerede i databasen.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>En generell ODBC-feil oppsto.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Ugyldig bufferlengde.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>Ugyldig hWnd-verdi.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Strengverdien var ugyldig.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Ugyldig anmodningstype (request type).</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Fant ikke komponenten i registeret.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Driver-argumentet var ugyldig, kunne ikke finnes i registeret.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Ugyldig parverdi 'nøkkelord=navn' (keyword=name).</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>Ugyldig DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>Ugyldig INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Mislykket forsøk på operasjon etter oppgitt "Request"-parameter.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>Den oppgitte stien er ugyldig.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Feil under forsøk på lasting av driver eller oversettelsesbibliotek.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>Det ble brukt en ugyldig liste med parverdier 'nøkkelord=navn' (keyword=name).</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Ugyldig loggfil.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Anmodningen ble avbrutt av sluttbruker.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Det oppsto en feil ved forsøk på å øke eller redusere komponentens bruksteller.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Klarte ikke å opprette DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Klarte ikke å skrive systeminformasjon.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Klarte ikke å fjerne DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>En funksjon feilet på grunn av utilstrekkelig minne.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Resultatstrengen ble avkortet.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Klarte ikke å laste ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>Kommando GetProc feilet.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Dialoger kan ikke vises under en "silent install/uninstall".</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Den oppgitte søkestien er ikke gyldig.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Feltet kan ikke være tomt.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Disse tegnene er ikke gyldige:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Tekststrengen inneholder ikke gyldige base-64 kodede data.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Det oppsto en feil ved forsøk på å dekode base-64 kodet tekststreng (vanligvis skyldes dette at strengen er ødelagt - mangler bytes i strengen?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Ugyldig filhode - ikke en Indigo Rose blowfishfil.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Inkompatibel blowfishfil. (Filen er enten ødelagt eller den bruker et inkompatibelt mønster for blokkutfylling.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Feil ved lasting av XMLfil.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Feil ved lagring av XMLfil.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Et ugyldig XMLdokument er lastet. (Dokumentet er enten tomt eller det er feilaktig formatert.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Den oppgitte XMLsøkestien er ikke gyldig eller ble ikke funnet.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Det oppsto en feil under forsøk på å sette verdien.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Det oppsto en feil under forsøk på å sette attributtet.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Ugyldig attributtnavn. (Attributtnavn kan ikke inneholde mellomrom.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Det oppgitte elementet kunne ikke fjernes.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Det oppgitte attributtet kunne ikke fjernes.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Det finnes ingen elementer under den oppgitte XMLstien.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Elementet med oppgitt XMLsti har ingen attributter.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Det oppsto en feil under innsetting av XMLkode.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Ugyldig innsettingsmodus.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

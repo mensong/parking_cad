@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Serbian</Name>
+<Default>0</Default>
+<Primary>26</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Deinstalator</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Deinstalacija Završena</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Deinstalacija je uspešno završena.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Završetak</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Nazad</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Prekini</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Pomoc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>%ProductName% %ProductVer% je deinstaliran.
+
+Molim za izlaz kliknite na Završetak.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Deinstalacija Uspešna</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,90 @@
+<ActionTemplates>
+   <Action>
+      <Name>SessionVar.Expand</Name>
+      <Description>Returns a string containing the contents of the given session variable.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The session variable string you want to expand.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"%AppFolder%"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>SessionVar.Get</Name>
+      <Description>Returns the unexpanded contents of a session variable.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>VariableName</Name>
+            <Description>The name of the session variable whose contents you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"%MySessionVar%"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>SessionVar.Remove</Name>
+      <Description>Removes the given session variable from the session variable manager at runtime.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>VariableName</Name>
+            <Description>The name of the session variable you want to remove (undefine).</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"%MySessionVar%"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>SessionVar.Set</Name>
+      <Description>Sets the given session variable to the specified value.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>VariableName</Name>
+            <Description>The name of the session variable whose value you want to set.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"%MySessionVar%"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The value you want to set the session variable to.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Value"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Lithuanian</Name>
+<Default>0</Default>
+<Primary>39</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ádiegimo programa</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Sveiki!</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>%ProductName% %ProductVer% ádiegimo programa.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Toliau &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atgal</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Atða&amp;ukti</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Pagalba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>%ProductName% %ProductVer% diegimas.
+
+Rekomenduojama, kad visos veikianèios programos bûtø iðjungtos prieð pradedant ðá diegimà.
+
+Jeigu yra kitos ðiuo metu veikianèios programos, paspauskite mygtukà Atðaukti ir nutraukite diegimà. Po to, iðjungæ programas, vël paleiskite ðá diegimà.
+
+Kitu atveju spauskite Toliau, kad pratæstumëte diegimo procesà.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Sveiki!</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

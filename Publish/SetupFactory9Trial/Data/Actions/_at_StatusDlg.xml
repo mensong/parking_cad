@@ -1,0 +1,252 @@
+<ActionTemplates>
+   <Action>
+      <Name>StatusDlg.GetAutoSize</Name>
+      <Description>Returns the status dialog's current auto-size setting.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>StatusDlg.GetMeterPos</Name>
+      <Description>Returns the status dialog's current status meter position.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>StatusDlg.Hide</Name>
+      <Description>Hides the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>StatusDlg.IsCancelled</Name>
+      <Description>Returns true if the cancel button on the built-in status dialog has been clicked, or false if it hasn't.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetMessage</Name>
+      <Description>Sets the main description message on the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text you want to display.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Working..."</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetAutoSize</Name>
+      <Description>Sets whether or not the built-in status dialog will automatically resize when its settings change.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>AutoSize</Name>
+            <Description>Whether or not the status dialog will automatically resize when its settings change.</Description>
+            <Type>boolean</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetMeterPos</Name>
+      <Description>Sets the status meter position on the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Position</Name>
+            <Description>The status meter position to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>0</Default>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetMeterRange</Name>
+      <Description>Sets the range of the built-in status dialog's status meter.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Begin</Name>
+            <Description>The beginning of the range.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>0</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>End</Name>
+            <Description>The ending of the range.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>100</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetStatusText</Name>
+      <Description>Sets the status text on the built-in status dialog. This is the text that appears right above the status meter.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The status text to display.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Current Status"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetTitle</Name>
+      <Description>Sets the title bar text on the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The title bar text to display.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Status"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.SetCancelled</Name>
+      <Description>Sets the clicked/unclicked state of the cancel button on the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Cancelled</Name>
+            <Description>Whether or not the cancel button was clicked.</Description>
+            <Type>boolean</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.Show</Name>
+      <Description>Displays the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Icon</Name>
+            <Description>The Icon to use</Description>
+            <Type>number</Type>
+            <Default>0</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>MB_ICONNONE</Default>
+               <DataType>combo</DataType>
+               <Constraints>MB_ICONNONE,MB_ICONSTOP,MB_ICONQUESTION,MB_ICONEXCLAMATION,MB_ICONINFORMATION</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Cancelled</Name>
+            <Description>Whether the cancel button has been pressed.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.ShowCancelButton</Name>
+      <Description>Shows or hides the cancel button on the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ShowCancel</Name>
+            <Description>Whether to show the cancel button.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ButtonText</Name>
+            <Description>The text to display on the cancel button.</Description>
+            <Type>string</Type>
+            <Default>"Cancel"</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>"Cancel"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>StatusDlg.ShowProgressMeter</Name>
+      <Description>Shows or hides the progress meter on the built-in status dialog.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Show</Name>
+            <Description>Whether to show the progress meter on the built-in status dialog.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

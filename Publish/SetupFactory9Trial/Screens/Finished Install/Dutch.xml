@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installatie voltooid</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>De installatie is succesvol voltooid.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Afronden</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>De %ProductName% %ProductVer% installatie is voltooid.
+
+Dank u voor het kiezen van %ProductName%!
+
+Klik a.u.b. op Afronden om de installatie te verlaten.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Installatie succesvol</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

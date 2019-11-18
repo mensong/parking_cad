@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>English</Name>
+<Default>1</Default>
+<Primary>9</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+<ID>7</ID>
+<ID>8</ID>
+<ID>9</ID>
+<ID>10</ID>
+<ID>11</ID>
+<ID>12</ID>
+<ID>13</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installation Finished</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>The installation has completed successfully.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Finish</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Back</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Cancel</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Help</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>The %ProductName% %ProductVer% installation is complete.
+
+Thank you for choosing %ProductName%!
+
+Please click Finish to exit this installer.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Installation Successful</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Japanese</Name>
+<Primary>17</Primary>
+<Secondary><ID>1</ID></Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ƒZƒbƒgƒAƒbƒv</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ƒVƒ‡[ƒgƒJƒbƒgƒtƒHƒ‹ƒ_</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>‚Ç‚¿‚ç‚ÌƒtƒHƒ‹ƒ_‚Ö%ProductName% ‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·‚©H</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&ŽŸ‚Ö &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt;&–ß‚é</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&·¬Ý¾Ù</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&ÍÙÌß</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>ƒVƒ‡[ƒgƒJƒbƒgƒAƒCƒRƒ“‚ÍˆÈ‰º‚ÌƒtƒHƒ‹ƒ_‚Éì¬‚³‚ê‚Ü‚·B ƒfƒtƒHƒ‹ƒg‚ÌƒtƒHƒ‹ƒ_‚ðŽg—p‚µ‚È‚¢ê‡AV‹KƒtƒHƒ‹ƒ_–¼‚ð“ü—Í‚·‚é‚©AŠù‘¶‚ÌƒtƒHƒ‹ƒ_‚ðˆê——‚æ‚è‘I‘ð‚µ‚Ä‰º‚³‚¢B</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>ƒVƒ‡[ƒgƒJƒbƒgƒtƒHƒ‹ƒ_:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Œ»Ý‚Ìƒ†[ƒU[‚Ì‚ÝƒVƒ‡[ƒgƒJƒbƒg‚ð—˜—p‰Â”\‚É‚·‚é</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>ƒVƒ‡[ƒgƒJƒbƒg‚ð‘Sƒ†[ƒU[‚Å—˜—p‰Â”\‚É‚·‚é</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<SUF70Messages>
+<Language>
+<Name>French</Name>
+<Default>0</Default>
+<Primary>12</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Bienvenue</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Bienvenue dans le programme d'installation de %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Suivant &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Précédent</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnuler</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Aide</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Bienvenue dans l'installation %ProductName% %ProductVer%.
+
+Il est fortement recommandé que toutes les applications Windows soient fermées avant de poursuivre.
+
+Si vous avez des programmes en utilisation, veuillez cliquer sur Annuler et fermer ces programmes, puis ré-exécuter cette installation.
+
+Sinon, cliquez sur Suivant pour continuer.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Bienvenue</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

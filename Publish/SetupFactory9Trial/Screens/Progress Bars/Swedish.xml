@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Swedish</Name>
+<Default>0</Default>
+<Primary>29</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installation</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Utför åtgärder</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Vänta...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>&Avbryt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Vänta medan åtgärder utförs på ditt system.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Förlopp ett</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_LABEL_02>Utför åtgärder...</IDS_CTRL_STATICTEXT_LABEL_02>
+<IDS_CTRL_PROGRESS_BAR_01/>
+<IDS_CTRL_STATICTEXT_LABEL_03>Förlopp två</IDS_CTRL_STATICTEXT_LABEL_03>
+<IDS_CTRL_STATICTEXT_LABEL_04>Utför åtgärder...</IDS_CTRL_STATICTEXT_LABEL_04>
+<IDS_CTRL_PROGRESS_BAR_02/>
+</Messages>
+</SUF70Messages>

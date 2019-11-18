@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>English</Name>
+<Default>1</Default>
+<Primary>9</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+<ID>7</ID>
+<ID>8</ID>
+<ID>9</ID>
+<ID>10</ID>
+<ID>11</ID>
+<ID>12</ID>
+<ID>13</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installation Folder</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Where would you like %ProductName% to be installed?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Next &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Back</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Cancel</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Help</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>C&hange...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>The software will be installed in the folder listed below. To select a different location, either type in a new path, or click Change to browse for an existing folder.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Install %ProductName% to:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Space required: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Space available on selected drive: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

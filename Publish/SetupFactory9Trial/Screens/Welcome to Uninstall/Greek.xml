@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Ðñüãñáììá ÁðåãêáôÜóôáóçò ôïõ %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Êáëþò Ïñßóáôå</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Êáëþò ïñßóáôå óôï ðñüãñáììá áðåãêáôÜóôáóçò ôïõ %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÓõíÝ&÷åéá &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; Åðéóôñï&öÞ</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>ÂïÞ&èåéá</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Ôï ðñüãñáììá áõôü èá áðåãêáôáóôÞóåé ôï %ProductName% %ProductVer%.
+
+¸áí ôï %ProductName% áõôÞ ôç óôéãìÞ åêôåëåßôáé, ðáñáêáëþ ôåñìáôßóôå ôï ðñéí íá óõíå÷ßóåôå ìå ôçí áðåãêáôÜóôáóç.
+
+ÅéäÜëëùò, åðéëÝîôå ÓõíÝ÷åéá ãéá íá óõíå÷ßóåôå.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>ÁðåãêáôÜóôáóç ôïõ %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Danish</Name>
+<Default>0</Default>
+<Primary>6</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Opsætning af %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Klar til at installere</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Du er nu klar til at installere %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Næste &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Tilbage</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Fortryd</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjælp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Installationsprogrammet har nu nok information til at installere %ProductName% på din computer.
+
+
+Følgende opsætning vil blive brugt:
+
+Installationsmappe: %AppFolder%
+
+Genvejsmappe:       %AppShortcutFolderName%
+
+
+Tryk venligst Næste for at fortsætte med installationen.</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Title</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Albanian</Name>
+<Default>0</Default>
+<Primary>28</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalimi i %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Duke u Perfomuar Akcionet</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ju lutemi prisni...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>&Anulo</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>ju lutemi prisni deri sa disa fajla të perfomohen në systemin tënd.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Progresi i Parë</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_LABEL_02>Duke u Perfomuar Akcionet...</IDS_CTRL_STATICTEXT_LABEL_02>
+<IDS_CTRL_PROGRESS_BAR_01/>
+<IDS_CTRL_STATICTEXT_LABEL_03>Progresi i Dytë</IDS_CTRL_STATICTEXT_LABEL_03>
+<IDS_CTRL_STATICTEXT_LABEL_04>Duke u Perfomuar Akcioni i Dytë...</IDS_CTRL_STATICTEXT_LABEL_04>
+<IDS_CTRL_PROGRESS_BAR_02/>
+</Messages>
+</SUF70Messages>
