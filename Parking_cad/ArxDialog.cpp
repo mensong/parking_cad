@@ -46,7 +46,7 @@
 #endif
 
 extern Authenticate g_auth;
-
+std::string CArxDialog::ms_posturl;
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CArxDialog, CAcUiDialog)
 
@@ -67,6 +67,11 @@ CArxDialog::CArxDialog (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) 
 CArxDialog::~CArxDialog(){
 
 	COperaParkingSpaceShow::ms_dlg = NULL;
+}
+
+void CArxDialog::setPostUrl(std::string& posturl)
+{
+	ms_posturl = posturl;
 }
 
 //-----------------------------------------------------------------------------
@@ -557,7 +562,8 @@ std::string CArxDialog::postToAIApi(const std::string& sData)
 	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
 	if (!fn_post)
 		return "";
-	int code = fn_post("http://10.8.212.187/park", sData.c_str(), sData.size(), true, "application/json");
+	const char * postUrl = ms_posturl.c_str();
+	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
 	if (code!=200)
 	{
 		return "ÍøÂç»ò·þÎñÆ÷´íÎó";

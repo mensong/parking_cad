@@ -63,7 +63,8 @@ public:
 	AcGePoint2dArray GetretreatlinePts;//装取去完重的有效点
 	std::string m_strComputerId;
 	std::string m_strUserId;
-
+	static void setPostUrl(std::string& posturl);
+	static std::string ms_posturl;
 protected:
 	void loadoutlineLayers();
 	void loadshearwallLayers();

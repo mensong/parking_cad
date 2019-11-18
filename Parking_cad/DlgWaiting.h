@@ -12,6 +12,7 @@ public:
 	static void Show(bool bShow = true);
 	static void Destroy();
 	static void setUuid(const std::string& uuid);
+	static void setGetUrl(const std::string& geturl);
 
 public:
 	CDlgWaiting(CWnd* pParent = NULL);   // 标准构造函数
@@ -35,6 +36,7 @@ public:
 	int getStatus(std::string& josn, CString& sMsg);
 	
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
+	static std::string ms_geturl;//从初始化类取到配置文件中的IP地址接口
 	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation);
 	void axisShow(const AcGePoint2dArray& axisPts);
 	void laneShow(const AcGePoint2dArray& lanePts);
