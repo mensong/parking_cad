@@ -4,9 +4,9 @@
 #include "ArxDialog.h"
 #include <fstream>
 #include <json/json.h>
-#include <iosfwd>
 #include "DlgWaiting.h"
 #include "ArxDialog.h"
+#include "FileHelper.h"
 
 class CArxDialog* COperaParkingSpaceShow::ms_dlg = NULL;
 
@@ -22,27 +22,23 @@ COperaParkingSpaceShow::~COperaParkingSpaceShow()
 
 void COperaParkingSpaceShow::Start()
 {
-
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
-
-	//从文件中读取
-	std::ifstream is;
-	AcString sConfigFile = DBHelper::GetArxDir() + _T("ParkingConfig.json");
-	is.open(sConfigFile, std::ios::binary);
-	if (!is.is_open())
-	{
-		acedAlert(_T("加载配置文件出错！"));
-		return;	
-	}
-	if (reader.parse(is, root))
+	if (reader.parse(sConfigStr, root))
 	{
 		std::string postUrl = root["params"]["posturl"].asString();
 		std::string getUrl = root["params"]["geturl"].asString();
 		CDlgWaiting::setGetUrl(getUrl);
 		CArxDialog::setPostUrl(postUrl);
 	}
-	is.close();
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return;
+	}
 
 	AcString sTemplateFile = DBHelper::GetArxDir() + _T("template.dwg");
 	if (!DBHelper::ImportBlkDef(sTemplateFile, _T("Parking_1")))

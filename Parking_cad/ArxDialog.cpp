@@ -563,6 +563,7 @@ std::string CArxDialog::postToAIApi(const std::string& sData)
 	if (!fn_post)
 		return "";
 	const char * postUrl = ms_posturl.c_str();
+	//MessageBoxA(NULL, postUrl, "", 0);
 	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
 	if (code!=200)
 	{
