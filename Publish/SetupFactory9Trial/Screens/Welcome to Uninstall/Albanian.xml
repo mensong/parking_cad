@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Albanian</Name>
+<Default>0</Default>
+<Primary>28</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Uninstalimi i %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Mirë Se Vini</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Mirë se vini në uninstalimin e %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Vazhdo &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Prapa</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulo</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Ndihmë</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Ky program do të uninstalon %ProductName% %ProductVer%.
+
+Nëse %ProductName% është në përdorim, ju lutemi mbyllni atë para se të fillosh me uninstalim.
+
+Nëse është çdp gjë në rregull, Kliko Vazhdo për të vazhduar.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Uninstalimi i %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

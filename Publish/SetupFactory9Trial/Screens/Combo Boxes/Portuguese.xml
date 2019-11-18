@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+	<Language>
+		<Name>Portuguese</Name>
+		<Default>0</Default>
+		<Primary>22</Primary>
+		<Secondary>
+			<ID>1</ID>
+			<ID>2</ID>
+		</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Instalação de %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Opções</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Selecione a opção que deseja e clique Avançar para prosseguir.</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Avançar &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Retornar</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>A&juda</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+		<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Selecione uma opção ou digite uma resposta:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_COMBOBOX_01_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_01_ITEMS>Item A
+Item B
+Item C</IDS_CTRL_COMBOBOX_01_ITEMS>
+		<IDS_CTRL_STATICTEXT_LABEL_02>Selecione uma opção:</IDS_CTRL_STATICTEXT_LABEL_02>
+		<IDS_CTRL_COMBOBOX_02_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_02_ITEMS>Pedra
+Papel
+Tesoura</IDS_CTRL_COMBOBOX_02_ITEMS>
+	</Messages>
+</SUF70Messages>

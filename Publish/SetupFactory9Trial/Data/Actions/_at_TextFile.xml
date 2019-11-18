@@ -1,0 +1,126 @@
+<ActionTemplates>
+   <Action>
+      <Name>TextFile.ReadToString</Name>
+      <Description>Reads the contents of a text file and returns it as a string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the text file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>TextFile.ReadToTable</Name>
+      <Description>Reads the contents of a text file into a table.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the text file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>TextFile.WriteFromString</Name>
+      <Description>Writes a string of text to a text file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the text file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The string of text to write.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Hello, world."</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Append</Name>
+            <Description>Whether to append the string to the end of the text file.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>TextFile.WriteFromTable</Name>
+      <Description>Writes a table's contents out to a text file. The table should consist of one line of text per table item.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the text file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Table</Name>
+            <Description>The table to write.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>mytable</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Append</Name>
+            <Description>Whether to append the table's contents to the end of the text file.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Danish</Name>
+<Default>0</Default>
+<Primary>6</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Opsætning af %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Options</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Select an option and click Next to continue.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Næste &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Tilbage</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Fortryd</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjælp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Væl venligst en af følgende valgmuligheder: </IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_RADIO_BUTTON_01>Valgmulighed 01</IDS_CTRL_RADIO_BUTTON_01>
+<IDS_CTRL_RADIO_BUTTON_02>Valgmulighed 02</IDS_CTRL_RADIO_BUTTON_02>
+<IDS_CTRL_RADIO_BUTTON_03>Valgmulighed 03</IDS_CTRL_RADIO_BUTTON_03>
+<IDS_CTRL_RADIO_BUTTON_04>Valgmulighed 04</IDS_CTRL_RADIO_BUTTON_04>
+</Messages>
+</SUF70Messages>

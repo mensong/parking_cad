@@ -1,0 +1,352 @@
+<ActionTemplates>
+   <Action>
+      <Name>Window.Close</Name>
+      <Description>Closes a specific window on the user's desktop.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Method</Name>
+            <Description>How to close the window.</Description>
+            <Type>number</Type>
+            <Default>CLOSEWND_SENDMESSAGE</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>CLOSEWND_SENDMESSAGE</Default>
+               <DataType>combo</DataType>
+               <Constraints>CLOSEWND_SENDMESSAGE,CLOSEWND_TERMINATE</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.EnumerateProcesses</Name>
+      <Description>Returns a table containing a list of all the currently running processes and their associated window handles.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>TopLevel</Name>
+            <Description>Whether or not to return information from top level windows only.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.EnumerateTitles</Name>
+      <Description>Returns a table containing the window titles and window handles of all of the open windows on the system.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>TopLevel</Name>
+            <Description>Whether or not to return information from top level windows only.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.GetPos</Name>
+      <Description>Returns the X and Y screen coordinates of a window in pixels.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.GetSize</Name>
+      <Description>Returns the pixel dimensions of a window.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.Hide</Name>
+      <Description>Hides a specific window given it's window handle.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.Maximize</Name>
+      <Description>Maximizes a specific window given it's window handle.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.Minimize</Name>
+      <Description>Minimizes a specific window given it's window handle.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.Restore</Name>
+      <Description>Restores a specific window given it's window handle.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.SetOrder</Name>
+      <Description>Sets the Z-Order of a window relative to other visible windows on the system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>InsertAfter</Name>
+            <Description>The handle of the window to precede the window specified in WndHandle.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HWND_TOP</Default>
+               <DataType>combo</DataType>
+               <Constraints>HWND_BOTTOM, HWND_NOTOPMOST, HWND_TOP, HWND_TOPMOST</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.SetPos</Name>
+      <Description>Sets the X and Y pixel coordinates of a specific window relative to the screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>X</Name>
+            <Description>The new X pixel coordinate (horizontal position) to set for the window. This is the X coordinate of the upper left hand corner of the window relative to the screen.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>0</Default>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Y</Name>
+            <Description>The new Y pixel coordinate (vertical position) to set for the window. This is the Y coordinate of the upper left hand corner of the window relative to the screen.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>0</Default>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.SetSize</Name>
+      <Description>Sets the size of a specific window given it's window handle.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Width</Name>
+            <Description>The new width of the window in pixels.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>640</Default>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Height</Name>
+            <Description>The new height of the window in pixels.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>480</Default>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.SetText</Name>
+      <Description>Sets the title text for a specific window. This text will be displayed in the window's title bar and task bar.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text to display.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"New Title"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Window.Show</Name>
+      <Description>Shows a specific window given it's window handle.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>WndHandle</Name>
+            <Description>The integer value that represents the specific window on the user's desktop. (Commonly referred to as an hWnd.).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Application.GetWndHandle()</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

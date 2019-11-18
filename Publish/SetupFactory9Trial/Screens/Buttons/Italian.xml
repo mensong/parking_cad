@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Italian</Name>
+<Default>1</Default>
+<Primary>16</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installazione</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Testo di intestazione</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Testo di sotto intestazione</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Avanti &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Indietro</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnulla</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Ai&uto</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_BUTTON_01>Pulsante 01</IDS_CTRL_BUTTON_01>
+<IDS_CTRL_STATICTEXT_LABEL_01>Usa questo testo per descrivere cosa succede quando si clicca sul pulsante 01.</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_BUTTON_02>Pulsante 02</IDS_CTRL_BUTTON_02>
+<IDS_CTRL_STATICTEXT_LABEL_02>Usa questo testo per descrivere cosa succede quando si clicca sul pulsante 02.</IDS_CTRL_STATICTEXT_LABEL_02>
+</Messages>
+</SUF70Messages>

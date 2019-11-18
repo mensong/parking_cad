@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installatiemap</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Waar wenst u %ProductName% te installeren?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Doorgaan &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Annuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>&Zoeken...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>De software wordt geïnstalleerd in de map die hieronder wordt aangeduid. Om een andere lokatie aan te duiden kunt u een nieuw pad invoeren of op Zoeken klikken om naar een bestaande map te zoeken.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>%ProductName% installeren in:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Vereiste ruimte: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Beschikbare ruimte op het gekozen station: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

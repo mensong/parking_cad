@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Polish</Name>
+<Default>0</Default>
+<Primary>21</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalacja %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Folder Skrótów</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Gdzie chcesz zainstalowaæ skróty programowe?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalej &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Powrót</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Anu&luj</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Po&moc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ikony skrótów bêd¹ utworzone w poni¿szym folderze. Jeœli nie chcesz u¿yæ folderu domyœlnego, mo¿esz wpisaæ now¹ nazwê albo wybraæ z listy ju¿ istniej¹cy folder.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Folder Skrótów:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Zainstaluj skróty tylko dla bie¿¹cego u¿ytkownika</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Utwórz skróty dostêpne dla wszystkich u¿ytkowników</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

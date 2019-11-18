@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Turkish</Name>
+<Default>0</Default>
+<Primary>31</Primary>
+<Secondary/>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Kurulumu</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Hoþ Geldiniz</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>%ProductName% %ProductVer% için yükleyiciye hoþ geldiniz.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Ýleri &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Gei</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Ý&amp;ptal</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Yardým</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>%ProductName% %ProductVer% için yükleyiciye hoþ geldiniz.
+
+Bu yüklemeye devam etmeden önce tüm Windows programlarýný kapatmanýz þiddetle önerilir.
+
+Eðer çalýþan baþka programlarýnýz varsa lütfen Ýptal 'e basýn, programlarý kapatýn ve bu kurulum 'u tekrar çalýþtýrýn.
+
+Devam etmek için Ýleri 'ye basýn.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Hoþ geldiniz</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

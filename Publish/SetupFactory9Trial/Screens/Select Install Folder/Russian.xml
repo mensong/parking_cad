@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Russian</Name>
+		<Default>0</Default>
+		<Primary>25</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Установка %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Выбор папки для установки</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>В какую папку вы хотите установить %ProductName%?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далее &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Отмена</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Справка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_BUTTON_BROWSE>&Обзор...</IDS_CTRL_BUTTON_BROWSE>
+		<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Мастер установит %ProductName% в указанную папку. Если вы хотите выполнить установку в другую папку, введите к ней путь, либо нажмите кнопку "Обзор..." и выберите желаемую папку.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Установить %ProductName% в:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Требуется на диске: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+		<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Свободно на диске:  %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+	</Messages>
+</SUF70Messages>

@@ -1,0 +1,107 @@
+<ActionTemplates>
+   <Action>
+      <Name>ODBC.ConfigDataSource</Name>
+      <Description>Configures an ODBC data source.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>DriverDescription</Name>
+            <Description>A description of the driver.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Microsoft Access Driver (*.mdb)"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Attributes</Name>
+            <Description>A string of attributes in keyword=value pairs.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"DSN=QandA\\0DBQ=J:\\DATABASE\\QandA.mdb\\0FIL=MS Access;\\0DESCRIPTION=Questions and Answers Database\\0DRIVERID=25\\0UID=\\0\\0"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Request</Name>
+            <Description>The type of action that will be performed.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>ODBC_ADD_DSN</Default>
+               <DataType>combo</DataType>
+               <Constraints>ODBC_ADD_DSN,ODBC_CONFIG_DSN,ODBC_REMOVE_DSN,ODBC_ADD_SYS_DSN,ODBC_CONFIG_SYS_DSN,ODBC_REMOVE_SYS_DSN,ODBC_REMOVE_DEFAULT_DSN</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>ODBC.InstallDriver</Name>
+      <Description>Installs an ODBC driver.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Driver</Name>
+            <Description>A string containing the driver description and name=value pairs describing the driver.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Microsoft Access Driver (*.mdb)\\0Driver=odbcjt32.dll\\0Setup=odbcjt32.dll\\0FileUsage=1\\0FileExtns=*.mdb\\0APILevel=1\\0ConnectFunctions=YYN\\0DriverODBCVer=02.50\\0s=YYN\\0SQLLevel=0\\0\\0"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>ODBC.InstallManager</Name>
+      <Description>Installs the driver manager.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>ODBC.UninstallDriver</Name>
+      <Description>Removes an ODBC driver and returns the usage count of that driver after this action.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Driver</Name>
+            <Description>The name of the driver as it appears in the Odbcinst.ini key of the system information.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Microsoft Access Driver (*.mdb)"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>RemoveDSN</Name>
+            <Description>Whether or not to remove DSN's associated with the driver.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>ODBC.UninstallManager</Name>
+      <Description>Uninstalls the driver manager, and returns its usage count after this action.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments/>
+   </Action>
+</ActionTemplates>

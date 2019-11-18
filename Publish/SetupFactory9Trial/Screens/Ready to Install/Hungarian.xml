@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Hungarian</Name>
+<Default>0</Default>
+<Primary>14</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Telepítõ</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Telepítésre felkészülve</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ön most készen áll a %ProductName% %ProductVer% telepítéséhez.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Tovább &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Vissza</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Mégsem</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Segítség</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>A telepítõ már elegendõ információval rendelkezik a %ProductName% telepítéséhez.
+
+
+Az alábbi beállítások lesznek használva:
+
+Telepítés helye:    %AppFolder%
+
+Ikonok helye:       %AppShortcutFolderName%
+
+
+Kérem nyomja meg a Tovább gombot a telepítés végrehajtásához.</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Fejléc</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

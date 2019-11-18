@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+     <Name>Greek</Name>
+     <Primary>8</Primary>
+     <Secondary>
+     </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Ïëïêëçñþèçêå</MSG_SUCCESS>
+      <MSG_ERROR>ÓöÜëìá</MSG_ERROR>
+      <MSG_NOTICE>Åéäïðïßçóç</MSG_NOTICE>
+      <MSG_WARNING>Ðñïóï÷Þ</MSG_WARNING>
+      <MSG_YES>Íáß</MSG_YES>
+      <MSG_NO>¼÷é</MSG_NO>
+      <MSG_YES_TOALL>Íáß óå üëá</MSG_YES_TOALL>
+      <MSG_TO>Óå</MSG_TO>
+      <MSG_FROM>Áðü</MSG_FROM>
+      <MSG_BROWSE>Åýñåóç...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Áêýñùóç</MSG_CANCEL>
+      <MSG_PATH>ÄéáäñïìÞ</MSG_PATH>
+      <MSG_SEARCH_MASK>Åýñåóç</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>¼ëá ôá áñ÷åßá</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>ÁíáæÞôçóç áñ÷åßïõ</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bytes</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Åðéâåâáßùóç</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Ç åãêáôÜóôçóç äåí Ý÷åé ïëïêëçñùèåß! Åßóôå óßãïõñïé üôé èÝëåôå íá ôçí ôåñìáôßóåôå;</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Åßóôå óßãïõñïé üôé åðéèõìåßôå ôçí óõíÝ÷éóç ôçò åãêáôÜóôáóçò;</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>ÁíåðáñêÞò åëåýèåñïò ÷þñïò ãéá ôçí åãêáôÜóôáóç ôïõ %ProductName% óôïí åðéëåãìÝíï äßóêï.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>ÁíôéãñáöÞ...</MSG_COPYING>
+      <MSG_DELETING>ÄéáöñáöÞ...</MSG_DELETING>
+      <MSG_SEARCHING>ÁíáæÞôçóç...</MSG_SEARCHING>
+      <MSG_READING>ÁíÜãíùóç</MSG_READING>
+      <MSG_QUERYING_INTERNET>ÅîÝôáóç Internet...</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>ÌåôáöïñÜ...</MSG_MOVING>
+      <MSG_SAVING>ÁðïèÞêåõóç...</MSG_SAVING>
+      <MSG_INSERTDISK>ÅéóÜãåôå äéóêÝôá</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>ËÞøç...</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>ËÞøç áñ÷åßïõ...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>ËÞøç áñ÷åßïõ, Óõíïëéêü ìÝãåèïò: ¢ãíùóôï. Kb ðïõ Ý÷ïõí ëçöèåß ìÝ÷ñé ôþñá: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Åðßëõóç ïíüìáôïò õðïëïãéóôÞ õðçñåóßáò.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>¸ãéíå åðßëõóç ôïõ ïíüìáôïò ôïõ õðïëïãéóôÞ õðçñåóßáò.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Óýíäåóç óôï äéáêïìéóôÞ...</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>¸ãéíå óýíäåóç óôï äéáêïìéóôÞ.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Êëåßóéìï óýíäåóçò ìå ôï äéáêïìéóôÞ.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>¸êëåéóå óýíäåóç ìå ôï äéáêïìéóôÞ.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Ôï áßôçìá ïëïêëçñþèçêå.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Áíáêáôåýèõíóç...</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Åêôéìþìåíïò ÷ñüíïò ðïõ õðïëåßðåôáé</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/Sec</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Áñ÷éêïðïßçóç...</MSG_INITIALIZING>
+      <MSG_INSTALLING>ÅãêáôÜóôáóç...</MSG_INSTALLING>
+      <MSG_SKIPPING>ÐáñÜâëåøç...</MSG_SKIPPING>
+      <MSG_SEEKING>ÅðéæÞôçóç...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>ËáíèáóìÝíç Êáôá÷þñçóç</MSG_INVALID_ENTRY>
+      <MSG_THE>Ôï </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> ðåäßï äåí ìðïñåß íá åßíáé êåíü.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Ðñïåôïéìáóßá ÅãáôÜóôáóçò...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>ÅãêáôÜóôáóç Áñ÷åßùí...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Äçìéïõñãßá ÐñïãñÜììáôïò ÁðåãêáôÜóôáóçò...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Äçìéïõñãßá Óõíôïìåýóåùí...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>¸ëåã÷ïò áñ÷åßïõ óõíèçêþí...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>¸ëåã÷ïò ðñïóôáóßáò öáêÝëïõ...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>¸ëåã÷ïò åëÝõèåñïõ ÷þñïõ óôï äßóêï...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>ÄéáãñáöÞ Áñ÷åßùí...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>ÄéáãñáöÞ Óõíôïìåýóåùí...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Äçìéïõñãßá öÜêåëïõ áðåãêáôÜóôáóçò...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Äçìéïõñãßá áñ÷åßïõ äåäïìÝíùí áðåãêáôÜóôáóçò...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Äçìéïõñãßá áñ÷åßïõ åëÝã÷ïõ áðåãêáôÜóôáóçò...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Äçìéïõñãßá åêôåëÝóéìïõ áðåãêáôÜóôáóçò...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>ÁíôéãñáöÞ áñ÷åßùí ïèïíþí...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>ÁíôéãñáöÞ ðñüóèåôùí ðñïãñáììÜôùí...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>ÁíôéãñáöÞ áñ÷åßùí õðïóôÞñéîçò...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Äçìéïõñãßá êáôá÷þñçóçò óôïí ðßíáêá åëÝã÷ïõ...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Äçìéïõñãßá óõíôüìåõóçò áðåãêáôÜóôáóçò...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>¢ãíùóôï</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>ÊáíÝíá</MSG_OS_NONE>
+      <MSG_OS_ALL>¼ëá</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(äß÷ùò SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(Þ íåüôåñï)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Äåí ðëçñïýíôáé ïé ðáñáêÜôù åëÜ÷éóôåò ðñïûðïèÝóåéò ãéá ôçí åãêáôÜóôáóç:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Ëåéôïõñãéêü Óýíóôçìá</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Åýñïò Ïèüíçò</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>¾øïò Ïèüíçò</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>×ñùìáôéêü ÂÜèïò</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>¢äåéá ×ñÞóôç</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Äéá÷åéñéóôÞò</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Ç åãêáôÜóôçóç èá ôåñìáôéóôåß.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>ÊÜíôå êëéê óôï OK ãéá íá óõíå÷ßóåôå Þ óôï Áêýñùóç ãéá íá ôåñìáôßóåôå ôçí åãêáôÜóôáóç.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Ãéá ðåñéóóüôåñåò ðëçñïöïñßåò, ðáñáêáëþ åðéêïéíùíÞóôå ìå:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Ç åãêáôÜóôáóç áõôÞ èá åêðåýóåé óå </MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>ìÝñåò êáé äåí èá ëåéôïõñãëåé ìåôÜ áðü ôï äéÜóôçìá áõôü.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Ç åãêáôÜóôáóç áõôÞ èá åêôåëåóôåß</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>áêüìá öïñÝò ìÝ÷ñé Ýùò üôïõ åêðåýóåé.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Ðáñáêáëþ åéóÜãåôå ôç ÄéóêÝôá #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Óå ðåñßðôùóç ðïõ ôá áñ÷åßá áõôïý ôïõ äßóêïõ âñßóêïíôáé óå Üëëç èÝóç, üðùò, óå Üëëï äßóêï, åéóÜãåôå ôï ðëÞñåò üíïìá ôçò äéáäñïìÞò Þ êÜíôå êëéê óôï Åýñåóç ãéá íá ôçí åðéëÝîåôå.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Ç åãêáôÜóç ðñüêåéôáé íá åãêáôáóôÞóåé Ýíá áñ÷åßï, ôï ïðïßï õðÜñ÷åé Þäç óôï óýóôçìÜ óáò ìå ôï ßäéï üíïìá.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Ç åãêáôÜóç ðñüêåéôáé íá åãêáôáóôÞóåé Ýíá áñ÷åßï, ôïõ ïðïßïõ ÍÅÏÔÅÑÇ Ýêäïóç ìå ôï ßäéï üíïìá õðÜñ÷åé Þäç óôï óýóôçìÜ.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>ÈÝëåôå íá áíôéêáôáóôÞóåôå ôï ðáñáêÜôù áñ÷åßï;</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Ôï ðáñáêÜôù áñ÷åßï äåí ìðïñåß íá åíçìåñùèåß äéüôé ÷ñçóéìïðïéåßôáé Þäç:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Êëåßóôå üëåò ôéò åöáñìïãÝò êáé åðéëÝîôå ÅðáíÜëçøç.  ÅðéëÝîôå Áêýñùóç ãéá íá åãêáôáóôÞóåôå ôï áñ÷åßï êáôÜ ôçí åðáíåêêßíçóç ôïõ õðïëïãéóôÞ.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Åðéèõìåßôå ôçí áíôéêáôÜóôáóç ôïõ áñ÷åßïõ;</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Ç åöáñìïãÞ ðñüêåéôáé íá åãêáôáóôÞóåé Ýíá áñ÷åßï, ôï ïðïßï õðÜñ÷åé Þäç óôï óýóôçìÜ ìå ôï ßäéï üíïìá.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Ç åãêáôÜóç ðñüêåéôáé íá åãêáôáóôÞóåé Ýíá áñ÷åßï, ôïõ ïðïßïõ ÍÅÏÔÅÑÇ Ýêäïóç ìå ôï ßäéï üíïìá õðÜñ÷åé Þäç óôï óýóôçìÜ.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Ç åðáíåêêßíçóç ôïõ óõóôÞìáôïò Þôáí áäýíáôç.  Êëåßóôå üëåò ôéò åöáñìïãÝò êáé åðéëÝîôå ÅðáíÜëçøç.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Áõôü ôï áñ÷åßï äåí ìðïñåß íá äéáãñáöåß äéüôé ÷ñçóéìïðïéåßôáé Þäç. Êëåßóôå ôï áñ÷åßï êáé åðéëÝîôå ÅðáíÜëçøç. ÅðéëÝîôå ÐáñÜâëåøç ãéá íá óõíå÷ßóåôå êáé íá äéáãñÜøåôå ôï áñ÷åßï êáôÜ ôçí åðüìåíç åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò. ÅðéëÝîôå Ôåñìáôéóìüò ãéá íá ôåñìáôßóåôå ôçí áðåãêáôÜóôáóç.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Áõôü ôï áñ÷åßï äåí ìðïñåß íá äéáãñáöåß. ÅðéëÝîôå ÅðáíÜëçøç ãéá íá ðñïóðáèÞóåôå îáíÜ. ÁðéëÝîôå ÐáñÜâëåøç ãéá íá óõíå÷ßóåôå êáé íá äéáãñÜøåôå ôï áñ÷åßï êáôÜ ôçí åðüìåíç åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò. ÅðéëÝîôå Ôåñìáôéóìüò ãéá íá ôåñìáôßóåôå ôçí áðåãêáôÜóôáóç.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Ç áðåãêáôÜóôáóç èá äéáãñÜøåé ôï ðáñáêÜôù êïéíü÷ñçóôï áñ÷åßï óõóôÞìáôïò:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Êáììßá Üëëá åöáñìïãÞ äåí Ý÷åé êáôáóùñÞóåé ôçí ÷ñÞóç ôïõ, üìùò åßíáé ðéèáíü êÜðïéá åöáñìïãÞ íá ôï áðéôåß ãéá ôçí ëåéôïõñãßá ôçò.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Íá äéáãñáöåß ôï áñ÷åßï;</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Ç åðáíåêêßíçóç ôïõ óõóôÞìáôïò áðÝôõ÷å. Êëåßóôå üëåò ôéò áíïéêôÝò åöáñìïãÝò êáé åðéëÝîôå åðáíÜëçøç.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Ãéá ôçí ïëïêÞñùóç ôçò åãêáôÜóôáóçò áðáéôåßôáé åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò. ÈÝëåôå íá åðáíåêêéíÞóåôå ôï óýóôçìÜ óáò ôþñá;</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Ãéá ôçí ïëïêÞñùóç ôçò áðåãêáôÜóôáóçò áðáéôåßôáé åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò. ÈÝëåôå íá åðáíåêêéíÞóåôå ôï óýóôçìÜ óáò ôþñá;</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>ÐáñáêÜëù åðéëÝîôå Ýíá óôïé÷åßï áðü ôçí ëßóôá.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>×þñïò ðïõ áðáéôåßôáé óôï äßóêï:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>ÄéáèÝóéìïò ÷þñïò óôï äßóêï:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Áäõíáìßá äçìéïõñãßáò áñ÷åßï êáôáãñáöÞò: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Ï Ýëåã÷ïò áêåñáéüôçôáò ôïõ óõìðéåóìÝíïõ áñ÷åßïõ áðÝôõ÷å. Ôï áñ÷åßï åãêáôÜóôáóçò äåí åßíáé ïëïêëçñùìÝíï, ðéèáíþí ëüãù áôåëïýò ëÞøçò Þ êáôåóôñáìÝíïõ áñ÷åßïõ.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Ðáñáêáëþ åðéâåâáéþóôå üôé ç äéóêÝôá Ý÷åé åéóá÷èåß! Ôï áñ÷åßï äåí âñÝèçêå:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Áðïôõ÷ßá öïñôþìáôïò ðñüóèåôïõ ðñïãñÜììáôïò</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Ç åãêáôÜóôáóç äåí êáôÜöåñå íá áíïéîåß ôï ðáñáêÜôù óõìðéåóìÝíï áñ÷åßï (ºóùò Ý÷åôå åéóÜãåé ëÜèïò äéóêÝôá)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Áäõíáìßá äÝóìåõóçò ìíÞìç ãéá ôçí áðïóõìðßåóç ôùí áñ÷åßùí. Ç åãêáôÜóôáóç èá ôåñìáôéóôåß.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Áäõíáìßá äçìéïõñãßáò ôïõ ðáñáêÜôù öáêÝëïõ:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>ÓöÜìá êáôÜ ôçí áðïóõìðßåóç</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Áäõíáìßá áíïßãìáôïò áñ÷åßïõ åîüäïõ</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Áäõíáìßá áíïßãìáôïò áñ÷åßïõ åéóüäïõ</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Áðïôõ÷ßá êáôÜ ôçí ÁíÜãíùóç/ÅããñáöÞ</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>ËÜèïò CRC áñ÷åßïõ - ÓöÜëìá áêåñáéüôçôáò äåäïìÝíùí</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Ï äßóêïò åßíáé ãåìÜôïò.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>¢ãíùóôï óöÜëìá êáôÜ ôçí áðïóõìðßåóç</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>ÓöÜëìá êáôÜ ôçí ðáñÜâëåøç áñ÷åßïõ</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>ÓöÜëìá êáôÜ ôçí äÝóìåõóç ìíÞìçò</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>ÓöÜëìá êáôÜ ôçí áíÜãíùóç áñ÷åßïõ</ERR_FILE_READ>
+      <ERR_FILE_WRITE>ÓöÜëìá êáôÜ ôçí áíÜãíùóç áñ÷åßïõ</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>¢ãíùóôï óöÜëìá êáôÜ ôçí áíôéãñáöÞ áñ÷åßïõ</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Áäõíáìßá êáôá÷þñçóçò áðåãêáôÜóôáóçò</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>ÓöÜëìá óôç óõíÜñôçóç LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>ÓöÜëìá óôç ëåéôïõñãßá GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Áðïôõ÷ßá êáôá ôçí åðéóôñïöÞ áðü ôç ëåéôïõñãßá DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Áäõíáìßá êáôá÷þñçóçò óôïé÷åßïõ åëÝã÷ïõ COM (ActiveX):</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Áäõíáìßá êáôá÷þñçóçóçò Type Library:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>¸ëëåéøç ÌíÞìçò</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Ìéá Þ ðåñéóóüôåñåò ðáñÜìåôñïé åßíáé ëáíèáóìÝíåò.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Ç ëåéôïõñãßá äåí êáôÜöåñå íá ãñÜøåé óôï áñ÷åßï.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Áäõíáìßá áíïßãìáôïò Type Library.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Ç ëåéôïõñãßá äåí êáôÜöåñå íá áíáãþóåé ôï áñ÷åßï.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Ç ìïñöÞ ôçò Type Library åßíáé áíá÷ñïíéóìÝíç.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>Áäõíáìßá åíôïðéóìïý ôïõ LCID óôéò DLL ðïõ õðóóôçñßæïõí ôï ðñïôüêïëëï the OLE.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Áäõíáìßá öüñôùóçò âéâëéïèÞêçò Type Library Þ DLL.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Áäõíáìßá áíïßãìáôïò ôïõ Ìçôñþïõ ÓõóôÞìáôïò.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>ÓöÜëìá óôï Default FACILITY_STORAGE.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Áäõíáìßá äçìéïõñãßá öáêÝëïõ áðåãêáôÜóôáóçò:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Áäõíáìßá äçìéïõñãßá áñ÷åßïõ äåäïìÝíùí áðåãêáôÜóôáóçò:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Áäõíáìßá áíÜãíùóçò ôïõ åêôåëÝóéìïõ áðåãêáôÜóôáóçò:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Áäõíáìßá áíïßãìáôïò ãéá åããñáöÞ ôïõ åêôåëÝóéìïõ áðåãêáôÜóôáóçò:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Áäõíáìßá áíïßãìáôïò ãéá åããñáöÞ ôïõ áñ÷åßïõ äéåõèÝôçóçò:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Ôï åêôåëÝóéìï ôçå áðåãêáôÜóôáóçò åßíáé Þäç óå ÷ñÞóç áêé äåí Ýéíáé äõíáôÞ ç äçìéïõñãßá ôïõ. Êëåßóôå ôéò åíåñãÝò åðåãêáôáóôÜóåéò êáé åðéëÝîôå ÅðáíÜëçøç Þ åðéëÝîôå Áêýñùóç ãéá ôåñìáôéóìü ôçò äéáäéêáóßáò.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Áäõíáìßá áíïßãìáôïò ãéá åããñáöÞ ôïõ êëåéäéïý áðåãêáôÜóôáóçò óôï Ìçôñþï ÓõóôÞìáôïò:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Áäõíáìßá äçìéïõñãßáò ôïõ êëåéäéïý áðåãêáôÜóôáóçò óôï Ìçôñþï ÓõóôÞìáôïò:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Áäõíáìßá äçìéïõñãßáò óõíôüìåõóçò áðåãêáôÜóôáóçò:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Áäõíáìßá áðïèÞêåõóçò ìåôáâëçôþí åñãáóßáò</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Äåí Ý÷åôå äéêáßùìá ìåôáâïëÞò ôùí ìåôñçôþí ôùí êïéíü÷ñçóôùí áñ÷åßùí óõóôÞìáôïò. Ç åãêáôÜóôáóç ðñÝðåé íá åêôåëåóôåß ìå äéáêéþìáôá Äéá÷åéñéóôÞ óõóôÞìáôïò</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Äåí Ý÷åôå äéêáßùìá êáôá÷þñçóçò óôïé÷åßùí åëÝã÷ïõ COM (ActiveX) óôï óýóôçìá. Ç åãêáôÜóôáóç ðñÝðåé íá åêôåëåóôåß ìå äéáêéþìáôá Äéá÷åéñéóôÞ óõóôÞìáôïò.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Äåí Ý÷åôå äéêáßùìá êáôá÷þñçóçò Type Libraries on this system. óôï óýóôçìá. Ç åãêáôÜóôáóç ðñÝðåé íá åêôåëåóôåß ìå äéáêéþìáôá Äéá÷åéñéóôÞ óõóôÞìáôïò.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Ôï ðáñáðÜíù óôïé÷åßï åëÝã÷ïõ COM (ActiveX) äåí áðïêáôá÷ùñÞèçêå. Ôï áñ÷åßï äåí èá äéáãñáöåß.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>ËáíèáóìÝíïò ôýðïò óôïé÷åßïõ äåäïìÝíùí áðåãêáôÜóôáóçò.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Ôï óôïé÷åßï äåäïìÝíùí áðåãêáôÜóôáóçò äåí âñÝèçêå.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>¢ãùóôï ÓöÜëìá.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Äåí âñÝèçêå ôï êáèïóñéóìÝíï áñ÷åßï.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Áðïôõ÷ßá öüñôùóçò áñ÷åßïõ.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Áðïôõ÷ßá áðïèÞêåõóçò áñ÷åßïõ.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Äåí âñÝèçêå ç êáèïñéóìÝíç äéáäñïìÞ.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>ËáíèáóìÝíï .exe áñ÷åßï (.exe ìç óõìâáôü ìå Win32  Þ .exe ìå ëáíèáóìÝíç åéêüíá).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Ç ðñüóâáóç óôï êáèïñéóìÝíï áñ÷åßï áðïññßöèçêå áðü ôï ëåéôïõñãéêü óýóôçìá.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Ç äýíäåóç ìå ôï üíïìá ôïõ áñ÷åßïõ åßíáé çìéôåëÞò Þ ëáíèáóìÝíç.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>Áäõíáìßá ïëïêëþñùóçò óõíáëëáãÞò DDE. ¢ëëåò óõíáëëáãÝò DDE âñßóêïíôáé õðü åðåîåñãáóßá.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>Ç óõíáëëáãÞ DDE áðÝôõ÷å</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>ËÞîç ÷ñüíïõ áíáìïíÞò. Ç óõíáëëáãÞ DDE äåí ïëïêëçñþèçêå.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Äåí âñÝèçêå ç êáèïñéóìÝíç âéâëéïèÞêç DLL.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Äåí õðÜñ÷åé óýíäåóç ìåôáîý åöáñìïãÞò êáé ôïõ êáèïñéóìÝíïõ ôýðïõ áñ÷åßùí. Ôï ßäéï óöÜëìá èá ðñïêëçèåß åáí áðïðåéñáèåßôå íá åêõðþóåôå ìç-åêôõðþóéìï áñ÷åßï.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>ÁíåðáñêÞò ìíÞìç ãéá ôç ïëïêëÞñùóç ôçå äéáäéêáóßáò.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Ç åêôÝëåóç ôïõ áñ÷åßïõ áðÝôõ÷å.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>Ç åêôëÝëåóç áðÝôõ÷å, åßíáé áðáñáßôçôç ç ðñïáãùãÞ äéêáéùìÜôùí ÷ñÞóôç.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Åíôïðéßóôçêå óöÜëìá êáôáóôñáôÞãçóçò êïéíÞò ÷ñÞóçò.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Áäõíáìßá ðñïóäéïñéóìïý ôÜîçò üíïìáôïò ðñïãñÜììáôïò ðáñïõóßáóçò.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Áäõíáìßá ðñïóäéïñéóìïý ãñáììÞò åíôïëÞò ðñïãñÜììáôïò ðáñïõóßáóçò.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Ôï óõó÷åôéóìÝíï ðñïãñÜììáôïò ðáñïõóßáóçò äåí åßíáé åêôåëÝóéìï áñ÷åßï.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Ôï óõó÷åôéóìÝíï ðñïãñÜììáôïò ðáñïõóßáóçò äåí õðÜñ÷åé.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>ËáíèáóìÝíç ðñïÝëåõóç.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>ËáíèáóìÝíïò ðñïïñéóìüò.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Áíýðáñêôï(á) áñ÷åßï(á) ðñïÝëåõóçò.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Áíýðáñêôïò ÖÜêåëïò ðñïïñéóìïý.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Áðïôõ÷ßá áíôéãñáöÞò åíüò Þ ðåñéóóïôÝñùí áñ÷åßùí.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Áðïôõ÷ßá äéáãñáöÞò åíüò Þ ðåñéóóïôÝñùí áñ÷åßùí.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Áðïôõ÷ßá ðñïãñáììáôéóìïý äéáãñáöÞò êáôÜ ôçí åðáíåêêßíçóç.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Áðïôõ÷ßá ðñïãñáììáôéóìïý ìåôáöïñÜò êáôÜ ôçí åðáíåêêßíçóç.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Ç ëåéôïõñãåßá ôåñìáôßóôçêå áðü ôïí ÷ñÞóôç.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>ÓöÜëìá êáôÜ ôçí êëÞóç ôçò óõíÜñôçóçò callback.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>ÓöÜëìá, ç óõíÜñôçóç callback äåí âñÝèçêå.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Áäõíáìßá åýñåóçò ìåãÝèïõò Ýêäïóçò.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Áäõíáìßá åýñåóçò Ýêäïóçò áñ÷åßïõ.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Ôï üíïìá áñ÷åßïõ ðåñéÝ÷åé ìç áðïäåêôïýò ÷áñáêôÞñåò.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Ôï áñ÷åßï ðñïïñéóìïý õðÜñ÷åé Þäç.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>ÐñïêëÞèçêå Üãíùóôï óöÜëìá.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Áäõíáìßá åýñåóçò êëåéäéïý, ç åêôÝëåóç åíôïëÞò êáôÜ ôçí åðáíåêêßíçóç áðÝôõ÷å.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Áäõíáìßá êáôá÷þñçóçò ôéìÞò, ç åêôÝëåóç áíôïëÞò êáôÜ ôçí åðáíåêêßíçóç áðÝôõ÷å.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Áäõíáìßá ïñéóìïý ÷áñáêôçñéóôéêþí ôïõ áñ÷åßïõ.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Áäõíáìßá ïñéóìïý ÷áñáêôçñéóôéêþí óõìðßåóçò ôïõ áñ÷åßïõ.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Áäõíáìßá äçìéïõñãßáò öáêÝëïõ ðñïïñéóìïý.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Áäõíáìßá äçìéïõñãßá åíüò Þ ðåñéóóïôÝñùí áñ÷åßùí åîáóöÜëéóçò.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>¸ëëåéøç ÌíÞìçò.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Äåí Ý÷åôå ôá áðáñáßôçôá äéêáéþìáôá ãéá íá åãêáôáóôÞóåôå áñ÷åßá óôïí ðáñáðÜíù öÜêåëï. Ôçí åãêáôÜóôáóç ðñÝðåé íá ôçí åêôåëÝóåé ÷ñÞóôçò ìå ôá áðáñáßôçôá äéáêéþìáôá üðùò ï äéá÷åéñéóôÞò óõóôÞìáôïò.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Ï ðáñáðÜíù äßóêïò äåí õðÜñ÷åé. Ç åãêôÜóôóáóç äåí èá óõíå÷éóôåß.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>ÁíåðáñêÞò åëåýèåñïò ÷þñïò ãéá ôçí åãêáôÜóôáóç ôùí áðáéôïýìåíùí áñ÷åßùí óôïí ðáñáðÜíù äßóêï.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Ç ôñÝ÷ïõóá ïèüíç äåí ðåñéëáìâÜíåé óôïé÷åßï ìå ôï êáèïñéóìÝíï ID.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Ï ôýðïò ôïõ êáèïñéóìÝíïõ óôïé÷åßïõ äåí õðïóôçñßæåé ôçí åðéëåãìÝíç åíÝñãåéá.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Äåí õðÜñ÷åé ôñÝ÷ïõóá ïèüíç.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Äíå âñÝèçêå ôï êáèïñéóìÝíï óôïé÷åßï.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Áäõíáìßá ðñïâïëÞò ôïõ óôïé÷åßïõ.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Ôï áñ÷åßï åßíáé ðïëý ìåãÜëï ãéá íá áíáãíùóôåß.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Áäõíáìßá áíïßãìáôïò êáèïñéóìëåíïõ áñ÷åßïõ.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Ôï åóùôåñéêü óôïé÷åßï ðñïêëÜëåóå êÜðïéá åîáßñåóç.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Ç åíÝñãåéá äåí åßíáé äõíáôüí íá åêôåëåóôåß óå áðåíåñãïðïéçìÝíï óôïé÷åßï.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Áäõíáìßá ðñïâïëÞò äéáëüãïõ êáôÜóôáóçò.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Áäõíáìßá áðüêñõøçò äéáëüãïõ êáôÜóôáóçò.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Áäõíáìßá êáôá÷þñçóçò êåéìÝíïõ óôï äéÜëïãï êáôÜóôáóçò.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Áäõíáìßá êáôá÷þñçóçò åýñïõò ôéìþí ôïõ ìåôñçôÞ ðñïüäïõ óôï äéÜëïãï êáôÜóôáóçò.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Áäõíáìßá êáôá÷þñçóçò èÝóçò ôïõ ìåôñçôÞ ðñïüäïõ óôï äéÜëïãï êáôÜóôáóçò.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Áäõíáìßá êáôá÷þñçóçò ìçíýìáôïò óôï äéÜëïãï êáôÜóôáóçò.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Áäõíáìßá êáôá÷þñçóçò ôßôëïõ óôï äéÜëïãï êáôÜóôáóçò.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Áäõíáìßá åíôïðéóìïý ôçå èÝóçò ôïõ ìåôñçôÞ ðñïüäïõ.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Áäõíáìßá äéáãñáöÞò ôìÞìáôïò áðü êáèïñéóìÝíï áñ÷åßï INI.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Áäõíáìßá äéáãñáöÞò ôéìÞò áðü êáèïñéóìÝíï áñ÷åßï INI.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Áäõíáìßá êáèïñéóìïý ôéìÞò.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Áäõíáìßá äçìéïõñãßáò êëåéäéïý óôï Ìçôñþï ÓõóôÞìáôïò.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Áäõíáìßá äéáãñáöÞò êëåéäéïý áðü ôï Ìçôñþï ÓõóôÞìáôïò.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Áäõíáìßá äéáãñáöÞò ôéìÞò áðü ôï Ìçôñþï ÓõóôÞìáôïò.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Ôï êáèïñéóìÝíï ôìÞìá êëåéäéïý äåí õðÜñ÷åé.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Áäõíáìßá áíôïðéóìïý ïíïìÜôùí ôïõ ôìçìÜôïò êåëéäéïý.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Áäõíáìßá áíÜêôçóçò ôùí äåäïìÝíùí ôçò êáèïñéóìÝíçò ôéìÞò.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Áäõíáìßá áíÜêôçóçò ôùí ïíïìÜôùí ôùí ôéìþí.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Áäõíáìßá åýåñåóçò ôïõ ôýðïõ ôçò ôéìÞò ôïõ Ìçôñþïõ ÓõóôÞìáôïò.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Áäõíáìßá êáèïñéóìïý ôéìÞò óôï Ìçôñþï ÓõóôÞìáôïò</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Áäõíáìßá ðñïóèÞêçò óôïé÷åßïõ óôï List Box.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Áäõíáìßá åéóáãùãÞò óôïé÷åßïõ óôï List Box.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Äåßêôçò åêôüò áðïäåêôþí ïñßùí.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Áäõíáìßá Ýõñåóçò ¸êóïäçò Ëåéôïõñãéêïý ÓõóôÞìáôïò.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Áäõíáìßá åðáíåêêßíçóçò óõóôÞìáôïò. Ïé ðëçñïñßåò ôïõ Ëåéôïõñãéêïý ÓõóôÞìáôïò äåí åßíáé äéáèÝóéìåò.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Áäõíáìßá åðáíåêêßíçóçò óõóôÞìáôïò.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Áðïôõ÷ßá óôç óõíÜñôçóç LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>Áðïôõ÷ßá GetProcAddress.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Áðïôõ÷ßá êáôá ôçí åðéóôñïöÞ áðü ôç ëåéôïõñãßá DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>ÓöÜëìá êáôÜ ôçí êëÞóç ôçå óõíÜñôçóçò LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>ÓöÜëìá êáôÜ ôçí êëÞóç ôçå óõíÜñôçóçò RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Óöëáìá, ôï üíïìá ôçò ãñáììáôïóåéñÜò äåí åßíáé äõíáôüí íá åßíáé êåíü.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>ËáíèáóìÝíï üíïìá ãñáììáôïóåéñÜò.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Áðïôõ÷ßá ðñïóèÞêçò ãñáììáôïóåéñÜò óôïí ðßíáêá ãñáììáôïóåéñþí ôïõ óõóôÞìáôïò.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Áðïôõ÷ßá ðñïóèÞêçò ãñáììáôïóåéñÜò óôï Ìçôñþï ÓõóôÞìáôïò.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Áðïôõ÷ßá áðáëåéöÞò ãñáììáôïóåéñÜò áðü ôïí ðßíáêá ãñáììáôïóåéñþí ôïõ óõóôÞìáôïò.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Áðïôõ÷ßá áðáëåéöÞò ãñáììáôïóåéñÜò áðü ôïí Ìçôñþï ÓõóôÞìáôïò.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Áäõíáìßá áíÜêôçóçò ðëçñïöïñéþí ÷ñÞóôç.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>¢ãíùóôç ìïñöÞ çìåñïìçíßáò.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>¢ãíùóôç ìïñöÞ þñáò.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Áäõíáìßá ðñïóäéïñéóìïý ID ôçò åî' ïñéóìïý ãëþóóáò.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Áäõíáìßá ðñïóäéïñéóìïý ÷áñáêôçñéóôéêþí ïèüíçò.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Ï êåíôñéêüò õðïëïãéóôÞò äåí êáôÜöåñå íá ïëïêëçñþóåé ôçí êáôá÷þñçóç üëùí ôùí Type Libraries ðïõ ÷ñçóéìïðïéïýíôáé áðü ôéò ôÜîåéò (classes) ôïõ.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Ï êåíôñéêüò õðïëïãéóôÞò äåí êáôÜöåñå íá ïëïêëçñþóåé ôçí êáôá÷þñçóç üëùí ôùí ôÜîåùí áíôéêåéìÝíùí (object classes).</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>The server was unable to remove the entries of all the type libraries used by its classes.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>The server was unable to remove the entries of all the object classes.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Failure code returned by DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>ÓöÜëìá, ç åêôÝëåóç ôçò ÅðáíáöïñÜò ÓõóôÞìáôïò (system restore) äåí åßíáé äõíáôÞ êáôÜ ôçí ÁóöáëÞ Ëåéôïõñãßá.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>ÓöÜëìá, ï äßóêïò åßíáé ðëÞñçò êáé ç ÅðáíáöïñÜ ÓõóôÞìáôïò ôÝèçêå óå êáôÜóôáóç áíáìïíÞò (standby).</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>ÓöÜëìá, õðáñ÷åß Þäç åêêñåìÞò ëåéôïõñãßá ìåôïíïìáóßáò áñ÷åßïõ.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Ðáñïõóéáóôçêå åóùôåñéêü óöÜëìá ëåéôïõñãßáò.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>ÓöÜëìá, ëÜíèáóìÝíïò áñéèìüò áêïëïõèßáò.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Ç ëåéôïõñãßá ÅðáíáöïñÜò ÓõóôÞìáôïò (system restore) Ý÷åé áðåíåñãïðïéçèåß.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>ÓöÜëìá, ï ÷ñüíïò áíáìïíÞò ôçò ëåéôïõñãßá ÅðáíáöïñÜò ÓõóôÞìáôïò (system restore) åîáíôëÞèçêå.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Áäõíáìßá ðñüóâáóçò ôïõ áñéèìïý ôùí åêôåëïýìåíùí äéáäéêáóéþí.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Áäõíáìßá áðáñßèìéóçò ôùí åêôåëïýìåíùí äéáäéêáóéþí.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Áäõíáìßá åýñåóçò ôïõ êëåéäéïý (handle) ôçò äéáäéêáóßáò.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Áäõíáìßá áíïßãìáôïò ôïõ áñ÷åßïõ êåéìÝíïõ.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Áäõíáìßá áíÜãíùóçò ôïõ áñ÷åßïõ êåéìÝíïõ. Ôï áñ÷åßïõ åßíáé ðïëý ìåãÜëï.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>ÓöÜëìá, áäõíáìßá áðïèÞêåõóçò áñ÷åßïõ êåéìÝíïõ.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>ÓöÜëìá, ôï êëåéäß (handle) ôïõ ðáñáèýñïõ äåí åßíáé Ýãêõñï.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>ÓöÜëìá, áäõíáìßá áðüêñõøçò ðáñáèýñïõ.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>ÓöÜëìá, áäõíáìßá ìåãéóôïðïßçóçò ðáñáèýñïõ.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>ÓöÜëìá, áäõíáìßá åëá÷éóôïðïßçóçò ðáñáèýñïõ.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>ÓöÜëìá, áäõíáìßá åðáíáöïñÜò ðáñáèýñïõ.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>ÓöÜëìá, áäõíáìßá åìöÜíéóçò ðáñáèýñïõ.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>ÓöÜëìá, áäõíáìßá áðïäÝóìåõóçò äßóêïõ, ç åíÝñãåéá äåí õðïóôçñßæåôáé.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>ÓöÜëìá, áäõíáìßá õðïëïãéóìïý åëåýèåñïõ ÷þñïõ.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>ÓöÜëìá, áäõíáìßá õðïëïãéóìïý óõíïëéêïý ÷þñïõ.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>ÓöÜëìá, áäõíáìßá õðïëïãéóìïý êáôåéëçììÝíïõ ÷þñïõ.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Áäõíáìßá äçìéïõñãßáò öáêÝëïõ.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Ï êáèïñéóìÝíïò öÜêåëïò äåí õðÜñ÷åé.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Ç êáèïñéóìÝíç äéáäñïìÞ äåí áíôéóôïé÷åß óå öÜêåëï.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Áäõíáìßá äéáãñáöÞò öáêÝëïõ.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Áäõíáìßá êáèïñéóìïý ôïõ ôñÝ÷ïíôïò öáêÝëïõ.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Ï öÜêåëïò ðñïïñéóìïý õðÜñ÷åé Þäç.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Ôï üíïìá ôïõ öáêÝëïõ ðåñéÝ÷åé ìç Ýãêõñïõò ÷áñáêôÞñåò.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Áäõíáìßá äéáãñáöÞò âáóéêïý öáêÝëïõ.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Áäõíáìßá äçìéïõñãßá ôïõ öáêÝëïõ óõíôüìåõóçò.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Áäõíáìßá äçìéïõñãßáò ôïõ óõíäÝóìïõ óõíôüìåõóçò.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>ÓöÜëìá, ç ðåñéãñáöÞ ôçò óõíôüìåõóçò åßíáé ìåãáëýôåñç ôùí 250 ÷áñáêôÞñùí.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Áäõíáìßá äéáãñáöÞò óõíôüìåõóçò.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Áãíùóôüò öÜêåëïò êÝëõöïõò (shell).</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Ï åðéóôåöüìåíïò öÜêåëïò äåí åßíáé Ýãêõñïò.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Áäõíáìßá öüñôùóçò ôïõ êáèïñéóìÝíïõ DLL.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Áäõíáìßá åíôïðéóìïý ôçò êáèïñéóìÝíçò óõíáñôéóçò óôï DLL.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Áäõíáìßá äçìéïõñãßáò Internet óýíäåóçò.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Áäõíáìßá äçìéïõñãßáò óýíäåóçò HTTP.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Áäõíáìßá áíïßãìáôïò áßôçìáôïò.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Áäõíáìßá áðïóôïëÞò áéôÞìáôïò.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Áäõíáìßá áíïßãìáôïò ôïõ áñ÷åßïõ ðñïïñéóìïý ãéá êáôáãñáöÞ.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Ìç Ýãêõñç áðüêñõóç HTTP áðü ôïí äéáêïìéóôÞ.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>ÓöÜëìá êáôÜ ôçí ëÞøç äåäïìÝíùí áðü ôïí äéáêïìéóôÞ.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>ÓöÜëìá êáôÜ ôçí êáôáãñáöÞ óôï áñ÷åßï ðñïïñéóìïý.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Ï ÷ñÞóôçò ìáôáßùóå ôçí õðçñåóßá HTTP.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>ÓöÜëìá åããñáöÞò óôç ìíÞìç. (ÁíåðáñêÞò åëåýèåñç ìíÞìç;)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>ÓöÜëìá êáôÜ ôçí êáôá÷þñçóç ôïõ ïíüìáôïò ÷ñÞóôç óôïí äéáìåóïëáâçôÞ (proxy).</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>ÓöÜëìá êáôÜ ôçí êáôá÷þñçóç ôïõ password óôïí äéáìåóïëáâçôÞ (proxy)</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Ôï áßôçìá äåí åßíáé êáôáíïçôü áðü ôïí äéáêïìéóôÞ. (Óõíôáêôéêü ËÜèïò)</ERR_WEB_400>
+      <ERR_WEB_403>Ç ðñüóâáóç äåí åßíáé äõíáôÞ.</ERR_WEB_403>
+      <ERR_WEB_404>Ç éóôïóåëßäá (URL) äåí âñÝèçêå óôï äéáêïìéóôÞ.</ERR_WEB_404>
+      <ERR_WEB_500>Åóùôåñéêü óöÜëìá äéáêïìéóôÞ.</ERR_WEB_500>
+      <ERR_WEB_503>Ï äéáêïìéóôÞò åßíáé ðëÞñçò.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Áäõíáìßá äçìéïõñãßá åéóáãùãéêÞò ïèüíçò. Ç êáôçãïñßá ðáñáèýñïõ äåí Þôáí äõíáôüí íá êáôá÷ùñçèåß.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Áäõíáìßá äçìéïõñãßá åéóáãùãéêÞò ïèüíçò.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Áäõíáìßá åýñåóçò ôïõ ïíüìáôïò ôçí ôñÝ÷ïõóáò ïèüíçò. Äåí õðÜñ÷åé ôñÝ÷ïõóá ïèüíç.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Áäõíáìßá öüñôùóçò ôéìÞò.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Áäõíáìßá áðïèÞêåõóçò ôéìÞò.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>ÓöÜëìá, áäõíáìßá åýñåóçò ôïõ êëåéäéïý (handle) ôïõ ðáñáèýñïõ ôçò åöáñìïãÞò.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Ôï ðáêÝôï äåí âñÞèçêå.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Åóùôåñéêü óöÜëìá êáôÜ ôçí åðßëõóç ôçò êáèïñéóìÝíçò óõíÜñôçóçò.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>ÓöÜëìá åêôÝóçò êáôÜ ôçí êëÞóç óõíÜñôçóçò.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>ÓöÜëìá êáôáíïìÞò ìíÞìçò êáôÜ ôçí êëÞóç óõíÜñôçóçò.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>ËáíèáóìÝíïò äåßêôçò. Ïé äåßêôåò ðñÝðåé íá åßíáé ìåãáëýôåñïé ç ßóïé ôïõ -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Ç êáèïñéóìÝíç äéáäñïìÞ åßíáé ìåãáëýôåñç áðü MAX_PATH Þ 260 ÷áñáêôÞñåò.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>ÅöáëìÝíï áñ÷åßï áðåãêáôÜóôáóçò.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>ÅóöáëìÝíá äåäïìÝíá ðßíáêá.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Ç åíÝñãåéá äåí åßíáé äéáèÝóéìç êáôÜ ôçí áðåãêáôÜóôáóç.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Ç êáèïñéóìÝíç êáôçãïñßá äåí âñÞèçêå.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Áäõíáìßá êáôá÷ùñçóçò ôùí éäéïôÞôùí ôçò êáôçãïñßáò.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Ç åãêáôÜóôáóç Ý÷åé ëÞîåé êáé èá ôåñìáôéóôåß.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Ç åãêáôÜóôáóç Ý÷åé Þäç åêôåëåóôåß ôï ìÝãéóôï åðéôñåðüìåíï üñéï êáé èá ôåñìáôéóôåß.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Áäõíáìßá áíïßãìáôïò ôïõ Ìçôñþïõ ÓõóôÞìáôïò ãéá åããñáöÞ êáé èá ôåñìáôéóôåß.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Ç êáèïñéóìÝíç ôéìÞ åßíáé ìç Ýãêõñç ãéá ôçí óõãêåêñéìÝíç óõíáñôçóç.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>ËÜèïò áñéèìüò óåéñÜò.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Áðïôõ÷ßá áíÜêôçóçò ðëçñïöïñéþí ôüìïõ.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>ËáíèáóìÝíïò ôýðïò êýëéóçò êåéìÝíïõ.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Ïé äéáäñïìÝò äåí ðñÝðåé íá ðåñéÝ÷ïõí êÜðïéï áðü ôïõò ðáñáêÜôù ÷áñáêôÞñåò:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Äåí õðÜñ÷åé ðñïâáëüìåíç ôñÝ÷ïõóá ïèüíç.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Áðïôõ÷ßá ìåôÜâáóçò óå Ïèüíç</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>ÓöÜëìá êáôÜ ôçí áðáñßèìéóç ôùí õðçñåóéþí.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>ÓöÜëìá êáôÜ ôçí áíáæÞôçóç ôùí õðçñåóéþí.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Ç õðçñåóßá äåí âñÝèçêå.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Ç åíôïëç ÓõíÝ÷éóç áðÝôõ÷å.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Ç åíôïëç Ôåñìáôéóìüò áðÝôõ÷å.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Ç åíôïëç Åêêßíéóç áðÝôõ÷å.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Ç åíôïëç Ðáýóç áðÝôõ÷å.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Ç åíôïëç ÄéáãñáöÞ áðÝôõ÷å.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Ç åíôïëç Äçìéïõñãßá áðÝôõ÷å.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>ÁíåðáñêÞ äéáêáéþìáôá ðñüóâáóçò ôïõ óôïé÷åßï åëÝã÷ïõ óôç âÜóç äåäïìÝíùí äéá÷åßñéóçò õðçñåóéþí ðïõ êáèïñßóáôå.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Åíôïðßóôçêå êõêëéêÞ ó÷Ýóç (loop) óôéò áëëçëïåîáñôÞóåéò ôùí õðçñåóéþí.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Ôï üíïìá õðÜñ÷åé Þäç óôç âÜóç äåäïìÝíùí äéá÷åßñéóçò õðçñåóéþí åßôå þò üíïìá õðçñåóßáò Þ þò áëëï üíïìá.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Tï óôïé÷åßï åëÝã÷ïõ óôç âÜóç äåäïìÝíùí äéá÷åßñéóçò õðçñåóéþí ðïõ êáèïñßóáôå äåí åßíáé Ýãêõñï.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Ôï üíïìá ôçò õðçñåóßáò ðïõ êáèïñßóáôå äåí åßíáé Ýãêõñï.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>ÊÜðïéá áðü ôéò ðáñáìÝôñïõò ðïõ êáèïñßóáôå äåí åßíáé Ýãêõñç.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Ï ëïãáñéáóìüò ÷ñÞóôç ðïõ êáèïñßóáôå äåí õðÜñ÷åé.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Ç õðçñåóßá ðïõ êáèïñßóáôå õðÜñ÷åé Þäç ó' áõôÞ ôç âÜóç äåäïìÝíùí.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Ãåíéêü óöÜëìá ODBC.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>ËáíèáóìÝíï ìÞêïò buffer.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>ËáíèáóìÝíç ôéìÞ hWnd.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>ËáíèáóìÝíç ãñáììáôïóåéñÜ.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>ËáíèáóìÝíïò ôýðïò áéôÞìáôïò.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Ôï óõóôáôéêü óôïé÷åßï äåí âñÝèçêå óôï Ìçôñþï ÓõóôÞìáôïò.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>ËáíèáóìÝíç ðáñÜìåôñïò Driver. Äåí âñÝèçêå óôï Ìçôñþï ÓõóôÞìáôïò.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>ÕðÞñîå ëáíèáóìÝíïò óõíäéáóìüò keyword=name.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>ËáíèáóìÝíï DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>ËáíèáóìÝíï INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Ç ëåéôïõñãßá ðïõ õðïäåéêíýåôáé áðü ôçí ðáñÜìåôñï Request áðÝôõ÷å.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>ËáíèáóìÝíç äéáäñïìÞ.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>ËÜèïò êáôÜ ôï öüñôùìá ôïõ driver Þ ôïõ ìåôáöñáóôÞ âéâéëïèÞêçò.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>×ñçóéìïðïéÞèçêå ëáíèáóìëåíç ëßóôá óõíäéáóìþí keyword=name.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>ËáíèáóìÝíï áñ÷åßï êáôáãñáöÞò.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Ç áßôçóç áêõñþèçêå áðü ôïí ÷ñÞóôç.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>ÓöÜëìá êáôÜ ôçí áýîçóç Þ ôçí ìåßùóç ôïõ ìåôñçôÞ ÷ñÞóçò ôïõ óõóôáôéêïý óôïé÷åßïõ.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Áðïôõ÷ßá äçìéïõñãßáò DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Áðïôõ÷ßá åããñáöÞò sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Áðïôõ÷ßá áðáëåéöÞå DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>ÊÜðïéá óõíÜñôçóç áðÝôõ÷å ëüãù áíåðáñêïýò ìíÞìçò.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Ç ãñáììáôïóåéñÜ åîüäïõ ðåñéêüðçêå.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Áðïôõ÷ßá öïñôþìáôïò ôçò ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>Ç åíôïëÞ GetProc áðÝôõ÷å.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Ïé äéÜëïãïé äåí ðñïâÜëïíôáé êáôÞ ôçí óéùðçëÞ åãêáôÜóôáóç Þ áðåãêáôÜóôáóç.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Ç êáèïñéóìëåíç äéáäñïìÞ åßíáé ëÜèïò.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Ôï ðåäßï äåí ìðïñåß íá åßíáé êåíü.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Ïé ðáñáêÜôù ÷áñáêôÞñåò äåí åßíáé åðéôñåðåôïß:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Ôï áëöáñéèìçôéêü äåí ðåñéÝ÷åé áðïäåêôÜ base-64 êùäéêïðïéçìÝíá äåäïìÝíá.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>ÓöÜëìá êáôÜ ôçí áðïêùäéêïðïßçóç åíüò base-64 áëöáñéèìçôéêïý (óõíÞèùò ïöåßëåôáé óå åóöáëìÝíï áëöáñéèìçôéêü - áðïõóßá ÷áñáêôÞñùí áðü ôï áëöáñéèìçôéêü?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>ËáíèáóìÝíï áñ÷åßï åðéêåöáëßäáò - ìç áðïäåêôü áñ÷åßï 'Indigo Rose blowfish'.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Áóõìâáôüôçôá áñ÷åßïõ blowfish. (Ôï áñ÷åßï åßíáé êáôåóôñáìÝíï Þ ÷ñçóéìïðïéåß ëáíèáóìÝíï ó÷Þìá óõìðëÞñùóçò (block padding scheme.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Áðïôõ÷ßá öïñôþìáôïò áñ÷åßïõ XML.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Áðïôõ÷ßá áðïèÞêåõóçò áñ÷åßïõ XML.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Äåí öïñôþèçêå áðïäåêôü XML áñ÷åßï. (Ôï áñ÷åßï åßíáé êåíü ç äåí åßíáé óùóôÜ öïñìáñéóìÝíï.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Ç êáèïñéìÝíç äéáäñïìÞ XML åßíáé ëáíèáóìÝíç Þ äåí õðÜñ÷åé.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>ÐáñïõóéÜóôçêå óöÜëìá êáôá ôïí êáèïñéóìü ôéìÞò.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>ÐáñïõóéÜóôçêå óöÜëìá êáôá ôïí êáèïñéóìü ÷áñáêôçñéóôéêïý.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>ËÜèïò üíïìá ÷áñáêôçñéóôéêïý. (Ôï üíïìá ôùí ÷áñáêôçñéóôéêþí äåí åðéôñÝðåôáé íá ðåñéÝ÷åé êåíïýò ÷áñáêôÞñåò.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Ôï êáèáñéóìÝíï óôïé÷åßï äåí ìðïñåß íá áðáëåéöåß.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Ôï êáèáñéóìÝíï ÷áñáêôçñéóôéêü äåí ìðïñåß íá áðáëåéöåß.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Äåí õðÜñ÷ïõí óôïé÷åßá êáôÜ áðï ôçí êáèïñéóìÝíç äéáäñïìÞ XML.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Ôï óôïé÷åßï óôçí êáèïñéóìÝíç äéáäñïìÞ XML äåí Ý÷åé ÷áñáêôçñéóôéêÜ.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>ÐáñïõóéÜóôçêå óöÜëìá êáôÜ ôçí åéóáãùãÞ XML.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>ËáíèáóìÝíç êáôÜóôáóç åéóáãùãÞò.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Áäõìáìßá öüñôùóçò MSI.DLL. Ï Windows Installer äåí Ý÷åé åãêáôáóôáèåß.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Áäõíáìßá åíôïðéóìïý óõíÜñôçóçò óôï MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>Ï ÷ñÞóôçò ìáôáßùóå ôçí åãêáôÜóôáóç.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>ÏëÝèñéï óöÜëìá êáôÜ ôçí åãêáôÜóôáóç.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Ç åãêáôÜóôáóç áíáâëÞèçêå êáé äåí Ý÷åé ïëïêëçñùèåß.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>ÓöÜëìá, ôï ðñïúüí åßíáé Üãíùóôï.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>ÓöÜëìá, ôï ÷áñáêôçñéóôéêü åßíáé Üãíùóôï.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>ÓöÜëìá, ôï óõóôáôéêü åßíáé Üãíùóôï.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>ÓöÜëìá, ç éäéüôçôá åßíáé Üãíùóôç.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>Ôï êëåéäß (handle) åßíáé óå ìç Ýãêõñç êáôÜóôáóç.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>Ôá äåäïìÝíá äéáìüñöùóçò ôïõ MSI åßíáé åóöáëìÝíá.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>Áíýðáñêôç ðéóôïðïßçóç ôïõ óõóôáôéêïý.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>Ôï áñ÷åßï åãêáôÜóôáóçò ôïõ ðñïúüíôïò äåí åßíáé äéáèÝóéìï.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>Ôï ðñïúüí Ý÷åé Þäç áðåãêáôáóôáèåß.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>Ôï óõíôáêôéêü ôïõ åñùôÞìáôïò SQL åßíáé åóöáëìÝíï Þ äåí õðïóôçñßæåôáé.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>Ôï ðåäßï ôçò åããñáöÞò äåí õðÜñ÷åé.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>Áäõíáìßá ðñüóâáóçò óôçí õðçñåóßá ôïõ Windows Installer.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>ÓöÜëìá óôçí Ýêäïóç ôïõ ðáêÝôïõ.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>ÊÜðïéá Üëëç åãêáôÜóôáóç åßíáé óå åîÝëéîç.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>Áäõíáìßá áíïßãìáôïò ôïõ ðáêÝôïõ åãêáôÜóôáóçò.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>Ôï ðáêÝôï åãêáôÜóôáóçò åßíáé ðéèáíüí åóöáëìÝíï êáé äåí Þôáí äõíáôüí íá åêôåëåóôåß.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>ÓöÜëìá êáôÜ ôçí åêêßíçóç ôçò õðçñåóßáò äéá÷åßñçóçò ôïõ user interface ôïõ Windows Installer.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>ÓöÜëìá êáôÜ ôï Üíïéãìá ôïõ áñ÷åßïõ êáôáãñáöÞò óõìâÜíôùí ôçò åãêáôÜóôáóçò.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>Ç ãëþóóá ôïõ ðáêÝôïõ åãêáôÜóôáóçò äåí õðïóôçñßæåôáé áðü ôï óýóôçìÜ óáò.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>ÁõôÞ ç åãêáôÜóôáóç åßíáé áðáãïñåõìÝíç áðü ôçí ÐïëéôéêÞ ÓõóôÞìáôïò (System Policy).</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>Ç óõíáñôçóç äåí Þôáí äõíáôüí íá åêôåëåóôåß.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>Ç óõíÜñôçóç áðÝôõ÷å êáôÜ ôçí åêôÝëåóç.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>Ï êáèïñéóìÝíïò ðßíáêáò åßíáé åóöáëìÝíïò Þ áíýðáñêôïò.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>Ôá äåäïìÝíá åéóüäïõ åßíáé åóöáëìÝíïõ ôýðïõ.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>ÄåäïìÝíá áõôïý ôïõ ôýðïõ äåí õðïóôçñßæïíôáé.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>Áäõíáìßá åêêßíçóçò ôçò õðçñåóßáò ôïõ Windows Installer.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>Ï öÜêåëïò Ðñïóùñéíþí áñ÷åßùí åßíáé ãåìÜôïò Þ ìç ðñïóâÜóéìïò.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>Áõôü ôï ðáêÝôï åãêáôÜóôáóçò äåí õðïóôçñßæåôáé óôçí ðëáôöüñìá áõôÞ.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>Ôï óõóôáôéêü ôçå åãêáôÜóôáóçò äåí ÷ñçóéìïðïéåßôáé óôï óýóôçìá áõôü.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>ÓöÜëìá êáôÜ ôçí åöáñìïãÞ ôùí ìåôáôñïðþí.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>ÓöÜëìá êáôÜ ôï Üíïéãìá ôïõ ðáêÝôïõ åíçìåñþóåùí.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>Ôï ðáêÝôï åíçìåñþóåùí åßíáé ðéèáíüí åóöáëìÝíï êáé äåí Þôáí äõíáôüí íá åêôåëåóôåß.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>Áõôü ôï ðáêÝôï åíçìåñþóåùí äåí åßíáé óõìâáôü êáé äåí ìðïñåß íá åðåîåñãáóôåß áðü ôïí Windows Installer.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>ÊÜðïéá Üëëç Ýêäïóç áõôïý ôïõ ðñïúüíôïò åßíáé Þäç åãêáôåóôçìÝíç.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>ÅóöáëìÝíç ðáñÜìåôñïò ãñáììÞò åíôïëþí.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>ÅãêáôÜóôáóç ìÝóù Terminal Services äåí åðéôñÝðåôáé ãéá ôïí ôñÝ÷ùí ÷ñÞóôç.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>Ôï ðñüãñáììá åãêáôÜóôáóçò Ý÷åé îåêéíÞóåé åðáíåêêßíçóç ôïõ óõóôÞìáôïò.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>Ôï ðñüãñáììá åãêáôÜóôáóçò äåí ìðüñåóå íá åãêáôáóôÞóåé ôéò åíçìåñþóåéò. Ç áíáâáèìéæüìåíç åöáìïãÞ åßôå ëåßðåé Þ ôï ðñüãñáììá åíçìåñþóåùí åßíáé äéáöïñåôéêÞò Ýêäïóçò áðü ôçí åöáñìïãÞ.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>Áõôü ôï ðñüãñáììá åíçìåñþóåùí åßíáé áðáãïñåõìÝíç áðü ôçí ÐïëéôéêÞ ÓõóôÞìáôïò (System Policy).</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>Ìßá Þ ðåñéóóüôåñåò áðü ôéò ðñïóáñìïãÝò äåí åðéôñÝðïíôáé áðü ôçí ÐïëéôéêÞ ÓõóôÞìáôïò (System Policy).</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Ï Windows Installer äåí åðéôñÝðåé ôçí åãêáôÜóôáóç áðü ìßá Remote Desktop óýíäåóç.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>Ôï ðñüãñáììá åíçìåñþóåùí äåí ìðïñåß íá êáôáñãçèåß.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>Ïé åíçìåñþóåéò äåí ìðïñïýí íá åöáñìïóôïýí ãéá ôï ðñïúüí áõôü. ¢ãíùóôï ðñüãñáììá åíçìåñùóåùí.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>Äåí Þôáí äõíáôÞ ç åýñåóç ìßáò Ýãêõñçò óåéñÜò ãéá áõôü ôï óýíïëï åíçìåñþóåùí.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Ç áðáëåéöÞ ôù åíçìåñþóåùí äåí åðéôñÝðåôáé áðü ôçí ðïëéôéêÞ.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>Ôá XML äåäïìÝíá ôùí åíçìåñþóåùí åßíáé åóöáëìÝíá.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Ï äéá÷åéóôÞò äåí ìðüñåóå íá åãêáôáóôÞóåé ôéò åíçìåñùìÝíåò åêäüóåéò ãéá ìßá åöáñìïãÞ ðïõ âñßóêåôáé óå êáôÜóôáóç äçìïóéïðïßçóçò äéá÷åéñßóçìçò åßôå áðü ôïí ÷ñÞóôç åßôå áðü ôï óýóôçìá.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>ÅóöáëìÝíç ðáñÜìåôñïò êáôÜ ôçí êëÞóç ôçò óõíÜñôçóçò.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>Ç åíäéÜìåóç ìíÞìç (buffer) åßíáé ðïëý ìéêñÞ ãéá íá áðïèçêåýóåé üëá ôá äåäïìÝíá.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>Áðáéôåßôáé åðáíåêêßíçóç ôïõ óõóôÞìáôïò ãéá ôçí ïëïêëÞñùóç ôçò åãêáôÜóôáóçò.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Áäõíáìßá äçìéïõñãßáò ôïõ öáêÝëïõ ðñïïñéóìïý.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Áäõíáìßá åýñåóçò áñ÷åßïõ óôï áñ÷åßï.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Áäõíáìßá áðüóðáóçò ôïõ áðïóõìðéåóìÝíïõ áñ÷åßïõ.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Áäõíáìßá áðüóðáóçò ôïõ óõìðéåóìÝíïõ áñ÷åßïõ.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>ÅóöáëìÝíç äéáäñïìÞ åíôïëÞò EXTRACTMSI.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Áäõíáìßá åêôÝëåóçò áñ÷åßïõ åíôïëþí ãåíéêþí (global) óõíáñôÞóåùí.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Áäõíáìßá åêôÝëåóçò ôçò åãêáôÜóôáóçò, åóöáëìÝíç MSIExec ãñáììÞ åíôïëÞò.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Áäõíáìßá åêôÝëåóçò ôçò åãêáôÜóôáóçò.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Áäõíáìßá åêôÝëåóçò ôïõ áñ÷åßïõ åãêáôÜóôáóçò.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>ÅóöáëìÝíç ôïðïèåóßá (URL) ëÞøçò áñ÷åßïõ åãêáôÜóôáóçò.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Áäõíáìßá ëÞøçò áñ÷åßïõ åãêáôÜóôáóçò.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Áäõíáìßá äçìéïõñãßáò öáêÝëïõ åîáãùãÞò bootstrapper.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Áäõíáìßá áðüóðáóçò áñ÷åßïõ åãêáôÜóôáóçò.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>Ôï áñ÷åßï MSI åßíáé ìç Ýãêõñï, Þ ðåñéÝ÷åé åóöáëìÝíåò ðëçñïöïñßåò Ýêäïóçò.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>Ôï áñ÷åßï MSI ðåñéÝ÷åé ëáíèáóìÝíá äåäïìÝíá.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>Áðñüâëåðôï óöÜëìá.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>×ñçóéìïðïéÞèçêå ëáíèáóìÝíï êëåéäß (handle).</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>Ç åêôëÝëåóç áðÝôõ÷å, åßíáé áðáñáßôçôç ç ðñïáãùãÞ äéêáéùìÜôùí ÷ñÞóôç.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Serbian</Name>
+<Default>0</Default>
+<Primary>26</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Podešavanje</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Folder Pre?ice</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Gde biste želeli da precice budu instalirane?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalje &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Nazad</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Prekini</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Pomoc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ikone precice ce biti formirane u dole oznacenom folderu. Ako ne želite koristiti oznaceni folder, možete ili upisati novo ime, ili odabrati vec postojeci folder sa liste.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Folder Precice:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Instaliraj precice samo za aktualnog korisnika</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Omoguci precice dostupnim za sve korisnike</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

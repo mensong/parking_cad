@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Albanian</Name>
+<Default>0</Default>
+<Primary>28</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalimi i %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Duke u Instaluar %ProductName%</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ju lutemi prisni...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>&Anulo</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_SCROLLTEXT_BODY/>
+</Messages>
+</SUF70Messages>

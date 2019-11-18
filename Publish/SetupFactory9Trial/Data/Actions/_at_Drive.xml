@@ -1,0 +1,121 @@
+<ActionTemplates>
+   <Action>
+      <Name>Drive.Eject</Name>
+      <Description>Ejects a CD or DVD-ROM drive when given a valid drive letter.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Drive</Name>
+            <Description> The drive to eject. The first character of the string will be the drive letter used. Therefore "E", "E:"," E:\" and "E:\Myfile.txt" are all valid values if you want to eject the E: drive.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_SourceDrive</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Drive.Enumerate</Name>
+      <Description>Returns a numerically indexed table containing all of the drives on the user's system.</Description>
+      <ReturnValueType>table</ReturnValueType>
+   </Action>
+   <Action>
+      <Name>Drive.GetFreeSpace</Name>
+      <Description>Gets the amount of free disk space of a specific drive and returns it's numeric size in Megabytes.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Drive</Name>
+            <Description>The drive to query for disk space. The first character of the string will be the drive letter used. Therefore "C", "C:"," C:\" and "C:\Myfile.txt" are all valid Drive values.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Drive.GetInformation</Name>
+      <Description>Returns a table of information about a given drive.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Drive</Name>
+            <Description>The drive whose information you want. The drive must be in the format "C:" or "C:\".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Drive.GetSize</Name>
+      <Description>Gets the disk size of a specific hard drive and returns it's numeric size in Megabytes.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Drive</Name>
+            <Description>The drive whose size you want. The first character of the string will be the drive letter used. Therefore "C", "C:"," C:\" and "C:\Myfile.txt" are all valid Drive values.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Drive.GetType</Name>
+      <Description>Gets the type of a specific drive.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Drive</Name>
+            <Description>The drive whose type you want. The first character of the string will be the drive letter used. Therefore "C", "C:"," C:\" and "C:\Myfile.txt" are all valid Drive values.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_SourceDrive</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Drive.GetUsedSpace</Name>
+      <Description>Gets the amount of used disk space of a specific drive and returns it's numeric size in Megabytes.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Drive</Name>
+            <Description>The drive to query for used disk space. The first character of the string will be the drive letter used. Therefore "C", "C:"," C:\" and "C:\Myfile.txt" are all valid Drive values.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

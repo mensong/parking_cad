@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+      <Name>Romanian</Name>
+      <Primary>24</Primary>
+      <Secondary>
+      </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Succes</MSG_SUCCESS>
+      <MSG_ERROR>Eroare</MSG_ERROR>
+      <MSG_NOTICE>Nota</MSG_NOTICE>
+      <MSG_WARNING>Avertisment</MSG_WARNING>
+      <MSG_YES>Da</MSG_YES>
+      <MSG_NO>Nu</MSG_NO>
+      <MSG_YES_TOALL>Da la Tot</MSG_YES_TOALL>
+      <MSG_TO>Catre</MSG_TO>
+      <MSG_FROM>De la</MSG_FROM>
+      <MSG_BROWSE>Rasfoieste...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Anulare</MSG_CANCEL>
+      <MSG_PATH>Cale</MSG_PATH>
+      <MSG_SEARCH_MASK>Cauta</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Toate fisierele</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Cauta fisierul</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>octeti</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KO</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MO</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GO</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Confirma</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Instalarea nu s-a terminat! Chiar doriti sa iesiti?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Sunteti sigur ca doriti sa continuati instalarea?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Nu exista destul spatiu pe discul selectat pentru a instala %ProductName%.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Copiaza</MSG_COPYING>
+      <MSG_DELETING>Stergere</MSG_DELETING>
+      <MSG_SEARCHING>Cautare</MSG_SEARCHING>
+      <MSG_READING>Citesc</MSG_READING>
+      <MSG_QUERYING_INTERNET>Accesez internetul</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Mutare</MSG_MOVING>
+      <MSG_SAVING>Salvare</MSG_SAVING>
+      <MSG_INSERTDISK>Introduce disc</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Descarcare</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Descarcare fisier...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Descarcare fisier, dimensiunea totala este necunoacuta. Ko descarcati pana acum: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Rezolv numele de host.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Numele de host rezolvat.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Se conecteaza la server.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Conectat la server.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Inchid conectia la server.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Conectia cu serverul inchisa.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Cerere completa.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Redirectionez.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Timp estimativ ramas</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KO/Sec</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Initializare...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Instalare...</MSG_INSTALLING>
+      <MSG_SKIPPING>Trec peste...</MSG_SKIPPING>
+      <MSG_SEEKING>Caut...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Intrare incorecta</MSG_INVALID_ENTRY>
+      <MSG_THE></MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> campul nu poate fi gol.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Pregatesc instalarea...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Instalez fisierele...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Creez programul de dezinstalare...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Creez Scurtaturile...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Verific conditia fisierului...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Verific permisiunile directoarelor...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Verific spatiul pe disc...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Sterg fisierele...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Sterg scurtaturile...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Creez directorul de date pentru dezinstalare...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Creez fisierul de date pentru dezinstalare...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Creez fisierul de control al dezinstalarii...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Creez executabilul de dezinstalare...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Copiez fisierele imagine ecran...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Copiez plugin-urile...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Copiez fisierele suport...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Creez intrare in panoul de comanda...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Creez scurtatura de dezinstalare...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Necunoscut</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+      <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Nimic</MSG_OS_NONE>
+      <MSG_OS_ALL>Tot</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(nu SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(sau mai noi)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Urmatoarele cerinte minime pentru instalare nu sunt indeplinite:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Sistem de operare</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Latime Ecran</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Inaltime Ecran</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Adancimea Cunorii</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Permisiunea utilizatorului</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administrator</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Instalarea se va anula.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Click pe OK sa continuati sau pe Anulare sa anulati instalarea.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Pentru mai multe informatii, va rugam contactati:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Instalarea va expira in</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>zile si nu va mai functiona dupa acea data.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Instalarea va rula de</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>ori inainte de a expira.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Va rugam introduceti Discul #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Daca fisierele de pe acest disc pot fi gasite in alta locatie, de exemplu, pe alt disc, scrieti calea completa sau click pe Rasfoire pentru a selecta calea.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Se doreste instalarea unui fisier, dar un fisier cu acelasi nume exista deja pe sistemul dvs.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Se doreste instalarea unui fisier, dar o versiune mai noua a fisierului, cu acelasi nume, exista pe sistemul dvs.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Doriti sa scrieti peste fisierul urmator?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Fisierul urmator este in folosinta si nu poate fi actualizat:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Inchideti celelalte aplicatii si click pe Reincearca.  Alegeti Anulare pentru a instala fisierul la repornire.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Doriti sa scrieti peste acest fisier?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Aplicatia ar dori sa instaleze un fisier, dar mai exista un fisier cu acelasi nume la destinatie.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Aplicatia ar dori sa instaleze un fisier, dar exista un fisier MAI NOU pe sistemul dvs.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Programul de instalare nu a putut reporni calculatorul.  Inchideti toate programele si alegeti Reincearca.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Acest fisier este in folosinta si nu poate fi sters. Inchideti fisierul si click pe Reincearca pentru a incerca inca o data. Click Ignora pentru a continua si a sterge fisierul la repornirea sistemului. Click pe Renuntare pentru a opri dezinstalarea.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Acest fisier nu poate fi sters. Click Reincearca pentru a reincerca. Click pe Ignora pentru a continua si a sterge fisierul la repornirea calculatorului. Click pe Renuntare pentru a opri dezinstalarea.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Dezinstalarea ar dori sa stearga urmatoarele fisiere de sistem comune:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Nici o alta aplicatie nu a s-a inregistrat pentru utilizarea lui, dar este o posibilitate ca alta aplicatie sa aiba nevoie de el pentru a functiona.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Este OK sa sterg fisierul?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Repornirea sistemului a esuat. Inchideti toate programele si click pe Reincearca.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Calculatorul dvs. trebuie repornit pentru a completa instalarea. Doriti sa reporniti calculatorul dvs. acum?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Calculatorul dvs trebuie repornit pentru a completa instalarea. Doriti sa reporniti acum?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Va rugam selectati ceva din lista.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Spatiu necesar pe discul:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Spatiu disponibil pe discul:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Nu pot crea fisierul jurnal: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Verificarea integritatii arhivei a esuat. Fisierul de instalare nu este complet, probabil din cauza unei descarcari defectuase or incomplete.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Va rugam verificati daca discul este in unitate! Fisierul urmator nu poate fi gasit:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Incarcarea plugin-ului a esuat</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Instalarea nu poate deschide urmatorul fisier arhiva (Probabil ati introdus o discheta gresita)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Instalarea nu poate aloca destula memorie pentru a decomprima fisierele.  Instalarea se va opri.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Instalarea nu poate crea urmatorul director:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>A aparut o eroare la decomprimare</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Nu pot deschide fisierul tinta</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Nu pot deschide fisierul de intrare</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Eroare la Citire/Scriere</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>CRC-ul fisierului nu se potriveste - Eroare Integritatea datelor</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disc-ul este plin.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Eroare necunoscuta la decomprimare</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Eroare la trecerea peste fisier</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Eroare la alocarea de memorie</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Eroare la citirea din fisier</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Eroare la scrierea in fisier</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Eroare necunoscuta la copierea fisierului</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Nu pot crea introducerea de dezinstalare</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Eroare in LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Eroare in GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Cod de eroare returnat de DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Inregistrarea controlului COM (ActiveX) a esuat:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Inregistrare Type Library esuata:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Memoria nu este suficienta</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Unul sau mai multe argumente sunt nevalide.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Functia nu poate scrie in fisier.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Biblioteca nu poate fi deschisa.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Functia nu poate citi din fisier.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Biblioteca are un format mai vechi.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>LCID nu poate fi gasit in DLL-ul cu suport OLE.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Biblioteca sau DLL-ul nu poate fi incarcat.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Baza de date cu inregistrari de sistem nu poate fi deschisa.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Eroare FACILITY_STORAGE implicita.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Nu pot crea directorul pentru dezinstalare:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Nu pot crea fisierul de date pentru dezinstalare;:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Nu pot deschide executabilul de dezinstalare pentru citire:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Nu pot deschide executabilul de dezinstalare pentru scriere:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Nu pot deschide fisierul de configuratie pentru scriere:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Executabilul de dezinstalare nu poate fi scris deoarece este in folosinta. Inchideti toate programele de dezinstalare si click Reincearca pentru a continua. Click pe Anulare pentru a iesi.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Nu pot deschide cheia de registru pentru dezinstalare pentru scriere:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Nu pot scrie valoarea de dezinstalare in cheia de registru:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Nu pot crea scurtatura de dezinstalare:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Nu pot salva variabilele de sesiune</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Nu aveti permisiunea sa inregistrati fisiere comune pe acest sistem. Acest program de instalare trebuie rulat cu privilegii de Administrator.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Nu aveti permisiunea sa inregistrati controale COM (ActiveX) pe acest sistem. Acest program de instalare trebuie rulat cu privilegii de Administrator.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Nu aveti permisiunea sa inregistrati biblioteci pe acest sistem. Acest program de instalare trebuie rulat cu privilegii de Administrator.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Controlul COM (ActiveX) de mai sus nu a putut fi dezinregistrat. Acest fisier nu va fi sters.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Date de dezinstalare nevalide.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Datele de dezinstalare nu pot fi gasite.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Eroare necunoscuta.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Fisierul specificat nu a putut fi gasit.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Incarcare fisier esuata.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Salvare fisier esuata.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Calea specificata nu a putut fi gasita.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>Fisierul .exe este nevalid (non-Win32 .exe sau eroare in imaginea .exe).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Sistemul de operare a interzis accesul la fisierul specificat.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Asocierea fisierului este incompleta sau nevalida.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   Tranzactia DDE nu poate fi completata deoarece alta tranzactie DDE a fost procesata.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>Tranzactia DDE a esuat</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>Tranzactia DDE nu a putut fi completata deoarece cererea a expirat.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>DLL-ul specificat nu a putut fi gasit.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Nu exista aplicatie asociata cu extensia de fisier specificata. Aceasta eroare poate fi returnata si daca incercati imprimarea unui fisier care nu poate fi imprimat.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Nu exista destula memorie pentru a completa operatia.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Executarea fisierului a esuat.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>Executia fisierului a esuat, necesita drepturi de rulare (Administrator sau similare)</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Violare de acces.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Nu pot determina numele clasei de afisare.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Nu pot determina linia de comanda a programului de afisare.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Programul de afisare nu a fost fisier executabil.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Executabilul asociat nu exista.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Sursa specificata este nevalida.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Destinatia specificata este nevalida.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Fisierele sursa nu exista.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Directorul destinatie nu exista.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Copierea unuia sau a mai multor fisiere a esuat.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Stergerea unuia sau a mai multor fisiere a esuat.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Programarea stergerii la pornire a esuat.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Programarea mutarii la pornire a esuat.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operatie anulata de catre utilizator.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>A aparut o eroare chemand functia callback.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Eroare, functia callback nu poate fi gasita.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Nu pot afla dimensiunea informatiilor versiune.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Nu pot afla versiunea fisierului.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Denumirea fisierului specificat contine caractere nevalide.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Fisierul destinatie exista deja.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>A aparut o eroare necunoscuta.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Rularea comenzii la repornire a esuat, nu pot gasi cheia.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Rularea comenzii la repornire a esuat, nu pot seta valoarea.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Nu pot seta atributele de fisier.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Nu pot seta atributul de compresie a fisierului.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Nu pot crea directorul destinatie.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Nu pot crea copie de siguranta a unuia sau mai multe fisiere.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Nu exista destula memorie.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Nu aveti permisiunea sa instalati fisiere in directorul de mai sus. Aceasta instalare trebuie rulata de catre un utilizator cu privilegii echivalente cu administrator de sistem.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Instalarea nu poate continua deoarece unitatea de mai sus nu exista.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Nu exista destul spatiu pe discul de mai sus pentru a instala fisierul necesar.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Nu exista control cu ID-ul specificat pe ecran.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Controlul specificat nu este de tipul potrivit pentru aceasta actiune.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Nu exista ecran curent.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Controlul specificat nu poate fi gasit.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Nu pot afisa controlul.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Fisierul este prea mare sa poata fi citit.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Fisierul specificat nu poate fi deschis.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>A aparut o exceptie in controlul intern.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Actiunea nu poate fi executata pe un control dezactivat.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Nu pot afisa fereastra de dialog.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Nu pot ascunde fereastra de dialog.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Nu pot seta textul de status pe fereastra de dialog.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Nu pot seta valoarea barii de progres pe fereastra de dialog.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Nu pot seta pozitia barii de progres pe fereastra de status.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Nu pot seta textul mesajului pe fereastra de dialog.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Nu pot seta titlul ferestrei de dialog.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Nu pot afla pozitia barei de progres.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Nu pot sterge sectiunea specificata din fisierul INI.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Nu pot sterge valoarea specificata din fisierul INI.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Nu pot seta valoarea specificata.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Nu pot crea cheia specificata in Registru.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Nu pot sterge cheia specificata din Registru.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Nu pot sterge valoarea specificata din Registru.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Sub Cheia specificata nu exista.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Nu pot afla numele aflat Sub Cheie.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Nu pot afla datele din valoarea specificata.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Nu pot afla numele valorilor.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Nu pot determina tipul valorii din registru.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Nu pot seta datele in valoarea specificata din registru.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Nu pot adauga o selectie in controlul List Box.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Nu pot insera o selectie in controlul List Box.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Index in afara campului.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Nu pot obtine informatii despre versiunea sistemului de operare.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Could not reboot system. OS information not available.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Nu pot reporni sistemul.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Esec in LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress esuat.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Returnarea codului de catre DllRegisterServer a esuat.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Eroare in chemarea catre LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Eroare in chemarea catre RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Eroare, numele fontului nu poate fi nul.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Nume de font nevalid.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Adaugarea fontului la fonturile de sistem a esuat.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Adaugarea fontului in registru a esuat.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Stergerea fontului de pe sistem a esuat.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Stergerea fontului din registru a esuat.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Nu pot afla informatiile de utilizator.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Formatul specificat al datei este necunoscut.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Formatul timpului specificat este necunoscut.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Nu pot determina ID-ul limbii implicite.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Nu pot determina informatiile de afisare.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Serverul nu a putut completa inregistrarea tututor bibliotecilor utilizate in clase.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Serverul nu poate completa inregistrarea tuturor obiectelor claselor.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Serverul nu a reusit sa elimine toate intrarile tuturor bibliotecilor utilizate de clasele sale.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Serverul nu a putut elimina intrarile tuturor claselor de obiecte.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Cod de esec returnat de DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Eroare, nu pot utiliza Refacerea Sistemului cand se ruleaza in Modul de Siguranta.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Eroare, discul este plin iar Refacerea Sistemului a fost pusa in asteptare.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Eroare, operatia in asteptare de redenumire a fisierului, exista deja.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>A aparut o eroare interna.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Numar secventa eroare nevalid.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Serviciul Refacerea Sistemului este dezactivat.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Eroare, operatia Refacerea Sistemului a expirat.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Accesarea numarului de procese active a esuat.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Enumerarea proceselor a esuat.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Nu am putut obtine handlerul.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Nu am putut deschide fisierul text.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Fisierul text este prea mare pentru a fi citit.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Eroare, nu am putut salva fisierul text.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Eroare, manipulatorul ferestrei este nevalid.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Eroare, nu pot ascunde fereastra.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Eroare, nu pot maximiza fereastra.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Eroare, nu pot minimiza fereastra.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Eroare, nu pot reface fereastra.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Eroare, nu pot afisa fereastra.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Eroare, nu pot ejecta disc-ul, actiunea nu este suportata.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Eroare, nu pot calcula spatiul liber.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Eroare, nu pot calcula dimensiunea totala.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Eroare, nu pot calcula spatiul utilizat.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Nu pot crea directorul.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Directorul specificat nu exista.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Calea specificata nu arata a director.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Nu pot sterge directorul.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Nu pot seta directorul curent.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Directorul destinatie exista deja.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Numele directorului contine caractere nevalide.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Nu pot sterge directorul de baza.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Nu pot crea directorul pentru scurtatura.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Nu pot crea legatura pentru scurtatura.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Eroare, descrierea scurtaturii este mai lunga de 250 caractere.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Scurtatura nu poate fi stearsa.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Folder necunoscut.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Directorul returnat este nevalid.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Incarcarea DLL-ului specificat a esuat.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Cautarea in DLL a functiei specificate a esuat.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Crearea sesiunii de Internet a esuat.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Crearea conexiunii HTTP a esuat.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Nu pot deschide cererea.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Trimiterea cererii a esuat.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Nu pot deschide fisierul destinatie pentru scriere.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Raspuns HTTP nevalid din partea serverului.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>A aparut o eroare la descarcarea informatiilor de pe server.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>A aparut o eroare la incercarea de a scrie in fisierul destinatie.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Utilizatorul a anulat actiunea HTTP.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>A aparut o eroare la scrierea memoriei. (Memorie insuficienta?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>A aparut o eroare la setarea username-ului proxy-ului.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>A aparut o eroare la setarea parolei proxy-ului.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Cererea nu a putut fi interpretata de catre server. (Sintaxa gresita)</ERR_WEB_400>
+      <ERR_WEB_403>Accesul este interzis.</ERR_WEB_403>
+      <ERR_WEB_404>Adresa ceruta nu poate fi gasita pe server.</ERR_WEB_404>
+      <ERR_WEB_500>A aparut o eroare interna pe server.</ERR_WEB_500>
+      <ERR_WEB_503>Serverul este la capacitatea maxima.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Nu pot inregistra clasa de fereastra pentru a crea fereastra de inceput.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Nu pot crea imaginea de inceput.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>A aparut o eroare afland numele ecranului. Nu exista ecran curent.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Nu pot incarca valoarea.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Nu pot salva valoarea.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Eroare, nu pot afla manipulatorul ferestrei aplicatiei.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Pachetul nu poate fi gasit.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>A aparut o eroare interna in timp ce se rezolva functia specificata.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>O eroare la rulare a aparut in timpul chemarii functiei.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>O eroare de alocare a memoriei a aparut in timp ce se apela functia.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Un index nevalid a fost specificat. Indicii trebuie sa fie mai mari sau egali cu -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Calea specificata este mai lunga decat MAX_PATH sau 260 de caractere.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Fisier de configurare a dezinstalarii nevalid.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Date de tabel nevalide.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Actiune nedisponibila in timpul dezinstalarii.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Categoria specificata nu a putut fi gasita.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Nu pot seta proprietatile categoriei.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Instalarea a expirat si acum se va termina.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Instalarea a fost deja rulata de numarul maxim de rulari permise si acum va iesi.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Instalarea nu a putut deschide Registrul pentru scriere si acum va termina.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Valoarea matematica specificata nu este valida pentru functia data.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Numar de serie nevalid.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Obtinerea informatiilor despre volum a esuat.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Modul Scroll este nevalid.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Caile nu pot contine caracterele urmatoare: / * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Nu este nici un ecran afisat.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Saritura la ecran esuata.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>A aparut o eroare incercant sa enumar serviciile.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>A aparut o eroare la inrerogarea serviciilor.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Serviciul nu a putut fi gasit.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Comanda de continuare a esuat.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Comanda de stop a esuat.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Comanda de start a esuat.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Comanda de pauza a esuat.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Comanda de stergere a esuat.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Comanda de creare a esuat.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Manipulatorul bazei de date a managerului de servicii nu are acces.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>O dependinta de serviciu circulara a fost specificata.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Numele de afisare exista deja in baza de date a managerului de servicii ca un serviciu ori ca alt nume de afisare.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Manipulatorul bazei de date a managerului de servicii nu este valid.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Numele serviciului specificat nu este valid.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Unul din parametrii specificati nu este valid.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Numele utilizatorului specificat, nu exista.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Contul specificat exista deja in aceasta baza de date.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>o eroare generala de tip ODBC a aparut.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Lungimea zonei tampon este nevalida.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>Valoarea hWnd este nevalida.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Valoarea sirului este nevalida.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Tipul cererii specificate este nevalid.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Componenta nu a putut fi gasita in Registru.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Argumentul driver-ului este nevalid, ar putea fi gasit in registru.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Exista o pereche tasta=nume nevalida.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>DSN nevalid.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>INF nevalid.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Operatia ceruta de catre parametrul Cerinta a esuat.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>A fost specificata o cale incorecta.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>A aparut o eroare in timp ce incarcam driver-ul  sau biblioteca de traducere.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>O lista nevalida de perechi taste=nume a fost utilizata.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Fisier jurnal invalid.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Cererea a fost anulata de catre utilizator.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>A aparut o eroare incercand sa cresc sau sa descresc contorul de utilizare a componentei.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Crearea DSN-ului a esuat.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Scrierea sysinfo a esuat.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Stergerea DSN a esuat.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>O functie a esuat deoarece nu este destula memorie disponibila.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Sirul de ierire a fost trunchiat.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Incarcarea DLL-ului ODBC a esuat.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>Comanda GetProc a esuat.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Ferestrele de dialog nu pot fi afisate in timpul unei instalari sau dezinstalari silentioase.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Calea specificata este nevalida.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Campul nu poate fi gol.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Caracterele urmatoare nu sunt permise:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Sirul de caractere nu contine informatii valide codate in baza 64.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Eroare in timpul decodarii sirului codat in baza-64 (acesta poate fi semn ca sirul este corupt - parti lipsa din sir?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Inceput de fisier, nevalid. Acesta nu este un fisier Indigo Rose blowfish.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Fisier blowfish incompatibil. (Fisierul ori a fost corupt ori utilizeaza un sistem de codare incompatibil)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Eroare la incarcarea fisierului XML.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Eroare la salvarea fisierului XML.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Nu exista incarcat un document XML valid. (Documentul este gol sau formatat necorespunzator.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Calea XML specificata nu este valida ori nu poate fi gasita.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>A aparut o eroare in timp ce se seteaza valoarea.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>A aparut o eroare in timp ce se seteaza atributul.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Nume atribut nevalid. (Numele de atribut nu poate contine spatii.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Elementul specificat nu poate fi sters.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Atributul specificat nu poate fi sters.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Nu exista elemente sub calea XML specificata.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Elementul in calea XML specificata nu detine nici un atribut.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>A aparut o eroare la inserarea XML.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Mod de inserare nevalid.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Nu am putut incarca MSI.DLL. Windows Installer nu este instalat.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Nu am putut incarca functia din MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>Utilizatorul a anulat instalarea.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>O eroare fatala a aparut in timpul instalarii.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Instalare suspendata, incompleta.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Eroare, produs necunoscut.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Eroare, caracteristica necunoscuta.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Eroare, componenta necunoscuta.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Eroare, proprietate necunoscuta.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>Handlerul este intr-o stare nevalida.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>Configuratia datelor MSI este nevalida.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>Calificativul componentei nu este prezent.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>Sursa instalarii acestui produs nu este disponibila.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>Produsul este dezinstalat.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>Sintaxa interogarii SQL este nevalida sau nu este suportata.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>Campul inregistrarii nu exista.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>Serviciul Windows Installer nu a putut fi accesat.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Eroare versiune pachet.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>O alta instalare este deja in curs de desfasurare.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>Acest pachet de instalare nu a putut fi deschis.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>Acest pachet de instalare nu a putut fi deschis, apare ca nevalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>Eroare la pornirea interfetei serviciului Windows Installer.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>Eroare la deschiderea fisierului jurnal de instalare.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>Limba acestui pachet de instalare nu este suportata de sistemul dvs.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>Aceasta instalare nu este permisa de politica sistemului dvs.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>Functia nu a putut fi executata.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>Functia a esuat in timpul executiei.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>A fost specificat un tabel nevalid sau necunoscut.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>Datele oferite nu sunt de tipul potrivit.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Datele de acest tip nu sunt suportate.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>Serviciul Windows Installer a esuat la pornire.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>Directorul Temp este plin sau inaccesibil.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>Acest pachet de instalare nu este suportat de aceasta platforma.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>Componenta de instalare nu este utilizata pe acest sistem.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>O eroare a aparut in timpul aplicarii transformarilor.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>Acest pachet de serviciu nu a putut fi deschis.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>Acest pachet de serviciu nu a putut fi deschis, apare ca nevalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>Acest pachet de serviciu nu a putut fi procesat de catre serviciul Windows Installer, nu este suportat.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>O alta versiune a acestui produs este instalata deja.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Argument linie de comanda, nevalid.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Instalarea dintr-o sesiune de Terminal Server nu este permisa pentru utilizatorul curent.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>Programul de instalare a initiat un restart al sistemului.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>Programul de instalare nu poate instala actualizarea deoarece programul ce trebuie actualizat lipseste sau programul de instalare este pentru o alta versiune.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>Pachetul de serviciu nu este permis de catre politica de sistem.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>Una sau mai multe personalizari nu sunt permise de catre politica sistemului.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer nu permite instalarea de pe o conectiune de la distanta (RDP).</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>Pachetul de serviciu nu este de tip dezinstalabil.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>Pachetul de serviciu nu a putut fi aplicat acestui produs. Pachet necunoscut.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>O secventa valida nu a putut fi gasita pentru setul de pachete.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Dezinstalarea pachetului a fost interzisa de catre politica de sistem.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>Informatiile XML sunt nevalide.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Utilizatorul administrativ nu a reusit aplicarea pachetului.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>A fost specificat un parametru nevalid pentru aceasta functie.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>O zona tampon este prea mica pentru a memora toate datele.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>Un restart este necesar pentru a completa instalarea.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Nu am reusit crearea directorului destinatie.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Nu am reusit gasirea fisierului in arhiva.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Extragerea fisierului necomprimat a esuat.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Extragerea fisierului comprimat a esuat.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Linie de comanda EXTRACTMSI nevalida.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Pornirea script-ului de functii globale a esuat.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Pornirea programului de instalare a esuat, linie de comanda MSIExec nevalida.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Pornirea programului de instalare a esuat.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Fisierul de instalare nu poate fi gasit.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Adresa internet de descarcare a programului de instalare nevalida.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Descarcarea fisierului de instalare a esuat.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Crearea directorului de pornire a esuat.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Extragerea fisierului de instalare a esuat.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>Fisierul MSI este nevalid sau nu contine o versiune valida a informatiilor specifice.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>Fisierul MSI contine date nevalide.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>Eroare necunoscuta.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>A fost utilizat un handler invalid.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>Executia fisierului a esuat, necesita drepturi de rulare (Administrator sau similare)</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

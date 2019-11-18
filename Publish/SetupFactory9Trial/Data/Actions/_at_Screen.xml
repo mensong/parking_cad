@@ -1,0 +1,170 @@
+<ActionTemplates>
+   <Action>
+      <Name>Screen.Back</Name>
+      <Description>Moves back one screen in the history of the viewed screens. This action behaves like the back button on a Web Browser.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Screen.End</Name>
+      <Description>Jumps to the end of the current screen list and starts the next stage in the install.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Screen.GetFocus</Name>
+      <Description>Gets the ID of the control that currently has focus on the screen.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Screen.GetLocalizedString</Name>
+      <Description>Gets the text of a string ID in the current language on the current screen.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>StringID</Name>
+            <Description>The screen string ID whose localized text you want to get.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My_String_ID"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Screen.GetProperties</Name>
+      <Description>Gets the properties of the currently displayed screen.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Screen.Jump</Name>
+      <Description>Jumps to a specific screen in your install given a screen name.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ScreenName</Name>
+            <Description>The name of the screen you want to jump to.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Target Screen"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Screen.Next</Name>
+      <Description>Proceeds to the next screen in the screen list according to the order in the screen manager at design time.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Screen.Previous</Name>
+      <Description>Proceeds to the previous screen that is in your screen list according to their order in the screen manager at design time.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Screen.SetFocus</Name>
+      <Description>Sets which control has focus on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>CtrlID</Name>
+            <Description>The ID of the control that will get the focus.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>AllCtrls</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Screen.SetLocalizedString</Name>
+      <Description>Sets the text of a String ID in the current language on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>StringID</Name>
+            <Description>The string ID whose text you want to set.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My_String_ID"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text you want you want to display for the string ID.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Modified Text"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Screen.SetStartScreen</Name>
+      <Description>Sets the first screen that will be displayed in the next screen list that is displayed. This action can be called to affect either the Before Installing or After Installing screens.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ScreenName</Name>
+            <Description>The name of the screen you want to show first in the next screen list that is displayed.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Target Screen"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Screen.StartTimer</Name>
+      <Description>Starts a timer on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Interval</Name>
+            <Description>The timer interval (in milliseconds).</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1000</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Screen.StopTimer</Name>
+      <Description>Stops a timer on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+</ActionTemplates>

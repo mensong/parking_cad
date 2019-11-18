@@ -1,0 +1,270 @@
+<ActionTemplates>
+  <Action>
+    <Name>Shell.CreateShortcut</Name>
+    <Description>Creates a shortcut on the user's system.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Folder</Name>
+        <Description>The path to the folder where the shortcut will be created.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>Shell.GetFolder(SHF_DESKTOP)</Default>
+          <DataType>string</DataType>
+          <Constraints>1,260</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Description</Name>
+        <Description>The label that will be given to the shortcut. This is the shortcut's "name" (i.e., what the user will see).</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Shortcut to My File"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,250</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Target</Name>
+        <Description>The full path and name of the file or folder that the shortcut will point to.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\My Prog\\MyExe.exe"</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>Docs</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>CmdLine</Name>
+        <Description>The command line arguments (if any) that will be passed to the file linked by the shortcut.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WorkingFolder</Name>
+        <Description>The working directory that will be used for the file pointed to by the shortcut.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>IconPath</Name>
+        <Description>The full path to a file containing the icon you want to use. The most common types are icon files (.ico) and executables (.exe). If no icon path is specified, the icon will be taken from the target file instead.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>Docs</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>IconIndex</Name>
+        <Description>The zero-based index describing which icon to use in the file. For example, an icon index of 2 means it will use the third icon in the file.</Description>
+        <Type>number</Type>
+        <Default>0</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>0</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WindowMode</Name>
+        <Description>The run mode to use when it launches the file.</Description>
+        <Type>number</Type>
+        <Default>SW_SHOWNORMAL</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>SW_SHOWNORMAL</Default>
+          <DataType>combo</DataType>
+          <Constraints>SW_SHOWNORMAL,SW_MAXIMIZE,SW_SHOWMINNOACTIVE</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>HotKey</Name>
+        <Description>A table containing an optional system-wide key combination that will launch the shortcut.</Description>
+        <Type>table</Type>
+        <Default>nil</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>nil</Default>
+          <DataType>table</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Comment</Name>
+        <Description>An optional string that will appear in the comments section of the shortcut.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>StartPinOption</Name>
+        <Description>Shortcut pinning options for shortcuts created in the Start menu on Windows 8.</Description>
+        <Type>number</Type>
+        <Default>START_OPTION_DEFAULT</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>START_OPTION_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>START_OPTION_DEFAULT,START_OPTION_NO_PIN,START_OPTION_PIN</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Shell.DeleteShortcut</Name>
+    <Description>Removes a shortcut from the user's system.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Folder</Name>
+        <Description>The path to the folder where the shortcut is located.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>Shell.GetFolder(SHF_DESKTOP)</Default>
+          <DataType>string</DataType>
+          <Constraints>1,260</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Description</Name>
+        <Description>The shortcut's description. This is the name (or label) that appears on the shortcut.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Shortcut to My File"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Shell.Execute</Name>
+    <Description>Performs a shell execute on a target with a given shell verb.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Filename</Name>
+        <Description>The file or folder path to use.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_TempFolder.."\\MyProg.exe"</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>Docs</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Verb</Name>
+        <Description>The verb to use in the shell command.</Description>
+        <Type>string</Type>
+        <Default>"open"</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>"open"</Default>
+          <DataType>combo</DataType>
+          <Constraints>"open","explore","edit","print"</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Arguments</Name>
+        <Description>The command line arguments to pass to the file.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WorkingFolder</Name>
+        <Description>The working directory that will be used for the file.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WindowMode</Name>
+        <Description>The window mode to use.</Description>
+        <Type>number</Type>
+        <Default>SW_SHOWNORMAL</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>SW_SHOWNORMAL</Default>
+          <DataType>combo</DataType>
+          <Constraints>SW_SHOWNORMAL,SW_MAXIMIZE,SW_MINIMIZE,SW_HIDE</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WaitForReturn</Name>
+        <Description>Whether the application will wait until the executable has exited before continuing.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Shell.GetFolder</Name>
+    <Description>Returns the path to a common folder on the local system, such as "My Documents" or the user's Startup folder.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Type</Name>
+        <Description>The folder that you want.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>SHF_DESKTOP</Default>
+          <DataType>combo</DataType>
+          <Constraints>SHF_FONTS,SHF_DESKTOP,SHF_DESKTOP_COMMON,SHF_STARTMENU,SHF_STARTMENU_COMMON,SHF_STARTMENUPROGRAMS,SHF_STARTMENUPROGRAMS_COMMON,SHF_STARTUP,SHF_STARTUP_COMMON,SHF_COMMONFILES,SHF_PROGRAMFILES,SHF_MYDOCUMENTS,SHF_APPLICATIONDATA,SHF_APPLICATIONDATA_LOCAL,SHF_APPLICATIONDATA_COMMON,SHF_COMMON_DOCUMENTS,SHF_MYMUSIC,SHF_MYMUSIC_COMMON,SHF_MYPICTURES,SHF_MYPICTURES_COMMON,SHF_MYVIDEOS,SHF_MYVIDEOS_COMMON</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+</ActionTemplates>

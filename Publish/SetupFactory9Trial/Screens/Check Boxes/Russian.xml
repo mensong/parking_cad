@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Russian</Name>
+		<Default>0</Default>
+		<Primary>25</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Установка %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Дополнительные задачи</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Какие дополнительные задачи необходимо выполнить?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далeе &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Отмена</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Справка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Пожалуйста, отметьте дополнительные задачи, которые необходимо выполнить при установке %ProductName% на ваш компьютер.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>Для продолжения установки нажмите кнопку "Далее".</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+		<IDS_CTRL_CHECK_BOX_01>Задача 1</IDS_CTRL_CHECK_BOX_01>
+		<IDS_CTRL_CHECK_BOX_02>Задача 2</IDS_CTRL_CHECK_BOX_02>
+		<IDS_CTRL_CHECK_BOX_03>Задача 3</IDS_CTRL_CHECK_BOX_03>
+		<IDS_CTRL_CHECK_BOX_04>Задача 4</IDS_CTRL_CHECK_BOX_04>
+	</Messages>
+</SUF70Messages>

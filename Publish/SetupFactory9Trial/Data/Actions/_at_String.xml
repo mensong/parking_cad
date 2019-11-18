@@ -1,0 +1,703 @@
+<ActionTemplates>
+   <Action>
+      <Name>String.AbbreviateFilePath</Name>
+      <Description>Returns an abbreviated file path given a maximum number of characters.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>FilePath</Name>
+            <Description>The file path you want to abbreviate.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\Program Files\\Myfile.txt"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Characters</Name>
+            <Description>The maximum number of characters to use in the abbreviated path.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>25</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Asc</Name>
+      <Description>Returns the ASCII code of a character (in decimal format).</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Char</Name>
+            <Description>The character whose ASCII code you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"z"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,260</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Char</Name>
+      <Description>Returns the character value of a specific ASCII code (in decimal format).</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ASCII</Name>
+            <Description>The ASCII code of the character you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>68</Default>
+               <DataType>number</DataType>
+               <Constraints>0,127</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Compare</Name>
+      <Description>Performs a case sensitive comparison between two strings.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The string that will be compared against "CompareTo".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"SETUP"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CompareTo</Name>
+            <Description>The string that will be compared to "Text".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Setup"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.CompareFileVersions</Name>
+      <Description>Performs a comparison on two file versions.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Version</Name>
+            <Description>The version string that will be compared against "CompareTo".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"1.0.20.3"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CompareTo</Name>
+            <Description>The version string that will be compared to "Version".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"1.0.2.3"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.CompareNoCase</Name>
+      <Description>Performs a case insensitive comparison between two strings.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The string that will be compared against "CompareTo".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"SETUP"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CompareTo</Name>
+            <Description>The string that will be compared to "Text".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Setup"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Concat</Name>
+      <Description>Adds (or "concatenates") two strings together and returns the result as a new string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>StartString</Name>
+            <Description>The string to be added to. This string will be appear at the start of the new string.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"String 1"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>EndString</Name>
+            <Description>The string to add (append) to the StartString. This string will appear after the StartString.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"String 2"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Find</Name>
+      <Description>Finds the first occurrence of a sub-string within a string.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SearchString</Name>
+            <Description>The string to be searched.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"0123456789"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Pattern</Name>
+            <Description>The sub-string to search for.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"5"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>StartAt</Name>
+            <Description>The position in the SearchString where the search will begin. The default is 1, which is the first character in the string.</Description>
+            <Type>number</Type>
+            <Default>1</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CaseSensitive</Name>
+            <Description>Whether the search will be case sensitive.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.GetFormattedSize</Name>
+      <Description>Given a number of bytes, returns a formatted string that converts to bytes, KB, MB or GB and optionally inserts commas.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SizeInBytes</Name>
+            <Description>The number of raw bytes to convert.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>2000</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Format</Name>
+            <Description>The format to return.</Description>
+            <Type>number</Type>
+            <Default>FMTSIZE_AUTOMATIC</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>FMTSIZE_AUTOMATIC</Default>
+               <DataType>combo</DataType>
+               <Constraints>FMTSIZE_AUTOMATIC,FMTSIZE_BYTES,FMTSIZE_KB,FMTSIZE_MB,FMTSIZE_GB</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ShowCommas</Name>
+            <Description>Whether to insert commas into the result (i.e. "63636" becomes "63,636").</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Left</Name>
+      <Description>Creates a new string from the left-most x characters of an existing string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>LeftString</Name>
+            <Description>The string to copy the characters from.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"0123456789"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>NumChar</Name>
+            <Description>The number of characters to copy from the left hand side of the string.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>4</Default>
+               <DataType>number</DataType>
+               <Constraints>-1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Length</Name>
+      <Description>Returns the number of characters in a string.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>LengthString</Name>
+            <Description>The string whose length you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"0123456789"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Lower</Name>
+      <Description>Returns an all lowercase version of a string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ToLower</Name>
+            <Description>The string to convert to lowercase.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"TOLOWER"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.MakePath</Name>
+      <Description>Returns a path based upon elements in the specified table.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>PathParts</Name>
+            <Description>A table containing the necessary parts to create a path.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>PathTable</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Mid</Name>
+      <Description>Returns a specified range of characters from a string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MidString</Name>
+            <Description>The string to copy the characters from.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"0123456789"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CharStart</Name>
+            <Description>The position in the string to start copying from.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>2</Default>
+               <DataType>number</DataType>
+               <Constraints>-1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>NumChar</Name>
+            <Description>The number of characters from CharStart to copy.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>3</Default>
+               <DataType>number</DataType>
+               <Constraints>-1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Repeat</Name>
+      <Description>Repeats a string a given number of times.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>RepeatString</Name>
+            <Description>The string to copy the characters from.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"X"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>NumRepeat</Name>
+            <Description>The number of times to repeat the string.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>12</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Replace</Name>
+      <Description>Searches a string for a sub-string and replaces every occurrence of it with a new sub-string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SearchString</Name>
+            <Description>The string to search.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"012X345X678X9"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Pattern</Name>
+            <Description>The sub-string to search for.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"X"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ReplaceString</Name>
+            <Description>The replacement sub-string.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"x"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CaseSensitive</Name>
+            <Description>Whether the search will be case sensitive.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.ReverseFind</Name>
+      <Description>Finds the first occurrence of a sub-string within a string by searching it from right to left.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SearchString</Name>
+            <Description>The string to be searched.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"0123456789"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Pattern</Name>
+            <Description>The sub-string to search for.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"5"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CaseSensitive</Name>
+            <Description>Whether the search will be case sensitive.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Right</Name>
+      <Description>Creates a new string from the right-most x characters of an existing string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>RightString</Name>
+            <Description>The string to copy the characters from.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"0123456789"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>NumChar</Name>
+            <Description>The number of characters to copy from the right hand side of the string.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>4</Default>
+               <DataType>number</DataType>
+               <Constraints>-1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.ToNumber</Name>
+      <Description>Converts a numeric string into a numeric value.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>NumericString</Name>
+            <Description>A string containing numeric characters. For example: "10", "3.2", "-5".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"5"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.SplitPath</Name>
+      <Description>Splits the specified path up into its drive, folders, filename, and file extension.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Path</Name>
+            <Description>The path that will be split.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\Program Files\\My Product\\MyFile.ext"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.TrimLeft</Name>
+      <Description>Trims the specified characters from the left of the source string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SourceString</Name>
+            <Description>The string that will be trimmed from the left.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"   123"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CharactersToTrim</Name>
+            <Description>The characters to trim from the left of the source string.</Description>
+            <Type>string</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.TrimRight</Name>
+      <Description>Trims the specified characters from the right of the source string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SourceString</Name>
+            <Description>The string that will be trimmed from the right.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"123   "</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CharactersToTrim</Name>
+            <Description>The characters to trim from the right of the source string.</Description>
+            <Type>string</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>String.Upper</Name>
+      <Description>Returns an all uppercase version of a string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ToUpper</Name>
+            <Description>The string to convert to uppercase.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"toupper"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

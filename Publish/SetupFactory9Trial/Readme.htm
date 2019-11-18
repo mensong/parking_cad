@@ -1,0 +1,350 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Indigo Rose Corporation - Setup Factory 9 Trial Readme</title>
+
+<style TYPE="text/css">
+<!--
+body {
+  margin-left: 1em;
+}
+h1, h2, h3, h4
+{
+  font-family: Verdana, Arial, Helvetica, Geneva, sans-serif;
+  letter-spacing: 0.1ex;
+}
+h1
+{
+  font-size: large;
+}
+h2
+{
+  font-size: medium;
+  margin-top: 2em;
+}
+h3
+{
+  font-size: 80%;
+}
+h4
+{
+  font-size: 80%;
+  margin-left: 1em;
+  color: blue;
+  background-color: white;
+}
+td, p, ul, ol
+{
+  font-family: Verdana, Arial, Helvetica, Geneva, sans-serif;
+  font-size: 80%;
+}
+p, ul, ol
+{
+  margin-right: 20%;
+  line-height: 120%;
+}
+.padbottom li
+{
+  padding-bottom: 1em;
+}
+li.nopadbottom
+{
+  padding-bottom: 0;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#cc0000" vlink="#993300" alink="#FF0000" leftmargin=5 topmargin=2 marginheight=5 marginwidth=5>
+<h1>Setup Factory 9 Trial - Last Minute Notes</h1>
+
+<p>Copyright &copy; 1992 - 2018 <a href="http://www.indigorose.com">Indigo Rose Corporation</a>.<br>
+All rights reserved.</p>
+
+<table border="0" cellpadding="0" cellspacing="2">
+  <tr>
+    <td width="136"><b>Product Name:</b></td>
+    <td>Setup Factory 9 Trial</td>
+  </tr>
+  <tr>
+    <td width="136"><b>Version:</b></td>
+    <td>9.5.2.0 - <a href="#ReleaseHistory">(what has changed?)</a></td>
+  </tr>
+  <tr>
+    <td width="136"><b>Release Date:</b></td>
+    <td>July 31, 2018</td>
+  </tr>
+  <tr>
+    <td width="136"><b>Distribution:</b></td>
+    <td>Unauthorized distribution prohibited. See License.txt for details.</td>
+  </tr>
+</table>
+
+<h2>Table Of Contents</h2>
+
+<p>
+  <a href="#ContactInformation">Contact Information</a><br>
+  <a href="#GettingStarted">Getting Started</a><br>
+  <a href="#ReleaseHistory">Release History</a><br>
+  <a href="#Copyright">Copyright & Trademark Notice</a>
+</p>
+
+<h2><a name="ContactInformation">Contact Information</a></h2>
+
+<p>Contact Information<br/>
+<a href="http://www.indigorose.com/contact/">http://www.indigorose.com/contact/</a></p>
+
+<p>Technical Support<br/>
+<a href="http://www.indigorose.com/support/">http://www.indigorose.com/support/</a></p>
+
+<h2><a name="GettingStarted">Getting Started</a></h2>
+
+<p>Thank you choosing Setup Factory! To get the most out of this software,
+ we recommend that you start by reading the User's Guide. We&#8217;ve included
+ an instruction and tutorial in the help file which can be accessed by choosing <em>Help > User&#8217;s Guide</em> within the software. It&#8217;s
+ a great place to start.</p>
+<p>You&#8217;ll find a shortcut to the Help File on the Start menu under <em>Start
+ -&gt; Programs -&gt; Indigo Rose Corporation -&gt; Setup Factory 9 Trial</em>.</p>
+<p>We also provide a number of other helpful resources to get you up to speed.
+ Look for them on the <em>Help</em> menu within the software. You&#8217;ll find a complete
+ help system, tips &amp; tricks, command reference material and web links to
+ our online user discussion community and technical support system.</p>
+
+
+
+<h2><a name="ReleaseHistory">Release History</a></h2>
+
+
+<h3><b>9.5.2.0 - July 31, 2018</b></h3>
+
+<ul>
+	<li>Fix: Fixed an issue where Setup Factory silent installs would fail on Windows Server OS's without a GUI due to the system file 'oledlg.dll' not being present. This fix only applies to silent installs. Setups with an interface still require that system component.</li>
+	<li>Fix: Made a change to Setup Factory's launcher to prevent possible DLL hijacking of system files if nefarious copies were placed in the same folder as the setup when launched. The issue was related to the default search order for system files if not defined explicitly.</li>
+	<li>Fix: Fixed an issue where a file in-use error would occassionally occur when installing over existing files due to anti-virus interference.</li>
+	<li>Fix: Fixed a bug in the DLL.CallFunction action where parameters weren't handled properly in 64-bit setups.</li>
+	<li>Fix: Made an attempt to prevent an occassional build error from occurring duing the manifest injection step.</li>
+	<li>Fix: Fixed an issue where the File.Move action's "IncludeHiddenFiles" parameter default didn't match what was being used. It now uses the correct value from the prototype when not defined.</li>
+	<li>Fix: Made the Registry.GetValue action able to read REG_MULTI_SZ values containing null characters within it's data.</li>
+	<li>Fix: Addressed an issue in the File.Copy and File.Move actions where if the path contained erroneous backslashes in some locations, it would result in unpredictable file attributes being set. It may also result in the source folder being deleted in the File.Move action.</li>
+	<li>Fix: Fixed a bug where dragging and dropping a folder would cause files in sibling folders to be added as well.</li>
+	<li>Fix: Fixed a bug where files within folder names starting with '.' would be skipped when adding folder trees of files to the project or using folder references which would cause them to be skipped during the build.</li>
+	<li>Fix: Fixed a bug where command line arguments starting with 'S' would cause silent install/uninstalls if enabled.</li>
+	<li>Fix: Made a change to try to prevent a rare design-time crash from occurring when scanning some .dll/.ocx archive files for DLLRegisterServer interface support.</li>
+	<li>Fix: Made the 'Clipboard.IsTextAvailable' plugin action return false if there was a text entry on the clipboard, but it's data was empty. Updated version to 2.0.2.0.</li>
+	<li>Fix: Changed the behavior of the design-time properties of the Edit control on Custom screens to make it clear that 'Multiline' is not supported for 'Password' input styles. The Password input style is only valid for single-line edit controls.</li>
+</ul>
+
+
+<h3><b>9.5.1.0 - March 3, 2016</b></h3>
+
+<ul>
+	<li>Feature: Added SHA-256 code signing support.</li>
+	<li>Feature: Added the ability to dual-sign setups (SHA-256 and SHA-1).</li>
+	<li>Feature: Added a password field for the code signing certificate(s).</li>
+	<li>Feature: Added a few items to the System.GetOSProductInfo action's constants.</li>
+	<li>Change: Removed support for signing with signcode.exe, instead use signtool.exe.</li>
+	<li>Fix: Made several changes in order to prevent errors that may occur due to anti-virus scanning when launching the setup and installing files.</li>
+	<li>Fix: Fixed a bug where registering/unregistering fonts could hang the setup on some systems.</li>
+	<li>Fix: Fixed a bug where temporary font files were not be deleted from the setup's temp folder after the setup completes.</li>
+	<li>Fix: Fixed a bug where session variables set via an uninstall INI file on the command line weren't being set in the uninstall.</li>
+	<li>Fix: Fixed a bug where if a custom screen contained a GroupBox control, tabbing through the controls failed to work properly.</li>
+	<li>Fix: Fixed a bug where using the UninstallData.RemoveItem action with the UNINDATA_SUPPORTFILES item type wasn't removing the item from the uninstall's configuration file.</li>
+	<li>Fix: Recompiled the distributed copies of lua5.1.dll to pass the binary analyzer tests DBCheck and NXCheck.</li>
+	<li>Fix: Changed references in Setup Factory from Windows Server 10 to Windows Server 2016.</li>
+</ul>
+
+
+<h3><b>9.5.0.0 - February 10, 2015</b></h3>
+
+<ul>
+	<li>Feature: Added Windows 10/Server 10 support to Setup Factory's design environment and supporting files.</li>
+	<li>Feature: Added Windows 10/Server 10 support to Setup Factory's runtime and supporting files.</li>
+	<li>Feature: Added Windows 10/Server 10 (Server version is tentative) to the OS conditions tree.</li>
+	<li>Feature: Added Windows 10/Server 10 to the System.GetOSName action.</li>
+	<li>Feature: Updated SUF's documentation where applicable.</li>
+	<li>Feature: Performed Windows 10 compatibility testing on SUF's design and runtime using the Windows 10 Technical Preview.</li>
+	<li>Fix: Updated distributed upx.exe to version 3.91.0.0.</li>
+	<li>Fix: Updated the System.GetOSProductInfo action with 16 additional constants.</li>
+	<li>Fix: Improved the resizing behavior of the Control Panel tab of the Uninstall Settings dialog.</li>
+	<li>Fix: Made it so that setting _UninstallStages["RemoveUninstallFiles"] to false would also leave behind the uninstall runtime.</li>
+	<li>Fix: Fixed a crashing bug in Setup Factory's design environment that only occurred when running the Windows 10 Technical Preview on a Virtual Machine. It occurred while adding files.</li>
+	<li>Fix: Fixed a couple spelling mistakes in the setup's build log.</li>
+	<li>Fix: Fixed a bug where the Windows XP runtime conditions weren't working properly.</li>
+	<li>Fix: Added version resource information to the distributed copies of lua5.1.dll (x86 and x64).</li>
+	<li>Fix: Fixed an issue where sometimes installing a font file would fail to detect that the file was in use causing an extracting error.</li>
+	<li>Fix: Fixed a bug where the trial version of Setup Factory's design environment would fail to launch on the Windows 10 Technical Preview.</li>
+</ul>
+
+
+<h3><b>9.3.2.0 - September 4, 2014</b></h3>
+
+<ul>
+	<li>Fix: Fixed a bug where some settings on the Project Settings dialog would fail to load properly.</li>
+	<li>Fix: Fixed a bug where the Select Packages screen wasn't showing the correct package size in it's description when the "AdditionalDiskSpace" value was set using the SetupData.SetPackageProperties action.</li>
+	<li>Fix: Fixed a bug where setting the "CreateUninstall" item in the _InstallStages table to false would cause an error while installing files.</li>
+	<li>Fix: Fixed a bug where the uininstall would sometimes hang during it's final cleanup phase.</li>
+</ul>
+
+<h3><b>9.3.1.0 - June 19, 2014</b></h3>
+
+<ul>
+	<li>Fix: Fixed a bug where projects would fail to load if they contained a GroupBox screen control.</li>
+	<li>Fix: Fixed a bug where projects containing a GroupBox screen control would cause the project file format to be incorrect. This affected projects from 9.0.0.0 until 9.3.0.0. </li>
+	<li>Fix: Fixed a bug where Setup Factory 7, and 8 projects would fail to load.</li>
+</ul>
+
+<h3><b>9.3.0.0 - June 11, 2014</b></h3>
+
+<ul>
+  <li>Feature: Added support for Right-to-left text on the Setup screen based on the RTL value in the language map.</li>
+  <li>Fix: Fixed a bug where importing language files using the 'Import' button on the Languages dialog would not save it's location. This resulted in the language file not being found upon future editing of the project file.</li>
+  <li>Fix: Fixed a bug where the 'All Future OSs' OS condition checkbox would fail to load it's saved state correctly.</li>
+  <li>Fix: Fixed a bug in the loading and saving of OS conditions (file and system requirements) that was introduced in version 9.1.1.0. This issue resulted in incorrect OS conditions being selected when loading projects created prior to 9.1.1.0. As a result, users should double check their operating system requirements in their projects on the Requirements tab of project settings, and any file conditions they've set. We apologize for the inconvenience.</li>
+  <li>Fix: Implemented resizing of the Operating System checkbox tree on the Requirements tab of Project Settings.</li>
+  <li>Fix: Changed the Windows Installer 4.5 (32-bit) dependency module's detection script so that it doesn't try to install on Windows 8 or later OS's.</li>
+  <li>Fix: Changed the Windows Installer 4.5 (64-bit) dependency module's detection script so that it doesn't try to install on Windows 8 or later OS's.</li>
+  <li>Fix: Fixed a couple issues in the 'File.Copy' action where the 'AbortOnFail' parameter wasn't working properly, and progress wasn't handled correctly upon failure.</li>
+  <li>Fix: Fixed a bug where the second optional argument of the 'Window.Close' action was mistakenly required at runtime.</li>
+  <li>Fix: Some minor changes to Setup Factory's installation regarding reinstallation.</li>
+</ul>
+
+<h3><b>9.2.0.0 - September 4, 2013</b></h3>
+
+<ul>
+  <li>Feature: Updated Setup Factory's design environment to support Windows 8.1.</li>
+  <li>Feature: Updated Setup Factory's runtime manifests to support Windows 8.1.</li>
+  <li>Feature: Updated the 'System.GetOSName' action with Windows 8.1 and Windows Server 2012 R2.</li>
+  <li>Feature: Updated the OS condition tree to include Windows 8.1 and Windows Server 2012 R2.</li>
+  <li>Fix: Fixed a bug where 32-bit PNG images would not be properly converted to 24-bit when added to the setup.</li>
+  <li>Fix: Changed the "1.44 MB Floppy" segment size output option to "Smallest segment", since Setup Factory no longer creates setups that will fit on a 1.44 MB floppy.</li>
+  <li>Fix: Fixed a bug in the 'DlgSelectPackages.UpdateDisplay' action where session variables would not be properly expanded when updating the package tree control.</li>
+  <li>Fix: Fixed a redrawing issue with the Scrolling Text screen control on Windows 8.</li>
+  <li>Fix: Removed the default creation of the project and output folders when running Setup Factory's design environment.</li>
+  <li>Fix: Fixed a bug in the 'DlgScrollingText.SetProperties' action where some settings may cause the control to disappear.</li>
+  <li>Fix: Fixed a minor issue in the 'Service.Create' action's properties dialog.</li>
+  <li>Fix: Fixed an issue in the Zip Plugin where it would fail to open the help file on some browsers.</li>
+  <li>Fix: Updated IRScriptEditor.exe to 2.0.1001.0.</li>
+</ul>
+
+
+<h3><b>9.1.1.0 - April 10, 2013</b></h3>
+
+<ul>
+  <li>Feature: Added a new "Start screen pinning (Windows 8)" option to the "Shortcuts" tab of Setup Factory's file properties dialog that allows you to control whether or not Start menu shortcuts will be pinned to the Windows 8 Start screen.</li>
+  <li>Feature: Added a "StartPinOption" parameter to the "Shell.CreateShortcut" action to control how shortcuts are pinned to the Windows 8 Start screen when created in the Start menu.</li>
+  <li>Feature: Added support for 32-bit .png images to the Billboard screen control.</li>
+  <li>Feature: Added the global lua boolean variable "_UseSystemCharacterSet" that can be used to override the font script setting when using custom fonts on screens. This will make the setup use the system's default character set instead.</li>
+  <li>Feature: Updated the list of constants for the "System.GetOSProductInfo" action.</li>
+  <li>Fix: Fixed a bug in the ListBox screen where "e_Details.Index" was returning an incorrect value from the "On Ctrl Message" screen event.</li>
+  <li>Fix: Fixed a bug where the auto-save feature wasn't working properly for previously created projects opened in Setup Factory.</li>
+  <li>Fix: Fixed a bug in the "DlgScrollingText.AppendLine" action where setting "ScrollToEnd" to false would not function correctly.</li>
+  <li>Fix: Fixed several issues in the OS conditions tree where checked states were incorrect in certain situations.</li>
+  <li>Fix: Fixed a bug where the "DlgBillboard.SetVisible" action wasn't working.</li>
+  <li>Fix: Fixed a bug where the List Box screen was not laying out the bottom text properly.</li>
+  <li>Fix: Fixed a bug where file names that contained square brackets could sometimes break the progress screen during installation.</li>
+  <li>Fix: Fixed a bug where the launch user session variables were not being populated with the values from the uninstall configuration file during the uninstall.</li>
+  <li>Fix: Fixed a problem where returning strings from 64-bit DLLs when using the "DLL.CallFunction" action would cause Setup Factory to crash.</li>
+  <li>Fix: Fixed a couple spelling mistakes in the German language files.</li>
+</ul>
+
+
+<h3><b>9.1.0.0 - June 25, 2012</b></h3>
+
+<ul>
+  <li>Feature: Added support for Windows 8 based on product testing in the Windows 8 Consumer Preview, and Windows 8 Release Preview.</li>
+  <li>Feature: Added Windows 8 compatibility GUID to Setup Factory's design and runtime manifests.</li>
+  <li>Feature: Added Windows 7 SP1, Windows 8, and Windows Server 2012 to the supported list of OS conditions.</li>
+  <li>Feature: Added support to the System.GetOSName action for Windows 8 and Windows Server 2012.</li>
+  <li>Feature: Added Windows Server 2008 R2 SP1 to the OS conditions.</li>
+  <li>Fix: Fixed a bug where the 'Service Name' and 'Display Name' were incorrectly being compared in a case-sensitive manner in Service actions.</li>
+  <li>Fix: Fixed a bug where the descending sort order in Setup Factory's design file list wasn't working properly.</li>
+  <li>Fix: Made it so that cancelling during the compression of a file would immediately cancel the build, instead of waiting for the compression to finish.</li>
+</ul>
+
+
+<h3><b>9.0.4.0 - December 19, 2011</b></h3>
+
+<ul>
+  <li>Fix: Fixed a bug where a divide by zero could happen in some circumstances in Setup Factories runtime.</li>
+  <li>Fix: Fixed a bug where the System.RegisterFont action could sometimes hang on certain systems.</li>
+  <li>Fix: Fixed a bug on the "Add Action Plugin" dialog where resizing the dialog wasn't working properly.</li>
+  <li>Fix: Fixed a bug where the available CPU threads would not update when switching between multiple build configurations on the Setup File tab of the Build Settings Dialog.</li>
+  <li>Fix: Fixed a bug where attributes weren't being set properly for folder references.</li>
+  <li>Fix: Fixed a redrawing bug related to the DlgBillboard.GoToImage action.</li>
+  <li>Fix: Fixed an incorrect failure check for 64-bit in the the following dependency modules: Visual C++ 2008 (32-bit), Visual C++ 2010 (32-bit),Visual C++ 2008 SP1 (32-bit), Windows Installer 4.5 (32-bit), .NET 3.0 (32-bit).</li>
+  <li>Fix: Fixed a bug in the File.Delete action where the "AbortOnFail" parameter wasn't working properly.</li>
+  <li>Fix: Made it so that an uninstaller would only remove shortcuts created from the File Properties dialog if they were created by the install.</li>
+  <li>Fix: Fixed a runtime redraw bug that would cause billboard transitions to be very choppy.</li>
+  <li>Fix: Fixed a bug where the missing last project dialog was not modal.</li>
+  <li>Fix: Fixed a bug where the File.RunAs action was not passing one of its arguments properly.</li>
+  <li>Fix: Fixed a possible crash in the uninstall if there were a large number of left over files that needed to be removed on reboot.</li>
+  <li>Fix: Fixed a bug where the e_CurrentItemPct value used during the While Installing progress could sometimes be incorrect.</li>
+  <li>Fix: Made it so that if the setup is manifested with 'As invoker' privileges, the uninstall control panel entry will be created under the HKEY_CURRENT_USER key instead of HKEY_LOCAL_MACHINE which would previously fail with an error.</li>
+  <li>Fix: Fixed a bug where when collecting launch user information and not allowing the setup to execute as an administrator could cause an extra error message.</li>
+</ul>
+
+
+<h3><b>9.0.3.0 - July 27, 2011</b></h3>
+
+<ul>
+  <li>Feature: Added 2 new session variables, %LaunchUserName% and %LaunchUserDomain%.</li>
+  <li>Feature: Added a new Debug.SendToFile action to let the developer store debug information in a text file, instead of being forced to write the information to the debug window.</li>
+  <li>Fix: Fixed a bug where Custom Progress screens were not working properly during the Before Installing and After Installing stage.</li>
+  <li>Fix: Fixed a bug where Edit Field controls using the Input mask Input Style were not using their session variable to properly initialize themselves.</li>
+  <li>Fix: Added a warning to stop developers from entering invalid characters in the setup filename of the build settings.</li>
+  <li>Fix: Made it so that Setup Factory would attempt to import project files larger than 10Mb instead of simply failing.</li>
+  <li>Fix: Fixed a bug where the Turkish language xml files were saved with the incorrect character encoding.</li>
+  <li>Fix: Made it so that new Setup Factory projects will not create uninstall shortcuts in the Start menu by default. This is in response to guideline changes made by Microsoft.</li>
+</ul>
+
+
+
+<h3><b>9.0.2.0 - April 11, 2011</b></h3>
+
+<ul>
+  <li>Feature: Added multiline capabilities to the edit control on custom screens using either the design interface, or at runtime using the DlgEditField.GetProperties and DlgEditField.SetProperties actions.</li>
+  <li>Fix: Fixed a bug where the Folder.DeleteTree callback function was not being called.</li>
+  <li>Fix: Fixed a bug where some of the compression settings weren't being reverted properly when cancelling changes on the Setup File tab of the Build Settings dialog.</li>
+  <li>Fix: Fixed a bug where multi-segment installations would fail.</li>
+  <li>Fix: Added an initial automatic seeding for the first use of the Math.Random action.</li>
+  <li>Fix: Fixed a bug where the code editor would not show the action prototype tooltip as you typed.</li>
+  <li>Fix: In the case of a memory allocation error during the build process Setup Factory will scale back the dictionary size in an attempt to complete the build.</li>
+  <li>Fix: Fixed a bug causing the creation of incorrect file path structure when dragging and dropping a folder tree onto the file list at design time.</li>
+  <li>Fix: Fixed a bug in OS system requirements where incorrect service packs for Windows XP were displayed in the notification message.</li>
+  <li>Fix: Added a check to ensure that the setup size was correctly written to the archive when code-signing a setup. This helps to avoid data errors at runtime.</li>
+  <li>Fix: Modified the build process so that it would consume less RAM and be faster in certain situations.</li>
+</ul>
+
+
+<h3><b>9.0.1.0 - February 2, 2011</b></h3>
+
+<ul>
+  <li>Fix: Updated the IRScriptEditor to version 2.0.1000 which contains Lua 5.1 syntax checking.</li>
+  <li>Fix: Fixed a bug where the DlgListBox.GetItemProperties action could not retrieve the ItemData properly.</li>
+  <li>Fix: Fixed a bug where the ComboBox control could lose it's item data leaving a screen and then returning to it.</li>
+  <li>Fix: Added syntax support to the code editor for new Lua 5.1 operators.</li>
+</ul>
+
+
+<h3><b>9.0.0.0 - January 10, 2011</b></h3>
+
+<ul>
+  <li>First public release.</li>
+</ul>
+
+
+<h2><a name="Copyright">Copyright & Trademark Notice</a></h2>
+
+<p>
+Setup Factory 9, the Setup Factory 9 logo and all related files and
+documentation are Copyright &copy; 1992-2018 Indigo Rose Software Design Corporation.
+All rights reserved.</p>
+
+<p>
+Setup Factory 9 is a trademark of Indigo Rose Software Design Corporation. All
+other trademarks or registered trademarks mentioned are the property of their
+respective owners.</p>
+
+</body>
+</html>
+ 

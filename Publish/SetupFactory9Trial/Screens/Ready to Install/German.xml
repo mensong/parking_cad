@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>German</Name>
+<Default>0</Default>
+<Primary>7</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Bereit zum Installieren</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Sie sind nun bereit, %ProductName% %ProductVer% zu installieren.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Weiter &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Zurück</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Abbrechen</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hilfe</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Setup hat nun ausreichend Informationen, um %ProductName% auf Ihrem Computer zu installieren.
+
+
+Die folgenden Einstellungen werden verwendet:
+
+Installations-Pfad:        %AppFolder%
+
+Startmenü:    %AppShortcutFolderName%
+
+
+Klicken Sie bitte auf Weiter, um fortzufahren.</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Titel</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

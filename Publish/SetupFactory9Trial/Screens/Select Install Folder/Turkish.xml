@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Turkish</Name>
+<Default>0</Default>
+<Primary>31</Primary>
+<Secondary/>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Kurulumu</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Yükleme Klasörü</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>%ProductName% 'ýn nereye yüklenmesini istiyorsunuz?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Ýleri &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Geri</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Ý&amp;ptal</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Yardým</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>&amp;Göz at...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Yazýlým, aþaðýda listelenen klasöre kurulacaktýr. Farklý bir yer seçmek için ya yeni bir dosya ylu yazýn yada mevcut bir klasör bulmak için Göz at 'a basýn.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Install %ProductName% to:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Gerekli boþ alan: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Seçilen sürücüde kullanýlabilir boþ alan: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

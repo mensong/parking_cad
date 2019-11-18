@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Italian</Name>
+<Default>1</Default>
+<Primary>16</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installazione</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Informazione importante</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Prego leggere le seguenti informazioni.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Avanti &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Indietro</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnulla</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Ai&uto</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Mostra testo HTML&lt;/h1&gt;
+
+&lt;p&gt;Puoi usare alcuni comandi HTML più comuni supportati da Internet Explorer, tipo:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Bold Grassetto&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;Italic Corsivo&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="green"&gt;Font colorati&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="2"&gt;Dimensioni dei font&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.indigorose.com"&gt;Hyperlinks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Puoi usare anche &lt;span class="hilite"&gt;CSS (cascading style sheets)&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+body {
+    background-color: #E8F0FD;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 125%;
+    font-family: Arial, sans-serif;
+    color: blue;
+}
+
+.hilite {
+    background: #f0f090 none;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 90%;
+}
+&lt;/style&gt;
+
+&lt;/html&gt;
+</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

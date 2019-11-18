@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Gereed voor de installatie</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>U bent nu klaar om %ProductName% %ProductVer% te installeren</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Doorgaan &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Annuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>De installatie heeft nu genoeg informatie om de %ProductName% op uw computer te kunnen installeren.
+
+
+De volgende instellingen worden gebruikt:
+
+Installatiemap:        %AppFolder%
+
+Snelkoppelingmap:      %AppShortcutFolderName%
+
+
+Klik a.u.b. op Doorgaan om verder te gaan met de installatie.</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Title</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

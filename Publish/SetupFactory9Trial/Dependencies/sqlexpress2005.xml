@@ -1,0 +1,380 @@
+<DependencyTemplate>
+<Dependency>
+<Name>SQL Express 2005</Name>
+<RuntimeTempFolder>sqlexpress2005</RuntimeTempFolder>
+<RevisionDate>Thursday, October 21, 2010</RevisionDate>
+<Description>Dependency Module: SQL Server 2005 Express Edition SP2 (Include with Installation)
+
+Description: This dependency module will cause SQL Server 2005 Express Edition SP2 to be included in your setup. When run the module will check for the existence of SQL Server 2005 Express (any version) on the target system and then install SQL Server 2005 Express SP2 if needed.
+
+This module is supported on both 32-bit (x86) and 64-bit (x64) architectures of the following operating systems:
+Windows 2000 with Service Pack 4 (SP4) or later
+Windows XP Service Pack 2 (SP2) or later
+Windows Server 2003 Service Pack 1 (SP1) or later
+Windows Vista
+
+It also requires that the .NET Framework 2.0, and Microsoft Windows Installer service 3.1 is installed on the system before installation. For a full list of requirements, please see: http://www.microsoft.com/sql/editions/express/sysreqs.mspx
+
+You will need to download and obtain permission to re-distribute the SQL Server Express Edition installer from Microsoft. Download the file (SQLEXPR.EXE) from the URL below into a new folder \Dependencies\sqlexpress2005 within the Setup Factory program directory:
+
+Download:
+http://www.microsoft.com/downloads/details.aspx?familyid=31711D5D-725C-4AFA-9D65-E4465CDFF1E7&amp;displaylang=en
+
+Register for the SQL Server Express Edition Redistribution Rights:
+http://www.microsoft.com/sql/editions/express/redistregister.mspx
+
+Useful Links
+------------
+
+SQL Server Express Web Site:
+http://msdn2.microsoft.com/en-us/express/aa718378.aspx
+
+Microsoft Online: Microsoft SQL Server 2005 Express Edition Download:
+http://www.microsoft.com/downloads/details.aspx?familyid=31711D5D-725C-4AFA-9D65-E4465CDFF1E7&amp;displaylang=en
+
+Microsoft Online: Register for the SQL Server Express Edition Redistribution Rights:
+http://www.microsoft.com/sql/editions/express/redistregister.mspx
+
+MSDN Online: Embedding SQL Server Express into Custom Applications:
+http://msdn2.microsoft.com/en-us/library/Bb264562.aspx
+
+MSDN Online: How to: Install SQL Server 2005 from the Command Prompt
+http://msdn2.microsoft.com/en-us/library/ms144259.aspx
+
+More Information
+----------------
+
+This dependency module passes the following command line switches to the SQLEXPR32.EXE or SQLEXPR.EXE file:
+
+If UIMode="silent":
+/qn ADDLOCAL=ALL AGTAUTOSTART=1 DISABLENETWORKPROTOCOLS=0
+
+If UIMode="basic":
+/qb ADDLOCAL=ALL AGTAUTOSTART=1 DISABLENETWORKPROTOCOLS=0
+
+If UIMode="full":
+&lt;no command line arguments will be passed&gt;
+
+However, if you want, you can completely override the command line arguments with your own using the "sqlexpr_commandline" configuration variable. For a full list of available command line switches, please see the file "template.ini" located in the "...\Dependencies\sqlexpress2005" folder.
+
+If you want to use the "template.ini" file simply edit it and turn on the "bUseTemplateINI" switch.</Description>
+<DetectScript>function isSQLServerExpress_Installed()
+    -- Write to logfile that detection has started.
+	SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Detection script started.\r\n",true);
+
+	-- Check: Does main SQL Server key exist: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server
+	if (not Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Microsoft SQL Server")) then
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Main SQL Server key not found.\r\n",true);
+		return false;
+	end
+	
+	-- Check all "MSSQL.?" sub keys to see if Setup\Edition = "Express Edition"
+	local tblKeyNames = Registry.GetKeyNames(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Microsoft SQL Server");
+	
+	if (not tblKeyNames) then
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: No subkeys of main SQL Server key found.\r\n",true);
+		return false;
+	end
+	
+	local i = 0;
+	local strKeyName = "";
+	for i, strKeyName in pairs (tblKeyNames) do
+		if (String.Left(strKeyName,6) == "MSSQL.") then
+			local strEdition = Registry.GetValue(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Microsoft SQL Server\\"..strKeyName.."\\Setup", "Edition");
+			if (strEdition == "Express Edition") then
+
+				-- Check if service pack 2 is installed.
+				local strVersion = Registry.GetValue(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Microsoft SQL Server\\"..strKeyName.."\\Setup", "Version");
+				if (String.CompareFileVersions(strVersion, "9.2.3042.00") == -1) then
+					-- Failed to find SQL Server Express SP2
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: SQL Server Express SP2 not installed.\r\n",true);
+					return false;
+				else
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: SQL Server Express SP2 detected.\r\n",true);
+					return true;
+				end
+
+
+			end
+		end
+	end
+
+	-- Failed to find SQL Server Express
+	SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: SQL Server Express not installed.\r\n",true);
+	
+	return false;
+end</DetectScript>
+<DetectFunction>isSQLServerExpress_Installed</DetectFunction>
+<InstallScript>-- Variables
+-- Whether to prompt the user for confirmation before running the SQL Server Express 2005 installer.
+local bShowUserPrompt = true;
+-- Whether the SQL Server 2005 Express installation is vital.
+local bVital = true;
+--[[
+The user interface mode for the SQL Server Express installer. 
+Enter "silent" for a silent install, "basic" for a basic user 
+interface with progress and error and notification dialogs or 
+"full" for the full user interface.
+]]--
+local strUIMode = "basic";
+local strOverrideCmdLine = "";
+--Should the template ini be passed on the commandline?
+local bUseTemplateINI = false; 
+
+-- Check to see if this is a valid operating system for SQL Server Express
+function isValidSQLServerExpressOS()
+	SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Entering compatible OS detection.\r\n",true);
+
+	local tblOSInfo = System.GetOSVersionInfo();
+	
+	-- Check for Win9x/ME
+	if (tblOSInfo.PlatformId == "1") then
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Non-NT-based systems not supported.\r\n",true);
+		return false;
+	end
+	
+	-- Check for NT 4
+	if (tblOSInfo.MajorVersion == "4") then
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Windows NT 4 not supported.\r\n",true);
+		return false;
+	end
+	
+	-- Check Windows 2000
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "0")) then
+		-- Check service pack:
+		if (tblOSInfo.ServicePackMajor &lt; 4) then
+			SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Windows 2000 SP4+ required.\r\n",true);
+			return false;
+		else
+			-- Windows 2000 SP4+ acceptable
+			return true;
+		end
+	end
+	
+	-- Check Windows XP
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "1")) then
+		-- Check service pack:
+		if tblOSInfo.ServicePackMajor &lt; 2 then
+			SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Windows XP SP2+ required.\r\n",true);
+			return false;
+		else
+			-- Windows XP SP2+ acceptable
+			return true;
+		end
+	end
+	
+	-- Check Windows Server 2003 / Windows XP Professional x64
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "2")) then
+		-- Check service pack:
+		if tblOSInfo.ServicePackMajor &lt; 1 then
+			SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Windows Server 2003 SP1+ / Windows XP Professional x64 SP1+ required.\r\n",true);
+			return false;
+		else
+			-- Windows Server 2003 SP1+ / Windows XP Professional x64 acceptable
+			return true;
+		end
+	end
+	
+	-- Check Windows Vista
+	if ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "0") and (tblOSInfo.ProductType == 1)) then
+		return true;
+	end
+	
+	return false;
+end
+
+function isDotNet20_Installed_SQLSERVEREXP()
+	-- Output to the log that the .NET detection has started.
+	SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: .NET 2.0 detection script started.\r\n", true);
+	
+	--Check to see if the registry key exists
+	local DotNet_Registry = Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\.NETFramework");
+	
+	if (DotNet_Registry == false) then
+		-- The registry key does not exist
+		-- Run the .NET Installation script
+		-- Output to the log file that .NET could not be found, so it will be installed.
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: No version of .NET 2.0 was found.\r\n", true);		
+		return false;
+	else -- The key does exist
+
+		-- Get the .NET install location from the registry
+		local DotNet_Install_Location = Registry.GetValue(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\.NETFramework", "InstallRoot", true);
+		-- Look for the file mscorcfg.dll
+		Does_File_Exist = File.Find(DotNet_Install_Location.."\\v2.0.50727\\", "mscorrc.dll", true, false, nil);
+	
+		if (Does_File_Exist == nil) then
+			-- The file does not exist
+			-- Run the .NET Installation script 
+			-- Output to the log file that .NET could not be found, so it will be installed.
+			SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: No version of .NET 2.0 was found.\r\n", true);
+			return false;
+		
+		else -- The file does exist
+
+			-- Get the version of mscorcfg.dll
+			msc_ver = File.GetVersionInfo(Does_File_Exist[1]);			
+		
+			-- Compare the returned value against the needed value
+			Compare = String.CompareFileVersions(msc_ver.FileVersion, "2.0.50727.42");
+			
+		
+			if (Compare == 0 or Compare == 1) then
+				-- .net version 2.0 is installed already
+				return true;
+			else 
+				-- a version less than version 2.0 is installed
+				-- Output to the log file that a lesser version of .NET was found on the system
+				SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: A lesser version of .NET was found on the users system.\r\n", true);
+				return false;
+			end
+		end
+	end
+end
+
+if (not isValidSQLServerExpressOS()) then
+	if not bVital then
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: OS check failed, but module not marked at vital - setup will continue.\r\n",true);
+		Application.ExitScript();
+	else
+		local strMessageTitle = "SQL Server 2005 Express Edition Installation";
+		local strMessageAbort = "Your system does not meet the minimum requirements for SQL Server 2005 Express SP2 which is required for this software to run. SQL Server 2005 Express requires Windows 2000 with Service Pack 4 or later, Windows XP with Service Pack 2 or later, Windows Server 2003 with Service Pack 1 or later or Windows Vista. The setup will now abort.";
+		
+		Dialog.Message(strMessageTitle,strMessageAbort,MB_OK,MB_ICONSTOP);
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: OS check failed, setup will abort.\r\n",true);
+		Application.Exit(223);
+	end
+end
+
+if (not isDotNet20_Installed_SQLSERVEREXP()) then
+	if not bVital then
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: .NET 2.0 check failed, but module not marked at vital - setup will continue.\r\n",true);
+		Application.ExitScript();
+	else
+		local strMessageTitle = "SQL Server 2005 Express Edition Installation";
+		local strMessageAbort = "You do not have the Microsoft .NET Framework 2.0 or greater installed on your system. This product requires the .NET Framework 2.0 to be installed before the setup can continue. The setup will now abort.";
+		
+		Dialog.Message(strMessageTitle,strMessageAbort,MB_OK,MB_ICONSTOP);
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: .NET 2.0 check failed, setup will abort.\r\n",true);
+		Application.Exit(225);
+	end
+end
+
+if(not isSQLServerExpress_Installed())then
+	-- Messages
+	local strMessage = [[Setup has detected that you do not have SQL Server 2005 Express Edition SP2 installed.
+Click OK to install this technology now or Cancel to abort the setup.]];
+	local strMessageTitle = "SQL Server 2005 Express Edition Installation";
+	local strMessageFail = [[The installation of Microsoft SQL Server 2005 Express failed.
+The setup will now close.]];
+	local strMessageCancelled = [[The installation of Microsoft SQL Server 2005 Express was cancelled.
+The setup will now close.]];
+	local strRuntimeSupportFolder = SessionVar.Expand("%TempLaunchFolder%\\sqlexpress2005");
+	local strInstallerDest = strRuntimeSupportFolder.."\\SQLEXPR.EXE";
+	local strINIDest = strRuntimeSupportFolder.."\\template.ini";
+		
+	-- Write to logfile that installation has started.
+	SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Installation script started.\r\n",true);
+
+	local MessageBoxResult = IDOK;
+	
+	if bShowUserPrompt then
+		MessageBoxResult = Dialog.Message(strMessageTitle,strMessage,MB_OKCANCEL,MB_ICONEXCLAMATION,MB_DEFBUTTON1);
+	end
+
+	if (MessageBoxResult == IDOK) then
+		local nError = Application.GetLastError();
+		if(nError == 0)then
+			-- Run the installer:
+			SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Install extraction successful:"..strInstallerDest.."\r\n",true);
+			
+			-- Form the command line:
+			local strInstallCommandLine = "";
+			if strOverrideCmdLine ~= "" then
+				strInstallCommandLine = strOverrideCmdLine;
+			else
+				if strUIMode == "silent" then
+					strInstallCommandLine = "/qn ADDLOCAL=ALL AGTAUTOSTART=1 DISABLENETWORKPROTOCOLS=0";
+				elseif strUIMode == "full" then
+					strInstallCommandLine = "";
+				else
+					-- Default to basic
+					strInstallCommandLine = "/qb ADDLOCAL=ALL AGTAUTOSTART=1 DISABLENETWORKPROTOCOLS=0";
+				end
+				
+				if (bUseTemplateINI) then
+					-- Use Template INI
+					strInstallCommandLine = strInstallCommandLine.." /settings \""..strINIDest.."\"";
+				end
+			end
+			
+			SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Using command line:"..strInstallCommandLine.."\r\n",true);
+			local nSetupResult = File.Run(strInstallerDest, strInstallCommandLine, "", SW_SHOWNORMAL, true);
+			nError = Application.GetLastError();
+			
+			if nError ~= 0 then
+				SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: File.Run action failed with code:"..nError.."\r\n",true);
+				Dialog.Message(strMessageTitle,strMessageFail.."\r\n".._tblErrorMessages[nError],MB_OK,MB_ICONSTOP);
+				if bVital then
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Setup will abort.\r\n",true);
+					File.Delete(strInstallerDest);
+					Application.Exit(202);
+				else
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Setup will continue.\r\n",true);
+					File.Delete(strInstallerDest);
+					Application.ExitScript();
+				end
+			else
+				-- File.Run was successful:
+				SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Setup finished. Process return code:"..nSetupResult.."\r\n",true);
+				
+				if nSetupResult == 0 then
+					-- OK
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: SQL Server Express setup successful.\r\n",true);
+				elseif nSetupResult == 1602 then
+					-- Aborted by user
+					Dialog.Message(strMessageTitle, strMessageCancelled, MB_OK, MB_ICONEXCLAMATION);
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: SQL Server Express installation canceled.\r\n",true);
+					Application.Exit(201);
+				else
+					-- Some other error
+					SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: SQL Server Express installation failed with code:"..nSetupResult.."\r\n",true);
+					if bVital then
+						SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Setup will abort.\r\n",true);
+						File.Delete(strInstallerDest);
+						Dialog.Message(strMessageTitle,strMessageFail.."\r\nSetup returned code:"..nSetupResult,MB_OK,MB_ICONSTOP);
+						Application.Exit(203);
+					else
+						SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Setup will continue.\r\n",true);
+						File.Delete(strInstallerDest);
+						Application.ExitScript();
+					end
+				end
+			end
+		else
+			Dialog.Message(strMessageTitle,strMessageFail.."\r\n".._tblErrorMessages[nError],MB_OK,MB_ICONSTOP);
+			if bVital then
+				SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Install extraction failed, setup will abort.\r\n",true);
+				Application.Exit(200);
+			else
+				SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Install extraction failed, setup will continue.\r\n",true);
+			end
+		end
+	else -- IDCANCEL
+		-- Do not install Microsoft SQL Server 2005 Express Edition and log to file
+		Dialog.Message(strMessageTitle, strMessageCancelled, MB_OK, MB_ICONEXCLAMATION);
+		SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: File installation canceled.\r\n",true);
+		Application.Exit(201);
+	end
+
+	File.Delete(strInstallerDest);
+
+	-- Write to logfile that installation has finished.
+	SetupData.WriteToLogFile("Info\tMicrosoft SQL Server 2005 Express Edition Module: Installation script finished.\r\n",true);
+end</InstallScript>
+<SupportFiles>
+<File>#SUFDIR#\Dependencies\sqlexpress2005\SQLEXPR.EXE</File>
+<File>#SUFDIR#\Dependencies\sqlexpress2005\template.ini</File>
+</SupportFiles>
+</Dependency>
+</DependencyTemplate>

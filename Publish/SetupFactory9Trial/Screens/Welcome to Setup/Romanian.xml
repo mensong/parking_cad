@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Romanian</Name>
+<Default>0</Default>
+<Primary>24</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalare %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Bine ati venit</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Bine ati venit la programul de instalare pentru %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Urmatorul &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Inapoi</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulare</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&jutor</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Bine ati venit la instalarea pentru  %ProductName% %ProductVer%.
+
+Este recomandat sa inchideti toate celelalte programe din Windows inainte de a continua instalarea.
+
+Daca aveti alte programe pornite, click Anulare, inchideti programele apoi reporniti instalarea aceasta.
+
+Altfel, click Urmatorul pentru a continua.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Bine ati venit</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

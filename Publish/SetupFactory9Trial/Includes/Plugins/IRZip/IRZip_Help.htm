@@ -1,0 +1,1099 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+<head>
+<title>Zip Actions Plugin Help</title>
+
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+
+<style>
+
+/* ELEMENTS */
+
+body {
+  font-family: Verdana, sans-serif;
+  font-size: 8pt;
+  background-color: #ffffff;
+}
+
+hr {
+  text-align: center;
+  color: #f0f0f0;
+  width: 100%;
+  height: 6pt;
+
+  margin-top: 0pt;
+  margin-bottom: -3pt;
+
+  border: none;
+}
+
+A:link, A:active, A:visited {
+  color: #0000ff;
+  text-decoration: none;
+}
+
+A:hover {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 18.0pt;
+  white-space: nowrap;
+  color: #fff;
+  background-color: #699BEF;
+
+  padding: 4pt 3pt;
+  padding: 5px 4px;
+
+  margin-top: 0pt;
+  margin-bottom: 0pt;
+
+  border-right: 1px solid #333;
+  border-left: 1px solid #699BEF;
+  border-bottom: solid black 1px;
+}
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 12.0pt;
+  letter-spacing: .2ex;
+  color: #000;
+  
+  margin-left: 0pt;
+  margin-right: 0pt;
+  margin-top: 18pt;
+  margin-bottom: 9pt;
+}
+
+h3 {
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: black;
+  letter-spacing: 0px;
+
+  margin-left: 0pt;
+  margin-right: 0pt;
+  margin-top: 18pt;
+  margin-bottom: 3pt;
+}
+
+p {
+  font-family: Verdana;
+  font-size: 8.0pt;
+  line-height: 12.0pt;
+  
+  margin-left: 0pt;
+  margin-right: 0pt;
+  margin-top: 0pt;
+  margin-bottom: 9pt;
+}
+
+/* CLASSES */
+
+div.Actions h3, div.Events h3 {
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #3C77B3;
+  letter-spacing: 0px;
+  
+  margin-left: 12pt;
+  margin-right: 0pt;
+  margin-top: 18pt;
+  margin-bottom: 3pt;
+}
+
+div.Actions h4, div.info h3 {
+  font-family: Verdana;
+  font-size: 8.0pt;
+  line-height: 12.0pt;
+  font-style: bold;
+  
+  margin-top: 9pt;
+  margin-bottom: 0pt;
+  margin-left: 28pt;
+  margin-right: 0pt;
+}
+
+div.Actions p, div.Events p, div.ErrorCodes p {
+  font-family: Verdana;
+  font-size: 8.0pt;
+  line-height: 12.0pt;
+  
+  margin-top: 0pt;
+  margin-bottom: 9pt;
+  margin-left: 12pt;
+  margin-right: 0pt;
+}
+
+div.ErrorCodes table {
+  font-family: Verdana, sans-serif;
+  font-size: 8.0pt;
+  line-height: 12.0pt;
+  margin: 0px 0px 9pt 28pt;
+  border-collapse: collapse; 
+  border: none;
+}
+
+div.ErrorCodes table th,
+div.ErrorCodes table td {
+  border-bottom: 1px solid #ddd;
+  padding: 1ex;
+}
+
+div.ErrorCodes table th {
+  text-align: left;
+  padding-left: 0px;
+  padding-right: 2ex;
+}
+
+p.NavLocal {
+  white-space: nowrap;
+  text-indent: -4px;
+  font-family: Verdana, Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 13px;
+  background-color: #e4e4e4;
+
+  margin-top: 0px;
+  margin-bottom: 12pt;
+
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  border-bottom: 1px solid #e4e4e4;
+}
+
+p.Note {
+	font-family: Verdana;
+	font-size: 8.0pt;
+	line-height: 12.0pt;
+	color: #000000;
+	background-color: #ffffe8;
+
+	margin-top: 0pt;
+	margin-bottom: 9pt;
+	margin-left: 0pt;
+	margin-right: 5%;
+
+	padding-left: 2pt;
+	padding-right: 2pt;
+	padding-top: 1pt;
+	padding-bottom: 2pt;
+}
+
+p.Tip {
+	font-family: Verdana;
+	font-size: 8.0pt;
+	line-height: 12.0pt;
+	color: #000000;
+	background-color: #EAF4E8;
+
+	margin-top: 0pt;
+	margin-bottom: 9pt;
+	margin-left: 0pt;
+	margin-right: 5%;
+
+	padding-left: 2pt;
+	padding-right: 2pt;
+	padding-top: 1pt;
+	padding-bottom: 2pt;
+}
+
+div.Actions p.Note, div.Events p.Note,
+div.Actions p.Tip, div.Events p.Tip {
+	margin-left: 28pt;
+}
+
+div.CallbackParams p.Note,
+div.CallbackParams p.Tip {
+	margin-left: 38pt;
+}
+
+
+pre.code {
+  white-space: pre;
+  font-family: Courier New, Courier, Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  color: #000;
+  background-color: #f9f9f9;
+  
+  margin-top: 3pt;
+  margin-bottom: 9pt;
+  margin-left: 0pt;
+  margin-left: 0pt;
+  
+  padding: 10px;
+  
+  border: 1px dotted #ccc;
+}
+
+div.Actions pre.code, div.Events pre.code {
+  margin-left: 28pt;
+}
+
+div.Actions h2 {
+  margin-bottom: -6pt;
+}
+
+div.actions p, div.info p, div.ErrorCodes p {
+  margin-left: 28pt;
+}
+
+div.actions p.indent {
+  margin-left: 38pt;
+}
+
+div.CallbackParams h5 {
+  font-family: Verdana;
+  font-size: 8.0pt;
+  line-height: 12.0pt;
+  font-style: bold;
+  
+  margin-top: 9pt;
+  margin-bottom: 0pt;
+  margin-left: 38pt;
+  margin-right: 0pt;
+}
+
+div.CallbackParams p {
+  font-family: Verdana;
+  font-size: 8.0pt;
+  line-height: 12.0pt;
+  
+  margin-top: 0pt;
+  margin-bottom: 9pt;
+  margin-left: 38pt;
+  margin-right: 0pt;
+}
+
+
+span.here { /* blue tab effect in navbar (NavLocal) */
+  font-weight: bold;
+  color: #fff;
+  background-color: #699BEF;
+
+  margin: 0px;
+
+  padding: 4px 8px;
+
+  border-top: 1px solid #699BEF;
+  border-bottom: 1px solid #333;
+  border-left: none;
+  border-right: 1px solid #333;
+}
+
+span.type {
+	color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<h1>Zip Actions Plugin</h1>
+
+<p class="NavLocal"><span class=wab>&nbsp;</span><span class="here">Online Help</span></p>
+
+<h2>Description</h2>
+
+<p>Zip is a zip archive action plugin. Whether you are looking for an easy way to extract files from a zip archive, or add files to a zip archive, the Zip Plugin is for you.</p>
+<p>
+The Zip Plugin includes actions to perform the following tasks:
+</p>
+<ul>
+<li>Adding files to a Zip archive</li>
+<li>Extracting Files from a Zip archive</li>
+<li>Reading the contents of a Zip Archive</li>
+</ul>
+
+<div class="Actions">
+<h2>Actions</h2>
+
+<p style="margin-top: 18pt; margin-left: 12pt;">
+<a href="#Zip.Add">Zip.Add</a><br/>
+<a href="#Zip.Extract">Zip.Extract</a><br/>
+<a href="#Zip.GetContents">Zip.GetContents</a><br/>
+</p>
+
+
+<h3><a name="Zip.Add">Zip.Add (string ZipFile, table Files, boolean IncludeFolderNames = true, string Password = "", number CompFactor = 5, function CallbackFunction = nil, boolean Recurse = false );</a></h3>
+
+<h4>Description:</h4><p>Adds files to a Zip archive.</p>
+
+<h4>ZipFile:</h4><p class=ParameterBody><span class=type>(string)</span> The full path and file name of the Zip archive file.</p>
+
+<h4>Files:</h4>
+
+<p class=ParameterBody><span class=type>(table)</span> A table containing 
+ the full paths to all of the files you want to add. You can also use the * and ? wildcards in this table to add all files from one directory, for example, {"C:\\MyFolder\\*.*"}.</p>
+<p class=ParameterBody>
+When a wildcard is used, each file will be added relative to the base folder. For example, if the file table references {"C:\\MyFolder\\*.*"} and "MyFolder" contains one file called "One.txt" and a folder called "MyInsideFolder" containing a file "Two.txt", the base folder would be "MyFolder".  If you want to recurse subfolders, the Recurse parameter must be set to true.
+</p>
+
+</p>
+
+<h4>IncludeFolderNames:</h4>
+
+<p class=ParameterBody><span class=type>(boolean)</span> Whether to preserve the relative directory structure in the archive when adding files with wildcards:</p>
+<p class="indent">
+<b>true</b> - Include folder names so the structure can be recreated. (Default)<br>
+<b>false</b> - Don't include any relative folder names. (The Zip archive will have no internal directory structure.)
+</p>
+<p class=ParameterBody>
+For example, given two files located at:<br>
+<br>
+C:\MyFolder\One.txt<br>
+C:\MyFolder\MyInsideFolder\Two.txt<br>
+<br>
+If the file table references {"C:\\MyFolder\\*.*"} and IncludeFolderNames and Recurse are set to true, the Zip archive structure would be:<br>
+<br>
+One.txt<br>
+MyInsideFolder\Two.txt<br>
+<br>
+If IncludeFolderNames is set to false, the Zip archive structure would be:<br>
+<br>
+One.txt<br>
+Two.txt<br>
+</p>
+<p class="note"><span style="font-weight: bold;">Note:</span> If no wildcards are used, no relative folder names will be preserved.</P>
+
+<h4>Password:</h4>
+
+<p class=ParameterBody><span class=type>(string)</span> The password to 
+ use to protect the Zip file. This password will be needed to extract the 
+ files. (This parameter is optional. If you don't want to protect the Zip 
+ file, just leave this parameter blank.)</p>
+
+<h4>CompFactor:</h4>
+
+<p class=ParameterBody><span class=type>(number)</span> The compression 
+ factor to use for the Zip file (0-9). 0 is the fastest and compresses 
+ the least, 9 is the slowest and compresses the most. The default is 5.</p>
+
+<h4>CallbackFunction:</h4>
+
+<p class=ParameterBody><span class=type>(function)</span> The name of a 
+ function that will be called whenever progress is made in adding a file 
+ to the Zip archive. (You can use this callback function to display the 
+ progress of each file's archiving in your own custom way.)</p>
+
+<p class="note"><span style="font-weight: bold;">Note:</span> If CallbackFunction 
+ is set to nil, then the progress information will be sent to the built-in 
+ status dialog, assuming it is currently visible. (You can show or hide 
+ the status dialog with a StatusDlg.Show or StatusDlg.Hide action.)</p>
+
+<p class=ParameterBody>The callback function must be able to receive the 
+ following parameters:</p>
+<p class="indent">
+<b>String</b> - <span class=type>(string)</span> A progress message that can be displayed.<br>
+<b>Percent</b> - <span class=type>(number)</span> The progress percentage, corresponding to either the current file or the total action.<br>
+<b>Status</b> - <span class=type>(number)</span> The status of the current callback message. Either ZIP_STATUS_MAJOR or ZIP_STATUS_MINOR. ZIP_STATUS_MAJOR means that the callback corresponds to the progress of the action as a whole. ZIP_STATUS_MINOR means that the callback corresponds to the progress of the current file.<br>
+</p>
+
+<p class=FieldBody>The callback function should return a boolean value 
+ (true or false) indicating whether the archiving of the Zip file should 
+ continue:</p>
+<p class="indent">
+<b>true</b> - Continue with the Zip file archiving.<br>
+<b>false</b> - Stop the Zip file archiving as soon as possible.<br>
+</p>
+
+<h4>Recurse:</h4>
+
+<p class=ParameterBody><span class=type>(boolean)</span> Whether to recurse subfolders when wildcards are used:</p>
+<p class="indent">
+<b>true</b> - Recurse subfolders when wildcards are used. <br>
+<b>false</b> - Don't recurse subfolders, even if a wildcard is used. (Default)</p>
+
+<h4>Returns:</h4>
+
+<p>Nothing. You can use Application.GetLastError() 
+ to determine whether this action failed, and why.</p>
+
+
+
+
+<h4>Example 1:</h4>
+<pre class="code">
+FileTable = {SessionVar.Expand("%SourceFolder%\\Prices.txt"), SessionVar.Expand("%SourceFolder%\\Catalog.txt")};
+Zip.Add("C:\\CompanyInformation\\Info.zip", FileTable, false, "", 5, nil);
+</pre>
+<p>The first line adds the file paths of "Prices.txt" and "Catalog.txt" to the table called "FileTable." The second line contains the Zip.Add action that adds the files from the "FileTable" table to the Zip file called "Info.zip."</p>
+<h4>Example 2:</h4>
+<pre class="code">
+-- Prompt the user to select files to add to the zip archive.
+archive_files = Dialog.FileBrowse(false, "Files to Add", SessionVar.Expand("%DesktopFolder%"), "All Files (*.*)|*.*|", "", "dat", true, false);
+
+-- Check to see if an error occurred, or the user cancelled.
+if (archive_files[1] ~= "CANCEL") and (archive_files ~= nil) then
+
+    -- Show the status dialog.
+    StatusDlg.Show();
+
+    -- Add the chosen files to the zip archive.
+    Zip.Add(SessionVar.Expand("%DesktopFolder%\\NewArchive.zip"), archive_files, true, "", 5, nil);
+
+    -- Get the error code of the zip.add action.
+    error = Application.GetLastError();
+
+    -- Hide the status dialog.
+    StatusDlg.Hide();
+
+    -- If it succeeded, display a success message and open the folder. Otherwise display the error message.
+    if (error == 0) then
+        Dialog.Message("Success", "The files were successfully archived.", MB_OK, MB_ICONINFORMATION);
+
+        -- Open the folder where the zip file was created.
+        File.ExploreFolder(SessionVar.Expand("%DesktopFolder%"), SW_SHOWNORMAL);
+    else
+        Dialog.Message("Error", _tblErrorMessages[error], MB_OK, MB_ICONEXCLAMATION);
+    end
+end
+</pre>
+<p>A file browse dialog is displayed allowing the user to select files they would like added to a Zip archive. The selected files are then added to a Zip archive created on their desktop. If the process is successful, a success message is displayed. If there was an error, the error code message is shown.</p>
+
+
+<h3><a name="Zip.Extract">Zip.Extract string ZipFile, table Files, string Destination, boolean  Recurse = true, boolean UseInternalFolders = true, string Password = "", number Overwrite = 0, function CallbackFunction = nil);</a></h3>
+
+<h4>Description:</h4><p>Extracts files from a Zip archive.</p>
+
+<h4>ZipFile:</h4>
+<p class=ParameterBody><span class=type>(string)</span> The full path and 
+ file name of the Zip archive file.</p>
+
+<h4>Files:</h4>
+<p class=ParameterBody><span class=type>(table)</span> A table containing 
+ the list of files to extract. Use {&quot;*.*&quot;} to extract all files 
+ from the Zip archive.</p>
+
+<p class="note"><span style="font-weight: bold;">Note:</span> You can also use the * and ? wildcards in the table to extract multiple files.<br>
+Wildcards are special symbols that can be used to represent a range of characters in a search:<br>
+* - any combination of characters<br>
+? - any single character<br>
+<b>Examples:</b><br>
+a*le - matches ale, apple, angle, etc.<br>
+s?n - matches sun, son, sin, s4n, etc.<br>
+</p>
+
+<h4>Destination:</h4>
+<p class=ParameterBody><span class=type>(string)</span> The folder path 
+ to extract the files to.</p>
+
+<h4>Recurse:</h4>
+<p class=ParameterBody><span class=type>(boolean)</span> Whether to recurse 
+ into subfolders as it searches for files to extract:</p>
+<p class="indent">
+<b>true</b> - Recurse into subfolders when extracting files. <span class=Default>(Default)</span><br>
+<b>false</b> - Don't recurse into subfolders.<br>
+</p>
+
+<p class="note"><span style="font-weight: bold;">Note:</span> This is primarily useful when wildcards are used in the files you want to extract.<br>
+Wildcards are special symbols that can be used to represent a range of characters in a search:<br>
+* - any combination of characters<br>
+? - any single character<br>
+<b>Examples:</b><br>
+a*le - matches ale, apple, angle, etc.<br>
+s?n - matches sun, son, sin, s4n, etc.<br>
+</p>
+
+<h4>UseInternalFolders:</h4>
+<p class=ParameterBody><span class=type>(boolean)</span> Whether to recreate 
+ the internal file structure of the Zip file when extracting files:</p>
+<p class="indent">
+<b>true</b> - The internal file structure will be recreated. <span class=Default>(Default)</span><br>
+<b>false</b> - The internal file structure will be ignored and all files will be extracted to the root of the destination folder.<br>
+</p>
+
+<h4>Password:</h4>
+<p class=ParameterBody><span class=type>(string)</span> The password required 
+ to extract files from the Zip file. (This parameter is optional and only 
+ needed if you password protected the Zip file. If no password is required, 
+ just leave this parameter blank. )</p>
+
+<h4>Overwrite:</h4>
+<p class=ParameterBody><span class=type>(number)</span> Whether to overwrite 
+ any already existing files in the destination folder when extracting. 
+ Choose from:</p>
+
+<!--(Table)=========================================================-->
+<table class=Parameters
+		x-use-null-cells
+		style="x-cell-content-align: Center;
+				margin-left: 32pt;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0>
+<col>
+<col>
+<col>
+
+<tr class=TableHeader
+	style="x-cell-content-align: center;"
+	valign=middle>
+<td style="padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-right-width: 1px;
+			border-right-style: Solid;
+			border-bottom-width: 1px;
+			border-bottom-style: Solid;
+			border-left-width: 1px;
+			border-left-style: Solid;
+			border-top-width: 1px;
+			border-top-style: Solid;">
+<p>CONSTANT</td>
+<td colspan=1
+	rowspan=1
+	style="border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-right-width: 1px;
+			border-right-style: Solid;
+			border-top-width: 1px;
+			border-top-style: Solid;">
+<p>VALUE</td>
+<td style="border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-right-width: 1px;
+			border-right-style: Solid;
+			border-top-width: 1px;
+			border-top-style: Solid;">
+<p>DESCRIPTION</td></tr>
+
+<tr style="x-cell-content-align: center;"
+	valign=middle>
+<td style="padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-right-width: 1px;
+			border-right-style: Solid;
+			border-bottom-width: 1px;
+			border-bottom-style: Solid;
+			x-cell-content-align: top;
+			border-left-width: 1px;
+			border-left-style: Solid;"
+	valign=top>
+<p>ZIP_OVERWRITE_NEVER</td>
+<td colspan=1
+	rowspan=1
+	style="border-right-style: Solid;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			x-cell-content-align: top;"
+	valign=top>
+<p>0</td>
+<td style="border-right-style: Solid;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			x-cell-content-align: top;"
+	valign=top>
+<p>Do not overwrite any files. <span class=Default>(Default)</span></td></tr>
+
+<tr style="x-cell-content-align: center;"
+	valign=middle>
+<td colspan=1
+	rowspan=1
+	style="padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-right-width: 1px;
+			border-right-style: Solid;
+			border-bottom-width: 1px;
+			border-bottom-style: Solid;
+			x-cell-content-align: top;
+			border-left-width: 1px;
+			border-left-style: Solid;"
+	valign=top>
+<p>ZIP_OVERWRITE_NEWER</td>
+<td colspan=1
+	rowspan=1
+	style="border-right-style: Solid;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			x-cell-content-align: top;"
+	valign=top>
+<p>1</td>
+<td colspan=1
+	rowspan=1
+	style="border-right-style: Solid;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			x-cell-content-align: top;"
+	valign=top>
+<p>Only overwrite a file if the one being extracted is newer.</td></tr>
+
+<tr style="x-cell-content-align: center;"
+	valign=middle>
+<td colspan=1
+	rowspan=1
+	style="padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-right-width: 1px;
+			border-right-style: Solid;
+			border-bottom-width: 1px;
+			border-bottom-style: Solid;
+			x-cell-content-align: top;
+			border-left-width: 1px;
+			border-left-style: Solid;"
+	valign=top>
+<p>ZIP_OVERWRITE_ALWAYS</td>
+<td colspan=1
+	rowspan=1
+	style="border-right-style: Solid;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			x-cell-content-align: top;"
+	valign=top>
+<p>2</td>
+<td colspan=1
+	rowspan=1
+	style="border-right-style: Solid;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-width: 1px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			x-cell-content-align: top;"
+	valign=top>
+<p>Overwrite all existing files with the ones being extracted.</td></tr>
+</table>
+
+<h4>CallbackFunction:</h4>
+<p class=ParameterBody><span class=type>(function)</span> The name of a 
+ function that will be called whenever progress is made when extracting 
+ each file from the Zip archive. (You can use this callback function to 
+ display the progress of each file's extraction in your own custom way.)</p>
+
+<p class="note"><span style="font-weight: bold;">Note:</span> If CallbackFunction 
+ is set to nil, then the progress information will be sent to the built-in 
+ status dialog, assuming it is currently visible. (You can show or hide 
+ the status dialog with a StatusDlg.Show or StatusDlg.Hide action.)</p>
+
+<p class=ParameterBody>The callback function must be able to receive the 
+ following parameters:</p>
+<p class="indent">
+<b>String</b> - <span class=type>(string)</span> The full destination 
+ path and file name currently being extracted from the Zip archive.<br>
+<b>Percent</b> - <span class=type>(number)</span> The progress percentage, corresponding to either the current file or the total action.<br>
+<b>Status</b> - <span class=type>(number)</span> The status of the current callback message. Either ZIP_STATUS_MAJOR or ZIP_STATUS_MINOR. ZIP_STATUS_MAJOR means that the callback corresponds to the progress of the action as a whole. ZIP_STATUS_MINOR means that the callback corresponds to the progress of the current file.<br>
+</p>
+
+<p class=FieldBody>The callback function should return a boolean value 
+ (true or false) indicating whether the extraction of the Zip file should 
+ continue:</p>
+<p class="indent">
+<b>true</b> - Continue with the Zip file extraction.<br>
+<b>false</b> - Stop the Zip file extraction as soon as possible.<br>
+</p>
+
+<h4>Returns</h4>
+
+<p>Nothing. You can use Application.GetLastError() 
+ to determine whether this action failed, and why.</p>
+
+
+<h4>Example 1:</h4>
+<pre class="code">
+Zip.Extract("C:\\temp\\downloads\\graphics.zip", {"*.*"}, "C:\\Graphics", true, true, "", 3, nil);
+</pre>
+<p>Extracts all of the files from the Zip file called "graphics.zip" to "C:\Graphics" on the user's system. If any of the files already exist in the destination, they will be overwritten.</p>
+
+<h4>Example 2:</h4>
+<pre class="code">
+-- Allow the user to select a directory to unzip the files.
+target_folder = Dialog.FolderBrowse("Select a Folder", "C:\\");
+
+
+-- Check to see if the user cancelled or an error occurred.
+if (target_folder ~= "CANCEL") and (target_folder ~= "") then
+    -- Gets a list of the contents of a zip file.
+    zip_contents = Zip.GetContents("C:\\Temp\\Downloads\\Docs\\Info.zip", true);
+
+    -- Get the error code of the last action.
+    error = Application.GetLastError();
+
+    -- If an error occurred, display the error code message.
+    if (error ~= 0) then
+        Dialog.Message("Error", _tblErrorMessages[error], MB_OK, MB_ICONEXCLAMATION);
+    else
+        -- Take the table and turn it into a string with newlines for displaying.
+        zip_contents_display = Table.Concat(zip_contents, "\r\n", 1, TABLE_ALL);
+
+        -- Ask the user if they are sure they would like to unzip the contents.
+        result = Dialog.Message("Information", "The following files will be unzipped:\r\nClick the Cancel button to abort the process.\r\n\r\n"..zip_contents_display, MB_OKCANCEL)
+
+        -- If the user clicked Ok, unzip the files.
+        if (result == IDOK) then
+            -- Show the status dialog.
+            StatusDlg.Show();
+            -- Extract the contents of the Zip file.
+            Zip.Extract("C:\\Temp\\Downloads\\Docs\\Info.zip", {"*.*"}, target_folder, true, true, "", ZIP_OVERWRITE_NEVER, nil);
+
+            -- Check the error code for the last action.
+            error = Application.GetLastError();
+
+            -- Hide the status dialog.
+            StatusDlg.Hide();
+
+            -- If an error occurred, display the error code message.
+            if (error ~= 0) then
+                Dialog.Message("Errror", tblErrorMessages[error], MB_OK, MB_ICONEXCLAMATION);
+            else
+                Dialog.Message("Success", "The unzipping was successful.", MB_OK, MB_ICONINFORMATION);
+            end
+        end
+    end
+end
+</pre>
+<p>This example first prompts the user to select a folder using the Dialog.FolderBrowse action. This folder will be used to unzip the files to. The user is then presented with a dialog containing the names of the files that will be unzipped and allows them to abort the process. If the user clicks Ok, the files are unzipped to the folder they selected. Notification will be given at the end of the process as to whether or not the procedure was successful.</p>
+
+<h3><a name="Zip.GetContents">table Zip.GetContents (string ZipFile, boolean IncludeFolderNames = true);</a></h3>
+
+<h4>Description:</h4><p>Returns the list of files within a given Zip file.</p>
+
+<h4>ZipFile:</h4>
+<p class=ParameterBody><span class=type>(string)</span> The full path and 
+ file name of the Zip archive file.</p>
+
+<h4>IncludeFolderNames:</h4>
+<p class=ParameterBody><span class=type>(boolean)</span> Whether to include 
+ any folders in the list:</p>
+<p class="indent">
+<b>true</b> - Any internal folders will be included in the list as separate entries. 
+ <span class=Default>(Default)</span><br>
+<b>false</b> - Any internal folders will be omitted from the list. (The file paths 
+ will still have folder names in them, however the folders will not be 
+ included as separate entries.)<br>
+</p>
+
+<h4>Returns:</h4>
+
+<p><span class=type>(table)</span> A table containing a list of the contents 
+ of the Zip file. If the Zip file is empty or an error occurs, nil is returned. 
+ You can use Application.GetLastError() to determine whether this action failed, and why.</p>
+
+<h4ResultVariable:</h4>
+<p class=ParameterBody>When adding an action with the action editor, you 
+ can use this field to specify a variable that the return value will be 
+ stored in.</p>
+
+<h4>Example 1:</h4>
+<pre class="code">
+zip_contents = Zip.GetContents("C:\\Temp\\Downloads\\Docs\\Info.zip", true);
+</pre>
+<p>Gets a list of the contents within the Zip file "Info.zip" and returns it in the table called "zip_contents."</p>
+
+<h4>Example 2</h4>
+<pre class="code">
+-- Allow the user to select a directory to unzip the files.
+target_folder = Dialog.FolderBrowse("Select a Folder", "C:\\");
+
+
+-- Check to see if the user cancelled or an error occurred.
+if (target_folder ~= "CANCEL") and (target_folder ~= "") then
+    -- Gets a list of the contents of a zip file.
+    zip_contents = Zip.GetContents("C:\\Temp\\Downloads\\Docs\\Info.zip", true);
+
+    -- Get the error code of the last action.
+    error = Application.GetLastError();
+
+    -- If an error occurred, display the error code message.
+    if (error ~= 0) then
+        Dialog.Message("Error", _tblErrorMessages[error], MB_OK, MB_ICONEXCLAMATION);
+    else
+        -- Take the table and turn it into a string with newlines for displaying.
+        zip_contents_display = Table.Concat(zip_contents, "\r\n", 1, TABLE_ALL);
+
+        -- Ask the user if they are sure they would like to unzip the contents.
+        result = Dialog.Message("Information", "The following files will be unzipped:\r\nClick the Cancel button to abort the process.\r\n\r\n"..zip_contents_display, MB_OKCANCEL)
+
+        -- If the user clicked Ok, unzip the files.
+        if (result == IDOK) then
+            -- Show the status dialog.
+            StatusDlg.Show();
+            -- Extract the contents of the Zip file.
+            Zip.Extract("C:\\Temp\\Downloads\\Docs\\Info.zip", {"*.*"}, target_folder, true, true, "", ZIP_OVERWRITE_NEVER, nil);
+
+            -- Check the error code for the last action.
+            error = Application.GetLastError();
+
+            -- Hide the status dialog.
+            StatusDlg.Hide();
+
+            -- If an error occurred, display the error code message.
+            if (error ~= 0) then
+                Dialog.Message("Errror", tblErrorMessages[error], MB_OK, MB_ICONEXCLAMATION);
+            else
+                Dialog.Message("Success", "The unzipping was successful.", MB_OK, MB_ICONINFORMATION);
+            end
+        end
+    end
+end
+</pre>
+<p>This example first prompts the user to select a folder using the Dialog.FolderBrowse action. This folder will be used to unzip the files to. The user is then presented with a dialog containing the names of the files that will be unzipped and allows them to abort the process. If the user clicks Ok, the files are unzipped to the folder they selected. Notification will be given at the end of the process as to whether or not the procedure was successful.</p>
+
+</div> <!-- /Actions -->
+
+
+<div class="ErrorCodes">
+<h2>Error Codes</h2>
+
+<table>
+  <tr>
+    <th>0</th>
+    <td>(Zip.OK)</td><td>-</td><td>(no error)</td>
+  </tr>
+  <tr>
+    <th>2600</th>
+    <td>(Zip.REENTER_ERROR)</td><td>-</td><td>Could not reenter the zip file.</td>
+  </tr>
+  <tr>
+    <th>2601</th>
+    <td>(Zip.ZIP_UNEXPECTED_EOF)</td><td>-</td><td>Unexpected end of zip file.</td>
+  </tr>
+  <tr>
+    <th>2602</th>
+    <td>(Zip.ZIP_FILE_STRUCTURE_ERROR)</td><td>-</td><td>Zip file structure error.</td>
+  </tr>
+  <tr>
+    <th>2603</th>
+    <td>(Zip.ZIP_OUT_OF_MEMORY)</td><td>-</td><td>Out of memory.</td>
+  </tr>
+  <tr>
+    <th>2604</th>
+    <td>(Zip.INTERNAL_LOGIC_ERROR)</td><td>-</td><td>Internal logic error.</td>
+  </tr>
+  <tr>
+    <th>2605</th>
+    <td>(Zip.ENTRY_TOO_LARGE)</td><td>-</td><td>Entry too large to split.</td>
+  </tr>
+  <tr>
+    <th>2606</th>
+    <td>(Zip.INVALID_COMMENT)</td><td>-</td><td>Invalid comment format.</td>
+  </tr>
+  <tr>
+    <th>2607</th>
+    <td>(Zip.ZIP_TEST_FAILED)</td><td>-</td><td>Zip test failed or out of memory.</td>
+  </tr>
+  <tr>
+    <th>2608</th>
+    <td>(Zip.ZIP_USER_CANCELLED)</td><td>-</td><td>User cancelled.</td>
+  </tr>
+  <tr>
+    <th>2609</th>
+    <td>(Zip.TEMP_FILE_ERROR)</td><td>-</td><td>An error occurred when using a temp file.</td>
+  </tr>
+  <tr>
+    <th>2610</th>
+    <td>(Zip.READ_SEEK_ERROR)</td><td>-</td><td>A read or seek error occurred.</td>
+  </tr>
+  <tr>
+    <th>2611</th>
+    <td>(Zip.ERROR_NO_FILES)</td><td>-</td><td>No files were added to the zip file.</td>
+  </tr>
+  <tr>
+    <th>2612</th>
+    <td>(Zip.MISSING_EMPTY_ZIP)</td><td>-</td><td>Missing or empty zip file.</td>
+  </tr>
+  <tr>
+    <th>2613</th>
+    <td>(Zip.WRITING_ERROR)</td><td>-</td><td>Error writing to a file.</td>
+  </tr>
+  <tr>
+    <th>2614</th>
+    <td>(Zip.OPEN_ERROR)</td><td>-</td><td>Couldn't open to write.</td>
+  </tr>
+  <tr>
+    <th>2615</th>
+    <td>(Zip.BAD_CONTROL_PARAMETERS)</td><td>-</td><td>Bad control parameters.</td>
+  </tr>
+  <tr>
+    <th>2616</th>
+    <td>(Zip.OPERATION_NO_COMPLETE)</td><td>-</td><td>Could not complete operation.</td>
+  </tr>
+  <tr>
+    <th>2617</th>
+    <td>(Zip.OPEN_READ_ERROR)</td><td>-</td><td>Could not open a specified file to read.</td>
+  </tr>
+  <tr>
+    <th>2618</th>
+    <td>(Zip.MEDIA_ERROR)</td><td>-</td><td>Media error. Disk not ready, hardware read/write error.</td>
+  </tr>
+  <tr>
+    <th>2619</th>
+    <td>(Zip.MULTI_VOLUME_CONTROL_PARAM)</td><td>-</td><td>Bad Multi-Volume control parameters.</td>
+  </tr>
+  <tr>
+    <th>2620</th>
+    <td>(Zip.MULTI_VOLUME_USAGE)</td><td>-</td><td>Improper usage of a Multi-Volume Zip File.</td>
+  </tr>
+  <tr>
+    <th>2621</th>
+    <td>(Zip.UNZIP_UNEXPECTED_EOF)</td><td>-</td><td>Unexpected end of zip file, the zip file may be corrupted.</td>
+  </tr>
+  <tr>
+    <th>2622</th>
+    <td>(Zip.UNZIP_STRUCTURE_ERROR)</td><td>-</td><td>The internal structure of the zip file is invalid.</td>
+  </tr>
+  <tr>
+    <th>2623</th>
+    <td>(Zip.UNZIP_OUT_OF_MEMORY)</td><td>-</td><td>Out of memory, not enough memory was available to complete the action.</td>
+  </tr>
+  <tr>
+    <th>2624</th>
+    <td>(Zip.UNZIP_FILE_NOT_FOUND)</td><td>-</td><td>The zip file could not be found.</td>
+  </tr>
+  <tr>
+    <th>2625</th>
+    <td>(Zip.NOTHING_TO_EXTRACT)</td><td>-</td><td>There was nothing to extract in the unzip action.</td>
+  </tr>
+  <tr>
+    <th>2626</th>
+    <td>(Zip.EXTRACT_VOLUME_ERROR)</td><td>-</td><td>An error occurred when trying to extract to the same volume.</td>
+  </tr>
+  <tr>
+    <th>2627</th>
+    <td>(Zip.INDEX_OOB)</td><td>-</td><td>The index specified in the zip file was out of bounds.</td>
+  </tr>
+  <tr>
+    <th>2628</th>
+    <td>(Zip.OUTPUT_CREATE_ERROR)</td><td>-</td><td>An error occurred when creating the output file.</td>
+  </tr>
+  <tr>
+    <th>2629</th>
+    <td>(Zip.OPEN_ZIP_ERROR)</td><td>-</td><td>An error occurred when opening the zip file. The zip file may be locked or unavailable.</td>
+  </tr>
+  <tr>
+    <th>2630</th>
+    <td>(Zip.CRC_EXTRACT_ERROR)</td><td>-</td><td>An extracted file has an incorrect CRC value and may be corrupted.</td>
+  </tr>
+  <tr>
+    <th>2631</th>
+    <td>(Zip.UNZIP_OPERATION_CANCELLED)</td><td>-</td><td>The operation has been cancelled.</td>
+  </tr>
+  <tr>
+    <th>2632</th>
+    <td>(Zip.FILE_SKIPPED_NO_PASSWORD)</td><td>-</td><td>A file was skipped during the extraction because it is encrypted and no password was specified, or the password was incorrect.</td>
+  </tr>
+  <tr>
+    <th>2633</th>
+    <td>(Zip.FILE_SKIPPED_FORMAT)</td><td>-</td><td>A file was skipped because it used an unknown compression format.</td>
+  </tr>
+  <tr>
+    <th>2634</th>
+    <td>(Zip.PASSWORD_ERROR)</td><td>-</td><td>Bad or missing decrypt code, either no password was specified, or the password was incorrect.</td>
+  </tr>
+  <tr>
+    <th>2635</th>
+    <td>(Zip.BUSY_ERROR)</td><td>-</td><td>Busy error, the zip file could not be entered.</td>
+  </tr>
+  <tr>
+    <th>2636</th>
+    <td>(Zip.VOLUME_ID_ERROR)</td><td>-</td><td>Could not extract volume ID item.</td>
+  </tr>
+  <tr>
+    <th>2637</th>
+    <td>(Zip.ERROR_UNZIP_COMMAND_STRUCT)</td><td>-</td><td>A bad command structure was used when attempting to unzip the file.</td>
+  </tr>
+  <tr>
+    <th>2638</th>
+    <td>(Zip.INTERNAL_CANCEL)</td><td>-</td><td>The operation was canceled through an internal function.</td>
+  </tr>
+  <tr>
+    <th>2639</th>
+    <td>(Zip.FILE_SKIPPED_PASSWORD)</td><td>-</td><td>One or more of the files was skipped during the extraction phase. Usually this is caused by an incorrect password.</td>
+  </tr>
+  <tr>
+    <th>2640</th>
+    <td>(Zip.DESTINATION_FULL)</td><td>-</td><td>The destination disk was full, and no more information could be written to it.</td>
+  </tr>
+  <tr>
+    <th>2641</th>
+    <td>(Zip.ERROR_FOLDER_CREATE)</td><td>-</td><td>The destination folder could not be created.</td>
+  </tr>
+</table>
+</div> <!-- /ErrorCodes -->
+
+<div class="History">
+<h2>Change Log</h2>
+
+<h3>2.0.0.1</h3>
+<ul>
+	<li>Fixed an issue where the help file may fail to open in certain browsers.</li>
+</ul>
+
+<h3>2.0.0.0</h3>
+<ul>
+	<li>Updated to version 2.0 of the plugin SDK.</li>
+</ul>
+
+</div> <!-- /History -->
+
+
+<div class="Info">
+<h2>Additional Information</h2>
+
+<h3>Author:</h3><p>Indigo Rose Corporation</p>
+<h3>Copyright:</h3><p>The Zip Actions Plugin is copyright © 2004-2015 Indigo Rose Software Design Corporation.</p>
+<h3>Website:</h3><p><a href="http://www.indigorose.com">http://www.indigorose.com</a></p>
+
+</div> <!-- /info -->
+<hr>
+
+<p align="center">Copyright © 2004-2015 Indigo Rose Software Design Corporation.<br>
+All Rights Reserved.</p>
+
+</body>
+</html>

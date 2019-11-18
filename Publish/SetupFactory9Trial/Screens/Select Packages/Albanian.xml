@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Albanian</Name>
+<Default>0</Default>
+<Primary>28</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalimi i %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Selekto Paketimin</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ju luetmi zgjedhni tiparet e programit që dëshiron ti instalosh.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Vazhdo &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Prapa</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulo</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Ndihmë</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Tiparet e Programit:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Hapësira që kërkohet: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_BODY/>
+</Messages>
+</SUF70Messages>

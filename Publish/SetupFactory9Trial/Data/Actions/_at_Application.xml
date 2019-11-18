@@ -1,0 +1,258 @@
+<ActionTemplates>
+  <Action>
+    <Name>Application.Exit</Name>
+    <Description>Exits the installer and returns an optional return code.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ReturnCode</Name>
+        <Description>The optional return code you want to set for the setup.exe's process.</Description>
+        <Type>number</Type>
+        <Default>0</Default>
+        <Required>1</Required>
+        <EasyMode>
+          <Default>0</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.ExitScript</Name>
+    <Description>Breaks out of the current block of script being executed.</Description>
+    <ReturnValueType />
+  </Action>
+  <Action>
+    <Name>Application.GetInstallLanguage</Name>
+    <Description>Returns a table containing the current install language.</Description>
+    <ReturnValueType>table</ReturnValueType>
+  </Action>
+  <Action>
+    <Name>Application.GetLastError</Name>
+    <Description>Returns the last error code.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments />
+  </Action>
+  <Action>
+    <Name>Application.GetWndHandle</Name>
+    <Description>Returns the numeric window handle for the installer window.</Description>
+    <ReturnValueType>number</ReturnValueType>
+  </Action>
+  <Action>
+    <Name>Application.IgnoreLastError</Name>
+    <Description>Used to ingore the last setup error that occured. Only works during the "On Install Error" or "On Uninstall Error" events.</Description>
+    <ReturnValueType />
+  </Action>
+  <Action>
+    <Name>Application.LoadActionPlugin</Name>
+    <Description>Loads an action plugin file (.lmd).</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Filename</Name>
+        <Description>The path to the action plugin file (.lmd).</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_TempLaunchFolder.."\\Plugins\\MyModule.lmd"</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.LoadScript</Name>
+    <Description>Loads and executes an external script file (.lua) if it hasn't been loaded already.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Filename</Name>
+        <Description>The path to the external script file (.lua).</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_TempLaunchFolder.."\\MyScript.lua"</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.LoadValue</Name>
+    <Description>Loads a value that was saved with the Application.SaveValue action.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Section</Name>
+        <Description>The name of the "section" that the value was saved in.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your_Application_Name"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Key</Name>
+        <Description>The name of the "key" that identifies the value.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your_Key"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.Minimize</Name>
+    <Description>Minimizes the installer's window to the task bar.</Description>
+    <ReturnValueType />
+  </Action>
+  <Action>
+    <Name>Application.Restore</Name>
+    <Description>Restores the installation's window to the size and position it had before it was minimized.</Description>
+    <ReturnValueType />
+  </Action>
+  <Action>
+    <Name>Application.RunScriptFile</Name>
+    <Description>Executes the contents of an external script file (.lua).</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Filename</Name>
+        <Description>The path to the external script file (.lua).</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_TempLaunchFolder.."\\MyScript.lua"</Default>
+          <DataType>fileedit</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.SaveValue</Name>
+    <Description>Saves a value to the user's system so it can be retrieved later with an Application.LoadValue action.
+      </Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Section</Name>
+        <Description>The name of the "section" that the value will be saved in.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your_Application_Name"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Key</Name>
+        <Description>The name of the "key" that will identify the value.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your_Key"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Value</Name>
+        <Description>The value to save.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Your_Value"</Default>
+          <DataType>string</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.SetInstallLanguage</Name>
+    <Description>Sets the specified language to be the install language.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Primary</Name>
+        <Description>The primary language ID of the language (in decimal format) you want to set for the install.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>9</Default>
+          <DataType>number</DataType>
+          <Constraints>*,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Secondary</Name>
+        <Description>The secondary language ID of the language (in decimal format) you want to set for the install.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>1</Default>
+          <DataType>number</DataType>
+          <Constraints>*,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.SetLastError</Name>
+    <Description>Changes the last error code.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>ErrorCode</Name>
+        <Description>A numeric code indicating the error code you wish to set.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>1153</Default>
+          <DataType>number</DataType>
+          <Constraints>*,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>Application.Sleep</Name>
+    <Description>Causes the installer to sleep for a desired period of time.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Time</Name>
+        <Description>The time to sleep, in milliseconds.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>1000</Default>
+          <DataType>number</DataType>
+          <Constraints>0,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+</ActionTemplates>

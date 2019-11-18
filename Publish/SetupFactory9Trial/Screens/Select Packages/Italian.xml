@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Italian</Name>
+<Default>1</Default>
+<Primary>16</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installazione</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Seleziona pacchetti</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Seleziona le parti del programma che vuoi installare.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Avanti &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Indietro</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnulla</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Ai&uto</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Parti del programma:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Spazio totale richiesto: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_BODY/>
+</Messages>
+</SUF70Messages>

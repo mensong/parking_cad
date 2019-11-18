@@ -1,0 +1,1011 @@
+<ActionTemplates>
+  <Action>
+    <Name>MSI.ApplyPatch</Name>
+    <Description>Calls the MsiApplyPatch function to invoke an installation and set the PATCH property to the path of the patch package for each product listed by the patch package as eligible to receive it.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>PatchPath</Name>
+        <Description>The full path to the patch package.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\MyDir\\MyPatch.msp"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallPackage</Name>
+        <Description>If InstallType is set to INSTALLTYPE_NETWORK_IMAGE, this parameter should be the full path to the product that is to be patched.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallType</Name>
+        <Description>The type of installation to patch.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLTYPE_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLTYPE_DEFAULT,INSTALLTYPE_NETWORK_IMAGE,INSTALLTYPE_SINGLE_INSTANCE</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>CommandLine</Name>
+        <Description>The command line property settings to use.</Description>
+        <Type>string</Type>
+        <Default>""</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.CloseHandle</Name>
+    <Description>Calls the MsiCloseHandle function to close an open installation handle.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>MSIHandle</Name>
+        <Description>The handle to an open installation.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>MyHandle</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.ConfigureFeature</Name>
+    <Description>Calls the MsiConfigureFeature function to configure the installed state for a product feature.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product to be configured. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FeatureID</Name>
+        <Description>The identifier of the feature to be configured.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Main"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallState</Name>
+        <Description>The installation state for the feature.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLSTATE_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLSTATE_ADVERTISED,INSTALLSTATE_ABSENT,INSTALLSTATE_LOCAL,INSTALLSTATE_SOURCE,INSTALLSTATE_DEFAULT</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.ConfigureProduct</Name>
+    <Description>Calls the MsiConfigureProduct function to install or uninstall a product.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product to be configured. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallLevel</Name>
+        <Description>How much of the product you want to install.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLLEVEL_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLLEVEL_DEFAULT,INSTALLLEVEL_MINIMUM,INSTALLLEVEL_MAXIMUM</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallState</Name>
+        <Description>The installation state for the product.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLSTATE_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLSTATE_ADVERTISED,INSTALLSTATE_ABSENT,INSTALLSTATE_LOCAL,INSTALLSTATE_SOURCE,INSTALLSTATE_DEFAULT</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.ConfigureProductEx</Name>
+    <Description>Calls the MsiConfigureProductEx function to install or uninstall a product. A product command line can also be specified.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product to be configured. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallLevel</Name>
+        <Description>How much of the product you want to install.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLLEVEL_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLLEVEL_DEFAULT,INSTALLLEVEL_MINIMUM,INSTALLLEVEL_MAXIMUM</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallState</Name>
+        <Description>The installation state for the product.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLSTATE_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLSTATE_ADVERTISED,INSTALLSTATE_ABSENT,INSTALLSTATE_LOCAL,INSTALLSTATE_SOURCE,INSTALLSTATE_DEFAULT</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>CommandLine</Name>
+        <Description>The command-line property settings to use. This should be a list of the format "Property=Setting Property=Setting".</Description>
+        <Type>string</Type>
+        <Default>"" </Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnableLog</Name>
+    <Description>Calls the MsiEnableLog function to set the log mode for all subsequent installations that are initiated in the calling process.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>LogMode</Name>
+        <Description>The log mode. Use the plus sign ("+") to combine values. If this value is zero and LogFile is nil, then logging will be turned off.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLLOGMODE_ERROR+INSTALLLOGMODE_WARNING</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>LogFile</Name>
+        <Description>The full path and filename of the log file. Specify nil to turn logging off.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\MyProduct\\MyLog.txt"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Append</Name>
+        <Description>The installation state for the product.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>combo</DataType>
+          <Constraints>true,false</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FlushEachLine</Name>
+        <Description>Whether the log buffer should be flushed after each line, or flushed after 20 lines.</Description>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>false</Default>
+          <DataType>combo</DataType>
+          <Constraints>true,false</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnumClients</Name>
+    <Description>Calls the MsiEnumClients function to get an enumerated table of clients for a given installed component.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ComponentGUID</Name>
+        <Description>The identifier (GUID) of the component whose clients you want to enumerate. This string must be an identifier string enclosed in curly braces, for example: "{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnumComponents</Name>
+    <Description>Calls the MsiEnumComponents function to get an enumerated table of the installed components for all products.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnumFeatures</Name>
+    <Description>Calls the MsiEnumFeatures function to get an enumerated table of the published features for a given product.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product whose features you want to enumerate. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnumPatches</Name>
+    <Description>Calls the MsiEnumPatches function to enumerate all of the patches that have been applied to a product, returning the patch code GUIDs for each patch that has been applied, and a list of transforms from each patch that apply to the product.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product whose patches you want to enumerate. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnumProducts</Name>
+    <Description>Calls the MsiEnumProducts function to get an enumerated table of all the products currently advertised or installed. Both per-user and per-machine installations and advertisements are enumerated.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.EnumRelatedProducts</Name>
+    <Description>Calls the MsiEnumRelatedProducts function to get an enumerated table of products with a specified upgrade code. This function lists the currently installed and advertised products that have the specified UpgradeCode property in their Property table.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>UpgradeCode</Name>
+        <Description>The "product code" of the product whose patches you want to enumerate. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{07F11339-6660-4CEC-9E09-BB2FEA780929}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetComponentPath</Name>
+    <Description>Calls the MsiGetComponentPath function to get the full path to an installed component. If the key path for the component is a registry key then the registry key is returned.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the client product. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>ComponentGUID</Name>
+        <Description>The identifier (GUID) of the component to be located. This string must be an identifier string enclosed in curly braces, for example: "{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetFeatureInfo</Name>
+    <Description>Calls the MsiGetFeatureInfo function to get descriptive information for a feature.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>MSIHandle</Name>
+        <Description>The "handle" to the product that owns the feature. You can use the MSI.OpenProduct action to get the product handle.
+</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>MyHandle</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FeatureID</Name>
+        <Description>The identifier of the feature whose information you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Main"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Attributes</Name>
+        <Description>The attributes you want to get. Use the plus sign ("+") to combine values.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLFEATUREATTRIBUTE_FOLLOWPARENT+INSTALLFEATUREATTRIBUTE_FAVORSOURCE</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetFeatureUsage</Name>
+    <Description>Calls the MsiGetFeatureUsage function to get the usage metrics for a product feature.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product containing the feature. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FeatureID</Name>
+        <Description>The identifier of the feature whose metrics you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Main"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetFileVersion</Name>
+    <Description>Calls the MsiGetFileVersion function to get the version and language strings in the format that the installer expects to find them in the database. This action is reads information from PE files (.exe, dll etc.)</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>FilePath</Name>
+        <Description>The full path to the file whose version/language information you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\MyFolder\\Setup.exe"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetMSIVersion</Name>
+    <Description>Gets the version of the Windows Installer that is installed on the user's system.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetPatchInfo</Name>
+    <Description>Calls the MsiGetPatchInfo function to get information about a patch.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>PatchCode</Name>
+        <Description>The "patch code" for the patch package whose information you want. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Attribute</Name>
+        <Description>The patch attribute to be retrieved. For example, for the local cached package you would use "INSTALLPROPERTY_LOCALPACKAGE".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"INSTALLPROPERTY_LOCALPACKAGE"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetProductCode</Name>
+    <Description>Calls the MsiGetProductCode function to get the product code of an application by using the component GUID of an installed or advertised component of the application.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ComponentGUID</Name>
+        <Description>The identifier (GUID) of the component that has been installed by the application. This string must be an identifier string enclosed in curly braces, for example: "{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetProductInfo</Name>
+    <Description>Calls the MsiGetProductInfo function to get product information for published and installed products given a specified property.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product whose information you want. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Property</Name>
+        <Description>The property containing the value you want. Some properties can only be retrieved if they have been set.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"InstallLocation"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetProductProperty</Name>
+    <Description>Calls the MsiGetProductProperty function to retrieve a product property. These are the properties in the product database.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>MSIHandle</Name>
+        <Description>The "handle" to the product obtained from calling the MSI.OpenProduct action.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>MyHandle</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Property</Name>
+        <Description>The property whose value you want. This value is case-sensitive.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"InstallLocation"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetShortcutTarget</Name>
+    <Description>Calls the MsiGetShortcutTarget function to examine a shortcut and get its product, feature name, and component if available.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ShortcutTarget</Name>
+        <Description>The full path to the shortcut to examine.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>Shell.GetFolder(SHF_DESKTOP).."\\MyShortcut.lnk"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.GetUserInfo</Name>
+    <Description>Calls the MsiGetUserInfo function to get the registered user information for an installed product.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product to be queried. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.InstallMissingComponent</Name>
+    <Description>Calls the MsiInstallMissingComponent function to install a component that is unexpectedly missing.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product that owns the component to be installed. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>ComponentGUID</Name>
+        <Description>The identifier (GUID) of the component to be installed. This string must be an identifier string enclosed in curly braces, for example: "{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>InstallState</Name>
+        <Description>The way the component should be installed.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLSTATE_DEFAULT</Default>
+          <DataType>combo</DataType>
+          <Constraints>INSTALLSTATE_LOCAL,INSTALLSTATE_SOURCE,INSTALLSTATE_DEFAULT</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.InstallMissingFile</Name>
+    <Description>Calls the MsiInstallMissingFile function to install a file that is unexpectedly missing.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product that owns the file to be installed. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>File</Name>
+        <Description>The identifier of the file to be installed.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"MyFile.txt"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.InstallProduct</Name>
+    <Description>Calls the MsiInstallProduct function to install or uninstall a product.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>PackagePath</Name>
+        <Description>The full path and filename of the package to install.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\TempMSI\\setup.msi"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>CommandLine</Name>
+        <Description>The command line property settings to pass to the package. This string should be a list in the format: "Property=Setting Property=Setting".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"REMOVE=ALL"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.LocateComponent</Name>
+    <Description>Calls the MsiLocateComponent function to get the full path to an installed component without a product code.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ComponentGUID</Name>
+        <Description>The identifier (GUID) of the component to be located. This string must be an identifier string enclosed in curly braces, for example: "{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{1638E94C-DA3C-44BD-88FB-5CC76B59BE46}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.OpenPackage</Name>
+    <Description>Calls the MsiOpenPackage function to open a package for use with the actions that access the product database. You must call the MSI.CloseHandle action with the handle when it is no longer needed.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>PackagePath</Name>
+        <Description>The full path to the package whose handle you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"C:\\TempMSI\\setup.msi"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.OpenProduct</Name>
+    <Description>Calls the MsiOpenProduct function to open a product for use with the actions that access the product database. You must call the MSI.CloseHandle action with the handle when it is no longer needed.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product you want to open. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.QueryFeatureState</Name>
+    <Description>Calls the MsiQueryFeatureState function to get the installed state for a product feature.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product you want to open. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Feature</Name>
+        <Description>The feature whose installed state you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Main"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.QueryProductState</Name>
+    <Description>Calls the MsiQueryProductState function to get the installed state for a product.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product whose state you want. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.ReinstallFeature</Name>
+    <Description>Calls the MsiReinstallFeature function to reinstall a feature.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product that contains the feature to be reinstalled. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>FeatureID</Name>
+        <Description>The identifier of the feature to be reinstalled.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Main"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>ReinstallMode</Name>
+        <Description>The reinstall mode. Use the plus sign ("+") to combine values.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>REINSTALLMODE_FILEMISSING+REINSTALLMODE_FILEVERIFY</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.ReinstallProduct</Name>
+    <Description>Calls the MsiReinstallProduct function to reinstall a product.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ProductCode</Name>
+        <Description>The "product code" of the product to be reinstalled. This string must be an identifier string enclosed in curly braces, for example: "{78B82B0B-9AD9-40C0-B994-F72C21B52723}".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"{78B82B0B-9AD9-40C0-B994-F72C21B52723}"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>ReinstallMode</Name>
+        <Description>The reinstall mode. Use the plus sign ("+") to combine values.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>REINSTALLMODE_FILEMISSING+REINSTALLMODE_FILEVERIFY</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.RunMsiexec</Name>
+    <Description>Runs the Windows Installer program "msiexec.exe" with the specified arguments.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>Arguments</Name>
+        <Description>The arguments you want to pass to "msiexec.exe".</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"-i \"C:\\Temp\\Example.msi\" \"PROPERTY=VALUE\""</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WaitForReturn</Name>
+        <Description>Whether the application will wait until the executable has exited before continuing.</Description>
+        <Type>boolean</Type>
+        <Default>true</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>true</Default>
+          <DataType>combo</DataType>
+          <Constraints>true,false</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.SetInternalUI</Name>
+    <Description>Calls the MsiSetInternalUI function to enable the installer's internal user interface. Then this user interface is used for all subsequent calls to user-interface-generating installer functions in this process.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>UILevel</Name>
+        <Description>The user interface level to set. Some values can be combined with others. In that case, use the plus sign ("+") to combine values.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>INSTALLUILEVEL_FULL+INSTALLUILEVEL_HIDECANCEL</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>WindowHandle</Name>
+        <Description>A windows handle that becomes the owner of any user interface created. If this parameter is nil, the owner of the user interface does not change. You can use the Application.GetWndHandle action to get a handle to the application's main window.</Description>
+        <Type>number</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>Application.GetWndHandle()</Default>
+          <DataType>number</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>MSI.VerifyPackage</Name>
+    <Description>Calls the MsiOpenPackage function to open a package for use with the actions that access the product database. You must call the MSI.CloseHandle action with the handle when it is no longer needed.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>PackagePath</Name>
+        <Description>The full path and filename of the package.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>_TempFolder.."\\setup.msi"</Default>
+          <DataType>string</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+</ActionTemplates>

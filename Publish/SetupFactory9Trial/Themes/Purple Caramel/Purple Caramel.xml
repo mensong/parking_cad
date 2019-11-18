@@ -1,0 +1,104 @@
+<SUF7ThemeData>
+<Name>Purple Caramel</Name>
+<IsDefault>0</IsDefault>
+<StyleData>
+<CstClrs>1</CstClrs>
+<TBBG format="hex">ffffff</TBBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
+<TBTXT format="hex">000000</TBTXT>
+<BDYTXT format="hex">ffff00</BDYTXT>
+<CBG format="hex">ffffff</CBG>
+<C3DFACE format="hex">6814cb</C3DFACE>
+<C3DHLT format="hex">9933ff</C3DHLT>
+<C3DLIT format="hex">ffff00</C3DLIT>
+<C3DSH format="hex">000000</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
+<CTEXT format="hex">000000</CTEXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
+<CPRGRS format="hex">316ac5</CPRGRS>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>11_top.jpg</TBIMG>
+<SBIMG>11_side.jpg</SBIMG>
+<BDIMG>11_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
+<Fonts>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-13</Height>
+<Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
+<Italic>0</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-27</Height>
+<Weight>700</Weight>
+<Italic>0</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-12</Height>
+<Weight>400</Weight>
+<Italic>0</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-13</Height>
+<Weight>400</Weight>
+<Italic>0</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+</Fonts>
+<CAOff>
+<TP>0</TP>
+<L>22</L>
+<T>30</T>
+<R>22</R>
+<B>20</B>
+</CAOff>
+<CAOff>
+<TP>1</TP>
+<L>2</L>
+<T>85</T>
+<R>24</R>
+<B>10</B>
+</CAOff>
+<CAOff>
+<TP>2</TP>
+<L>22</L>
+<T>105</T>
+<R>15</R>
+<B>10</B>
+</CAOff>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>10</TBTXTY>
+</StyleData>
+</SUF7ThemeData>

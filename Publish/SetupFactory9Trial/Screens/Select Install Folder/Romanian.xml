@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Romanian</Name>
+<Default>0</Default>
+<Primary>24</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalare %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Director de instalare</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Unde doriti sa instalati %ProductName%?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Urmatorul &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Inapoi</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulare</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&jutor</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>&Schimba...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Programul va fi instalat in directorul afisat mai jos. Pentru a selecta o locatie diferita va rugam scrieti o noua cale ori click pe Schimba pentru a alege un nou director.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Instaleaza %ProductName% in:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Spatiu necesar: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Spatiu disponibil pe discul selectat: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

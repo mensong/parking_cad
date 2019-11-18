@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Polish</Name>
+<Default>0</Default>
+<Primary>21</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalacja %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Instalacja Przygotowana</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Jesteœ ju¿ przygotowany do zainstalowania %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalej &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Powrót</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Anu&luj</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Po&moc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Instalator posiada niezbêdne informacje do przeprowadzenia instalacji %ProductName% na tym komputerze.
+
+
+Zostan¹ u¿yte nastêpuj¹ce ustawienia:
+
+Folder docelowy:        %AppFolder%
+
+Folder skrótów:    %AppShortcutFolderName%
+
+
+Prosimy wybraæ Dalej, aby dokonaæ instalacji.</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Tytu³</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

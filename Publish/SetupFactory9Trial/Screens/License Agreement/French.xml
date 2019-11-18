@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="US-ASCII"?> 
+<SUF70Messages>
+<Language>
+<Name>French</Name>
+<Default>0</Default>
+<Primary>12</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Termes de la Licence</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Veuillez lire attentivement les termes de la licence.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Suivant &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Précédent</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnuler</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Aide</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Ce logiciel est protégé par copyright et par des traités internationaux. 
+Il est illégal de copier, modifier, désassembler tout ou partie du logiciel, y compris les librairies et les fichiers qui lui sont associés.
+
+La reproduction ou la distribution non autorisée peut entraîner un procès et déboucher sur les plus sévères pénalités.</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>J'accepte les termes de la licence</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>Je décline les termes de la licence</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

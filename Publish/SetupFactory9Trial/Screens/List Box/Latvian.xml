@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Latvian</Name>
+<Default>0</Default>
+<Primary>38</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% uzstâdîðanas programma</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Options</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Izvçlies vienu no iespçjâm un spied Tâlâk, lai turpinâtu.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Tâlâk &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atpakaï</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>At&amp;celt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Palîdzîba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Lûdzu izvçlieties vienu no sekojoðâm iespçjâm: </IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_LISTBOX>Piemçrs
+Papîra
+Ðíçres</IDS_CTRL_LISTBOX>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Latvian</Name>
+<Default>0</Default>
+<Primary>38</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% uzstâdîðanas programma</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Virsraksta teksts</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Apakðvirsraksta teksts</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Tâlâk &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atpakaï</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>At&amp;celt</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Palîdzîba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_BUTTON_01>Button 01</IDS_CTRL_BUTTON_01>
+<IDS_CTRL_STATICTEXT_LABEL_01>Lietojiet ðo tekstu, lai aprakstîtu, kas notiks, kad jûs nospiedîsiet uz pogas 01.</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_BUTTON_02>Button 02</IDS_CTRL_BUTTON_02>
+<IDS_CTRL_STATICTEXT_LABEL_02>Lietojiet ðo tekstu, lai aprakstîtu, kas notiks, kad jûs nospiedîsiet uz pogas 02.</IDS_CTRL_STATICTEXT_LABEL_02>
+</Messages>
+</SUF70Messages>

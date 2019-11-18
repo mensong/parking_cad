@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>ÄéåõèÝôçóç åãêáôÜóôáóçò %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ÖÜêåëïò Óõíôïìåýóåùí</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ðïý èÝëåôå íá åãêáôáóôáèïýí ïé óõíôïìåýóåéò;</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÓõíÝ&÷åéá &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; Åðéóôñï&öÞ</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>ÂïÞ&èåéá</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ïé óõíôïìåýóåéò èá äçìéïõñãçèïýí óôïí ðáñáêÜôùí öÜêåëï. Ãéá íá åðéëÝîåôå íÝá èÝóç, åßôå ðëçêôñïëïãåßóôå ôç íÝá äéáäñïìÞ, Þ åðéëÝîôå Ýíá öÜêåëï åðü ôçí ëßóôá.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>ÖÜêåëïò Óõíôïìåýóåùí:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>ÅãêáôÜóôáóç óõíôïìåýóåùí ìüíï ãéá ôïí ôñÝ÷ùí ÷ñÞóôç.</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Åíåñãïðïßçóç óõíôïìåýóåùí ãéá üëïõò ôïõò ÷ñÞóôåò</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,362 @@
+<ActionTemplates>
+   <Action>
+      <Name>DlgListBox.AddItem</Name>
+      <Description>Adds an item to a list box control. If the list box is sorted, the item is added at the sorted position, otherwise it is added to the end. Note: This action will only work if called from a screen's events and if the named control is on the current screen.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control you want to add an item to.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text of the item you want to add.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"New Item"</Default>
+               <DataType>string</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.DeleteItem</Name>
+      <Description>Deletes an item from a list box control.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control you want to remove an item from.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index (line number) of the item to delete from the list box. The first item in the list has an index of 1. You can use an index of -1 to delete all items from the list.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.FindItem</Name>
+      <Description>Finds an item in a list box control based on a search string and returns its index.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control that you want to search.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>StartAfter</Name>
+            <Description>The index (line number) to start searching after. The search will begin in the next item in the list. You can use an index of -1 to search all list box items. The first list box item has an index of 1.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SearchText</Name>
+            <Description>The string of text to search for in the list box control. You can use the * and ? wildcards in this field to search for text that matches a specific pattern.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"target"</Default>
+               <DataType>string</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.GetCount</Name>
+      <Description>Returns the number of items in a list box control.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose number of items you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.GetItemProperties</Name>
+      <Description>Gets the properties of an item in a list box control given its index.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose item properties you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index of the item whose properties you want. The first item in the list has an index of 1. You can use -1 to get the properties of the last item in the list.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.GetProperties</Name>
+      <Description>Gets the properties of a list box control on the current screen.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose properties you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.GetSelected</Name>
+      <Description>Returns a numerically indexed table containing the indexes (line numbers) of all of the selected items in a specified list box control.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose selected items you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.GetSelectedCount</Name>
+      <Description>Returns the number of items that are selected in a list box control.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose number of selected items you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.InsertItem</Name>
+      <Description>Inserts an item into a list box control at the specified position.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control that you want to insert an item into.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The position you want to insert the item into. The first item in the list has the index 1. To insert the item at the end of the list you can use the index -1.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text of the item being inserted.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"New Item"</Default>
+               <DataType>string</DataType>
+               <Constraints>*,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.SetItemProperties</Name>
+      <Description>Sets the properties of an item in a list box control given its index.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose item properties you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Index</Name>
+            <Description>The index of the item whose properties you want to set. The first item in the list has an index of 1. You can use -1 to set the properties of the last item in the list.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>-1</Default>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Properties</Name>
+            <Description>A table containing the list box item's properties indexed by "Checked", "ItemData", "Selected" and "Text."</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>tbProperties</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.SetProperties</Name>
+      <Description>Sets the properties of a list box control on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose properties you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Properties</Name>
+            <Description>A table containing the list box control properties indexed by "Enabled" and "Visible". For example, {Enabled=true} and {Visible=true}.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>tbProperties</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgListBox.SetUpdate</Name>
+      <Description>Sets the update state of a list box control.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the list box control whose update state you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>ListBox</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Update</Name>
+            <Description>Whether to update (redraw) the list box control. Pass true to update the control and false not to.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

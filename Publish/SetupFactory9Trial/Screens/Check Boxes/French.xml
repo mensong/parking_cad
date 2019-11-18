@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="US-ASCII"?> 
+<SUF70Messages>
+<Language>
+<Name>French</Name>
+<Default>0</Default>
+<Primary>12</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Options</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Choisissez parmi les options possibles, puis cliquez sur Suivant.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Suivant &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Précédent</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnuler</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Aide</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Veuillez cocher vos préférences parmi les options suivantes:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>Note: Vous pouvez cocher plusieurs options.
+</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+<IDS_CTRL_CHECK_BOX_01>Option 01</IDS_CTRL_CHECK_BOX_01>
+<IDS_CTRL_CHECK_BOX_02>Option 02</IDS_CTRL_CHECK_BOX_02>
+<IDS_CTRL_CHECK_BOX_03>Option 03</IDS_CTRL_CHECK_BOX_03>
+<IDS_CTRL_CHECK_BOX_04>Option 04</IDS_CTRL_CHECK_BOX_04>
+</Messages>
+</SUF70Messages>

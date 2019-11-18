@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Danish</Name>
+<Default>0</Default>
+<Primary>6</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Opsætning af %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Installationsmappe</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Hvor ønsker du at %ProductName% skal installeres?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Næste &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Tilbage</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Fortryd</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjælp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>&Skift...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Softwaren vil blive installeret i mappen viste nedenfor. For at vælge en anden placering, skal du enten angive en ny sti eller trykke på skift for at lede efter en eksisterende mappe.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Installer %ProductName% i:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Plads påkrævet: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Tilgængelig plads på det valgte drev: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

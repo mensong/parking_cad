@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Polish</Name>
+<Default>0</Default>
+<Primary>21</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Deinstalacja %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Witamy</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Witamy w programie deinstalacyjnym %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalej &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Powrót</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Anu&luj</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Po&moc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Program ten odinstaluje %ProductName% %ProductVer%.
+
+Jeœli %ProductName% jest w tej chwili uruchomiony, prosimy o jego zamkniêcie przed przeprowadzeniem deinstalacji.
+
+W przeciwnym wypadku wybierz Dalej, aby kontynuowaæ.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Deinstalacja %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

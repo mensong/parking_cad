@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Serbian</Name>
+<Default>0</Default>
+<Primary>26</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Deinstalator</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Dobrodošli</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Dobrodošli u deinstalator za %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalje &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Nazad</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Prekini</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Pomoc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Ovaj program ce deinstalirati %ProductName% %ProductVer%.
+
+Ako je %ProductName% trenutno u radu, molim zatvorite pre nego što nastavite sa deinstalacijom.
+
+U protivnom, kliknite na Dalje za nastavak.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Deinstalacija %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>ÄéåõèÝôçóç åãêáôÜóôáóçò %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ÅêôÝëåóç Åíåñãåéþí</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ðáñáêáëþ ðåñéìÝíåôå...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ðáñáêáëþ ðåñéìÝíåôå üóï åêôåëïýíôáé ïé ðáñáêÜôù åíÝñãåéåò:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_SCROLLTEXT_BODY/>
+</Messages>
+</SUF70Messages>

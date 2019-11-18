@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+      <Name>Polish</Name>
+      <Primary>21</Primary>
+      <Secondary>
+      </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Sukces</MSG_SUCCESS>
+      <MSG_ERROR>B³¹d</MSG_ERROR>
+      <MSG_NOTICE>Uwaga</MSG_NOTICE>
+      <MSG_WARNING>Ostrze¿enie</MSG_WARNING>
+      <MSG_YES>Tak</MSG_YES>
+      <MSG_NO>Nie</MSG_NO>
+      <MSG_YES_TOALL>Tak na wszystkie</MSG_YES_TOALL>
+      <MSG_TO>Do</MSG_TO>
+      <MSG_FROM>Od</MSG_FROM>
+      <MSG_BROWSE>Przegl¹daj...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Anuluj</MSG_CANCEL>
+      <MSG_PATH>Œcie¿ka</MSG_PATH>
+      <MSG_SEARCH_MASK>Szukaj</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Wszystkie pliki</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Szukanie pliku</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bajtów</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Potwierdzenie</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Instalacja nie zosta³a ukoñczona! Czy rzeczywiœcie chcesz j¹ przerwaæ?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Czy na pewno chcesz kontynuowaæ instalacjê?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Brakuje miejsca, aby zainstalowaæ %ProductName% na wybranym dysku.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Kopiowanie</MSG_COPYING>
+      <MSG_DELETING>Usuwanie</MSG_DELETING>
+      <MSG_SEARCHING>Szukanie</MSG_SEARCHING>
+      <MSG_READING>Dokonywanie odczytu</MSG_READING>
+      <MSG_QUERYING_INTERNET>Wysy³anie zapytania do Internetu</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Przenoszenie</MSG_MOVING>
+      <MSG_SAVING>Zachowywanie</MSG_SAVING>
+      <MSG_INSERTDISK>W³ó¿ dysk</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Pobieranie</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Pobieranie pliku...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Pobieranie pliku, ca³kowity rozmiar nieznany. Iloœæ pobranych jak dot¹d KB:</MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Uzyskiwanie nazwy hosta.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Uzyskano nazwê hosta.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>£¹czenie siê z serwerem.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Po³¹czono siê z serwerem.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Zamykanie po³¹czenia z serwerem.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Zamkniêto po³¹czenie z serwerem.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Zadanie Wykonane.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Przekierowywanie.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Przybli¿ony czas ukoñczenia</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/sek</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Inicjowanie...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Instalowanie...</MSG_INSTALLING>
+      <MSG_SKIPPING>Pomijanie...</MSG_SKIPPING>
+      <MSG_SEEKING>Szukanie...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>B³êdny wpis</MSG_INVALID_ENTRY>
+      <MSG_THE>te</MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> pole nie mo¿e byæ puste.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Przygotowanie Instalacji...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Instalowanie plików...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Tworzenie Deinstalacji...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Tworzenie Skrótów...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Sprawdzanie jakoœci plików...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Sprawdzanie uprawnieñ do folderów...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Sprawdzanie wolnego miejsca na dysku...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Usuwanie Plików...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Usuwanie Skrótów...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Tworzenie folderu danych deinstalacji...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Tworzenie pliku danych deinstalacji...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Tworzenie pliku kontrolnego deinstalacji...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Tworzenie pliku programu deinstalacyjnego...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Kopiowanie plików obrazu ekranu...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Kopiowanie wtyczek programowych...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Kopiowanie plików wsparcia...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Tworzenie obiektów panelu kontrolnego...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Tworzenie skrótu programu deinstalacyjnego...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Nieznany</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>¯aden</MSG_OS_NONE>
+      <MSG_OS_ALL>Wszystkie</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(bez SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(lub nowszy)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>System nie spe³nia nastêpuj¹cych minimalnych wymagañ do instalacji oprogramowania:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>System Operacyjny</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Szerokoœæ Ekranu</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Wysokoœæ Ekranu</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>G³êbia Koloru</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Uprawnienia U¿ytkownika</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administrator</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Instalacja zostanie przerwana.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Wybierz OK, aby kontynuowaæ, albo Anuluj, aby przerwaæ instalacjê.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>W celu uzyskania dalszych informacji prosimy skontaktowaæ siê z:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Termin legalnoœci instalacji oprogramowania wygasa za</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>dni - instalacja nie bêdzie dzia³aæ po tym czasie.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Instalacjê mo¿na uruchomiæ jeszcze</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>zanim jej legalnoœæ wygaœnie.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>W³ó¿ Dysk #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Je¿eli pliki mog¹ zostaæ znalezione w innym miejscu, na przyk³ad na innym dysku, wpisz pe³n¹ œcie¿kê dostêpu lub naciœnij przycisk Przegl¹daj w celu wskazania œcie¿ki.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Program instalacyjny próbuje zainstalowaæ plik, jednak plik o tej nazwie ju¿ istnieje w systemie.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Program instalacyjny próbuje zainstalowaæ plik, którego NOWSZA wersja istnieje ju¿ w systemie.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Czy chcesz, aby zast¹piæ nastêpuj¹cy plik?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Nastêpuj¹cy plik jest w tej chwili u¿ywany i nie mo¿e byæ uaktualniony:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Zamknij wszystkie inne aplikacje i wybierz Ponów. Wybierz Anuluj, aby zainstalowaæ ten plik podczas restartu systemu.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Czy chcesz zast¹piæ nastêpuj¹cy plik?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Podczas próby zainstalowania pliku natrafiono w systemie na ju¿ istniej¹cy plik o tej samej nazwie.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Podczas próby zainstalowania pliku natrafiono w systemie na ju¿ istniej¹cy NOWSZY plik o tej samej nazwie.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Program instalacyjny nie mo¿e zrestarowaæ systemu. Zamknij wszystkie dzia³aj¹ce aplikacje i wybierz Ponów.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Ten plik jest w tej chwili u¿ywany i nie mo¿e byæ usuniêty. Zamknij ten plik i wybierz Ponów. Wybierz Ignoruj, aby kontynuowaæ - plik zostanie usuniêty podczas restartu systemu. Wybierz Przerwij, aby przerwaæ deinstalacjê.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Ten plik nie mo¿e byæ usuniêty. Wybierz Ponów, aby spróbowaæ jeszcze raz. Wybierz Ignoruj, aby kontynuowaæ - plik zostanie usuniêty podczas restartu systemu. Wybierz Przerwij, aby przerwaæ deinstalacjê.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Program deinstalacyjny próbuje usun¹æ nastêpuj¹cy wspó³dzielony plik z systemu:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>¯adna inna aplikacja nie zarejestrowa³a jego u¿ytkowania, jakkolwiek istnieje mo¿liwoœæ, ¿e inna aplikacja bêdzie wymagaæ istnienia tego pliku do normalnej pracy.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Czy potwierdzasz usuniêcie pliku?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Program instalacyjny nie mo¿e zrestartowaæ systemu. Zamknij wszystkie dzia³aj¹ce aplikacje i wybierz Ponów.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Aby w pe³ni ukoñczyæ instalacjê, wymagany jest restart komputera. Czy chcesz teraz zrestarowaæ system?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Aby w pe³ni ukoñczyæ deinstalacjê, wymagany jest restart komputera. Czy chcesz teraz zrestarowaæ system?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Prosimy wybraæ z listy jedn¹ z pozycji.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Wymagana ilosc wolnego miejsca na dysku:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Ilosc wolnego miejsca na dysku:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Nie mo¿na utworzyæ pliku rejestracyjnego:</ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Nie powiod³o siê sprawdzenie integralnoœci archiwum. Plik instalacyjny jest niekompletny prawdopodobnie z powodu niepe³nego pobrania pliku lub jego uszkodzenia.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Prosimy upewniæ siê, ¿e w stacji znajduje siê w³aœciwy dysk! Nie mo¿na odnaleŸæ nastêpuj¹cego pliku:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Nie mo¿na za³adowaæ wtyczki programowej</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Program instalacyjny nie mo¿e otworzyæ nastêpuj¹cego pliku archiwum (prawdopodobnie w napêdzie znajduje siê z³y dysk)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Brakuje pamiêci do dekompresji pliku.  Instalacja zostanie przerwana.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Program instalacyjny nie mo¿e utworzyæ nastêpuj¹cego folderu:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Wyst¹pi³ b³¹d dekompresji pliku</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Nie mo¿na otworzyæ pliku wyjœciowego</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Nie mo¿na otworzyæ pliku Ÿród³owego</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>B³¹d odczytu/zapisu</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>B³¹d odczytu z dysku - nieprawid³owy CRC</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Dysk jest przepe³niony.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Nierozpoznany b³¹d dekompresji pliku</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>B³¹d pominiêcia kopiowania pliku</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>B³¹d alokacji pamiêci</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>B³¹d odczytu zawartoœci pliku</ERR_FILE_READ>
+      <ERR_FILE_WRITE>B³¹d zapisu do pliku</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Nierozpoznany b³¹d kopiowania pliku</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Nie mo¿na utworzyæ wpisu deinstalacyjnego</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>B³¹d w LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>B³¹d w GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Kod b³êdu zwrócony przez DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Nieudana rejestracja obiektu COM (kontrolki ActiveX):</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Nieudana rejestracja Biblioteki Typu:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Brakuje Pamiêci</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Jeden lub kilka argumentów jest nieprawid³owych.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Operacja zapisu do pliku nie powiod³a siê.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Nie mo¿na otworzyæ biblioteki typu.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Operacja odczytu zawartoœci pliku nie powiod³a siê.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Biblioteka jest starego typu.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>Brak LCID w bibliotekach wspomagaj¹cych OLE.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Nie mo¿na za³adowaæ biblioteki typu lub DLL.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Nie mo¿na otworzyæ bazy rejestru systemowego.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>B³¹d domyœlnego FACILITY_STORAGE.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Nie mo¿na utworzyæ folderu danych deinstalacyjnych:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Nie mo¿na utworzyæ pliku danych deinstalacyjnych:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Nie mo¿na otworzyæ programu deinstalacyjnego do odczytu:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Nie mo¿na otworzyæ programu deinstalacyjnego do zapisu:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Nie mo¿na otworzyæ pliku konfiguracyjnego do zapisu:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Plik wykonywalny programu deinstalacyjnego nie mo¿e byæ nadpisany, poniewa¿ jest w tej chwili w u¿yciu. Zamknij wszystkie otwarte programy deinstalacyjne i wybierz Ponów, aby kontynuowaæ. Wybierz Anuluj, aby przerwaæ.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Nie mo¿na otworzyæ klucza Rejestru programu deinstalacyjnego do zapisu:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Nie mo¿na zapisaæ wartoœci klucza Rejestru programu deinstalacyjnego:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Nie mo¿na utworzyæ skrótu dla programu deinstalacyjnego:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Nie mo¿na zapisaæ zmiennych dla sesji</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Nie masz uprawnieñ do zarejestrowania w systemie licznika wspó³dzielenia plików. Instalacja powinna byæ uruchomiona z uprawnieniami Administratora.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Nie masz uprawnieñ do zarejestrowania w systemie obiektów COM (ActiveX). Instalacja powinna byæ uruchomiona z uprawnieniami Administratora.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Nie masz uprawnieñ do zarejestrowania w systemie Bibliotek Typów. Instalacja powinna byæ uruchomiona z uprawnieniami Administratora.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Nie mo¿na usun¹æ wpisu Rejestru dla powy¿szego obiektu COM (ActiveX). Plik nie bêdzie usuniêty z dysku.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Nieprawid³owy typ elementu danych programu deinstalacyjnego.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Nie odnaleziono elementu danych programu deinstalacyjnego.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Nieznany b³¹d.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Nie mo¿na odnaleŸæ podanego pliku.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Nie mo¿na za³adowaæ pliku.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Nie mo¿na zachowaæ pliku.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Nie mo¿na odnaleŸæ podanej œcie¿ki.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>Plik .exe jest nieprawid³owy (.exe nie Win32 lub b³¹d obrazu pliku).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>System operacyjny odmówi³ dostêpu do podanego pliku.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Skojarzenie rozszerzenia nazwy pliku jest niekompletne lub nieprawid³owe.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>Transakcja DDE nie mog³a byæ wykonana, poniewa¿ inna transakcja DDE by³a w toku.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>Nieudana transakcja DDE</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>Transakcja DDE nie mog³a byæ wykonana z powodu przekroczenia limitu czasu.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Nie znaleziono podanej biblioteki DLL.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Z podanym rozszerzeniem pliku nie jest skojarzona ¿adna aplikacja. B³¹d ten bêdzie równie¿ zwrócony, jeœli próbujesz wydrukowaæ plik nie do wydruku.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Zabrak³o pamiêci do wykonania operacji.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Nieudane uruchomienie pliku.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>Nieudane uruchomienie pliku - wymagany restart.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Nast¹pi³o naruszenie regu³ wspó³u¿ytkowania.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Nie mo¿na okreœliæ klasy przegl¹darki.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Nie mo¿na okreœliæ linii poleceñ przegl¹darki.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Skojarzona przegl¹darka nie jest plikiem wykonywalnym.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Brakuje pliku wykonywalnego skojarzonej przegl¹darki.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Podano niew³aœciwe Ÿród³o danych.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Podano niew³aœciw¹ œcie¿kê docelow¹.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Podany plik(i) Ÿród³owy nie istnieje.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Podany katalog docelowy nie istnieje.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Nie mo¿na skopiowaæ co najmniej jednego pliku.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Nie mo¿na usun¹æ co najmniej jednego pliku.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Nie mo¿na zaplanowaæ usuniêcia pliku podczas restartu systemu.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Nie mo¿na zaplanowaæ przeniesienia pliku podczas restartu systemu.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operacja przerwana przez u¿ytkownika.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Wyst¹pi³ b³¹d podczas uruchamiania funkcji wywo³ania zwrotnego.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>B³¹d - nie znaleziono funkcji wywo³ania zwrotnego.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Nie mo¿na okreœliæ wielkoœci informacji o wersji.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Nie mo¿na pobraæ informacji o wersji pliku.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Podana nazwa pliku zawiera niedozwolone znaki.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Docelowy plik ju¿ istnieje.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Wyst¹pi³ nieznany b³¹d.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Nieudana operacja uruchomienia programu podczas restartu - nie mo¿na otworzyæ klucza rejestru.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Nieudana operacja uruchomienia programu podczas restartu - nie mo¿na ustawiæ wartoœci klucza rejestru.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Nie mo¿na ustawiæ atrybutów pliku.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Nie mo¿na ustawiæ atrybutu kompresji pliku.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Nie mo¿na utworzyæ docelowego folderu.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Nie mo¿na utworzyæ kopii zapasowej jednego lub wiêcej plików.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Brakuje pamiêci.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Nie masz uprawnieñ do zainstalowania plików w powy¿szym folderze. Instalacja powinna byæ uruchomiona z uprawnieniami do administrowania systemu.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Instalacja nie mo¿e byæ kontynuowana, poniewa¿ powy¿szy dysk nie istnieje.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Brakuje wolnej przestrzeni na powy¿szym dysku do instalacji wymaganych plików.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Brakuje kontrolki o podanym ID na bie¿¹cym ekranie.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Podana kontrolka jest niew³aœciwego typu dla tej akcji</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Brakuje bie¿¹cego ekranu.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Nie mo¿na odnaleŸæ podanej kontrolki.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Nie mo¿na wyœwietliæ kontrolki.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Zbyt du¿y rozmiar pliku do jego odczytu.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Nie mo¿na otworzyæ podanego pliku.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Wyj¹tek zwrócony przez system kontroli wewnêtrznej.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Nie mo¿na przeprowadziæ akcji na wy³¹czonej kontrolce.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Nie mo¿na pokazaæ paska statusu.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Nie mo¿na ukryæ paska statusu.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Nie mo¿na umieœciæ tekstu na pasku statusu.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Nie mo¿na ustawiæ zakresu miernika postêpu pracy na pasku statusu.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Nie mo¿na ustawiæ pozycji miernika postêpu pracy na pasku statusu.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Nie mo¿na umieœciæ tekstu wiadomoœci na pasku statusu.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Nie mo¿na umieœciæ tekstu tytu³u na pasku statusu.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Nie mo¿na okreœliæ pozycji miernika postêpu pracy.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Nie mo¿na usun¹æ podanej sekcji pliku INI.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Nie mo¿na usun¹æ podanej wartoœci pliku INI.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Nie mo¿na ustawiæ podanej wartoœci.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Nie mo¿na utworzyæ podanego klucza Rejestru.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Nie mo¿na usun¹æ podanego klucza Rejestru.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Nie mo¿na usun¹æ podanej wartoœci Rejestru.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Podany klucz podrzêdny nie istnieje.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Nie mo¿na okreœliæ nazw kluczy podrzêdnych.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Nie mo¿na okreœliæ danych dla podanej wartoœci.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Nie mo¿na okreœliæ nazw wartoœci.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Nie mo¿na okreœliæ typu wartoœci rejestrowych.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Nie mo¿na ustawiæ danych rejestrowych dla podanej wartoœci.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Nie mo¿na dodaæ pozycji do Pola Listy.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Nie mo¿na wstawiæ pozycji do Pola Listy.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indeks poza zakresem.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Nie mo¿na okreœliæ wersji Systemu Operacyjnego.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Nie mo¿na zrestarowaæ systemu. Niedostêpna informacja o Systemie Operacyjnym.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Nie mo¿na zrestarowaæ systemu.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>B³¹d w LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>Nieudane wywo³anie GetProcAddress.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Kod b³êdu zwrócony przez DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>B³¹d w wywo³aniu LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>B³¹d w wywo³aniu RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>B³¹d - nazwa czcionki nie mo¿e byæ pusta.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Niew³aœciwa nazwa czcionki.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Nie mo¿na dodaæ czcionki do systemowej tablicy czcionek.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Nie mo¿na dodaæ czcionki do Rejestru.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Nie mo¿na usun¹æ czcionki z systemowej tablicy czcionek.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Nie mo¿na usun¹æ czcionki z Rejestru.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Nie mo¿na uzyskaæ informacji o u¿ytkowniku.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Podano nieznany format daty.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Podano nieznany format czasu.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Nie mo¿na okreœliæ domyœlnego ID jêzyka.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Nie mo¿na okreœliæ w³aœciwoœci ekranu.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Serwer nie by³ w stanie ukoñczyæ rejestracji wszystkich bibliotek typów u¿ywanych przez jego klasy.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Serwer nie by³ w stanie ukoñczyæ rejestracji wszystkich obiektów klas.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Serwer nie by³ w stanie usun¹æ wpisów dla wszystkich bibliotek typów u¿ywanych przez jego klasy.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Serwer nie by³ w stanie usun¹æ wpisów dla wszystkich obiektów klas.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Kod b³êdu zwrócony przez DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>B³¹d - nie mo¿na uruchomiæ przywracania systemu w trybie awaryjnym.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>B³¹d - przepe³nienie dysku twardego spowodowa³o prze³¹czenie przywracania systemu w tryb oczekiwania.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>B³¹d - nie mo¿na przemianowaæ pliku, gdy¿ plik o podanej nazwie ju¿ istnieje w tym katalogu.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Wyst¹pi³ b³¹d wewnêtrzny.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>B³¹d - nieprawid³owy numer porz¹dkowy.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Us³uga przywracania systemu jest wy³¹czona.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>B³¹d - przekroczenie limitu czasu wykonania operacji przywracania systemu.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Nie powiod³o siê okreœlenie liczby uruchomionych procesów.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Nie powiod³o siê przeliczenie procesów.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Nie powiod³o siê uzyskanie uchwytu procesu.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Nie mo¿na otworzyæ pliku tekstowego.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Zbyt du¿y rozmiar pliku tekstowego do jego odczytu.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>B³¹d - nie mo¿na zachowaæ pliku tekstowego.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>B³¹d - niew³aœciwy uchwyt okna.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>B³¹d - nie mo¿na ukryæ okna.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>B³¹d - nie mo¿na zmaksymalizowaæ okna.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>B³¹d - nie mo¿na zminimalizowaæ okna.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>B³¹d - nie mo¿na przywróciæ rozmiaru okna.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>B³¹d - nie mo¿na pokazaæ okna.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>B³¹d - nie mo¿na wysun¹æ napêdu, akcja nieobs³ugiwana.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>B³¹d - nie mo¿na obliczyæ wolnej przestrzeni dyskowej.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>B³¹d - nie mo¿na obliczyæ ca³kowitego rozmiaru.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>B³¹d - nie mo¿na obliczyæ zajêtej przestrzeni dyskowej.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Nie mo¿na utworzyæ folderu.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Podany folder nie istnieje.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Podana œcie¿ka nie odnosi siê do folderu.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Nie mo¿na usun¹æ folderu.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Nie mo¿na ustawiæ bie¿¹cego folderu.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Podany folder docelowy ju¿ istnieje.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Nazwa folderu zawiera niedozwolone znaki.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Nie mo¿na usun¹æ nadrzêdnego folderu.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Nie mo¿na utworzyæ folderu dla skrótu.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Nie mo¿na utworzyæ odwo³ania do skrótu.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>B³¹d - opis skrótu przekracza dozwolonych 250 znaków.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Nie mo¿na usun¹æ skrótu.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Nieznany folder warstwy.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Zwrócona nazwa folderu jest niew³aœciwa.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Nie mo¿na za³adowaæ podanej biblioteki DLL.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Nie mo¿na odnaleŸæ podanej funkcji w bibliotece DLL.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Nie mo¿na utworzyæ sesji internetowej.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Nie mo¿na utworzyæ po³¹czenia HTTP.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Nie mo¿na otworzyæ ¿¹dania.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Nieudane wys³anie ¿¹dania.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Nie mo¿na otworzyæ docelowego pliku do zapisu.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Niew³aœciwa odpowiedŸ HTTP wys³ana przez serwer.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Wyst¹pi³ b³¹d podczas pobierania informacji z serwera.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Wyst¹pi³ b³¹d podczas próby zapisu do pliku docelowego.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>U¿ytkownik przerwa³ akcjê HTTP.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Wyst¹pi³ b³¹d podczas próby zapisu do pamiêci. (Brakuje pamiêci?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Wyst¹pi³ b³¹d podczas próby podania nazwy u¿ytkownika dla proxy.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Wyst¹pi³ b³¹d podczas próby podania has³a dla proxy.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>¯¹danie by³o niezrozumia³e dla serwera. (B³¹d w sk³adni)</ERR_WEB_400>
+      <ERR_WEB_403>Dostêp jest wzbroniony.</ERR_WEB_403>
+      <ERR_WEB_404>¯¹dany adres URL nie zosta³ odnaleziony na serwerze.</ERR_WEB_404>
+      <ERR_WEB_500>Wyst¹pi³ wewnêtrzny b³¹d na serwerze.</ERR_WEB_500>
+      <ERR_WEB_503>Serwer jest przepe³niony.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Nie mo¿na zarejestrowaæ klasy do utworzenia winiety programu.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Nie mo¿na utworzyæ obrazu winiety programu.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Wyst¹pi³ b³¹d podczas pobierania nazwy bie¿¹cego ekranu. Brak bie¿¹cego ekranu.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Nie mo¿na pobraæ wartoœci.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Nie mo¿na zachowaæ wartoœci.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>B³¹d - nie mo¿na pobraæ uchwytu okna aplikacji.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Nie odnaleziono pakietu.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Wyst¹pi³ b³¹d podczas analizowania podanej funkcji.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Wyst¹pi³ b³¹d krytyczny podczas wywo³ania funkcji.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Wyst¹pi³ b³¹d alokacji pamiêci podczas wywo³ania funkcji.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Podano niew³aœciwy indeks. Indeksy musz¹ byæ wiêksze lub równe -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Podana œcie¿ka jest d³u¿sza od MAX_PATH lub przekracza 260 znaków.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Nieprawid³owy plik konfiguracyjny deinstalacji.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Nieprawid³owa dana tablicowa.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Akcja niedostêpna podczas deinstalacji.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Nie mo¿na odnaleŸæ podanej kategorii.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Nie mo¿na ustawiæ w³aœciwoœci kategorii.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Termin wa¿noœci programu instalacyjnego wygas³ - program zostanie teraz przerwany.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Program instalacyjny zosta³ uruchomiony dozwolon¹ maksymalnie iloœæ razy - program zostanie teraz przerwany.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Program instalacyjny nie mo¿e otworzyæ Rejestru dla dokonania wpisu - program zostanie teraz przerwany.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Podana wartoœæ liczbowa jest niew³aœciwa dla danej funkcji.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Nieprawid³owy numer seryjny.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Nie mo¿na uzyskaæ informacji o woluminie.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Nieprawid³owy tryb przewijania tekstu.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Nazwa œcie¿ki nie mo¿e zawieraæ nastêpuj¹cych znaków:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Brak aktualnie wyœwietlanego ekranu.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Nieudany przeskok ekranu.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Wyst¹pi³ b³¹d podczas próby przegl¹du listy us³ug serwisowych.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Wyst¹pi³ b³¹d podczas próby wys³ania zapytania do us³ug serwisowych.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Nie mo¿na odnaleŸæ us³ugi serwisowej.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Nie mo¿na wykonaæ polecenia Kontynuuj.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Nie mo¿na wykonaæ polecenia Stop.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Nie mo¿na wykonaæ polecenia Start.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Nie mo¿na wykonaæ polecenia Pauza.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Nie mo¿na wykonaæ polecenia Usuñ.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Nie mo¿na wykonaæ polecenia Utwórz.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Brak dostêpu do uchwytu bazy danych us³ugi menad¿era kontroli.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Nast¹pi³o cykliczne odwo³anie do us³ugi.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Nazwa ekranu ju¿ istnieje w bazie us³ugi menad¿era kontroli jako nazwa us³ugi albo nazwa innego ekranu.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Uchwyt do bazy danych us³ugi menad¿era kontroli jest nieprawid³owy.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Podana nazwa us³ugi jest nieprawid³owa.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Podany parametr jest nieprawid³owy.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Podana nazwa konta u¿ytkownika nie istnieje.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Podana us³uga ju¿ istnieje w bazie danych.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Wyst¹pi³ b³¹d ogólny ODBC.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Wielkoœæ bufora by³a niew³aœciwa.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>Wartoœæ hWnd by³a niew³aœciwa.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Wartoœæ ci¹gu znaków by³a niew³aœciwa.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Podany typ zlecenia by³ niew³aœciwy.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Nie odnaleziono komponentu w Rejestrze.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Zmienna Sterownika by³a niew³aœciwa - nie odnaleziono jej w Rejestrze.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Niew³aœciwe s³owo kluczowe=dwucz³onowa nazwa.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>Niew³aœciwy DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>Niew³aœciwy INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Operacja zadana przez parametr Zlecenia nie powiod³a siê.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>Podano niew³aœciw¹ œcie¿kê.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Wyst¹pi³ b³¹d podczas próby za³adowania sterownika lub biblioteki translacyjnej.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>Niew³aœciwa lista s³ów kluczowych=u¿yto dwucz³onowych nazw.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Niew³aœciwy plik rejestracyjny.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Zlecenie zosta³o anulowane przez u¿ytkownika.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Wyst¹pi³ b³¹d podczas próby zwiêkszenia lub zmniejszenia licznika u¿ycia komponentu.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Nie mo¿na utworzyæ DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Nie mo¿na zapisaæ sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Nie mo¿na usun¹æ DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>Nieudane dzia³anie funkcji z powodu braku pamiêci.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Wyjœciowy ci¹g znaków zosta³ skrócony.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Nie mo¿na za³adowaæ ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>Nieudane polecenie GetProc.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Okno dialogowe nie mo¿e byæ wyœwietlane podczas dyskretnej instalacji lub deinstalacji.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Podana œcie¿ka jest niew³aœciwa.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Pole nie mo¿e byæ puste.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Nastêpuj¹ce znaki s¹ niedozwolone:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Ci¹g znaków nie zawiera prawid³owych, 64-bitowo kodowanych danych.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Wyst¹pi³ b³¹d podczas próby dekodowania 64-bitowo kodowanego ci¹gu znaków (zwykle oznacza to uszkodzenie ci¹gu znaków - brakuj¹ce bajty w ci¹gu znaków?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Nieprawid³owy nag³ówek pliku - plik nie jest plikiem blowfish Indigo Rose.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Niekompatybilny plik blowfish. (Plik albo zosta³ uszkodzony albo u¿ywa niekompatybilnego schematu zabezpieczeñ.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>B³¹d ³adowania pliku XML.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>B³¹d zapisu pliku XML.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Nie za³adowano prawid³owego dokumentu XML. (Dokument jest pusty lub Ÿle skonstruowany.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Podana œcie¿ka XML jest nieprawid³owa lub nie zosta³a odnaleziona.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Wyst¹pi³ b³¹d podczas próby ustawienia wartoœci.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Wyst¹pi³ b³¹d podczas próby ustawienia atrybutu.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Nieprawid³owa nazwa atrybutu. (Nazwy atrybutów nie mog¹ zawieraæ spacji.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Nie mo¿na usun¹æ podanego elementu.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Nie mo¿na usun¹æ podanego atrybutu.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Podana œcie¿ka XML nie zawiera ¿adnych elementów.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Element na podanej œcie¿ce XML nie posiada ¿adnych atrybutów.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Wyst¹pi³ b³¹d podczas próby wstawienia XML.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Nieprawid³owy tryb wstawienia.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Nie powiod³o siê za³adowanie MSI.DLL. Instalator Windows nie jest zainstalowany.</ERR_MSI_MSINOTINSTALLED>
+<ERR_MSI_FUNCTIONNOTFOUND>Nie powiod³o siê za³adowanie funkcji z MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+<ERR_MSI_INSTALL_USEREXIT>U¿ytkownik anulowa³ instalacjê.</ERR_MSI_INSTALL_USEREXIT>
+<ERR_MSI_INSTALL_FAILURE>Podczas instalacji wyst¹pi³ b³¹d krytyczny.</ERR_MSI_INSTALL_FAILURE>
+<ERR_MSI_INSTALL_SUSPEND>Instalacja wstrzymana, niekompletna.</ERR_MSI_INSTALL_SUSPEND>
+<ERR_MSI_UNKNOWN_PRODUCT>B³¹d - nieznany produkt.</ERR_MSI_UNKNOWN_PRODUCT>
+<ERR_MSI_UNKNOWN_FEATURE>B³¹d - nieznana cecha.</ERR_MSI_UNKNOWN_FEATURE>
+<ERR_MSI_UNKNOWN_COMPONENT>B³¹d - nieznany komponent.</ERR_MSI_UNKNOWN_COMPONENT>
+<ERR_MSI_UNKNOWN_PROPERTY>B³¹d - nieznana w³aœciwoœæ.</ERR_MSI_UNKNOWN_PROPERTY>
+<ERR_MSI_INVALID_HANDLE_STATE>Uchwyt okna jest w nieprawid³owym stanie.</ERR_MSI_INVALID_HANDLE_STATE>
+<ERR_MSI_BAD_CONFIGURATION>Dane konfiguracyjne MSI s¹ nieprawid³owe.</ERR_MSI_BAD_CONFIGURATION>
+<ERR_MSI_INDEX_ABSENT>Brakuje kwalifikatora komponentu.</ERR_MSI_INDEX_ABSENT>
+<ERR_MSI_INSTALL_SOURCE_ABSENT>ród³o instalacyjne tego produktu nie jest dostêpne.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+<ERR_MSI_PRODUCT_UNINSTALLED>Produkt jest odinstalowany.</ERR_MSI_PRODUCT_UNINSTALLED>
+<ERR_MSI_BAD_QUERY_SYNTAX>Sk³adnia SQL jest nieprawid³owa lub nieobs³ugiwana.</ERR_MSI_BAD_QUERY_SYNTAX>
+<ERR_MSI_INVALID_FIELD>Pole rekordu nie istnieje.</ERR_MSI_INVALID_FIELD>
+<ERR_MSI_INSTALL_SERVICE_FAILURE>Brak dostêpu do us³ugi Instalatora Windows.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+<ERR_MSI_INSTALL_PACKAGE_VERSION>B³¹d wersji pakietu.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+<ERR_MSI_INSTALL_ALREADY_RUNNING>Inna instalacja jest ju¿ uruchomiona.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+<ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>Nie mo¿na otworzyæ pakietu instalacyjnego.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+<ERR_MSI_INSTALL_PACKAGE_INVALID>Nie mo¿na otworzyæ pakietu instalacyjnego - prawdopodobnie jest uszkodzony.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+<ERR_MSI_INSTALL_UI_FAILURE>Wyst¹pi³ b³¹d uruchomienia interfejsu u¿ytkownika Instalatora Windows.</ERR_MSI_INSTALL_UI_FAILURE>
+<ERR_MSI_INSTALL_LOG_FAILURE>Wyst¹pi³ b³¹d otwarcia pliku dziennika instalacji.</ERR_MSI_INSTALL_LOG_FAILURE>
+<ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>Jêzyk tego pakietu instalacyjnego nie jest obs³ugiwany przez twój system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+<ERR_MSI_INSTALL_PACKAGE_REJECTED>System zabezpieczeñ nie zezwala na uruchomienie instalacji.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+<ERR_MSI_FUNCTION_NOT_CALLED>Funkcja nie mo¿e byæ wykonana.</ERR_MSI_FUNCTION_NOT_CALLED>
+<ERR_MSI_FUNCTION_FAILED>Wykonanie funkcji zosta³o przerwane.</ERR_MSI_FUNCTION_FAILED>
+<ERR_MSI_INVALID_TABLE>Podano nieprawid³ow¹ lub nieznan¹ tablicê.</ERR_MSI_INVALID_TABLE>
+<ERR_MSI_DATATYPE_MISMATCH>Podane dane s¹ nieprawid³owego typu.</ERR_MSI_DATATYPE_MISMATCH>
+<ERR_MSI_UNSUPPORTED_TYPE>Dane tego typu nie s¹ obs³ugiwane.</ERR_MSI_UNSUPPORTED_TYPE>
+<ERR_MSI_CREATE_FAILED>Nie powiod³o siê uruchomienie us³ugi Instalatora Windows.</ERR_MSI_CREATE_FAILED>
+<ERR_MSI_INSTALL_TEMP_UNWRITABLE>Folder Temp jest przepe³niony lub niedostêpny.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+<ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>Ten pakiet instalacyjny nie jest obs³ugiwany przez tê platformê.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+<ERR_MSI_INSTALL_NOTUSED>Komponent instalacyjny nie jest u¿ywany na tej maszynie.</ERR_MSI_INSTALL_NOTUSED>
+<ERR_MSI_INSTALL_TRANSFORM_FAILURE>Wyst¹pi³ b³¹d podczas wykonywania przekszta³ceñ.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+<ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>Nie mo¿na otworzyæ tego pakietu aktualizacyjnego.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+<ERR_MSI_PATCH_PACKAGE_INVALID>Nie mo¿na otworzyæ tego pakietu aktualizacyjnego - prawdopodobnie jest nieprawid³owy.</ERR_MSI_PATCH_PACKAGE_INVALID>
+<ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>Instalator Windows nie mo¿e sprocesowaæ tego pakietu ³atki - nie jest obs³ugiwany.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+<ERR_MSI_PRODUCT_VERSION>Inna wersja tego produktu jest ju¿ zainstalowana.</ERR_MSI_PRODUCT_VERSION>
+<ERR_MSI_INVALID_COMMAND_LINE>Nieprawid³owy argument wiersza poleceñ.</ERR_MSI_INVALID_COMMAND_LINE>
+<ERR_MSI_INSTALL_REMOTE_DISALLOWED>Instalacja w sesji klienta serwera terminalowego nie jest dozwolona dla aktualnego u¿ytkownika.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+<ERR_MSI_SUCCESS_REBOOT_INITIATED>Instalator zainicjowa³ restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+<ERR_MSI_PATCH_TARGET_NOT_FOUND>Instalator nie mo¿e zainstalowaæ tej aktualizacji poniewa¿ program, który ona aktualizuje nie jest zainstalowany lub jest w innej wersji od obs³ugiwanej przez ni¹. </ERR_MSI_PATCH_TARGET_NOT_FOUND>
+<ERR_MSI_PATCH_PACKAGE_REJECTED>Pakiet aktualizacyjny nie jest dozwolony przez system zabezpieczeñ.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+<ERR_MSI_INSTALL_TRANSFORM_REJECTED>Jedno lub wiêcej z dostosowañ nie jest dozwolone przez system zabezpieczeñ.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+<ERR_MSI_INSTALL_REMOTE_PROHIBITED>Instalator Windows nie dopuszcza instalacji za poœrednictwem Zdalnego Pulpitu.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+<ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>Pakiet aktualizacyjny nie jest usuwalnym pakietem.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+<ERR_MSI_UNKNOWN_PATCH>Pakiet aktualizacyjny nie mo¿e byæ zastosowany do tego produktu. Nieznany pakiet aktualizacyjny.</ERR_MSI_UNKNOWN_PATCH>
+<ERR_MSI_PATCH_NO_SEQUENCE>Nie mo¿na odnaleŸæ prawid³owej sekwencji w zbiorze uaktualnieñ.</ERR_MSI_PATCH_NO_SEQUENCE>
+<ERR_MSI_PATCH_REMOVAL_DISALLOWED>Usuniêcie aktualizacji jest niedozwolone przez system zabezpieczeñ.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+<ERR_MSI_INVALID_PATCH_XML>Dane aktualizacji XML s¹ nieprawid³owe.</ERR_MSI_INVALID_PATCH_XML>
+<ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Nie powiod³o siê zainstalowanie aktualizacji na prawach administratora, w imieniu u¿ytkownika lub na stacji, dla aplikacji, która jest uruchomiona.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+<ERR_MSI_INVALID_PARAMETER>Parametr przekazany do funkcji jest nieprawid³owy.</ERR_MSI_INVALID_PARAMETER>
+<ERR_MSI_MORE_DATA>Bufor jest za ma³y, aby pomieœciæ dane.</ERR_MSI_MORE_DATA>
+<ERR_MSI_SUCCESS_REBOOT_REQUIRED>Aby dokoñczyæ instalacjê, wymagany jest restart komputera.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+<ERR_ARCHIVE_CREATE_DEST_FOLDER>Nie powiod³o siê utworzenie docelowego folderu.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+<ERR_ARCHIVE_FIND_FILE>Nie powiod³o siê odnalezienie pliku w archiwum.</ERR_ARCHIVE_FIND_FILE>
+<ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Nie powiod³o siê wyodrêbnienie zdekompresowanego pliku.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+<ERR_ARCHIVE_EXTRACT_COMPRESSED>Nie powiod³o siê wyodrêbnienie skompresowanego pliku.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+<ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Niew³aœciwa œcie¿ka EXTRACTMSI w wierszu poleceñ.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+<ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Nie powiod³o siê uruchomienie skryptu funkcji globalnych.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+<ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Nie powiod³o siê uruchomienie instalacji - b³êdny wiersz poleceñ MSIExec.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+<ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Nie powiod³o siê uruchomienie instalacji.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+<ERR_SCRIPT_MSI_FILE_NOT_FOUND>Nie powiod³o siê odnalezienie pliku instalacyjnego.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+<ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Niew³aœciwy adres URL do pobrania pliku instalacyjnego.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+<ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Nie powiod³o siê pobranie pliku instalacyjnego.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+<ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Nie powiod³o siê utworzenie folderu ekstrakcyjnego instalatora.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+<ERR_SCRIPT_EXTRACT_SETUP_FAILED>Nie powiod³o siê wyodrêbnienie pliku instalacyjnego.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+<ERR_MSI_FILE_INVALID>Plik MSI jest niew³aœciwy lub nie zawiera prawid³owej wersji okreœlonej informacji.</ERR_MSI_FILE_INVALID>
+<ERR_MSI_INVALID_DATA>Plik MSI zawiera b³êdne dane.</ERR_MSI_INVALID_DATA>
+<ERR_MSI_FAIL>Wyst¹pi³ nieprzewidziany b³¹d.</ERR_MSI_FAIL>
+<ERR_MSI_INVALID_HANDLE>Zosta³ u¿yty niew³aœciwy uchwyt okna.</ERR_MSI_INVALID_HANDLE>
+   </Messages>
+</SUF70Messages>

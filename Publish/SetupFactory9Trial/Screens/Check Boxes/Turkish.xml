@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Turkish</Name>
+<Default>0</Default>
+<Primary>31</Primary>
+<Secondary/>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Kurulumu</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Seçenekler</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ýstediðiniz seçenekleri seçin ve devam etmek için Ýleri 'ye basýn</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Ýleri &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Geri</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Ý&amp;ptal</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Yardým</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Lütfen aþaðýdaki seçeneklerden birini seçin:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>Not: Ýstediðiniz kadar seçenek seçebilirsiniz.
+</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+<IDS_CTRL_CHECK_BOX_01>Seçenek 01</IDS_CTRL_CHECK_BOX_01>
+<IDS_CTRL_CHECK_BOX_02>Seçenek 02</IDS_CTRL_CHECK_BOX_02>
+<IDS_CTRL_CHECK_BOX_03>Seçenek 03</IDS_CTRL_CHECK_BOX_03>
+<IDS_CTRL_CHECK_BOX_04>Seçenek 04</IDS_CTRL_CHECK_BOX_04>
+</Messages>
+</SUF70Messages>

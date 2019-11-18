@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Chinese (Simplified)</Name>
+<Default>0</Default>
+<Primary>4</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Ð¶ÔØ³ÌÐò</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>»¶Ó­</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>»¶Ó­Ê¹ÓÃ %ProductName% %ProductVer% Ð¶ÔØ³ÌÐò</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÏÂÒ»²½(&N) &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; ·µ»Ø(&B)</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>È¡Ïû(&C)</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>°ïÖú(&H)</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>¸Ã³ÌÐò½«Ð¶ÔØ %ProductName% %ProductVer%¡£
+
+Èç¹û %ProductName% µ±Ç°ÕýÔÚÔËÐÐ£¬¼ÌÐøÐ¶ÔØÖ®Ç°Çë½«Æä¹Ø±Õ¡£
+
+·ñÔò£¬Çëµ¥»÷¡°ÏÂÒ»²½¡±¼ÌÐø¡£
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Ð¶ÔØ %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,168 @@
+<DependencyTemplate>
+<Dependency>
+<Name>Visual Basic 5.0 (SP3)</Name>
+<RuntimeTempFolder>vb5sp3</RuntimeTempFolder>
+<RevisionDate>Thursday, October 07, 2004</RevisionDate>
+<Description>Installs runtime files required by Visual Basic 5.0 (SP3) applications. 
+
+All programs developed with Microsoft Visual Basic 5.0 require a set of core run time files in order to run. These files include:
+
+ Msvbvm50.dll    05.00.8244
+ Oleaut32.dll       2.20.4118
+ Olepro32.dll       5.0.4118
+ Stdole2.tlb         2.20.4118
+ Asycfilt.dll          2.20.4118
+ Comcat.dll         4.71
+
+NOTE: Please be aware that in addition to these core runtime files you will need to include the executable file(s) that you created with Visual Basic as well as other support files in your project. Also be aware that Visual Basic programs often use other controls outside of the core set of runtime files.
+
+For more information about Visual Basic 5 (SP3), please see:
+
+Microsoft Knowledge Base Article - 180071 -  FILE: Msvbvm50.exe Installs Visual Basic 5.0 Run-Time Files
+http://support.microsoft.com/default.aspx?kbid=180071</Description>
+<DetectScript>function IsVB5SP3Installed()
+
+	-- log: the VB5 detection has started.
+	SetupData.WriteToLogFile("Success\tVB5 SP3 Module: Detection script started.\r\n", true);
+
+	-- Get the version of file Msvbvm50.dll
+	local strVisualBasicRuntimeFile = _SystemFolder.."\\msvbvm50.dll";
+	
+	-- Check if msvbvm50.dll is currently installed.
+	if(not File.DoesExist(strVisualBasicRuntimeFile))then
+
+		-- log: msvbvm50.dll could not be found, so the runtime will be installed.
+		SetupData.WriteToLogFile("Info\tVB5 SP3 Module: No version of msvbvm50.dll was found. The VB5 SP3 runtime will be installed.\r\n", true);
+
+		-- msvbvm50.dll (part of the run time) is not installed, so install the runtime.
+		return false;
+	end
+	
+	-- Get the version information from the msvbvm50.dll.
+	tblFileInfo = File.GetVersionInfo(strVisualBasicRuntimeFile);
+	if(not tblFileInfo)then
+
+		-- log: couldn't get version info for msvbvm50.dll, so the runtime will be installed.
+		SetupData.WriteToLogFile("Info\tVB5 SP3 Module: Unable to get version info for msvbvm50.dll. The VB5 SP3 runtime will be installed.\r\n", true);
+
+		-- The version information could not be retrieved from msvbvm50.dll, so install the runtime.
+		return false;
+	end
+	
+	-- Compare the file versions.
+	local nCompareResult = String.CompareFileVersions(tblFileInfo.FileVersion,"5.2.82.44");
+	if(nCompareResult == -1)then
+
+		-- log: looks like the msvbvm50.dll is OFN
+		SetupData.WriteToLogFile("Info\tVB5 SP3 Module: Older version of msvbvm50.dll detected. The VB5 SP3 runtime will be installed.\r\n", true);
+
+		-- The installed version is older than the newest version, so install the module.
+		return false;
+	else
+
+		-- log: looks like the msvbvm50.dll is up to date
+		SetupData.WriteToLogFile("Info\tVB5 SP3 Module: Current version of msvbvm50.dll detected. The VB5 SP3 runtime is already installed.\r\n", true);
+
+		-- The installed version is up to date, so don't install the module.
+		return true;
+	end
+end</DetectScript>
+<DetectFunction>IsVB5SP3Installed</DetectFunction>
+<InstallScript>-- Variables used in the installation actions:
+local strMessage = 
+[[Setup has detected that your Microsoft Visual Basic 5.0 run-time files are out of date.
+
+Click OK to install this technology now, or Cancel to abort the setup.]];
+local strDialogTitle = "Technology Required";
+local bShowUserPrompt = true; -- set this to true to ask user whether to install the module
+local bRunInstallFile = true; -- sets default choice (whether to run the setup by default)
+local strRuntimeSupportFolder = SessionVar.Expand("%TempLaunchFolder%\\vb5sp3");
+local strFileToRun = strRuntimeSupportFolder.."\\Msvbvm50.exe";
+
+-----------------------------------------------------------------------------------------
+
+-- log: the VB5 installation has started.
+SetupData.WriteToLogFile("Success\tVB5 SP3 Module: Installation script started.\r\n", true);
+
+-- Delete temporary file and runtime support folder (with error checking)
+local function PerformCleanUp()
+
+	File.Delete(strFileToRun);
+
+	error = Application.GetLastError();
+	if error ~= 0 then
+		SetupData.WriteToLogFile("Error\tVB5 SP3 Module: Unable to delete temp file (".._tblErrorMessages[error]..")\r\n", true);
+	end
+
+	Folder.Delete(strRuntimeSupportFolder);
+
+	error = Application.GetLastError();
+	if error ~= 0 then
+		SetupData.WriteToLogFile("Error\tVB5 SP3 Module: Unable to delete temp folder (".._tblErrorMessages[error]..")\r\n", true);
+	end
+end
+
+-- Check if the dialog should be displayed asking whether or not they want to install the module.
+if(bShowUserPrompt)then
+	local nDialogResult = Dialog.Message(strDialogTitle,strMessage,MB_OKCANCEL,MB_ICONEXCLAMATION);
+	if(nDialogResult == IDOK)then
+		-- The user chose to install the module.
+		bRunInstallFile = true;
+
+		-- log: the user wants to install it
+		SetupData.WriteToLogFile("Success\tVB5 SP3 Module: User confirmation received, we are ready to install.\r\n", true);
+		
+	else
+		-- The user chose not to install the module.
+		bRunInstallFile = false;
+
+		-- log: the user said no
+		SetupData.WriteToLogFile("Success\tVB5 SP3 Module: User chose NOT to install the module.\r\n", true);
+	end
+end
+
+-- Check if the user wants to install the runtime.
+if(bRunInstallFile) then
+
+	-- log: go go go!
+	SetupData.WriteToLogFile("Success\tVB5 SP3 Module: Running VB5 installer.\r\n", true);
+
+	-- The "/R:N" command line switch tells the VB install not to show the
+	-- reboot screen if necessary. We will detect that through the setup's
+	-- process return code and set the internal _NeedsReboot variable if necessary
+	-- Note: You can add the command line swicth "/Q" to run the install in silent mode
+	local nResult = File.Run(strFileToRun,"/R:N","",SW_SHOWNORMAL,true);
+	if(nResult == 3010) then
+		-- VB install indicated that it needs reboot to be complete
+		-- Set Setup Factory's reboot variable so that the reboot is just
+		-- performed at the end of the install
+		_NeedsReboot = true;
+		
+		-- log: need to reboot
+		SetupData.WriteToLogFile("Success\tVB5 SP3 Module: VB5 installer has signalled that it needs to reboot.\r\n", true);
+		
+	end
+	
+	-- Delete the runtime installer file and remove the temp folder
+	PerformCleanUp();
+	
+	-- log: all done!
+	SetupData.WriteToLogFile("Success\tVB5 SP3 Module: VB5 runtime installation complete.\r\n", true);
+	
+else
+	-- The user chose not to install the runtime so delete the run time installer file,
+	-- remove the temp folder and then exit the setup.
+	PerformCleanUp();
+
+	-- log: all done!
+	SetupData.WriteToLogFile("Success\tVB5 SP3 Module: VB5 runtime was not installed.\r\n", true);
+
+	Application.Exit();
+	
+end
+</InstallScript>
+<SupportFiles>
+<File>#SUFDIR#\Dependencies\vb5sp3\Msvbvm50.exe</File>
+</SupportFiles>
+</Dependency>
+</DependencyTemplate>

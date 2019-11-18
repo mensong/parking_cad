@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Russian</Name>
+		<Default>0</Default>
+		<Primary>25</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Установка %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Установка ярлыков</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Куда установить ярлыки программы?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далее &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Отмена</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Справка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ярлыки программы будут установлены в указанной папке. Вы также можете ввести другое имя папки, либо выбрать существующую папку из списка.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Папка для ярлыков:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_RADIOBTN_PERUSER>Создать ярлыки только для данного пользователя</IDS_CTRL_RADIOBTN_PERUSER>
+		<IDS_CTRL_RADIOBTN_ALLUSERS>Создать ярлыки для всех пользователей</IDS_CTRL_RADIOBTN_ALLUSERS>
+		<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+	</Messages>
+</SUF70Messages>

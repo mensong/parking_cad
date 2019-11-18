@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Romanian</Name>
+<Default>0</Default>
+<Primary>24</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Dezinstalare %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Dezinstalarea a terminat</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Dezinstalarea s-a terminat cu succes.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Terminare</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Inapoi</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulare</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&jutor</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Dezinstalarea %ProductName% %ProductVer% s-a terminat cu succes.
+
+Click Terminare pentru a iesi.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Dezinstalare cu succes</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

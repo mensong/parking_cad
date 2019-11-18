@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Romanian</Name>
+<Default>0</Default>
+<Primary>24</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalare %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Optiuni</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Alegeti optiunile dorite si click pe Urmatorul pentru a continua.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Urmatorul &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Inapoi</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulare</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&jutor</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_LABEL_01>Alegeti o optiune sau scrieti un raspuns:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_COMBOBOX_01_DEFAULT/>
+<IDS_CTRL_COMBOBOX_01_ITEMS>Obiectul A
+Obiectul B
+Obiectul C</IDS_CTRL_COMBOBOX_01_ITEMS>
+<IDS_CTRL_STATICTEXT_LABEL_02>Alegeti o optiune:</IDS_CTRL_STATICTEXT_LABEL_02>
+<IDS_CTRL_COMBOBOX_02_DEFAULT/>
+<IDS_CTRL_COMBOBOX_02_ITEMS>Roca
+Hartie
+Cutite</IDS_CTRL_COMBOBOX_02_ITEMS>
+</Messages>
+</SUF70Messages>

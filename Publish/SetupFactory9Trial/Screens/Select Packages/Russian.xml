@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Russian</Name>
+		<Default>0</Default>
+		<Primary>25</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Установка %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Выбор компонентов</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Какие компоненты должны быть установлены?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далее &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Отмена</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Справка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Перечень компонентов:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Текущий выбор требует не менее %SpaceRequired% на диске.</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+		<IDS_CTRL_STATICTEXT_BODY/>
+	</Messages>
+</SUF70Messages>

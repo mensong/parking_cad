@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<SUF70Messages>
+<Language>
+<Name>Polish</Name>
+<Default>0</Default>
+<Primary>21</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalacja %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Tekst tytu³u</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Tekst podtytu³u</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalej &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Powrót</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Anu&luj</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Po&moc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+</Messages>
+</SUF70Messages>
