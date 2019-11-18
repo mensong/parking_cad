@@ -34,6 +34,8 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
 
+Authenticate g_auth;
+
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class CArxProject2App : public AcRxArxApp {
@@ -45,14 +47,13 @@ public:
 		// TODO: Load dependencies here
 
 		//授权检查
-		Authenticate auth;
-		auth.setDesKey("#B-G-Y++");
+		g_auth.setDesKey("#B-G-Y++");
 		
-		std::string s = auth.localEncode(20191201, "李明生");
+		std::string s = g_auth.localEncode(20191201, "杨兵");
 
 		AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
-		auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
-		int res = auth.check();
+		g_auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
+		int res = g_auth.check();
 		if (res == 1)
 		{
 			MessageBox(NULL, AcString(_T("初始化失败！")), _T("初始化失败"), MB_OK | MB_ICONERROR);
@@ -74,10 +75,10 @@ public:
 			return AcRx::kRetError;
 		}
 
-		std::string user = auth.getCheckedUser();
-		std::string serial = auth.getCheckedSerial();
-		std::string license = auth.getCheckedLicenceCode();
-		DWORD		expireTime = auth.getCheckedExpireTime();
+		std::string user = g_auth.getCheckedUser();
+		std::string serial = g_auth.getCheckedSerial();
+		std::string license = g_auth.getCheckedLicenceCode();
+		DWORD		expireTime = g_auth.getCheckedExpireTime();
 		acutPrintf(_T("\n授权信息 - 用户名:%s  到期时间:%u\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
 
 		// You *must* call On_kInitAppMsg here

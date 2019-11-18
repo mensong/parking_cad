@@ -1,0 +1,9 @@
+{
+   "params" : {
+      "posturl" : "http://10.8.202.199:80/park",
+	  "geturl" : "http://10.8.202.199:80/query/"
+   },
+   "layernames" : {
+      "axislayer" : "axis"  
+   }
+}
