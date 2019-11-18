@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>ÄéåõèÝôçóç åãêáôÜóôáóçò %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ÓçìáíôéêÝò Ðëçñïöïñßåò</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ðáñáêáëþ äéáâÜóôå ôéò ðáñáêÜôù ðëçñïöïñßåò.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÓõíÝ&÷åéá &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; Åðéóôñï&öÞ</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>ÂïÞ&èåéá</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;ÐñïâïëÞ ÊåéìÝíïõ HTML&lt;/h1&gt;
+
+&lt;p&gt;Ìðïñåßôå íá ÷ñçóéìïðïéÞóåôå üëá ôéò ãíùóôÝò åôéêÝôåò HTML ðïõ õðïóôçñßæåé ï Internet Explorer, üðùò:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Bold&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;Italic&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="green"&gt;×ñþìáôá ãñáììáôïóåéñþí&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="2"&gt;ÌåãÝèç ãñáììáôïóåéñþí&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.indigorose.com"&gt;ÓõíäÝóìïõò&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ìðïñåßôå íá ÷ñçóéìïðïéÞóåôå áêüìá êáé &lt;span class="hilite"&gt;CSS (cascading style sheets)&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+body {
+    background-color: #E8F0FD;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 125%;
+    font-family: Arial, sans-serif;
+    color: blue;
+}
+
+.hilite {
+    background: #f0f090 none;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 90%;
+}
+&lt;/style&gt;
+
+&lt;/html&gt;
+</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Lithuanian</Name>
+<Default>0</Default>
+<Primary>39</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ádiegimo programa</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Parinktys</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Pasirinkite norimus nustatymus ir paspauskite mygtukà Toliau.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Toliau &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atgal</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Atða&amp;ukti</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Pagalba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_LABEL_01>Pasirinkite vienà ið variantø arba áraðykite atsakymà:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_COMBOBOX_01_DEFAULT/>
+<IDS_CTRL_COMBOBOX_01_ITEMS>Elementas A
+Elementas B
+Elementas C</IDS_CTRL_COMBOBOX_01_ITEMS>
+<IDS_CTRL_STATICTEXT_LABEL_02>Pasirinkite vienà ið variantø:</IDS_CTRL_STATICTEXT_LABEL_02>
+<IDS_CTRL_COMBOBOX_02_DEFAULT/>
+<IDS_CTRL_COMBOBOX_02_ITEMS>Akmuo
+Popierius
+Þirklës</IDS_CTRL_COMBOBOX_02_ITEMS>
+</Messages>
+</SUF70Messages>

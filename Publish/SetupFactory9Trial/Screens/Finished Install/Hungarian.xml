@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Hungarian</Name>
+<Default>0</Default>
+<Primary>14</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Telepítõ</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>A telepítés befejezve</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>A telepítés sikeresen befejezõdött.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Befejezés</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Vissza</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Mégsem</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Segítség</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>A %ProductName% %ProductVer% telepítése befejezve.
+
+Köszönjük, hogy a %ProductName%-t választotta!
+
+Kérem nyomja meg a Befejezés gombot a telepítõbõl való kilépéshez.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Sikeres telepítés</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

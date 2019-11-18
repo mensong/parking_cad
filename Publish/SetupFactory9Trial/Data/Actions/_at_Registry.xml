@@ -1,0 +1,408 @@
+<ActionTemplates>
+   <Action>
+      <Name>Registry.CreateKey</Name>
+      <Description>Creates a "key" in the user's Registry.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key where you want to create the key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key to create.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.DeleteKey</Name>
+      <Description>Deletes a "key" from the user's Registry.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key where you want to delete the key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key to delete.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.DeleteValue</Name>
+      <Description>Deletes a "value" from the user's Registry.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key where the value can be found.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key that contains the value.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The value to delete</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"MyValue"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.DoesKeyExist</Name>
+      <Description>Determines whether or not a particular Registry key exists and returns either true or false.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key to check for existence.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.GetAccess</Name>
+      <Description>Checks to see if a Registry key has specific access rights and returns either true or false.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key to check for access rights.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Rights</Name>
+            <Description>The access rights to check.</Description>
+            <Type>number</Type>
+            <Default>ACCESS_ALL</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>ACCESS_ALL</Default>
+               <DataType>combo</DataType>
+               <Constraints>ACCESS_READ,ACCESS_WRITE,ACCESS_ENUMERATE,ACCESS_ALL</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.GetKeyNames</Name>
+      <Description>Returns a table containing the names of all of the sub keys for a particular key.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The key whose sub key names you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.GetValue</Name>
+      <Description>Returns a specific Registry value's data.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key containing the value.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The value whose data you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"MyValue"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>AutoExpand</Name>
+            <Description>Whether to expand any environment variables in the data before it is returned. This option is used when retrieving a value whose type is REG_EXPAND_SZ.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.GetValueNames</Name>
+      <Description>Returns the names of all of the values within a specific sub key.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key whose value names you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.GetValueType</Name>
+      <Description>Returns a Registry value's type.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key containing the value.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The value whose type you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"MyValue"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Registry.SetValue</Name>
+      <Description>Sets the data of a specific Registry value.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>MainKey</Name>
+            <Description>The main or "root" key containing the sub key.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>HKEY_LOCAL_MACHINE</Default>
+               <DataType>combo</DataType>
+               <Constraints>HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG,HKEY_CURRENT_USER,HKEY_LOCAL_MACHINE,HKEY_USERS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SubKey</Name>
+            <Description>The sub key containing the value.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Software\\My Application"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The value whose data you want to set.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"MyValue"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Data</Name>
+            <Description>The data you want to assign to the value.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Data"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Type</Name>
+            <Description>The type of data you want to assign.</Description>
+            <Type>number</Type>
+            <Default>REG_SZ</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>REG_SZ</Default>
+               <DataType>combo</DataType>
+               <Constraints>REG_SZ,REG_EXPAND_SZ,REG_BINARY,REG_DWORD,REG_MULTI_SZ</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

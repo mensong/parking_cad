@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="US-ASCII"?> 
+<SUF70Messages>
+<Language>
+<Name>French</Name>
+<Default>0</Default>
+<Primary>12</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Information Importante</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Veuillez lire les informations suivantes.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Suivant &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Précédent</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnuler</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Aide</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Affichage de texte HTML&lt;/h1&gt;
+
+&lt;p&gt;Vous pouvez utiliser du code HTML interprétable par Internet Explorer, comme:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Bold&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;Italic&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="green"&gt;Font colors&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="2"&gt;Font sizes&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.indigorose.com"&gt;Hyperlinks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vous pouvez même utiliser &lt;span class="hilite"&gt;CSS (cascading style sheets)&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+body {
+    background-color: #E8F0FD;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 125%;
+    font-family: Arial, sans-serif;
+    color: blue;
+}
+
+.hilite {
+    background: #f0f090 none;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 90%;
+}
+&lt;/style&gt;
+
+&lt;/html&gt;
+</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

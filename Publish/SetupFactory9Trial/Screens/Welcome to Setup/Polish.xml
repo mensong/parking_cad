@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Polish</Name>
+<Default>0</Default>
+<Primary>21</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalacja %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Witamy</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Witamy w programie instalacyjnym %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Dalej &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Powrót</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Anu&luj</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Po&moc</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Witamy w programie instalacyjnym %ProductName% %ProductVer%.
+
+Zdecydowanie doradzamy zamkn¹æ wszystkie uruchomione programy przed kontynuacj¹ instalacji.
+
+Jeœli masz otwarte inne programy, wybierz Anuluj, aby opuœciæ program instalacyjny, zakoñcz dzia³anie tych programów i ponownie uruchom program instalacyjny.
+
+W przeciwnym wypadku wybierz Dalej, aby kontynuowaæ instalacjê oprogramowania.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Witamy</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

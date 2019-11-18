@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Japanese</Name>
+<Primary>17</Primary>
+<Secondary><ID>1</ID></Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ƒZƒbƒgƒAƒbƒv</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ƒAƒNƒVƒ‡ƒ“ŽÀs’†...</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>‚µ‚Î‚ç‚­‚¨‘Ò‚¿‰º‚³‚¢...</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_CANCEL>&·¬Ý¾Ù</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>ˆÈ‰º‚ÌƒAƒNƒVƒ‡ƒ“‚ªŽÀs’†‚Å‚·B‚µ‚Î‚ç‚­‚¨‘Ò‚¿‰º‚³‚¢:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_SCROLLTEXT_BODY/>
+</Messages>
+</SUF70Messages>

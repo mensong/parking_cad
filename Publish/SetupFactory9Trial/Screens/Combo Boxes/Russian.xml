@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Russian</Name>
+		<Default>0</Default>
+		<Primary>25</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Установка %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Варианты</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Выберите желаемые варианты установки.</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далее &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Отмена</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Справка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Пожалуйста, укажите в какую папку необходимо выполнить установку %ProductName%, а также желаемый тип установки.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>Для продолжения установки нажмите кнопку "Далее".</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Выберите или введите путь установки:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_COMBOBOX_01_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_01_ITEMS>%ProgramFilesFolder%\%ProductName%
+%MyDocumentsFolder%
+%SystemDrive%</IDS_CTRL_COMBOBOX_01_ITEMS>
+		<IDS_CTRL_STATICTEXT_LABEL_02>Выберите тип установки:</IDS_CTRL_STATICTEXT_LABEL_02>
+		<IDS_CTRL_COMBOBOX_02_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_02_ITEMS>Минимальный (будут установлены только необходимые компоненты)
+Обычный (будут установлены главные компоненты)
+Полный (будут установлены все компоненты)
+Выборочный (выбор устанавливаемых компонентов)</IDS_CTRL_COMBOBOX_02_ITEMS>
+	</Messages>
+</SUF70Messages>

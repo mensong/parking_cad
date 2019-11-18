@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Columns>
+<ColumnData>
+<Text>Name</Text>
+<SortAsc>0</SortAsc>
+<Visible>1</Visible>
+<Width>99</Width>
+</ColumnData>
+<ColumnData>
+<Text>Destination</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>130</Width>
+</ColumnData>
+<ColumnData>
+<Text>Local Folder</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>145</Width>
+</ColumnData>
+<ColumnData>
+<Text>Runtime Folder</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>122</Width>
+</ColumnData>
+<ColumnData>
+<Text>Size</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>63</Width>
+</ColumnData>
+<ColumnData>
+<Text>Date</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>84</Width>
+</ColumnData>
+<ColumnData>
+<Text>Status</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>56</Width>
+</ColumnData>
+<ColumnData>
+<Text>Package</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Shortcut</Text>
+<SortAsc>1</SortAsc>
+<Visible>1</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Build Configurations</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Compress File</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Create Backup</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Description</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Disable CRC Check</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Extension</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Failsafe Copy</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>File Ver</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Install Attributes</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Install Order</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Never Remove</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>OS Condition</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Overwrite</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Product Ver</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Register COM</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Register TTF</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Register TypeLib</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Script Condition</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Shared</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+<ColumnData>
+<Text>Supress "In-Use" Notice</Text>
+<SortAsc>1</SortAsc>
+<Visible>0</Visible>
+<Width>100</Width>
+</ColumnData>
+</Columns>

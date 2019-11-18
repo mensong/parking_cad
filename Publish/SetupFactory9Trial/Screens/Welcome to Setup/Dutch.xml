@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Dutch</Name>
+<Default>0</Default>
+<Primary>19</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Welkom</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Welkom bij het installatieprogramma van %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Doorgaan &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Terug</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Annuleren</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hulp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Welkom bij het installatieprogramma van %ProductName% %ProductVer%.
+
+Het wordt sterk aangeraden dat uw al de overige windowsprogramma's sluit alvorens door te gaan met de installatie.
+
+Als er andere programma's zijn geopend dient u op Annuleren te klikken, deze programma's te sluiten en vervolgens de installatie opnieuw te starten.
+
+Klik anders op Doorgaan om verder te gaan.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Welkom</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Hungarian</Name>
+<Default>0</Default>
+<Primary>14</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Telepítõ</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Ikonok helye</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Hova kerüljenek az ikonok?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Tovább &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Vissza</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Mégsem</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Segítség</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Az ikonok az alábbi mappába jönnek létre. Ha másik helyet szeretne az ikonoknak, akkor írjon be egy másik nevet, vagy válasszon a listából egyet.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Ikonok helye:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Ikonokat csak a bejelentkezett felhasználó láthatja</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Az ikonok elérhetõk az összes felhasználó által</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

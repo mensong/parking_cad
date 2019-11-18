@@ -1,0 +1,367 @@
+<ActionTemplates>
+   <Action>
+      <Name>System.EnumerateProcesses</Name>
+      <Description>Returns a table containing a list of all of the currently running processes and the paths to the programs that spawned them.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.GetDate</Name>
+      <Description>Gets the current date in a variety of formats.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>DateType</Name>
+            <Description>The format to return the date in.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>DATE_FMT_US</Default>
+               <DataType>combo</DataType>
+               <Constraints>DATE_FMT_US,DATE_FMT_EUROPE,DATE_FMT_ISO,DATE_FMT_JULIAN,DATE_FMT_MONTH,DATE_FMT_DAY,DATE_FMT_YEAR,DATE_FMT_DAYOFWEEK</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.GetDefaultLangID</Name>
+      <Description>Returns a table containing the primary and secondary language ID code for the language on the local system.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>   
+   <Action>
+      <Name>System.GetDisplayInfo</Name>
+      <Description>Returns a table containing the display information of the user's system.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.GetLANInfo</Name>
+      <Description>Returns a table containing the user's LAN information.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.GetMemoryInfo</Name>
+      <Description>Returns a table containing the system's memory information.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.GetOSName</Name>
+      <Description>Gets the name of the operating system the user is running, such as "Windows 10".</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments/>
+   </Action>
+  <Action>
+    <Name>System.GetOSProductInfo</Name>
+    <Description>Gets the product type for the operating system. Only supported on Windows Vista, Windows Server 2008, or later.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments/>
+  </Action>
+   <Action>
+      <Name>System.GetOSVersionInfo</Name>
+      <Description>Returns a table containing the version information of the operating system the user is running.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.GetTime</Name>
+      <Description>Gets the current time in a variety of formats.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>TimeType</Name>
+            <Description>The format to return the time in.</Description>
+            <Type>number</Type>
+            <Default></Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>TIME_FMT_MIL</Default>
+               <DataType>combo</DataType>
+               <Constraints>TIME_FMT_MIL,TIME_FMT_AMPM,TIME_FMT_SEC,TIME_FMT_MIN,TIME_FMT_HOUR</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.GetUserInfo</Name>
+      <Description>Returns a table containing the current user's information.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.GetUserSID</Name>
+      <Description>Gets the string SID value for a user on the local computer.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>UserName</Name>
+            <Description>The username of the user to get the SID value for.</Description>
+            <Type>string</Type>
+            <Default></Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"my_username"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+<Action>
+      <Name>System.Is64BitOS</Name>
+      <Description>Determines if the current operating system is 64 bit.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.IsSystemRestoreAvailable</Name>
+      <Description>Determines whether or not the system restore service is available on the current system. Note: The system restore service is only available on Windows XP.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.Reboot</Name>
+      <Description>Reboots the user's system.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>System.RegisterActiveX</Name>
+      <Description>Registers an ActiveX control on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the ActiveX control file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_SystemFolder.."\\MyControl.ocx"</Default>
+              <DataType>fileedit</DataType>
+               <Constraints>0,260</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.RegisterFont</Name>
+      <Description>Registers a TrueType font (.ttf file) on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the font file. The file must be a valid Windows .TTF file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Shell.GetFolder(SHF_FONTS).."\\My Font.ttf"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Fontname</Name>
+            <Description>The name for the TrueType font as it will appear in the Registry.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>"MyFontName"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Permanent</Name>
+            <Description>Whether to permanently register the font file.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.RegisterTypeLib</Name>
+      <Description>Registers a type library file (.tlb) on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the TypeLib file (.tlb).</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_SystemFolder.."MyControl.tlb"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>0,260</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.RemoveRestorePoint</Name>
+      <Description>Removes a restore point based on a sequence number.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>SequenceNum</Name>
+            <Description>The sequence number of the restore point to remove.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>nSequenceNum</Default>
+               <DataType>number</DataType>
+               <Constraints>NONE</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.SetRestorePoint</Name>
+      <Description>Creates a system restore point, by wrapping a system change event.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>EventType</Name>
+            <Description>The type of system restore event.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>SYSTEM_CHANGE_BEGIN</Default>
+               <DataType>combo</DataType>
+               <Constraints>SYSTEM_CHANGE_BEGIN,SYSTEM_CHANGE_END</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>RestorePointType</Name>
+            <Description>The type of restore point to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>SYS_RESTORE_APP_INSTALL</Default>
+               <DataType>combo</DataType>
+               <Constraints>SYS_RESTORE_APP_INSTALL,SYS_RESTORE_APP_UNINSTALL,SYS_RESTORE_APP_DDRIVER_INSTALL,SYS_RESTORE_MODIFY_SETTINGS,SYS_RESTORE_CANCELLED_OPERATION</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>SequenceNum</Name>
+            <Description>The sequence number of the restore point.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>0</Default>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Description</Name>
+            <Description>The decription that will accompany the restore point, maximum 64 characters.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Application Install"</Default>
+               <DataType>string</DataType>
+               <Constraints>0,64</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.TerminateProcess</Name>
+      <Description>Terminates a process given its process ID.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ProcessID</Name>
+            <Description>The ID of the process to terminate.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>number</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.UnregisterActiveX</Name>
+      <Description>Unregisters an ActiveX control on the local system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the ActiveX control file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_SystemFolder.."\\MyControl.ocx"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>0,260</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>System.UnregisterFont</Name>
+      <Description>Unregisters a TrueType font (.ttf file) on the local system. This removes the font's registration with the system font table.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the font file. The file must be a valid Windows .TTF file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>Shell.GetFolder(SHF_FONTS).."\\My Font.ttf"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>0,260</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Fontname</Name>
+            <Description>The name for the TrueType font as it appears in the Registry.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"MyFontName"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Permanent</Name>
+            <Description>Whether to permanently unregister the font file.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

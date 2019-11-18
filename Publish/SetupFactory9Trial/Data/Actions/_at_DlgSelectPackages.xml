@@ -1,0 +1,95 @@
+<ActionTemplates>
+   <Action>
+      <Name>DlgSelectPackages.GetCategoryProperties</Name>
+      <Description>Gets the properties of a package category within the select packages control on the current screen.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>PackageControlID</Name>
+            <Description>The numeric ID of the select packages control who's category properties you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>SelectPackages</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CategoryControlID</Name>
+            <Description>The numeric ID of the package category who's properties you want.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>PackageCategory</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgSelectPackages.SetCategoryProperties</Name>
+      <Description>Sets the properties of a package category within the select packages control on the current screen.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>PackageControlID</Name>
+            <Description>The numeric ID of the select packages control who's category properties you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>SelectPackages</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CategoryControlID</Name>
+            <Description>The numeric ID of the package category who's properties you want to set.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>PackageCategory</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Properties</Name>
+            <Description>A table containing the control properties you want to set.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>tProperties</Default>
+               <DataType>tbProperties</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>DlgSelectPackages.UpdateDisplay</Name>
+      <Description>Updates the currently displayed package list based upon the current internal data.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ControlID</Name>
+            <Description>The numeric ID of the select packages control who's display you want to update.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>SelectPackages</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

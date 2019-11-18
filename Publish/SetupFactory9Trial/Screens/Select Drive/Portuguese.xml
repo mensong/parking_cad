@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+	<Language>
+		<Name>Portuguese</Name>
+		<Default>0</Default>
+		<Primary>22</Primary>
+		<Secondary>
+			<ID>1</ID>
+			<ID>2</ID>
+		</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Instalação de %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Selecionar unidade de disco</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Em qual unidade de disco você deseja instalar %ProductName%?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Avançar &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Retornar</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>A&juda</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+		<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>Espaço necessário: %SpaceRequired%
+
+Espaço disponível no disco selecionado: %SpaceAvailable%
+
+
+		</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Instalar %ProductName% em:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_COMBOBOX_01_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_01_ITEMS/>
+		<IDS_CTRL_STATICTEXT_LABEL_02>Combo 02:</IDS_CTRL_STATICTEXT_LABEL_02>
+		<IDS_CTRL_COMBOBOX_02_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_02_ITEMS/>
+		<IDS_CTRL_STATICTEXT_LABEL_03>Combo 03:</IDS_CTRL_STATICTEXT_LABEL_03>
+		<IDS_CTRL_COMBOBOX_03_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_03_ITEMS/>
+		<IDS_CTRL_STATICTEXT_LABEL_04>Combo 04:</IDS_CTRL_STATICTEXT_LABEL_04>
+		<IDS_CTRL_COMBOBOX_04_DEFAULT/>
+		<IDS_CTRL_COMBOBOX_04_ITEMS/>
+	</Messages>
+</SUF70Messages>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+	<Language>
+		<Name>Portuguese</Name>
+		<Default>0</Default>
+		<Primary>22</Primary>
+		<Secondary>
+			<ID>1</ID>
+			<ID>2</ID>
+		</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Desinstalação de %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Bem-vindo</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Bem-vindo à desinstalação de %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Avançar &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Retornar</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>A&juda</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_BODY>Este programa removerá %ProductName% %ProductVer% do seu computador.
+
+Se %ProductName% está atualmente sendo executado, por favor encerre-o antes de prosseguir com esta desinstalação.
+
+Caso contrário, clique Avançar para prosseguir.</IDS_CTRL_STATICTEXT_BODY>
+		<IDS_CTRL_HEADINGTEXT_BODY>Desinstalação de %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+	</Messages>
+</SUF70Messages>

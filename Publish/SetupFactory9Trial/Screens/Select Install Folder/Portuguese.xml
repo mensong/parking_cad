@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+	<Language>
+		<Name>Portuguese</Name>
+		<Default>0</Default>
+		<Primary>22</Primary>
+		<Secondary>
+			<ID>1</ID>
+			<ID>2</ID>
+		</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Instalação de %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Pasta de instalação</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Onde você deseja instalar %ProductName%?</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Avançar &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Retornar</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>A&juda</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_BUTTON_BROWSE>&Procurar...</IDS_CTRL_BUTTON_BROWSE>
+		<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>O programa será instalado na pasta indicada abaixo. Para selecionar um local diferente, digite um novo caminho ou clique Procurar para procurar por uma pasta existente.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Instalar %ProductName% em:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Espaço necessário: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+		<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>Espaço disponível no disco selecionado: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+	</Messages>
+</SUF70Messages>

@@ -1,0 +1,220 @@
+<ActionTemplates>
+  <Action>
+    <Name>SetupData.CalculateRequiredSpace</Name>
+    <Description>Calculates the amount of disk space needed by the setup for the fields at their current state.</Description>
+    <ReturnValueType>number</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>CallbackFunction</Name>
+        <Description>A function that will be called with progress information if default progress handling is not desired.</Description>
+        <Type>function</Type>
+        <Default>nil</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>nil</Default>
+          <DataType>function</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.GetAppShortcutFolderPath</Name>
+    <Description>Gets the folder that your application's shortcuts will currently be created in.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments />
+  </Action>
+  <Action>
+    <Name>SetupData.GetFileList</Name>
+    <Description>Returns a numerically indexed table containing information about each file in the setup.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ListToGet</Name>
+        <Description>The file list to retrieve.</Description>
+        <Type>number</Type>
+        <Default>ARCHIVE_LIST</Default>
+        <Required>0</Required>
+        <EasyMode>
+          <Default>ARCHIVE_LIST</Default>
+          <DataType>combo</DataType>
+          <Constraints>ARCHIVE_LIST,EXTERNAL_LIST,BOTH_LISTS</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.GetLocalizedString</Name>
+    <Description>Gets the localized text (based on current setup language) of the global (opposed to per-screen) strings.</Description>
+    <ReturnValueType>string</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>StringID</Name>
+        <Description>The string ID whose localized text you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Screen_String_ID"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.GetPackageList</Name>
+    <Description>Returns a numerically indexed table of the package ids contained within the current setup.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments />
+  </Action>
+  <Action>
+    <Name>SetupData.GetPackageProperties</Name>
+    <Description>Returns a table containing the properties of a given package.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>PackageName</Name>
+        <Description>The name of the package whose properties you want.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"My Package"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.GetSerialListNames</Name>
+    <Description>Returns a numerically indexed  table containing the names of all of the serial number lists in the setup.</Description>
+    <ReturnValueType>table</ReturnValueType>
+    <Arguments />
+  </Action>
+  <Action>
+    <Name>SetupData.IsValidSerialNumber</Name>
+    <Description>Checks to see if a given serial number is a valid serial number in the specified serial number list.</Description>
+    <ReturnValueType>boolean</ReturnValueType>
+    <Arguments>
+      <Arg>
+        <Name>ListName</Name>
+        <Description>The name of the serial number list you want to validate the serial number in.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"List 1"</Default>
+          <DataType>SerialList</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>SerialNumber</Name>
+        <Description>The serial number you want to validate.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"My_Serial_Number"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.SetLocalizedString</Name>
+    <Description>Sets the text of a string ID in the current language for the setup.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>StringID</Name>
+        <Description>The string ID whose text you want to set.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"My_String_ID"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Text</Name>
+        <Description>The text you want you want to display for the string ID.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Modified Text"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.SetPackageProperties</Name>
+    <Description>Sets the properties of a given package.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>PackageName</Name>
+        <Description>The name of the package whose properties you want to set.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"My Package"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>Properties</Name>
+        <Description>A table containing the properties you want to set, indexed by "DisplayName", "Description", "Install" and "Enabled".</Description>
+        <Type>table</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>{Install=true}</Default>
+          <DataType>table</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+  <Action>
+    <Name>SetupData.WriteToLogFile</Name>
+    <Description>Writes a string of text to the install or uninstall log file.</Description>
+    <ReturnValueType />
+    <Arguments>
+      <Arg>
+        <Name>Text</Name>
+        <Description>The text you want to output to the log file.</Description>
+        <Type>string</Type>
+        <Default />
+        <Required>1</Required>
+        <EasyMode>
+          <Default>"Log entry text\r\n"</Default>
+          <DataType>string</DataType>
+          <Constraints>1,*</Constraints>
+        </EasyMode>
+      </Arg>
+      <Arg>
+        <Name>AddTimestamp</Name>
+        <Description>Whether to prepend a time stamp to the Text.</Description>
+        <Type>boolean</Type>
+        <Default>true</Default>
+        <Required>1</Required>
+        <EasyMode>
+          <Default>true</Default>
+          <DataType>boolean</DataType>
+          <Constraints>none</Constraints>
+        </EasyMode>
+      </Arg>
+    </Arguments>
+  </Action>
+</ActionTemplates>

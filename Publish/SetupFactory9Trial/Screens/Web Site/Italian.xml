@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Italian</Name>
+<Default>1</Default>
+<Primary>16</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Installazione</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Sito Web</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Qui vi sono alcune informazioni dal nostro sito web.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Avanti &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Indietro</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>A&nnulla</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>Ai&uto</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>Inserisci il testo qui...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

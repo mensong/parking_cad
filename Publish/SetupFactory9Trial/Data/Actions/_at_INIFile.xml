@@ -1,0 +1,224 @@
+<ActionTemplates>
+   <Action>
+      <Name>INIFile.DeleteSection</Name>
+      <Description>Deletes a "section" in a specified INI file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The path to the INI file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_WindowsFolder.."\\My Settings.ini"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Section</Name>
+            <Description>The INI file section to delete.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Section"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>INIFile.DeleteValue</Name>
+      <Description>Deletes a "value" in a specified INI file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the INI file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_WindowsFolder.."\\My Settings.ini"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Section</Name>
+            <Description>The "section" containing the value.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Section"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The "value" to delete.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Value"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>INIFile.GetSectionNames</Name>
+      <Description>Returns all of the "section" names within an INI file.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the INI file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_WindowsFolder.."\\My Settings.ini"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>INIFile.GetValue</Name>
+      <Description>Returns the data associated with a "value" in a specified INI file.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the INI file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_WindowsFolder.."\\My Settings.ini"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Section</Name>
+            <Description>The section containing the "value".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Section"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The "value" whose data you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Value"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>INIFile.GetValueNames</Name>
+      <Description>Returns all of the "value" names within in a section of an INI file.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the INI file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_WindowsFolder.."\\My Settings.ini"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Section</Name>
+            <Description>The section whose value names you want.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Section"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>INIFile.SetValue</Name>
+      <Description>Sets the data for an INI file value.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the INI file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>_WindowsFolder.."\\My Settings.ini"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Section</Name>
+            <Description>The section containing the "value".</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Section"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The "value" whose data you want to set.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Value"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Data</Name>
+            <Description>The value data to set.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Data"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

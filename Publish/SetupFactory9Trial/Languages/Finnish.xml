@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+        <Name>Finnish</Name>
+        <Primary>11</Primary>
+        <Secondary>
+        </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Onnistui</MSG_SUCCESS>
+      <MSG_ERROR>Virhe</MSG_ERROR>
+      <MSG_NOTICE>Huomautus</MSG_NOTICE>
+      <MSG_WARNING>Varoitus</MSG_WARNING>
+      <MSG_YES>Kyllä</MSG_YES>
+      <MSG_NO>Ei</MSG_NO>
+      <MSG_YES_TOALL>Kyllä Kaikkiin</MSG_YES_TOALL>
+      <MSG_TO>:lle</MSG_TO>
+      <MSG_FROM>:ltä</MSG_FROM>
+      <MSG_BROWSE>Selaa...</MSG_BROWSE>
+      <MSG_OK>OK</MSG_OK>
+      <MSG_CANCEL>Peruuta</MSG_CANCEL>
+      <MSG_PATH>Polku</MSG_PATH>
+      <MSG_SEARCH_MASK>Etsi</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Kaikki Tiedostot</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Etsii tiedostoa</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>tavua</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>Kt</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>Mt</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>Gt</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPK</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Vahvista</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Asennus ei ole valmis! Haluatko varmasti keskeyttää?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Oletko varma että haluat jatkaa asennusta?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Koneellasi ei ole tarpeeksi tilaa asentaa %ProductName% valitulle asemalle.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Kopioi</MSG_COPYING>
+      <MSG_DELETING>Poistaa</MSG_DELETING>
+      <MSG_SEARCHING>Etsii</MSG_SEARCHING>
+      <MSG_READING>Lukee</MSG_READING>
+      <MSG_QUERYING_INTERNET>Kyselee Internetistä</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Siirtää</MSG_MOVING>
+      <MSG_SAVING>Tallentaa</MSG_SAVING>
+      <MSG_INSERTDISK>Syötä Disketti</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Imuroi</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Imuroi tiedostoa...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Imuroi tiedostoa, kokonaiskoko on tuntematon. Kt imuroitu tähän mennessä: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Määritetään isäntä nimeä.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Isäntä nimi määritetty.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Yhdistää palvelimeen.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Yhdistetty palvelimeen.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Katkaisee yhteyttä palvelimeen.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Yhteys katkaistu palvelimeen.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Pyyntö Valmis.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Edelleenlähettää.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Arvioitu aika jäljellä</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>Kt/Sek</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Alustaa...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Asentaa...</MSG_INSTALLING>
+      <MSG_SKIPPING>Harppaa...</MSG_SKIPPING>
+      <MSG_SEEKING>Hakee...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Epäkelpo Merkintä</MSG_INVALID_ENTRY>
+      <MSG_THE> </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> kenttä ei voi olla tyhjä.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Valmistellaan Asennusta...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Asentaa Tiedostoja...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Luo Poisto-ohjelmaa...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Luo Pikakuvakkeita...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Tarkistaa tiedostojen kunnon...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Tarkistaa kansio oikeudet...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Tarkistaa vapaan asema tilan...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Poistaa Tiedostoja...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Poistaa Pikakuvakkeita...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Luo poistodatakansiota...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Luo poistodatatiedostoa...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Luo Poisto ohjaustiedostoa...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Luo poistosovellusta...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Kopioi ruutukuva tiedostoja...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Kopioi laajennuksia...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Kopioi tukitiedostoja...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Luo ohjauspaneeli syöttöä...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Luo poisto pikakuvaketta...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Tuntematon</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Ei mikään</MSG_OS_NONE>
+      <MSG_OS_ALL>Kaikki</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(ei SP:tä)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(tai uudempi)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Seuraavat minimijärjestelmävaatimukset tälle asennukselle eivät täsmänneet:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Käyttöjärjestelmä</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Ruudun Leveys</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Ruudun Korkeus</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Värin Syvyys</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Käyttäjän Lupa</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Järjestelmävalvoja</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Asennus keskeytyy.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Paina OK jatkaaksesi tai Peruuta keskeyttääksesi asennuksen.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Lisätietoja varten, ota yhteyttä:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Tämä asennus erääntyy</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>päivää ja ei enään toimi sen jälkeen.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Tämä asennus toimii</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>enemmän kertoja kunnes se erääntyy.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Ole hyvä ja syötä disketti #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Jos tiedostot tällä disketillä löytyvät toisesta paikasta, esimerkiksi, toiselta asemalta, syötä koko polku tai paina Selaa nappulaa valitaksesi polun.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Asennus haluaisi asentaa tiedoston, toisaalta samalla nimellä oleva tiedosto sijaitsee jo järjestelmässäsi.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Asennus haluaisi asentaa tiedoston, toisaalta UUDEMPI tiedosto samalla nimellä sijaitsee jo järjestelmässäsi.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Haluatko korvata seuraavan tiedoston?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Seuraava tiedosto on käytössä ja sitä ei voida päivittää:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Sulje kaikki muut ohjelmat ja valitse Yritä uudelleen. Valitse Peruuta asentaaksesi tämän tiedoston uudelleenkäynnistyksessä.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Haluatko korvata kyseisen tiedoston??</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Ohjelma haluaisi asentaa tiedoston, mutta saman niminen tiedosto on jo koneellasi.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Ohjelma haluaisi asentaa tiedoston, mutta UUDEMPI tiedosto samalla nimellä on jo koneellasi.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Asennus ei voinut käynnistää järjestelmää uudelleen. Sulje kaikki avoimet ohjelmat ja valitse Yritä uudelleen.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Tämä tiedosto on käytössä ja sitä ei voida poistaa. Sulje kyseinen tiedosto ja paina Yritä uudelleen yrittääksesi uudelleen. Paina Ohita jatkaaksesi ja poistaaksesi tiedoston seuraavan kerran kun järjestelmä uudelleenkäynnistetään.Paina Keskeytä pysäyttääksesi poiston.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Tätä tiedostoa ei voida poistaa. Paina Yritä uudelleen yrittääksesi uudelleen. Paina Ohita jatkaaksesi ja poistaaksesi tiedoston seuraavan kerran kun järjestelmä käynnistetään uudelleen.Paina Keskeytä pysäyttääksesi poiston.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Poistoohjelma haluaisi poistaa seuraavan jaetun järjestelmätiedoston:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Muita ohjelmia ei ole rekistöröity niiden käyttöön, silti on mahdollisuus että toinen ohjelma vaatii sitä toimiakseen.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Voidaanko tiedosto poistaa?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Järjestelmän uudelleenkäynnistys epäonnistui. Sulje kaikki avoimet ohjelmat ja valitse Yritä uudelleen.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Tietokoneesi täytyy uudelleenkäynnistää, asennuksen valmistumisen vuoksi. Haluatko uudelleenkäynnistää järjestelmän nyt?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Tietokoneesi täytyy uudelleenkäynnistää poiston valmistumisen vuoksi. Haluatko uudelleenkäynnistää järjestelmän nyt?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Valitse osio listasta.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Tarvittava tila asemalla:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Saatavilla oleva tila asemalla:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Ei voinut luoda logi tiedostoa: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Arkiston eheystarkistus epäonnistui. Asennustiedosto ei ole valmis, mahdollisesti keskeytyneen latauksen tai korruptoituneen tiedoston takia.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Tarkista että diskettisi on asemassa! Seuraavaa tiedostoa ei löydy:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Epäonnistui ladatessa laajennusta</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Asennus ei voi avata seuraavaa arkistotiedostoa (Olet saattanut laittaa väärän disketin)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Asennus ei voi varata tarpeeksi muistia purkaakseen tiedostoja.  Asennus keskeytyy.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Asennus ei voi luoda seuraavaa kansiota:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Purkamisvirhe on tapahtunut</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Ei voinut avata ulostulotiedostoa</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Ei voinut avata syöttötiedostoa</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Luku/Kirjoitus Häiriö</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>Tiedosto CRC epäkelpo - Data eheys virhe</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disketti on täysi.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Tuntematon tiedonpurkamisvirhe</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Virhe harpatessa tiedoston yli</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Muistivaraus virhe</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Virhe luettaessa tiedostosta</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Virhe kirjoittaessa tiedostoon</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Tuntematon tiedostokopiointi virhe</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Ei voinut luoda poistotuloa</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Häiriö LataaKirjasto():ssa</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Häiriö GetProcAddress(DllRekistöröiPalvelin):messa</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Häiriö DllRegisterServer:in koodin palautuksessa</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Epäonnistui rekistöröidä COM (ActiveX) ohjaus:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Epäonnistui rekistöröidä Kirjoituskirjasto:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Ulos muistista</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Yksi tai useampi argumenteista on epäkelpo.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Toimintoa ei voitu kirjoittaa tiedostoon.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Kirjoitus kirjastoa ei voitu avata.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Toimintoa ei voitu lukea tiedostosta.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Kirjoitus kirjasto on vanhempaa formaattia.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>LCID:tä ei voitu löytää OLE-tuetuista DLL tiedostoista.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Kirjoitus kirjastoa tai DLL:ää ei voitu ladata.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Järjestelmä rekistöröintitietokantaa ei voitu avata.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Oletus FACILITY_STORAGE virhe.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Ei voinut luoda poistodata kansiota:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Ei voinut luoda poistodata tiedostoa:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Ei voinut avata poistosovellusta lukua varten:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Ei voinut avata poistosovellusta kirjoitusta varten:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Ei voinut avata kokoonpanotiedostoa kirjoitusta varten:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Poistosovellus tiedosto ei voitu kirjoittaa koska se on jo käytössä. Sulje kaikki aktiiviset poistot ja Paina Yritä uudelleen jatkaaksesi. Paina Peruuta keskeyttääksesi.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Ei voinut avata poisto Rekisteriavainta kirjoitusta varten:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Ei voinut kirjoittaa poisto Rekisteriarvoa:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Ei voinut luoda poistopikakuvaketta:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Ei voinut tallentaa istuntomuuttujia</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Sinulla ei ole lupaa rekistöröidä jaettua tiedostoa laskee tässä järjestelmässä. Tämä asennus pitäisi ajaa Järjestelmänvalvojan oikeuksilla.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Sinulla ei ole lupaa rekistöröidä COM (ActiveX) ohjaimia tähän järjestelmään. Tämä asennus pitäisi ajaa Järjestelmävalvojan oikeuksilla.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Sinulla ei ole lupaa rekistöröidä Kirjoitus Kirjastoja tähän järjestelmään. Tämä asennus pitäisi ajaa Järjestelmänvalvojan oikeuksilla.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Yläpuolella oleva COM (ActiveX) ohjainta ei voitu olla rekistöröimättä. Tiedostoa ei poisteta.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Epäkelpo poistodata osiokirjoitus.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Poistodata osiota ei löytynyt.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Tuntematon virhe.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Kyseistä tiedostoa ei voitu löytää.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Epäonnistui ladata tiedostoa.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Epäonnistui tallentaa tiedostoa.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Kyseistä polkua ei löytynyt.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>.exe tiedosto on epäkelpo (ei-Win32 .exe tai virhe .exe kuvassa).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Käyttöjärjestelmä esti pääsyn kyseiseen tiedostoon.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Tiedostonimi liittyvyys on keskeneräinen tai epäkelpo.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   DDE tapahtumaa ei voitu valmistaa koska toiset DDE tapahtumat olivat käynnissä.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>DDE tapahtuma epäonnistui</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>DDE tapahtuma ei voinut valmistua koska pyyntö aikakatkesi.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Kyseistä dynaamista-linkki kirjastoa ei löytynyt.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Ohjelmistoa liittyen antamaan tiedostonimilaajennukseen ei ole. Tämä virhe palautuu myös jos yrität tulostaa tiedoston joka ei ole tulostettava.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Muistia ei ollut tarpeeksi operaation valmistumiseen.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Tiedoston suoritus epäonnistui.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Jakamisloukkaus ilmaantui.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Ei voinut määrittää katselijan luokkanimeä.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Ei voinut määrittää katselijan komentoriviä.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Apulaiskatselija ei ollut sovellustiedosto.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Apulaiskatselijasovellus ei ole olemassa.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Epäkelpo lähde määritetty.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Epäkelpo kohde määritetty.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Lähdetiedosto(t) ei/eivät ole olemassa.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Kohdehakemisto ei ole olemassa.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Epäonnistui kopioida yhden tai useamman tiedoston.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Epäonnistui poistaa yhden tai useamman tiedoston.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Epäonnistui ajoittaa poisto uudelleenkäynnistyksessä.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Epäonnistui ajoittaa siirto uudelleenkäynnistyksessä.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operaatio keskeytetty käyttäjän toimesta.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Virhe ilmaantui soittaessa uusintasoitto toimintoa.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Virhe, uusintasoitto toimintoa ei voitu löytää.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Ei voinut saada versiotietojen kokoa.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Ei voinut saada tiedoston versiotietoja.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Kyseinen tiedostonimi sisältää epäkelpoja merkkejä.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Kohdetiedosto on jo olemassa.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Tuntematon virhe ilmaantui.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Aja uudelleenkäynnistäessä komento epäonnistui, ei voinut avata avainta.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Aja uudelleenkäynnistäessä komento epäonnistui, ei voinut asettaa arvoa.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Ei voinut asettaa tiedoston attribuutteja.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Ei voinut asettaa tiedoston puristettua attribuuttia.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Ei voinut luoda kohdekansiota.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Ei voinut luoda varmuuskopiota yhdestä tai useammasta tiedostosta.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Ulos muistista.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Sinulla ei ole lupaa asentaa tiedostoja yläpuolella olevaan kansioon. Tämä asennus pitäisi ajaa käyttäjällä, jolla on hyväksyttävät oikeudet kuten järjestelmänvalvojalla.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Asennus ei voi jatkaa, koska yläpuolella oleva asemaa ei ole olemassa.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Yläpuolella olevalla asemalla ei ole tarpeeksi vapaata tilaa asentaa vaadittavat tiedostot.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Kontrollia ei ole määritetyllä ID:llä nykyisellä näytöllä.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Määritetty kontrolli on vääräntyyppinen tälle toiminnolle.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Nykyistä ruutua ei ole.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Määritettyä kontrollia ei voitu löytää.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Ei voinut näyttökontrollia.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Tiedosto on liian iso luettavaksi.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Määritetty tiedostoa ei voitu avata.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Poikkeuksen heitto sisäisen kontrollin toimesta.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Toimintoa ei voida luoda suljetulle kontrolille.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Ei voinut näyttää tilannedialogia.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Ei voinut piilottaa tilannedialogia.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Ei voinut asettaa tilannetekstiä tilannedialogista.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Ei voinut asettaa vaihemittarin aluetta tilannedialogista.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Ei voinut asettaa vaihemittarin sijaintia tilannedialogista.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Ei voinut asettaa viestitekstiä tilannedialogille.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Ei voinut asettaa otsikkotekstiä tilannedialogille.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Ei voinut saada sijaintiaCould not get the position of the progress meter.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Ei voinut poistaa määritettyä INI tiedosto osiota.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Ei voinut poistaa määritettyä INI tiedosto arvoa.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Ei voinut asettaa määritettyä arvoa.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Ei voinut luoda määritettyä Rekisteriavainta.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Ei voinut poistaa määritettyä Rekisteriavainta.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Ei voinut poistaa määritettyä Rekisteriarvoa.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Kyseinen aliavain ei ole olemassa.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Ei voinut saada aliavain nimiä.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Ei voinut saada kysyttyä arvon dataa.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Ei voinut saada arvojen nimiä.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Ei voinut saada rekisterin arvojen kirjoituksia.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Ei voinut asettaa kyseisen rekisterin arvojen dataa.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Ei voinut lisätä osiota Listalaatikkokontrolliin.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Ei voinut syöttää osiota Listalaatikkokontrolliin.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indeksi ulottumattomissa.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Ei voinut saada KJ (Käyttöjärjestelmä) Versiotietoja.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Ei voinut käynnistää uudelleen järjestelmää. KJ tiedot eivät ole saatavilla.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Ei voinut uudelleenkäynnistää järjestelmää.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Häiriö LataaKirjasto():ssä.</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress epäonnistui.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Häiriö koodin palautti DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Virhe soittaessa LoadTypeLib:iin.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Virhe soittaessa RegisterTypeLib:iin.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Virhe, fontin nimi ei voi olla tyhjä.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Epäkelpo fontin nimi.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Epäonnistui lisätä fontti järjestelmän fonttitaululle.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Epäonnistui lisätä fontti rekisteriin.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Epäonnistui poistaa fontti järjestelmän fonttitaulukosta.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Epäonnistui poistaa fontti rekisteristä.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Ei voinut jäljittää käyttäjätietoja.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Tuntematon päiväformaatti määritetty.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Tuntematon aikaformaatti määritetty.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Ei pysty määrittämään oletus kieli ID:tä.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Ei pysty määrittämään näyttötietoja.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Palvelin ei pystynyt suorittamaan loppuun rekistöröintiä kaikista sen käyttämien luokkien kirjoitus kirjastoista.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Palvelin ei pystynyt suorittamaan loppuun rekistöröintiä kaikista objektiluokista.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Palvelin ei pystynyt poistamaan merkintöjä kaikista sen käyttämien luokkien kirjoituskirjastoista.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Palvelin ei pystynyt poistamaan merkintöjä kaikista objektiluokista.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Häiriö koodin palautti DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Virhe, ei voi käyttää järjestelmän palautusta vikasietotilassa.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Virhe, levy on täynnä ja järjestelmänpalautus on asetettu valmiustilaan.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Virhe,käynnissä oleva tiedostonnimeäminen on jo olemassa.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Yleinen virhe on ilmaantunut.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Virhe epäkelpo rivinumero.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Järjestelmänpalautuspalvelu on pois päältä.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Virhe, järjestelmänpalautus operaatio on keskeytynyt.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Ei voinut avata tekstitiedostoa.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Tekstitiedosto on liian iso lukemiseen.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Virhe, ei voinut tallentaa tekstitiedostoa.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Virhe, ikkunakäsittelijä on epäkelpo.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Virhe, ei voinut piilottaa ikkunaa.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Virhe, ei voinut suurentaa ikkunaa.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Virhe, ei voinut pienentää ikkunaa.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Virhe, ei voinut palauttaa ikkunaa.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Virhe, ei voinut näyttää ikkunaa.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Virhe, ei voinut poistaa asemaa, toiminto ei tuettu.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Virhe, ei voinut laskea vapaata tilaa.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Virhe, ei voinut laskea kokonaiskokoa.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Virhe, ei voinut laskea käytettyä tilaa.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Ei voinut luoda kansiota.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Kyseinen kansio ei ole olemassa.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Kyseinen polku ei ole kytköksissä kansioon.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Ei voinut poistaa kansiota.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Ei voinut asettaa nykyistä kansiota.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Kohdekansio on jo olemassa.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Kansion nimi sisältää epäkelpoja merkkejä.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Ei voinut poistaa pääkansiota.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Ei voinut luoda kansiota pikakuvakkeelle.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Ei voinut luoda linkkiä pikakuvakkeelle.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Virhe, pikakuvake kuvaus on pitempi kuin 250 merkkiä.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Pikakuvaketta ei voitu poistaa.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Tuntematon shell kansio.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Kansio joka palautui on epäkelpo.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Epäonnistui ladata kyseisen DLL:än.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Epäonnistui löytämään kyseisen toiminnon DLL:än kanssa.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Epäonnistui luomaan Internet istunnon.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Epäonnistui luomaan HTTP yhteyden.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Ei voinut avata pyyntöä.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Lähetyspyyntö epäonnistui.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Ei voinut avata kohdetiedostoa kirjoitusta varten.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Epäkelpo HTTP vastaus palvelimelta.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Virhe ilmaantui ladattaessa tietoa palvelimelta.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Virhe ilmaantui yrittäessä kirjoittaa kohdetiedostoon.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Käyttäjä on keskeyttänyt HTTP toiminnon.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Virhe ilmaantui kirjoitettaessa muistiin. (Muisti loppu?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Virhe ilmaantui asetettaessa välityspalvelimen käyttäjänimeä.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Virhe ilmaantui asetettaessa välityspalvelimen salasanaa.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Palvelin ei ymmärtänyt pyyntöä.(Paha syntaksi)</ERR_WEB_400>
+      <ERR_WEB_403>Pääsy kielletty.</ERR_WEB_403>
+      <ERR_WEB_404>Pyydettyä URL:ää ei löydy palvelimelta.</ERR_WEB_404>
+      <ERR_WEB_500>Sisäinen virhe ilmaantui.</ERR_WEB_500>
+      <ERR_WEB_503>Palvelin on täydessä kapasiteetissaan.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Ei voinut rekistöröidä ikkunaluokkaa luodakseen latausdialogi.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Ei voinut luoda kuvalatausdialogia.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Virhe ilmaantui haettaessa nykyistä näyttönimeä.Ei nykyistä näyttöä.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Ei voinut ladata arvoa.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Ei voinut tallentaa arvoa.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Virhe, ei voinut saada ohjelman ikkunakäsittelijää.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Pakettia ei löytynyt.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Sisäinen virhe ilmaantui ratkaistaessa kyseistä toimintoa.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Ajoaikainen virhe ilmaantui soittaessa toimintoa.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Muistivarausvirhe ilmaantui soitattaessa toimintoa.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Epäkelpo indeksi on määritetty. Indeksien täytyy olla suurempia kuin tai yhtäläinen -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Kyseinen polku on pitempi kuin MAX_PATH,tai 260 merkkiä.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Epäkelpo poistokokoonpanotiedosto.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Epäkelpo taulu data.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Toiminto ei saatavilla poiston aikana.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Kyseinen kategoriaa ei löytynyt.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Ei voinut asettaa kategorian ominaisuuksia.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Tämä asennus on erääntynyt ja keskeytyy nyt.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Tämä asennus on jo ajettu maksimi sallitun määrän kertoja ja keskeytyy nyt.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Tämä asennus ei voinut avata Rekisteriä kirjoitusta varten ja keskeytyy nyt.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Kyseinen matemaattinen arvo ei ole kelpo annetulle toiminnolle.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Epäkelpo sarjanumero.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Epäonnistui saada kokotietoa.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Epäkelpo vieritysteksti tila.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Polut eivät voi sisältää seuraavia merkkejä:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Ruutua ei ole näytettävissä.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Ruutu hyppy epäonnistui.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Virhe ilmaantui yrittäessä iteroida palveluita.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Virhe ilmaantui yrittäessä kysellä palveluita.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Palvelua ei löytynyt.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Jatkokomento epäonnistui.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Pysäytys komento epäonnistui.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Aloitus komento epäonnistui.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Tauko komento epäonnistui.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Poisto komento epäonnistui.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Luonti komento epäonnistui.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Käsittelijällä ei ole pääsyä kyseiseen palveluohjaintietokantaan.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Epäsuora palvelu riippuvaisuus määritettiin.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Näyttönimi on jo olemassa palveluohjaintietokannassa joko palvelunimenä tai muuna näyttönimenä.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Käsittely kyseiselle palveluohjaintietokannalle on virheellinen.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Syötetty palvelunimi on virheellinen.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Syötetty parametri oli virheellinen.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Annettua käyttäjätilinimeä ei ole olemassa.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Kyseinen palvelu on jo olemassa tässä tietokannassa.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Yleinen ODBC virhe esiintyi.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Puskurin pituus oli epäkelpo.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>hWnd arvo oli epäkelpo.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Merkkijonon arvo oli epäkelpo.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Määritetty pyyntösyöttö oli epäkelpo.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Komponenttia ei löytynyt rekisteristä.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Ajurin argumentti oli epäkelpo, se ei löytynyt rekisteristä.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Löytyi epäkelpo hakusana=nimi pari.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>Epäkelpo DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>Epäkelpo INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Pyyntö parametrin pyydetty operaatio epäonnistui.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>Epäkelpo polku yksilöitiin.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Virhe ilmaantui yrittäessä ladata ajuri tai käännöskirjastoa.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>Epäkelpo lista avainsanoista=nimi pareja käytettiin.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Epäkelpo logi tiedosto.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Pyyntö perutettiin loppukäyttäjän toimesta.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Virhe ilmeentyi yrittäessä lisätä tai vähentää komponentin käyttömäärää.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Epäonnistui luoda DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Epäonnistui kirjoittaa sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Epäonnistui poistamaan DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>Toiminto epäonnistui koska muistia ei ollut tarpeeksi.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Ulostulon merkkijono katkaistiin.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Epäonnistui ladata ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>GetProc komento epäonnistui.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Dialogeja ei voida näyttää hiljaisen asennuksen tai poiston aikana.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Annettu polku ei kelpaa.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Kenttä ei voi olla tyhjä.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Seuraavat merkit eivät ole sallittuja:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Merkkijono ei sisällä yhteensopivaa 64-bittistä dataa.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Virhe yritettäessä tulkita 64-pohjaista koodattua merkkijonoa. (tarkoittaa yleensä että merkkijono on korruptoitunut - tavuja puuttuu merkkijonosta?</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Epäkelpo tiedosto-otsikko - ei Indigo Rosen blowfish-tiedosto.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Epäsopiva blowfish tiedosto. (Tiedosto on joko hajonnut tai se käyttää epäsopivaa blockmu kaavaa)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Virhe ladattessa XML tiedostoa.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Virhe tallennettaessa XML tiedostoa.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Ei sopivaa XML dokumenttia ladattuna. (Dokumentti on tyhjä tai ei hyvin aseteltu)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Kyseinen XML polku ei ole sopiva tai sitä ei löytynyt.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Virhe ilmaantui yritättäessä asettaa arvoa.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Virhe ilmaantui yritättäessä atribuuttia.</ERR_XML_SET_ATTRIBUTE_FAILED>oo
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Epäsopiva atribuutin nimi. (Atribuuttien nimet eivät voi sisältää välilyöntejä.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Kyseinen elementtiä ei voitu poistaa.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Kyseistä atribuuttia ei voitu poistaa.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Kyseisestä XML polusta ei löydy elementtejä.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Kyseisessä XML polussa olevassa elementissä ei ole lainkaan atribuutteja.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Virhe ilmaantui yritettäessä syöttää XML:ään.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Epäkelpo syöttötila.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

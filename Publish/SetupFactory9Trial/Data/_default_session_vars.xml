@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF7SessionVars>
+  <SessionVar>
+    <Name>%ProductName%</Name>
+    <Value>Your Product</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%CompanyName%</Name>
+    <Value>Your Company</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%ProductVer%</Name>
+    <Value>1.0</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%Copyright%</Name>
+    <Value>Copyright © 2018 %CompanyName%</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%CompanyURL%</Name>
+    <Value>http://www.yourcompany.com</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%WindowTitle%</Name>
+    <Value>%ProductName% Setup</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%WindowTitleUninstall%</Name>
+    <Value>%ProductName% Uninstaller</Value>
+    <Type>1</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%AppFolder%</Name>
+    <Value>%ProgramFilesFolder%\%ProductName%</Value>
+    <Type>2</Type>
+  </SessionVar>
+  <SessionVar>
+    <Name>%AppShortcutFolderName%</Name>
+    <Value>%ProductName%</Value>
+    <Type>2</Type>
+  </SessionVar>
+</SUF7SessionVars>

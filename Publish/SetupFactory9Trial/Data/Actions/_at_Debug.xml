@@ -1,0 +1,108 @@
+<ActionTemplates>
+   <Action>
+      <Name>Debug.Clear</Name>
+      <Description>Clears the contents of the debug window.</Description>
+      <ReturnValueType/>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Debug.GetEventContext</Name>
+      <Description>Returns a string describing the current event context, e.g. "Welcome > On Next".</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Debug.GetTraceMode</Name>
+      <Description>Returns the current debug trace mode.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Debug.Print</Name>
+      <Description>Appends text to the bottom of the debug window.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text to add to the debug window.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Debug Message"</Default>
+               <DataType>multiline</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Debug.SendToFile</Name>
+      <Description>Send the output to a text file as well as the debug dialog.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path to the file where the debug output will be written to.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyLog.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>Docs</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Overwrite</Name>
+            <Description>Whether the debug information will overwrite Filename, if it exists, or append to it.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Debug.SetTraceMode</Name>
+      <Description>Turns debug trace mode on or off.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Enable</Name>
+            <Description>Whether to turn trace mode on or off.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Debug.ShowWindow</Name>
+      <Description>Shows or hides the debug window.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Show</Name>
+            <Description>Whether to show or hide the debug window.</Description>
+            <Type>boolean</Type>
+            <Default>true</Default>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>true</Default>
+               <DataType>boolean</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

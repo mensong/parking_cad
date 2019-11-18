@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Turkish</Name>
+<Default>0</Default>
+<Primary>31</Primary>
+<Secondary/>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Programýný kaldýr</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Hoþ Geldiniz</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>%ProductName% %ProductVer% programý için kaldýrma programýna hoþ geldiniz.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Ýleri &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Kaldýr</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Ý&amp;ptal</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Yardým</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Bu program %ProductName% %ProductVer% programýný bilgisayarýnýzdan kaldýracak.
+
+Eðer %ProductName% þu anda çalýþýyorsa, kaldýrma baþlamadan önce lütfen kapatýn.
+
+Devam etmek için Ýleri 'ye basýn.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>%ProductName% Kaldýr</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

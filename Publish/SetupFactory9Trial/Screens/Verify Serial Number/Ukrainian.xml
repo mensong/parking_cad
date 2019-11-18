@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Ukrainian</Name>
+		<Default>0</Default>
+		<Primary>34</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Встановлення %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Серійний номер</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Програма захищена серійним номером.</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_NEXT>&Далі &gt;</IDS_CTRL_BUTTON_NEXT>
+		<IDS_CTRL_BUTTON_BACK>&lt; &Назад</IDS_CTRL_BUTTON_BACK>
+		<IDS_CTRL_BUTTON_CANCEL>&Відміна</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_BUTTON_HELP>&Довідка</IDS_CTRL_BUTTON_HELP>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Для продовження встановлення необхідно ввести серійний номер.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>Після введення номеру натисніть кнопку "Далі".</IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Серійний номер:</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_EDIT_MASK_01>####</IDS_CTRL_EDIT_MASK_01>
+		<IDS_CTRL_EDIT_MASK_PLACE_HOLDER_01> </IDS_CTRL_EDIT_MASK_PLACE_HOLDER_01>
+		<IDS_CTRL_EDIT_01/>
+		<IDS_CTRL_BUTTON_01>...</IDS_CTRL_BUTTON_01>
+	</Messages>
+</SUF70Messages>

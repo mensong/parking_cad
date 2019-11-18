@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>ÄéåõèÝôçóç åãêáôÜóôáóçò %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ÅðéëÝîôå ÐáêÝôá</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Ðáñáêáëþ åðéëÝîôå ôá ðïéá ÷áñáêôçñéóôéêÜ ôçò åöáñìïãÞò èÝëåôå íá åãêáôáóôÞóåôå.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÓõíÝ&÷åéá &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; Åðéóôñï&öÞ</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>ÂïÞ&èåéá</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>×áñáêôçñéóôéêÞ ÅöáñìïãÞò:</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>Óõíïëéêüò ÷þñïò ðïõ áðáéôåßôáé: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_BODY/>
+</Messages>
+</SUF70Messages>

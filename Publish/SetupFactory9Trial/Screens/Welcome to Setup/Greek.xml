@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Greek</Name>
+<Default>0</Default>
+<Primary>8</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>ÄéåõèÝôçóç åãêáôÜóôáóçò %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Êáëþò Ïñßóáôå</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Êáëþò ïñßóáôå óôï ðñüãñáììá åãêáôÜóôáóçò ôïõ %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÓõíÝ&÷åéá &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; Åðéóôñï&öÞ</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Á&êýñùóç</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>ÂïÞ&èåéá</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Êáëþò ïñßóáôå óôï ðñüãñáììá åãêáôÜóôáóçò ôïõ %ProductName% %ProductVer%.
+
+Ðñßí íá óõíå÷ßóåôå ìå ôçí åãêáôÜóôáóç ðñïôåßíïõìå ôïí ôåñìáôéóìü üëùí ôùí åöáñìïãþí ôùí Windows.
+
+Áí åêôåëåßôå Üëëá ðñüãñáììáôá, ðáñáêáëþ åðéëÝîôå Áêýñùóç, ôåñìáôßóôå ôá üëá, êáé îáíáåêôåëÝóôå ôï ðñüãñáììá åãêáôÜóôáóçò.
+
+ÅéäÜëëùò, åðéëÝîôå ÓõíÝ÷åéá ãéá íá óõíå÷ßóåôå.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Êáëþò Ïñßóáôå</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

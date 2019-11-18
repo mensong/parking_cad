@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<IRCodeTemplates>
+   <Template>
+      <Name>comment (single line)</Name>
+      <Type>insert</Type>
+      <Top>-- Your comment here</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>comment (multi line)</Name>
+      <Type>insert</Type>
+      <Top>--[[
+Your
+multiline
+comment
+here
+]]
+      </Top>
+      <Bottom/>
+   </Template>
+   <Template>
+     <Name>comment (multi line wrap)</Name>
+     <Type>wrap</Type>
+     <Top>--[[
+     </Top>
+     <Bottom>]]
+     </Bottom>
+	</Template>
+   <Template>
+      <Name>concatenate strings</Name>
+      <Type>insert</Type>
+      <Top>-- Set string_name to "First Last"
+string_name = "First ".."Last";</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>for loop</Name>
+      <Type>wrap</Type>
+      <Top>-- A for loop that counts from 1 to 10
+min = 1;  -- The number to start at
+max = 10;  -- The number to stop at 
+for count = min, max do
+	-- Do something here</Top>
+      <Bottom>end</Bottom>
+   </Template>
+   <Template>
+      <Name>for loop (with step)</Name>
+      <Type>wrap</Type>
+      <Top>-- A for loop that counts from 1 to 10 in 2's
+min = 0;  -- The number to start at
+max = 10;  -- The number to stop at
+step = 2;  -- The number to count by (in this case 0, 2, 4, ...)
+for count = min, max, step do
+	-- Do something here</Top>
+      <Bottom>end</Bottom>
+   </Template>
+   <Template>
+      <Name>function</Name>
+      <Type>wrap</Type>
+      <Top>-- A function that accepts two values and returns one value
+function YourFunction(Arg1, Arg2)
+	-- Put function script here
+	local value1 = Arg1; -- Access Arg1
+	local value2 = Arg2; -- Access Arg2
+	local result_value = Arg1 .. Arg2;  -- Concatenate Arg1 and Arg2
+	return result_value;  -- Return result_value</Top>
+      <Bottom>end</Bottom>
+   </Template>
+   <Template>
+      <Name>global variable assignment (boolean)</Name>
+      <Type>insert</Type>
+      <Top>-- Create a global variable and assign a boolean value to it
+the_sky_is_blue = true;</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>global variable assignment (number)</Name>
+      <Type>insert</Type>
+      <Top>-- Create a global variable and assign a numeric value to it
+pi = 3.1415;</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>global variable assignment (string)</Name>
+      <Type>insert</Type>
+      <Top>-- Create a global variable and assign a string to it
+your_variable = "Hello World";</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>if..else statement</Name>
+      <Type>wrap</Type>
+      <Top>-- An if ... else statement that compares two numbers
+x = 10;
+y = 20;
+if (x &gt; y) then
+	-- Do something here</Top>
+      <Bottom>else
+	-- Do something else here
+end</Bottom>
+   </Template>
+   <Template>
+      <Name>if statement</Name>
+      <Type>wrap</Type>
+      <Top>-- An if statement that compares two numbers
+x = 10;
+y = 20;
+if (x &gt; y) then
+	-- Do something here</Top>
+      <Bottom>end</Bottom>
+   </Template>
+   <Template>
+      <Name>if statement (inequality)</Name>
+      <Type>wrap</Type>
+      <Top>-- An if statement that compares two numbers for inequality
+x = 10;
+y = 20;
+if (x ~= y) then
+	-- Do something here, they are not equal</Top>
+      <Bottom>end</Bottom>
+   </Template>
+   <Template>
+      <Name>local variable assignment (boolean)</Name>
+      <Type>insert</Type>
+      <Top>-- Create a local variable and assign a boolean value to it
+local the_sky_is_blue = true;</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>local variable assignment (number)</Name>
+      <Type>insert</Type>
+      <Top>-- Create a local variable and assign a numeric value to it
+local pi = 3.1415;</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>local variable assignment (string)</Name>
+      <Type>insert</Type>
+      <Top>-- Create a local variable and assign a string to it
+local your_variable = "Hello World";</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>repeat ... until loop</Name>
+      <Type>wrap</Type>
+      <Top>-- A repeat ... until loop
+numLoopCount = 0;
+repeat
+	-- Do something here
+	numLoopCount = numLoopCount + 1;</Top>
+      <Bottom>until numLoopCount == 10;</Bottom>
+   </Template>
+   <Template>
+      <Name>table constructor (associative)</Name>
+      <Type>insert</Type>
+      <Top>-- An associative table (array)
+my_table = {One = "First Element", Two = "Second Element", Three = "Third Element"};</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>table constructor (numerically indexed)</Name>
+      <Type>insert</Type>
+      <Top>-- A numerically indexed table (array)
+my_table = {"First Element","Second Element","Third Element"};</Top>
+      <Bottom/>
+   </Template>
+   <Template>
+      <Name>test for error</Name>
+      <Type>wrap</Type>
+      <Top>-- Test for error
+error = Application.GetLastError();
+if (error ~= 0) then
+	Dialog.Message("Error", _tblErrorMessages[error], MB_OK, MB_ICONEXCLAMATION);</Top>
+      <Bottom>end</Bottom>
+   </Template>
+   <Template>
+      <Name>while loop</Name>
+      <Type>wrap</Type>
+      <Top>-- A while loop
+testvar = 10;
+while (testvar &lt; 100) do
+	-- Do something here
+	testvar = testvar + 1;</Top>
+      <Bottom>end</Bottom>
+   </Template>
+</IRCodeTemplates>

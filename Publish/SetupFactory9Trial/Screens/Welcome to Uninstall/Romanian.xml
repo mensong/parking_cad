@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Romanian</Name>
+<Default>0</Default>
+<Primary>24</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Dezinstalare %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Bine ati venit</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Bine ati venit la dezinstalarea pentru %ProductName% %ProductVer%</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Urmatorul &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Inapoi</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulare</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&jutor</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Acest program va dezinstala %ProductName% %ProductVer%.
+
+Daca %ProductName% ruleaza in prezent, va rugam mai intai sa il inchideti apoi sa continuati cu dezinstalarea.
+
+Altfel, click Urmatorul pentru a continua.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Dezinstaleaza %ProductName%</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

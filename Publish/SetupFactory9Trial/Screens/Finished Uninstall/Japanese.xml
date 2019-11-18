@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Japanese</Name>
+<Primary>17</Primary>
+<Secondary><ID>1</ID></Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ƒAƒ“ƒCƒ“ƒXƒg[ƒ‰[</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹Š®—¹</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>ƒCƒ“ƒXƒg[ƒ‹‚Í³í‚ÉŠ®—¹‚µ‚Ü‚µ‚½B</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Š®—¹</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &–ß‚é</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&·¬Ý¾Ù</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&ÍÙÌß</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>%ProductName% %ProductVer% ‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚ªŠ®—¹‚µ‚Ü‚µ‚½B
+
+Š®—¹‚ðƒNƒŠƒbƒN‚µ‚ÄI—¹‚µ‚Ä‰º‚³‚¢B
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹Š®—¹</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

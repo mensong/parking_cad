@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Japanese</Name>
+<Primary>17</Primary>
+<Secondary><ID>1</ID></Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ƒZƒbƒgƒAƒbƒv</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>ƒCƒ“ƒXƒg[ƒ‹æƒtƒHƒ‹ƒ_</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>‚Ç‚¿‚ç‚ÌƒtƒHƒ‹ƒ_‚Ö%ProductName% ‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·‚©H</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&ŽŸ‚Ö &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &–ß‚é</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&·¬Ý¾Ù</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&ÍÙÌß</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_BUTTON_BROWSE>•Ï&X...</IDS_CTRL_BUTTON_BROWSE>
+<IDS_CTRL_EDIT_FOLDER>%AppFolder%</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>ƒ\ƒtƒgƒEƒFƒA‚ÍˆÈ‰º‚É‹LÚ‚³‚ê‚½ƒtƒHƒ‹ƒ_‚ÉƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ü‚·B ‚»‚Ì‘¼‚ÌêŠ‚ð‘I‘ð‚·‚é‚É‚ÍAƒpƒX‚ðŽw’è‚·‚é‚©A•ÏX‚ðƒNƒŠƒbƒN‚µAŠù‘¶‚ÌƒtƒHƒ‹ƒ_‚ð‘I‘ð‚µ‚Ä‰º‚³‚¢B</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>%ProductName% ƒCƒ“ƒXƒg[ƒ‹æ:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_STATICTEXT_SPACEREQUIRED>•K—v—e—Ê: %SpaceRequired%</IDS_CTRL_STATICTEXT_SPACEREQUIRED>
+<IDS_CTRL_STATICTEXT_SPACEAVAILABLE>‹ó‚«—e—Ê: %SpaceAvailable%</IDS_CTRL_STATICTEXT_SPACEAVAILABLE>
+</Messages>
+</SUF70Messages>

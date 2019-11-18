@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Danish</Name>
+<Default>0</Default>
+<Primary>6</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Opsætning af %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Genvejsmappe</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Hvor ønsker du at genvejene skal installeres?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Næste &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Tilbage</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Fortryd</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hjælp</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Ikonet for genvejen vil blive genereret i mappen indikeret nedenfor. Hvis du ikke ønsker at bruge standardmappen, kan du enten angive et nyt mappenavn, eller vælge en eksisterende mappe fra listen.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Genvejsmappe:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Installer genveje udelukkende for den aktuelle bruger</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Gør genveje tilgængelige for alle brugerer</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

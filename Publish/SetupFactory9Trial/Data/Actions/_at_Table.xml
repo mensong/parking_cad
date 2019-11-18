@@ -1,0 +1,181 @@
+<ActionTemplates>
+   <Action>
+      <Name>Table.Concat</Name>
+      <Description>Returns a string containing some or all of the values in a table. The values will be separated by the delimiter of your choice.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SourceTable</Name>
+            <Description>The table whose values you want to concatenate.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Separator</Name>
+            <Description>The delimiter to use to separate the table values.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>";"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Start</Name>
+            <Description>The index of the first item in the table that you want to concatenate.</Description>
+            <Type>number</Type>
+            <Default>1</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>End</Name>
+            <Description>The index of the last item in the table that you want to concatenate.</Description>
+            <Type>number</Type>
+            <Default>TABLE_ALL</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>TABLE_ALL</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Table.Count</Name>
+      <Description>Returns the total number of items in a table.</Description>
+      <ReturnValueType>number</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SourceTable</Name>
+            <Description>The table whose number of items you want.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Table.Sort</Name>
+      <Description>Sorts the items of a numerically indexed table.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>SourceTable</Name>
+            <Description>The table to sort.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Compare</Name>
+            <Description>An optional comparison function to use while sorting the table.  If no function is specified, the less than operator (&lt;) will be used to sort the items.</Description>
+            <Type>function</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>function</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Table.Insert</Name>
+      <Description>Inserts an item into a numerically indexed table at a specific position.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>SourceTable</Name>
+            <Description>The table to insert the item into.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Position</Name>
+            <Description>The index in the table where you want to insert the item.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Value</Name>
+            <Description>The item you want to insert into the table.</Description>
+            <Type>variant</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Table.Remove</Name>
+      <Description>Removes a specific item from a numerically indexed table and returns it's value.</Description>
+      <ReturnValueType>variant</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>SourceTable</Name>
+            <Description>The table you want to remove an item from.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>my_table</Default>
+               <DataType>table</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Position</Name>
+            <Description>The table index of the item to remove from the table.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>1</Default>
+               <DataType>number</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

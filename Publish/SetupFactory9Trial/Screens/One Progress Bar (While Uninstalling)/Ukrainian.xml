@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<SUF70Messages>
+	<Language>
+		<Name>Ukrainian</Name>
+		<Default>0</Default>
+		<Primary>34</Primary>
+			<Secondary>
+			</Secondary>
+	</Language>
+	<Messages>
+		<IDS_WINDOW_TITLE>Видалення %ProductName%</IDS_WINDOW_TITLE>
+		<IDS_HEADER_TEXT>Виконується видалення</IDS_HEADER_TEXT>
+		<IDS_SUBHEADER_TEXT>Будь ласка, зачекайте...</IDS_SUBHEADER_TEXT>
+		<IDS_CTRL_BUTTON_CANCEL>&Відміна</IDS_CTRL_BUTTON_CANCEL>
+		<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Будь ласка, зачекайте, доки Майстер виконає необхідні дії по видаленню %ProductName% з вашого комп'ютера.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+		<IDS_CTRL_STATICTEXT_LABEL_01>Загальний процесс видалення.</IDS_CTRL_STATICTEXT_LABEL_01>
+		<IDS_CTRL_STATICTEXT_LABEL_02>Виконання операцій...</IDS_CTRL_STATICTEXT_LABEL_02>
+		<IDS_CTRL_PROGRESS_BAR_01>видалення...</IDS_CTRL_PROGRESS_BAR_01>
+		<IDS_CTRL_STATICTEXT_LABEL_03>Видалення файлів встановлення.</IDS_CTRL_STATICTEXT_LABEL_03>
+		<IDS_CTRL_STATICTEXT_LABEL_04>Виконання операцій...</IDS_CTRL_STATICTEXT_LABEL_04>
+		<IDS_CTRL_PROGRESS_BAR_02>видалення файлів...</IDS_CTRL_PROGRESS_BAR_02>
+	</Messages>
+</SUF70Messages>

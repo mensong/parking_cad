@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Lithuanian</Name>
+<Default>0</Default>
+<Primary>39</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ðalinimo programa</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Sveiki!</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>%ProductName% %ProductVer% ðalinimo programa</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&amp;Toliau &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &amp;Atgal</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>Atða&amp;ukti</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&amp;Pagalba</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>Ði programa paðalins %ProductName% %ProductVer% ið jûsø sistemos.
+
+Jeigu %ProductName% programa ðiuo metu yra vykdoma, praðome jà uþdaryti prieð tæsiant ðalinimo procesà.
+
+Spauskite mygtukà Toliau norëdami tæsti ðalinimà.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>%ProductName% ðalinimo programa</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

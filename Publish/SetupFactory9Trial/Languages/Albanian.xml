@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+      <Name>Albanian</Name>
+      <Primary>28</Primary>
+      <Secondary>
+      </Secondary>
+   </Language>
+   <Messages>
+      <MSG_SUCCESS>Sukses</MSG_SUCCESS>
+      <MSG_ERROR>Gabim</MSG_ERROR>
+      <MSG_NOTICE>Vëmendje</MSG_NOTICE>
+      <MSG_WARNING>Vërejtje</MSG_WARNING>
+      <MSG_YES>Po</MSG_YES>
+      <MSG_NO>Jo</MSG_NO>
+      <MSG_YES_TOALL>Po Për Gjitha</MSG_YES_TOALL>
+      <MSG_TO>Tek</MSG_TO>
+      <MSG_FROM>Nga</MSG_FROM>
+      <MSG_BROWSE>Shfleto...</MSG_BROWSE>
+      <MSG_OK>Në Rregull</MSG_OK>
+      <MSG_CANCEL>Anulo</MSG_CANCEL>
+      <MSG_PATH>Rruga</MSG_PATH>
+      <MSG_SEARCH_MASK>Kërko</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Gjitha Fajlat</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Shiko për fajla</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bajt</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Konfirmo</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Setup nuk ka përfunduar! A je i sigurt që dëshiron ta abortosh?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>A je i sigurt se dëshiron të vazhosh me instalim?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Nuk ka hapësirë të mjaftueshme për tu instaluar %ProductName% në drajvin e selektuar.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Duke u Kopjuar</MSG_COPYING>
+      <MSG_DELETING>Duke u Fshirë</MSG_DELETING>
+      <MSG_SEARCHING>Duke Kërkuar</MSG_SEARCHING>
+      <MSG_READING>Duke e Lexuar</MSG_READING>
+      <MSG_QUERYING_INTERNET>Duke Bërë Kërkesë Në Internet</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Duke u Luajtur</MSG_MOVING>
+      <MSG_SAVING>Duke u Ruajtur</MSG_SAVING>
+      <MSG_INSERTDISK>Vendose Diskun</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Duke u Shkarkuar</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Duke u shkarkuar fajlat...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Duke u sharkuar fajlat, madhësia totale është e panjohur. Kb shkarkohen: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Emri i hostit rezonancë.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Emri i hostit.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Duke u konektuar në server.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Duke u konektuar në serbver.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Duke u mbyllur konektimi në server</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Konektimi me server mbyllet.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Kërkesa u Kompletua.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Duke u ridektuar.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Koha e mbetur</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/Sek</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Duke u Incializuar...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Duke u Instaluar...</MSG_INSTALLING>
+      <MSG_SKIPPING>Duke u kapërcyer...</MSG_SKIPPING>
+      <MSG_SEEKING>Duke u Kërkuar...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Hyrje invalide</MSG_INVALID_ENTRY>
+      <MSG_THE>Sfera </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> nuk mund të shprazet.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Përgatitja për Instalim...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Duke u Instaluar Fajlat...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Duke u Krijuar Uninstalimi...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Duke U krijuar Shkurtesat...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Duke u Sshikuar kondicioni i fajlave...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Duke u shikuar lejet e folderave...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Duke u shikuar hapësira e drajvit...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Duke u Fshirë Fajlat...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Duke u Fshirë Shkurtesat...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Duke u fshirë të dhënat e folderave...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Duke u krijuar të dhënat e uninstalimit...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Duke u krijuar kontrolli i uninstalimit...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Duke u krijuar ekzekutimi i uninstalimit...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Duke u kopjuar imazhet...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Duke u krijuar plugins...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Duke u kopjuar fajlat e ndihmës...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Duke u krijuar hyrja në panelin kontrollues...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Duke u krijuar shkurtesat e uninstalimit...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Panjohur</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+      <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Asgjë</MSG_OS_NONE>
+      <MSG_OS_ALL>Gjitha</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(nuk ka SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(ose newer)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Kërkesat më të vogla të Setup nuk janë përshtatur:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Systemi operativ</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Gjërësi e Ekranit</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Gjatësi e Ekranit</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Intenziteti i Ngjyrave</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Leja e Përdoruesit</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administrator</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Setup do të abortohet tani.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Kliko Në Rregull që të vazhdosh ose kliko Anulo që ta abortosh instalimin.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Për më shumë informacion, ju lutemi kontaktoni në:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Këtij Setup-i do i kaloj afati</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>ditë, dhe pastaj më nuk do të punon.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Ky Setup do të punoj</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>edhe pas kalimit të afatit.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Ju lutemi vendoseni Diskun #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Nëse fajlat në këtë disk mund të gjinden në lokacion tjetër, për shembull, në drajvin tjetër, shkruaje rrugën ose kliko butonin Shfleto që ta gjesh rrugën.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Setup do të dëshironte që ta instalon një fajl, i cili është me emër të njëjtë të një fajli tjetër që gjindet në systemin tënd.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Setup do të dëshironte ta instalonte një fajl të ri, i cili tanimë ekziston në systemin tënd.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>A dëshiron ta vendosësh mbi të këtë fajl?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Fajli është në përdorim dhenuk mund ti bëhet update:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Mbylli të gjitha aplikacionet dhe kliko butonin Riprovo.  Kliko Anulo nëse dëshiron ta instalosh këtë fajl pas restartimit.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>A dëshiron ti mbishkruash të gjitha fajlat?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Aplikacioni dëshiron ta instalon fajlin, mirëpo fajli me emër të njëtjtë ekziston në sistem.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Aplikacioni dëshiron ta instalon fajlin, mirëpo fajli me emër të të ri ekziston në sistemi.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Setup nuk mund ta restarton systemin tënd.  Mbylli të gjitha aplikacionet e hapura dhe kliko butonin Riprovo.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Ky fajl është në përdorim dhe nuk mund të fshihet. Mbylle fajlin dhe kliko Riprovo që të provosh prap. Kliko Vendose që fajli të fshhet pasi që të restartohet ystemi. Ose kliko Aborto që ta ndalësh uninstalimin.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Ky fajl nuk mund të fshihet. Kliko Riprovo që ta provosh prap. Kliko Vendose që fajli të fshhet pasi që të restartohet ystemi. Ose kliko Aborto që ta ndalësh uninstalimin.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Uninstalimi mund ti fshijë edhe këto afjla:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Asnjë program nuk është regjistruar që është në përdorim,  por ky program kërkohet.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>A është Në Rregull që të fshihet ky fajl?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Nuk mund të bëhet restastimi i systemit. Mbylli të gjitha aplikacionet e hapura dhe zgjedh Riprovo.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Kompjuteri juaj kërkohet që të restartohet për tu kryer instalimi. A dëshiron ta restartosh kompjuterin tani?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Kompjuteri juaj kërkohet që të restartohet për tu kryer uninstalimi. A dëshiron ta restartosh kompjuterin tani?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Ju lutemi zgjedhni një njësi nga lista.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <ERR_LOG_INIT_FAILED>Nuk mund të krijohet log file: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Integrimi i arkivës ndalohet. Instalimi nuk është kompletuar, fajli i shkarkuar (download) është i korruptuar.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Ju lutemi sigurohuni që disku është në drajv! Ky fajl nuk mund të gjindet:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Nuk mund të vendoset plugin</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Setup nuk mund të hap arkivën e ardhshme (Ju ndoshta e keni vendosur diskun e gabuar)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Setup nuk mund të cakton hapësirën e memories për kompresimin e fajlit.  Setup do të abortohet.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Setup nuk mund të krijon këtë folder:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Ka ndoshur një gabim në dekompresion</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Nuk mund të hapet fajli i prodhimit</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Nuk mund të hapet fajli i të dhënave</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Read/Write failure</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>Fajli CRC mungon – Integrimi i të dhënave mungon</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disku është i mbushur.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Gabim në dekopensionin e panjohur</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Gabim në kapërcimin e fajlit</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Gabim në caktimin e memories</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Gabim në lexuarjen e fajlit</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Gabim në shkruarjen e fajlit</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Gabim i panjohur në kopjimin e fajlit</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Nuk mund të krijohet hyrja e uninstalimit</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Dështim në LoadLibrary()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Dështim në GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Dështim në kodin DllRegisterServer</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Dështim në regjistrin COM (ActiveX) kontrolla:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Dështim në regjstrmin Type Library:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Jashtë nga Memoria</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Një ose disa argumente janë invalide.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Funkcioni nuk mund të shkruhet në fajl.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Ky lloj i librarisë nuk mund të hapet.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Funkcioni nuk mund të lexohet nga fajli.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Ky lloj i librarisë ka një formatim të vjetër.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>LCID nuk mund të gjindet në OLE-supported DLLs.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Ky lloj i librarisë ose DLL nuk mund të vëhen bnë përdorim.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Systemi i regjistrimit nuk mund tëhapet.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Gabim nl FACILITY_STORAGE.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Nuk mund të krijohet folderi për të dhënat e uninstalimit:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Nuk mund të krijohet fajli për të dhënat e uninstalimit:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Nuk mund të hapet fajli ekzekutiv i uninstalimit:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Nuk mund të hapet fajli i shkrimit për uninstalim:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Nuk mund të hapet fajli i shkrimit i konfiguracionit:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Fajli ekzekutiv i uninstalimit nuk mund të shkruhet ngase është në përdorim. Mbylli të gjtha uninstalimet dhe kliko Riprovo. Kliko Anulo që ta abortosh.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Nuk mund të hapet çelsi i Resgjistracionit për uninstalim:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Nuk mund të shkruhet çelsi i Regjistrimit për uninstalim:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Nuk mund të krijohet shkurtesa e uninstalimit:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Nuk mund të ruhet sezona e variables</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Ju nuk keni autorizim që ti regjistroni fajlat share në system. Ky system duhet të punoj me privilegjet e Administrator-it.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Ju nuk keni autorizim që ta regjistroni COM (ActiveX) kontrollin në këtë system. Ky instalim duhet të punoj në privilegjin e Administrator-it.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Ju nuk keni autorizim që ta regjistroni Llojine Librarisë në këtë system. Ky instalim duhet të punon në privelegjin e Administrator-it.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>COM (ActiveX) kontrolla e më sipërme nuk mund të rri e paregjistruar. Fajli nuk mund të fshihet.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Njësitë e të dhënave të uninstalimit janë invalide.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Njësitë e uninstalimit nuk janë gjetur.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Gabim i panjohur.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Fajli specifik nuk mund të gjindet.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Nuk mund të vendoset fajli.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Nuk mund të ruhet fajli.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Rruga specifike nuk mund të gjindet.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>.exe është invalid (jo-Win32 .exe ose gabim në imazhin .exe).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Systemit operativ i ndalohet hyrja në fajlin specifik.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Emri i fajlit për asiosiacim është invalid ose i pa kompletuar.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   DDE veprimi nuk mund të kryhet sepse DDE tjetër veprim është filluar processed.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>DDE veprimi dështon</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>DDE veprimi nuk mund të kryhet sepse koha kalon.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Dynamic-link librarija nuk është gjetur (DLL).</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Nuk ka asnjë aplikacion që asocion emrin e fajlit të japur. Gjithashtu ky gabim do të rikthehet nëse ju mundoheni ta printoni një fajl që nuk printoni.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Nuk ka memorie të mjaftueshme për tu kryer operacioni.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Ekzekutimi i fajlit dështon.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>A sharing violation occurred.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Nuk mund të përcaktohet emri i klasifikimit.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Nuk mund të përcaktohet linja e komandës së shikimit.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Shikimi i asiosiacimit nuk është fajl ekzekutiv.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Ekzekutimi për asiosiacim nuk ekziston.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Një surs invalid është specifikuar.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Një destinacion i gabuar është specifikuar.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Surset nuk ekzistojnë.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Direktoria e edestinacionit nuk ekziston.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Dështon kopjimi i një ose më shumë fajlave.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Dështon fshirja e një ose më shumë fajlave.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Dështon fshirja e listës për restartim.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Dështon luajtja e listës për restartim.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operacioni abortohet nga përdoruesi.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Një gabim i rastësishëm paraqitjes gjatë rithirrjes.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Gabimn, funkcioni i rithirrjes nuk mund të gjendet.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Nuk mund të mirret madhësia e informacionit të verzionit.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Nuk mund të mirret informacioni i verzioit të fajlit.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Emri i fajlit të specifikuar përmban karaktere invalide.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Destinacioni ekziston.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Një gabim i panjohur shfaqet.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Komanda për punimin e restartimit ndalet, nuk mund të hapet çelsi.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Komanda për punimin e restartimit ndalet, nuk mund ti vendoset vlera.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Nuk mund të vendoset atributi i fajlit.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Nuk mund të vendoset atributi i fajlit të kompresuar.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Nuk mund të krijohet destinacioni i Folderit.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Nuk mund të krijohet backup i një ose i disa fajlave.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Jashtë nga Memoria.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Ju nuk keni leje që ti instaloni fajlat në folderin e lartëpërmendur. Ky setup do të punoj nga përdoruesi me privilegjet që kërkon systemi i administrator-it.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Instalimi nuk mund të vazhdoj ngase fajlat e lartëpërmendu nuk ekzistojnë.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Nuk ka hapësirë të mjaftueshme që të instalohen fajlat e lartëpërmendur.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Nuk ka asnjë kontroll për ID specifike në ekranin kurrent.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Kontrolla e specifikuar është lloj i gabueshëm për këtë akcion.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Këtu nuk ka asnjë pamje.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Kontrolla e specifikuar nuk mund të gjindet.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Nuk mund të vendose kontrolla.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Fajli është shumë i madh që të lexohet.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Fajli i specifikuar nuk mund të hapet.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Exception thrown by internal control.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Akcioni nuk mund të vazhdon gjatë çkyçjes së panelit. </ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Nuk mund të vendose statusi i dialogut.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Nuk mund të mshefet statusi i dialogut.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Nuk mund të vendoset statusi i tekstit në statusin e dialogut.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Nuk mund të vendosset metri i progresit në statusin e dialogut.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Nuk mund të vendoset metri i progresit në statusin e dialogut.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Nuk mund të vendoset teksti në statusin e dialogut.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Nuk mund të vendoset teksti i titullit në statusin e dialogut.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Nuk mund të vendoset progresi i pozicionit të metrit.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Nuk mund të fshihet INI fajli i specifikuar.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Nuk mund të fshihet valuta e INI fajlit.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Nuk mund të vendoset valuta e specifikuar.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Nuk mund të krijohet çelsi specifik i Regjistrit.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Nuk mund të fshihet çelsi specifik nga Regjistri.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Nuk mund të fshihet valuta specifike në Regjistër.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Sub çelsi i specifikuar nuk ekziston.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Duket se sub çelsi nuk ka emër.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Nuk mund të mirren të dhënat për valutën e specifikuar.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Nuk mund të mirret valuaa e emrit.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Nuk mund të merret lloji i regjistrimit të valutës.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>uk mund të vendosen të dhënat për valutën e specifikuar.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Nuk mund të shtohen njësi në kontrollën e Listës së Kutisë.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Nuk mund të futen njësitë në kontrollën e Lisës së Kutisë.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indeksi është jashtë nga rradha.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Nuk mund të mirren informacionet e OS Version-it.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Nuk mund të restartohet systemi. Informacionet e OS nuk janë në rregull.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Nuk mund të restartohet systemi.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Dështim në LoadLibrary().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>GetProcAddress dështon.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Dështim kodi i rikthyer nga DllRegisterServer.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Gabim në thirrjen e LoadTypeLib.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Gabim në thirrjen e RegisterTypeLib.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Gabim, emri i shkronjave nuk mund të jetë i thatë.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Emri i shkronjave është gabim.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Nuk mund të shtohen shkronjat në tabelën e systemit të shkronjave.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Nuk mund të shtohen shkronjat në regjistër.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Nuk mund të fshihen shkronjat në tabelën e systemit të shkronjave.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Nuk mund të fshihen shkronajt nga regjistri.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Nuk mund të korigjohen informacionet e përdoruesit.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Të dhënat e formatit të specifikuar janë të panjohura.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Koha e formatit të specifikuar është e panjohur.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>E pamundur të përcaktohet gjuha ID.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>E pamundur të përcaktohen infot e vendosjes.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Serveri nuk ka mundur ta kompleton regjistrimin për gjitha llojet e librarisë që përdoren.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Serveri nuk ka mundur ta kompleton regjistrimin për gjitha llojet e objekteve që përdoren.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Serveri nuk ka mundur ti fshijë hyrjet e llojit të librarisë që përdoren.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Serveri nuk ka mundur to fshijë hyrjet e llojit të objekteve që përdoren.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Kod dështues i rikthyer nga DllUnregisterServer.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Gabim, nuk mund ta përdorni system restore kur jeni duke punuar në safe mode.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Gabim, disku është plot dhe system restore është vendosur mbrenda standby.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Gabim, pending file rename operacioni ekziston.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Ka ndodhur një gabim i rastësishëm.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Gabim, sekuencë invalide e numrave.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>System restore service është e çkyçur.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Gabim, system restore operacioni është ndalur.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Nuk mund të hapet teksti i fajlit.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Teksti në fajl është shumë i madh që të lexohet.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Gabim, nuk mund të ruhet teksti.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Gabim, dorëza e dritarës nuk është valide.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Gabim, nuk mund të mshefet dritarja.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Gabim, nuk mund të rritet dritarja.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Gabim, nuk mund të minimizohet dritarja.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Gabim, nuk mund të rikthehet dritarja.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Gabim, nuk mund të vendoset dritarja.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Gabim, nuk mund të hapet drajvi, akcioni nuk mbështetet.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Gabim, nuk mund të kalkulon hapësirën e lirë.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Gabim, nuk mund të kalkulohet e gjithë madhësia.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Gabim, nuk mund të kalkulohet hapësira e zënë.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Nuk mund të krijohet folderi.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Folderi i specifikuar nuk ekziston.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Rruga e specifikuar nuk kontakton me folderin.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Nuk mund të fshihet folderi.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Nuk mund të vendoset folderi kurrent.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Ky destinacion i folderit ekziston.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Emri i specifikuar përmban karaktere invalide.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Nuk mund të fshihet folderi bazë.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Nuk mund të krijohet folderi për shkurtsa.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Nuk mund të krijohet linku për shkurtesa.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Gabim, deskripcioni i shkurtesës përmban më shumë se 250 karaktere.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Shkurtesa nuk mund të fshihet.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>shell folder i panjohur.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Folderi i rikthyer është invalid.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Nuk mund të vendoset DLL e specifikuar.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Nuk mund të gjendet DLL e caktuar.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Nuk mund të krijohet Internet sezona.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Nuk mund të krijohet HTTP konektimi.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Nuk mund të hapet e kërkuara.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Nuk mund të dërgohet kërkesa.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Nuk mund të hapet destinacioni i fajlit për shkrim.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>HTTP invalid, përgjigje nga serveri.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Shfaqet një gabim gjatë shkarkimit të informatave nga serveri.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Një gabim shfaqet gjatë derisa provohej të shkruhej destinacioni i falit.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Pëdoruesi e aborton HTTP akcionin.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Një gabim është paraqitur gjatë kohës së shkrimit të memories. (Jashtë nga memoria?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Një gabim është paraqitur gjatë kohës kur ishte duke u vendosur emri i përdoruesit.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Një gabim është paraqitur gjatë kohës kur ishte duke u vendosur fjalëkalimi.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>E kërkuara nuk mund të kuptohet nga serveri. (Sintaks e Keqe)</ERR_WEB_400>
+      <ERR_WEB_403>Hyrja është e ndaluar.</ERR_WEB_403>
+      <ERR_WEB_404>URL e kërkuar nuk është gjendur në server.</ERR_WEB_404>
+      <ERR_WEB_500>Një gabim i rastësishëm ndodh mbrenda serverit.</ERR_WEB_500>
+      <ERR_WEB_503>Serveri është në kapacitet të plotë.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Nuk mund të regjistrohet dritarja që të krijohet splash dialogu.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Nuk mund të krijohet imazhi i splash dialogut.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Një gabim përfshihet gjatë marrjes së emrit të sipërfaqes. Nuk ka asnjë pamje.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Nuk mund të vendoset valuta.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Nuk mund të ruhet valuta.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Gabim, nuk mund të mirren aplikacionet e dritarës.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Pako nuk është gjetur.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Paraqitet një gabim i rastësishëm në funkcionin e specifikuar.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Paraqitet një gabim i rastësishëm gjatë thirrjes së funkcionit.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Gabim i rastësishëm në memorie gjatë thirrjes së funkcionit.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Një indeks invalid është specifikuar. Indeksi duhet të jetë më i madh se -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Rruga e specifikuar është më e madhe se MAX_PATH,ose 260 karaktere.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Fajli i konfiguracionit të uninstalimit është invalid.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Tabela e të dhënave është invalide.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Akcioni nuk është i gatshëm gjat uninstalimit.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Kategoria e specifikuar nuk mund të gjindet.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Nuk mund të vendoset kategoria e ndryshimeve.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Ky setup i ka kaluar afati dhe tani do të abortohet.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Ky setup ka punuar në numrin maksimum të lejimit dhe tani ky setup do të abortohet.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Ky setup nuk mund ta hap Regjistrin dhe tani do të abortohet.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Vlerësimet e specifikuara nuk janë valide.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Numër serial invalid.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Nuk mund të mirren informacionet e volume-s.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Lloji i shkrimit është invalid.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Rruga nuk mund ti pranoj këto lloje karakteresh:
+/ * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Këtu nuk ka asnjë pamje të vendosur.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Kërcimi i pamjes dështon.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Një gabim është paraqitur gjatë kohë së kryerjes së shërbimit në server.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Një gabim është paraqitu gjatë pyetjes së serverit.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Servisi nuk mund të gjendet.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Komanda e vazhdimit dështon.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Komanda e ndaljes dështon.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Komanda e startimit dështon.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Komanda e pauzës dështon.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Komanda e fshirjes dështon.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Komanda e krijimit dështon.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Nuk ka të drejtë hyrje në bazën e të dhënave në menaxherin e kontrolleve të serviseve.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Një liri e servisit cirkual është specifikuar.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Emri i vendosur ekziston në menaxherin e kontrolleve të serviseve.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Baza e të dhënave është invalide në menaxherin e kontrolleve të serviseve.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Emri i servisit të specifikuar është invalid.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Parametri i specifikuar është invalid.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Emri i akontit i përdoruesit i specifikuar nuk ekziston.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Servisi i specifikuar ekziston në bazën e të dhënave.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Një gabim gjeneral ODBC.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Buferi është invalid.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>hWnd vlera është invalide.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Vlera e fijes ësthë invalide.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Lloji specifik i kërkuar është invalid.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Komponentet nuk janë gjetur në Regjistër.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Argumenti i Driver është invalid, nuk mund të gjendet në regjistër.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Është një invalid keyword=name pair.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>DSN invalid.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>INF invalid.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Operacioni i kërkuar me Parametrin e kërkuar dështon.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>Një rrugë invalide është specifikuar.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Një gabim është paraqitur gjatë kohës së vënies së driver ose translator library.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>Një listë invalide e keyword=name pairs është përdorur.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Log fajl invalid.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>E kërkuara është anuluar nga përdoruesi.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Një gabim përfshihet gjatë numërimit të komponenteve.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Dështon krijimi i DSN.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>dështon shkrimi në sysinfo.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Dështon fshirja e DSN.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>Funkcioni ndalet ngase nuk ka memorie të mjaftueshme.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>The output string was truncated.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Dështon vendosja e ODBC DLL.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>GetProc komanda dështon.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Dialogjet nuk mund të vendosen gjatë instalimit apo uninstalimit.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Rruga e specifikuar nuk është valide.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Fusha nuk mund të shprazet.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Karakteret e mëposhtme nuk janë të lejuara:</ERR_INVALID_CHARACTERS>
+      <MSG_REQUIRED_DRIVE>Hapësira që nevojitet:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Hapësira e përgjithshme:</MSG_AVAILABLE_DRIVE>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Rreshtat nuk përmbajnë base-64 të dhëna valide.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Gabim gjatë temntimit të enkodimit të base-64 rreshtave (mesaduket rreshtat janë të 
+korruptuara).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Koka e fajlit invalid - nuk është fajl i 
+Indigo Rose-s.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Blowfish fajli është i papajtueshëm(The file has either been damaged or it uses an incompatible 
+block padding scheme.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Gabim gjatë vendosjes së XML fajlit.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Gabim gjatë ruajtjes së XML fajit.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>XML dokumenti jovalid. (Dokumenti është i thatë.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Rruga e XML nuk është valide dhe nuk është gjetur.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Një gabim ka kapluar gjtë provimit të vendosjes së valutës.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Një gabim ka kapluar gjatë provimit të vendosjes së atributave.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Emri i atritubë invalid. (Emrat e atributave nuk gxojnë të kenë hapësirë.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Elementi i specifikuar nuk mund të fshihet.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Atributi i selektuar nuk mund të fshihet.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Nuk ka asnjë element të specifikaur në rrugën e XML.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Elementi XML nuk ka asnjë atribut.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Një gabim ka kapluar gjatë provimit të futjes së XML.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Lloji i insertimit invalid.</ERR_XML_INVALID_INSERTION_MODE>
+        <ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

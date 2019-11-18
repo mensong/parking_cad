@@ -1,0 +1,355 @@
+<ActionTemplates>
+   <Action>
+      <Name>Crypto.Base64DecodeFromFile</Name>
+      <Description>Decodes a base64-encoded text file and stores the result as a binary file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Source</Name>
+            <Description>The path to the base64-encoded text file that you want to decode.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Destination</Name>
+            <Description>The path and filename for the decoded binary file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.zip"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.Base64DecodeFromString</Name>
+      <Description>Decodes a base64-encoded string and stores the result as a binary file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The base64-encoded text that you want to decode.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The path and filename for the decoded binary file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.zip"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.Base64EncodeToFile</Name>
+      <Description>Stores the contents of a binary file as a base64-encoded text file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Source</Name>
+            <Description>The path to the file that you want to encode.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.zip"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Destination</Name>
+            <Description>The path and filename for the base64-encoded file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.txt"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>LineLen</Name>
+            <Description>The maximum line length for the base64-encoded text, in columns. (Use 0 for no line breaks.)</Description>
+            <Type>number</Type>
+            <Default>76</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.Base64EncodeToString</Name>
+      <Description>Returns the contents of a binary file as a base64-encoded string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Source</Name>
+            <Description>The path to the file that you want to encode.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.zip"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>LineLen</Name>
+            <Description>The maximum line length for the base64-encoded text, in columns. (Use 0 for no line breaks.)</Description>
+            <Type>number</Type>
+            <Default>76</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.BlowfishDecrypt</Name>
+      <Description>Creates a decrypted copy of a blowfish-encrypted file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Source</Name>
+            <Description>The path to the file that you want to decrypt.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.enc"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Destination</Name>
+            <Description>The path and filename for the decrypted file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\DestFolder\\MyFile.txt"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Key</Name>
+            <Description>The secret key that the data was encrypted with.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"trustno1withthispassword"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.BlowfishDecryptString</Name>
+      <Description>Decrypts a string that was encrypted using the BlowfishEncryptString action.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The blowfish-encrypted and base64-encoded text that you want to decode and decrypt.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"n62avHCFHAU="</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Key</Name>
+            <Description>The secret key the data was encrypted with.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"trustno1withthispassword"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.BlowfishEncrypt</Name>
+      <Description>Creates a blowfish-encrypted copy of a file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Source</Name>
+            <Description>The path to the file that you want to encrypt.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Destination</Name>
+            <Description>The path and filename for the blowfish-encrypted file.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\DestFolder\\MyFile.enc"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Key</Name>
+            <Description>The secret key to encrypt the data with.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"trustno1withthispassword"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.BlowfishEncryptString</Name>
+      <Description>Blowfish encrypts a string and returns a base64-encoded string containing the encrypted data.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text that you want to encrypt.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Text"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Key</Name>
+            <Description>The secret key to encrypt the data with.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"trustno1withthispassword"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>LineLen</Name>
+            <Description>The maximum line length for the base64-encoded text, in columns. (Use 0 for no line breaks.)</Description>
+            <Type>number</Type>
+            <Default>0</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default/>
+               <DataType>number</DataType>
+               <Constraints>0,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.MD5DigestFromString</Name>
+      <Description>Creates an MD5 message digest for a given text string.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text to create the message digest for.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My Text"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.MD5DigestFromFile</Name>
+      <Description>Creates an MD5 message digest for a given file.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The path to the file whose MD5 digest you want to calculate.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyFolder\\MyFile.txt"</Default>
+               <DataType>fileedit</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Crypto.Rot13</Name>
+      <Description>Applies a simple Ceaser-cypher ("rot13") encryption to the text.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Text</Name>
+            <Description>The text that you want to encrypt (or decrypt).</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Vfa'g gur Pelcgb cyhtva pbby? :)"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

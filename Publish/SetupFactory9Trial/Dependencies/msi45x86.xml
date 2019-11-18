@@ -1,0 +1,459 @@
+<DependencyTemplate>
+<Dependency>
+<Name>Windows Installer 4.5 (32-bit)</Name>
+<RuntimeTempFolder>msi45x86</RuntimeTempFolder>
+<RevisionDate>Thursday, May 15, 2014</RevisionDate>
+<Description>Dependency Module: Windows Installer 4.5 (32-bit)
+
+This dependency module will update the Microsoft Windows Installer (MSI) installation and configuration service for 32-bit Windows to version 4.5. When run the setup will check for the existence of Windows Installer 4.5 on the target system and then extract and install it if needed.
+
+The Windows Installer 4.5 Redistributable in this module is supported on the following 32-bit operating systems:
+Microsoft Windows XP Service Pack 2 (SP2)
+Microsoft Windows XP Service Pack 3 (SP3)
+Microsoft Windows Server 2003 Service Pack 1 (SP1)
+Microsoft Windows Server 2003 Service Pack 2 (SP2)
+Microsoft Windows Vista
+Microsoft Windows Vista Service Pack 1 (SP1)
+Microsoft Windows Server 2008
+
+Files to Download
+----------------------------------------------------------
+This dependency module requires you to supply a copy of the redistributables. Download the following files from the URL below into a new folder \Dependencies\msi45x86 within the Setup Factory program directory:
+http://www.microsoft.com/downloads/en/details.aspx?FamilyID=5a58b56f-60b6-4412-95b9-54d056d6f9f4
+
+Windows6.0-KB942288-v2-x86.msu
+WindowsServer2003-KB942288-v4-x86.exe
+WindowsXP-KB942288-v3-x86.exe
+
+
+Useful Links
+----------------------------------------------------------
+MSDN Online: Windows Installer 4.5 Redistributable:
+http://www.microsoft.com/downloads/en/details.aspx?FamilyID=5a58b56f-60b6-4412-95b9-54d056d6f9f4
+
+MSDN Online: Windows Installer Redistributables
+http://msdn.microsoft.com/en-us/library/aa372856.aspx
+
+MSDN Online: Error messages:
+http://msdn2.microsoft.com/en-us/library/aa368542.aspx
+
+MSDN Online: Released Versions of Windows Installer
+http://msdn.microsoft.com/en-us/library/aa371185.aspx
+
+MSDN Online: Description of the Windows Update Stand-alone Installer (Wusa.exe) and of.msu files in Windows Vista and in Windows Server 2008
+http://support.microsoft.com/kb/934307/
+
+MSDN Online: Windows Installer 4.5 is available
+http://support.microsoft.com/KB/942288
+
+
+Installer command-line options:
+----------------------------------------------------------
+/norestart - Prevents the redistributable package from asking the user to reboot even if it had to replace files that were in use during the installation. If the update package is invoked with this option, it returns ERROR_SUCCESS_REBOOT_REQUIRED if it had to replace files that were in use. If it did not have to replace files that were in use, it returns ERROR_SUCCESS. See the remarks section for additional information on delayed reboots.
+
+/quiet - For use by applications that redistribute the Windows Installer as part of a bootstrapping application. A user interface (UI) is not presented to the user. The bootstrapping application should check the return code to determine whether a reboot is needed to complete the installation of the Windows Installer.
+
+/help - Displays help on all the available options.
+</Description>
+<DetectScript>function isMSI45x86_Installed()
+
+	local strMSIVersion = MSI.GetMSIVersion();
+	local tblOSInfo = System.GetOSVersionInfo();
+	
+	-- Check to see if the Windows Installer version needs to be updated.
+	if ((strMSIVersion) and (tblOSInfo ~= nil)) then
+		-- Check version based on operating system.
+		
+		-- Check Windows XP
+		if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "1")) then
+			if (String.CompareFileVersions(strMSIVersion,"4.5.6001.22159") &gt;= 0) then
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Minimum requirement detected on system.\r\n",true);	
+				return true;
+			else
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: A lesser version of the Windows Installer was found on the users system. Windows Installer 4.5 will be installed.\r\n", true);
+				return false;
+			end
+		end
+		
+		-- Check Windows Server 2003
+		if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "2")) then
+			if (String.CompareFileVersions(strMSIVersion,"4.5.6001.22159") &gt;= 0) then
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Minimum requirement detected on system.\r\n",true);	
+				return true;
+			else
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: A lesser version of the Windows Installer was found on the users system. Windows Installer 4.5 will be installed.\r\n", true);
+				return false;
+			end
+		end
+		
+		-- Check Windows Vista
+		if ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "0") and (tblOSInfo.ProductType == 1)) then
+			-- Check service pack:
+			if (tblOSInfo.ServicePackMajor &lt; 1) then
+				if (String.CompareFileVersions(strMSIVersion,"4.5.6000.20817") &gt;= 0) then
+					SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Minimum requirement detected on system.\r\n",true);	
+					return true;
+				else
+					SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: A lesser version of the Windows Installer was found on the users system. Windows Installer 4.5 will be installed.\r\n", true);
+					return false;
+				end
+			else
+				if (String.CompareFileVersions(strMSIVersion,"4.5.6001.22162") &gt;= 0) then
+					SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Minimum requirement detected on system.\r\n",true);	
+					return true;
+				else
+					SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: A lesser version of the Windows Installer was found on the users system. Windows Installer 4.5 will be installed.\r\n", true);
+					return false;
+				end
+			end
+		end
+		
+		-- Check Windows Server 2008
+		if ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "0") and (tblOSInfo.ProductType ~= 1)) then
+			if (String.CompareFileVersions(strMSIVersion, "4.5.6001.22162") &gt;= 0) then
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Minimum requirement detected on system.\r\n",true);	
+				return true;
+			else
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: A lesser version of the Windows Installer was found on the users system. Windows Installer 4.5 will be installed.\r\n", true);
+				return false;
+			end
+		end
+	
+		-- Check Windows 7, Server 2008 R2 or later
+		if ((tblOSInfo.MajorVersion &gt;= "6") and (tblOSInfo.MinorVersion &gt;= "1")) then
+			if (String.CompareFileVersions(strMSIVersion,"5.0.7600.16385") &gt;= 0) then
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Minimum requirement detected on system.\r\n",true);	
+				return true;
+			else
+				SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: A lesser version of the Windows Installer was found on the users system. Windows Installer 4.5 will be installed.\r\n", true);
+				return false;
+			end
+		end		
+	end
+	
+	SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: No version of the Windows Installer was found. Windows Installer 4.5 (32-bit) will be installed.\r\n", true);
+	return false;
+end</DetectScript>
+
+<DetectFunction>isMSI45x86_Installed</DetectFunction>
+
+<InstallScript>--[[
+Only to be installed on 32-bit(x86) OSs:
+Microsoft Windows XP Service Pack 2 (SP2)
+Microsoft Windows XP Service Pack 3 (SP3)
+Microsoft Windows Server 2003 Service Pack 1 (SP1)
+Microsoft Windows Server 2003 Service Pack 2 (SP2)
+Microsoft Windows Vista
+Microsoft Windows Vista Service Pack 1 (SP1)
+Microsoft Windows Server 2008
+]]
+
+-- Initialize variables
+local strCmdArgs = "";
+local sAppDataFolder = "";
+local strErrorCode = "";
+local bOSSupportsMSI45 = false;
+local bRunInstallFile = true;
+local bRunSuccess = false;
+local strRuntimeSupportFolder = SessionVar.Expand("%TempLaunchFolder%\\msi45x86");
+local strXPInstalledPath = strRuntimeSupportFolder.."\\WindowsXP-KB942288-v3-x86.exe";
+local strServer2003InstalledPath = strRuntimeSupportFolder.."\\WindowsServer2003-KB942288-v4-x86.exe";
+local strVistaServer2008InstalledPath = strRuntimeSupportFolder.."\\Windows6.0-KB942288-v2-x86.msu";
+local bVital = true;
+local bSilentMode = false;
+local bNoRestart = true;
+local bMSILogEnabled = true; -- Not applied for .msu files (Vista and Server 2008)
+local bShowUserPrompt = true;
+
+local tblOSInfo = System.GetOSVersionInfo();
+local strOSName = System.GetOSName();
+local strMSIVersion = MSI.GetMSIVersion();
+
+
+-- ***************************************************************
+function isValidMSI45OS()
+	SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Entering compatible OS detection.\r\n",true);
+
+	local tblOSInfo = System.GetOSVersionInfo();
+
+	-- Check Windows XP SP2 or later
+	if (tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "1") then
+		-- Check service pack.
+		if (tblOSInfo.ServicePackMajor &lt; 2) then
+			SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Windows XP SP2+ required.\r\n",true);
+			return false;
+		else
+			-- Windows XP SP2+ acceptable
+			return true;
+		end
+	end
+	
+	-- Check Windows Server 2003 SP1 or later
+	if (tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "2") then
+		-- Check service pack.
+		if (tblOSInfo.ServicePackMajor &lt; 1) then
+			SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Windows Server 2003 SP1+ required.\r\n",true);
+			return false;
+		else
+			-- Windows Server 2003 SP1+ acceptable
+			return true;
+		end
+	end
+	
+	-- Check Windows Vista / Windows Server 2008
+	if ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "0")) then
+			-- Windows Vista / Server 2008 acceptable
+			return true;
+	end
+		
+	return false;
+end
+-- ***************************************************************
+
+-- ***************************************************************
+function cleanupModule()
+	-- Cleanup extracted contents.
+	File.Delete(strXPInstalledPath);
+	File.Delete(strServer2003InstalledPath);
+	File.Delete(strVistaServer2008InstalledPath);
+	Folder.Delete(strRuntimeSupportFolder);
+end
+-- ***************************************************************
+
+
+-- Exit check if not a valid operating system.
+if(not isValidMSI45OS)then
+	-- Cleanup extracted contents.
+	cleanupModule();
+	local strOSInfo = "MajorVersion: "..tblOSInfo.MajorVersion.." MinorVersion: "..tblOSInfo.MinorVersion.." ServicePackMajor: "..tblOSInfo.ServicePackMajor;
+	local strError = "Error\tWindows Installer 4.5 (32-bit) Module: Not a valid operating system. "..strOSInfo.."\r\n";
+	SetupData.WriteToLogFile(strError,true);
+	-- Display message and exit if Vital since the Windows Installer 4.5 service will not install on the detected OS Configuration
+	if (bVital) then 
+		local strMsg = [[This installer requires the Windows Installer 4.5 (or greater) service to be installed
+in order to complete. Your operating system does not support Windows Installer 4.5.
+The setup will now abort.]];
+		Dialog.Message("Error", strMsg, MB_OK, MB_ICONSTOP);
+		Application.Exit(200);
+	else
+		Application.ExitScript();
+	end
+end
+
+
+
+-- Check if the dialog should be displayed asking whether or not they want to install the module.
+if (bShowUserPrompt) then
+	local strMessage = [[Setup has detected that your Microsoft Windows Installer Service run-time files are out of date.
+Click OK to install this technology now or Cancel to abort the setup.]];
+	local strDialogTitle = "Technology Required";
+	local nDialogResult = Dialog.Message(strDialogTitle,strMessage,MB_OKCANCEL,MB_ICONEXCLAMATION);
+	if(nDialogResult == IDOK)then
+		-- The user chose to install the module.
+		bRunInstallFile = true;
+	else
+		-- The user chose not to install the module.
+		bRunInstallFile = false;
+	end
+end
+
+if (bRunInstallFile) then
+
+	if (bSilentMode) then
+		strCmdArgs = strCmdArgs.."/quiet ";
+	end
+	
+	if (bNoRestart) then
+		strCmdArgs = strCmdArgs.."/norestart ";
+	end
+	
+	local nReturnCode = -1;
+	-- if Windows XP, install compatible version.
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "1")) then
+		if (bMSILogEnabled) then
+			sAppDataFolder = Shell.GetFolder(SHF_APPLICATIONDATA);
+			if sAppDataFolder ~= "" then
+				strCmdArgs = strCmdArgs.."/log:\""..sAppDataFolder.."\\MSI45Logfile.log\"";
+			end
+		end
+		SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Windows installer 4.5 (32-bit) redistributable for Windows XP is starting.\r\n",true);
+		nReturnCode = File.Run(strXPInstalledPath, strCmdArgs, "", SW_SHOWNORMAL, true);
+	elseif ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "2")) then
+	-- if Windows Server 2003, install compatible version.
+		if (bMSILogEnabled) then
+			sAppDataFolder = Shell.GetFolder(SHF_APPLICATIONDATA);
+			if sAppDataFolder ~= "" then
+				strCmdArgs = strCmdArgs.."/log:\""..sAppDataFolder.."\\MSI45Logfile.log\"";
+			end
+		end
+		SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Windows installer 4.5 (32-bit) redistributable for Windows Server 2003 is starting.\r\n",true);
+		nReturnCode = File.Run(strServer2003InstalledPath, strCmdArgs, "", SW_SHOWNORMAL, true);
+	elseif ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "0")) then
+			-- if Windows Server Vista or Windows Server 2008, install compatible update package file.
+			strCmdArgs = "\""..strVistaServer2008InstalledPath.."\" "..strCmdArgs;
+			SetupData.WriteToLogFile("Info\tWindows Installer 4.5 (32-bit) Module: Windows installer 4.5 (32-bit) redistributable for Windows Vista/Server 2008 is starting.\r\n",true);
+			nReturnCode = File.Run(_SystemFolder.."\\wusa.exe", strCmdArgs, "", SW_SHOWNORMAL, true);
+	end
+	
+	
+	-- return codes of 0, 1641, 3010 mean success. All other mean failure.
+	if (nReturnCode == 0) then
+		bRunSuccess = true;
+		strErrorCode = "ERROR_SUCCESS";
+	elseif nReturnCode ==  13 then
+		strErrorCode = "ERROR_INVALID_DATA";
+	elseif nReturnCode ==  87 then
+		strErrorCode = "ERROR_INVALID_PARAMETER";
+	elseif nReturnCode ==  120 then
+		strErrorCode = "ERROR_CALL_NOT_IMPLEMENTED";
+	elseif nReturnCode ==  1259 then
+		strErrorCode = "ERROR_APPHELP_BLOCK";
+	elseif nReturnCode ==  1601 then
+		strErrorCode = "ERROR_INSTALL_SERVICE_FAILURE";
+	elseif nReturnCode ==  1602 then
+		strErrorCode = "ERROR_INSTALL_USEREXIT";
+	elseif nReturnCode ==  1603 then
+		strErrorCode = "ERROR_INSTALL_FAILURE";
+	elseif nReturnCode ==  1604 then
+		strErrorCode = "ERROR_INSTALL_SUSPEND";
+	elseif nReturnCode ==  1605 then
+		strErrorCode = "ERROR_UNKNOWN_PRODUCT";
+	elseif nReturnCode ==  1606 then
+		strErrorCode = "ERROR_UNKNOWN_FEATURE";
+	elseif nReturnCode ==  1607 then
+		strErrorCode = "ERROR_UNKNOWN_COMPONENT";
+	elseif nReturnCode ==  1608 then
+		strErrorCode = "ERROR_UNKNOWN_PROPERTY";
+	elseif nReturnCode ==  1609 then
+		strErrorCode = "ERROR_INVALID_HANDLE_STATE";
+	elseif nReturnCode ==  1610 then
+		strErrorCode = "ERROR_BAD_CONFIGURATION";
+	elseif nReturnCode ==  1611 then
+		strErrorCode = "ERROR_INDEX_ABSENT";
+	elseif nReturnCode ==  1612 then
+		strErrorCode = "ERROR_INSTALL_SOURCE_ABSENT";
+	elseif nReturnCode ==  1613 then
+		strErrorCode = "ERROR_INSTALL_PACKAGE_VERSION";
+	elseif nReturnCode ==  1614 then
+		strErrorCode = "ERROR_PRODUCT_UNINSTALLED";
+	elseif nReturnCode ==  1615 then
+		strErrorCode = "ERROR_BAD_QUERY_SYNTAX";
+	elseif nReturnCode ==  1616 then
+		strErrorCode = "ERROR_INVALID_FIELD";
+	elseif nReturnCode ==  1618 then
+		strErrorCode = "ERROR_INSTALL_ALREADY_RUNNING";
+	elseif nReturnCode ==  1619 then
+		strErrorCode = "ERROR_INSTALL_PACKAGE_OPEN_FAILED";
+	elseif nReturnCode ==  1620 then
+		strErrorCode = "ERROR_INSTALL_PACKAGE_INVALID";
+	elseif nReturnCode ==  1621 then
+		strErrorCode = "ERROR_INSTALL_UI_FAILURE";
+	elseif nReturnCode ==  1622 then
+		strErrorCode = "ERROR_INSTALL_LOG_FAILURE";
+	elseif nReturnCode ==  1623 then
+		strErrorCode = "ERROR_INSTALL_LANGUAGE_UNSUPPORTED";
+	elseif nReturnCode ==  1624 then
+		strErrorCode = "ERROR_INSTALL_TRANSFORM_FAILURE";
+	elseif nReturnCode ==  1625 then
+		strErrorCode = "ERROR_INSTALL_PACKAGE_REJECTED";
+	elseif nReturnCode ==  1626 then
+		strErrorCode = "ERROR_FUNCTION_NOT_CALLED";
+	elseif nReturnCode ==  1627 then
+		strErrorCode = "ERROR_FUNCTION_FAILED";
+	elseif nReturnCode ==  1628 then
+		strErrorCode = "ERROR_INVALID_TABLE";
+	elseif nReturnCode ==  1629 then
+		strErrorCode = "ERROR_DATATYPE_MISMATCH";
+	elseif nReturnCode ==  1630 then
+		strErrorCode = "ERROR_UNSUPPORTED_TYPE";
+	elseif nReturnCode ==  1631 then
+		strErrorCode = "ERROR_CREATE_FAILED";
+	elseif nReturnCode ==  1632 then
+		strErrorCode = "ERROR_INSTALL_TEMP_UNWRITABLE";
+	elseif nReturnCode ==  1633 then
+		strErrorCode = "ERROR_INSTALL_PLATFORM_UNSUPPORTED";
+	elseif nReturnCode ==  1634 then
+		strErrorCode = "ERROR_INSTALL_NOTUSED";
+	elseif nReturnCode ==  1635 then
+		strErrorCode = "ERROR_PATCH_PACKAGE_OPEN_FAILED";
+	elseif nReturnCode ==  1636 then
+		strErrorCode = "ERROR_PATCH_PACKAGE_INVALID";
+	elseif nReturnCode ==  1637 then
+		strErrorCode = "ERROR_PATCH_PACKAGE_UNSUPPORTED";
+	elseif nReturnCode ==  1638 then
+		strErrorCode = "ERROR_PRODUCT_VERSION";
+	elseif nReturnCode ==  1639 then
+		strErrorCode = "ERROR_INVALID_COMMAND_LINE";
+	elseif nReturnCode ==  1640 then
+		strErrorCode = "ERROR_INSTALL_REMOTE_DISALLOWED";
+	elseif nReturnCode ==  1641 then
+		strErrorCode = "ERROR_SUCCESS_REBOOT_INITIATED";
+		bRunSuccess = true;
+	elseif nReturnCode ==  1642 then
+		strErrorCode = "ERROR_PATCH_TARGET_NOT_FOUND";
+	elseif nReturnCode ==  1643 then
+		strErrorCode = "ERROR_PATCH_PACKAGE_REJECTED";
+	elseif nReturnCode ==  1644 then
+		strErrorCode = "ERROR_INSTALL_TRANSFORM_REJECTED";
+	elseif nReturnCode ==  1645 then
+		strErrorCode = "ERROR_INSTALL_REMOTE_PROHIBITED";
+	elseif nReturnCode ==  1646 then
+		strErrorCode = "ERROR_PATCH_REMOVAL_UNSUPPORTED";
+	elseif nReturnCode ==  1647 then
+		strErrorCode = "ERROR_UNKNOWN_PATCH";
+	elseif nReturnCode ==  1648 then
+		strErrorCode = "ERROR_PATCH_NO_SEQUENCE";
+	elseif nReturnCode ==  1649 then
+		strErrorCode = "ERROR_PATCH_REMOVAL_DISALLOWED";
+	elseif nReturnCode ==  1650 then
+		strErrorCode = "ERROR_INVALID_PATCH_XML";
+	elseif nReturnCode ==  1651 then
+		strErrorCode = "ERROR_PATCH_MANAGED_ADVERTISED_PRODUCT";
+	elseif nReturnCode ==  1652 then
+		strErrorCode = "ERROR_INSTALL_SERVICE_SAFEBOOT";
+	elseif nReturnCode ==  1653 then
+		strErrorCode = "ERROR_ROLLBACK_DISABLED";
+	elseif nReturnCode ==  3010 then
+		bRunSuccess = true;
+		strErrorCode = "ERROR_SUCCESS_REBOOT_REQUIRED";
+	end
+	
+	if (strErrorCode == "") then
+		strErrorCode = nReturnCode;
+	end
+	
+	-- Cleanup the extracted contents.
+	cleanupModule();
+	
+	-- Check if the redistributable was installed properly
+	if (not bRunSuccess) then
+		SetupData.WriteToLogFile("FAIL\tWindows Installer 4.5 (32-bit) Module: Windows Installer 4.5 failed with error: "..strErrorCode.."\r\n",true);
+		if (bVital) then -- failed and critical - display message and Close Setup
+			Dialog.Message("Error", "The Windows Installer 4.5 setup failed.".."\r\n"..strErrorCode,MB_OK,MB_ICONSTOP);
+			Application.Exit(200);
+		end	
+	else
+		SetupData.WriteToLogFile("Success\tWindows Installer 4.5 (32-bit) Module: Windows Installer 4.5 redistributable installed properly - "..strErrorCode.."\r\n",true);
+	end
+else
+	-- The user chose not to install the runtime so delete the run time installer file,
+	-- remove the temp folder and then exit the setup.
+	
+	-- Output to the log that the user chose to abort the setup.
+	SetupData.WriteToLogFile("Error\tWindows Installer 4.5 (32-bit) Module: User chose to abort setup. Exiting setup.\r\n");
+	
+	cleanupModule();
+	
+	if bVital then
+		Application.Exit(EXIT_REASON_USER_ABORTED);
+	else
+		Application.ExitScript();
+	end
+end</InstallScript>
+<SupportFiles>
+<File>#SUFDIR#\Dependencies\msi45x86\WindowsXP-KB942288-v3-x86.exe</File>
+<File>#SUFDIR#\Dependencies\msi45x86\WindowsServer2003-KB942288-v4-x86.exe</File>
+<File>#SUFDIR#\Dependencies\msi45x86\Windows6.0-KB942288-v2-x86.msu</File>
+</SupportFiles>
+</Dependency>
+</DependencyTemplate>

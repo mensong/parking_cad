@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Chinese (Simplified)</Name>
+<Default>0</Default>
+<Primary>4</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% °²×°³ÌÐò</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>¿ì½Ý·½Ê½ÎÄ¼þ¼Ð</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>ÄúÏë½«¿ì½Ý·½Ê½°²×°µ½ºÎ´¦£¿</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>ÏÂÒ»²½(&N) &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; ·µ»Ø(&B)</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>È¡Ïû(&C)</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>°ïÖú(&H)</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>¿ì½Ý·½Ê½Í¼±ê½«ÔÚÏÂÃæÖ¸³öµÄÎÄ¼þ¼ÐÖÐ´´½¨¡£Èç¹ûÄú²»ÏëÊ¹ÓÃÄ¬ÈÏÎÄ¼þ¼Ð£¬Äú¿ÉÒÔ¼üÈëÐÂµÄÃû³Æ£¬»ò´ÓÁÐ±íÖÐÑ¡ÔñÏÖÓÐµÄÎÄ¼þ¼Ð¡£</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>¿ì½Ý·½Ê½ÎÄ¼þ¼Ð:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Ö»¶Ôµ±Ç°ÓÃ»§°²×°¿ì½Ý·½Ê½</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Ê¹¿ì½Ý·½Ê½¶ÔËùÓÐÓÃ»§¶¼¿ÉÓÃ</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

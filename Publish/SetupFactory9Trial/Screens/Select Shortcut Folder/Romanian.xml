@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Romanian</Name>
+<Default>0</Default>
+<Primary>24</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Instalare %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Director Scurtatura</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Unde doriti sa instalez scurtaturile?</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Urmatorul &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Inapoi</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Anulare</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&jutor</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Pictogramele pentru scurtaturi vor fi create in directorul selectat mai jos. Daca nu doriti sa utilizati directorul implicit, puteti scrie numele ori sa selectati un director existent din lista.</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_LABEL_01>Director scurtaturi:</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_RADIOBTN_PERUSER>Instaleaza scurtaturile numai pentru utilizatorul curent</IDS_CTRL_RADIOBTN_PERUSER>
+<IDS_CTRL_RADIOBTN_ALLUSERS>Scurtaturile sa fie disponibile pentru toti utilizatorii</IDS_CTRL_RADIOBTN_ALLUSERS>
+<IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>%AppShortcutFolderName%</IDS_CTRL_COMBOBOX_SHORTCUTFOLDERS>
+</Messages>
+</SUF70Messages>

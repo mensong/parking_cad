@@ -1,0 +1,377 @@
+<DependencyTemplate>
+<Dependency>
+<Name>Visual C++ 2008 SP1 (32-bit)</Name>
+<RuntimeTempFolder>vc2008sp1x86</RuntimeTempFolder>
+<RevisionDate>Wednesday, November 30, 2011</RevisionDate>
+<Description>Dependency Module: Visual C++ 2008 SP1 (32-bit) runtime 
+
+Description: This dependency module will cause the Visual C++ 2008 SP1 runtime to be included in your setup. The Microsoft Visual C++ 2008 SP1 Redistributable Package (x86) (vcredist_x86.exe) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2008 SP1 installed.
+
+This module is supported on 32-bit (x86) architectures of the following operating systems:
+Windows 7
+Windows Server 2008 R2
+Windows Vista
+Windows Server 2008
+Windows Server 2003
+Windows XP
+Windows 2000 Service Pack 4 (SP4)
+
+You will need to download the Visual C++ 2008 SP1 redistributable package installer from Microsoft directly. Download the file (vcredist_x86.exe) from the URL below into a new folder \Dependencies\vc2008sp1x86 within the Setup Factory program directory:
+
+Download:
+http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2 
+
+Please see the redistribute file included with the Microsoft Visual Studio 2008 installation for information on the license to redistribute the Microsoft Visual C++ 2008 SP1 Redistributable Package (x86) (vcredist_x86.exe):
+
+C:\Program Files\Microsoft Visual Studio 9.0\redist.txt
+
+For more information on distributing the Visual C++ 2008 SP1 runtime please see:
+
+http://msdn2.microsoft.com/en-us/library/zebw5zk9(VS.90).aspx
+
+http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2 </Description>
+<DetectScript>function isVC2008sp1x86_Installed()
+  -- Write to logfile that detection has started.
+	SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Detection script started.\r\n",true);
+	-- Get the state of the runtime
+	install_state = MSI.QueryProductState("{9A25302D-30C0-39D9-BD6F-21E6EC160475}");
+	-- Is it instlled.
+	if (install_state == INSTALLSTATE_DEFAULT) then
+		SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Visual C++ 2008 SP1 runtime detected.\r\n",true);
+		return true;
+	end
+	
+	-- If we got here it's not installed
+	SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Visual C++ 2008 SP1 runtime not installed.\r\n",true);
+	return false
+end</DetectScript>
+<DetectFunction>isVC2008sp1x86_Installed</DetectFunction>
+<InstallScript>-- Check to see if this is a valid operating system for VC 2008 SP1
+function isValidOS()
+	SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Entering compatible OS detection.\r\n",true);
+
+	local tblOSInfo = System.GetOSVersionInfo();
+	
+	-- Check Windows 2000
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "0")) then
+		-- Check service pack.
+		if (tblOSInfo.ServicePackMajor &lt; 4) then
+			SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Windows 2000 SP4+ required.\r\n",true);
+			return false;
+		else
+			-- Windows 2000 SP4+ acceptable.
+			return true;
+		end
+	end
+	
+	-- Check Windows XP.
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "1")) then
+		-- Windows XP acceptable.
+		return true;
+	end
+	
+	-- Check Windows Server 2003
+	if ((tblOSInfo.MajorVersion == "5") and (tblOSInfo.MinorVersion == "2") and (not tblOSInfo.Server2003R2)) then
+		-- Windows Server 2003 acceptable.
+		return true;
+	end
+	
+	-- Check Windows Vista / Windows Server 2008
+	if ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "0")) then
+		-- Windows Vista / Windows Server 2008 acceptable.
+		return true;
+	end
+	
+		-- Check Windows 7 / Windows Server 2008 R2
+	if ((tblOSInfo.MajorVersion == "6") and (tblOSInfo.MinorVersion == "1")) then
+		-- Windows 7 / Windows Server 2008 R2 acceptable.
+		return true;
+	end
+	
+	return false
+end
+
+-- Variables used in the installation actions:
+local strMessage = [[Setup has detected that your Visual C++ 2008 runtime files are out of date.
+Click OK to install this technology now or Cancel to abort the setup.]];
+local strDialogTitle = "Technology Required";
+local bShowUserPrompt = true; -- set this to true to ask user whether to install the module
+local bRunInstallFile = true; -- The default of whether or not to run the setup
+local bRequirementFail = false;
+local tbRequirementFailStrings = {};
+local strAbortQuestion = [[
+
+Due to this requirement failure, it is recommended that you abort the install.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+local strRequirementString = [[Visual C++ 2008 SP1 runtime cannot be installed due to the following requirements:
+
+]];
+local strRuntimeSupportFolder = SessionVar.Expand("%TempLaunchFolder%\\vc2008sp1x86");
+local strExtractInstallerToPath = strRuntimeSupportFolder.."\\vcredist_x86.exe";
+local strMessageFail = "";
+local _NeedsReboot = false;
+local strCmdArgs = "";
+local bSilentMode = false; -- Should this be silent?;
+local bVital = true; -- Is this vital?
+
+-- Output to the log that the installation script has started.
+SetupData.WriteToLogFile("Success\tVisual C++ 2008 SP1 (32-bit) Module: Installation script started.\r\n", true);
+
+------------------------------------------------------------------------------------------------------------
+---- Requires Admin permissions                                                                         ----
+------------------------------------------------------------------------------------------------------------
+
+-- Check if the user is logged in with administrative permissions.
+-- If the user doesn't have admin permissions, set the failure variable
+-- and failure string table.
+tbUserInfo = System.GetUserInfo();
+if (tbUserInfo ~= nil) then
+	if (not tbUserInfo.IsAdmin) then
+		bRequirementFail = true;
+		strTemp ="- You do not have the required administrative permissions to install the Visual C++ runtime.";
+		Table.Insert(tbRequirementFailStrings, Table.Count(tbRequirementFailStrings) + 1, strTemp);
+	end
+end
+
+------------------------------------------------------------------------------------------------------------
+---- Requires MSI 3.1                                       						----
+------------------------------------------------------------------------------------------------------------
+-- Get the operating system name.
+local strOSName = System.GetOSName();
+
+local strMSIVersion = MSI.GetMSIVersion();
+
+-- need MSI 3.1
+if (String.CompareFileVersions(strMSIVersion,"3.1.4000.2435") == -1) or (not strMSIVersion) then
+	-- MSI 3.1 is not installed
+	bRequirementFail = true;
+	strTemp = "- The Visual C++ 2008 SP1 runtime module requires Windows Installer 3.0. Please install this technology then run the setup again.";
+	Table.Insert(tbRequirementFailStrings, Table.Count(tbRequirementFailStrings) + 1, strTemp);
+end
+
+
+------------------------------------------------------------------------------------------------------------
+---- Operating System Check   
+-- Windows 7
+-- Windows Server 2008 R2
+-- Windows Vista
+-- Windows Server 2008
+-- Windows Server 2003
+-- Windows XP
+-- Windows 2000 Service Pack 4 (SP4)
+------------------------------------------------------------------------------------------------------------
+
+-- Check if OS is valid.
+if (not isValidOS()) then
+	bRequirementFail = true;
+	--VC 2008 SP1 isn't supported on the OS that was detected.
+	strTemp = "- The Visual C++ 2008 SP1 runtime cannot be installed on this operating system. Requires Windows 7, Windows Server 2008 R2, Windows Vista, Windows Server 2008, Windows Server 2003, Windows XP, or Windows 2000 SP4.";
+	Table.Insert(tbRequirementFailStrings, Table.Count(tbRequirementFailStrings) + 1, strTemp);
+end
+
+
+
+-- Check if the dialog should be displayed asking whether or not they want to install the module.
+if(bShowUserPrompt)then
+	local nDialogResult = Dialog.Message(strDialogTitle,strMessage,MB_OKCANCEL,MB_ICONEXCLAMATION);
+	if(nDialogResult == IDOK)then
+		-- The user chose to install the module.
+		bRunInstallFile = true;
+	else
+		-- The user chose not to install the module.
+		bRunInstallFile = false;
+	end
+end
+
+if (not bRequirementFail) then
+	-- Check if the user wants to install the runtime.
+	if(bRunInstallFile)then
+		-- The following are command line options that can be used when launching the install file vcredist_x86.exe.
+		---------------------------
+		--	/l &lt;logname.txt&gt; :Name of verbose msi log
+		--	/lang &lt;xxxx&gt;     :4-digit language code
+		--	/q               :Quiet install mode
+		--	/qu              :Quiet uninstall mode
+		--	/?               :Show the Usage dialog
+
+		if (bSilentMode) then
+			-- Passing quite mode, and no restart.
+			strCmdArgs = strCmdArgs.."/q";
+		end
+
+		-- Output to the log that the Visual C++ installation is being launched.
+		SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Visual C++ runtime installation file "..strExtractInstallerToPath.." is being launched.\r\n");
+		local nResult = File.Run(strExtractInstallerToPath, strCmdArgs, "", SW_SHOWNORMAL, true);
+		if (nResult == 3010) then
+			-- VC 2008 SP1 install indicated that it needs reboot to be complete
+			-- Set Setup Factory's reboot variable so that the reboot is just
+			-- performed at the end of the install.
+			_NeedsReboot = true;
+		elseif (nResult == 1602) then
+				-- The user canceled the setup program.
+				strMessageFail = [[You have cancelled the installation for the Visual C++ 2008 SP1 runtime. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+		elseif (nResult == 1603) then
+			-- A fatal error occurred during installation.
+			strMessageFail = [[A fatal error occurred during installation of the Visual C++ 2008 SP1 runtime. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+		elseif (nResult == 1605) then
+			-- This action is only valid for products that are currently installed.
+			strMessageFail = [[Error during installation of the Visual C++ 2008 SP1 runtime. This action is valid only for products that are currently installed. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+		elseif (nResult == 1636) then
+			-- The patch package could not be opened or the patch was not applicable to the Visual C++ 2008 SP1 runtime.
+			strMessageFail = [[The patch package could not be opened or the patch was not applicable to the Visual C++ 2008 SP1 runtime. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+		elseif (nResult == 1639) then
+			-- Invalid command line argument.
+			strMessageFail = [[An invalid command line argument was passed to the Visual C++ 2008 SP1 runtime installation. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+		elseif (nResult == 1643) then
+			-- The patch package is not permitted by system policy.
+			strMessageFail = [[The Visual C++ 2008 SP1 patch package is not permitted by system policy. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+		elseif (nResult == 0) then
+			-- The setup was successful, so do nothing.
+			SetupData.WriteToLogFile("Success\tVisual C++ 2008 SP1 (32-bit) Module: Visual C++ 2008 SP1 runtime installed.\r\n");
+		else
+			-- The setup program was not completed successfully.
+			strMessageFail = [[An unknown error occurred during the installation of the Visual C++ 2008 SP1 runtime. It is not recommended that you continue with the setup.
+
+Click OK to abort the setup, or Cancel to continue with the application install.]];
+			strMessageFail = strMessageFail..nResult.."\r\n";
+		end
+
+		-- Check to see if an error message was generated.
+		if (strMessageFail ~= "") then
+			-- Display the error notification dialog.
+			
+			-- Output to the log error message.
+			SetupData.WriteToLogFile("Error\tVisual C++ 2008 SP1 (32-bit) Module: Dialog error shown - "..strMessageFail..".\r\n");
+			
+			if (bShowUserPrompt) then
+				nDialogResult = Dialog.Message("Visual C++ 2008 SP1 Runtime Installation" ,strMessageFail,MB_OKCANCEL,MB_ICONEXCLAMATION);
+				if (nDialogResult == IDOK) then
+					bAbortInstall = true;
+				end
+			end
+		end
+	
+		-- Delete the run time installer file and remove the temp folder
+		File.Delete(strExtractInstallerToPath);
+		Folder.Delete(strRuntimeSupportFolder);
+		
+		-- If the user chose to abort the install after the failure of install, exit the setup.
+		if (bAbortInstall) then
+			-- Output to the log that the user chose to abort the setup after failure.
+			SetupData.WriteToLogFile("Error\tVisual C++ 2008 SP1 (32-bit) Module: User chose to abort setup after Visual C++ 2008 SP1 install failure. Exiting setup.\r\n");
+			Application.Exit(EXIT_REASON_USER_ABORTED);	
+		end
+		
+	else
+		-- The user chose not to install the runtime so delete the run time installer file,
+		-- remove the temp folder and then exit the setup.
+		
+		-- Output to the log that the user chose to abort the setup.
+		SetupData.WriteToLogFile("Error\tVisual C++ 2008 SP1 (32-bit) Module: User chose to abort setup. Exiting setup.\r\n");
+		
+		File.Delete(strExtractInstallerToPath);
+		Folder.Delete(strRuntimeSupportFolder);
+		if bVital then
+			Application.Exit(EXIT_REASON_USER_ABORTED);
+		else
+			Application.ExitScript();
+		end
+	end
+else
+-- A requirement failed
+
+	-- If the user didn't cancel...
+	if (bRunInstallFile) then 
+		-- One or more of the requirements failed. Notify the user and ask if they wish
+		-- to abort the installation.
+		strFullErrorString = Table.Concat(tbRequirementFailStrings, "\r\n", 1, TABLE_ALL);
+		nDialogResult = Dialog.Message("Notice", strRequirementString..strFullErrorString..strAbortQuestion, MB_OKCANCEL, MB_ICONINFORMATION, MB_DEFBUTTON1);
+		
+		-- Output the requirement failure string to the log.
+		SetupData.WriteToLogFile("Error\tVisual C++ 2008 SP1 (32-bit) Module: Requirement failure dialog: "..strFullErrorString.."\r\n");
+		
+		-- Delete the runtime installer file and remove the temp folder
+		File.Delete(strExtractInstallerToPath);
+		Folder.Delete(strRuntimeSupportFolder);
+		
+		-- The user chose to abort the install due to the requirement failure of Visual C++ 2008 SP1.
+		if (nDialogResult == IDOK) then
+		
+			-- Output to the log that the user chose to abort the install due to requirement failure.
+			SetupData.WriteToLogFile("Error\tVisual C++ 2008 SP1 (32-bit) Module: User aborted setup due to requirement failure. Exiting setup.\r\n");
+		
+			-- Abort the install.
+			Application.Exit(EXIT_REASON_USER_ABORTED);
+		end
+	else
+		-- The user chose not to install the runtime so delete the run time installer file,
+		-- remove the temp folder and then exit the setup.
+		
+		-- Output to the log that the user chose to abort the setup.
+		SetupData.WriteToLogFile("Error\tVisual C++ 2008 SP1 (32-bit) Module: User chose to abort setup. Exiting setup.\r\n");
+		
+		File.Delete(strExtractInstallerToPath);
+		Folder.Delete(strRuntimeSupportFolder);
+		
+		if bVital then
+			Application.Exit(EXIT_REASON_USER_ABORTED);
+		else
+			Application.ExitScript();
+		end
+	
+	end
+end
+
+-- If a reboot was needed by Visual C++ 2008 SP1 notify the user that they must reboot
+-- before continuing with the install
+
+-- NOTE: If you would always like to force the user to reboot, comment out the "if (_NeedsReboot) then" condition below.
+
+local strRebootMessage = [[A reboot is required to continue with the installation. After rebooting, re-run the installation.
+
+Click OK to reboot now, or Cancel to reboot later.]];
+if (_NeedsReboot) then
+	nDialogResult = Dialog.Message("Notice", strRebootMessage, MB_OKCANCEL, MB_ICONINFORMATION, MB_DEFBUTTON1);
+	
+	-- Output to the log that a reboot is required by the Visual C++ 2008 SP1 setup.
+	SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: Visual C++ 2008 SP1 detected that a reboot is required.\r\n");
+	-- Check if the uer wanted to reboot now.
+	if (nDialogResult == IDOK) then
+	
+		-- NOTE:  If you would like the install to relaunch itself after the reboot,
+		-- uncomment the following block of code.
+		-- Re-run the installation after the reboot.
+		
+		-- File.RunOnReboot(_SourceFilename, "");
+	
+		-- Output to the log that a reboot will be performed.
+		SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: A reboot will be performed.\r\n");
+		-- Reboot the user's system.
+		System.Reboot();
+	else
+		-- Output to the log that the user chose to reboot later and abort the setup.
+		SetupData.WriteToLogFile("Info\tVisual C++ 2008 SP1 (32-bit) Module: User chose to reboot later. Exiting setup.\r\n");
+		-- Abort the install.
+		Application.Exit(EXIT_REASON_USER_ABORTED);
+	end
+end
+-- Output to the log that the installation script has finished.
+SetupData.WriteToLogFile("Success\tVisual C++ 2008 SP1 (32-bit) Module: Installation script finished.\r\n");</InstallScript>
+<SupportFiles>
+<File>#SUFDIR#\Dependencies\vc2008sp1x86\vcredist_x86.exe</File>
+</SupportFiles>
+</Dependency>
+</DependencyTemplate>

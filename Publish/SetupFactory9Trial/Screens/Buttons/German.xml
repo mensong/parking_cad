@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>German</Name>
+<Default>0</Default>
+<Primary>7</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Setup</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Titel Text</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Untertitel Text</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Weiter &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Zurück</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Abbrechen</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Hilfe</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS/>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_BUTTON_01>Button 01</IDS_CTRL_BUTTON_01>
+<IDS_CTRL_STATICTEXT_LABEL_01>Beschreiben Sie, was passiert, wenn Sie die Schaltfläche Button 01 klicken.</IDS_CTRL_STATICTEXT_LABEL_01>
+<IDS_CTRL_BUTTON_02>Button 02</IDS_CTRL_BUTTON_02>
+<IDS_CTRL_STATICTEXT_LABEL_02>Beschreiben Sie, was passiert, wenn Sie die Schaltfläche Button 02 klicken.</IDS_CTRL_STATICTEXT_LABEL_02>
+</Messages>
+</SUF70Messages>

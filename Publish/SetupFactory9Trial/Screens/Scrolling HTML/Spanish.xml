@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Spanish</Name>
+<Default>0</Default>
+<Primary>10</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+<ID>7</ID>
+<ID>8</ID>
+<ID>9</ID>
+<ID>10</ID>
+<ID>11</ID>
+<ID>12</ID>
+<ID>13</ID>
+<ID>14</ID>
+<ID>15</ID>
+<ID>16</ID>
+<ID>17</ID>
+<ID>18</ID>
+<ID>19</ID>
+<ID>20</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Programa de instalación de %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Información Importante</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Por favor, lea esta información.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Siguiente &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Atrás</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&yuda</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Mostrar HTML Texto&lt;/h1&gt;
+
+&lt;p&gt;Ud. puede usar cualquiera de las etiquetas HTML soportadas por Internet Explorer como:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Negrita&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;Cursiva&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color="green"&gt;Color del tipo de letra&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font size="2"&gt;Tamaño del tipo de letra&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.indigorose.com"&gt;Hipervínculos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ud. también puede usar &lt;span class="hilite"&gt;CSS (páginas en estilo cascada)&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+body {
+    background-color: #E8F0FD;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 125%;
+    font-family: Arial, sans-serif;
+    color: blue;
+}
+
+.hilite {
+    background: #f0f090 none;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 90%;
+}
+&lt;/style&gt;
+
+&lt;/html&gt;
+</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

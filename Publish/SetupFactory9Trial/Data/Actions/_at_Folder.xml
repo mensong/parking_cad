@@ -1,0 +1,201 @@
+<ActionTemplates>
+   <Action>
+      <Name>Folder.Create</Name>
+      <Description>Creates a new folder on the user's system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Folder</Name>
+            <Description>The path to the folder.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\My Folder"</Default>
+               <DataType>proj_folder</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Folder.Delete</Name>
+      <Description>Deletes a folder from the user's system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Folder</Name>
+            <Description>The path to the folder.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\My Folder"</Default>
+               <DataType>proj_folder</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Folder.DeleteTree</Name>
+      <Description>Deletes the specified folder, sub folders, and all files contained within.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>FolderName</Name>
+            <Description>The folder that will be deleted.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyDir\\"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CallbackFunction</Name>
+            <Description>The name of a function that will be called whenever progress is made in the delete operation.</Description>
+            <Type>function</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>function</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Folder.DoesExist</Name>
+      <Description>Returns true if a specific folder exists and false if it doesn't.</Description>
+      <ReturnValueType>boolean</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>Folder</Name>
+            <Description>The path to the folder.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\My Folder"</Default>
+               <DataType>proj_folder</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Folder.Find</Name>
+      <Description>Searches for folders on the local system.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>StartFolder</Name>
+            <Description>The path to the folder that you want to start the search in.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\MyDir\\"</Default>
+               <DataType>proj_folder</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Folder</Name>
+            <Description>The name of the folder that you want to search for. You can use the * and ? wildcards in this field to search for folders that match a specific pattern.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"Setup Factory*"</Default>
+               <DataType>string</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Recurse</Name>
+            <Description>Whether to recurse through subfolders.</Description>
+            <Type>boolean</Type>
+            <Default>false</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>false</Default>
+               <DataType>boolean</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>CallbackFunction</Name>
+            <Description>The name of a function that will be called whenever progress is made in the find operation.</Description>
+            <Type>function</Type>
+            <Default>nil</Default>
+            <Required>0</Required>
+            <EasyMode>
+               <Default>nil</Default>
+               <DataType>function</DataType>
+               <Constraints>none</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Folder.GetCurrent</Name>
+      <Description>Returns the "current folder" (working directory) for the application. </Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>Folder.Rename</Name>
+      <Description>Renames a folder on the user's system.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>OldName</Name>
+            <Description>The path to the folder you want to rename.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\My Folder"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>NewName</Name>
+            <Description>The new path to the folder. This must include the full path and folder name.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\My New Folder"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>Folder.SetCurrent</Name>
+      <Description>Sets the application's "current folder" (working directory). </Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Folder</Name>
+            <Description>The path to the folder.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"C:\\My Folder"</Default>
+               <DataType>proj_folder</DataType>
+               <Constraints/>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

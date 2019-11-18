@@ -29,6 +29,7 @@
 #include "DBHelper.h"
 #include "Convertor.h"
 #include "ModulesManager.h"
+#include "AutoRegCmd.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -80,9 +81,10 @@ public:
 		acutPrintf(_T("\n授权信息 - 用户名:%s  到期时间:%u\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
 
 		// You *must* call On_kInitAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kInitAppMsg (pkt) ;
+		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
 		
 		// TODO: Add your initialization code here
+		AUTO_REG_CMD::Init();
 
 		return (retCode) ;
 	}
@@ -96,13 +98,14 @@ public:
 		// TODO: Unload dependencies here
 		CDlgWaiting::Destroy();
 		ModulesManager::Relaese();
+		AUTO_REG_CMD::Clear();
 
 		return (retCode) ;
 	}
 
 	virtual void RegisterServerComponents () {
 	}
-		
+	
 } ;
 
 //-----------------------------------------------------------------------------

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Chinese (Traditional)</Name>
+<Default>0</Default>
+<Primary>4</Primary>
+<Secondary>
+<ID>1</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% ¦w¸Ëµ{¦¡</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>±ÂÅv¦X¬ù</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>½Ð¥J²Ó¾\Åª¤U¦C¤§±ÂÅv¦X¬ù</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&¤U¤@¨B &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &ªð¦^</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&¨ú®ø</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&À°§U</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_SCROLLTEXT_BODY>§â±zªº±ÂÅv¦X¬ù¥[¨ì³o¨à...</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_RADIOBTN_AGREE>§Ú¦P·N¿í¦u±ÂÅv¦X¬ù</IDS_CTRL_RADIOBTN_AGREE>
+<IDS_CTRL_RADIOBTN_DISAGREE>§Ú¤£¦P·N¿í¦u±ÂÅv¦X¬ù</IDS_CTRL_RADIOBTN_DISAGREE>
+<IDS_CTRL_SCROLLTEXT_FILE></IDS_CTRL_SCROLLTEXT_FILE>
+</Messages>
+</SUF70Messages>

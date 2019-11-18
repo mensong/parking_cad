@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Hungarian</Name>
+<Default>0</Default>
+<Primary>14</Primary>
+<Secondary>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>%ProductName% Telepítõ</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Beállítások</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>Válasszon egy opciót, majd nyomja meg a Tovább gombot a folytatáshoz.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Tovább &gt;</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Vissza</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Mégsem</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>&Segítség</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>Kérem válasszon egyet az alábbi lehetõségek közül: </IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
+<IDS_CTRL_STATICTEXT_BOTTOMINSTRUCTIONS/>
+<IDS_CTRL_RADIO_BUTTON_01>Opció 01</IDS_CTRL_RADIO_BUTTON_01>
+<IDS_CTRL_RADIO_BUTTON_02>Optió 02</IDS_CTRL_RADIO_BUTTON_02>
+<IDS_CTRL_RADIO_BUTTON_03>Optió 03</IDS_CTRL_RADIO_BUTTON_03>
+<IDS_CTRL_RADIO_BUTTON_04>Optió 04</IDS_CTRL_RADIO_BUTTON_04>
+</Messages>
+</SUF70Messages>

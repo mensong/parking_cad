@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+<Language>
+<Name>Spanish</Name>
+<Default>0</Default>
+<Primary>10</Primary>
+<Secondary>
+<ID>1</ID>
+<ID>2</ID>
+<ID>3</ID>
+<ID>4</ID>
+<ID>5</ID>
+<ID>6</ID>
+<ID>7</ID>
+<ID>8</ID>
+<ID>9</ID>
+<ID>10</ID>
+<ID>11</ID>
+<ID>12</ID>
+<ID>13</ID>
+<ID>14</ID>
+<ID>15</ID>
+<ID>16</ID>
+<ID>17</ID>
+<ID>18</ID>
+<ID>19</ID>
+<ID>20</ID>
+</Secondary>
+</Language>
+<Messages>
+<IDS_WINDOW_TITLE>Programa de instalación de %ProductName%</IDS_WINDOW_TITLE>
+<IDS_HEADER_TEXT>Instalación Terminada</IDS_HEADER_TEXT>
+<IDS_SUBHEADER_TEXT>La instalación se ha completado.</IDS_SUBHEADER_TEXT>
+<IDS_CTRL_BUTTON_NEXT>&Terminar</IDS_CTRL_BUTTON_NEXT>
+<IDS_CTRL_BUTTON_BACK>&lt; &Atrás</IDS_CTRL_BUTTON_BACK>
+<IDS_CTRL_BUTTON_CANCEL>&Cancelar</IDS_CTRL_BUTTON_CANCEL>
+<IDS_CTRL_BUTTON_HELP>A&yuda</IDS_CTRL_BUTTON_HELP>
+<IDS_CTRL_STATICTEXT_BODY>La instalación de %ProductName% %ProductVer% ha terminado.
+
+Gracias por elegir %ProductName% !
+
+Por favor, haga clic en “Finalizar” para salir del programa de instalación.
+</IDS_CTRL_STATICTEXT_BODY>
+<IDS_CTRL_HEADINGTEXT_BODY>Instalación Completada</IDS_CTRL_HEADINGTEXT_BODY>
+</Messages>
+</SUF70Messages>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF7DefaultScreens>
+	<BeforeInstalling>
+		<ScreenName>Welcome to Setup</ScreenName>
+		<ScreenName>License Agreement</ScreenName>
+		<ScreenName>User Information</ScreenName>
+		<ScreenName>Select Install Folder</ScreenName>
+		<ScreenName>Select Shortcut Folder</ScreenName>
+		<ScreenName>Ready to Install</ScreenName>
+	</BeforeInstalling>
+	<WhileInstalling>
+		<ScreenName>One Progress Bar (While Installing)</ScreenName>
+	</WhileInstalling>
+	<AfterInstalling>
+		<ScreenName>Finished Install</ScreenName>
+	</AfterInstalling>
+	<BeforeUnInstalling>
+		<ScreenName>Welcome to Uninstall</ScreenName>
+	</BeforeUnInstalling>
+	<WhileUnInstalling>
+		<ScreenName>One Progress Bar (While Uninstalling)</ScreenName>
+	</WhileUnInstalling>
+	<AfterUnInstalling>
+		<ScreenName>Finished Uninstall</ScreenName>
+	</AfterUnInstalling>
+</SUF7DefaultScreens>

@@ -1,0 +1,139 @@
+<ActionTemplates>
+   <Action>
+      <Name>UninstallData.AddItem</Name>
+      <Description>Adds an item to the uninstall configuration file. If the item already exists, the existing item will be overwritten by the new data.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ItemType</Name>
+            <Description>The type of item you want to add. This setting determines what the ItemData table should contain.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>UNINDATA_FILES</Default>
+               <DataType>combo</DataType>
+               <Constraints>UNINDATA_MAIN,UNINDATA_FILES,UNINDATA_SESSIONVARS,UNINDATA_SUPPORTFILES,UNINDATA_SHORTCUTS,UNINDATA_FOLDERS,UNINDATA_SCRIPTS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>ItemData</Name>
+            <Description>A table whose contents depend upon the ItemType selected.</Description>
+            <Type>table</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>ItemData</Default>
+               <DataType>table</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+   <Action>
+      <Name>UninstallData.GetConfigurationFile</Name>
+      <Description>Gets the full path and filename of the uninstall configuration (xml) file during the setup.</Description>
+      <ReturnValueType>string</ReturnValueType>
+      <Arguments/>
+   </Action>
+   <Action>
+      <Name>UninstallData.GetItem</Name>
+      <Description>Gets an item's details from the uninstall's configuration file.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ItemType</Name>
+            <Description> The type of item you want to get. The type of item determines what the Identifier is.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>UNINDATA_FILES</Default>
+               <DataType>combo</DataType>
+               <Constraints>UNINDATA_MAIN,UNINDATA_FILES,UNINDATA_SESSIONVARS,UNINDATA_SUPPORTFILES,UNINDATA_SHORTCUTS,UNINDATA_FOLDERS,UNINDATA_SCRIPTS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Identifier</Name>
+            <Description>The Identifier of the type you want to get.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My_Identifier"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+      <Action>
+      <Name>UninstallData.GetItemList</Name>
+      <Description>Returns a numerically indexed table of identifiers given an uninstall data type.</Description>
+      <ReturnValueType>table</ReturnValueType>
+      <Arguments>
+         <Arg>
+            <Name>ItemType</Name>
+            <Description>The type of item whose list you want to get.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>UNINDATA_FILES</Default>
+               <DataType>combo</DataType>
+               <Constraints>UNINDATA_MAIN,UNINDATA_FILES,UNINDATA_SESSIONVARS,UNINDATA_SUPPORTFILES,UNINDATA_SHORTCUTS,UNINDATA_FOLDERS,UNINDATA_SCRIPTS</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+      <Action>
+      <Name>UninstallData.RemoveItem</Name>
+      <Description>Removes an item from the uninstall's configuration file.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>ItemType</Name>
+            <Description>The type of item that you want to remove. The type of item determines what the Identifier is.</Description>
+            <Type>number</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>UNINDATA_FILES</Default>
+               <DataType>combo</DataType>
+               <Constraints>UNINDATA_MAIN,UNINDATA_FILES,UNINDATA_SESSIONVARS,UNINDATA_SUPPORTFILES,UNINDATA_SHORTCUTS,UNINDATA_FOLDERS,UNINDATA_SCRIPTS</Constraints>
+            </EasyMode>
+         </Arg>
+         <Arg>
+            <Name>Identifier</Name>
+            <Description>The Identifier of the type you want to remove.</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>"My_Identifier"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+      <Action>
+      <Name>UninstallData.SetConfigurationFile</Name>
+      <Description>Sets the name of the uninstall configuration (xml) file during the setup.</Description>
+      <ReturnValueType/>
+      <Arguments>
+         <Arg>
+            <Name>Filename</Name>
+            <Description>The full path and filename of the uninstall configuration file you want to use. This file should be in XML format (*.xml).</Description>
+            <Type>string</Type>
+            <Default/>
+            <Required>1</Required>
+            <EasyMode>
+               <Default>SessionVar.Expand("%AppFolder%").."\\NewFile.xml"</Default>
+               <DataType>string</DataType>
+               <Constraints>1,*</Constraints>
+            </EasyMode>
+         </Arg>
+      </Arguments>
+   </Action>
+</ActionTemplates>

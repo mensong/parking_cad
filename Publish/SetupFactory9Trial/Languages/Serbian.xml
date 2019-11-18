@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUF70Messages>
+   <Language>
+<Name>Serbian</Name>
+<Primary>26</Primary>
+<Secondary>
+<ID>2</ID>
+<ID>3</ID>
+</Secondary>
+</Language>
+<Messages>
+      <MSG_SUCCESS>Uspešno</MSG_SUCCESS>
+      <MSG_ERROR>Greška</MSG_ERROR>
+      <MSG_NOTICE>Primedba</MSG_NOTICE>
+      <MSG_WARNING>Upozorenje</MSG_WARNING>
+      <MSG_YES>Da</MSG_YES>
+      <MSG_NO>Ne</MSG_NO>
+      <MSG_YES_TOALL>Da za Sve</MSG_YES_TOALL>
+      <MSG_TO>Do</MSG_TO>
+      <MSG_FROM>Iz</MSG_FROM>
+      <MSG_BROWSE>Promeni...</MSG_BROWSE>
+      <MSG_OK>U Redu</MSG_OK>
+      <MSG_CANCEL>Prekini</MSG_CANCEL>
+      <MSG_PATH>Putanja</MSG_PATH>
+      <MSG_SEARCH_MASK>Traži</MSG_SEARCH_MASK>
+      <MSG_SEARCH_ALL>Svi Fajlovi</MSG_SEARCH_ALL>
+      <MSG_SEARCH_FILE>Potraga za fajlom</MSG_SEARCH_FILE>
+      <MSG_SIZE_BYTES>bajtovi</MSG_SIZE_BYTES>
+      <MSG_SIZE_KILOBYTES>KB</MSG_SIZE_KILOBYTES>
+      <MSG_SIZE_MEGABYTES>MB</MSG_SIZE_MEGABYTES>
+      <MSG_SIZE_GIGABYTES>GB</MSG_SIZE_GIGABYTES>
+      <MSG_BITSPERPIXEL>BPP</MSG_BITSPERPIXEL>
+      <MSG_CONFIRM>Potvrdi</MSG_CONFIRM>
+      <MSG_CONFIRM_ABORT>Podešavanje nije završeno! Zaista želite prekinuti?</MSG_CONFIRM_ABORT>
+      <MSG_CONFIRM_CONTINUE>Dali ste sigurni da želite nastaviti sa instalacijom?</MSG_CONFIRM_CONTINUE>
+      <MSG_NOT_ENOUGH_FREE_SPACE>Nema dovoljno slobodnog prostora da bi se instalirao %ProductName% na odabrani drajv.</MSG_NOT_ENOUGH_FREE_SPACE>
+      <MSG_COPYING>Kopiranje</MSG_COPYING>
+      <MSG_DELETING>Brisanje</MSG_DELETING>
+      <MSG_SEARCHING>Pretraga</MSG_SEARCHING>
+      <MSG_READING>Ocitavanje</MSG_READING>
+      <MSG_QUERYING_INTERNET>Pozivanje Interneta</MSG_QUERYING_INTERNET>
+      <MSG_MOVING>Pomeranje</MSG_MOVING>
+      <MSG_SAVING>Sacuvanje</MSG_SAVING>
+      <MSG_INSERTDISK>Stavite Disk</MSG_INSERTDISK>
+      <MSG_DOWNLOADING>Daunlodovanje</MSG_DOWNLOADING>
+      <MSG_DOWNLOADING_FILE>Daunload fajla...</MSG_DOWNLOADING_FILE>
+      <MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>Daunload fajla, celokupna velicina nije poznata. Kb daunlodovanog do sada: </MSG_DOWNLOADING_FILE_UNKNOWN_TOTAL>
+      <MSG_RESOLVING_HOST_NAME>Rešavanje imena glavnog kompjutera.</MSG_RESOLVING_HOST_NAME>
+      <MSG_HOST_NAME_RESOLVED>Ime glavnog kompjutera je razrešen.</MSG_HOST_NAME_RESOLVED>
+      <MSG_CONNECTING_TO_SERVER>Spajanje sa serverom.</MSG_CONNECTING_TO_SERVER>
+      <MSG_CONNECTED_TO_SERVER>Spojen sa serverom.</MSG_CONNECTED_TO_SERVER>
+      <MSG_CLOSING_CONNECTION>Zatvaranje veze do servera.</MSG_CLOSING_CONNECTION>
+      <MSG_CONNECTION_CLOSED>Veza je zatvorena sa serverom.</MSG_CONNECTION_CLOSED>
+      <MSG_STATUS_REQUEST_COMPLETE>Zahtev Izvršen.</MSG_STATUS_REQUEST_COMPLETE>
+      <MSG_REDIRECTING>Preusmeravanje.</MSG_REDIRECTING>
+      <MSG_ESTIMATED_TIME_LEFT>Preostalo vreme</MSG_ESTIMATED_TIME_LEFT>
+      <MSG_KB_PER_SEC>KB/Sec</MSG_KB_PER_SEC>
+      <MSG_INITIALIZING>Otpocinjanje...</MSG_INITIALIZING>
+      <MSG_INSTALLING>Instaliranje...</MSG_INSTALLING>
+      <MSG_SKIPPING>Preskakanje...</MSG_SKIPPING>
+      <MSG_SEEKING>Pretraživanje...</MSG_SEEKING>
+      <MSG_INVALID_ENTRY>Nevažeci Pristup</MSG_INVALID_ENTRY>
+      <MSG_THE>Oznaceno </MSG_THE>
+      <MSG_FIELD_CANNOT_BE_EMPTY> polje nemože biti prazno.</MSG_FIELD_CANNOT_BE_EMPTY>
+      <MSG_PROG_PREPARING>Pripremanje za Instalaciju...</MSG_PROG_PREPARING>
+      <MSG_PROG_INSTALLING_FILES>Instaliranje Fajlova...</MSG_PROG_INSTALLING_FILES>
+      <MSG_PROG_CREATING_UNINSTALL>Formiranje Deinstalacije...</MSG_PROG_CREATING_UNINSTALL>
+      <MSG_PROG_CREATING_SHORTCUTS>Formiranje Precice...</MSG_PROG_CREATING_SHORTCUTS>
+      <MSG_PROG_CHECKING_FILES>Provera stanja fajlova...</MSG_PROG_CHECKING_FILES>
+      <MSG_PROG_CHECKING_FOLDERS>Provera odobravanja foldera...</MSG_PROG_CHECKING_FOLDERS>
+      <MSG_PROG_CHECKING_DRIVESPACE>Provera slobodnog prostora na drajvu...</MSG_PROG_CHECKING_DRIVESPACE>
+      <MSG_PROG_UNINSTALL_REMOVING_FILES>Odstranjivanje Fajlova...</MSG_PROG_UNINSTALL_REMOVING_FILES>
+      <MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>Odstranjivanje Precica...</MSG_PROG_UNINSTALL_REMOVING_SHORTCUTS>
+      <MSG_PROG_UNINSTALL_CREATEFOLDER>Formiranje foldera sa podacima za deinstalaciju...</MSG_PROG_UNINSTALL_CREATEFOLDER>
+      <MSG_PROG_UNINSTALL_CREATEDATFILE>Formiranje fajlova podataka za deinstalaciju...</MSG_PROG_UNINSTALL_CREATEDATFILE>
+      <MSG_PROG_UNINSTALL_CREATECONTROLFILE>Formiranje kontrolnog fajla deinstalacije...</MSG_PROG_UNINSTALL_CREATECONTROLFILE>
+      <MSG_PROG_UNINSTALL_CREATEEXE>Formiranje izvršavanja deinstalacije...</MSG_PROG_UNINSTALL_CREATEEXE>
+      <MSG_PROG_UNINSTALL_COPYIMAGES>Kopiranje imidž fajlova ekrana...</MSG_PROG_UNINSTALL_COPYIMAGES>
+      <MSG_PROG_UNINSTALL_COPYPLUGINS>Kopiranje proširenja...</MSG_PROG_UNINSTALL_COPYPLUGINS>
+      <MSG_PROG_UNINSTALL_COPYSUPPORTFILES>Kopiranje fajlova podrške...</MSG_PROG_UNINSTALL_COPYSUPPORTFILES>
+      <MSG_PROG_UNINSTALL_CREATECPENTRY>Formiranje konzolskog pristupa...</MSG_PROG_UNINSTALL_CREATECPENTRY>
+      <MSG_PROG_UNINSTALL_CREATESC>Formiranje precice deinstalacije...</MSG_PROG_UNINSTALL_CREATESC>
+      <MSG_OS_UNKNOWN>Nepoznat</MSG_OS_UNKNOWN>
+      <MSG_OS_W95>Windows 95</MSG_OS_W95>
+      <MSG_OS_W98>Windows 98</MSG_OS_W98>
+      <MSG_OS_WME>Windows ME</MSG_OS_WME>
+      <MSG_OS_WNT3>Windows NT 3.0</MSG_OS_WNT3>
+      <MSG_OS_WNT4>Windows NT 4.0</MSG_OS_WNT4>
+      <MSG_OS_W2000>Windows 2000</MSG_OS_W2000>
+      <MSG_OS_WXP>Windows XP</MSG_OS_WXP>
+      <MSG_OS_WSRV2003>Windows Server 2003</MSG_OS_WSRV2003>
+      <MSG_OS_WVISTA>Windows Vista</MSG_OS_WVISTA>
+	  <MSG_OS_W7>Windows 7</MSG_OS_W7>
+	  <MSG_OS_W8>Windows 8</MSG_OS_W8>
+	  <MSG_OS_WSRV2012>Windows Server 2012</MSG_OS_WSRV2012>
+	  <MSG_OS_W8_1>Windows 8.1</MSG_OS_W8_1>
+	  <MSG_OS_WSRV2012_R2>Windows Server 2012 R2</MSG_OS_WSRV2012_R2>
+	  <MSG_OS_WSRV2008>Windows Server 2008</MSG_OS_WSRV2008>
+      <MSG_OS_WSRV2008_R2>Windows Server 2008 R2</MSG_OS_WSRV2008_R2>
+      <MSG_OS_W10>Windows 10</MSG_OS_W10>
+	  <MSG_OS_WSRV2016>Windows Server 2016</MSG_OS_WSRV2016>
+      <MSG_OS_NONE>Nijedan</MSG_OS_NONE>
+      <MSG_OS_ALL>Svi</MSG_OS_ALL>
+      <MSG_OS_PART_A>a</MSG_OS_PART_A>
+      <MSG_OS_PART_B>b</MSG_OS_PART_B>
+      <MSG_OS_PART_C>c</MSG_OS_PART_C>
+      <MSG_OS_PART_SE>SE</MSG_OS_PART_SE>
+      <MSG_OS_PART_SERVPACK>SP</MSG_OS_PART_SERVPACK>
+      <MSG_OS_PART_NOSERVPACK>(nije SP)</MSG_OS_PART_NOSERVPACK>
+      <MSG_OS_PART_ORNEWER>(ili noviji)</MSG_OS_PART_ORNEWER>
+      <MSG_SYSREQ_NOTMET>Za ovo podešavanje nisu dostignuta sledeca minimalna sistemska potraživanja:</MSG_SYSREQ_NOTMET>
+      <MSG_SYSREQ_OS>Operacioni Sistem</MSG_SYSREQ_OS>
+      <MSG_SYSREQ_RAM>RAM</MSG_SYSREQ_RAM>
+      <MSG_SYSREQ_SCREENWIDTH>Širina Ekrana</MSG_SYSREQ_SCREENWIDTH>
+      <MSG_SYSREQ_SCREENHEIGHT>Visina Ekrana</MSG_SYSREQ_SCREENHEIGHT>
+      <MSG_SYSREQ_COLORDEPTH>Dubina Boje</MSG_SYSREQ_COLORDEPTH>
+      <MSG_SYSREQ_USERPERMISSION>Odobrenje Korisnika</MSG_SYSREQ_USERPERMISSION>
+      <MSG_SYSREQ_SYSTEMADMIN>Administrator</MSG_SYSREQ_SYSTEMADMIN>
+      <MSG_SYSREQ_ABORT>Podešavanje ce se sada prekinuti.</MSG_SYSREQ_ABORT>
+      <MSG_SYSREQ_WARN>Kliknite na U Redu da biste nastavili ili na Prekini da biste obustavili podešavanje.</MSG_SYSREQ_WARN>
+      <MSG_EXP_CONTACT_START>Za više informacija, molim kontaktirajte:</MSG_EXP_CONTACT_START>
+      <MSG_EXP_DAYSLEFT>Ovo podešavanje ce da istekne za</MSG_EXP_DAYSLEFT>
+      <MSG_EXP_DAYSLEFT2>dana i ne?e više biti funkcionalan posle tog vremena.</MSG_EXP_DAYSLEFT2>
+      <MSG_EXP_USESLEFT>Ovo podešavanje ce još raditi</MSG_EXP_USESLEFT>
+      <MSG_EXP_USESLEFT2>više puta pre nego što istekne.</MSG_EXP_USESLEFT2>
+      <MSG_ASK_FOR_DISK>Molim stavite Disk #</MSG_ASK_FOR_DISK>
+      <MSG_NEW_LOCATION>Ako se fajlovi sa ovog diska mogu pronaci i na drugoj lokaciji, na primer, na drugom drajvu, unesite potpunu stazu ili kliknite na dugme Promeni da biste odabrali drugu putanju.</MSG_NEW_LOCATION>
+      <MSG_FILE_EXISTS_ANY>Podešavanje bi želeo da instalira fajl, medutim postoji vec jedan fajl sa istim imenom na vašem sistemu.</MSG_FILE_EXISTS_ANY>
+      <MSG_FILE_EXISTS_NEWER>Podešavanje bi želeo da instalira fajl, medutim postoji vec jedan NOVIJI fajl sa istim imenom na vašem sistemu.</MSG_FILE_EXISTS_NEWER>
+      <MSG_FILE_OVERWRITE_CONFIRM>Želite li da prepišete preko sledeceg fajla?</MSG_FILE_OVERWRITE_CONFIRM>
+      <MSG_FILE_EXISTS_INUSE>Sledeci fajl je u izvršavanju i nije moguce da se ažurira:</MSG_FILE_EXISTS_INUSE>
+      <MSG_FILE_EXISTS_RETRY>Zatvorite sve ostale aplikacije i izaberite Ponovo. Izaberite Prekini da biste instalirali ovaj fajl pri ponovnom pokretanju sistema.</MSG_FILE_EXISTS_RETRY>
+      <MSG_INSTALL_DO_YOU_WANT_OVERWRITE>Želite li da prepišete preko sledeceg fajla?</MSG_INSTALL_DO_YOU_WANT_OVERWRITE>
+      <MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>Aplikacija bi želela da instalira fajl, medutim postoji vec jedan fajl sa istim imenom na vašem sistemu.</MSG_INSTALL_ALWAYS_ASK_OVERWRITE_MSG>
+      <MSG_INSTALL_FILE_OLDER_MSG>Aplikacija bi želela da instalira fajl, medutim postoji vec jedan NOVIJI fajl sa istim imenom na vašem sistemu.</MSG_INSTALL_FILE_OLDER_MSG>
+      <MSG_RESTART_RETRY>Podešavanje nije bilo u stanju da ponovo pokrene vaš sistem.  Zatvorite sve otvorene aplikacije i izaberite Ponovo.</MSG_RESTART_RETRY>
+      <MSG_UNINSTALLFILE_INUSE>Ovaj fajl je u radu i nemože se izbrisati. Zatvorite gore oznaceni fajl i kliknite na Ponovo da biste pokušali ponovo. Kliknite na Ignoriši da biste nastavili i izbrisali fajl sledeceg puta kada se sistem ponovo pokrene. Kliknite na Obustavi da biste zaustavili deinstalaciju.</MSG_UNINSTALLFILE_INUSE>
+      <MSG_UNINSTALLFILE_NOREMOVE>Ovaj fajl se nemože izbrisati. Kliknite na Ponovo da biste pokušali ponovo. Kliknite na Ignoriši da biste nastavili i izbrisali fajl sledeceg puta kada se sistem ponovo pokrene. Kliknite na Obustavi da biste zaustavili deinstalaciju.</MSG_UNINSTALLFILE_NOREMOVE>
+      <MSG_UNINSTALL_REMOVE_SHARED>Deinstalator bi želeo da odstrani sledeci zajednicki korišcen sistemski fajl:</MSG_UNINSTALL_REMOVE_SHARED>
+      <MSG_UNINSTALL_NO_APP_USE>Ni jedna druga aplikacija nije registrovala zahtev za korišcenje ovog fajla, me?utim još uvek postoji mogu?nost da neka druga aplikacija zahteva ovaj fajl za svoj rad.</MSG_UNINSTALL_NO_APP_USE>
+      <MSG_UNINSTALL_OK_REMOVE>Da li je u redu da se ovaj fajl odstrani?</MSG_UNINSTALL_OK_REMOVE>
+      <MSG_REBOOT_FAILED>Pokušaj ponovnog pokretanja sistema nije uspeo. Zatvorite sve otvorene aplikacije i izaberite Ponovo.</MSG_REBOOT_FAILED>
+      <MSG_REBOOT_NEEDED>Neophodno je ponovno pokretanje kompjutera u cilju da bi se instalacija završila. Želite li ponovo pokrenuti vaš sistem?</MSG_REBOOT_NEEDED>
+      <MSG_REBOOT_NEEDED_UNINSTALL>Neophodno je ponovno pokretanje kompjutera u cilju da bi se deinstalacija završila. Želite li ponovo pokrenuti vaš sistem?</MSG_REBOOT_NEEDED_UNINSTALL>
+      <MSG_LIST_BOX_SELECT_AN_ITEM>Molim odaberite jednu stavku sa liste.</MSG_LIST_BOX_SELECT_AN_ITEM>
+      <MSG_REQUIRED_DRIVE>Neophodnog prostora na drajvu:</MSG_REQUIRED_DRIVE>
+      <MSG_AVAILABLE_DRIVE>Dostupno mesto na drajvu:</MSG_AVAILABLE_DRIVE>
+      <ERR_LOG_INIT_FAILED>Nije moguce stvaranje fajla izveštaja: </ERR_LOG_INIT_FAILED>
+      <ERR_ARCHIVE_INTEGRITY>Neuspešna provera celine arhive. Fajl podešavanja nije kompletan, moguci uzrok je nepotpuni daunload ili je fajl oštecen.</ERR_ARCHIVE_INTEGRITY>
+      <ERR_MISSING_EXTERNAL_FILE>Molim uverite se da je vaš disk u drajvu! Nije moguce pronaci sledeci fajl:</ERR_MISSING_EXTERNAL_FILE>
+      <ERR_PLUGIN_LOAD_FAILED>Neuspeli pokušaj ucitavanja pomocnog programa</ERR_PLUGIN_LOAD_FAILED>
+      <ERR_WRONG_DISK>Podešavanje nemože otvoriti sledeci arhivni fajl (Moguce je da ste stavili pogrešan disk)</ERR_WRONG_DISK>
+      <ERR_MEMORY_ALLOCATE_DECOMPRESS>Podešavanje nije u mogucnosti da odredi dovoljno memorije za dekompresiju fajlova. Podešavanje ce se prekinuti.</ERR_MEMORY_ALLOCATE_DECOMPRESS>
+      <ERR_CREATE_FOLDER>Podešavanje nije u mogucnosti da formira sledeci folder:</ERR_CREATE_FOLDER>
+      <ERR_DECOMPRESS_DETECTED>Došlo je do greške pri dekompresiji</ERR_DECOMPRESS_DETECTED>
+      <ERR_OPEN_OUTPUT>Nije moguce otvaranje izlaznog fajla</ERR_OPEN_OUTPUT>
+      <ERR_OPEN_INPUT>Nije moguce otvaranje ulaznog fajla</ERR_OPEN_INPUT>
+      <ERR_DECOMPRESS_RW>Greška Citanja/Pisanja</ERR_DECOMPRESS_RW>
+      <ERR_DECOMPRESS_CRC>CRC nepoklapanost fajla - Greška celine podatka</ERR_DECOMPRESS_CRC>
+      <ERR_DECOMPRESS_DISKFULL>Disk je pun.</ERR_DECOMPRESS_DISKFULL>
+      <ERR_DECOMPRESS_UNKNOWN>Nepoznata dekompresiona greška</ERR_DECOMPRESS_UNKNOWN>
+      <ERR_ARCHIVE_SKIPPING_FILE>Greška preskakanja preko fajla</ERR_ARCHIVE_SKIPPING_FILE>
+      <ERR_MEMORY_ALLOCATION>Greška odrecivanja memorije</ERR_MEMORY_ALLOCATION>
+      <ERR_FILE_READ>Greška citanja sa fajla</ERR_FILE_READ>
+      <ERR_FILE_WRITE>Greška pisanja na fajl</ERR_FILE_WRITE>
+      <ERR_COPY_GENERAL>Nepoznata greška pri kopiranju fajla</ERR_COPY_GENERAL>
+      <ERR_CREATE_UNINSTALL_ENTRY>Nije moguce formiranje unosa deinstalacije</ERR_CREATE_UNINSTALL_ENTRY>
+      <ERR_DLL_REG_LOAD>Greška u Biblioteci Ucitavanja()</ERR_DLL_REG_LOAD>
+      <ERR_DLL_REG_GETPROC>Greška u GetProcAddress(DllRegisterServer)</ERR_DLL_REG_GETPROC>
+      <ERR_DLL_REG_FAIL>Greška kod je poslat nazad od strane DllRegisterServer-a</ERR_DLL_REG_FAIL>
+      <ERR_REGISTER_COM>Neuspeli pokušaj registrovanja COM (ActiveX) kontrole:</ERR_REGISTER_COM>
+      <ERR_REGISTER_TLB>Neuspeli pokušaj registrovanja Tipa Datoteke Programa:</ERR_REGISTER_TLB>
+      <ERR_TLB_MEM>Nema dovoljno Memorije</ERR_TLB_MEM>
+      <ERR_TLB_ARGS>Jedan ili više od parametara su nevažeci.</ERR_TLB_ARGS>
+      <ERR_TLB_IO>Funkcija nije mogla da piše na fajl.</ERR_TLB_IO>
+      <ERR_TLB_STATE>Tip datoteke programa nije mogla da se otvori.</ERR_TLB_STATE>
+      <ERR_TLB_READ>Funkcija nije u stanju da cita sa fajla.</ERR_TLB_READ>
+      <ERR_TLB_FORMAT>Tip datoteke programa poseduje jedan stariji format.</ERR_TLB_FORMAT>
+      <ERR_TLB_LCID>LCID nije moguce naci u OLE-podržanim DLL-ovima.</ERR_TLB_LCID>
+      <ERR_TLB_LOAD>Tip datoteke programa ili DLL nije moguce ucitati.</ERR_TLB_LOAD>
+      <ERR_TLB_REGISTRY>Registraciona baza podataka sistema se nemože otvoriti.</ERR_TLB_REGISTRY>
+      <ERR_TLB_DEFAULT>Osnovna greška KAPACITETA_MEMORIJE.</ERR_TLB_DEFAULT>
+      <ERR_CREATEUNINSTALL_DATAFOLDER>Nije moguce formirati folder podataka deinstalacije:</ERR_CREATEUNINSTALL_DATAFOLDER>
+      <ERR_CREATEUNINSTALL_DATAFILE>Nije moguce formiranje fajla podataka deinstalacije:</ERR_CREATEUNINSTALL_DATAFILE>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_READ>Nije moguce otvaranje fajla izvršavanja deinstalacije radi citanja:</ERR_CREATEUNINSTALL_OPEN_EXE_READ>
+      <ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>Nije moguce otvaranje fajla izvršavanja deinstalacije radi pisanja:</ERR_CREATEUNINSTALL_OPEN_EXE_WRITE>
+      <ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>Nije moguce otvaranje konfiguracionog fajla radi pisanja:</ERR_CREATEUNINSTALL_WRITE_CONFIGFILE>
+      <ERR_CREATEUNINSTALL_SHARINGVIOLATION>Izvršni fajl deinstalacije nije mogla de se ispiše jer je vec u radu. Zatvorite sve deinstalatore koji su u radu i kliknite na Ponovo za nastavak. Kliknite na Prekini za prekid operacije.</ERR_CREATEUNINSTALL_SHARINGVIOLATION>
+      <ERR_CREATEUNINSTALL_CREATEREGKEY>Nije moguce otvaranje Registrator kljuca deinstalacije radi pisanja:</ERR_CREATEUNINSTALL_CREATEREGKEY>
+      <ERR_CREATEUNINSTALL_WRITEREGVALUE>Nije moguce pisanje Registratorne vrednosti deinstalacije:</ERR_CREATEUNINSTALL_WRITEREGVALUE>
+      <ERR_CREATEUNINSTALL_CREATESC>Nije moguce formiranje precice deinstalacije:</ERR_CREATEUNINSTALL_CREATESC>
+      <ERR_CREATEUNINSTALL_SETSESSIONVAR>Nije moguce memorisovanje promenjljivih perioda vocenje dijaloga sa racunarom</ERR_CREATEUNINSTALL_SETSESSIONVAR>
+      <ERR_NOPERMISSION_REG_SHAREDFILECOUNT>Nemate odobrenje da registrujete brojanja zajednickih fajlova na ovom sistemu. Ova instalacija bi trebala da se izvršava sa privilegijama Administratora.</ERR_NOPERMISSION_REG_SHAREDFILECOUNT>
+      <ERR_NOPERMISSION_REG_COM>Nemate odobrenje da registrujete COM (ActiveX) kontrole na ovom sistemu. Ova instalacija bi trebala da se izvršava sa privilegijama Administratora.</ERR_NOPERMISSION_REG_COM>
+      <ERR_NOPERMISSION_REG_TLB>Nemate odobrenje da registrujete Tip Datoteka Programa na ovom sistemu. Ova instalacija bi trebala da se izvršava sa privilegijama Administratora.</ERR_NOPERMISSION_REG_TLB>
+      <ERR_UNINSTALL_UNREGISTER_COM>Gore navedene COM (ActiveX) kontrole nemogu biti neregistrovane. Fajl nece biti odstranjen.</ERR_UNINSTALL_UNREGISTER_COM>
+      <ERR_INVALID_ITEM_TYPE>Nevažeci tip stavke deinstalacijskog podatka.</ERR_INVALID_ITEM_TYPE>
+      <ERR_ITEM_NOT_FOUND>Nije pronadena stavka deinstalacijskog podatka.</ERR_ITEM_NOT_FOUND>
+      <ERR_UNKNOWN>Nepoznata greška.</ERR_UNKNOWN>
+      <ERR_SPECIFIED_FILE_NOT_FOUND>Naznaceni fajl se nemože pronaci.</ERR_SPECIFIED_FILE_NOT_FOUND>
+      <ERR_FAILED_TO_LOAD_FILE>Neuspeli pokušaj ucitavanja fajla.</ERR_FAILED_TO_LOAD_FILE>
+      <ERR_FAILED_TO_SAVE_FILE>Neuspeli pokušaj memorisanja fajla.</ERR_FAILED_TO_SAVE_FILE>
+      <ERR_SPECIFIED_PATH_NOT_FOUND>Naznacena putanja nije pronadena.</ERR_SPECIFIED_PATH_NOT_FOUND>
+      <ERR_SPECIFIED_EXE_FILE_INVALID>.exe fajl je nevažeci (non-Win32 .exe ili greška u .exe slici).</ERR_SPECIFIED_EXE_FILE_INVALID>
+      <ERR_OS_DENIED_FILE_ACCESS>Operacioni sistem je odbio pristup do naznacenog fajla.</ERR_OS_DENIED_FILE_ACCESS>
+      <ERR_FILE_NAME_ASSOCIATION_INVALID>Asocijacija imena fajla je nepotpuna ili nevažeca.</ERR_FILE_NAME_ASSOCIATION_INVALID>
+      <ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>   DDE prenos nije moguce završiti jer je u toku prerada jedne druge DDE transakcije.</ERR_MULTIPLE_DDE_TRANSACTION_NOT_ALLOWED>
+      <ERR_DDE_TRANSACTION_FAILED>Neuspeli pokušaj DDE prenosa</ERR_DDE_TRANSACTION_FAILED>
+      <ERR_DDE_TRANSACTION_TIMEOUT>DDE prenos nije bilo moguce sprovesti zbog isteka vremena zahteva.</ERR_DDE_TRANSACTION_TIMEOUT>
+      <ERR_DLL_NOT_FOUND>Naznacena biblioteka na dinamickom linku nije pronadena.</ERR_DLL_NOT_FOUND>
+      <ERR_NON_EXISTANT_FILE_ASSOCIATION>Nema aplikacije koja odgovara zadatom imenu fajla. Ova greška ce se takode ponoviti ako pokušate odštampati fajl koji se nemože štampati.</ERR_NON_EXISTANT_FILE_ASSOCIATION>
+      <ERR_INSUFFICIENT_MEMORY>Nema dovoljno memorije za završetak operacije.</ERR_INSUFFICIENT_MEMORY>
+      <ERR_FILE_EXECUTION_FAILED>Neuspeli pokušaj izvršavanja fajla.</ERR_FILE_EXECUTION_FAILED>
+      <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+      <ERR_SHARING_VIOLATION>Dogadaj narušavanja zajednickog korišcenja.</ERR_SHARING_VIOLATION>
+      <ERR_INVALID_VIEWER_CLASS_NAME>Nije moguce odrediti ime klase posmatraca.</ERR_INVALID_VIEWER_CLASS_NAME>
+      <ERR_INVALID_VIEWER_COMMAND_LINE>Nije moguce odrediti komandnu liniju posmatraca.</ERR_INVALID_VIEWER_COMMAND_LINE>
+      <ERR_INVALID_ASSOCIATED_VIEWER>Odredeni posmatra? nije bio izvršni fajl.</ERR_INVALID_ASSOCIATED_VIEWER>
+      <ERR_NON_EXISTANT_VIEWER_EXE>Ne postoji izvršni fajl odredenog posmatraca.</ERR_NON_EXISTANT_VIEWER_EXE>
+      <ERR_INVALID_SOURCE_SPECIFIED>Naznaceni izvor je nevažeci.</ERR_INVALID_SOURCE_SPECIFIED>
+      <ERR_INVALID_DESTINATION_SPECIFIED>Naznaceno odredište je nevažece.</ERR_INVALID_DESTINATION_SPECIFIED>
+      <ERR_SOURCE_FILE_NON_EXISTANT>Izvorni fajl(ovi) ne postoje.</ERR_SOURCE_FILE_NON_EXISTANT>
+      <ERR_DESTINATION_DIR_NON_EXISTANT>Direktorijum odredišta ne postoji.</ERR_DESTINATION_DIR_NON_EXISTANT>
+      <ERR_COPY_FAILED>Neuspeli pokušaj kopiranja jednog ili više fajlova.</ERR_COPY_FAILED>
+      <ERR_DELETE_FAILED>Neuspeli pokušaj brisanja jednog ili više fajlova.</ERR_DELETE_FAILED>
+      <ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>Neuspeli pokušaj zakazivanja brisanja pri ponovnom pokretanju sistema.</ERR_DELETE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>Neuspeli pokušaj zakazivanja pomeranja pri ponovnom pokretanju sistema.</ERR_MOVE_ON_REBOOT_SCHEDULE_FAILED>
+      <ERR_USER_ABORTED_OPERATION>Operacija je prekinuta od strane korisnika.</ERR_USER_ABORTED_OPERATION>
+      <ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>Dogodila se greška pri pozivanju funkcije ponovnog pozivanja.</ERR_CALL_BACK_FUNCTION_GENERATED_ERROR>
+      <ERR_CALL_BACK_FUNCTION_NOT_FOUND>Greška, funkcija ponovnog pozivanja nije nacena.</ERR_CALL_BACK_FUNCTION_NOT_FOUND>
+      <ERR_VERSION_INFO_SIZE>Nije moguce dobiti velicinu informacije verzije.</ERR_VERSION_INFO_SIZE>
+      <ERR_FILE_VERSION_INFO>Nije moguce dobiti fajl informacije verzije.</ERR_FILE_VERSION_INFO>
+      <ERR_FILENAME_INVALID_CHARACTERS>Naznaceni naziv fajla sadržava nevažece karaktere.</ERR_FILENAME_INVALID_CHARACTERS>
+      <ERR_DESTINATION_FILE_EXISTS>Fajl odredišta vec postoji.</ERR_DESTINATION_FILE_EXISTS>
+      <ERR_UNKNOWN_ERROR>Dogodila se nepoznata greška.</ERR_UNKNOWN_ERROR>
+      <ERR_KEY_RUN_ON_REBOOT_FAILED>Komanda pokretanja pri ponovnom pokretanju sistema nije uspela, nije moguce otvaranje kljuca.</ERR_KEY_RUN_ON_REBOOT_FAILED>
+      <ERR_VALUE_RUN_ON_REBOOT_FAILED>Komanda pokretanja pri ponovnom pokretanju sistema nije uspela, nije moguce podesiti vrednost.</ERR_VALUE_RUN_ON_REBOOT_FAILED>
+      <ERR_SET_FILE_ATTRIBUTE_FAIL>Nije moguce podesiti atribute fajla.</ERR_SET_FILE_ATTRIBUTE_FAIL>
+      <ERR_SET_COMPRESSED_FAIL>Nije moguce podesiti kompresovane atribute fajla.</ERR_SET_COMPRESSED_FAIL>
+      <ERR_CREATE_DESTINATION_FOLDER_FAIL>Nije moguce formiranje odredišnog Foldera.</ERR_CREATE_DESTINATION_FOLDER_FAIL>
+      <ERR_BACKUP_FAIL>Nije moguce kreiranje kopije jednog ili više fajla.</ERR_BACKUP_FAIL>
+      <ERR_OUT_OF_MEMORY>Nedostatak memorije.</ERR_OUT_OF_MEMORY>
+      <ERR_FOLDER_PERMISSION_INSTALL_FILES>Nemate odobrenje da instalirate fajlove u gore oznaceni folder. Ovo podešavanje bi trebalo da se izvršava od strane korisnika sa odgovarajucim privilegijama kao što je sistemski administrator.</ERR_FOLDER_PERMISSION_INSTALL_FILES>
+      <ERR_DRIVE_NOTEXIST>Podešavanje se nemože nastaviti jer gore navedeni drajv ne postoji.</ERR_DRIVE_NOTEXIST>
+      <ERR_DRIVE_NOTENOUGHSPACE>Nema dovoljno slobodnog prostora na gore navedenom drajvu za instaliranje neophodnih fajlova.</ERR_DRIVE_NOTENOUGHSPACE>
+      <ERR_GEN_OBJECT_ID_NOT_FOUND>Ne postoji kontrola sa naznacenom identifikacijom na sadašnjem ekranu.</ERR_GEN_OBJECT_ID_NOT_FOUND>
+      <ERR_GEN_OBJECT_WRONG_TYPE>Naznacena kontrola je pogrešnog tipa za ovu radnju.</ERR_GEN_OBJECT_WRONG_TYPE>
+      <ERR_GEN_NO_CURRENT_SCREEN>Ne postoji aktuelni ektran.</ERR_GEN_NO_CURRENT_SCREEN>
+      <ERR_GEN_OBJECT_NOT_FOUND>Naznacena kontrola se nemože naci.</ERR_GEN_OBJECT_NOT_FOUND>
+      <ERR_GEN_ERROR_DISPLAYING_DIALOG>Nije moguce prikazati kontrolu.</ERR_GEN_ERROR_DISPLAYING_DIALOG>
+      <ERR_GEN_FILE_TO_LARGE>Fajl je prevelik za citanje.</ERR_GEN_FILE_TO_LARGE>
+      <ERR_GEN_ERROR_OPENING_FILE>Naznaceni fajl se nemože otvoriti.</ERR_GEN_ERROR_OPENING_FILE>
+      <ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>Izuzetak odbacen od unutrašnje kontrole.</ERR_GEN_EXTERNAL_CONTROL_EXCEPTION>
+      <ERR_GEN_OBJECT_DISABLED>Radnja se nemože izvesti na onemogucenoj kontroli.</ERR_GEN_OBJECT_DISABLED>
+      <ERR_SDLG_SHOWING>Nije moguce prikazati dijalog stanja.</ERR_SDLG_SHOWING>
+      <ERR_SDLG_HIDING>Nije moguce sakrivanje dijaloga stanja.</ERR_SDLG_HIDING>
+      <ERR_SDLG_SETTING_STATUS_TEXT>Nije moguce podesiti tekst stanja na dijalogu stanja.</ERR_SDLG_SETTING_STATUS_TEXT>
+      <ERR_SDLG_SETTING_RANGE>Nije moguce podesiti opseg meraca progresa na dijalogu stanja.</ERR_SDLG_SETTING_RANGE>
+      <ERR_SDLG_SETTING_POSITION>Nije moguce podesiti položaj meraca progresa na dijalogu stanja.</ERR_SDLG_SETTING_POSITION>
+      <ERR_SDLG_SETTING_MESSAGE_TEXT>Nije moguce podesiti tekst poruke na dijalogu stanja.</ERR_SDLG_SETTING_MESSAGE_TEXT>
+      <ERR_SDLG_SETTING_TITLE>Nije moguce podesiti tekst naslova na dijalogu stanja.</ERR_SDLG_SETTING_TITLE>
+      <ERR_SDLG_GETTING_POSITION>Nije moguce dobiti položaj meraca progresa.</ERR_SDLG_GETTING_POSITION>
+      <ERR_INI_DELETE_FILE>Nije moguce brisanje naznacene INI fajl sekcije.</ERR_INI_DELETE_FILE>
+      <ERR_INI_DELETE_VALUE>Nije moguce brisanje naznacenog INI fajl vrednosti.</ERR_INI_DELETE_VALUE>
+      <ERR_INI_SET_VALUE>Nije moguce podesiti naznacenu vrednost.</ERR_INI_SET_VALUE>
+      <ERR_REG_CREATE_KEY>Nije moguce kreiranje naznacenog kljuca Registra.</ERR_REG_CREATE_KEY>
+      <ERR_REG_DELETE_KEY>Nije moguce brisanje naznacenog kljuca Registra.</ERR_REG_DELETE_KEY>
+      <ERR_REG_DELETE_VALUE>Nije moguce brisanje naznacene vrednosti Registra.</ERR_REG_DELETE_VALUE>
+      <ERR_REG_NON_EXISTANT_SUB_KEY>Naznaceni podkljuc ne postoji.</ERR_REG_NON_EXISTANT_SUB_KEY>
+      <ERR_REG_GET_SUB_KEY_NAME>Nije moguce dobiti ime podkljuca.</ERR_REG_GET_SUB_KEY_NAME>
+      <ERR_REG_GET_VALUE_DATA>Nije moguce dobiti podatak naznacene vrednosti.</ERR_REG_GET_VALUE_DATA>
+      <ERR_REG_GET_VALUE_NAME>Nije moguce dobiti imena vrednosti.</ERR_REG_GET_VALUE_NAME>
+      <ERR_REG_GET_VALUE_TYPE>Nije moguce dobiti tip vrednosti registra.</ERR_REG_GET_VALUE_TYPE>
+      <ERR_REG_SET_VALUE_DATA>Nije moguce podesiti podatak naznacene vrednosti registra.</ERR_REG_SET_VALUE_DATA>
+      <ERR_LB_ADD_ITEM>Nije moguce dodati element List Box kontroli.</ERR_LB_ADD_ITEM>
+      <ERR_LB_INSERT_ITEM>Nije moguce uneti element u List Box kontrolu.</ERR_LB_INSERT_ITEM>
+      <ERR_LB_INDEX_OUT_OF_RANGE>Indeks van opsega.</ERR_LB_INDEX_OUT_OF_RANGE>
+      <ERR_SYS_GET_OS_VERSION>Nije moguce dobiti informaciju o Verziji OS.</ERR_SYS_GET_OS_VERSION>
+      <ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>Nije moguce ponovno pokretanje sistema. Informacija o OS nije dostupna.</ERR_SYS_REBOOT_SYSTEM_VERSION_UNAVAILABLE>
+      <ERR_SYS_REBOOT_SYSTEM>Nije moguce ponovno pokretanje sistema.</ERR_SYS_REBOOT_SYSTEM>
+      <ERR_SYS_LOADLIBRARY_FAILURE>Greška u Biblioteci Programa Ucitavanja().</ERR_SYS_LOADLIBRARY_FAILURE>
+      <ERR_SYS_GETPROCADDRESS_FAILED>Neuspeh dobijanja ProcAdrese.</ERR_SYS_GETPROCADDRESS_FAILED>
+      <ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>Kod greške je vracena od strane DllRegistarServera.</ERR_SYS_DLLREGISTERSERVER_CODE_RETURN>
+      <ERR_SYS_CALL_LOADTYPELIB>Greška u pozivanju Biblioteke Tipa Ucitavanja.</ERR_SYS_CALL_LOADTYPELIB>
+      <ERR_SYS_CALL_REGISTERTYPELIB>Greška u pozivanju Biblioteke Tipa Registar.</ERR_SYS_CALL_REGISTERTYPELIB>
+      <ERR_SYS_EMPTY_FONT_NAME>Greška, ime slova/fonta ne može biti prazno.</ERR_SYS_EMPTY_FONT_NAME>
+      <ERR_SYS_INVALID_FONT_NAME>Nevažece ime za slovo.</ERR_SYS_INVALID_FONT_NAME>
+      <ERR_SYS_ADD_FONT_FAILURE_TABLE>Neuspešno dodavanje slova u tabelu fontova sistema.</ERR_SYS_ADD_FONT_FAILURE_TABLE>
+      <ERR_SYS_ADD_FONT_FAILURE_REGISTRY>Neuspešno dodavanje slova u registar.</ERR_SYS_ADD_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_REMOVE_FONT_FAILURE_TABLE>Neuspešno odstranjivanje slova iz tabele fontova sistema.</ERR_SYS_REMOVE_FONT_FAILURE_TABLE>
+      <ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>Neuspešno odstranjivanje slova iz registra.</ERR_SYS_REMOVE_FONT_FAILURE_REGISTRY>
+      <ERR_SYS_RETRIEVE_USER_INFO>Nije moguce popraviti korisnicke informacije.</ERR_SYS_RETRIEVE_USER_INFO>
+      <ERR_SYS_UNKNOWN_DATE_FORMAT>Naznaceni format datuma je nepoznat.</ERR_SYS_UNKNOWN_DATE_FORMAT>
+      <ERR_SYS_UNKNOWN_TIME_FORMAT>Naznaceni format vremena je nepoznat.</ERR_SYS_UNKNOWN_TIME_FORMAT>
+      <ERR_SYS_UNKNOWN_LANG_ID>Nije moguce odrediti identifikaciju standardnog jezika.</ERR_SYS_UNKNOWN_LANG_ID>
+      <ERR_SYS_UNKNOWN_DISPLAY_INFO>Nije moguce odrediti informaciju displeja.</ERR_SYS_UNKNOWN_DISPLAY_INFO>
+      <ERR_SYS_TYPE_LIBRARIES_REGISTRATION>Server nije bio u stanju da završi registraciju svih tipova biblioteke koje koristi u svojim kategorijama.</ERR_SYS_TYPE_LIBRARIES_REGISTRATION>
+      <ERR_SYS_OBJECT_CLASS_REGISTRATION>Server nije bio u stanju da završi registraciju svih izvršnih kategorija.</ERR_SYS_OBJECT_CLASS_REGISTRATION>
+      <ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>Server nije bio u stanju da odstrani unose svih tipova biblioteke koje se koriste od strane svojih kategorija.</ERR_SYS_TYPE_LIBRARIES_ENTRY_REMOVE>
+      <ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>Server nije bio u stanju da odstrani unose svih izvršnih kategorija.</ERR_SYS_OBJECT_CLASS_ENTRY_REMOVE>
+      <ERR_SYS_DLLUNREGISTERSERVER_FAILURE>Kod greške je vracen od strane DllNeregistrovanogServera.</ERR_SYS_DLLUNREGISTERSERVER_FAILURE>
+      <ERR_SYS_RESTORE_SAFE_MODE>Greška, nije moguce koristiti obnavljanje sistema dok sistem radi u sigurnosnom režimu.</ERR_SYS_RESTORE_SAFE_MODE>
+      <ERR_SYS_RESTORE_DISK_FULL>Greška, disk je pun i obnavljanje sistema je stavljen u stanje pripravnosti.</ERR_SYS_RESTORE_DISK_FULL>
+      <ERR_SYS_RESTORE_FILE_EXISTS>Greška, operacija promene imena fajla koja je u toku vec postoji.</ERR_SYS_RESTORE_FILE_EXISTS>
+      <ERR_SYS_RESTORE_INTERNAL_ERROR>Dogodila se unutrašnja greška.</ERR_SYS_RESTORE_INTERNAL_ERROR>
+      <ERR_SYS_RESTORE_INVALID_DATA>Greška nevažeci redni broj.</ERR_SYS_RESTORE_INVALID_DATA>
+      <ERR_SYS_RESTORE_SERVICE_DISABLED>Usluga obnavljanja sistema je onemogucena.</ERR_SYS_RESTORE_SERVICE_DISABLED>
+      <ERR_SYS_RESTORE_TIMEOUT>Greška, operaciji obnavljanja sistema je isteklo vreme.</ERR_SYS_RESTORE_TIMEOUT>
+      <ERR_SYS_ACCESS_PROCESSES>Failed to access the number of running processes.</ERR_SYS_ACCESS_PROCESSES>
+      <ERR_SYS_ENUMERATE_PROCESSES>Failed to enumerate the processes.</ERR_SYS_ENUMERATE_PROCESSES>
+      <ERR_SYS_PROCESS_HANDLE>Failed to get the process handle.</ERR_SYS_PROCESS_HANDLE>
+      <ERR_TXT_OPENING_TEXTFILE>Nije moguce otvoriti tekstualnu datoteku.</ERR_TXT_OPENING_TEXTFILE>
+      <ERR_TXT_FILE_TOO_LARGE>Tekstualna datoteka je prevelika da bi se ocitala.</ERR_TXT_FILE_TOO_LARGE>
+      <ERR_TXT_SAVING>Greška, nije moguce snimiti tekstualnu datoteku.</ERR_TXT_SAVING>
+      <ERR_WND_INVALID_HANDLE>Greška, rukovanje sa prozorom nije važeca.</ERR_WND_INVALID_HANDLE>
+      <ERR_WND_HIDE_WINDOW>Greška, nije moguce sakrivanje prozora.</ERR_WND_HIDE_WINDOW>
+      <ERR_WND_MAXIMIZE_WINDOW>Greška, nije moguce uvecati prozor na radnu površinu.</ERR_WND_MAXIMIZE_WINDOW>
+      <ERR_WND_MINIMIZE_WINDOW>Greška, nije moguce umanjiti prozor.</ERR_WND_MINIMIZE_WINDOW>
+      <ERR_WND_RESTORE_WINDOW>Greška, nije moguce vratiti prozor na originalnu velicinu.</ERR_WND_RESTORE_WINDOW>
+      <ERR_WND_SHOW_WINDOW>Greška, nije moguci prikaz prozora.</ERR_WND_SHOW_WINDOW>
+      <ERR_DRV_EJECT>Greška, nije moguce izbaciti/otvoriti drajv, radnja nije podržana.</ERR_DRV_EJECT>
+      <ERR_DRV_CALCULATING_FREE_SPACE>Greška, nije moguca kalkulacija slobodnog prostora.</ERR_DRV_CALCULATING_FREE_SPACE>
+      <ERR_DRV_CALCULATING_TOTAL_SIZE>Greška, nije moguca kalkulacija kanacne velicine.</ERR_DRV_CALCULATING_TOTAL_SIZE>
+      <ERR_DRV_CALCULATING_USED_SPACE>Greška, nije moguca kalkulacija korišcenog prostora.</ERR_DRV_CALCULATING_USED_SPACE>
+      <ERR_FLD_CREATE_FOLDER>Nije moguce formirati direktorijum.</ERR_FLD_CREATE_FOLDER>
+      <ERR_FLD_FOLDER_DOES_NOT_EXIST>Naznaceni direktorijum ne postoji.</ERR_FLD_FOLDER_DOES_NOT_EXIST>
+      <ERR_FLD_PATH>Naznacena putanja ne ukazuje na direktorijum.</ERR_FLD_PATH>
+      <ERR_FLD_DELETE>Nije moguce brisati direktorijum.</ERR_FLD_DELETE>
+      <ERR_FLD_SET_CURRENT>Nije moguce postaviti sadašnji folder.</ERR_FLD_SET_CURRENT>
+      <ERR_FLD_DESTINATION_EXISTS>Odredišni direktorijum vec postoji.</ERR_FLD_DESTINATION_EXISTS>
+      <ERR_FLD_NAME_HAS_INVALID_CHAR>Ime direktorijuma sadržava nevažece karaktere.</ERR_FLD_NAME_HAS_INVALID_CHAR>
+      <ERR_FLD_DELETE_BASE>Nije moguce brisanje osnovnog direktorijuma.</ERR_FLD_DELETE_BASE>
+      <ERR_SHL_CREATE_FOLDER>Nije moguce formiranje direktorijuma za precicu.</ERR_SHL_CREATE_FOLDER>
+      <ERR_SHL_CREATE_LINK>Nije moguce formiranje veze za precicu.</ERR_SHL_CREATE_LINK>
+      <ERR_SHL_DESCRIPTION_TOO_LONG>Greška, opis precice je duži od 250 karaktera.</ERR_SHL_DESCRIPTION_TOO_LONG>
+      <ERR_SHL_DELETE_SHORTCUT>Precicu nije moguce brisati.</ERR_SHL_DELETE_SHORTCUT>
+      <ERR_SHL_UNKNOWN_SHELL_FOLDER>Nepoznati shell direktorijum.</ERR_SHL_UNKNOWN_SHELL_FOLDER>
+      <ERR_SHL_INVALID_FOLDER>Nevažeci direktorijum.</ERR_SHL_INVALID_FOLDER>
+      <ERR_DLL_LOAD>Neuspeli pokušaj ucitavanja naznacenog DLL-a.</ERR_DLL_LOAD>
+      <ERR_DLL_FIND_FUNCTION>Neuspeli pokušaj pronalaženja naznacene funkcije unutar DLL-a.</ERR_DLL_FIND_FUNCTION>
+      <ERR_WEB_CREATE_INTERNET_SESSION>Neuspeli pokušaj formiranja Internet komunikacije.</ERR_WEB_CREATE_INTERNET_SESSION>
+      <ERR_WEB_CREATE_HTTP_CONNECTION>Neuspeli pokušaj formiranja HTTP konekcije.</ERR_WEB_CREATE_HTTP_CONNECTION>
+      <ERR_WEB_OPEN_REQUEST>Nije moguce otvaranje zahteva.</ERR_WEB_OPEN_REQUEST>
+      <ERR_WEB_SEND_REQUEST>Neuspeli pokušaj slanja zahteva.</ERR_WEB_SEND_REQUEST>
+      <ERR_WEB_DESTINATION_FILE_OPEN>Nije moguce otvaranje odredišne datoteke radi pisanja.</ERR_WEB_DESTINATION_FILE_OPEN>
+      <ERR_WEB_INVALID_HTTP_RESPONSE>Nevažeci HTTP odziv sa servera.</ERR_WEB_INVALID_HTTP_RESPONSE>
+      <ERR_WEB_DOWNLOAD_FILE_ERROR>Dogodila se greška prilikom skidanja i ucitavanja informacija sa servera.</ERR_WEB_DOWNLOAD_FILE_ERROR>
+      <ERR_WEB_FILE_WRITE>Dogodila se greška prilikom pokušaja pisanja u odredišnu datoteku.</ERR_WEB_FILE_WRITE>
+      <ERR_WEB_USER_ABORT>Korisnik je prekinuo HTTP postupak.</ERR_WEB_USER_ABORT>
+      <ERR_WEB_WRITE_MEMORY>Dogodila se greška prilikom pokušaja pisanja u memoriju. (Nema dovoljno memorije?)</ERR_WEB_WRITE_MEMORY>
+      <ERR_WEB_SET_PROXY_USERNAME>Dogodila se greška prilikom pokušaja podešavanja korisnickog imena proxy-a.</ERR_WEB_SET_PROXY_USERNAME>
+      <ERR_WEB_SET_PROXY_PASSWORD>Dogodila se greška prilikom pokušaja podešavanja lozinke proxy-a.</ERR_WEB_SET_PROXY_PASSWORD>
+      <ERR_WEB_400>Server nije razumeo zahtev. (Loša Sintaksa)</ERR_WEB_400>
+      <ERR_WEB_403>Pristup je zabranjen.</ERR_WEB_403>
+      <ERR_WEB_404>Traženi URL nije naden na serveru.</ERR_WEB_404>
+      <ERR_WEB_500>Dogodila se unutrašnja serverska greška.</ERR_WEB_500>
+      <ERR_WEB_503>Server je na punom kapacitetu.</ERR_WEB_503>
+      <ERR_DLG_REGISTER_CREATE_SPLASH>Nije moguca registracija klase prozora da bi se formirao splash dijalog.</ERR_DLG_REGISTER_CREATE_SPLASH>
+      <ERR_DLG_CREATE_IMAGE>Nije moguce formiranje splash dijaloga slike.</ERR_DLG_CREATE_IMAGE>
+      <ERR_APP_PAGE_NAME>Dogodila se greška prilikom dobijanja imena trenutnog ekrana. Nema trenutnog ekrana.</ERR_APP_PAGE_NAME>
+      <ERR_APP_LOAD_VALUE>Nije moguce ucitati vrednost.</ERR_APP_LOAD_VALUE>
+      <ERR_APP_SAVE_VALUE>Nije moguce snimiti vrednost.</ERR_APP_SAVE_VALUE>
+      <ERR_APP_WND_HANDLE>Greška, nije moguce dobiti komande prozora aplikacije.</ERR_APP_WND_HANDLE>
+      <ERR_PACKAGE_NOT_FOUND>Paket nije pronaden.</ERR_PACKAGE_NOT_FOUND>
+      <ERR_FCN_INTERNAL_ERROR>Dogodila se unutrašnja greška prilikom rešavanja naznacene funkcije.</ERR_FCN_INTERNAL_ERROR>
+      <ERR_FCN_RUNTIME_ERROR>Dogodila se greška trajanja izvodenja programa prilikom pozivanja funkcije.</ERR_FCN_RUNTIME_ERROR>
+      <ERR_FCN_MEMORY_ALLOCATION_ERROR>Dogodila se greška dodeljivanja memorije prilikom pozivanja funkcije.</ERR_FCN_MEMORY_ALLOCATION_ERROR>
+      <ERR_STR_INVALID_INDEX>Naznacen je nevažeci indeks. Indeks mora biti veci ili jednak sa -1.</ERR_STR_INVALID_INDEX>
+      <ERR_STR_LONG_PATH>Naznacena putanja je duža od MAX_PUTANJE,ili 260 karaktera.</ERR_STR_LONG_PATH>
+      <ERR_INVALID_UNINSTALL_CONFIGFILE>Nevažeci konfiguracioni fajl deinstalacije.</ERR_INVALID_UNINSTALL_CONFIGFILE>
+      <ERR_INVALID_TABLE_DATA>Nevažeci podatak tabele.</ERR_INVALID_TABLE_DATA>
+      <ERR_ACTION_NOTATUNINSTALL>Radnja nije dostupna prilikom deinstalacije.</ERR_ACTION_NOTATUNINSTALL>
+      <ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>Naznacena kategorija nije pronadena.</ERR_SELECT_PACKAGES_CATEGORY_NOT_FOUND>
+      <ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>Nije moguce podesiti osobine kategorije.</ERR_SELECT_PACKAGES_SET_CATEGORY_PROPERTIES>
+      <ERR_SETUP_EXPIRED>Ovo podešavanje je isteklo i bice prekinuto.</ERR_SETUP_EXPIRED>
+      <ERR_SETUP_USES>Ovo podešavanje je vec bilo pokrenuto sa maksimalnim dozvoljenim brojem za pokretanje i bice obustavljeno.</ERR_SETUP_USES>
+      <ERR_SETUP_USES_NOREG>Ovo podešavanje nije u mogucnosti da otvori Registar za pisanje i bice obustavljeno.</ERR_SETUP_USES_NOREG>
+      <ERR_MATH_VALUE_NOT_VALID>Naznacena matematicka vrednost nije važeca za datu funkciju.</ERR_MATH_VALUE_NOT_VALID>
+      <ERR_INVALID_SERIAL>Nevažeci serijski broj.</ERR_INVALID_SERIAL>
+      <ERR_DRV_GETTING_VOLUME_INFO>Neuspeli pokušaj dobijanja informacije o obimu datoteke.</ERR_DRV_GETTING_VOLUME_INFO>
+      <ERR_SCROLLING_TEXT_INVALID_MODE>Nevažeci nacin rada kliznog teksta.</ERR_SCROLLING_TEXT_INVALID_MODE>
+      <ERR_PATH_INVALID_CHARACTERS>Putanje ne smeju sadržavati ni jedan od sledecih karaktera: / * ? " &lt; &gt; |</ERR_PATH_INVALID_CHARACTERS>
+      <ERR_NO_SCREEN_DISPLAYED>Trenutno nema pokazivanja ekrana.</ERR_NO_SCREEN_DISPLAYED>
+      <ERR_SCREEN_JUMP>Neuspeli skok ekrana.</ERR_SCREEN_JUMP>
+      <ERR_SERVICE_ITERATE_FAILED>Dogodila se greška prilikom pokušaja ponavljanja servisa.</ERR_SERVICE_ITERATE_FAILED>
+      <ERR_SERVICE_QUERY_FAILED>Dogodila se greška prilikom pokušaja ispitanja servisa.</ERR_SERVICE_QUERY_FAILED>
+      <ERR_SERVICE_NOT_FOUND>Servis se ne može naci.</ERR_SERVICE_NOT_FOUND>
+      <ERR_SERVICE_CONTINUE_FAILED>Neuspeh komande nastavka.</ERR_SERVICE_CONTINUE_FAILED>
+      <ERR_SERVICE_STOP_FAILED>Neuspeh komande zaustavljanja.</ERR_SERVICE_STOP_FAILED>
+      <ERR_SERVICE_START_FAILED>Neuspeh komande pokretanja.</ERR_SERVICE_START_FAILED>
+      <ERR_SERVICE_PAUSE_FAILED>Neuspeh komande pauze.</ERR_SERVICE_PAUSE_FAILED>
+      <ERR_SERVICE_DELETE_FAILED>Neuspeh komande brisanja.</ERR_SERVICE_DELETE_FAILED>
+      <ERR_SERVICE_CREATE_FAILED>Neuspeh komande kreiranja.</ERR_SERVICE_CREATE_FAILED>
+      <ERR_SERVICE_ACCESS_DENIED>Upravljacki softver nema pristup do naznacene baze podataka upravljaca kontrole usluznog programa.</ERR_SERVICE_ACCESS_DENIED>
+      <ERR_SERVICE_CIRCULAR_DEPENDENCY>Zavisnost kruznog servisa je naznacen.</ERR_SERVICE_CIRCULAR_DEPENDENCY>
+      <ERR_SERVICE_DUP_NAME>Prikazno ime vec postoji u bazi podataka upravljaca kontrole usluznog programa kao servisno ime ili kao jedno razlicito prikazno ime.</ERR_SERVICE_DUP_NAME>
+      <ERR_SERVICE_INVALID_HANDLE>Upravljacki softver nije vazeci za naznacenu bazu podataka upravljackog softvera usluznog programa.</ERR_SERVICE_INVALID_HANDLE>
+      <ERR_SERVICE_INVALID_NAME>Naznaceno ime servisa je nevazece.</ERR_SERVICE_INVALID_NAME>
+      <ERR_SERVICE_INVALID_PARAMETER>Parametar koji je naznacen nije vazeci.</ERR_SERVICE_INVALID_PARAMETER>
+      <ERR_SERVICE_INVALID_SERVICE_ACCOUNT>Ime korisnickog naloga koji je naznacen ne postoji.</ERR_SERVICE_INVALID_SERVICE_ACCOUNT>
+      <ERR_SERVICE_SERVICE_EXISTS>Naznaceni servis vec postoji u ovoj bazi podataka.</ERR_SERVICE_SERVICE_EXISTS>
+      <ERR_ODBC_GENERAL>Dogodila se opšta ODBC greška.</ERR_ODBC_GENERAL>
+      <ERR_ODBC_INVALID_BUFF_LEN>Dužina bafera je nevažeca.</ERR_ODBC_INVALID_BUFF_LEN>
+      <ERR_ODBC_INVALID_HWND>HWnd vrednosti su nevažeci.</ERR_ODBC_INVALID_HWND>
+      <ERR_ODBC_INVALID_STR>Vrednost niza je nevažeca.</ERR_ODBC_INVALID_STR>
+      <ERR_ODBC_INVALID_REQUEST_TYPE>Naznaceni tip zahteva je nevažeci.</ERR_ODBC_INVALID_REQUEST_TYPE>
+      <ERR_ODBC_COMPONENT_NOT_FOUND>Komponenta nije nadena u registru.</ERR_ODBC_COMPONENT_NOT_FOUND>
+      <ERR_ODBC_INVALID_NAME>Parametar drajvera je nevažeci, nemože se naci u registru.</ERR_ODBC_INVALID_NAME>
+      <ERR_ODBC_INVALID_KEYWORD_VALUE>Nevažeci par kljucne reci=imena.</ERR_ODBC_INVALID_KEYWORD_VALUE>
+      <ERR_ODBC_INVALID_DSN>Nevažeci DSN.</ERR_ODBC_INVALID_DSN>
+      <ERR_ODBC_INVALID_INF>Nevažeci INF.</ERR_ODBC_INVALID_INF>
+      <ERR_ODBC_REQUEST_FAILED>Neuspeh zahtevane operacije od strane Zahtevanog parametra.</ERR_ODBC_REQUEST_FAILED>
+      <ERR_ODBC_INVALID_PATH>Naznacena je nevažeca putanja.</ERR_ODBC_INVALID_PATH>
+      <ERR_ODBC_LOAD_LIBRARY_FAILED>Dogodila se greška prilikom pokušaja ucitavanja drajvera ili biblioteke programa za prevod.</ERR_ODBC_LOAD_LIBRARY_FAILED>
+      <ERR_ODBC_INVALID_PARAM_SEQUENCE>Korišcena je nevažeca lista parova kljucne reci=imena.</ERR_ODBC_INVALID_PARAM_SEQUENCE>
+      <ERR_ODBC_INVALID_LOG_FILE>Nevažece datoteke pristupa.</ERR_ODBC_INVALID_LOG_FILE>
+      <ERR_ODBC_USER_CANCELED>Zahtev je otkazan od strane krajnjeg korisnika.</ERR_ODBC_USER_CANCELED>
+      <ERR_ODBC_USAGE_UPDATE_FAILED>Dogodila se greška prilikom pokušaja povecavanja ili smanjivanja brojenja korišcenja komponente.</ERR_ODBC_USAGE_UPDATE_FAILED>
+      <ERR_ODBC_CREATE_DSN_FAILED>Neuspeli pokušaj kreiranja DSN-a.</ERR_ODBC_CREATE_DSN_FAILED>
+      <ERR_ODBC_WRITING_SYSINFO_FAILED>Neuspeli pokušaj pisanja informacije o sistemu.</ERR_ODBC_WRITING_SYSINFO_FAILED>
+      <ERR_ODBC_REMOVE_DSN_FAILED>Neuspeli pokušaj odstranjivanja DSN-a.</ERR_ODBC_REMOVE_DSN_FAILED>
+      <ERR_ODBC_OUT_OF_MEM>Neuspeh funkcije usled nedovoljne memorije.</ERR_ODBC_OUT_OF_MEM>
+      <ERR_ODBC_OUTPUT_STRING_TRUNCATED>Izlazni niz je skracen.</ERR_ODBC_OUTPUT_STRING_TRUNCATED>
+      <ERR_ODBC_DLL_LOAD_FAILED>Neuspeli pokušaj ucitavanja ODBC DLL-a.</ERR_ODBC_DLL_LOAD_FAILED>
+      <ERR_ODBC_GET_PROC_FAILED>Neuspeh GetProc komande.</ERR_ODBC_GET_PROC_FAILED>
+      <ERR_DLG_SILENT_MODE>Dijalozi se ne mogu pokazati za vreme tihe instalacije ili deinstalacije.</ERR_DLG_SILENT_MODE>
+      <ERR_INVALID_PATH>Naznacena putanja nije važeca.</ERR_INVALID_PATH>
+      <ERR_FIELD_CANNOT_BE_EMPTY>Polje ne može biti prazno.</ERR_FIELD_CANNOT_BE_EMPTY>
+      <ERR_INVALID_CHARACTERS>Sledeci karakteri nisu dozvoljeni:</ERR_INVALID_CHARACTERS>
+      <ERR_CRYPTO_INVALID_BASE64_STRING>Niz ne sadržava važece base-64 kodirane podatke.</ERR_CRYPTO_INVALID_BASE64_STRING>
+      <ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>Greška prilikom pokušaja dešifrovanja base 64 kodiranog niza (obicno znaci da je niz oštecen - nedostaju bajtovi u nizu?).</ERR_CRYPTO_ERROR_DECODING_BASE64_STRING>
+      <ERR_CRYPTO_INVALID_BLOWFISH_HEADER>Nevažece zaglavlje datoteke - nije Indigo Rose blowfish datoteka.</ERR_CRYPTO_INVALID_BLOWFISH_HEADER>
+      <ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>Neusaglašena blowfish datoteka. (Datoteka je ili oštecena ili koristi neusaglašenu šemu blok popunjavanja.)</ERR_CRYPTO_INCOMPATIBLE_BLOWFISH_FILE>
+      <ERR_XML_LOAD_FAILED>Greška pri ucitavanju XML fajla.</ERR_XML_LOAD_FAILED>
+      <ERR_XML_SAVE_FAILED>Greška pri sacuvanju XML fajla.</ERR_XML_SAVE_FAILED>
+      <ERR_XML_NOT_WELL_FORMED>Nema ucitanog važeceg XML dokumenta. (Dokument je prazan ili nije dobro formiran.)</ERR_XML_NOT_WELL_FORMED>
+      <ERR_XML_INVALID_PATH>Naznacena XML putanja nije važeca ili nije nadena.</ERR_XML_INVALID_PATH>
+      <ERR_XML_SET_VALUE_FAILED>Dogodila se greška prilikom pokušaja podešavanja vrednosti.</ERR_XML_SET_VALUE_FAILED>
+      <ERR_XML_SET_ATTRIBUTE_FAILED>Dogodila se greška prilikom pokušaja podešavanja atributa.</ERR_XML_SET_ATTRIBUTE_FAILED>
+      <ERR_XML_INVALID_ATTRIBUTE_NAME>Nevažece ime atributa. (Imena atributa nesmeju sadržavati prazna mesta.)</ERR_XML_INVALID_ATTRIBUTE_NAME>
+      <ERR_XML_REMOVE_ELEMENT_FAILED>Naznaceni element nije moglo biti odstranjen.</ERR_XML_REMOVE_ELEMENT_FAILED>
+      <ERR_XML_REMOVE_ATTRIBUTE_FAILED>Naznaceni atribut nije moglo biti odstranjen.</ERR_XML_REMOVE_ATTRIBUTE_FAILED>
+      <ERR_XML_NO_ELEMENTS>Nema elemenata ispod naznacene XML putanje.</ERR_XML_NO_ELEMENTS>
+      <ERR_XML_NO_ATTRIBUTES>Element kod naznacene XML putanje nema atribute.</ERR_XML_NO_ATTRIBUTES>
+      <ERR_XML_INSERT_FAILED>Dogodila se greška prilikom pokušaja ubacivanja XML-a.</ERR_XML_INSERT_FAILED>
+      <ERR_XML_INVALID_INSERTION_MODE>Nevažeci nacin ubacivanja.</ERR_XML_INVALID_INSERTION_MODE>
+<ERR_MSI_MSINOTINSTALLED>Failed to load MSI.DLL. Windows Installer is not installed.</ERR_MSI_MSINOTINSTALLED>
+    <ERR_MSI_FUNCTIONNOTFOUND>Failed to load function from MSI.DLL.</ERR_MSI_FUNCTIONNOTFOUND>
+    <ERR_MSI_INSTALL_USEREXIT>The user has cancelled the installation.</ERR_MSI_INSTALL_USEREXIT>
+    <ERR_MSI_INSTALL_FAILURE>A fatal error occurred during the installation.</ERR_MSI_INSTALL_FAILURE>
+    <ERR_MSI_INSTALL_SUSPEND>Installation suspended, incomplete.</ERR_MSI_INSTALL_SUSPEND>
+    <ERR_MSI_UNKNOWN_PRODUCT>Error unknown product.</ERR_MSI_UNKNOWN_PRODUCT>
+    <ERR_MSI_UNKNOWN_FEATURE>Error unknown feature.</ERR_MSI_UNKNOWN_FEATURE>
+    <ERR_MSI_UNKNOWN_COMPONENT>Error unknown component.</ERR_MSI_UNKNOWN_COMPONENT>
+    <ERR_MSI_UNKNOWN_PROPERTY>Error unknown property.</ERR_MSI_UNKNOWN_PROPERTY>
+    <ERR_MSI_INVALID_HANDLE_STATE>The handle is in an invalide state.</ERR_MSI_INVALID_HANDLE_STATE>
+    <ERR_MSI_BAD_CONFIGURATION>MSI configuration data is invalid.</ERR_MSI_BAD_CONFIGURATION>
+    <ERR_MSI_INDEX_ABSENT>The component qualifier is not present.</ERR_MSI_INDEX_ABSENT>
+    <ERR_MSI_INSTALL_SOURCE_ABSENT>The installation source for this product is not available.</ERR_MSI_INSTALL_SOURCE_ABSENT>
+    <ERR_MSI_PRODUCT_UNINSTALLED>The product is uninstalled.</ERR_MSI_PRODUCT_UNINSTALLED>
+    <ERR_MSI_BAD_QUERY_SYNTAX>The SQL query syntax is invalid or unsupported.</ERR_MSI_BAD_QUERY_SYNTAX>
+    <ERR_MSI_INVALID_FIELD>The record field does not exist.</ERR_MSI_INVALID_FIELD>
+    <ERR_MSI_INSTALL_SERVICE_FAILURE>The Windows Installer service could not be accessed.</ERR_MSI_INSTALL_SERVICE_FAILURE>
+    <ERR_MSI_INSTALL_PACKAGE_VERSION>Error package version.</ERR_MSI_INSTALL_PACKAGE_VERSION>
+    <ERR_MSI_INSTALL_ALREADY_RUNNING>Another installation is already in progress.</ERR_MSI_INSTALL_ALREADY_RUNNING>
+    <ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>This installation package could not be opened.</ERR_MSI_INSTALL_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_INSTALL_PACKAGE_INVALID>This installation package could not be opened, it appears to be invalid.</ERR_MSI_INSTALL_PACKAGE_INVALID>
+    <ERR_MSI_INSTALL_UI_FAILURE>There was an error starting the Windows Installer service user interface.</ERR_MSI_INSTALL_UI_FAILURE>
+    <ERR_MSI_INSTALL_LOG_FAILURE>There was an error opening installation log file.</ERR_MSI_INSTALL_LOG_FAILURE>
+    <ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>This language of this installation package is not supported by your system.</ERR_MSI_INSTALL_LANGUAGE_UNSUPPORTED>
+    <ERR_MSI_INSTALL_PACKAGE_REJECTED>This installation is forbidden by system policy.</ERR_MSI_INSTALL_PACKAGE_REJECTED>
+    <ERR_MSI_FUNCTION_NOT_CALLED>The function could not be executed.</ERR_MSI_FUNCTION_NOT_CALLED>
+    <ERR_MSI_FUNCTION_FAILED>The function failed during execution.</ERR_MSI_FUNCTION_FAILED>
+    <ERR_MSI_INVALID_TABLE>An invalid or unknown table was specified.</ERR_MSI_INVALID_TABLE>
+    <ERR_MSI_DATATYPE_MISMATCH>The data supplied is the wrong type.</ERR_MSI_DATATYPE_MISMATCH>
+    <ERR_MSI_UNSUPPORTED_TYPE>Data of this type is not supported.</ERR_MSI_UNSUPPORTED_TYPE>
+    <ERR_MSI_CREATE_FAILED>The Windows Installer service failed to start.</ERR_MSI_CREATE_FAILED>
+    <ERR_MSI_INSTALL_TEMP_UNWRITABLE>The Temp folder is either full or inaccessible.</ERR_MSI_INSTALL_TEMP_UNWRITABLE>
+    <ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>This installation package is not supported on this platform.</ERR_MSI_INSTALL_PLATFORM_UNSUPPORTED>
+    <ERR_MSI_INSTALL_NOTUSED>The install component is not used on this machine.</ERR_MSI_INSTALL_NOTUSED>
+    <ERR_MSI_INSTALL_TRANSFORM_FAILURE>There was an error applying transforms.</ERR_MSI_INSTALL_TRANSFORM_FAILURE>
+    <ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>This patch package could not be opened.</ERR_MSI_PATCH_PACKAGE_OPEN_FAILED>
+    <ERR_MSI_PATCH_PACKAGE_INVALID>This patch package could not be opened, it appears to be invalid.</ERR_MSI_PATCH_PACKAGE_INVALID>
+    <ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>This patch package cannot be processed by the Windows Installer service, it is unsupported.</ERR_MSI_PATCH_PACKAGE_UNSUPPORTED>
+    <ERR_MSI_PRODUCT_VERSION>Another version of this product is already installed.</ERR_MSI_PRODUCT_VERSION>
+    <ERR_MSI_INVALID_COMMAND_LINE>Invalid command line argument.</ERR_MSI_INVALID_COMMAND_LINE>
+    <ERR_MSI_INSTALL_REMOTE_DISALLOWED>Installation from a Terminal Server client session is not permitted for the current user.</ERR_MSI_INSTALL_REMOTE_DISALLOWED>
+    <ERR_MSI_SUCCESS_REBOOT_INITIATED>The installer has initiated a restart.</ERR_MSI_SUCCESS_REBOOT_INITIATED>
+    <ERR_MSI_PATCH_TARGET_NOT_FOUND>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program.</ERR_MSI_PATCH_TARGET_NOT_FOUND>
+    <ERR_MSI_PATCH_PACKAGE_REJECTED>The patch package is not permitted by system policy.</ERR_MSI_PATCH_PACKAGE_REJECTED>
+    <ERR_MSI_INSTALL_TRANSFORM_REJECTED>One or more customizations are not permitted by system policy.</ERR_MSI_INSTALL_TRANSFORM_REJECTED>
+    <ERR_MSI_INSTALL_REMOTE_PROHIBITED>Windows Installer does not permit installation from a Remote Desktop Connection.</ERR_MSI_INSTALL_REMOTE_PROHIBITED>
+    <ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>The patch package is not a removable patch package.</ERR_MSI_PATCH_REMOVAL_UNSUPPORTED>
+    <ERR_MSI_UNKNOWN_PATCH>The patch could not be applied to this product. Unknown patch.</ERR_MSI_UNKNOWN_PATCH>
+    <ERR_MSI_PATCH_NO_SEQUENCE>A valid sequence could not be found for the set of patches.</ERR_MSI_PATCH_NO_SEQUENCE>
+    <ERR_MSI_PATCH_REMOVAL_DISALLOWED>Patch removal was disallowed by policy.</ERR_MSI_PATCH_REMOVAL_DISALLOWED>
+    <ERR_MSI_INVALID_PATCH_XML>The XML patch data is invalid.</ERR_MSI_INVALID_PATCH_XML>
+    <ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>Administrative user failed to apply patch for a per-user managed or a per-machine application that is in advertise state.</ERR_MSI_PATCH_MANAGED_ADVERTISED_PRODUCT>
+    <ERR_MSI_INVALID_PARAMETER>An invalid parameter has been passed to the function.</ERR_MSI_INVALID_PARAMETER>
+    <ERR_MSI_MORE_DATA>A buffer is to small to hold all of the data.</ERR_MSI_MORE_DATA>
+    <ERR_MSI_SUCCESS_REBOOT_REQUIRED>A restart is required to complete the install.</ERR_MSI_SUCCESS_REBOOT_REQUIRED>
+    <ERR_ARCHIVE_CREATE_DEST_FOLDER>Failed to create destination folder.</ERR_ARCHIVE_CREATE_DEST_FOLDER>
+    <ERR_ARCHIVE_FIND_FILE>Failed to find file in archive.</ERR_ARCHIVE_FIND_FILE>
+    <ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>Failed to extract uncompressed file.</ERR_ARCHIVE_EXTRACT_UNCOMPRESSED>
+    <ERR_ARCHIVE_EXTRACT_COMPRESSED>Failed to extract compressed file.</ERR_ARCHIVE_EXTRACT_COMPRESSED>
+    <ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>Invalid EXTRACTMSI command line path.</ERR_SCRIPT_INVALID_EXTRACTMSI_PATH>
+    <ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>Failed to run global functions script.</ERR_SCRIPT_GLOBAL_FUNCTIONS_RUN_FAILED>
+    <ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>Failed to run setup, invalid MSIExec command line.</ERR_SCRIPT_MSI_EXEC_COMMAND_LINE>
+    <ERR_SCRIPT_MSI_EXEC_SETUP_RUN>Failed to run setup.</ERR_SCRIPT_MSI_EXEC_SETUP_RUN>
+    <ERR_SCRIPT_MSI_FILE_NOT_FOUND>Failed to find setup file.</ERR_SCRIPT_MSI_FILE_NOT_FOUND>
+    <ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>Invalid setup file download URL.</ERR_SCRIPT_INVALID_MSI_DOWNLOAD_URL>
+    <ERR_SCRIPT_MSI_DOWNLOAD_FAILED>Failed to download setup file.</ERR_SCRIPT_MSI_DOWNLOAD_FAILED>
+    <ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>Failed to create bootstrapper extraction folder.</ERR_SCRIPT_CREATE_BOOT_EXTRACT_FOLDER>
+    <ERR_SCRIPT_EXTRACT_SETUP_FAILED>Failed to extract setup file.</ERR_SCRIPT_EXTRACT_SETUP_FAILED>
+    <ERR_MSI_FILE_INVALID>The MSI file is invalid, or does not contain a valid version of specific information.</ERR_MSI_FILE_INVALID>
+    <ERR_MSI_INVALID_DATA>The MSI file contains invalid data.</ERR_MSI_INVALID_DATA>
+    <ERR_MSI_FAIL>An unexpected error has occurred.</ERR_MSI_FAIL>
+    <ERR_MSI_INVALID_HANDLE>An invalid handle has been used.</ERR_MSI_INVALID_HANDLE>
+    <ERR_FILE_EXECUTION_FAILED_ELEVATION>File execution failed, elevation required.</ERR_FILE_EXECUTION_FAILED_ELEVATION>
+   </Messages>
+</SUF70Messages>

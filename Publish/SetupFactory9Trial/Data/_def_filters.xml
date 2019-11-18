@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<SUFListFilters>
+<Filter>
+<Name>All Executables</Name>
+<Property>8</Property>
+<Rule>1</Rule>
+<Criteria>exe</Criteria>
+</Filter>
+<Filter>
+<Name>Unpackaged Files</Name>
+<Property>17</Property>
+<Rule>4</Rule>
+<Criteria/>
+</Filter>
+<Filter>
+<Name>Files with Shortcuts</Name>
+<Property>25</Property>
+<Rule>5</Rule>
+<Criteria/>
+</Filter>
+<Filter>
+<Name>Missing Files</Name>
+<Property>27</Property>
+<Rule>1</Rule>
+<Criteria>Missing</Criteria>
+</Filter>
+</SUFListFilters>
