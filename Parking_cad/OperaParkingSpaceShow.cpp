@@ -31,11 +31,10 @@ void COperaParkingSpaceShow::Start()
 	{
 		if (root["params"]["posturl"].isNull()|| root["params"]["geturl"].isNull())
 		{
-			acedAlert(_T("不存在该字段！"));
-			is.close();
+			acedAlert(_T("配置文件不存在[\"params\"][\"geturl\"]字段！"));
 			return;
 		}
-		if (root["params"]["posturl"].isString()&& root["params"]["geturl"].isString())
+		if (root["params"]["posturl"].isString() && root["params"]["geturl"].isString())
 		{
 			std::string postUrl = root["params"]["posturl"].asString();
 			std::string getUrl = root["params"]["geturl"].asString();
@@ -44,8 +43,7 @@ void COperaParkingSpaceShow::Start()
 		}
 		else
 		{
-			acedAlert(_T("字段格式不匹配！"));
-			is.close();
+			acedAlert(_T("配置文件字段格式不匹配！"));
 			return;
 		}
 	}
