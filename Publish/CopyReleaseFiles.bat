@@ -34,5 +34,3 @@ copy /Y ..\x64\Release\license.lst .\out\Support\22\x64\
 copy /Y ..\x64\Release\loading.gif .\out\Support\22\x64\
 copy /Y ..\x64\Release\template.dwg .\out\Support\22\x64\
 copy /Y ..\x64\Release\ParkingConfig.json .\out\Support\22\x64\
-
-pause

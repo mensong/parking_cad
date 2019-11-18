@@ -168,7 +168,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 	if (nIDEvent == 1)
 	{
 		//调用检查是否计算完成函数（）；
-		CString sMsg;
+		std::string sMsg;
 		int status = getStatus(json, sMsg);
 		//如果完成后
 		if (status==2)
@@ -340,7 +340,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		else if(status==3)
 		{
 			KillTimer(nIDEvent);
-			acedAlert(sMsg);
+			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
 			//CDlgWaiting::Show(false);
 			this->OnOK();
 		}
@@ -350,11 +350,11 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 	CAcUiDialog::OnTimer(nIDEvent);
 }
 
-int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
+int CDlgWaiting::getStatus(std::string& json, std::string& sMsg)
 {
 	if (ms_uuid == "")
 	{
-		sMsg = _T("uuid不能为空。");
+		sMsg = "uuid不能为空。";
 		return 3;
 	}
 
@@ -366,14 +366,14 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
 	if (!fn_get)
 	{
-		sMsg = _T("Http模块加载失败！");
+		sMsg = "Http模块加载失败！";
 		return 3;
 	}
 	int code = fn_get(sendUrl, true);
 
 	if (code != 200)
 	{
-		sMsg = _T("网络或服务器错误。");
+		sMsg = tempUrl + ":网络或服务器错误。";
 		return 3;
 	}
 	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
@@ -382,7 +382,7 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
 	if (!fn_getBody)
 	{
-		sMsg = _T("网络或服务器错误。");
+		sMsg = tempUrl + ":网络或服务器错误。";
 		return 3;
 	}
 	int len = 0;
@@ -396,16 +396,13 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 #ifdef _DEBUG
 		WriteFile("result.json", json.c_str(), json.size(), NULL, 0, false);
 #endif
-
 		int status = root["status"].asInt();
-		sMsg = GL::Utf82WideByte(root["message"].asString().c_str()).c_str();
+		sMsg = GL::Utf82Ansi(root["message"].asString().c_str()).c_str();
 		return status;
 	}
-	else
-	{
-		sMsg = _T("结果格式有误。");
-		return 3;
-	}
+
+	sMsg = "结果格式有误。";
+	return 3;
 }
 
 void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation)

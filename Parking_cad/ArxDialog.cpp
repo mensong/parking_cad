@@ -48,7 +48,7 @@
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturl;
 //-----------------------------------------------------------------------------
-IMPLEMENT_DYNAMIC (CArxDialog, CAcUiDialog)
+IMPLEMENT_DYNAMIC(CArxDialog, CAcUiDialog)
 
 BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_MESSAGE(WM_ACAD_KEEPFOCUS, OnAcadKeepFocus)
@@ -61,10 +61,10 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
-CArxDialog::CArxDialog (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog (CArxDialog::IDD, pParent, hInstance) {
+CArxDialog::CArxDialog(CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog(CArxDialog::IDD, pParent, hInstance) {
 }
 
-CArxDialog::~CArxDialog(){
+CArxDialog::~CArxDialog() {
 
 	COperaParkingSpaceShow::ms_dlg = NULL;
 }
@@ -77,7 +77,7 @@ void CArxDialog::setPostUrl(std::string& posturl)
 //-----------------------------------------------------------------------------
 void CArxDialog::loadoutlineLayers()
 {
-	Doc_Locker _locker;	
+	Doc_Locker _locker;
 
 	AcDbLayerTable* pLT = NULL;
 	if (acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead) != Acad::eOk)
@@ -176,7 +176,7 @@ void CArxDialog::loaddirectionCombo()
 
 
 //-----------------------------------------------------------------------------
-void CArxDialog::DoDataExchange (CDataExchange *pDX) {
+void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_OutlineLayer, m_outlineLayer);
 	DDX_Control(pDX, IDC_COMBO_ShearwallLayer, m_shearwallLayer);
@@ -212,8 +212,8 @@ void CArxDialog::OnCancel()
 //-----------------------------------------------------------------------------
 //----- Needed for modeless dialogs to keep focus.
 //----- Return FALSE to not keep the focus, return TRUE to keep the focus
-LRESULT CArxDialog::OnAcadKeepFocus (WPARAM, LPARAM) {
-	return (TRUE) ;
+LRESULT CArxDialog::OnAcadKeepFocus(WPARAM, LPARAM) {
+	return (TRUE);
 }
 
 BOOL CArxDialog::OnInitDialog()
@@ -234,8 +234,8 @@ BOOL CArxDialog::OnInitDialog()
 	if (mIdxLayer > -1)
 		m_shearwallLayer.SetCurSel(mIdxLayer);
 	m_shearwallLayer.SetDroppedWidth(200);
-	
-	
+
+
 	/*m_strLength = "5.3";
 	m_editLength.SetWindowText(m_strLength);*/
 	setInitData();
@@ -288,7 +288,7 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 			{
 				pPline->getArcSegAt(i, arc);
 				AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
-				for (int x = 0;x<result.length();x++)
+				for (int x = 0; x < result.length(); x++)
 				{
 					AcGePoint2d onArcpoint(result[x].x, result[x].y);
 					//acutPrintf(_T("\n该点%d坐标为%.2f,%.2f"), x, onArcpoint.x, onArcpoint.y);
@@ -296,12 +296,12 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 				}
 			}
 		}
-		
+
 		//acutPrintf(_T("\n该容器长度为%d"), s);
-						
-		for (int x = 0;x<allPoints.size();x++)
+
+		for (int x = 0; x < allPoints.size(); x++)
 		{
-			if (compare(GetretreatlinePts,allPoints[x]))
+			if (compare(GetretreatlinePts, allPoints[x]))
 			{
 				continue;
 			}
@@ -321,7 +321,7 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 	}
 	pEnt->close();
 
-	for (int yy = 0;yy<GetretreatlinePts.length();yy++)
+	for (int yy = 0; yy < GetretreatlinePts.length(); yy++)
 	{
 		CString tempStr_X;
 		CString tempStr_Y;
@@ -443,7 +443,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 
 		if (pEntity->isKindOf(AcDbPolyline::desc()))
 		{
-			
+
 			std::vector<AcGePoint2d> allPoints;//得到的所有点
 			AcDbVoidPtrArray entsTempArray;
 			AcDbPolyline *pPline = AcDbPolyline::cast(pEntity);
@@ -454,19 +454,19 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 			{
 				types.push_back(2);
 			}
-			else if(value.find(_T("排烟"))>=0)
+			else if (value.find(_T("排烟")) >= 0)
 			{
 				types.push_back(0);
 			}
-			else if(value.find(_T("进风"))>=0)
+			else if (value.find(_T("进风")) >= 0)
 			{
 				types.push_back(1);
 			}
-			else if(value == _T("生活泵房"))
+			else if (value == _T("生活泵房"))
 			{
 				types.push_back(3);
 			}
-			else if(value == _T("生活水箱"))
+			else if (value == _T("生活水箱"))
 			{
 				types.push_back(4);
 			}
@@ -510,7 +510,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 					}
 				}
 			}
-		
+
 			AcGePoint2dArray onePlinePts;//装取去完重的有效点
 			for (int x = 0; x < allPoints.size(); x++)
 			{
@@ -527,7 +527,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 				onePlinePts.append(onePlinePts[0]);
 			}
 
-			outputPoints.push_back(onePlinePts);			
+			outputPoints.push_back(onePlinePts);
 		}
 
 		pEntity->close();
@@ -552,28 +552,35 @@ void CArxDialog::setInitData()
 	m_StrSquareColumnWidth = "0.6";
 	m_SquareColumnWidth.SetWindowText(m_StrSquareColumnWidth);
 
-	m_strUserId =  g_auth.getCheckedUser();
-	m_strComputerId =  g_auth.getCheckedSerial();
+	m_strUserId = g_auth.getCheckedUser();
+	m_strComputerId = g_auth.getCheckedSerial();
 }
 
-std::string CArxDialog::postToAIApi(const std::string& sData)
+int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg)
 {
 	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
 	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
 	if (!fn_post)
-		return "";
+	{
+		sMsg = getHttpModule() + ":post模块错误。";
+		return 1;
+	}
 	const char * postUrl = ms_posturl.c_str();
 	//MessageBoxA(NULL, postUrl, "", 0);
 	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
-	if (code!=200)
+	if (code != 200)
 	{
-		return "网络或服务器错误";
+		sMsg = ms_posturl + ":网络或服务器错误。";
+		return 2;
 	}
 
 	typedef const char* (*FN_getBody)(int&);
 	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
 	if (!fn_getBody)
-		return "";
+	{
+		sMsg = getHttpModule() + ":getBody模块错误。";
+		return 1;
+	}
 	int len = 0;
 	std::string json = fn_getBody(len);
 
@@ -582,27 +589,28 @@ std::string CArxDialog::postToAIApi(const std::string& sData)
 	//从字符串中读取数据
 	if (reader.parse(json, root))
 	{
-		
 		if (root["status"].isInt())
 		{
 			int status = root["status"].asInt();
-			if (status!=0)
+			if (status != 0)
 			{
-				return "";
+				sMsg = "提交任务出错。";
+				return 3;
 			}
 		}
 		else
 		{
-			return "没有该字段";
+			sMsg = "没有返回status字段。";
+			return 4;
 		}
 		//std::string messgae = root["messgae"].asString();
-		std::string result = root["result"].asString();	
-		return result;
+		std::string result = root["result"].asString();
+		sMsg = result;
+		return 0;
 	}
-	else
-	{
-		return "json解析错误";
-	}	
+
+	sMsg = "json解析错误";
+	return 4;
 }
 
 void CArxDialog::OnBnClickedButtonGetstartpoint()
@@ -669,7 +677,7 @@ void CArxDialog::OnBnClickedOk()
 	int direction = 0;
 	CString showDirection;
 	m_directionCombo.GetWindowText(showDirection);
-	if (showDirection=="垂直排布")
+	if (showDirection == "垂直排布")
 	{
 		direction = 1;
 	}
@@ -689,11 +697,11 @@ void CArxDialog::OnBnClickedOk()
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
 
 	Json::Value root;//根节点
-					 
+
 	//创建子节点
 	//Json::Value childnode;
 	//Json::Value oneZoesPts;
-	for (int e = 0;e < zonesPts.size();e++)
+	for (int e = 0; e < zonesPts.size(); e++)
 	{
 		Json::Value oneZoesPts;
 		for (int f = 0; f < zonesPts[e].length(); f++)
@@ -769,20 +777,12 @@ void CArxDialog::OnBnClickedOk()
 	auth["user_id"] = GL::Ansi2Utf8(m_strUserId.c_str());
 	root["auth"] = auth;
 
-	std::string uuid = postToAIApi(root.toStyledString());
-	if (uuid == "网络或服务器错误")
+	std::string uuid;
+	int res = postToAIApi(root.toStyledString(), uuid);
+	if (res != 0)
 	{
-		acedAlert(_T("网络或服务器错误!"));
-		return;
-	}
-	else if (uuid == "json解析错误")
-	{
-		acedAlert(_T("json解析错误!"));
-		return;
-	}
-	else if (uuid == "没有该字段")
-	{
-		acedAlert(_T("没有该字段!"));
+		CString	sMsg = GL::Ansi2WideByte(uuid.c_str()).c_str();
+		acedAlert(sMsg);
 		return;
 	}
 	CDlgWaiting::setUuid(uuid);

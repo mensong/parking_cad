@@ -73,7 +73,7 @@ protected:
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, bool bClosed = true);
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, std::vector<int>& types);
 	void setInitData();
-	std::string postToAIApi(const std::string& js);
+	int postToAIApi(const std::string& js, std::string& sMsg);
 
 protected:
 	virtual BOOL OnInitDialog();
