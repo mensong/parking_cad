@@ -14,6 +14,7 @@
 #include "GeHelper.h"
 
 std::string CDlgWaiting::ms_uuid;
+std::string CDlgWaiting::ms_geturl;
 
 HANDLE g_hThread = NULL;
 CDlgWaiting* g_dlg = NULL;
@@ -78,6 +79,11 @@ void CDlgWaiting::Destroy()
 void CDlgWaiting::setUuid(const std::string& uuid)
 {
 	ms_uuid = uuid;
+}
+
+void CDlgWaiting::setGetUrl(const std::string& geturl)
+{
+	ms_geturl = geturl;
 }
 
 // CDlgWaiting ¶Ô»°¿ò
@@ -352,8 +358,8 @@ int CDlgWaiting::getStatus(std::string& json, CString& sMsg)
 		return 3;
 	}
 
-	std::string httpUrl = "http://10.8.212.187/query/";
-	std::string tempUrl = httpUrl + ms_uuid;
+	//std::string httpUrl = "http://10.8.212.187/query/";
+	std::string tempUrl = ms_geturl + ms_uuid;
 	const char * sendUrl = tempUrl.c_str();
 	
 	typedef int (*FN_get)(const char* url, bool dealRedirect);

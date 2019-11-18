@@ -35,6 +35,7 @@
 #include "Convertor.h"
 #include "ModulesManager.h"
 #include "OperaParkingSpaceShow.h"
+#include "Authenticate.h"
 
 #ifndef _ttof
 #ifdef UNICODE
@@ -44,6 +45,8 @@
 #endif
 #endif
 
+extern Authenticate g_auth;
+std::string CArxDialog::ms_posturl;
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CArxDialog, CAcUiDialog)
 
@@ -64,6 +67,11 @@ CArxDialog::CArxDialog (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) 
 CArxDialog::~CArxDialog(){
 
 	COperaParkingSpaceShow::ms_dlg = NULL;
+}
+
+void CArxDialog::setPostUrl(std::string& posturl)
+{
+	ms_posturl = posturl;
 }
 
 //-----------------------------------------------------------------------------
@@ -543,6 +551,9 @@ void CArxDialog::setInitData()
 
 	m_StrSquareColumnWidth = "0.6";
 	m_SquareColumnWidth.SetWindowText(m_StrSquareColumnWidth);
+
+	m_strUserId =  g_auth.getCheckedUser();
+	m_strComputerId =  g_auth.getCheckedSerial();
 }
 
 std::string CArxDialog::postToAIApi(const std::string& sData)
@@ -551,7 +562,8 @@ std::string CArxDialog::postToAIApi(const std::string& sData)
 	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
 	if (!fn_post)
 		return "";
-	int code = fn_post("http://10.8.212.187/park", sData.c_str(), sData.size(), true, "application/json");
+	const char * postUrl = ms_posturl.c_str();
+	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
 	if (code!=200)
 	{
 		return "网络或服务器错误";
@@ -750,8 +762,10 @@ void CArxDialog::OnBnClickedOk()
 	//子节点挂到根节点上
 	root["params"] = Json::Value(params);
 	Json::Value auth;
-	auth["computer_id"] = "0000";
-	auth["user_id"] = "1111";
+	//CString strUserId = GL::Ansi2WideByte(m_strUserId.c_str()).c_str();
+	//CString strComputerId = GL::Ansi2WideByte(m_strComputerId.c_str()).c_str();
+	auth["computer_id"] = GL::Ansi2Utf8(m_strComputerId.c_str());
+	auth["user_id"] = GL::Ansi2Utf8(m_strUserId.c_str());
 	root["auth"] = auth;
 
 	std::string uuid = postToAIApi(root.toStyledString());
