@@ -29,10 +29,25 @@ void COperaParkingSpaceShow::Start()
 	Json::Value root;
 	if (reader.parse(sConfigStr, root))
 	{
-		std::string postUrl = root["params"]["posturl"].asString();
-		std::string getUrl = root["params"]["geturl"].asString();
-		CDlgWaiting::setGetUrl(getUrl);
-		CArxDialog::setPostUrl(postUrl);
+		if (root["params"]["posturl"].isNull()|| root["params"]["geturl"].isNull())
+		{
+			acedAlert(_T("不存在该字段！"));
+			is.close();
+			return;
+		}
+		if (root["params"]["posturl"].isString()&& root["params"]["geturl"].isString())
+		{
+			std::string postUrl = root["params"]["posturl"].asString();
+			std::string getUrl = root["params"]["geturl"].asString();
+			CDlgWaiting::setGetUrl(getUrl);
+			CArxDialog::setPostUrl(postUrl);
+		}
+		else
+		{
+			acedAlert(_T("字段格式不匹配！"));
+			is.close();
+			return;
+		}
 	}
 	else
 	{
