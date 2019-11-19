@@ -4857,7 +4857,7 @@ g_HandleSystemReboot();
 <PostBuildProg/>
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
-<Filename>智能地库排布系统V0.1.exe</Filename>
+<Filename>智能地库排布系统V0.2.exe</Filename>
 <OutputFolder>D:\</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>0</CustomSegSize>

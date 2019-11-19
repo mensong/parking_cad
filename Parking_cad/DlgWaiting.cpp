@@ -338,23 +338,24 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 
 			DBHelper::CallCADCommandEx(_T("Redraw"));
 		}
-		else if(status==3)
+		else if(status==0)
+		{
+			m_sStatus = _T("任务正在排队中，当前排在第") + sIndex + _T("位。");
+			m_staStatusText.SetWindowText(m_sStatus);
+		}
+		else if(status==1)
+		{
+			m_sStatus = _T("任务正在进行中……");
+			m_staStatusText.SetWindowText(m_sStatus);
+		}
+		else
 		{
 			KillTimer(nIDEvent);
 			//CDlgWaiting::Show(false);
 			this->OnOK();
 			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());			
 		}
-		else if(status==0)
-		{
-			m_sStatus = "任务正在排队中，当前排在第"+sIndex+"位";
-			m_staStatusText.SetWindowText(m_sStatus);
-		}
-		else if(status==1)
-		{
-			m_sStatus = "任务正在进行中";
-			m_staStatusText.SetWindowText(m_sStatus);
-		}
+
 		return;
 	}
 
@@ -373,6 +374,13 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	std::string tempUrl = ms_geturl + ms_uuid;
 	const char * sendUrl = tempUrl.c_str();
 	
+	typedef void (*FN_setTimeout)(int timeout);
+	FN_setTimeout fn_setTimeout = ModulesManager::Instance().func<FN_setTimeout>(getHttpModule(), "setTimeout");
+	if (fn_setTimeout)
+	{
+		fn_setTimeout(600);
+	}
+
 	typedef int (*FN_get)(const char* url, bool dealRedirect);
 	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
 	if (!fn_get)
@@ -384,7 +392,9 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 
 	if (code != 200)
 	{
-		sMsg = tempUrl + ":网络或服务器错误。";
+		char szCode[10];
+		sprintf(szCode, "%d", code);
+		sMsg = tempUrl + ":网络或服务器错误。(" + szCode + ")";
 		return 3;
 	}
 	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
