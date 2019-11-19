@@ -135,7 +135,7 @@ CAPTION "等待计算完毕"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     CONTROL         "",IDC_STC_GIF,"Static",SS_BLACKRECT,43,11,48,36
-    LTEXT           "正在等待计算结果……",IDC_STATIC,111,18,149,8
+    LTEXT           "正在等待计算结果……",IDC_STA_STATUS,111,18,149,8
 END
 
 IDD_DLG_ADD_FRAME DIALOGEX 0, 0, 259, 178

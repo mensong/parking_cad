@@ -105,6 +105,7 @@ void CDlgWaiting::DoDataExchange(CDataExchange* pDX)
 {
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STC_GIF, m_ctrlGif);
+	DDX_Control(pDX, IDC_STA_STATUS, m_staStatusText);
 }
 
 
@@ -120,7 +121,7 @@ BOOL CDlgWaiting::OnInitDialog()
 
 	m_bIsReady = true;
 
-	SetTimer(1, 2000, NULL);
+	SetTimer(1, 1000, NULL);
 	
 	return bRet;
 }
@@ -169,7 +170,8 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 	{
 		//调用检查是否计算完成函数（）；
 		std::string sMsg;
-		int status = getStatus(json, sMsg);
+		CString sIndex;
+		int status = getStatus(json, sMsg, sIndex);
 		//如果完成后
 		if (status==2)
 		{
@@ -343,13 +345,23 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			this->OnOK();
 			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());			
 		}
+		else if(status==0)
+		{
+			m_sStatus = "任务正在排队中，当前排在第"+sIndex+"位";
+			m_staStatusText.SetWindowText(m_sStatus);
+		}
+		else if(status==1)
+		{
+			m_sStatus = "任务正在进行中";
+			m_staStatusText.SetWindowText(m_sStatus);
+		}
 		return;
 	}
 
 	CAcUiDialog::OnTimer(nIDEvent);
 }
 
-int CDlgWaiting::getStatus(std::string& json, std::string& sMsg)
+int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex)
 {
 	if (ms_uuid == "")
 	{
@@ -396,6 +408,8 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg)
 		WriteFile("result.json", json.c_str(), json.size(), NULL, 0, false);
 #endif
 		int status = root["status"].asInt();
+		int index = root["index"].asInt();
+		sIndex.Format(_T("%d"), index);
 		sMsg = GL::Utf82Ansi(root["message"].asString().c_str()).c_str();
 		return status;
 	}
@@ -546,3 +560,5 @@ void CDlgWaiting::setAxisLayerClose()
 	}
 	pLayerTbl->close();
 }
+
+
