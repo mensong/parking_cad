@@ -60,6 +60,8 @@ public:
 	CString m_StrLaneWidth;
 	CString m_StrSquarcolumnLength;
 	CString m_StrSquareColumnWidth;
+	CString m_sParkingCount;
+	CString m_sNonConvexLevel;
 	AcGePoint2dArray GetretreatlinePts;//装取去完重的有效点
 	std::string m_strComputerId;
 	std::string m_strUserId;
@@ -120,5 +122,10 @@ private:
 	CMyEdit m_SquareColumnWidth;
 	// 是否分区选择框
 	CButton m_checkPartition;	
-	
+	// 车位总数编辑框
+	CEdit m_ParkingCount;
+	// 凹陷程度编辑框
+	CMyEdit m_Non_Convexlevel;
+public:
+	afx_msg void OnBnClickedCheckPartition();
 } ;
