@@ -341,8 +341,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			KillTimer(nIDEvent);
 			//CDlgWaiting::Show(false);
 			this->OnOK();
-			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
-			
+			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());			
 		}
 		return;
 	}
@@ -355,7 +354,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg)
 	if (ms_uuid == "")
 	{
 		sMsg = "uuid不能为空。";
-		return 3;
+		return 4;
 	}
 
 	//std::string httpUrl = "http://10.8.212.187/query/";
@@ -366,8 +365,8 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg)
 	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
 	if (!fn_get)
 	{
-		sMsg = "Http模块加载失败！";
-		return 3;
+		sMsg = "get Http模块加载失败！";
+		return 5;
 	}
 	int code = fn_get(sendUrl, true);
 
@@ -382,8 +381,8 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg)
 	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
 	if (!fn_getBody)
 	{
-		sMsg = tempUrl + ":网络或服务器错误。";
-		return 3;
+		sMsg = "getBody Http模块加载失败！";
+		return 5;
 	}
 	int len = 0;
 	json = fn_getBody(len);
