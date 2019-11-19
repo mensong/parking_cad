@@ -140,7 +140,7 @@ AcDbObjectId CEquipmentroomTool::CreateText(const AcGePoint3d& ptInsert,
 {
 	AcDbText *pText = new AcDbText(ptInsert, text, style, height, rotation);
 	AcDbObjectId id;
-	DBHelper::AppendToDatabase(pText);
+	DBHelper::AppendToDatabase(id,pText);
 	pText->close();
 	return id;
 }

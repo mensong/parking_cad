@@ -538,7 +538,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 
 void CArxDialog::setInitData()
 {
-	m_strLength = "5.3";
+	m_strLength = "5.1";
 	m_editLength.SetWindowText(m_strLength);
 
 	m_strWidth = "2.4";
@@ -848,7 +848,47 @@ void CArxDialog::OnBnClickedCheckPartition()
 	// TODO: 在此添加控件通知处理程序代码
 	if (1 == m_checkPartition.GetCheck())
 	{
-		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_SHOW);		
+		HideDialogHolder holder(this);
+		Doc_Locker doc_locker;
+		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_SHOW);
+
+		std::vector<AcDbEntity*> vctJigEnt;
+		ads_name ssname;
+		ads_name ent;
+		//获取选择集
+		acedPrompt(_T("\n选择实体："));
+		acedSSGet(NULL, NULL, NULL, NULL, ssname);
+		//获取选择集的长度
+		Adesk::Int32 len = 0;
+		int nRes = acedSSLength(ssname, &len);
+		if (RTNORM == nRes)
+		{
+			//遍历选择集
+			for (int i = 0; i < len; i++)
+			{
+				//获取实体名
+				int nRes = acedSSName(ssname, i, ent);
+				if (nRes != RTNORM)
+					continue;
+				//根据实体名得到ID，然后打开自定义实体
+				AcDbObjectId id;
+				acdbGetObjectId(id, ent);
+				if (!id.isValid())
+					continue;
+
+				AcDbEntity *pEnt = NULL;
+				acdbOpenObject(pEnt, id, AcDb::kForWrite);
+				//判断自定义实体的类型
+				if (pEnt == NULL)
+					continue;
+
+				vctJigEnt.push_back(pEnt);
+			}
+		}
+		//释放选择集
+		acedSSFree(ssname);
+		if (vctJigEnt.size() < 1)
+			return;
 	}
 	else
 	{
