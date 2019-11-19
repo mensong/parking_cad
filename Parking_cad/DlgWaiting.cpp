@@ -174,6 +174,8 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		if (status==2)
 		{
 			KillTimer(nIDEvent);
+			//CDlgWaiting::Show(false);
+			this->OnOK();
 			
 			Json::Reader reader;
 			Json::Value root;
@@ -333,16 +335,14 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			setAxisLayerClose();
 
 			DBHelper::CallCADCommand(_T("Redraw"));
-
-			//CDlgWaiting::Show(false);
-			this->OnOK();
 		}
 		else if(status==3)
 		{
 			KillTimer(nIDEvent);
-			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
 			//CDlgWaiting::Show(false);
 			this->OnOK();
+			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
+			
 		}
 		return;
 	}

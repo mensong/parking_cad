@@ -41,47 +41,11 @@ void Authenticate::loadLicenseFile(const std::string& file)
 
 bool Authenticate::appendLicense(const std::string& code)
 {
-	char sDeBase64[1024];
-	int nDeBase64Len = 0;
-	base64_decode(code.c_str(), code.size(), (unsigned char*)sDeBase64, nDeBase64Len);
-	char sDeDes[1024];
-	int nDeDesLen = 0;
-	GL::DES_cbc_decrypt(sDeBase64, nDeBase64Len, sDeDes, nDeDesLen,
-		m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
-	sDeDes[nDeDesLen] = '\0';
-
-	std::vector<std::string> splits;
-	pystring::split(sDeDes, splits, "|");
-	if (splits.size() == 0)
-		return false;
-
-	if (splits.size() == 1)
-	{
-		LICENSE_INFO li;
-		li.licenceCode = code;
-		li.expireTime = 0;
-		m_licences.insert(std::make_pair(splits[0].c_str(), li));
-		return true;
-	}
-	else if (splits.size() == 2)
-	{
-		LICENSE_INFO li;
-		li.licenceCode = code;
-		sscanf(splits[1].c_str(), "%u", &li.expireTime);
-		m_licences.insert(std::make_pair(splits[0].c_str(), li));
-		return true;
-	}
-	else if (splits.size() == 3)
-	{
-		LICENSE_INFO li;
-		li.licenceCode = code;
-		sscanf(splits[1].c_str(), "%u", &li.expireTime);
-		li.userName = splits[2].c_str();
-		m_licences.insert(std::make_pair(splits[0].c_str(), li));
-		return true;
-	}
-
-	return false;
+	LICENSE_INFO li;
+	int res = decode(li, code);
+	if (res > 0)
+		m_licences[li.serial.c_str()] = li;
+	return (res > 0);
 }
 
 int Authenticate::check(const std::string& userName/*=""*/)
@@ -193,6 +157,43 @@ std::string Authenticate::encode(const std::string& serial, const std::string& e
 	szBase64[nBase64] = '\0';
 
 	return szBase64;
+}
+
+int Authenticate::decode(LICENSE_INFO& li, const std::string& code)
+{
+	char sDeBase64[2048];
+	int nDeBase64Len = 0;
+	base64_decode(code.c_str(), code.size(), (unsigned char*)sDeBase64, nDeBase64Len);
+	char sDeDes[1024];
+	int nDeDesLen = 0;
+	GL::DES_cbc_decrypt(sDeBase64, nDeBase64Len, sDeDes, nDeDesLen,
+		m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
+	sDeDes[nDeDesLen] = '\0';
+
+	std::vector<std::string> splits;
+	pystring::split(sDeDes, splits, "|");
+
+	if (splits.size() == 1)
+	{
+		li.licenceCode = code;
+		li.serial = splits[0];
+		li.expireTime = 0;
+	}
+	else if (splits.size() == 2)
+	{
+		li.licenceCode = code;
+		li.serial = splits[0];
+		sscanf(splits[1].c_str(), "%u", &li.expireTime);
+	}
+	else if (splits.size() == 3)
+	{
+		li.licenceCode = code;
+		li.serial = splits[0];
+		sscanf(splits[1].c_str(), "%u", &li.expireTime);
+		li.userName = splits[2].c_str();
+	}
+
+	return splits.size();
 }
 
 std::string Authenticate::ReadText(const char * path)

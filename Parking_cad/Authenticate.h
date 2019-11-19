@@ -8,6 +8,7 @@ public:
 	typedef struct LICENSE_INFO
 	{
 		std::string licenceCode;
+		std::string serial;
 		DWORD expireTime;
 		std::string userName;
 	} LICENSE_INFO;
@@ -19,7 +20,7 @@ public:
 	bool setDesKey(const std::string& key);
 	void loadLicenseFile(const std::string& file);
 	bool appendLicense(const std::string& code);
-	int check(const std::string& userName="");	
+	int check(const std::string& userName="");
 
 	const std::string& getCheckedLicenceCode();
 	const std::string& getCheckedSerial();
@@ -30,6 +31,8 @@ public:
 	std::string localEncode(const std::string& expireTime, const std::string& userName);
 	std::string encode(const std::string& serial, DWORD expireTime, const std::string& userName);
 	std::string encode(const std::string& serial, const std::string& expireTime, const std::string& userName);
+
+	int decode(LICENSE_INFO& li, const std::string& code);
 
 protected:
 	static std::string ReadText(const char * path);
