@@ -1,6 +1,7 @@
 #pragma once
 #include "resource.h"
 #include "PictureEx.h"
+#include "afxwin.h"
 
 // CDlgWaiting 对话框
 
@@ -31,10 +32,11 @@ protected:
 
 public:
 	CPictureEx m_ctrlGif;
+	CStatic m_staStatusText;
 	bool m_bIsReady;
+	CString m_sStatus;
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
-	int getStatus(std::string& josn, std::string& sMsg);
-	
+	int getStatus(std::string& josn, std::string& sMsg,CString& sIndex);
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
 	static std::string ms_geturl;//从初始化类取到配置文件中的IP地址接口
 	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation);
@@ -43,7 +45,6 @@ public:
 	void scopeShow(const AcGePoint2dArray& park_columnPts);
 	void pillarShow(const AcGePoint2dArray& onePillarPts);
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
-
 	bool layerSet(const CString& layerName,const int& layerColor);
 	void setAxisLayerClose();
 };
