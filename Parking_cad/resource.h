@@ -37,8 +37,12 @@
 #define IDC_EDIT_StartPoint             131
 #define IDC_EDIT7                       132
 #define IDC_EDIT_RetreatLine            132
+#define IDC_EDIT_PARTITIONLINE          133
+#define IDC_EDIT_PARTITION_LINE         133
 #define IDC_STATIC_m                    134
 #define IDC_STC_GIF                     135
+#define IDC_EDIT_PARKINGCOUNT           136
+#define IDC_EDIT_NON_CONVEXLEVEL        137
 
 // Next default values for new objects
 // 
@@ -46,7 +50,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        107
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         136
+#define _APS_NEXT_CONTROL_VALUE         138
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

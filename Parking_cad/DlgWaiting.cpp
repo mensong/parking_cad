@@ -332,7 +332,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 
 			setAxisLayerClose();
 
-			DBHelper::CallCADCommand(_T("Redraw"));
+			DBHelper::CallCADCommandEx(_T("Redraw"));
 
 			//CDlgWaiting::Show(false);
 			this->OnOK();

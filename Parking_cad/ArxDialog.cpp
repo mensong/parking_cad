@@ -58,6 +58,7 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_BN_CLICKED(IDC_RADIO_OtherLength, &CArxDialog::OnBnClickedRadioOtherlength)
 	ON_BN_CLICKED(IDC_RADIO_Default, &CArxDialog::OnBnClickedRadioDefault)
 	ON_WM_TIMER()
+	ON_BN_CLICKED(IDC_CHECK_Partition, &CArxDialog::OnBnClickedCheckPartition)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -191,6 +192,8 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_SquarecolumnLength, m_SquarcolumnLength);
 	DDX_Control(pDX, IDC_EDIT_SquareColumnWidth, m_SquareColumnWidth);
 	DDX_Control(pDX, IDC_CHECK_Partition, m_checkPartition);
+	DDX_Control(pDX, IDC_EDIT_PARKINGCOUNT, m_ParkingCount);
+	DDX_Control(pDX, IDC_EDIT_NON_CONVEXLEVEL, m_Non_Convexlevel);
 }
 
 void CArxDialog::OnOK()
@@ -235,14 +238,12 @@ BOOL CArxDialog::OnInitDialog()
 		m_shearwallLayer.SetCurSel(mIdxLayer);
 	m_shearwallLayer.SetDroppedWidth(200);
 
-
-	/*m_strLength = "5.3";
-	m_editLength.SetWindowText(m_strLength);*/
 	setInitData();
 	((CButton*)GetDlgItem(IDC_RADIO_Default))->SetCheck(BST_CHECKED);//程序启动时默认为单选按钮1选中
 
 	GetDlgItem(IDC_EDIT_Length)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_STATIC_m)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_HIDE);
 	return bRet;
 }
 
@@ -554,6 +555,9 @@ void CArxDialog::setInitData()
 
 	m_strUserId = g_auth.getCheckedUser();
 	m_strComputerId = g_auth.getCheckedSerial();
+
+	m_sNonConvexLevel = "0.2";
+	m_Non_Convexlevel.SetWindowText(m_sNonConvexLevel);
 }
 
 int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg)
@@ -647,25 +651,22 @@ void CArxDialog::OnBnClickedOk()
 	m_LaneWidth.GetWindowText(m_StrLaneWidth);
 	m_SquarcolumnLength.GetWindowText(m_StrSquarcolumnLength);
 	m_SquareColumnWidth.GetWindowText(m_StrSquareColumnWidth);
-
+	m_ParkingCount.GetWindowText(m_sParkingCount);
+	m_Non_Convexlevel.GetWindowText(m_sNonConvexLevel);
 	/*acutPrintf(_T("\n单车位不靠墙长度：%s"), m_strLength);
 	acutPrintf(_T("\n单车位宽度：%s"), m_strWidth);
 	acutPrintf(_T("\n车道宽度：%s"), m_StrLaneWidth);
 	acutPrintf(_T("\n方柱长度：%s"), m_StrSquarcolumnLength);
 	acutPrintf(_T("\n方柱宽度：%s"), m_StrSquareColumnWidth);*/
 
-	double parkLength = _ttof(m_strLength.GetString());
-	//parkLength = ((float)((int)((parkLength + 0.005) * 100))) / 100;
+	double parkLength = _ttof(m_strLength.GetString());	
 	double parkWidth = _ttof(m_strWidth.GetString());
-	//parkWidth = ((float)((int)((parkWidth + 0.005) * 100))) / 100;
 	double laneWidth = _ttof(m_StrLaneWidth.GetString());
-	//laneWidth = ((float)((int)((laneWidth + 0.005) * 100))) / 100;
 	double squarcolumnLength = _ttof(m_StrSquarcolumnLength.GetString());
-	//squarcolumnLength = ((float)((int)((squarcolumnLength + 0.005) * 100))) / 100;
 	double squareColumnWidth = _ttof(m_StrSquareColumnWidth.GetString());
 	//squareColumnWidth = ((float)((int)((squareColumnWidth + 0.005) * 100))) / 100;//保留精度操作
-
-
+	int nParkingCount = _ttoi(m_sParkingCount.GetString());
+	double dNon_Convexlevel = _ttof(m_sNonConvexLevel.GetString());
 	if (1 == m_checkPartition.GetCheck())
 	{
 		isPartition = true;
@@ -764,6 +765,8 @@ void CArxDialog::OnBnClickedOk()
 	params["lane_width"] = Json::Value(laneWidth);
 	params["column_length"] = Json::Value(squarcolumnLength);
 	params["column_width"] = Json::Value(squareColumnWidth);
+	params["parking_count"] = Json::Value(nParkingCount);
+	params["non_convexLevel"] = Json::Value(dNon_Convexlevel);
 	Json::Value startpoint;
 	startpoint.append(startPtx);
 	startpoint.append(startPty);
@@ -838,3 +841,17 @@ void CArxDialog::OnTimer(UINT_PTR nIDEvent)
 }
 
 
+
+
+void CArxDialog::OnBnClickedCheckPartition()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (1 == m_checkPartition.GetCheck())
+	{
+		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_SHOW);		
+	}
+	else
+	{
+		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_HIDE);
+	}
+}
