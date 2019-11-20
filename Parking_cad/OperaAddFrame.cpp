@@ -28,7 +28,12 @@ void COperaAddFrame::Start()
 
 	CAcModuleResourceOverride resOverride;//资源定位
 	CDlgAddFrame dlg;
-	UINT_PTR res = dlg.DoModal();
+	dlg.setContextExtents(extFrame);
+	INT_PTR res = dlg.DoModal();
+	if (res == IDOK)
+	{
+
+	}
 }
 
 REG_CMD(COperaAddFrame, BGY, AddFrame);

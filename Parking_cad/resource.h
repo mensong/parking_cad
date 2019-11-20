@@ -35,7 +35,7 @@
 #define IDC_EDIT_PARKINGCOUNT           136
 #define IDC_EDIT_NON_CONVEXLEVEL        137
 #define IDC_STA_STATUS                  138
-#define IDC_STA_PREVIEW                 139
+#define IDC_STA_PREVIEW                 138
 
 // Next default values for new objects
 // 

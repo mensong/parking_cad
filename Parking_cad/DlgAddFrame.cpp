@@ -14,11 +14,16 @@ IMPLEMENT_DYNAMIC(CDlgAddFrame, CAcUiDialog)
 CDlgAddFrame::CDlgAddFrame(CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(CDlgAddFrame::IDD, pParent)
 {
-
+	
 }
 
 CDlgAddFrame::~CDlgAddFrame()
 {
+}
+
+void CDlgAddFrame::setContextExtents(const AcDbExtents& ext)
+{
+	m_extents = ext;
 }
 
 void CDlgAddFrame::refreshPreview()
@@ -36,15 +41,59 @@ void CDlgAddFrame::refreshPreview()
 		return;
 	}
 
-	AcDbDatabase* pDb = new AcDbDatabase;
-	AcDbPolyline* pFrame = new AcDbPolyline(4);
-	pFrame->setPointAt(0, AcGePoint2d(0, 0));
-	pFrame->setPointAt(1, AcGePoint2d(nLen, 0));
-	pFrame->setPointAt(2, AcGePoint2d(nLen, nWidth));
-	pFrame->setPointAt(3, AcGePoint2d(0, nWidth));
+	double dRatio = (double)nLen / (double)nWidth;
+
+	double dExtLen = m_extents.maxPoint().x - m_extents.minPoint().x;
+	double dExtWidth = m_extents.maxPoint().y - m_extents.minPoint().y;
+	
+	//dExtLen / dExtWidth == dRatio;
+	double dTestLen = dRatio * dExtWidth;
+	double dTestWidth = dExtWidth;
+	if (dTestLen < dExtLen)
+	{//不够覆盖
+		dTestLen = dExtLen;
+		dTestWidth = dExtLen / dRatio;
+	}
+	
+	AcGeVector3d vecMid;
+	vecMid.x = 0.5 *(m_extents.minPoint().x + m_extents.maxPoint().x);
+	vecMid.y = 0.5 *(m_extents.minPoint().y + m_extents.maxPoint().y);
+	vecMid.z = 0.0;
+
+	AcDbDatabase* pDb = new AcDbDatabase(true, true);
+
+	AcDbPolyline* pContext = new AcDbPolyline;
+	pContext->addVertexAt(0, AcGePoint2d(-dExtLen/2, -dExtWidth/2));
+	pContext->addVertexAt(1, AcGePoint2d(dExtLen/2, -dExtWidth/2));
+	pContext->addVertexAt(2, AcGePoint2d(dExtLen/2, dExtWidth/2));
+	pContext->addVertexAt(3, AcGePoint2d(-dExtLen/2, dExtWidth/2));
+	pContext->setClosed(Adesk::kTrue);
+	pContext->setColorIndex(1);
+	pContext->transformBy(vecMid);
+	DBHelper::AppendToDatabase(pContext, pDb);
+	pContext->close();
+	
+
+	//TODO: 这个框的大小需要更改
+	AcDbPolyline* pFrame = new AcDbPolyline;
+	pFrame->addVertexAt(0, AcGePoint2d(-dTestLen/2, -dTestWidth/2));
+	pFrame->addVertexAt(1, AcGePoint2d(dTestLen/2, -dTestWidth/2));
+	pFrame->addVertexAt(2, AcGePoint2d(dTestLen/2, dTestWidth/2));
+	pFrame->addVertexAt(3, AcGePoint2d(-dTestLen/2, dTestWidth/2));
+	pFrame->setClosed(Adesk::kTrue);
+	pFrame->transformBy(vecMid);
 	DBHelper::AppendToDatabase(pFrame, pDb);
 	pFrame->close();
+
 	m_staPreview.Init(pDb);
+
+	m_staPreview.SetMouseEventEnable(
+		CCadPreviewCtrl::meMBMove | 
+		CCadPreviewCtrl::meRBMove |
+		CCadPreviewCtrl::meLBDBClick | 
+		CCadPreviewCtrl::meMBDBClick |
+		CCadPreviewCtrl::meRBDBClick |
+		CCadPreviewCtrl::meMBWheel);
 }
 
 void CDlgAddFrame::DoDataExchange(CDataExchange* pDX)
@@ -65,6 +114,21 @@ BOOL CDlgAddFrame::OnInitDialog()
 	OnBnClickedRadA0();
 
 	return TRUE;
+}
+
+BOOL CDlgAddFrame::PreTranslateMessage(MSG* pMsg)
+{
+	if ( pMsg->message == WM_KEYDOWN &&	pMsg->wParam == VK_RETURN)
+	{
+		if (pMsg->hwnd == m_editFrameLen.m_hWnd || 
+			pMsg->hwnd == m_editFrameWidth.m_hWnd)
+		{
+			refreshPreview();
+			return TRUE;
+		}
+	}
+
+	return CAcUiDialog::PreTranslateMessage(pMsg);
 }
 
 BEGIN_MESSAGE_MAP(CDlgAddFrame, CAcUiDialog)

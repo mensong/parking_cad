@@ -120,55 +120,58 @@
     <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp">
       <Filter>Auth\Auth</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\ArxProgressBar.cpp">
+    <ClCompile Include="..\..\ArxTools\ArxProgressBar.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\CadPreviewCtrl.cpp">
+    <ClCompile Include="..\..\ArxTools\CadPreviewCtrl.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\Convertor.cpp">
+    <ClCompile Include="..\..\ArxTools\Convertor.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\DBHelper.cpp">
+    <ClCompile Include="..\..\ArxTools\DBHelper.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\DelayExecuter.cpp">
+    <ClCompile Include="..\..\ArxTools\DelayExecuter.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\FileHelper.cpp">
+    <ClCompile Include="..\..\ArxTools\FileHelper.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\GeHelper.cpp">
+    <ClCompile Include="..\..\ArxTools\GeHelper.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\gpc.cpp">
+    <ClCompile Include="..\..\ArxTools\gpc.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\JigHelper.cpp">
+    <ClCompile Include="..\..\ArxTools\JigHelper.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\LineSelect.cpp">
+    <ClCompile Include="..\..\ArxTools\LineSelect.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\LoadCuix.cpp">
+    <ClCompile Include="..\..\ArxTools\LoadCuix.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\MixedHelper.cpp">
+    <ClCompile Include="..\..\ArxTools\MixedHelper.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\Opera.cpp">
+    <ClCompile Include="..\..\ArxTools\Opera.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\PointInPolygon.cpp">
+    <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\SDBDumyJigEntity.cpp">
+    <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\arxtools\win_iconv.cpp">
+    <ClCompile Include="..\..\ArxTools\win_iconv.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="OperaModuleCall.cpp">
+    <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -254,64 +257,70 @@
     <ClInclude Include="..\Parking_cad\HardDiskSerial.h">
       <Filter>Auth\Auth</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\ArxProgressBar.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\AutoRegCmd.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\CadPreviewCtrl.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\ClassFactory.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\Convertor.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\DBHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\DelayExecuter.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\FileHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\GeHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\gpc.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\iconv.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\JigHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\LineSelect.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\LoadCuix.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\MixedHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\Opera.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\PointInPolygon.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\RTreeEx.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\arxtools\SDBDumyJigEntity.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
     <ClInclude Include="OperaModuleCall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\AutoRegCmd.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\CadPreviewCtrl.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\ClassFactory.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\Convertor.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\DBHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\DelayExecuter.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\FileHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\GeHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\gpc.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\iconv.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\JigHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\LineSelect.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\LoadCuix.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\MixedHelper.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\Opera.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\PointInPolygon.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\RTreeEx.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgAddFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaAddFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -319,10 +328,10 @@
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
-    <None Include="..\..\..\arxtools\DBHelper.inl">
+    <None Include="..\..\ArxTools\DBHelper.inl">
       <Filter>ArxTools</Filter>
     </None>
-    <None Include="..\..\..\arxtools\设置环境变量.bat">
+    <None Include="..\..\ArxTools\设置环境变量.bat">
       <Filter>ArxTools</Filter>
     </None>
   </ItemGroup>
@@ -332,7 +341,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\arxtools\readme.txt">
+    <Text Include="..\..\ArxTools\readme.txt">
       <Filter>ArxTools</Filter>
     </Text>
   </ItemGroup>
