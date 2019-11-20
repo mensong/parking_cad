@@ -62,9 +62,11 @@ public:
 	CString m_StrSquareColumnWidth;
 	CString m_sParkingCount;
 	CString m_sNonConvexLevel;
+	CString m_sPartitionLine;
 	AcGePoint2dArray GetretreatlinePts;//装取去完重的有效点
 	std::string m_strComputerId;
 	std::string m_strUserId;
+	std::vector<AcGePoint2dArray> allPartitionPts;//分区点组
 	static void setPostUrl(std::string& posturl);
 	static std::string ms_posturl;
 protected:
@@ -108,6 +110,7 @@ public:
 	afx_msg void OnBnClickedRadioOtherlength();
 	afx_msg void OnBnClickedRadioDefault();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnBnClickedCheckPartition();
 
 private:
 	// 不靠墙车位长度编辑框
@@ -126,6 +129,6 @@ private:
 	CEdit m_ParkingCount;
 	// 凹陷程度编辑框
 	CMyEdit m_Non_Convexlevel;
-public:
-	afx_msg void OnBnClickedCheckPartition();
+	// 分区编辑框
+	CEdit m_PartitionLineEdit;
 } ;

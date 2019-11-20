@@ -178,164 +178,11 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			KillTimer(nIDEvent);
 			//CDlgWaiting::Show(false);
 			this->OnOK();
-			
-			Json::Reader reader;
-			Json::Value root;
-			//从字符串中读取数据
-			AcGePoint2dArray parkingPts;
-			std::vector<double> parkingDirections;
-			std::vector<AcGePoint2dArray> axisesPoints;
-			std::vector<AcGePoint2dArray> lanesPoints;
-			AcGePoint2dArray scopePts;
-			std::vector<AcGePoint2dArray> pillarPoints;
-			std::vector<AcGePoint2dArray> arrowPoints;
-			if (reader.parse(json, root))
+			CString sMsg;
+			if (!getDataforJson(json, sMsg))
 			{
-
-				Json::Value& parkings = root["result"]["parkings"];
-				if (parkings.isArray())
-				{
-					int nArraySize = parkings.size();
-					for (int i = 0; i < nArraySize; i++)
-					{
-						double ptX = parkings[i]["position"][0].asDouble();
-						double ptY = parkings[i]["position"][1].asDouble();
-						AcGePoint2d pt(ptX,ptY);
-						parkingPts.append(pt);
-						double direction = parkings[i]["direction"].asDouble();
-						parkingDirections.push_back(direction);
-					}
-				}
-
-				Json::Value& axis = root["result"]["axis"];
-				if (axis.isArray())
-				{
-					int nAxisSize = axis.size();
-					for (int j = 0; j < nAxisSize; j++)
-					{
-						double ptX1 = axis[j][0][0].asDouble();
-						double ptY1 = axis[j][0][1].asDouble();
-						double ptX2 = axis[j][1][0].asDouble();
-						double ptY2 = axis[j][1][1].asDouble();
-						AcGePoint2d startPt(ptX1, ptY1);
-						AcGePoint2d endPt(ptX2, ptY2);
-						AcGePoint2dArray axisPts;
-						axisPts.append(startPt);
-						axisPts.append(endPt);
-						axisesPoints.push_back(axisPts);
-					}
-				}
-
-				Json::Value& lane = root["result"]["lane"];
-				if (lane.isArray())
-				{
-					int nLaneSize = lane.size();
-					for (int m = 0; m < nLaneSize; m++)
-					{
-						double ptX1 = lane[m][0][0].asDouble();
-						double ptY1 = lane[m][0][1].asDouble();
-						double ptX2 = lane[m][1][0].asDouble();
-						double ptY2 = lane[m][1][1].asDouble();
-						AcGePoint2d startPt(ptX1, ptY1);
-						AcGePoint2d endPt(ptX2, ptY2);
-						AcGePoint2dArray lanePts;
-						lanePts.append(startPt);
-						lanePts.append(endPt);
-						lanesPoints.push_back(lanePts);
-					}
-				}
-
-				Json::Value& scope = root["result"]["scope"];
-				if (scope.isArray())
-				{
-					int nPark_columSize = scope.size();
-					for (int n = 0; n < nPark_columSize; n++)
-					{
-						double ptX = scope[n][0].asDouble();
-						double ptY = scope[n][1].asDouble();
-						AcGePoint2d plinePt(ptX, ptY);
-						scopePts.append(plinePt);
-					}
-				}
-
-				Json::Value& pillar = root["result"]["pillar"];
-				if (pillar.isArray())
-				{
-					int npillarSize = pillar.size();
-					for (int k = 0; k < npillarSize; k++)
-					{
-						AcGePoint2dArray onePillarPts;
-						if (pillar[k].isArray())
-						{
-							int onepillarSize = pillar[k].size();
-							for (int g = 0; g < onepillarSize; g++)
-							{
-								double ptX = pillar[k][g][0].asDouble();
-								double ptY = pillar[k][g][1].asDouble();
-								AcGePoint2d tempPt(ptX, ptY);
-								onePillarPts.append(tempPt);
-							}
-						}
-						pillarPoints.push_back(onePillarPts);
-					}
-				}
-
-				Json::Value& arrow = root["result"]["arrow"];
-				if (arrow.isArray())
-				{
-					int narrowSize = arrow.size();
-					for (int k = 0; k < narrowSize; k++)
-					{
-						AcGePoint2dArray oneArrowPts;
-						if (arrow[k].isArray())
-						{
-							int nonearrowSize = arrow[k].size();
-							for (int g = 0; g < nonearrowSize; g++)
-							{
-								double ptX = arrow[k][g][0].asDouble();
-								double ptY = arrow[k][g][1].asDouble();
-								AcGePoint2d tempPt(ptX, ptY);
-								oneArrowPts.append(tempPt);
-							}
-						}
-						arrowPoints.push_back(oneArrowPts);
-					}
-				}
+				acedAlert(sMsg);
 			}
-
-			Doc_Locker _locker;
-
-			for (int a=0; a<parkingPts.length(); a++)
-			{
-				//double = (rotation/180)*Π(顺时针和逆时针)
-				double rotation = ((360-parkingDirections[a]) / 180)*ARX_PI;
-				parkingShow(parkingPts[a], rotation);
-			}
-
-			for (int b = 0;b < axisesPoints.size();b++)
-			{
-				axisShow(axisesPoints[b]);
-			}
-
-			for (int c = 0;c < lanesPoints.size();c++)
-			{
-				laneShow(lanesPoints[c]);
-			}
-
-			scopeShow(scopePts);
-
-			for (int d = 0;d < pillarPoints.size();d++)
-			{
-				pillarShow(pillarPoints[d]);
-			}
-
-			for (int e = 0; e < arrowPoints.size(); e++)
-			{
-				arrowShow(arrowPoints[e]);
-			}
-
-			setAxisLayerClose();
-
 			DBHelper::CallCADCommandEx(_T("Redraw"));
 		}
 		else if(status==0)
@@ -428,7 +275,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	return 3;
 }
 
-void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation)
+void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation, const CString& blockName)
 {
 	AcDbObjectId ttId;
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
@@ -439,7 +286,7 @@ void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& par
 	AcGeVector3d vec(0,0,1);
 	mat.setToRotation(parkingShowRotation,vec);//double = (rotation/180)*Π
 	mat.setTranslation(pt);
-	DBHelper::InsertBlkRef(ttId,_T("parking_1"), mat);
+	DBHelper::InsertBlkRef(ttId,blockName, mat);
 } 
 
 void CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
@@ -571,4 +418,320 @@ void CDlgWaiting::setAxisLayerClose()
 	pLayerTbl->close();
 }
 
+void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dParkingWidth, CString& blockName)
+{
+	double dUseLength = dParkingLength * 1000;
+	double dUseWidth = dParkingWidth * 1000;
+	AcGePoint2d squarePt1(-dUseWidth/2, -dUseLength/2);
+	AcGePoint2d squarePt2(-dUseWidth/2, dUseLength/2);
+	AcGePoint2d squarePt3(dUseWidth/2, dUseLength/2);
+	AcGePoint2d squarePt4(dUseWidth/2, -dUseLength/2);
+	AcDbPolyline *pPoly = new AcDbPolyline(4);
+	double width = 20;//矩形方形线宽
+	pPoly->addVertexAt(0, squarePt1, 0, width, width);
+	pPoly->addVertexAt(1, squarePt2, 0, width, width);
+	pPoly->addVertexAt(2, squarePt3, 0, width, width);
+	pPoly->addVertexAt(3, squarePt4, 0, width, width);
+	pPoly->setClosed(true);
+	AcDbObjectId squareId;
+	DBHelper::AppendToDatabase(squareId, pPoly);
+	AcDbObjectIdArray allIds;
+	allIds.append(squareId);
+	pPoly->setColorIndex(6);
+	pPoly->close();
+	AcDbObjectId parkingId;
+	DBHelper::InsertBlkRef(parkingId, _T("car_1"), AcGePoint3d(0,0,0));
+	allIds.append(parkingId);
+	std::vector<AcDbEntity*> blockEnts;
+	for (int i = 0; i < allIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		acdbOpenObject(pEnt, allIds[i], AcDb::kForWrite);
+		//判断自定义实体的类型
+		if (pEnt == NULL)
+			continue;
+		blockEnts.push_back(pEnt);
+	}
+	if (blockEnts.size() < 1)
+		return;
+	CString sParkingLength;
+	CString sParkingWidth;
+	sParkingLength.Format(_T("%.1f"), dParkingLength);
+	sParkingWidth.Format(_T("%.1f"), dParkingWidth);
+	CString parkingName = _T("parking");
+	blockName = parkingName + _T("_") + sParkingLength + _T("_") + sParkingWidth;
+	DBHelper::CreateBlock(blockName, blockEnts, AcGePoint3d(0, 0, 0));
+	for (int j=0; j<blockEnts.size(); j++)
+	{
+		blockEnts[j]->erase();
+		blockEnts[j]->close();
+	}
+}
+
+bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
+{
+	Json::Reader reader;
+	Json::Value root;
+	//从字符串中读取数据
+	AcGePoint2dArray parkingPts;
+	std::vector<double> parkingDirections;
+	std::vector<AcGePoint2dArray> axisesPoints;
+	std::vector<AcGePoint2dArray> lanesPoints;
+	AcGePoint2dArray scopePts;
+	std::vector<AcGePoint2dArray> pillarPoints;
+	std::vector<AcGePoint2dArray> arrowPoints;
+	double dParkingLength;
+	double dParkingWidth;
+	if (reader.parse(json, root))
+	{
+		Json::Value& parkings = root["result"]["parkings"];
+		if (parkings.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"parkings\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (parkings.isArray())
+			{
+				int nArraySize = parkings.size();
+				for (int i = 0; i < nArraySize; i++)
+				{
+					double ptX = parkings[i]["position"][0].asDouble();
+					double ptY = parkings[i]["position"][1].asDouble();
+					AcGePoint2d pt(ptX, ptY);
+					parkingPts.append(pt);
+					double direction = parkings[i]["direction"].asDouble();
+					parkingDirections.push_back(direction);
+				}
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+				return false;
+			}
+		}
+		Json::Value& data = root["result"]["data"];
+		if (data.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"data\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (data["cell_length"].isDouble()&&data["cell_num"].isInt())
+			{
+				dParkingLength = data["cell_length"].asDouble();
+				dParkingWidth = data["cell_width"].asDouble();
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+				return false;
+			}
+		}
+
+		Json::Value& axis = root["result"]["axis"];
+		if (axis.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"axis\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (axis.isArray())
+			{
+				int nAxisSize = axis.size();
+				for (int j = 0; j < nAxisSize; j++)
+				{
+					double ptX1 = axis[j][0][0].asDouble();
+					double ptY1 = axis[j][0][1].asDouble();
+					double ptX2 = axis[j][1][0].asDouble();
+					double ptY2 = axis[j][1][1].asDouble();
+					AcGePoint2d startPt(ptX1, ptY1);
+					AcGePoint2d endPt(ptX2, ptY2);
+					AcGePoint2dArray axisPts;
+					axisPts.append(startPt);
+					axisPts.append(endPt);
+					axisesPoints.push_back(axisPts);
+				}
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"axis\"]字段格式不匹配！");
+				return false;
+			}
+		}
+		
+		Json::Value& lane = root["result"]["lane"];
+		if (lane.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"lane\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (lane.isArray())
+			{
+				int nLaneSize = lane.size();
+				for (int m = 0; m < nLaneSize; m++)
+				{
+					double ptX1 = lane[m][0][0].asDouble();
+					double ptY1 = lane[m][0][1].asDouble();
+					double ptX2 = lane[m][1][0].asDouble();
+					double ptY2 = lane[m][1][1].asDouble();
+					AcGePoint2d startPt(ptX1, ptY1);
+					AcGePoint2d endPt(ptX2, ptY2);
+					AcGePoint2dArray lanePts;
+					lanePts.append(startPt);
+					lanePts.append(endPt);
+					lanesPoints.push_back(lanePts);
+				}
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"lane\"]字段格式不匹配！");
+				return false;
+			}
+		}
+		
+		Json::Value& scope = root["result"]["scope"];
+		if (scope.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"scope\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (scope.isArray())
+			{
+				int nPark_columSize = scope.size();
+				for (int n = 0; n < nPark_columSize; n++)
+				{
+					double ptX = scope[n][0].asDouble();
+					double ptY = scope[n][1].asDouble();
+					AcGePoint2d plinePt(ptX, ptY);
+					scopePts.append(plinePt);
+				}
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"scope\"]字段格式不匹配！");
+				return false;
+			}
+		}
+		
+		Json::Value& pillar = root["result"]["pillar"];
+		if (pillar.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"pillar\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (pillar.isArray())
+			{
+				int npillarSize = pillar.size();
+				for (int k = 0; k < npillarSize; k++)
+				{
+					AcGePoint2dArray onePillarPts;
+					if (pillar[k].isArray())
+					{
+						int onepillarSize = pillar[k].size();
+						for (int g = 0; g < onepillarSize; g++)
+						{
+							double ptX = pillar[k][g][0].asDouble();
+							double ptY = pillar[k][g][1].asDouble();
+							AcGePoint2d tempPt(ptX, ptY);
+							onePillarPts.append(tempPt);
+						}
+					}
+					pillarPoints.push_back(onePillarPts);
+				}
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
+				return false;
+			}
+		}
+		
+		Json::Value& arrow = root["result"]["arrow"];
+		if (arrow.isNull())
+		{
+			sMsg = _T("回传json不存在[\"result\"][\"arrow\"]字段！");
+			return false;
+		}
+		else
+		{
+			if (arrow.isArray())
+			{
+				int narrowSize = arrow.size();
+				for (int k = 0; k < narrowSize; k++)
+				{
+					AcGePoint2dArray oneArrowPts;
+					if (arrow[k].isArray())
+					{
+						int nonearrowSize = arrow[k].size();
+						for (int g = 0; g < nonearrowSize; g++)
+						{
+							double ptX = arrow[k][g][0].asDouble();
+							double ptY = arrow[k][g][1].asDouble();
+							AcGePoint2d tempPt(ptX, ptY);
+							oneArrowPts.append(tempPt);
+						}
+					}
+					arrowPoints.push_back(oneArrowPts);
+				}
+			}
+			else
+			{
+				sMsg = _T("回传json中[\"result\"][\"arrow\"]字段格式不匹配！");
+				return false;
+			}
+		}
+	}
+	else
+	{
+		sMsg = _T("解析回传json文件出错！");
+		return false;
+	}
+	Doc_Locker _locker;
+
+	CString blockName;
+	creatNewParking(dParkingLength, dParkingWidth, blockName);
+
+	for (int a = 0; a < parkingPts.length(); a++)
+	{
+		//double = (rotation/180)*Π(顺时针和逆时针)
+		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
+		parkingShow(parkingPts[a], rotation, blockName);
+	}
+
+	for (int b = 0; b < axisesPoints.size(); b++)
+	{
+		axisShow(axisesPoints[b]);
+	}
+
+	for (int c = 0; c < lanesPoints.size(); c++)
+	{
+		laneShow(lanesPoints[c]);
+	}
+
+	scopeShow(scopePts);
+
+	for (int d = 0; d < pillarPoints.size(); d++)
+	{
+		pillarShow(pillarPoints[d]);
+	}
+
+	for (int e = 0; e < arrowPoints.size(); e++)
+	{
+		arrowShow(arrowPoints[e]);
+	}
+
+	setAxisLayerClose();
+
+	return true;
+}
 

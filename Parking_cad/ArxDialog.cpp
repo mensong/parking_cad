@@ -194,6 +194,7 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_CHECK_Partition, m_checkPartition);
 	DDX_Control(pDX, IDC_EDIT_PARKINGCOUNT, m_ParkingCount);
 	DDX_Control(pDX, IDC_EDIT_NON_CONVEXLEVEL, m_Non_Convexlevel);
+	DDX_Control(pDX, IDC_EDIT_PARTITION_LINE, m_PartitionLineEdit);
 }
 
 void CArxDialog::OnOK()
@@ -297,9 +298,6 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 				}
 			}
 		}
-
-		//acutPrintf(_T("\n该容器长度为%d"), s);
-
 		for (int x = 0; x < allPoints.size(); x++)
 		{
 			if (compare(GetretreatlinePts, allPoints[x]))
@@ -312,13 +310,6 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 		//检测闭合
 		if (GetretreatlinePts.length() > 2 && GetretreatlinePts[GetretreatlinePts.length() - 1] != allPoints[0])
 			GetretreatlinePts.append(GetretreatlinePts[0]);
-
-		//测试代码
-		/*int s = GetretreatlinePts.length();
-		for (int y = 0; y < GetretreatlinePts.length(); y++)
-		{
-			acutPrintf(_T("\n第%d点坐标为%.2f,%.2f"), y, GetretreatlinePts[y].x, GetretreatlinePts[y].y);
-		}*/
 	}
 	pEnt->close();
 
@@ -354,7 +345,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 	entIds = DBHelper::GetEntitiesByLayerName(layername);
 	if (entIds.length() == 0)
 	{
-		acutPrintf(_T("\n获取该图层实体失败！"));
+		acedAlert(_T("没有选择外轮廓或剪力墙图层信息"));
 		return outputPoints;
 	}
 
@@ -653,11 +644,6 @@ void CArxDialog::OnBnClickedOk()
 	m_SquareColumnWidth.GetWindowText(m_StrSquareColumnWidth);
 	m_ParkingCount.GetWindowText(m_sParkingCount);
 	m_Non_Convexlevel.GetWindowText(m_sNonConvexLevel);
-	/*acutPrintf(_T("\n单车位不靠墙长度：%s"), m_strLength);
-	acutPrintf(_T("\n单车位宽度：%s"), m_strWidth);
-	acutPrintf(_T("\n车道宽度：%s"), m_StrLaneWidth);
-	acutPrintf(_T("\n方柱长度：%s"), m_StrSquarcolumnLength);
-	acutPrintf(_T("\n方柱宽度：%s"), m_StrSquareColumnWidth);*/
 
 	double parkLength = _ttof(m_strLength.GetString());	
 	double parkWidth = _ttof(m_strWidth.GetString());
@@ -698,10 +684,7 @@ void CArxDialog::OnBnClickedOk()
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
 
 	Json::Value root;//根节点
-
 	//创建子节点
-	//Json::Value childnode;
-	//Json::Value oneZoesPts;
 	for (int e = 0; e < zonesPts.size(); e++)
 	{
 		Json::Value oneZoesPts;
@@ -717,8 +700,6 @@ void CArxDialog::OnBnClickedOk()
 		root["zones"].append(oneZoesPts);//[]
 	}
 
-
-
 	for (int m = 0; m < shearwallPts.size(); m++)
 	{
 		Json::Value oneShearwallPline;
@@ -730,6 +711,30 @@ void CArxDialog::OnBnClickedOk()
 			oneShearwallPline.append(shearwallPoint);
 		}
 		root["column"].append(oneShearwallPline);
+	}
+
+	if (isPartition)
+	{
+		if (allPartitionPts.size()==0)
+		{
+			root["partition"].resize(0);//暂时构造一个空数组
+		}
+		for (int a = 0; a < allPartitionPts.size(); a++)
+		{
+			Json::Value onePartitionPline;
+			for (int b = 0; b < allPartitionPts[a].length(); b++)
+			{
+				Json::Value partitionPoint;
+				partitionPoint.append(allPartitionPts[a][b].x);
+				partitionPoint.append(allPartitionPts[a][b].y);
+				onePartitionPline.append(partitionPoint);
+			}
+			root["partition"].append(onePartitionPline);
+		}
+	}
+	else
+	{
+		root["partition"].resize(0);//暂时构造一个空数组
 	}
 
 	for (int x = 0; x < outlinePts.size(); x++)
@@ -744,8 +749,6 @@ void CArxDialog::OnBnClickedOk()
 		}
 		root["building"].append(oneOutlinePline);
 	}
-
-	root["partition"].resize(0);//暂时构造一个空数组
 	//数组形式
 	int count = GetretreatlinePts.length();
 	for (int i = 0; i < count; i++)
@@ -851,8 +854,7 @@ void CArxDialog::OnBnClickedCheckPartition()
 		HideDialogHolder holder(this);
 		Doc_Locker doc_locker;
 		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_SHOW);
-
-		std::vector<AcDbEntity*> vctJigEnt;
+		std::vector<AcDbEntity*> vctPartitionEnt;
 		ads_name ssname;
 		ads_name ent;
 		//获取选择集
@@ -875,23 +877,92 @@ void CArxDialog::OnBnClickedCheckPartition()
 				acdbGetObjectId(id, ent);
 				if (!id.isValid())
 					continue;
-
 				AcDbEntity *pEnt = NULL;
 				acdbOpenObject(pEnt, id, AcDb::kForWrite);
 				//判断自定义实体的类型
 				if (pEnt == NULL)
 					continue;
-
-				vctJigEnt.push_back(pEnt);
+				vctPartitionEnt.push_back(pEnt);
 			}
 		}
 		//释放选择集
 		acedSSFree(ssname);
-		if (vctJigEnt.size() < 1)
+		if (vctPartitionEnt.size() < 1)
 			return;
+		bool bClosed = true;
+		for (int i = 0; i < vctPartitionEnt.size(); i++)
+		{
+			if (vctPartitionEnt[i]->isKindOf(AcDbPolyline::desc()))
+			{
+				std::vector<AcGePoint2d> allPoints;//得到的所有点
+				AcDbVoidPtrArray entsTempArray;
+				AcDbPolyline *pPline = AcDbPolyline::cast(vctPartitionEnt[i]);
+				AcGeLineSeg2d line;
+				AcGeCircArc3d arc;
+				int n = pPline->numVerts();
+				for (int i = 0; i < n; i++)
+				{
+					if (pPline->segType(i) == AcDbPolyline::kLine)
+					{
+						pPline->getLineSegAt(i, line);
+						AcGePoint2d startPoint;
+						AcGePoint2d endPoint;
+						startPoint = line.startPoint();
+						endPoint = line.endPoint();
+						allPoints.push_back(startPoint);
+						allPoints.push_back(endPoint);
+					}
+					else if (pPline->segType(i) == AcDbPolyline::kArc)
+					{
+						pPline->getArcSegAt(i, arc);
+						AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
+						for (int x = 0; x < result.length(); x++)
+						{
+							AcGePoint2d onArcpoint(result[x].x, result[x].y);
+							allPoints.push_back(onArcpoint);
+						}
+					}
+				}
+
+				AcGePoint2dArray onePlinePts;//装取去完重的有效点
+				for (int x = 0; x < allPoints.size(); x++)
+				{
+					if (compare(onePlinePts, allPoints[x]))
+					{
+						continue;
+					}
+					onePlinePts.append(allPoints[x]);
+				}
+				//检查闭合
+				if (onePlinePts.length() > 1 && pPline->isClosed() ||
+					(bClosed && onePlinePts.length() > 1 && onePlinePts[onePlinePts.length() - 1] != onePlinePts[0]))
+				{
+					onePlinePts.append(onePlinePts[0]);
+				}
+				allPartitionPts.push_back(onePlinePts);
+			}
+			vctPartitionEnt[i]->close();
+		}
+		for (int j=0; j<allPartitionPts.size(); j++)
+		{
+			CString onePartPline;
+			for (int k=0;k<allPartitionPts[j].length(); k++ )
+			{
+				CString tempStr_X;
+				CString tempStr_Y;
+				tempStr_X.Format(_T("%.2f"), allPartitionPts[j][k].x);
+				tempStr_Y.Format(_T("%.2f"), allPartitionPts[j][k].y);
+				onePartPline += CString(_T("(")) + tempStr_X + _T(",") + tempStr_Y + _T(")");				
+			}
+			m_sPartitionLine += CString(_T("[")) + onePartPline + _T("]");
+			m_PartitionLineEdit.SetWindowText(m_sPartitionLine);
+		}
 	}
 	else
 	{
 		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_HIDE);
+		allPartitionPts.clear();
+		m_sPartitionLine = _T("");
+		m_PartitionLineEdit.SetWindowText(m_sPartitionLine);
 	}
 }
