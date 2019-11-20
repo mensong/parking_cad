@@ -86,12 +86,14 @@
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp" />
     <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
     <ClCompile Include="..\Parking_cad\Authenticate.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp" />
     <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp" />
     <ClCompile Include="..\Parking_cad\ModulesManager.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp" />
@@ -144,12 +146,14 @@
     <ClInclude Include="..\jsoncpp\src\version.h" />
     <ClInclude Include="..\Parking_cad\ArxDialog.h" />
     <ClInclude Include="..\Parking_cad\Authenticate.h" />
+    <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
     <ClInclude Include="..\Parking_cad\HardDiskSerial.h" />
     <ClInclude Include="..\Parking_cad\ModulesManager.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
+    <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h" />
@@ -161,6 +165,7 @@
     <ClInclude Include="..\Parking_cad\resource.h" />
     <ClInclude Include="..\Parking_cad\StdAfx.h" />
     <ClInclude Include="..\pystring\pystring.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />
@@ -251,4 +256,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="\Programming\parking_cad\Parking_cad\Parking_cad.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

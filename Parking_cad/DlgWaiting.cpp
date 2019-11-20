@@ -185,24 +185,24 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			}
 			DBHelper::CallCADCommandEx(_T("Redraw"));
 		}
-		else if(status==3)
-		{
-			KillTimer(nIDEvent);
-			//CDlgWaiting::Show(false);
-			this->OnOK();
-			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
-			
-		}
 		else if(status==0)
 		{
-			m_sStatus = "任务正在排队中，当前排在第"+sIndex+"位";
+			m_sStatus = _T("任务正在排队中，当前排在第") + sIndex + _T("位。");
 			m_staStatusText.SetWindowText(m_sStatus);
 		}
 		else if(status==1)
 		{
-			m_sStatus = "任务正在进行中";
+			m_sStatus = _T("任务正在进行中……");
 			m_staStatusText.SetWindowText(m_sStatus);
 		}
+		else
+		{
+			KillTimer(nIDEvent);
+			//CDlgWaiting::Show(false);
+			this->OnOK();
+			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());			
+		}
+
 		return;
 	}
 
@@ -214,25 +214,34 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	if (ms_uuid == "")
 	{
 		sMsg = "uuid不能为空。";
-		return 3;
+		return 4;
 	}
 
 	//std::string httpUrl = "http://10.8.212.187/query/";
 	std::string tempUrl = ms_geturl + ms_uuid;
 	const char * sendUrl = tempUrl.c_str();
 	
+	typedef void (*FN_setTimeout)(int timeout);
+	FN_setTimeout fn_setTimeout = ModulesManager::Instance().func<FN_setTimeout>(getHttpModule(), "setTimeout");
+	if (fn_setTimeout)
+	{
+		fn_setTimeout(600);
+	}
+
 	typedef int (*FN_get)(const char* url, bool dealRedirect);
 	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
 	if (!fn_get)
 	{
-		sMsg = "Http模块加载失败！";
-		return 3;
+		sMsg = "get Http模块加载失败！";
+		return 5;
 	}
 	int code = fn_get(sendUrl, true);
 
 	if (code != 200)
 	{
-		sMsg = tempUrl + ":网络或服务器错误。";
+		char szCode[10];
+		sprintf(szCode, "%d", code);
+		sMsg = tempUrl + ":网络或服务器错误。(" + szCode + ")";
 		return 3;
 	}
 	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
@@ -241,8 +250,8 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
 	if (!fn_getBody)
 	{
-		sMsg = tempUrl + ":网络或服务器错误。";
-		return 3;
+		sMsg = "getBody Http模块加载失败！";
+		return 5;
 	}
 	int len = 0;
 	json = fn_getBody(len);

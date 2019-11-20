@@ -138,6 +138,26 @@ BEGIN
     LTEXT           "正在等待计算结果……",IDC_STA_STATUS,111,18,149,8
 END
 
+IDD_DLG_ADD_FRAME DIALOGEX 0, 0, 259, 178
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "图框设置"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "取消",IDCANCEL,208,162,50,14
+    DEFPUSHBUTTON   "确定",IDOK,208,145,50,14
+    CONTROL         "",IDC_STA_PREVIEW,"Static",SS_BLACKRECT,1,0,205,176
+    GROUPBOX        "图幅",IDC_STATIC,208,0,50,76
+    CONTROL         "A0",IDC_RAD_A0,"Button",BS_AUTORADIOBUTTON,223,9,27,10
+    CONTROL         "A1",IDC_RAD_A1,"Button",BS_AUTORADIOBUTTON,223,22,27,10
+    CONTROL         "A2",IDC_RAD_A2,"Button",BS_AUTORADIOBUTTON,223,35,27,10
+    CONTROL         "A4",IDC_RAD_A4,"Button",BS_AUTORADIOBUTTON,223,61,27,10
+    CONTROL         "A3",IDC_RAD_A3,"Button",BS_AUTORADIOBUTTON,223,48,27,10
+    EDITTEXT        IDC_EDIT_FRAME_LENGTH,213,92,40,14,ES_AUTOHSCROLL | ES_WANTRETURN
+    LTEXT           "长：",IDC_STATIC,213,82,18,8
+    EDITTEXT        IDC_EDIT_FRAME_WIDTH,213,119,40,14,ES_AUTOHSCROLL | ES_WANTRETURN
+    LTEXT           "宽：",IDC_STATIC,213,109,18,8
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -160,24 +180,16 @@ BEGIN
     IDD_DLG_WAITTING_SHOW_RES, DIALOG
     BEGIN
     END
+
+    IDD_DLG_ADD_FRAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 252
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
 END
 #endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// AFX_DIALOG_LAYOUT
-//
-
-IDD_ARX_MODAL AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
-
-IDD_DLG_WAITTING_SHOW_RES AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
 
 
 /////////////////////////////////////////////////////////////////////////////
