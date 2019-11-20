@@ -275,7 +275,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	return 3;
 }
 
-void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation)
+void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation, const CString& blockName)
 {
 	AcDbObjectId ttId;
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
@@ -286,7 +286,7 @@ void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& par
 	AcGeVector3d vec(0,0,1);
 	mat.setToRotation(parkingShowRotation,vec);//double = (rotation/180)*Π
 	mat.setTranslation(pt);
-	DBHelper::InsertBlkRef(ttId,_T("parking"), mat);
+	DBHelper::InsertBlkRef(ttId,blockName, mat);
 } 
 
 void CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
@@ -418,12 +418,14 @@ void CDlgWaiting::setAxisLayerClose()
 	pLayerTbl->close();
 }
 
-void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dParkingWidth)
+void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dParkingWidth, CString& blockName)
 {
-	AcGePoint2d squarePt1(0, 0);
-	AcGePoint2d squarePt2(0,dParkingLength);
-	AcGePoint2d squarePt3(dParkingWidth, dParkingLength);
-	AcGePoint2d squarePt4(dParkingWidth, 0);
+	double dUseLength = dParkingLength * 1000;
+	double dUseWidth = dParkingWidth * 1000;
+	AcGePoint2d squarePt1(-dUseWidth/2, -dUseLength/2);
+	AcGePoint2d squarePt2(-dUseWidth/2, dUseLength/2);
+	AcGePoint2d squarePt3(dUseWidth/2, dUseLength/2);
+	AcGePoint2d squarePt4(dUseWidth/2, -dUseLength/2);
 	AcDbPolyline *pPoly = new AcDbPolyline(4);
 	double width = 20;//矩形方形线宽
 	pPoly->addVertexAt(0, squarePt1, 0, width, width);
@@ -437,10 +439,8 @@ void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dP
 	allIds.append(squareId);
 	pPoly->setColorIndex(6);
 	pPoly->close();
-	AcGePoint3d centerPt(-(dParkingWidth /2),-(dParkingLength/2),0);
 	AcDbObjectId parkingId;
-	//AcGePoint3d test(-1200, -2550, 0);
-	DBHelper::InsertBlkRef(parkingId, _T("car_1"), centerPt);
+	DBHelper::InsertBlkRef(parkingId, _T("car_1"), AcGePoint3d(0,0,0));
 	allIds.append(parkingId);
 	std::vector<AcDbEntity*> blockEnts;
 	for (int i = 0; i < allIds.length(); i++)
@@ -454,7 +454,13 @@ void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dP
 	}
 	if (blockEnts.size() < 1)
 		return;
-	DBHelper::CreateBlock(_T("parking"), blockEnts, centerPt);
+	CString sParkingLength;
+	CString sParkingWidth;
+	sParkingLength.Format(_T("%.1f"), dParkingLength);
+	sParkingWidth.Format(_T("%.1f"), dParkingWidth);
+	CString parkingName = _T("parking");
+	blockName = parkingName + _T("_") + sParkingLength + _T("_") + sParkingWidth;
+	DBHelper::CreateBlock(blockName, blockEnts, AcGePoint3d(0, 0, 0));
 	for (int j=0; j<blockEnts.size(); j++)
 	{
 		blockEnts[j]->erase();
@@ -515,8 +521,8 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 		{
 			if (data["cell_length"].isDouble()&&data["cell_num"].isInt())
 			{
-				dParkingLength = data["cell_length"].asDouble()*1000;
-				dParkingWidth = data["cell_width"].asDouble()*1000;
+				dParkingLength = data["cell_length"].asDouble();
+				dParkingWidth = data["cell_width"].asDouble();
 			}
 			else
 			{
@@ -692,13 +698,14 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 	}
 	Doc_Locker _locker;
 
-	creatNewParking(dParkingLength, dParkingWidth);
+	CString blockName;
+	creatNewParking(dParkingLength, dParkingWidth, blockName);
 
 	for (int a = 0; a < parkingPts.length(); a++)
 	{
 		//double = (rotation/180)*Π(顺时针和逆时针)
 		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
-		parkingShow(parkingPts[a], rotation);
+		parkingShow(parkingPts[a], rotation, blockName);
 	}
 
 	for (int b = 0; b < axisesPoints.size(); b++)

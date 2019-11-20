@@ -39,7 +39,7 @@ public:
 	int getStatus(std::string& josn, std::string& sMsg,CString& sIndex);
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
 	static std::string ms_geturl;//从初始化类取到配置文件中的IP地址接口
-	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation);
+	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName);
 	void axisShow(const AcGePoint2dArray& axisPts);
 	void laneShow(const AcGePoint2dArray& lanePts);
 	void scopeShow(const AcGePoint2dArray& park_columnPts);
@@ -47,6 +47,6 @@ public:
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
 	bool layerSet(const CString& layerName,const int& layerColor);
 	void setAxisLayerClose();
-	void creatNewParking(const double& dParkingLength,const double& dParkingWidth);
+	void creatNewParking(const double& dParkingLength,const double& dParkingWidth, CString& blockName);
 	bool getDataforJson(const std::string& json, CString& sMsg);
 };
