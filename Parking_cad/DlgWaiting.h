@@ -47,4 +47,6 @@ public:
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
 	bool layerSet(const CString& layerName,const int& layerColor);
 	void setAxisLayerClose();
+	void creatNewParking(const double& dParkingLength,const double& dParkingWidth);
+	bool getDataforJson(const std::string& json, CString& sMsg);
 };

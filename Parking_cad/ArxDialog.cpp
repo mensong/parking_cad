@@ -345,7 +345,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 	entIds = DBHelper::GetEntitiesByLayerName(layername);
 	if (entIds.length() == 0)
 	{
-		acutPrintf(_T("\n获取该图层实体ID失败！"));
+		acedAlert(_T("没有选择外轮廓或剪力墙图层信息"));
 		return outputPoints;
 	}
 
