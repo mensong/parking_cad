@@ -21,7 +21,7 @@ CDlgWaiting* g_dlg = NULL;
 int g_nShowedCount = 0;
 
 static UINT WINAPI _ThreadAnimation(LPVOID pParam)
-{	
+{
 	CAcModuleResourceOverride resOverride;
 	g_dlg->DoModal();
 
@@ -45,7 +45,7 @@ void CDlgWaiting::Show(bool bShow/* = true*/)
 		while (!g_dlg->m_bIsReady)
 			Sleep(10);
 	}
-	
+
 	if (bShow)
 	{
 		if (g_nShowedCount < 1)
@@ -122,7 +122,7 @@ BOOL CDlgWaiting::OnInitDialog()
 	m_bIsReady = true;
 
 	SetTimer(1, 1000, NULL);
-	
+
 	return bRet;
 }
 
@@ -173,7 +173,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		CString sIndex;
 		int status = getStatus(json, sMsg, sIndex);
 		//如果完成后
-		if (status==2)
+		if (status == 2)
 		{
 			KillTimer(nIDEvent);
 			//CDlgWaiting::Show(false);
@@ -185,12 +185,12 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			}
 			DBHelper::CallCADCommandEx(_T("Redraw"));
 		}
-		else if(status==0)
+		else if (status == 0)
 		{
 			m_sStatus = _T("任务正在排队中，当前排在第") + sIndex + _T("位。");
 			m_staStatusText.SetWindowText(m_sStatus);
 		}
-		else if(status==1)
+		else if (status == 1)
 		{
 			m_sStatus = _T("任务正在进行中……");
 			m_staStatusText.SetWindowText(m_sStatus);
@@ -200,7 +200,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			KillTimer(nIDEvent);
 			//CDlgWaiting::Show(false);
 			this->OnOK();
-			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());			
+			acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
 		}
 
 		return;
@@ -209,7 +209,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 	CAcUiDialog::OnTimer(nIDEvent);
 }
 
-int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex)
+int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex)
 {
 	if (ms_uuid == "")
 	{
@@ -220,15 +220,15 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	//std::string httpUrl = "http://10.8.212.187/query/";
 	std::string tempUrl = ms_geturl + ms_uuid;
 	const char * sendUrl = tempUrl.c_str();
-	
-	typedef void (*FN_setTimeout)(int timeout);
+
+	typedef void(*FN_setTimeout)(int timeout);
 	FN_setTimeout fn_setTimeout = ModulesManager::Instance().func<FN_setTimeout>(getHttpModule(), "setTimeout");
 	if (fn_setTimeout)
 	{
 		fn_setTimeout(600);
 	}
 
-	typedef int (*FN_get)(const char* url, bool dealRedirect);
+	typedef int(*FN_get)(const char* url, bool dealRedirect);
 	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
 	if (!fn_get)
 	{
@@ -275,7 +275,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg ,CString& sIndex
 	return 3;
 }
 
-void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& parkingShowRotation, const CString& blockName)
+void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName)
 {
 	AcDbObjectId ttId;
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
@@ -283,11 +283,11 @@ void CDlgWaiting::parkingShow(const AcGePoint2d& parkingShowPt,const double& par
 	layerSet(_T("parkings"), 254);
 
 	AcGeMatrix3d mat;
-	AcGeVector3d vec(0,0,1);
-	mat.setToRotation(parkingShowRotation,vec);//double = (rotation/180)*Π
+	AcGeVector3d vec(0, 0, 1);
+	mat.setToRotation(parkingShowRotation, vec);//double = (rotation/180)*Π
 	mat.setTranslation(pt);
-	DBHelper::InsertBlkRef(ttId,blockName, mat);
-} 
+	DBHelper::InsertBlkRef(ttId, blockName, mat);
+}
 
 void CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 {
@@ -314,7 +314,7 @@ void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
 	layerSet(_T("scope"), 6);
 	AcDbPolyline *pPoly = new AcDbPolyline(park_columnPts.length());
 	double width = 0;//线宽
-	for (int i=0;i<park_columnPts.length();i++)
+	for (int i = 0; i < park_columnPts.length(); i++)
 	{
 		pPoly->addVertexAt(0, park_columnPts[i], 0, width, width);
 	}
@@ -351,7 +351,7 @@ void CDlgWaiting::arrowShow(const AcGePoint2dArray& oneArrowPts)
 	pPoly->close();
 }
 
-bool CDlgWaiting::layerSet(const CString& layerName,const int& layerColor)
+bool CDlgWaiting::layerSet(const CString& layerName, const int& layerColor)
 {
 	// 判断是否存在名称为“设备房”的图层
 	AcDbLayerTable *pLayerTbl;
@@ -361,7 +361,7 @@ bool CDlgWaiting::layerSet(const CString& layerName,const int& layerColor)
 	if (es != eOk)
 	{
 		return false;
-	}	
+	}
 	if (pLayerTbl->has(layerName))//判断已经有了该图层，应置为当前图层
 	{
 		AcDbObjectId layerId;
@@ -406,7 +406,7 @@ void CDlgWaiting::setAxisLayerClose()
 	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
 	if (es != eOk)
 	{
-		return ;
+		return;
 	}
 	if (pLayerTbl->has(_T("axis")))
 	{
@@ -422,10 +422,10 @@ void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dP
 {
 	double dUseLength = dParkingLength * 1000;
 	double dUseWidth = dParkingWidth * 1000;
-	AcGePoint2d squarePt1(-dUseWidth/2, -dUseLength/2);
-	AcGePoint2d squarePt2(-dUseWidth/2, dUseLength/2);
-	AcGePoint2d squarePt3(dUseWidth/2, dUseLength/2);
-	AcGePoint2d squarePt4(dUseWidth/2, -dUseLength/2);
+	AcGePoint2d squarePt1(0, 0);
+	AcGePoint2d squarePt2(0, dUseLength);
+	AcGePoint2d squarePt3(dUseWidth, dUseLength);
+	AcGePoint2d squarePt4(dUseWidth, 0);
 	AcDbPolyline *pPoly = new AcDbPolyline(4);
 	double width = 20;//矩形方形线宽
 	pPoly->addVertexAt(0, squarePt1, 0, width, width);
@@ -439,8 +439,9 @@ void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dP
 	allIds.append(squareId);
 	pPoly->setColorIndex(6);
 	pPoly->close();
+	AcGePoint3d centerPt(dUseWidth / 2, dUseLength / 2, 0);
 	AcDbObjectId parkingId;
-	DBHelper::InsertBlkRef(parkingId, _T("car_1"), AcGePoint3d(0,0,0));
+	DBHelper::InsertBlkRef(parkingId, _T("car_1"), centerPt);
 	allIds.append(parkingId);
 	std::vector<AcDbEntity*> blockEnts;
 	for (int i = 0; i < allIds.length(); i++)
@@ -460,15 +461,15 @@ void CDlgWaiting::creatNewParking(const double& dParkingLength, const double& dP
 	sParkingWidth.Format(_T("%.1f"), dParkingWidth);
 	CString parkingName = _T("parking");
 	blockName = parkingName + _T("_") + sParkingLength + _T("_") + sParkingWidth;
-	DBHelper::CreateBlock(blockName, blockEnts, AcGePoint3d(0, 0, 0));
-	for (int j=0; j<blockEnts.size(); j++)
+	DBHelper::CreateBlock(blockName, blockEnts, centerPt);
+	for (int j = 0; j < blockEnts.size(); j++)
 	{
 		blockEnts[j]->erase();
 		blockEnts[j]->close();
 	}
 }
 
-bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
+bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 {
 	Json::Reader reader;
 	Json::Value root;
@@ -519,7 +520,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 		}
 		else
 		{
-			if (data["cell_length"].isDouble()&&data["cell_num"].isInt())
+			if (data["cell_length"].isDouble() && data["cell_num"].isInt())
 			{
 				dParkingLength = data["cell_length"].asDouble();
 				dParkingWidth = data["cell_width"].asDouble();
@@ -562,7 +563,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 				return false;
 			}
 		}
-		
+
 		Json::Value& lane = root["result"]["lane"];
 		if (lane.isNull())
 		{
@@ -594,7 +595,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 				return false;
 			}
 		}
-		
+
 		Json::Value& scope = root["result"]["scope"];
 		if (scope.isNull())
 		{
@@ -620,7 +621,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 				return false;
 			}
 		}
-		
+
 		Json::Value& pillar = root["result"]["pillar"];
 		if (pillar.isNull())
 		{
@@ -655,7 +656,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json,CString& sMsg)
 				return false;
 			}
 		}
-		
+
 		Json::Value& arrow = root["result"]["arrow"];
 		if (arrow.isNull())
 		{
