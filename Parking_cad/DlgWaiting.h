@@ -28,14 +28,14 @@ protected:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	virtual void OnOK();
 	virtual void OnCancel();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	DECLARE_MESSAGE_MAP()
 
 public:
 	CPictureEx m_ctrlGif;
 	CStatic m_staStatusText;
 	bool m_bIsReady;
-	CString m_sStatus;
-	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	CString m_sStatus;	
 	int getStatus(std::string& josn, std::string& sMsg,CString& sIndex);
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
 	static std::string ms_geturl;//从初始化类取到配置文件中的IP地址接口
