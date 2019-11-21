@@ -111,6 +111,7 @@ public:
 	afx_msg void OnBnClickedRadioDefault();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnBnClickedCheckPartition();
+	afx_msg void OnEnKillfocusEditNonConvexlevel();
 
 private:
 	// 不靠墙车位长度编辑框

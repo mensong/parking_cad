@@ -59,6 +59,7 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_BN_CLICKED(IDC_RADIO_Default, &CArxDialog::OnBnClickedRadioDefault)
 	ON_WM_TIMER()
 	ON_BN_CLICKED(IDC_CHECK_Partition, &CArxDialog::OnBnClickedCheckPartition)
+	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -707,6 +708,14 @@ void CArxDialog::OnBnClickedOk()
 	std::vector<int> types;
 	CString zonesLayer = _T("设备房");
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
+	if (isPartition)
+	{
+		if (allPartitionPts.size() == 0)
+		{
+			acedAlert(_T("没有选择分区信息或选择分区用实体类型错误!"));
+			return;
+		}
+	}
 	Json::Value root;//根节点
 	//创建子节点
 	for (int e = 0; e < zonesPts.size(); e++)
@@ -739,10 +748,6 @@ void CArxDialog::OnBnClickedOk()
 
 	if (isPartition)
 	{
-		if (allPartitionPts.size()==0)
-		{
-			root["partition"].resize(0);//暂时构造一个空数组
-		}
 		for (int a = 0; a < allPartitionPts.size(); a++)
 		{
 			Json::Value onePartitionPline;
@@ -873,28 +878,21 @@ void CArxDialog::OnTimer(UINT_PTR nIDEvent)
 void CArxDialog::OnBnClickedCheckPartition()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (1 == m_checkPartition.GetCheck())
+  	if (1 == m_checkPartition.GetCheck())
 	{
 		HideDialogHolder holder(this);
 		Doc_Locker doc_locker;
 		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_SHOW);
+
 		std::vector<AcDbEntity*> vctPartitionEnt;
-
-		/*struct resbuf *pcb;
-		char sbuf[10];
-		ads_name ss1;
-		pcb = acutNewRb(RTDXF0);
-		strcpy(sbuf, "PLine");
-		pcb->resval.rsting = sbuf;
-		pcb->rbnext = NULL;
-		acedSSGet(_T("x"), NULL, NULL, pcb, ss1);
-		acutRelRb(pcb);*/
-
 		ads_name ssname;
 		ads_name ent;
 		//获取选择集
-		acedPrompt(_T("\n选择实体："));
-		acedSSGet(NULL, NULL, NULL, NULL, ssname);
+		acedPrompt(_T("\n请选择分区使用的多线段实体："));
+		struct resbuf *rb; // 结果缓冲区链表
+		rb = acutBuildList(RTDXF0, _T("LWPOLYLINE"), RTNONE);
+		// 选择复合要求的实体
+		acedSSGet(NULL, NULL, NULL, rb, ssname);
 		//获取选择集的长度
 		Adesk::Int32 len = 0;
 		int nRes = acedSSLength(ssname, &len);
@@ -920,7 +918,8 @@ void CArxDialog::OnBnClickedCheckPartition()
 				vctPartitionEnt.push_back(pEnt);
 			}
 		}
-		//释放选择集
+		//释放选择集和结果缓存区
+		acutRelRb(rb);
 		acedSSFree(ssname);
 		if (vctPartitionEnt.size() < 1)
 			return;
@@ -999,5 +998,19 @@ void CArxDialog::OnBnClickedCheckPartition()
 		allPartitionPts.clear();
 		m_sPartitionLine = _T("");
 		m_PartitionLineEdit.SetWindowText(m_sPartitionLine);
+	}
+}
+
+
+void CArxDialog::OnEnKillfocusEditNonConvexlevel()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CString sTempNonLev;
+	m_Non_Convexlevel.GetWindowText(sTempNonLev);
+	double dNon_Convexlevel = _ttof(sTempNonLev.GetString());
+	if ((dNon_Convexlevel > 0.6) || (dNon_Convexlevel < 0.1))
+	{	
+		acedAlert(_T("请输入0.1到0.6之间数值!"));
+		m_Non_Convexlevel.SetWindowText(_T("0.2"));
 	}
 }
