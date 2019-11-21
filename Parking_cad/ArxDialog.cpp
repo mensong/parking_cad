@@ -345,7 +345,6 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 	entIds = DBHelper::GetEntitiesByLayerName(layername);
 	if (entIds.length() == 0)
 	{
-		acedAlert(_T("没有选择外轮廓或剪力墙图层信息"));
 		return outputPoints;
 	}
 
@@ -672,17 +671,42 @@ void CArxDialog::OnBnClickedOk()
 	{
 		direction = 0;
 	}
+	if (m_sParkingCount==_T(""))
+	{
+		acedAlert(_T("没有输入车位总数信息!"));
+		return;
+	}
 	CString outlineLayer;
 	m_outlineLayer.GetWindowText(outlineLayer);
 	std::vector<AcGePoint2dArray> outlinePts = getPlinePointForLayer(outlineLayer);
+	if (outlinePts.size()==0)
+	{
+		acedAlert(_T("没有选择外轮廓图层信息!"));
+		return;
+	}
 	CString shearwallLaye;
 	m_shearwallLayer.GetWindowText(shearwallLaye);
 	std::vector<AcGePoint2dArray> shearwallPts = getPlinePointForLayer(shearwallLaye);
-
+	if (shearwallPts.size()==0)
+	{
+		acedAlert(_T("没有选择剪力墙图层信息!"));
+		return;
+	}
+	CString sStartPt;
+	m_editStartPoint.GetWindowText(sStartPt);
+	if (sStartPt == _T(""))
+	{
+		acedAlert(_T("没有选择车位排布起点信息!"));
+		return;
+	}
+	if (GetretreatlinePts.length()==0)
+	{
+		acedAlert(_T("没有选择地库退线信息!"));
+		return;
+	}
 	std::vector<int> types;
 	CString zonesLayer = _T("设备房");
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
-
 	Json::Value root;//根节点
 	//创建子节点
 	for (int e = 0; e < zonesPts.size(); e++)
@@ -855,6 +879,17 @@ void CArxDialog::OnBnClickedCheckPartition()
 		Doc_Locker doc_locker;
 		GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_SHOW);
 		std::vector<AcDbEntity*> vctPartitionEnt;
+
+		/*struct resbuf *pcb;
+		char sbuf[10];
+		ads_name ss1;
+		pcb = acutNewRb(RTDXF0);
+		strcpy(sbuf, "PLine");
+		pcb->resval.rsting = sbuf;
+		pcb->rbnext = NULL;
+		acedSSGet(_T("x"), NULL, NULL, pcb, ss1);
+		acutRelRb(pcb);*/
+
 		ads_name ssname;
 		ads_name ent;
 		//获取选择集
