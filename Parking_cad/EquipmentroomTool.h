@@ -44,5 +44,6 @@ public:
 
 	static bool layerSet();
 	static void setEntToLayer(AcDbObjectIdArray objectIds);
+	static bool isLayerClose(AcDbEntity *pEnt);
 };
 

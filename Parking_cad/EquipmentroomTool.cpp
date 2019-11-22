@@ -185,61 +185,68 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		}
 		if (pEnt->isKindOf(AcDbLine::desc()))
 		{
-			AcGePoint3d startPt, endPt;
-			AcDbLine *pdbLine = AcDbLine::cast(pEnt);
-			pdbLine->getStartPoint(startPt);
-			pdbLine->getEndPoint(endPt);
-			AcGePoint2d start2dPt(startPt.x, startPt.y);
-			AcGePoint2d end2dPt(endPt.x, endPt.y);
-			AcGeLineSeg2d* pgeLine = new AcGeLineSeg2d(start2dPt, end2dPt);
-			AcDbExtents geLineExt;
-			geLineExt.addPoint(GeHelper::PT23(start2dPt));
-			geLineExt.addPoint(GeHelper::PT23(end2dPt));
+			//如果实体所在图层关闭则不放入选择
+			if (!isLayerClose(pEnt))
+			{
+				AcGePoint3d startPt, endPt;
+				AcDbLine *pdbLine = AcDbLine::cast(pEnt);
+				pdbLine->getStartPoint(startPt);
+				pdbLine->getEndPoint(endPt);
+				AcGePoint2d start2dPt(startPt.x, startPt.y);
+				AcGePoint2d end2dPt(endPt.x, endPt.y);
+				AcGeLineSeg2d* pgeLine = new AcGeLineSeg2d(start2dPt, end2dPt);
+				AcDbExtents geLineExt;
+				geLineExt.addPoint(GeHelper::PT23(start2dPt));
+				geLineExt.addPoint(GeHelper::PT23(end2dPt));
 
-			AcGePoint3d minPoint = geLineExt.minPoint();
-			AcGePoint3d maxPoint = geLineExt.maxPoint();
-			double positionMin[2];
-			double positionMax[2];
-			positionMin[0] = minPoint.x;
-			positionMin[1] = minPoint.y;
-			positionMax[0] = maxPoint.x;
-			positionMax[1] = maxPoint.y;
+				AcGePoint3d minPoint = geLineExt.minPoint();
+				AcGePoint3d maxPoint = geLineExt.maxPoint();
+				double positionMin[2];
+				double positionMax[2];
+				positionMin[0] = minPoint.x;
+				positionMin[1] = minPoint.y;
+				positionMax[0] = maxPoint.x;
+				positionMax[1] = maxPoint.y;
 
-			rTreeOfSelection.Insert(positionMin, positionMax, pgeLine);//装构造出的ge指针
-			needDeleteEnt.push_back(pgeLine);
+				rTreeOfSelection.Insert(positionMin, positionMax, pgeLine);//装构造出的ge指针
+				needDeleteEnt.push_back(pgeLine);
+			}		
 		}
 		else if (pEnt->isKindOf(AcDbPolyline::desc()))
 		{
-			AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
-			AcGeLineSeg2d line;
-			int n = pPline->numVerts();
-			for (int i = 0; i < n; i++)
+			if (!isLayerClose(pEnt))
 			{
-				if (pPline->segType(i) == AcDbPolyline::kLine)
+				AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
+				AcGeLineSeg2d line;
+				int n = pPline->numVerts();
+				for (int i = 0; i < n; i++)
 				{
-					pPline->getLineSegAt(i, line);
-					AcGePoint2d startPoint;
-					AcGePoint2d endPoint;
-					startPoint = line.startPoint();
-					endPoint = line.endPoint();
+					if (pPline->segType(i) == AcDbPolyline::kLine)
+					{
+						pPline->getLineSegAt(i, line);
+						AcGePoint2d startPoint;
+						AcGePoint2d endPoint;
+						startPoint = line.startPoint();
+						endPoint = line.endPoint();
 
-					AcGeLineSeg2d* pgePLine = new AcGeLineSeg2d(startPoint, endPoint);
-					AcDbExtents gePLineExt;
-					gePLineExt.addPoint(GeHelper::PT23(startPoint));
-					gePLineExt.addPoint(GeHelper::PT23(endPoint));
+						AcGeLineSeg2d* pgePLine = new AcGeLineSeg2d(startPoint, endPoint);
+						AcDbExtents gePLineExt;
+						gePLineExt.addPoint(GeHelper::PT23(startPoint));
+						gePLineExt.addPoint(GeHelper::PT23(endPoint));
 
-					AcGePoint3d maxtempPoint = gePLineExt.maxPoint();
-					AcGePoint3d mintempPoint = gePLineExt.minPoint();
-					double positionTempMin[2];
-					double positionTempMax[2];
-					positionTempMin[0] = mintempPoint.x;
-					positionTempMin[1] = mintempPoint.y;
-					positionTempMax[0] = maxtempPoint.x;
-					positionTempMax[1] = maxtempPoint.y;
-					rTreeOfSelection.Insert(positionTempMin, positionTempMax, pgePLine);//装指针
-					needDeleteEnt.push_back(pgePLine);
+						AcGePoint3d maxtempPoint = gePLineExt.maxPoint();
+						AcGePoint3d mintempPoint = gePLineExt.minPoint();
+						double positionTempMin[2];
+						double positionTempMax[2];
+						positionTempMin[0] = mintempPoint.x;
+						positionTempMin[1] = mintempPoint.y;
+						positionTempMax[0] = maxtempPoint.x;
+						positionTempMax[1] = maxtempPoint.y;
+						rTreeOfSelection.Insert(positionTempMin, positionTempMax, pgePLine);//装指针
+						needDeleteEnt.push_back(pgePLine);
+					}
 				}
-			}
+			}		
 		}
 		pEnt->close();
 	}
@@ -282,10 +289,10 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		closeMoveVecs.append(unitvec);
 
 		AcGePoint2d segstarPoint = squarePts[j];
-		segstarPoint.transformBy(10000 * unitvec);
+		segstarPoint.transformBy(500 * unitvec);
 		rectanglePts.append(segstarPoint);
 		AcGePoint2d segendPoint = squarePts[(j + 1) % vecs.length()];
-		segendPoint.transformBy(10000 * unitvec);
+		segendPoint.transformBy(500 * unitvec);
 		rectanglePts.append(segendPoint);
 
 		smallRectangles.push_back(rectanglePts);
@@ -333,8 +340,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		}
 	}
 	//取满足以上两个条件中的距离原边最近的距离
-	double moveDistance = getMinDistance(basePoint, targetLines);
-	moveTest(useJigIds, closeMoveVecs[0], moveDistance);
+	
 
 	//第二条边
 	double point1Min[2];
@@ -380,8 +386,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		}
 	}
 	//取满足以上两个条件中的距离原边最近的距离
-	double move1Distance = getMinDistance(squarePts[1], target1Lines);
-	moveTest(useJigIds, closeMoveVecs[1], move1Distance);
+	
 
 	//第三条边
 	double point2Min[2];
@@ -428,8 +433,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		}
 	}
 	//取满足以上两个条件中的距离原边最近的距离
-	double move2Distance = getMinDistance(squarePts[2], target2Lines);
-	moveTest(useJigIds, closeMoveVecs[2], move2Distance);
+	
 
 	//第四条边
 	double point3Min[2];
@@ -476,10 +480,37 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		}
 	}
 	//取满足以上两个条件中的距离原边最近的距离
+	
+
+	//判断第1、3边和2、4边移动问题
+
+	//1
+	double moveDistance = getMinDistance(basePoint, targetLines);
+	
+	//2
+	double move1Distance = getMinDistance(squarePts[1], target1Lines);
+	
+	//3
+	double move2Distance = getMinDistance(squarePts[2], target2Lines);
+	
+	//4
 	double move3Distance = getMinDistance(squarePts[3], target3Lines);
-	moveTest(useJigIds, closeMoveVecs[3], move3Distance);
-
-
+	if (moveDistance<= move2Distance || move2Distance == 0)
+	{
+		moveTest(useJigIds, closeMoveVecs[0], moveDistance);
+	}
+	else
+	{
+		moveTest(useJigIds, closeMoveVecs[2], move2Distance);
+	}
+	if (move1Distance<= move3Distance || move3Distance==0)
+	{
+		moveTest(useJigIds, closeMoveVecs[1], move1Distance);
+	}
+	else
+	{
+		moveTest(useJigIds, closeMoveVecs[3], move3Distance);
+	}
 	//2.对目标设备房各边进行面域放大 （完成）
 	//3.去域值内的目标直线，判断找到符合吸附条件的那条(完成)
 	//4.吸附上去(完成)
@@ -506,9 +537,9 @@ double CEquipmentroomTool::getMinDistance(AcGePoint2d squarePoint, std::vector<A
 	std::vector<double> distanceVector;
 	for (int i = 0; i < targetLines.size(); i++)
 	{
-		AcGeLine2d *targetPLine = new AcGeLine2d(targetLines[i][0], targetLines[i][1]);
+		AcGeLine2d targetPLine(targetLines[i][0], targetLines[i][1]);
 		AcGePointOnCurve2d RectPtOnCurve;
-		targetPLine->getClosestPointTo(squarePoint, RectPtOnCurve);
+		targetPLine.getClosestPointTo(squarePoint, RectPtOnCurve);
 		AcGePoint2d RectClosedPt = RectPtOnCurve.point2d();
 		double distance = squarePoint.distanceTo(RectClosedPt);
 		distanceVector.push_back(distance);
@@ -658,4 +689,26 @@ void CEquipmentroomTool::setEntToLayer(AcDbObjectIdArray objectIds)
 		}
 		//打开失败不需要关闭实体
 	}	
+}
+
+bool CEquipmentroomTool::isLayerClose(AcDbEntity *pEnt)
+{
+	CString strLayerName = pEnt->layer();
+	////获得当前的图层列表  
+	AcDbLayerTable* pLayerTbl;
+	if (acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForRead)!=eOk)
+	{
+		return false;
+	}
+	////获得制定层表记录的指针  
+	AcDbLayerTableRecord* pLayerTblRcd;
+	if (pLayerTbl->getAt(strLayerName, pLayerTblRcd, AcDb::kForWrite)!=eOk)
+	{
+		pLayerTbl->close();
+		return false;
+	}
+	bool result = pLayerTblRcd->isOff();
+	pLayerTblRcd->close();
+	pLayerTbl->close();
+	return result;
 }
