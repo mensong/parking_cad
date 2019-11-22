@@ -38,3 +38,11 @@
 /x64/Release/BGYParking_cad22.pdb
 /x64/Release/Parking_cad18.exp
 /x64/Release/Parking_cad18.lib
+/Parking_cad22/*.dwl
+/Parking_cad22/*.dwl2
+/Parking_cad21.VC.db
+/Parking_cad21/x64
+/x64/Debug/BGYParking_cad21.arx
+/x64/Debug/BGYParking_cad21.pdb
+/x64/Release/BGYParking_cad21.arx
+/x64/Release/BGYParking_cad21.pdb

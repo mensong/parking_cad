@@ -1129,10 +1129,6 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath="..\Parking_cad\Parking_cad.aps"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>
