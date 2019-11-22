@@ -18,7 +18,7 @@ void COperaLifePumpHouseSet::Start()
 //生活泵房
 	CEquipmentroomTool::layerSet();
 	double LifepumpAreaSideLength = 0;
-	AcDbObjectIdArray LifepumpAreaJigUseIds = CEquipmentroomTool::createArea(LifePumpHouse, _T("生活泵房"), LifepumpAreaSideLength);
+	AcDbObjectIdArray LifepumpAreaJigUseIds = CEquipmentroomTool::createArea(LifePumpHouse/2, _T("生活泵房"), LifepumpAreaSideLength);
 	CEquipmentroomTool::setEntToLayer(LifepumpAreaJigUseIds);
 	CEquipmentroomTool::jigShow(LifepumpAreaJigUseIds, LifepumpAreaSideLength);
 }

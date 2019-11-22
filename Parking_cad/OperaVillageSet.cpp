@@ -49,7 +49,7 @@ begin:acedInitGet(0, _T("Yes No"));
 	}
 	CEquipmentroomTool::layerSet();
 	double sideLength = 0;
-	AcDbObjectIdArray jigUseIds = CEquipmentroomTool::createArea(distributionRoomS, _T("配电房"), sideLength);
+	AcDbObjectIdArray jigUseIds = CEquipmentroomTool::createArea(distributionRoomS/2, _T("配电房"), sideLength);
 	CEquipmentroomTool::setEntToLayer(jigUseIds);
 	CEquipmentroomTool::jigShow(jigUseIds, sideLength);
 }
