@@ -46,12 +46,18 @@ public:
 	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
 		// TODO: Load dependencies here
 
+		//DWORD dwIDESerial;
+		//CString str;
+		//GetVolumeInformation(_T("E:\\"), NULL, NULL,&dwIDESerial,NULL,NULL,NULL,NULL);
+		//str.Format( _T("Ó²ÅÌÐòÁÐºÅ: %X - %X"),HIWORD(dwIDESerial),LOWORD(dwIDESerial));
+		//AfxMessageBox(str);
+
 		//ÊÚÈ¨¼ì²é
 		g_auth.setDesKey("#B-G-Y++");
 		
-		std::string s = g_auth.localEncode(20191201, "Ñî±ø");
-		Authenticate::LICENSE_INFO li;
-		g_auth.decode(li, "z/6ftPSRnF/a0YVdN0o8SAmROFe2jH9RAbsjKwrDcDo=");
+		//std::string s = g_auth.localEncode(20191201, "Ñî±ø");
+		//Authenticate::LICENSE_INFO li;
+		//g_auth.decode(li, "z/6ftPSRnF/a0YVdN0o8SAmROFe2jH9RAbsjKwrDcDo=");
 
 		AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
 		g_auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());

@@ -24,6 +24,14 @@ public:
 	20171226 第二版，兼容Unicode编译方式
 	20171230 重构后发布第三版
 	20191107 第四版，解决拿到的结果反转的问题
+
+	关于VMWare虚拟机获取不到硬盘ID的解决办法：
+		在虚拟机目录中的xxx.vmx文件里添加：
+
+		disk.EnableUUID = "TRUE"
+		disk.locking=false
+
+		然后重启虚拟机就好了。
 	************************************************************************/
 	static ULONG GetSerial(PCHAR pszIDBuff, int nBuffLen, int nDriveID);
 

@@ -15,7 +15,13 @@ COperaModuleCall::~COperaModuleCall()
 
 void COperaModuleCall::Start()
 {
-	mirrorJigshow(_T("Parking_1"));
+	ACHAR szBlkName[256];
+	if (RTNORM == acedGetString(0, _T("\nÇëÊäÈëÍ¼¿éÃû³Æ:"), szBlkName
+#if (ACADV_RELMAJOR > 18)
+		, 256
+#endif
+		))
+		mirrorJigshow(szBlkName);
 }
 
 void COperaModuleCall::mirrorJigshow(const CString& blockName)

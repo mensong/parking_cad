@@ -382,6 +382,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgAddFrame.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.cpp"
 				>
 			</File>
@@ -406,6 +410,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaAddFrame.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaEquipmentroomRelated.cpp"
 				>
 			</File>
@@ -423,6 +431,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaLivingWaterTankSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaModuleCall.cpp"
 				>
 			</File>
 			<File
@@ -491,6 +503,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgAddFrame.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.h"
 				>
 			</File>
@@ -515,6 +531,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaAddFrame.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaEquipmentroomRelated.h"
 				>
 			</File>
@@ -532,6 +552,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaLivingWaterTankSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaModuleCall.h"
 				>
 			</File>
 			<File
@@ -1105,6 +1129,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath="..\Parking_cad\Parking_cad.aps"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

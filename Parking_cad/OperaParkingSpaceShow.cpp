@@ -54,7 +54,9 @@ void COperaParkingSpaceShow::Start()
 	}
 
 	AcString sTemplateFile = DBHelper::GetArxDir() + _T("template.dwg");
-	if (!DBHelper::ImportBlkDef(sTemplateFile, _T("car_1")/*_T("Parking_1")*/))
+	std::set<AcString> setBlockNames;
+	setBlockNames.insert(_T("car_1"));
+	if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/))
 	{
 		acedAlert(_T("加载模板文件出错！"));
 		return;

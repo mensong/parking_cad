@@ -174,6 +174,9 @@
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Parking_cad\ArxDialog.h">
@@ -323,6 +326,9 @@
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaModuleCall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
@@ -342,5 +348,6 @@
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
+    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
 </Project>
