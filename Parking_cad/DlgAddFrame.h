@@ -18,6 +18,12 @@ public:
 
 	void setContextExtents(const AcDbExtents& ext);
 
+	//zhangzechi
+	void setBigFramePoints();
+	bool setBlockInserPoint(std::string& Textstr);
+	void SetPoints(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt3, AcGePoint2d& pt4
+		, AcGePoint2d& pt5, AcGePoint2d& pt6, AcGePoint2d& pt7, AcGePoint2d& pt8);
+
 protected:
 	void refreshPreview();
 
@@ -40,4 +46,22 @@ public:
 	afx_msg void OnBnClickedRadA3();
 	afx_msg void OnBnClickedRadA4();
 	afx_msg void OnBnClickedOk();
+
+//zhangzechi 
+public:
+	AcGePoint2d mBigFramept0;
+	AcGePoint2d mBigFramept1;
+	AcGePoint2d mBigFramept2;
+	AcGePoint2d mBigFramept3;
+
+protected:
+	AcGePoint3d mExtsCentepoint;
+	AcGePoint3d mInserPicPoint;
+	
+	bool InpromDRenceFromDWG(const double& inputLen);
+	bool IsDistanceAppoint(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3);
+
+	double mBlockextentsLen;
+	double mBlockextentsWidth;
+	double mMultiple;
 };
