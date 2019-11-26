@@ -5,7 +5,6 @@
 #include "DlgAddFrame.h"
 #include "afxdialogex.h"
 #include "DBHelper.h"
-#include "InserBlockFromDWG.h"
 #include "CommonFuntion.h"
 
 
