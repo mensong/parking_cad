@@ -3,6 +3,7 @@
 #include <acedads.h>
 #include <vector>
 #include "LineSelect.h"
+#include <algorithm>
 #ifndef PI
 #define PI 3.1415926535898
 #endif
