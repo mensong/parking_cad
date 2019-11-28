@@ -3,6 +3,7 @@
 #include <map>
 #include "FileHelper.h"
 #include <algorithm>
+#include <vector>
 
 class ModulesManager
 {
@@ -50,8 +51,15 @@ public:
 
 	bool LoadModule(const std::string& path);
 
+	bool addDir(const std::string& sDir);
+	
+protected:
+	bool loadDllModule(const std::string& path);
+	bool loadArxModule(const std::string& path);
+
 private:
 	static ModulesManager* ms_instance;
 	std::map<std::string, HMODULE> m_handles;
+	std::vector<std::string> m_dirs;
 };
 

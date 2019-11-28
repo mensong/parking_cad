@@ -30,6 +30,8 @@
 #include "Convertor.h"
 #include "ModulesManager.h"
 #include "AutoRegCmd.h"
+#include "CommonFuntion.h"
+#include "LoadCuix.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -43,7 +45,8 @@ class CArxProject2App : public AcRxArxApp {
 public:
 	CArxProject2App () : AcRxArxApp () {}
 
-	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
+	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) 
+	{
 		// TODO: Load dependencies here
 
 		//DWORD dwIDESerial;
@@ -55,7 +58,7 @@ public:
 		//ÊÚÈ¨¼ì²é
 		g_auth.setDesKey("#B-G-Y++");
 		
-		//std::string s = g_auth.localEncode(20191201, "Ñî±ø");
+		std::string s = g_auth.localEncode(20191201, "Ñî±ø");
 		//Authenticate::LICENSE_INFO li;
 		//g_auth.decode(li, "z/6ftPSRnF/a0YVdN0o8SAmROFe2jH9RAbsjKwrDcDo=");
 
@@ -94,20 +97,23 @@ public:
 		
 		// TODO: Add your initialization code here
 		AUTO_REG_CMD::Init();
+		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
+
+		AcString filepath = DBHelper::GetArxDir() + _T("parking_cad.cuix");
+		LoadCuix::Load(filepath);
+		LoadCuix::ShowToolbarAsyn(_T("ÖÇÄÜµØ¿â"));
+		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
 
 		return (retCode) ;
 	}
 
-	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
-		// TODO: Add your code here
+	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
+	{
+		AUTO_REG_CMD::Clear();
+		ModulesManager::Relaese();
 
 		// You *must* call On_kUnloadAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;
-
-		// TODO: Unload dependencies here
-		CDlgWaiting::Destroy();
-		ModulesManager::Relaese();
-		AUTO_REG_CMD::Clear();
+		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;		
 
 		return (retCode) ;
 	}
