@@ -180,6 +180,7 @@
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaGergul.cpp" />
     <ClCompile Include="..\Parking_cad\OperaLifePumpHouseSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h" />
+    <ClInclude Include="..\Parking_cad\OperaGergul.h" />
     <ClInclude Include="..\Parking_cad\OperaLifePumpHouseSet.h" />
     <ClInclude Include="..\Parking_cad\OperaLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\OperaModuleCall.h" />

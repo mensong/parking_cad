@@ -204,6 +204,9 @@
     <ClCompile Include="..\TangentReader\HackerWall_VD.cpp">
       <Filter>TangentReader</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaGergul.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -382,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="..\TangentReader\HackerWall_VD.h">
       <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaGergul.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

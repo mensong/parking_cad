@@ -434,6 +434,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaGergul.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaLifePumpHouseSet.cpp"
 				>
 			</File>
@@ -568,6 +572,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaFirePumpHouseSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaGergul.h"
 				>
 			</File>
 			<File
@@ -1201,10 +1209,6 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath="..\Parking_cad\Parking_cad.aps"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>
