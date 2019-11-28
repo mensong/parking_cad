@@ -350,7 +350,7 @@ void CCommonFuntion::DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints
 		pARC->getStartPoint(starpoint);
 		pARC->getEndPoint(endpoint);
 		AcGePoint3d centerpoint = pARC->center();
-		AcDbAttribute* pAttrib = nullptr;
+		AcDbAttribute* pAttrib = NULL;
 		if (starpoint.distanceTo(intersectPoints[0]) < endpoint.distanceTo(intersectPoints[0]))
 		{
 			AcGeVector2d changVec = AcGeVector2d(intersectPoints[0].x - centerpoint.x, intersectPoints[0].y - centerpoint.y);

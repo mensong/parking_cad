@@ -2,7 +2,7 @@
 #include "OperaEquipmentroomRelated.h"
 #include "EquipmentroomTool.h"
 
-#define VentilationroomArea 45000000.0//通风设备房面积
+#define VentilationroomArea 15000000.0//通风设备房面积
 
 
 COperaEquipmentroomRelated::COperaEquipmentroomRelated()
