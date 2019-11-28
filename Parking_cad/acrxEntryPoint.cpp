@@ -102,6 +102,7 @@ public:
 		AcString filepath = DBHelper::GetArxDir() + _T("parking_cad.cuix");
 		LoadCuix::Load(filepath);
 		LoadCuix::ShowToolbarAsyn(_T("ÖÇÄÜµØ¿â"));
+		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
 
 		return (retCode) ;
 	}
@@ -110,7 +111,6 @@ public:
 	{
 		AUTO_REG_CMD::Clear();
 		ModulesManager::Relaese();
-		LoadCuix::Unload(_T("PARKING_CAD"));
 
 		// You *must* call On_kUnloadAppMsg here
 		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;		
