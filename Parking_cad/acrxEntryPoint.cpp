@@ -45,7 +45,8 @@ class CArxProject2App : public AcRxArxApp {
 public:
 	CArxProject2App () : AcRxArxApp () {}
 
-	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
+	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) 
+	{
 		// TODO: Load dependencies here
 
 		//DWORD dwIDESerial;
@@ -105,9 +106,10 @@ public:
 		return (retCode) ;
 	}
 
-	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
-		// TODO: Add your code here
-		// TODO: Unload dependencies here		
+	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
+	{
+		AUTO_REG_CMD::Clear();
+		ModulesManager::Relaese();
 		LoadCuix::Unload(_T("PARKING_CAD"));
 
 		// You *must* call On_kUnloadAppMsg here
