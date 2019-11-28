@@ -86,6 +86,7 @@
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp" />
     <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
     <ClCompile Include="..\Parking_cad\Authenticate.cpp" />
+    <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="..\Parking_cad\ModulesManager.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp" />
@@ -104,6 +106,7 @@
     <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp" />
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
+    <ClCompile Include="..\Parking_cad\PointKey.cpp" />
     <ClCompile Include="..\Parking_cad\StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -116,6 +119,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerArcStair.cpp" />
+    <ClCompile Include="..\TangentReader\HackerColumn_VD.cpp" />
+    <ClCompile Include="..\TangentReader\HackerLineStair.cpp" />
+    <ClCompile Include="..\TangentReader\HackerRectStair.cpp" />
+    <ClCompile Include="..\TangentReader\HackerWall_VD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ArxTools\ArxProgressBar.h" />
@@ -147,6 +155,8 @@
     <ClInclude Include="..\jsoncpp\src\version.h" />
     <ClInclude Include="..\Parking_cad\ArxDialog.h" />
     <ClInclude Include="..\Parking_cad\Authenticate.h" />
+    <ClInclude Include="..\Parking_cad\Boundary.h" />
+    <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
@@ -155,6 +165,7 @@
     <ClInclude Include="..\Parking_cad\ModulesManager.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h" />
@@ -164,9 +175,15 @@
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h" />
     <ClInclude Include="..\Parking_cad\OperaVillageSet.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
+    <ClInclude Include="..\Parking_cad\PointKey.h" />
     <ClInclude Include="..\Parking_cad\resource.h" />
     <ClInclude Include="..\Parking_cad\StdAfx.h" />
     <ClInclude Include="..\pystring\pystring.h" />
+    <ClInclude Include="..\TangentReader\HackerArcStair.h" />
+    <ClInclude Include="..\TangentReader\HackerColumn_VD.h" />
+    <ClInclude Include="..\TangentReader\HackerLineStair.h" />
+    <ClInclude Include="..\TangentReader\HackerRectStair.h" />
+    <ClInclude Include="..\TangentReader\HackerWall_VD.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\ArxTools\DBHelper.inl" />
@@ -228,10 +245,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</TreatWarningAsError>

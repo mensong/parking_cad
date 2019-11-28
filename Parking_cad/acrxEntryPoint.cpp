@@ -94,20 +94,21 @@ public:
 		
 		// TODO: Add your initialization code here
 		AUTO_REG_CMD::Init();
+		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
 		return (retCode) ;
 	}
 
 	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
 		// TODO: Add your code here
+		CDlgWaiting::Destroy();
+		ModulesManager::Relaese();
+		AUTO_REG_CMD::Clear();
 
 		// You *must* call On_kUnloadAppMsg here
 		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;
 
-		// TODO: Unload dependencies here
-		CDlgWaiting::Destroy();
-		ModulesManager::Relaese();
-		AUTO_REG_CMD::Clear();
+		// TODO: Unload dependencies here		
 
 		return (retCode) ;
 	}

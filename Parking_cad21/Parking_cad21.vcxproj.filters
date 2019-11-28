@@ -28,6 +28,9 @@
     <Filter Include="DES">
       <UniqueIdentifier>{7e8e5b03-ce26-47d6-bb7a-ec3b4952f147}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TangentReader">
+      <UniqueIdentifier>{b26ca68f-b942-45a5-b93c-d86228ba2cab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\ArxTools\ArxProgressBar.cpp">
@@ -170,6 +173,30 @@
     </ClCompile>
     <ClCompile Include="..\DES_CBC_5\utils.cpp">
       <Filter>DES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\CommonFuntion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\PointKey.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerArcStair.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerColumn_VD.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerLineStair.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerRectStair.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerWall_VD.cpp">
+      <Filter>TangentReader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +347,33 @@
     <ClInclude Include="..\DES_CBC_5\utils.h">
       <Filter>DES</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\Boundary.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\CommonFuntion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaCoreWall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\PointKey.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerArcStair.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerColumn_VD.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerLineStair.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerRectStair.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerWall_VD.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\ArxTools\DBHelper.inl">
@@ -331,6 +385,7 @@
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
+    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\ArxTools\ReadMe.txt">
