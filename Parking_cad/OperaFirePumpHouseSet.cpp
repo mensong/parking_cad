@@ -17,7 +17,7 @@ void COperaFirePumpHouseSet::Start()
 {
 	CEquipmentroomTool::layerSet();
 	double FirePumpHouseSideLength = 0;
-	AcDbObjectIdArray FirePumpHouseJigUseIds = CEquipmentroomTool::createArea(FirePumpHouse, _T("消防泵房"), FirePumpHouseSideLength);
+	AcDbObjectIdArray FirePumpHouseJigUseIds = CEquipmentroomTool::createArea(FirePumpHouse/2, _T("消防泵房"), FirePumpHouseSideLength);
 	CEquipmentroomTool::setEntToLayer(FirePumpHouseJigUseIds);
 	CEquipmentroomTool::jigShow(FirePumpHouseJigUseIds, FirePumpHouseSideLength);
 }

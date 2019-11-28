@@ -45,7 +45,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;PARKING_CAD18_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -131,7 +131,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;PARKING_CAD18_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -217,7 +217,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;PARKING_CAD18_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -303,7 +303,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;PARKING_CAD18_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -382,6 +382,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\CommonFuntion.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgAddFrame.cpp"
 				>
 			</File>
@@ -411,6 +415,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaAddFrame.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaCoreWall.cpp"
 				>
 			</File>
 			<File
@@ -451,6 +459,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\PictureEx.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PointKey.cpp"
 				>
 			</File>
 			<File
@@ -503,6 +515,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\Boundary.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\CommonFuntion.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgAddFrame.h"
 				>
 			</File>
@@ -532,6 +552,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaAddFrame.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaCoreWall.h"
 				>
 			</File>
 			<File
@@ -568,6 +592,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\PictureEx.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PointKey.h"
 				>
 			</File>
 			<File
@@ -1126,6 +1154,50 @@
 			</File>
 			<File
 				RelativePath="..\pystring\pystring.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="TangentReader"
+			>
+			<File
+				RelativePath="..\TangentReader\HackerArcStair.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerArcStair.h"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerColumn_VD.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerColumn_VD.h"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerLineStair.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerLineStair.h"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerRectStair.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerRectStair.h"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerWall_VD.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\TangentReader\HackerWall_VD.h"
 				>
 			</File>
 		</Filter>

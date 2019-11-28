@@ -45,7 +45,8 @@ class CArxProject2App : public AcRxArxApp {
 public:
 	CArxProject2App () : AcRxArxApp () {}
 
-	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
+	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) 
+	{
 		// TODO: Load dependencies here
 
 		//DWORD dwIDESerial;
@@ -96,21 +97,20 @@ public:
 		
 		// TODO: Add your initialization code here
 		AUTO_REG_CMD::Init();
+		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
 		AcString filepath = DBHelper::GetArxDir() + _T("parking_cad.cuix");
 		LoadCuix::Load(filepath);
 		LoadCuix::ShowToolbarAsyn(_T("ÖÇÄÜµØ¿â"));
+		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
 
 		return (retCode) ;
 	}
 
-	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
-		// TODO: Add your code here
-		// TODO: Unload dependencies here
-		CDlgWaiting::Destroy();
-		ModulesManager::Relaese();
+	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
+	{
 		AUTO_REG_CMD::Clear();
-		LoadCuix::Unload(_T("PARKING_CAD"));
+		ModulesManager::Relaese();
 
 		// You *must* call On_kUnloadAppMsg here
 		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;		
