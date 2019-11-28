@@ -80,4 +80,4 @@ AcGePoint2d COperaAddFrame::GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& c
 }
 
 
-REG_CMD(COperaAddFrame, BGY, AddFrame);
+REG_CMD(COperaAddFrame, BGY, AddFrame);//Ôö¼ÓÍ¼¿ò

@@ -72,4 +72,4 @@ void COperaParkingSpaceShow::Start()
 }
 
 
-REG_CMD(COperaParkingSpaceShow, BGY, ParkingSpaceShow);
+REG_CMD(COperaParkingSpaceShow, BGY, ParkingSpaceShow);//调用AI计算方案

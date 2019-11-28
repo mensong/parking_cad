@@ -167,6 +167,7 @@
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp" />
     <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
     <ClCompile Include="..\Parking_cad\Authenticate.cpp" />
+    <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="..\jsoncpp\src\version.h" />
     <ClInclude Include="..\Parking_cad\ArxDialog.h" />
     <ClInclude Include="..\Parking_cad\Authenticate.h" />
+    <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
