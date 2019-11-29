@@ -158,6 +158,16 @@ BEGIN
     LTEXT           "宽：",IDC_STATIC,213,109,18,8
 END
 
+IDD_DIALOG_MAPSIGNPATH DIALOGEX 0, 0, 225, 69
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "智能地库"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,85,48,50,14
+    LTEXT           "请输入图签路径：",IDC_STATIC,7,25,65,8
+    EDITTEXT        IDC_EDIT_PICPATH,73,23,137,14,ES_AUTOHSCROLL
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -188,8 +198,27 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 171
     END
+
+    IDD_DIALOG_MAPSIGNPATH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 218
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 62
+    END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_MAPSIGNPATH AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////
