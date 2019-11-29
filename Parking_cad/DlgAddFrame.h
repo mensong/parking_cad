@@ -58,7 +58,7 @@ protected:
 	AcGePoint3d mExtsCentepoint;
 	AcGePoint3d mInserPicPoint;
 	
-	bool InpromDRenceFromDWG(const double& inputLen, const AcString& PicSourcePath);
+	bool InpromDRenceFromDWG(const double& inputLen);
 	bool IsDistanceAppoint(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3);
 
 	double mBlockextentsLen;
