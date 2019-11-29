@@ -6,7 +6,6 @@
 #include "afxdialogex.h"
 #include "DBHelper.h"
 #include "CommonFuntion.h"
-#include "..\Parking_cad22\GetPicSourcePathDialog.h"
 
 
 // CDlgAddFrame 对话框
@@ -92,17 +91,7 @@ void CDlgAddFrame::refreshPreview()
 	AcGePoint2d pPicpt2;
 	AcGePoint2d pPicpt3;
 
-	CAcModuleResourceOverride resOverride;//资源定位
-	CGetPicSourcePathDialog picDialogOpera;
-	INT_PTR res = picDialogOpera.DoModal();
-	ACHAR *cPicPath = NULL; 
-	if (res == IDOK)
-	{
-		UpdateData(TRUE);
-		cPicPath=CCommonFuntion::ChartoACHAR(CT2A(picDialogOpera.mPicSourcePath.GetBuffer()));
-	}
-	
-	if (!InpromDRenceFromDWG(dExtLen, cPicPath))
+	if (!InpromDRenceFromDWG(dExtLen))
 		acedAlert(_T("导入外部图签失败!"));
 
 	if (tag == 0)
@@ -346,7 +335,7 @@ void CDlgAddFrame::SetPoints(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt
 	pt4 = AcGePoint2d(pt6.x - mBlockextentsLen, pt6.y + mBlockextentsWidth);
 }
 
-bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen, const AcString& PicSourcePath)
+bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 {
 	mBlockextentsLen = 0;
 	mBlockextentsWidth = 0;
@@ -354,8 +343,7 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen, const AcString& P
 	std::set<AcString> BlockNames;
 	AcString name = _T("车库指标表格");
 	BlockNames.insert(name);
-	//DBHelper::ImportBlkDef(_T("D:\\BGY Project\\BGY项目\\车库表格\\4-测试\\图签.dwg"), BlockNames);
-	DBHelper::ImportBlkDef(PicSourcePath, BlockNames);
+	DBHelper::ImportBlkDef(_T("D:\\BGY Project\\BGY项目\\车库表格\\4-测试\\图签.dwg"), BlockNames);
 
 	AcDbBlockTable *pBlockTable = NULL;
 	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
@@ -366,18 +354,12 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen, const AcString& P
 	AcDbBlockTableRecord *pDBlkRe = NULL;
 	Acad::ErrorStatus es;
 	es = acdbOpenObject(pDBlkRe, EntId, AcDb::kForRead);
-	if (es != eOk)
-		return false;
 
 	AcDbBlockTableRecordIterator *pIter;
 	es = pDBlkRe->newIterator(pIter);
 	if (es != eOk)
-	{
-		pDBlkRe->close();
-		delete pIter;
 		return false;
-	}
-		
+
 	AcDbExtents extents;
 	for (; !pIter->done(); pIter->step())
 	{
@@ -401,8 +383,6 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen, const AcString& P
 	mBlockextentsLen = abs(extents.maxPoint().x - extents.minPoint().x)* mMultiple;
 	mBlockextentsWidth = abs(extents.maxPoint().y - extents.minPoint().y) * mMultiple;
 
-	if (pDBlkRe)
-		pDBlkRe->close();
 	return true;
 }
 

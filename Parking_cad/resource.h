@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 生成的包含文件。
-// 供 Parking_cad.rc 使用
+// Microsoft Visual C++ generated include file.
+// Used by Parking_cad.rc
 //
 #define IDS_PROJNAME                    100
 #define IDC_RADIO_Default               100
@@ -23,7 +23,6 @@
 #define IDC_BUTTON_GetStartPoint        107
 #define IDD_DLG_ADD_FRAME               107
 #define IDC_BUTTON_GetRetreatline       108
-#define IDD_DIALOG_MAPSIGNPATH          108
 #define IDC_CHECK_Partition             119
 #define IDC_COMBO_Direction             128
 #define IDC_COMBO_OutlineLayer          129
@@ -37,16 +36,14 @@
 #define IDC_EDIT_NON_CONVEXLEVEL        137
 #define IDC_STA_STATUS                  138
 #define IDC_STA_PREVIEW                 138
-#define IDC_EDIT1                       139
-#define IDC_EDIT_PICPATH                139
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        110
+#define _APS_NEXT_RESOURCE_VALUE        108
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         140
+#define _APS_NEXT_CONTROL_VALUE         139
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

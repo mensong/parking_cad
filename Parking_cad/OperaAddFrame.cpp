@@ -34,7 +34,7 @@ void COperaAddFrame::Start()
 	{
 		dlg.setBigFramePoints();
 
-		std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";//此处为测试写死，后面需修改成用户传入数据以及格式确认
+		std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";
 		dlg.setBlockInserPoint(Textstr);
 
 		AcDbPolyline* pFrame = new AcDbPolyline;
