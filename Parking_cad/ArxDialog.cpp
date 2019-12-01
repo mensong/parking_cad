@@ -923,7 +923,6 @@ void CArxDialog::OnBnClickedCheckPartition()
 		acedSSFree(ssname);
 		if (vctPartitionEnt.size() < 1)
 			return;
-		bool bClosed = true;
 		for (int i = 0; i < vctPartitionEnt.size(); i++)
 		{
 			if (vctPartitionEnt[i]->isKindOf(AcDbPolyline::desc()))
@@ -931,6 +930,7 @@ void CArxDialog::OnBnClickedCheckPartition()
 				std::vector<AcGePoint2d> allPoints;//得到的所有点
 				AcDbVoidPtrArray entsTempArray;
 				AcDbPolyline *pPline = AcDbPolyline::cast(vctPartitionEnt[i]);
+				bool bClosed = pPline->isClosed();
 				AcGeLineSeg2d line;
 				AcGeCircArc3d arc;
 				int n = pPline->numVerts();

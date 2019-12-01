@@ -42,8 +42,9 @@
 #define IDC_BUTTON_LIFEPUMPHOUSE_SET    141
 #define IDC_BUTTON_LIVINGWATERTANK_SET  142
 #define IDC_BUTTON_FIREPUMPHOUSE_SET    143
-#define IDC_BUTTON6                     144
 #define IDC_BUTTON_FIREPOOL_SET         144
+#define IDC_BUTTON1                     145
+#define IDC_BUTTON_CUSTOM               145
 
 // Next default values for new objects
 // 
@@ -51,7 +52,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        110
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         145
+#define _APS_NEXT_CONTROL_VALUE         146
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif
