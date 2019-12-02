@@ -21,7 +21,8 @@ public:
 	static ads_real getTotalArea(CString totalName);
 	static AcDbObjectId CreateText(const AcGePoint3d& ptInsert, CString text, double height,
 		AcDbObjectId style = AcDbObjectId::kNull, double rotation = 0);
-
+	static AcDbObjectId CreateMText(const AcGePoint3d& ptInsert,
+		CString text ,double height = 2.5, double width = 10, AcDbObjectId style = AcDbObjectId::kNull);
 	/*jig展示效果*/
 	static void jigShow(AcDbObjectIdArray useJigIds, double sideLength);
 
@@ -45,5 +46,8 @@ public:
 	static bool layerSet();
 	static void setEntToLayer(AcDbObjectIdArray objectIds);
 	static bool isLayerClose(AcDbEntity *pEnt);
+	//add by yangbing on 2019/11/29
+	/*面域填充*/
+	static AcDbObjectId CreateHatch( const CString& patName, const AcGePoint2dArray& allPlinePts, const AcGeDoubleArray& bulges);
 };
 

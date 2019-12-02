@@ -1,7 +1,7 @@
 #pragma once
 #include "afxwin.h"
 #include "resource.h"
-
+#include <vector>
 //-----------------------------------------------------------------------------
 class CDlgEquipmentRoomSet : public CAcUiDialog 
 {
@@ -27,4 +27,7 @@ public:
 	afx_msg void OnBnClickedButtonLivingwatertankSet();
 	afx_msg void OnBnClickedButtonFirepumphouseSet();
 	afx_msg void OnBnClickedButtonFirepoolSet();
+	afx_msg void OnBnClickedButtonCustom();
+	std::vector<AcGePoint2dArray> allPartitionPts;//分区点组
+
 } ;
