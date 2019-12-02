@@ -36,6 +36,7 @@
 #include "ModulesManager.h"
 #include "OperaParkingSpaceShow.h"
 #include "Authenticate.h"
+#include "Convertor.h"
 
 #ifndef _ttof
 #ifdef UNICODE
@@ -256,10 +257,11 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 	Doc_Locker doc_locker;
 
 	ads_name ename; ads_point pt;
-	if (acedEntSel(_T("\n请选择选择多段线:"), ename, pt) != RTNORM)
+	if (acedEntSel(_T("\n请选择地库退线对应多段线:"), ename, pt) != RTNORM)
 	{
 		return;
 	}
+	acutPrintf(_T("\n"));
 	AcDbObjectId id;
 	acdbGetObjectId(id, ename);
 	AcDbEntity *pEnt;
