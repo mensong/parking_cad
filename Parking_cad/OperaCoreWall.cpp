@@ -11,7 +11,7 @@
 #include "GeHelper.h"
 #include "RTreeEx.h"
 #include "Convertor.h"
-
+#include "ArxDialog.h"
 
 COperaCoreWall::COperaCoreWall(void)
 {
@@ -438,8 +438,12 @@ void COperaCoreWall::Start()
 	}
 	pPline->setClosed(Adesk::kTrue);
 	pPline->setColorIndex(2);
-	DBHelper::AppendToDatabase(pPline);
+	AcDbObjectId coreWallId;
+	DBHelper::AppendToDatabase(coreWallId,pPline);
 	pPline->close();
+	AcGePoint2dArray coreWallPoints;
+	getCoreWallData(coreWallId,coreWallPoints);
+	CArxDialog::SetCoreWallData(coreWallPoints);
 }
 
 void COperaCoreWall::seg2AABBBox(const AcGePoint2d& pt1, const AcGePoint2d& pt2, double minPt[2], double maxPt[2])
@@ -491,6 +495,63 @@ void COperaCoreWall::point2AABBBox(double minPt[2], double maxPt[2], const AcGeP
 	minPt[1] = ptTmp.y;
 	maxPt[0] = ptTmp.x + width;
 	maxPt[1] = ptTmp.y + width;
+}
+
+void COperaCoreWall::getCoreWallData(const AcDbObjectId& coreWallId, AcGePoint2dArray& coreWallPoints)
+{
+	AcDbEntity *pEnt = NULL;
+	//下面语句需要判断操作成功与否
+	Acad::ErrorStatus es;
+	es = acdbOpenObject(pEnt, coreWallId, AcDb::kForRead);
+	if (es != Acad::eOk)
+	{
+		acutPrintf(_T("打开核心筒实体失败！"));
+		return;
+	}
+	std::vector<AcGePoint2d> allPoints;//得到的所有点
+	if (pEnt->isKindOf(AcDbPolyline::desc()))
+	{
+		AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
+		AcGeLineSeg2d line;
+		AcGeCircArc3d arc;
+		int n = pPline->numVerts();
+		for (int i = 0; i < n; i++)
+		{
+			if (pPline->segType(i) == AcDbPolyline::kLine)
+			{
+				pPline->getLineSegAt(i, line);
+				AcGePoint2d startPoint;
+				AcGePoint2d endPoint;
+				startPoint = line.startPoint();
+				endPoint = line.endPoint();
+				allPoints.push_back(startPoint);
+				allPoints.push_back(endPoint);
+			}
+			else if (pPline->segType(i) == AcDbPolyline::kArc)
+			{
+				pPline->getArcSegAt(i, arc);
+				AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
+				for (int x = 0; x < result.length(); x++)
+				{
+					AcGePoint2d onArcpoint(result[x].x, result[x].y);
+					allPoints.push_back(onArcpoint);
+				}
+			}
+		}
+		for (int x = 0; x < allPoints.size(); x++)
+		{
+			if (coreWallPoints.contains(allPoints[x]))
+			{
+				continue;
+			}
+			coreWallPoints.append(allPoints[x]);
+		}
+
+		//检测闭合
+		if (coreWallPoints.length() > 2 && coreWallPoints[coreWallPoints.length() - 1] != allPoints[0])
+			coreWallPoints.append(coreWallPoints[0]);
+	}
+	pEnt->close();
 }
 
 AcGePoint2dArray COperaCoreWall::getSegsOrderPoints(std::vector<AcGeLineSeg2d>& segs, AcGeTol tol/* = AcGeContext::gTol*/)

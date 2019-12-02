@@ -48,6 +48,9 @@
 
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturl;
+AcGePoint2dArray CArxDialog::marr_coreWallData;
+
+
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC(CArxDialog, CAcUiDialog)
 
@@ -77,6 +80,10 @@ void CArxDialog::setPostUrl(std::string& posturl)
 	ms_posturl = posturl;
 }
 
+void CArxDialog::SetCoreWallData(const AcGePoint2dArray& arryCoreWallData)
+{
+	marr_coreWallData = arryCoreWallData;
+}
 //-----------------------------------------------------------------------------
 void CArxDialog::loadoutlineLayers()
 {
@@ -788,6 +795,15 @@ void CArxDialog::OnBnClickedOk()
 		point.append(GetretreatlinePts[i].x);
 		point.append(GetretreatlinePts[i].y);
 		root["outer"].append(point);
+	}
+
+	//核心筒数据
+	for (int j = 0; j < marr_coreWallData.length(); j++)
+	{
+		Json::Value coreWallpoint;
+		coreWallpoint.append(marr_coreWallData[j].x);
+		coreWallpoint.append(marr_coreWallData[j].y);
+		root["corewall"].append(coreWallpoint);
 	}
 
 	//子节点
