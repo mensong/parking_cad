@@ -97,4 +97,4 @@ void COperaModuleCall::mirrorJigshow(const CString& blockName)
 	}
 }
 
-REG_CMD(COperaModuleCall, BGY, ModuleCall);
+REG_CMD(COperaModuleCall, BGY, ModuleCall);//车库精细化模块

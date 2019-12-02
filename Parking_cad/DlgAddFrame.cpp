@@ -343,7 +343,9 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 	std::set<AcString> BlockNames;
 	AcString name = _T("车库指标表格");
 	BlockNames.insert(name);
-	DBHelper::ImportBlkDef(_T("D:\\BGY Project\\BGY项目\\车库表格\\4-测试\\图签.dwg"), BlockNames);
+
+	AcString filepath = DBHelper::GetArxDir() + _T("Mapsign.dwg");
+	DBHelper::ImportBlkDef(filepath, BlockNames);
 
 	AcDbBlockTable *pBlockTable = NULL;
 	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
@@ -354,11 +356,19 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 	AcDbBlockTableRecord *pDBlkRe = NULL;
 	Acad::ErrorStatus es;
 	es = acdbOpenObject(pDBlkRe, EntId, AcDb::kForRead);
+	if (es != eOk)
+		return false;
 
 	AcDbBlockTableRecordIterator *pIter;
 	es = pDBlkRe->newIterator(pIter);
 	if (es != eOk)
+	{
+		if (pDBlkRe)
+			pDBlkRe->close();
+		delete pIter;
 		return false;
+	}
+		
 
 	AcDbExtents extents;
 	for (; !pIter->done(); pIter->step())
@@ -375,6 +385,8 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 		}
 	}
 	delete pIter;
+	if (pDBlkRe)
+		pDBlkRe->close();
 
 	double improblockLen = abs(extents.maxPoint().x - extents.minPoint().x);
 

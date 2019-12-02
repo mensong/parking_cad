@@ -34,7 +34,7 @@ void COperaAddFrame::Start()
 	{
 		dlg.setBigFramePoints();
 
-		std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";
+		std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";//这里为测试，具体数据格式还需后续与客户确认
 		dlg.setBlockInserPoint(Textstr);
 
 		AcDbPolyline* pFrame = new AcDbPolyline;
@@ -80,4 +80,4 @@ AcGePoint2d COperaAddFrame::GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& c
 }
 
 
-REG_CMD(COperaAddFrame, BGY, AddFrame);
+REG_CMD(COperaAddFrame, BGY, AddFrame);//增加图框
