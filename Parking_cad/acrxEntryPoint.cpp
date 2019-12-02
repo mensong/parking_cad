@@ -58,7 +58,7 @@ public:
 		//ÊÚÈ¨¼ì²é
 		g_auth.setDesKey("#B-G-Y++");
 		
-		std::string s = g_auth.localEncode(20191201, "Ñî±ø");
+		std::string s = g_auth.localEncode(20191230, "Ñî±ø");
 		//Authenticate::LICENSE_INFO li;
 		//g_auth.decode(li, "z/6ftPSRnF/a0YVdN0o8SAmROFe2jH9RAbsjKwrDcDo=");
 

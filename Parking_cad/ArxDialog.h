@@ -69,6 +69,9 @@ public:
 	std::vector<AcGePoint2dArray> allPartitionPts;//分区点组
 	static void setPostUrl(std::string& posturl);
 	static std::string ms_posturl;
+
+	static void SetCoreWallData(const AcGePoint2dArray& arryCoreWallData);
+	static AcGePoint2dArray marr_coreWallData;
 protected:
 	void loadoutlineLayers();
 	void loadshearwallLayers();
