@@ -3924,7 +3924,7 @@ File.Delete(SessionVar.Expand("%AppFolder%\\Support\\20\\x64\\license.lst"));
 File.Delete(SessionVar.Expand("%AppFolder%\\Support\\21\\x64\\license.lst"));
 File.Delete(SessionVar.Expand("%AppFolder%\\Support\\22\\x64\\license.lst"));
 
-Shell.DeleteShortcut(Shell.GetFolder(SHF_DESKTOP), "智能地库排布设计系统");</Script>
+Shell.DeleteShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"));</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -4127,7 +4127,7 @@ if (String.Length(licenceCode) &gt; 0) then
 	TextFile.WriteFromString(SessionVar.Expand("%AppFolder%\\Support\\22\\x64\\license.lst"), licenceCode, false);
 end
 
-Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), "智能地库排布设计系统", SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\default.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);</Script>
+Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\default.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>

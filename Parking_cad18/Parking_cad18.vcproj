@@ -390,6 +390,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgEquipmentRoomSet.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.cpp"
 				>
 			</File>
@@ -423,6 +427,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaEquipmentroomRelated.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaEquipmentRoomSet.cpp"
 				>
 			</File>
 			<File
@@ -531,6 +539,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgEquipmentRoomSet.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.h"
 				>
 			</File>
@@ -564,6 +576,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaEquipmentroomRelated.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaEquipmentRoomSet.h"
 				>
 			</File>
 			<File
