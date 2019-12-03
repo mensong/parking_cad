@@ -158,6 +158,20 @@ BEGIN
     LTEXT           "宽：",IDC_STATIC,213,109,18,8
 END
 
+IDD_DLG_ADD_EQUIPMENT_ROOM DIALOGEX 0, 0, 109, 257
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "设备房"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "通风",IDC_BUTTON_VENTILATE,29,22,50,14
+    PUSHBUTTON      "配电房",IDC_BUTTON_VILLAGE_SET,29,55,50,14
+    PUSHBUTTON      "生活泵房",IDC_BUTTON_LIFEPUMPHOUSE_SET,29,88,50,14
+    PUSHBUTTON      "生活水箱",IDC_BUTTON_LIVINGWATERTANK_SET,29,121,50,14
+    PUSHBUTTON      "消防泵房",IDC_BUTTON_FIREPUMPHOUSE_SET,29,154,50,14
+    PUSHBUTTON      "消防水池",IDC_BUTTON_FIREPOOL_SET,29,187,50,14
+    PUSHBUTTON      "自定义",IDC_BUTTON_CUSTOM,29,220,50,14
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -188,8 +202,27 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 171
     END
+
+    IDD_DLG_ADD_EQUIPMENT_ROOM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 102
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 250
+    END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DLG_ADD_EQUIPMENT_ROOM AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////

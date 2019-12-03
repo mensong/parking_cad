@@ -183,6 +183,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			{
 				acedAlert(sMsg);
 			}
+			acutPrintf(_T("the uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
 			DBHelper::CallCADCommandEx(_T("Redraw"));
 		}
 		else if (status == 0)
@@ -218,6 +219,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 	}
 
 	//std::string httpUrl = "http://10.8.212.187/query/";
+
 	std::string tempUrl = ms_geturl + ms_uuid;
 	const char * sendUrl = tempUrl.c_str();
 

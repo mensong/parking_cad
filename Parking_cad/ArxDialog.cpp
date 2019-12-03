@@ -36,6 +36,7 @@
 #include "ModulesManager.h"
 #include "OperaParkingSpaceShow.h"
 #include "Authenticate.h"
+#include "Convertor.h"
 
 #ifndef _ttof
 #ifdef UNICODE
@@ -47,6 +48,9 @@
 
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturl;
+AcGePoint2dArray CArxDialog::marr_coreWallData;
+
+
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC(CArxDialog, CAcUiDialog)
 
@@ -76,6 +80,10 @@ void CArxDialog::setPostUrl(std::string& posturl)
 	ms_posturl = posturl;
 }
 
+void CArxDialog::SetCoreWallData(const AcGePoint2dArray& arryCoreWallData)
+{
+	marr_coreWallData = arryCoreWallData;
+}
 //-----------------------------------------------------------------------------
 void CArxDialog::loadoutlineLayers()
 {
@@ -256,10 +264,11 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 	Doc_Locker doc_locker;
 
 	ads_name ename; ads_point pt;
-	if (acedEntSel(_T("\n请选择选择多段线:"), ename, pt) != RTNORM)
+	if (acedEntSel(_T("\n请选择地库退线对应多段线:"), ename, pt) != RTNORM)
 	{
 		return;
 	}
+	acutPrintf(_T("\n"));
 	AcDbObjectId id;
 	acdbGetObjectId(id, ename);
 	AcDbEntity *pEnt;
@@ -788,6 +797,15 @@ void CArxDialog::OnBnClickedOk()
 		root["outer"].append(point);
 	}
 
+	//核心筒数据
+	for (int j = 0; j < marr_coreWallData.length(); j++)
+	{
+		Json::Value coreWallpoint;
+		coreWallpoint.append(marr_coreWallData[j].x);
+		coreWallpoint.append(marr_coreWallData[j].y);
+		root["corewall"].append(coreWallpoint);
+	}
+
 	//子节点
 	Json::Value params;
 	//字节点属性
@@ -923,7 +941,6 @@ void CArxDialog::OnBnClickedCheckPartition()
 		acedSSFree(ssname);
 		if (vctPartitionEnt.size() < 1)
 			return;
-		bool bClosed = true;
 		for (int i = 0; i < vctPartitionEnt.size(); i++)
 		{
 			if (vctPartitionEnt[i]->isKindOf(AcDbPolyline::desc()))
@@ -931,6 +948,7 @@ void CArxDialog::OnBnClickedCheckPartition()
 				std::vector<AcGePoint2d> allPoints;//得到的所有点
 				AcDbVoidPtrArray entsTempArray;
 				AcDbPolyline *pPline = AcDbPolyline::cast(vctPartitionEnt[i]);
+				bool bClosed = pPline->isClosed();
 				AcGeLineSeg2d line;
 				AcGeCircArc3d arc;
 				int n = pPline->numVerts();

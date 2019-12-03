@@ -58,7 +58,7 @@ public:
 		//授权检查
 		g_auth.setDesKey("#B-G-Y++");
 		
-		std::string s = g_auth.localEncode(20191201, "杨兵");
+		std::string s = g_auth.localEncode(20200101, "李明生");
 		//Authenticate::LICENSE_INFO li;
 		//g_auth.decode(li, "z/6ftPSRnF/a0YVdN0o8SAmROFe2jH9RAbsjKwrDcDo=");
 

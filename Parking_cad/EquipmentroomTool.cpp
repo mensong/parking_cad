@@ -145,6 +145,24 @@ AcDbObjectId CEquipmentroomTool::CreateText(const AcGePoint3d& ptInsert,
 	return id;
 }
 
+AcDbObjectId CEquipmentroomTool::CreateMText(const AcGePoint3d& ptInsert,
+	CString text, double height, double width , AcDbObjectId style)
+{
+	AcDbMText *pMText = new AcDbMText();
+
+	// 设置多行文字的特性
+	pMText->setTextStyle(style);
+	pMText->setContents(text);
+	pMText->setLocation(ptInsert);
+	pMText->setTextHeight(height);
+	pMText->setWidth(width);
+	pMText->setAttachment(AcDbMText::kBottomLeft);
+	AcDbObjectId textId;
+	DBHelper::AppendToDatabase(textId, pMText);
+	pMText->close();
+	return textId;
+}
+
 void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d basePoint, double sideLength)
 {
 	//将所有直线装入
@@ -711,4 +729,54 @@ bool CEquipmentroomTool::isLayerClose(AcDbEntity *pEnt)
 	pLayerTblRcd->close();
 	pLayerTbl->close();
 	return result;
+}
+
+AcDbObjectId CEquipmentroomTool::CreateHatch( const CString& patName, const AcGePoint2dArray& allPlinePts,const AcGeDoubleArray& bulges)
+{
+	Acad::ErrorStatus es;
+	AcDbHatch *pHatch = new AcDbHatch();
+
+	// 设置填充平面
+	AcGeVector3d normal(0, 0, 1);
+	es = pHatch->setNormal(normal);
+	es = pHatch->setElevation(0);
+
+	// 设置关联性
+	es = pHatch->setAssociative(Adesk::kFalse);
+
+	// 设置填充图案
+	es = pHatch->setPattern(AcDbHatch::kPreDefined, patName);
+
+	// 添加填充边界
+	es = pHatch->appendLoop(AcDbHatch::kExternal,allPlinePts,bulges);
+
+	// 显示填充对象
+	es = pHatch->evaluateHatch();
+
+	// 添加到模型空间
+	AcDbObjectId hatchId;
+	DBHelper::AppendToDatabase(hatchId, pHatch);
+	pHatch->close();
+	return hatchId;
+
+
+	/*AcDbHatch* pHatch = new AcDbHatch();
+	AcGeVector3d normal(0.0, 0.0, 1.0);
+	pHatch->setNormal(normal);
+	pHatch->setElevation(0.0);
+	if (Acad::eOk != pHatch->setAssociative(Adesk::kFalse) ||
+		Acad::eOk != pHatch->setPattern(AcDbHatch::kPreDefined, _T("SOLID")) ||
+		Acad::eOk != pHatch->setHatchStyle(AcDbHatch::kNormal) ||
+		Acad::eOk != pHatch->appendLoop(AcDbHatch::kExternal, objIds) ||
+		Acad::eOk != pHatch->setColorIndex(3) ||
+		Acad::eOk != pHatch->evaluateHatch()
+		)
+	{
+		ads_printf(_T("\n区域封闭检测失败,有未闭合点或区域没有经过Trim处理!"));
+		pHatch->close();
+		pHatch = NULL;
+	}
+	AcDbObjectId pHatchobjId;
+	DBHelper::AppendToDatabase(pHatchobjId, pHatch);
+	return pHatchobjId;*/
 }

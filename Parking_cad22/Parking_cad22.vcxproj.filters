@@ -34,6 +34,9 @@
     <Filter Include="Auth\Auth">
       <UniqueIdentifier>{9b9f5f2b-f7f9-45d6-ac3c-d5d641139fe3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TangentReader">
+      <UniqueIdentifier>{ba793342-b632-4694-b16f-e533ad0165b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\jsoncpp\src\json_reader.cpp">
@@ -120,6 +123,21 @@
     <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp">
       <Filter>Auth\Auth</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\CommonFuntion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaGergul.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\ArxTools\ArxProgressBar.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
@@ -168,17 +186,38 @@
     <ClCompile Include="..\..\ArxTools\win_iconv.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp">
+    <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp">
+    <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp">
+    <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\CommonFuntion.cpp">
+    <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\PointKey.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerArcStair.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerColumn_VD.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerLineStair.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerRectStair.cpp">
+      <Filter>TangentReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerWall_VD.cpp">
+      <Filter>TangentReader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +305,21 @@
     <ClInclude Include="OperaModuleCall.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgAddFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaAddFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaModuleCall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\CommonFuntion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaGergul.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
       <Filter>ArxTools</Filter>
     </ClInclude>
@@ -323,17 +377,41 @@
     <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h">
       <Filter>ArxTools</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\DlgAddFrame.h">
+    <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaAddFrame.h">
+    <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaModuleCall.h">
+    <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\CommonFuntion.h">
+    <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\Boundary.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaCoreWall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\PointKey.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerArcStair.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerColumn_VD.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerLineStair.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerRectStair.h">
+      <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TangentReader\HackerWall_VD.h">
+      <Filter>TangentReader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -353,7 +431,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\ArxTools\readme.txt">
+    <Text Include="..\..\ArxTools\ReadMe.txt">
       <Filter>ArxTools</Filter>
     </Text>
   </ItemGroup>

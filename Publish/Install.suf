@@ -103,8 +103,8 @@
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -373,8 +373,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -668,8 +668,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -2026,8 +2026,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -2424,8 +2424,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -2721,8 +2721,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -3064,7 +3064,7 @@ end
 <CPSIInstallLocation>%AppFolder%</CPSIInstallLocation>
 <CPSIVersionMajor/>
 <CPSIVersionMinor/>
-<CreateAppFldSC>0</CreateAppFldSC>
+<CreateAppFldSC>1</CreateAppFldSC>
 <AppFldSCDesc>Uninstall %ProductName%</AppFldSCDesc>
 <SCComment>Removes %ProductName% from your computer.</SCComment>
 <UseCustomAppFldSCIcon>0</UseCustomAppFldSCIcon>
@@ -3099,8 +3099,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -3364,8 +3364,8 @@ Otherwise, click Next to continue.
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -3655,8 +3655,8 @@ end
 <CDISTXT format="hex">aca899</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
 <C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>Default_Top_Banner.jpg</TBIMG>
-<SBIMG>Default_Side_Banner.jpg</SBIMG>
+<TBIMG>111_X_63_euro.jpg</TBIMG>
+<SBIMG>166_X_312_euro.jpg</SBIMG>
 <BDIMG/>
 <BDFILL>0</BDFILL>
 <HDSEP>1</HDSEP>
@@ -3921,8 +3921,10 @@ Please click Finish to exit.
 <Script>File.Delete(SessionVar.Expand("%AppFolder%\\Support\\18\\x64\\license.lst"));
 File.Delete(SessionVar.Expand("%AppFolder%\\Support\\19\\x64\\license.lst"));
 File.Delete(SessionVar.Expand("%AppFolder%\\Support\\20\\x64\\license.lst"));
+File.Delete(SessionVar.Expand("%AppFolder%\\Support\\21\\x64\\license.lst"));
+File.Delete(SessionVar.Expand("%AppFolder%\\Support\\22\\x64\\license.lst"));
 
-Shell.DeleteShortcut(Shell.GetFolder(SHF_DESKTOP), "启动智能地库排布设计系统");</Script>
+Shell.DeleteShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"));</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -4065,7 +4067,7 @@ g_HandleSystemReboot();
 <Action>0</Action>
 </SetupRequirements>
 <Launcher/>
-<ProjectTheme>Default</ProjectTheme>
+<ProjectTheme>Euro</ProjectTheme>
 <ProjFileDesc>New Project</ProjFileDesc>
 <ProjFileAuthor/>
 <ProjFileCompany/>
@@ -4121,9 +4123,11 @@ if (String.Length(licenceCode) &gt; 0) then
 	TextFile.WriteFromString(SessionVar.Expand("%AppFolder%\\Support\\18\\x64\\license.lst"), licenceCode, false);
 	TextFile.WriteFromString(SessionVar.Expand("%AppFolder%\\Support\\19\\x64\\license.lst"), licenceCode, false);
 	TextFile.WriteFromString(SessionVar.Expand("%AppFolder%\\Support\\20\\x64\\license.lst"), licenceCode, false);
+	TextFile.WriteFromString(SessionVar.Expand("%AppFolder%\\Support\\21\\x64\\license.lst"), licenceCode, false);
+	TextFile.WriteFromString(SessionVar.Expand("%AppFolder%\\Support\\22\\x64\\license.lst"), licenceCode, false);
 end
 
-Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), "启动智能地库排布设计系统", SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\default.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);</Script>
+Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\default.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -4177,7 +4181,7 @@ g_HandleSystemReboot();
 </SessionVar>
 <SessionVar>
 <Name>%ProductVer%</Name>
-<Value>0.3</Value>
+<Value>0.4</Value>
 <Type>1</Type>
 </SessionVar>
 <SessionVar>
@@ -4220,7 +4224,7 @@ g_HandleSystemReboot();
 <PostBuildProg/>
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
-<Filename>碧桂园车库智能设计系统V0.3.exe</Filename>
+<Filename>碧桂园车库智能设计系统V0.4.exe</Filename>
 <OutputFolder>D:\</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>0</CustomSegSize>

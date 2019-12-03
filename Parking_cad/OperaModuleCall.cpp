@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "OperaModuleCall.h"
-#include "DBHelper.h"
 #include "JigHelper.h"
+#include "DBHelper.h"
 
 
 COperaModuleCall::COperaModuleCall()
