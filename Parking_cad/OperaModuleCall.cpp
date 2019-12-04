@@ -17,11 +17,13 @@ void COperaModuleCall::Start()
 {
 	ACHAR szBlkName[256];
 	if (RTNORM == acedGetString(0, _T("\nÇëÊäÈëÍ¼¿éÃû³Æ:"), szBlkName
-#if (ACADV_RELMAJOR > 18)
+#if (ACADV_RELMAJOR > 19)
 		, 256
 #endif
 		))
+	{
 		mirrorJigshow(szBlkName);
+	}
 }
 
 void COperaModuleCall::mirrorJigshow(const CString& blockName)
