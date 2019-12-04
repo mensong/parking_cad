@@ -29,17 +29,21 @@ void COperaParkingSpaceShow::Start()
 	Json::Value root;
 	if (reader.parse(sConfigStr, root))
 	{
-		if (root["params"]["posturl"].isNull()|| root["params"]["geturl"].isNull())
+		if (root["params"]["posturlone"].isNull()|| root["params"]["geturlone"].isNull())
 		{
 			acedAlert(_T("配置文件不存在[\"params\"][\"geturl\"]字段！"));
 			return;
 		}
-		if (root["params"]["posturl"].isString() && root["params"]["geturl"].isString())
+		if (root["params"]["posturlone"].isString() && root["params"]["geturlone"].isString())
 		{
-			std::string postUrl = root["params"]["posturl"].asString();
-			std::string getUrl = root["params"]["geturl"].asString();
-			CDlgWaiting::setGetUrl(getUrl);
-			CArxDialog::setPostUrl(postUrl);
+			std::string postUrlOne = root["params"]["posturlone"].asString();
+			std::string getUrlOne = root["params"]["geturlone"].asString();
+			std::string postUrlTwo = root["params"]["posturltwo"].asString();
+			std::string getUrlTwo = root["params"]["geturltwo"].asString();
+			CDlgWaiting::setGetUrlPortOne(getUrlOne);
+			CDlgWaiting::setGetUrlPortTwo(getUrlTwo);
+			CArxDialog::setPostUrlPortone(postUrlOne);
+			CArxDialog::setPostUrlPorttwo(postUrlTwo);
 		}
 		else
 		{

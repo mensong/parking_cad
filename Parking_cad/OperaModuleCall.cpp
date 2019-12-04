@@ -91,7 +91,7 @@ void COperaModuleCall::mirrorJigshow(const CString& blockName)
 				vctJigEnt[i]->close();
 			}
 		}
-		else if (ec == CJigHelper::RET_CANCEL)
+		else if (ec == CJigHelper::RET_CANCEL|| ec == CJigHelper::RET_NULL)
 		{
 			for (int i = 0; i < vctJigEnt.size(); ++i)
 			{
