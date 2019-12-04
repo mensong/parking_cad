@@ -43,16 +43,17 @@
 #define IDC_BUTTON_LIVINGWATERTANK_SET  142
 #define IDC_BUTTON_FIREPUMPHOUSE_SET    143
 #define IDC_BUTTON_FIREPOOL_SET         144
-#define IDC_BUTTON1                     145
 #define IDC_BUTTON_CUSTOM               145
+#define IDC_BUTTON_OKV2                 146
+#define IDC_BUTTON_V2OK                 146
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        110
+#define _APS_NEXT_RESOURCE_VALUE        111
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         146
+#define _APS_NEXT_CONTROL_VALUE         147
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

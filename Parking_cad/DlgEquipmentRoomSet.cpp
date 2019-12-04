@@ -67,7 +67,7 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLivingwatertankSet()
 	// TODO: 在此添加控件通知处理程序代码
 	HideDialogHolder holder(this);
 	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("FirePumpHouseSet "));
+	DBHelper::CallCADCommand(_T("LivingwatertankSet "));
 }
 
 
