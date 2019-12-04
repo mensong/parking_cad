@@ -31,6 +31,7 @@
     <ClCompile Include="..\..\ArxTools\LineSelect.cpp" />
     <ClCompile Include="..\..\ArxTools\LoadCuix.cpp" />
     <ClCompile Include="..\..\ArxTools\MixedHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\ModulesManager.cpp" />
     <ClCompile Include="..\..\ArxTools\Opera.cpp" />
     <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp" />
     <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp" />
@@ -93,7 +94,6 @@
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp" />
     <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp" />
-    <ClCompile Include="..\Parking_cad\ModulesManager.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
@@ -144,6 +144,7 @@
     <ClInclude Include="..\..\ArxTools\LineSelect.h" />
     <ClInclude Include="..\..\ArxTools\LoadCuix.h" />
     <ClInclude Include="..\..\ArxTools\MixedHelper.h" />
+    <ClInclude Include="..\..\ArxTools\ModulesManager.h" />
     <ClInclude Include="..\..\ArxTools\Opera.h" />
     <ClInclude Include="..\..\ArxTools\PointInPolygon.h" />
     <ClInclude Include="..\..\ArxTools\RTreeEx.h" />
@@ -166,7 +167,6 @@
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
     <ClInclude Include="..\Parking_cad\HardDiskSerial.h" />
-    <ClInclude Include="..\Parking_cad\ModulesManager.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
@@ -232,6 +232,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="Autodesk.arx-2014.props" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
   <PropertyGroup Label="Configuration">
     <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v90'">v90</PlatformToolset>
     <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v100'">v100</PlatformToolset>

@@ -81,9 +81,6 @@
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\ModulesManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\MyEdit.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -219,6 +216,9 @@
     <ClCompile Include="..\TangentReader\HackerWall_VD.cpp">
       <Filter>TangentReader</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\ArxTools\ModulesManager.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -258,9 +258,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\ModulesManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\MyEdit.h">
@@ -412,6 +409,9 @@
     </ClInclude>
     <ClInclude Include="..\TangentReader\HackerWall_VD.h">
       <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ArxTools\ModulesManager.h">
+      <Filter>ArxTools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

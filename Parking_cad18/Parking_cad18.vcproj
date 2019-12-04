@@ -410,10 +410,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\ModulesManager.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\MyEdit.cpp"
 				>
 			</File>
@@ -556,10 +552,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\HardDiskSerial.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\ModulesManager.h"
 				>
 			</File>
 			<File
@@ -758,6 +750,14 @@
 			</File>
 			<File
 				RelativePath="..\..\ArxTools\MixedHelper.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\ArxTools\ModulesManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\ArxTools\ModulesManager.h"
 				>
 			</File>
 			<File
