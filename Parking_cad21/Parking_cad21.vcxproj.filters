@@ -198,6 +198,15 @@
     <ClCompile Include="..\TangentReader\HackerWall_VD.cpp">
       <Filter>TangentReader</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaGergul.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
@@ -373,6 +382,15 @@
     </ClInclude>
     <ClInclude Include="..\TangentReader\HackerWall_VD.h">
       <Filter>TangentReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaGergul.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -72,10 +72,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</TreatWarningAsError>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)libcurl\include;$(SolutionDir)pystring;$(SolutionDir)restclient-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</TreatWarningAsError>
@@ -100,22 +100,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\arxTools\arxtools\ArxProgressBar.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\CadPreviewCtrl.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\Convertor.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\DBHelper.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\DelayExecuter.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\FileHelper.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\GeHelper.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\gpc.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\JigHelper.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\LineSelect.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\LoadCuix.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\MixedHelper.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\Opera.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\PointInPolygon.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\SDBDumyJigEntity.cpp" />
-    <ClCompile Include="..\..\arxTools\arxtools\win_iconv.cpp" />
+    <ClCompile Include="..\..\ArxTools\ArxProgressBar.cpp" />
+    <ClCompile Include="..\..\ArxTools\CadPreviewCtrl.cpp" />
+    <ClCompile Include="..\..\ArxTools\Convertor.cpp" />
+    <ClCompile Include="..\..\ArxTools\DBHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\DelayExecuter.cpp" />
+    <ClCompile Include="..\..\ArxTools\FileHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\GeHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\gpc.cpp" />
+    <ClCompile Include="..\..\ArxTools\JigHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\LineSelect.cpp" />
+    <ClCompile Include="..\..\ArxTools\LoadCuix.cpp" />
+    <ClCompile Include="..\..\ArxTools\MixedHelper.cpp" />
+    <ClCompile Include="..\..\ArxTools\Opera.cpp" />
+    <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp" />
+    <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp" />
+    <ClCompile Include="..\..\ArxTools\win_iconv.cpp" />
     <ClCompile Include="..\base64\base64.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -177,10 +177,12 @@
     <ClCompile Include="..\Parking_cad\ModulesManager.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaGergul.cpp" />
     <ClCompile Include="..\Parking_cad\OperaLifePumpHouseSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp" />
@@ -188,6 +190,7 @@
     <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp" />
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
+    <ClCompile Include="..\Parking_cad\PointKey.cpp" />
     <ClCompile Include="..\Parking_cad\StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -200,27 +203,32 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\TangentReader\HackerArcStair.cpp" />
+    <ClCompile Include="..\TangentReader\HackerColumn_VD.cpp" />
+    <ClCompile Include="..\TangentReader\HackerLineStair.cpp" />
+    <ClCompile Include="..\TangentReader\HackerRectStair.cpp" />
+    <ClCompile Include="..\TangentReader\HackerWall_VD.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\arxTools\arxtools\ArxProgressBar.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\AutoRegCmd.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\CadPreviewCtrl.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\ClassFactory.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\Convertor.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\DBHelper.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\DelayExecuter.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\FileHelper.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\GeHelper.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\gpc.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\iconv.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\JigHelper.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\LineSelect.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\LoadCuix.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\MixedHelper.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\Opera.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\PointInPolygon.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\RTreeEx.h" />
-    <ClInclude Include="..\..\arxTools\arxtools\SDBDumyJigEntity.h" />
+    <ClInclude Include="..\..\ArxTools\ArxProgressBar.h" />
+    <ClInclude Include="..\..\ArxTools\AutoRegCmd.h" />
+    <ClInclude Include="..\..\ArxTools\CadPreviewCtrl.h" />
+    <ClInclude Include="..\..\ArxTools\ClassFactory.h" />
+    <ClInclude Include="..\..\ArxTools\Convertor.h" />
+    <ClInclude Include="..\..\ArxTools\DBHelper.h" />
+    <ClInclude Include="..\..\ArxTools\DelayExecuter.h" />
+    <ClInclude Include="..\..\ArxTools\FileHelper.h" />
+    <ClInclude Include="..\..\ArxTools\GeHelper.h" />
+    <ClInclude Include="..\..\ArxTools\gpc.h" />
+    <ClInclude Include="..\..\ArxTools\iconv.h" />
+    <ClInclude Include="..\..\ArxTools\JigHelper.h" />
+    <ClInclude Include="..\..\ArxTools\LineSelect.h" />
+    <ClInclude Include="..\..\ArxTools\LoadCuix.h" />
+    <ClInclude Include="..\..\ArxTools\MixedHelper.h" />
+    <ClInclude Include="..\..\ArxTools\Opera.h" />
+    <ClInclude Include="..\..\ArxTools\PointInPolygon.h" />
+    <ClInclude Include="..\..\ArxTools\RTreeEx.h" />
+    <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h" />
     <ClInclude Include="..\base64\base64.h" />
     <ClInclude Include="..\DES_CBC_5\cipher_des.h" />
     <ClInclude Include="..\DES_CBC_5\cipher_padding.h" />
@@ -231,6 +239,7 @@
     <ClInclude Include="..\jsoncpp\src\version.h" />
     <ClInclude Include="..\Parking_cad\ArxDialog.h" />
     <ClInclude Include="..\Parking_cad\Authenticate.h" />
+    <ClInclude Include="..\Parking_cad\Boundary.h" />
     <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
@@ -241,31 +250,39 @@
     <ClInclude Include="..\Parking_cad\ModulesManager.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h" />
+    <ClInclude Include="..\Parking_cad\OperaGergul.h" />
     <ClInclude Include="..\Parking_cad\OperaLifePumpHouseSet.h" />
     <ClInclude Include="..\Parking_cad\OperaLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\OperaModuleCall.h" />
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h" />
     <ClInclude Include="..\Parking_cad\OperaVillageSet.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
+    <ClInclude Include="..\Parking_cad\PointKey.h" />
     <ClInclude Include="..\Parking_cad\resource.h" />
     <ClInclude Include="..\Parking_cad\StdAfx.h" />
     <ClInclude Include="..\pystring\pystring.h" />
+    <ClInclude Include="..\TangentReader\HackerArcStair.h" />
+    <ClInclude Include="..\TangentReader\HackerColumn_VD.h" />
+    <ClInclude Include="..\TangentReader\HackerLineStair.h" />
+    <ClInclude Include="..\TangentReader\HackerRectStair.h" />
+    <ClInclude Include="..\TangentReader\HackerWall_VD.h" />
     <ClInclude Include="OperaModuleCall.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\arxTools\arxtools\DBHelper.inl" />
-    <None Include="..\..\arxTools\arxtools\设置环境变量.bat" />
+    <None Include="..\..\ArxTools\DBHelper.inl" />
+    <None Include="..\..\ArxTools\设置环境变量.bat" />
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\arxTools\arxtools\ReadMe.txt" />
+    <Text Include="..\..\ArxTools\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
