@@ -44,6 +44,7 @@ public:
 	static bool comparePoint(AcGePoint2d a, AcGePoint2d b);
 
 	static bool layerSet();
+	static bool layerSet(const CString& layerName, const int& layerColor);
 	static void setEntToLayer(AcDbObjectIdArray objectIds);
 	static bool isLayerClose(AcDbEntity *pEnt);
 	//add by yangbing on 2019/11/29

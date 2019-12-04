@@ -692,6 +692,53 @@ bool CEquipmentroomTool::layerSet()
 	return true;
 }
 
+bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColor)
+{
+	// 判断是否存在名称为“设备房”的图层
+	AcDbLayerTable *pLayerTbl;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	if (es != eOk)
+	{
+		return false;
+	}
+	if (pLayerTbl->has(layerName))//判断已经有了该图层，应置为当前图层
+	{
+		AcDbObjectId layerId;
+		if (pLayerTbl->getAt(layerName, layerId) != Acad::eOk)
+		{
+			pLayerTbl->close();
+			return false;
+		}
+		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
+		pLayerTbl->close();
+		if (es != eOk)
+		{
+			return false;
+		}
+		return true;
+	}
+
+	AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
+	pLayerTblRcd->setName(layerName);
+	AcDbObjectId layerTblRcdId;
+	pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
+
+	AcCmColor color;//设置图层颜色
+	color.setColorIndex(layerColor);
+	pLayerTblRcd->setColor(color);
+	// 将新建的层表记录添加到层表中
+	pLayerTblRcd->close();
+	pLayerTbl->close();
+	es = acdbCurDwg()->setClayer(layerTblRcdId);//设为当前图层
+	if (es != eOk)
+	{
+		return false;
+	}
+	return true;
+}
+
 void CEquipmentroomTool::setEntToLayer(AcDbObjectIdArray objectIds)
 {
 	for (int i=0;i<objectIds.length();i++)

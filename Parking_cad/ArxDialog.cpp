@@ -47,8 +47,8 @@
 #endif
 
 extern Authenticate g_auth;
-std::string CArxDialog::ms_posturl;
-AcGePoint2dArray CArxDialog::marr_coreWallData;
+std::string CArxDialog::ms_posturlPortone;
+std::string CArxDialog::ms_posturlPorttwo;
 
 
 //-----------------------------------------------------------------------------
@@ -64,6 +64,7 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_WM_TIMER()
 	ON_BN_CLICKED(IDC_CHECK_Partition, &CArxDialog::OnBnClickedCheckPartition)
 	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
+	ON_BN_CLICKED(IDC_BUTTON_V2OK, &CArxDialog::OnBnClickedButtonV2ok)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -75,15 +76,16 @@ CArxDialog::~CArxDialog() {
 	COperaParkingSpaceShow::ms_dlg = NULL;
 }
 
-void CArxDialog::setPostUrl(std::string& posturl)
+void CArxDialog::setPostUrlPortone(std::string& posturlPortone)
 {
-	ms_posturl = posturl;
+	ms_posturlPortone = posturlPortone;
 }
 
-void CArxDialog::SetCoreWallData(const AcGePoint2dArray& arryCoreWallData)
+void CArxDialog::setPostUrlPorttwo(std::string& posturlPorttwo)
 {
-	marr_coreWallData = arryCoreWallData;
+	ms_posturlPorttwo = posturlPorttwo;
 }
+
 //-----------------------------------------------------------------------------
 void CArxDialog::loadoutlineLayers()
 {
@@ -560,7 +562,7 @@ void CArxDialog::setInitData()
 	m_Non_Convexlevel.SetWindowText(m_sNonConvexLevel);
 }
 
-int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg)
+int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
 {
 	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
 	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
@@ -569,12 +571,27 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg)
 		sMsg = getHttpModule() + ":post模块错误。";
 		return 1;
 	}
-	const char * postUrl = ms_posturl.c_str();
+	const char * postUrl;
+	if (useV1)
+	{
+		postUrl = ms_posturlPortone.c_str();
+	}
+	else
+	{
+		postUrl = ms_posturlPorttwo.c_str();
+	}
 	//MessageBoxA(NULL, postUrl, "", 0);
 	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
 	if (code != 200)
 	{
-		sMsg = ms_posturl + ":网络或服务器错误。";
+		if (useV1)
+		{
+			sMsg = ms_posturlPortone + ":网络或服务器错误。";
+		}
+		else
+		{
+			sMsg = ms_posturlPorttwo + ":网络或服务器错误。";
+		}
 		return 2;
 	}
 
@@ -617,33 +634,7 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg)
 	return 4;
 }
 
-void CArxDialog::OnBnClickedButtonGetstartpoint()
-{
-	HideDialogHolder holder(this);
-	Doc_Locker doc_locker;
-	//提示用户输入一个点
-	ads_point pt;
-	if (acedGetPoint(NULL, _T("\n输入一个点："), pt) == RTNORM)
-	{
-		//如果点有效，继续执行
-		CompleteEditorCommand();
-		m_strXPt.Format(_T("%.2f"), pt[X]);
-		m_strYPt.Format(_T("%.2f"), pt[Y]);
-		m_sStartPoint = _T("(") + m_strXPt + _T(",") + m_strYPt + _T(")");
-		//显示点的坐标	 
-		m_editStartPoint.SetWindowText(m_sStartPoint);
-		startPtx = pt[X];
-		startPty = pt[Y];
-	}
-	else
-	{
-		m_sStartPoint = "选取了无效的点";
-		m_editStartPoint.SetWindowText(m_sStartPoint);
-	}
-}
-
-
-void CArxDialog::OnBnClickedOk()
+void CArxDialog::selectPort(const bool& useV1)
 {
 	// TODO: 在此添加控件通知处理程序代码
 	m_editLength.GetWindowText(m_strLength);
@@ -654,7 +645,7 @@ void CArxDialog::OnBnClickedOk()
 	m_ParkingCount.GetWindowText(m_sParkingCount);
 	m_Non_Convexlevel.GetWindowText(m_sNonConvexLevel);
 
-	double parkLength = _ttof(m_strLength.GetString());	
+	double parkLength = _ttof(m_strLength.GetString());
 	double parkWidth = _ttof(m_strWidth.GetString());
 	double laneWidth = _ttof(m_StrLaneWidth.GetString());
 	double squarcolumnLength = _ttof(m_StrSquarcolumnLength.GetString());
@@ -681,7 +672,7 @@ void CArxDialog::OnBnClickedOk()
 	{
 		direction = 0;
 	}
-	if (m_sParkingCount==_T(""))
+	if (m_sParkingCount == _T(""))
 	{
 		acedAlert(_T("没有输入车位总数信息!"));
 		return;
@@ -689,7 +680,7 @@ void CArxDialog::OnBnClickedOk()
 	CString outlineLayer;
 	m_outlineLayer.GetWindowText(outlineLayer);
 	std::vector<AcGePoint2dArray> outlinePts = getPlinePointForLayer(outlineLayer);
-	if (outlinePts.size()==0)
+	if (outlinePts.size() == 0)
 	{
 		acedAlert(_T("没有选择外轮廓图层信息!"));
 		return;
@@ -697,7 +688,7 @@ void CArxDialog::OnBnClickedOk()
 	CString shearwallLaye;
 	m_shearwallLayer.GetWindowText(shearwallLaye);
 	std::vector<AcGePoint2dArray> shearwallPts = getPlinePointForLayer(shearwallLaye);
-	if (shearwallPts.size()==0)
+	if (shearwallPts.size() == 0)
 	{
 		acedAlert(_T("没有选择剪力墙图层信息!"));
 		return;
@@ -709,7 +700,7 @@ void CArxDialog::OnBnClickedOk()
 		acedAlert(_T("没有选择车位排布起点信息!"));
 		return;
 	}
-	if (GetretreatlinePts.length()==0)
+	if (GetretreatlinePts.length() == 0)
 	{
 		acedAlert(_T("没有选择地库退线信息!"));
 		return;
@@ -717,6 +708,9 @@ void CArxDialog::OnBnClickedOk()
 	std::vector<int> types;
 	CString zonesLayer = _T("设备房");
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
+	CString strCoreWallLayer = _T("CoreWall");
+	std::vector<AcGePoint2dArray> coreWallPts = getPlinePointForLayer(strCoreWallLayer);
+
 	if (isPartition)
 	{
 		if (allPartitionPts.size() == 0)
@@ -725,8 +719,9 @@ void CArxDialog::OnBnClickedOk()
 			return;
 		}
 	}
+
 	Json::Value root;//根节点
-	//创建子节点
+					 //创建子节点
 	for (int e = 0; e < zonesPts.size(); e++)
 	{
 		Json::Value oneZoesPts;
@@ -753,6 +748,20 @@ void CArxDialog::OnBnClickedOk()
 			oneShearwallPline.append(shearwallPoint);
 		}
 		root["column"].append(oneShearwallPline);
+	}
+
+	//核心筒数据
+	for (int g = 0; g < coreWallPts.size(); g++)
+	{
+		Json::Value oneCoreWallPline;
+		for (int w = 0; w < coreWallPts[g].length(); w++)
+		{
+			Json::Value corewallPoint;
+			corewallPoint.append(coreWallPts[g][w].x);
+			corewallPoint.append(coreWallPts[g][w].y);
+			oneCoreWallPline.append(corewallPoint);
+		}
+		root["corewall"].append(oneCoreWallPline);
 	}
 
 	if (isPartition)
@@ -796,16 +805,6 @@ void CArxDialog::OnBnClickedOk()
 		point.append(GetretreatlinePts[i].y);
 		root["outer"].append(point);
 	}
-
-	//核心筒数据
-	for (int j = 0; j < marr_coreWallData.length(); j++)
-	{
-		Json::Value coreWallpoint;
-		coreWallpoint.append(marr_coreWallData[j].x);
-		coreWallpoint.append(marr_coreWallData[j].y);
-		root["corewall"].append(coreWallpoint);
-	}
-
 	//子节点
 	Json::Value params;
 	//字节点属性
@@ -831,14 +830,14 @@ void CArxDialog::OnBnClickedOk()
 	root["auth"] = auth;
 
 	std::string uuid;
-	int res = postToAIApi(root.toStyledString(), uuid);
+	int res = postToAIApi(root.toStyledString(), uuid,useV1);
 	if (res != 0)
 	{
 		CString	sMsg = GL::Ansi2WideByte(uuid.c_str()).c_str();
 		acedAlert(sMsg);
 		return;
 	}
-	CDlgWaiting::setUuid(uuid);
+	CDlgWaiting::setUuid(uuid,useV1);
 
 	//CDlgWaiting::Show(true);
 	//CDlgWaiting dlg;
@@ -861,6 +860,37 @@ void CArxDialog::OnBnClickedOk()
 	//os.close();
 
 	CAcUiDialog::OnOK();
+}
+
+void CArxDialog::OnBnClickedButtonGetstartpoint()
+{
+	HideDialogHolder holder(this);
+	Doc_Locker doc_locker;
+	//提示用户输入一个点
+	ads_point pt;
+	if (acedGetPoint(NULL, _T("\n输入一个点："), pt) == RTNORM)
+	{
+		//如果点有效，继续执行
+		CompleteEditorCommand();
+		m_strXPt.Format(_T("%.2f"), pt[X]);
+		m_strYPt.Format(_T("%.2f"), pt[Y]);
+		m_sStartPoint = _T("(") + m_strXPt + _T(",") + m_strYPt + _T(")");
+		//显示点的坐标	 
+		m_editStartPoint.SetWindowText(m_sStartPoint);
+		startPtx = pt[X];
+		startPty = pt[Y];
+	}
+	else
+	{
+		m_sStartPoint = "选取了无效的点";
+		m_editStartPoint.SetWindowText(m_sStartPoint);
+	}
+}
+
+
+void CArxDialog::OnBnClickedOk()
+{
+	selectPort(true);
 }
 
 
@@ -1031,4 +1061,11 @@ void CArxDialog::OnEnKillfocusEditNonConvexlevel()
 		acedAlert(_T("请输入0.1到0.6之间数值!"));
 		m_Non_Convexlevel.SetWindowText(_T("0.2"));
 	}
+}
+
+
+void CArxDialog::OnBnClickedButtonV2ok()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	selectPort(false);
 }

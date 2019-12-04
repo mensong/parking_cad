@@ -14,7 +14,9 @@
 #include "GeHelper.h"
 
 std::string CDlgWaiting::ms_uuid;
-std::string CDlgWaiting::ms_geturl;
+bool CDlgWaiting::ms_bUseV1;
+std::string CDlgWaiting::ms_strGeturlPortone;
+std::string CDlgWaiting::ms_strGeturlPorttwo;
 
 HANDLE g_hThread = NULL;
 CDlgWaiting* g_dlg = NULL;
@@ -76,16 +78,21 @@ void CDlgWaiting::Destroy()
 	}
 }
 
-void CDlgWaiting::setUuid(const std::string& uuid)
+void CDlgWaiting::setUuid(const std::string& uuid,const bool& useV1)
 {
 	ms_uuid = uuid;
+	ms_bUseV1 = useV1;
 }
 
-void CDlgWaiting::setGetUrl(const std::string& geturl)
+void CDlgWaiting::setGetUrlPortOne(const std::string& geturlPortone)
 {
-	ms_geturl = geturl;
+	ms_strGeturlPortone = geturlPortone;
 }
 
+void CDlgWaiting::setGetUrlPortTwo(const std::string& geturlPorttwo)
+{
+	ms_strGeturlPorttwo = geturlPorttwo;
+}
 // CDlgWaiting ¶Ô»°¿ò
 
 IMPLEMENT_DYNAMIC(CDlgWaiting, CAcUiDialog)
@@ -219,8 +226,16 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 	}
 
 	//std::string httpUrl = "http://10.8.212.187/query/";
-
-	std::string tempUrl = ms_geturl + ms_uuid;
+	std::string tempUrl;
+	if (ms_bUseV1)
+	{
+		tempUrl = ms_strGeturlPortone + ms_uuid;
+	}
+	else
+	{
+		tempUrl = ms_strGeturlPorttwo + ms_uuid;
+	}
+	
 	const char * sendUrl = tempUrl.c_str();
 
 	typedef void(*FN_setTimeout)(int timeout);

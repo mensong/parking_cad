@@ -54,7 +54,6 @@ void COperaModuleCall::mirrorJigshow(const CString& blockName)
 		CJigHelper::RESULT ec = jig.startJig();
 		if (ec == CJigHelper::RET_STRING)
 		{
-
 			CString sResult = jig.GetStringResult();
 			if (sResult == _T("V") || sResult == _T("v"))
 			{
@@ -86,15 +85,23 @@ void COperaModuleCall::mirrorJigshow(const CString& blockName)
 		else if (ec == CJigHelper::RET_POINT)
 		{
 			staus = false;
+			for (int i = 0; i < vctJigEnt.size(); ++i)
+			{
+				vctJigEnt[i]->setVisibility(AcDb::kVisible);
+				vctJigEnt[i]->close();
+			}
 		}
-
+		else if (ec == CJigHelper::RET_CANCEL|| ec == CJigHelper::RET_NULL)
+		{
+			for (int i = 0; i < vctJigEnt.size(); ++i)
+			{
+				vctJigEnt[i]->erase();
+				vctJigEnt[i]->close();
+			}
+			staus = false;
+		}
 	} while (staus);
 	//关闭图形实体
-	for (int i = 0; i < vctJigEnt.size(); ++i)
-	{
-		vctJigEnt[i]->setVisibility(AcDb::kVisible);
-		vctJigEnt[i]->close();
-	}
 }
 
 REG_CMD(COperaModuleCall, BGY, ModuleCall);//车库精细化模块

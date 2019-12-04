@@ -67,11 +67,11 @@ public:
 	std::string m_strComputerId;
 	std::string m_strUserId;
 	std::vector<AcGePoint2dArray> allPartitionPts;//分区点组
-	static void setPostUrl(std::string& posturl);
-	static std::string ms_posturl;
+	static void setPostUrlPortone(std::string& posturlPortone);
+	static std::string ms_posturlPortone;
+	static void setPostUrlPorttwo(std::string& posturlPorttwo);
+	static std::string ms_posturlPorttwo;
 
-	static void SetCoreWallData(const AcGePoint2dArray& arryCoreWallData);
-	static AcGePoint2dArray marr_coreWallData;
 protected:
 	void loadoutlineLayers();
 	void loadshearwallLayers();
@@ -80,7 +80,8 @@ protected:
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, bool bClosed = true);
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, std::vector<int>& types);
 	void setInitData();
-	int postToAIApi(const std::string& js, std::string& sMsg);
+	int postToAIApi(const std::string& js, std::string& sMsg, const bool& useV1);
+	void selectPort(const bool& useV1);
 
 protected:
 	virtual BOOL OnInitDialog();
@@ -135,4 +136,6 @@ private:
 	CMyEdit m_Non_Convexlevel;
 	// 分区编辑框
 	CEdit m_PartitionLineEdit;
+public:
+	afx_msg void OnBnClickedButtonV2ok();
 } ;
