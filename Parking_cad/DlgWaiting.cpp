@@ -12,6 +12,7 @@
 #include "ModulesManager.h"
 #include <process.h>
 #include "GeHelper.h"
+#include "OperaAddFrame.h"
 
 std::string CDlgWaiting::ms_uuid;
 bool CDlgWaiting::ms_bUseV1;
@@ -78,7 +79,7 @@ void CDlgWaiting::Destroy()
 	}
 }
 
-void CDlgWaiting::setUuid(const std::string& uuid,const bool& useV1)
+void CDlgWaiting::setUuid(const std::string& uuid, const bool& useV1)
 {
 	ms_uuid = uuid;
 	ms_bUseV1 = useV1;
@@ -235,7 +236,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 	{
 		tempUrl = ms_strGeturlPorttwo + ms_uuid;
 	}
-	
+
 	const char * sendUrl = tempUrl.c_str();
 
 	typedef void(*FN_setTimeout)(int timeout);
@@ -541,6 +542,63 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 			{
 				dParkingLength = data["cell_length"].asDouble();
 				dParkingWidth = data["cell_width"].asDouble();
+				std::vector<double> dataVector;
+				std::vector<CString> strDataNameVector;
+
+				double dSp = data["Sp"].asDouble();
+				strDataNameVector.push_back(_T("SP"));
+				dataVector.push_back(dSp);
+
+				double dSpt = data["Spt"].asDouble();
+				strDataNameVector.push_back(_T("SPT"));
+				dataVector.push_back(dSpt);
+
+				double dSpf = data["Spf"].asDouble();
+				strDataNameVector.push_back(_T("SPF"));
+				dataVector.push_back(dSpf);
+
+				double dSpf1 = data["Spf1"].asDouble();
+				strDataNameVector.push_back(_T("SPF1"));
+				dataVector.push_back(dSpf1);
+
+				double dSpf2 = data["Spf2"].asDouble();
+				strDataNameVector.push_back(_T("SPF2"));
+				dataVector.push_back(dSpf2);
+
+				double dSpf3 = data["Spf3"].asDouble();
+				strDataNameVector.push_back(_T("SPF3"));
+				dataVector.push_back(dSpf3);
+
+				double dCp = data["Cp"].asDouble();
+				strDataNameVector.push_back(_T("CP"));
+				dataVector.push_back(dCp);
+
+				double dJSpc = data["JSpc"].asDouble();
+				strDataNameVector.push_back(_T("JSPC"));
+				dataVector.push_back(dJSpc);
+
+				double dSpc = data["Spc"].asDouble();
+				strDataNameVector.push_back(_T("SPC"));
+				dataVector.push_back(dSpc);
+
+				double dH = data["H"].asDouble();
+				strDataNameVector.push_back(_T("H"));
+				dataVector.push_back(dH);
+
+				double Ht = data["Ht"].asDouble();
+				strDataNameVector.push_back(_T("HT"));
+				dataVector.push_back(Ht);
+				CString resultText;
+				for (int i = 0; i < dataVector.size(); i++)
+				{
+					CString strTempData;
+					strTempData.Format(_T("%.2f"), dataVector[i]);
+					resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
+				}
+				std::string strText = CT2A((LPCTSTR)resultText);//CString->std::string
+				strText.erase(strText.end() - 1);
+				COperaAddFrame::setTextStr(strText);
+				std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";
 			}
 			else
 			{

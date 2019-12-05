@@ -12,5 +12,8 @@ public:
 public:
 	//zhangzechi
 	static AcGePoint2d GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& changpt);
+	//yangbing
+	static void setTextStr(const std::string& strText);
+	static std::string ms_strText;
 };
 

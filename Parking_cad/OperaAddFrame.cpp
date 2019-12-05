@@ -3,6 +3,8 @@
 #include "DBHelper.h"
 #include "DlgAddFrame.h"
 
+std::string COperaAddFrame::ms_strText;
+
 COperaAddFrame::COperaAddFrame()
 {
 }
@@ -18,7 +20,7 @@ void COperaAddFrame::Start()
 		return;
 
 	AcDbExtents extFrame;
-	for (int i=0; i<ids.size(); ++i)
+	for (int i = 0; i < ids.size(); ++i)
 	{
 		AcDbExtents ext;
 		Acad::ErrorStatus es = DBHelper::GetEntityExtents(ext, ids[i]);
@@ -33,9 +35,8 @@ void COperaAddFrame::Start()
 	if (res == IDOK)
 	{
 		dlg.setBigFramePoints();
-
-		std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";//这里为测试，具体数据格式还需后续与客户确认
-		dlg.setBlockInserPoint(Textstr);
+		//"SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";//这里为测试，具体数据格式还需后续与客户确认
+		dlg.setBlockInserPoint(ms_strText);
 
 		AcDbPolyline* pFrame = new AcDbPolyline;
 		pFrame->addVertexAt(0, dlg.mBigFramept0);
@@ -45,7 +46,7 @@ void COperaAddFrame::Start()
 		pFrame->setClosed(Adesk::kTrue);
 		pFrame->setColorIndex(255);
 
-		AcGePoint2d centerpt = AcGePoint2d((dlg.mBigFramept0.x + dlg.mBigFramept2.x) / 2, (dlg.mBigFramept0.y+ dlg.mBigFramept2.y) / 2);
+		AcGePoint2d centerpt = AcGePoint2d((dlg.mBigFramept0.x + dlg.mBigFramept2.x) / 2, (dlg.mBigFramept0.y + dlg.mBigFramept2.y) / 2);
 
 		AcDbPolyline* pOutermostFrame = new AcDbPolyline;
 		pOutermostFrame->addVertexAt(0, GetChangePoint(centerpt, dlg.mBigFramept0));
@@ -59,10 +60,10 @@ void COperaAddFrame::Start()
 		vcEnts.push_back(pFrame);
 		vcEnts.push_back(pOutermostFrame);
 		DBHelper::CreateBlock(_T("图框"), vcEnts);
-		if(pFrame)
-		pFrame->close();
-		if(pOutermostFrame)
-		pOutermostFrame->close();
+		if (pFrame)
+			pFrame->close();
+		if (pOutermostFrame)
+			pOutermostFrame->close();
 
 		AcDbObjectId idEnt;
 		DBHelper::InsertBlkRef(idEnt, _T("图框"), AcGePoint3d(0, 0, 0));
@@ -79,5 +80,9 @@ AcGePoint2d COperaAddFrame::GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& c
 	return pt;
 }
 
+void COperaAddFrame::setTextStr(const std::string& strText)
+{
+	ms_strText = strText;
+}
 
 REG_CMD(COperaAddFrame, BGY, AddFrame);//增加图框
