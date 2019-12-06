@@ -12,8 +12,9 @@ class CDlgWaiting : public CAcUiDialog
 public:
 	static void Show(bool bShow = true);
 	static void Destroy();
-	static void setUuid(const std::string& uuid);
-	static void setGetUrl(const std::string& geturl);
+	static void setUuid(const std::string& uuid, const bool& useV1);
+	static void setGetUrlPortOne(const std::string& strGeturlPortone);
+	static void setGetUrlPortTwo(const std::string& strGeturlPorttwo);
 
 public:
 	CDlgWaiting(CWnd* pParent = NULL);   // 标准构造函数
@@ -38,7 +39,9 @@ public:
 	CString m_sStatus;	
 	int getStatus(std::string& josn, std::string& sMsg,CString& sIndex);
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
-	static std::string ms_geturl;//从初始化类取到配置文件中的IP地址接口
+	static bool ms_bUseV1;
+	static std::string ms_strGeturlPortone;//从初始化类取到配置文件中端口1的IP地址接口
+	static std::string ms_strGeturlPorttwo;//从初始化类取到配置文件中端口2的IP地址接
 	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName);
 	void axisShow(const AcGePoint2dArray& axisPts);
 	void laneShow(const AcGePoint2dArray& lanePts);

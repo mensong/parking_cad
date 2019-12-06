@@ -11,7 +11,7 @@
 #include "GeHelper.h"
 #include "RTreeEx.h"
 #include "Convertor.h"
-#include "ArxDialog.h"
+#include "EquipmentroomTool.h"
 
 COperaCoreWall::COperaCoreWall(void)
 {
@@ -24,6 +24,12 @@ COperaCoreWall::~COperaCoreWall(void)
 
 void COperaCoreWall::Start()
 {
+	if (ACADV_RELMAJOR > 20)
+	{
+		acutPrintf(_T("\n核心筒生成功能只能在天正环境下工作。后继版本再优化。"));
+		return;
+	}
+
 	typedef int (*FN_calcConvexHull)(CPoint_2 resuls[], CPoint_2 points[], int pointsCount);
 	typedef int (*FN_calcArrangement)(CPoint_2 resuls[], int* arrFaceSegsLen, CPoint_2 segPoints[], int nSegs);
 
@@ -69,7 +75,7 @@ void COperaCoreWall::Start()
 
 	std::vector<AcGeLineSeg2d*> segs;
 
-	std::vector<AcDbObjectId> ids = DBHelper::SelectEntity(_T("\r\n请选择实体:"));
+	std::vector<AcDbObjectId> ids = DBHelper::SelectEntity(_T("\r\n请选择天正墙自定义实体:"));
 
 	actrTransactionManager->startTransaction();
 
@@ -257,8 +263,10 @@ void COperaCoreWall::Start()
 
 		AcGePoint2d ptStart(segPointsForHull[i].x, segPointsForHull[i].y);
 		AcGePoint2d ptEnd(segPointsForHull[i + 1].x, segPointsForHull[i + 1].y);
-		ptStart.transformBy(-dir);
-		ptEnd.transformBy(dir);
+		//ptStart.transformBy(-dir);
+		//ptEnd.transformBy(dir);
+		ptStart = pk.getPoint(ptStart);
+		ptEnd = pk.getPoint(ptEnd);
 
 		segPointsForArrangement[p].x = ptStart.x;
 		segPointsForArrangement[p].y = ptStart.y;
@@ -278,8 +286,10 @@ void COperaCoreWall::Start()
 
 		AcGePoint2d ptStart = segsNoNeedOnHull[i].startPoint();
 		AcGePoint2d ptEnd = segsNoNeedOnHull[i].endPoint();
-		ptStart.transformBy(-dir);
-		ptEnd.transformBy(dir);
+		//ptStart.transformBy(-dir);
+		//ptEnd.transformBy(dir);
+		ptStart = pk.getPoint(ptStart);
+		ptEnd = pk.getPoint(ptEnd);
 
 		segPointsForArrangement[p].x = ptStart.x;
 		segPointsForArrangement[p].y = ptStart.y;
@@ -441,9 +451,10 @@ void COperaCoreWall::Start()
 	AcDbObjectId coreWallId;
 	DBHelper::AppendToDatabase(coreWallId,pPline);
 	pPline->close();
-	AcGePoint2dArray coreWallPoints;
-	getCoreWallData(coreWallId,coreWallPoints);
-	CArxDialog::SetCoreWallData(coreWallPoints);
+	AcDbObjectIdArray coreWallIds;
+	coreWallIds.append(coreWallId);
+	CEquipmentroomTool::layerSet(_T("CoreWall"),2);
+	CEquipmentroomTool::setEntToLayer(coreWallIds);
 }
 
 void COperaCoreWall::seg2AABBBox(const AcGePoint2d& pt1, const AcGePoint2d& pt2, double minPt[2], double maxPt[2])
@@ -495,63 +506,6 @@ void COperaCoreWall::point2AABBBox(double minPt[2], double maxPt[2], const AcGeP
 	minPt[1] = ptTmp.y;
 	maxPt[0] = ptTmp.x + width;
 	maxPt[1] = ptTmp.y + width;
-}
-
-void COperaCoreWall::getCoreWallData(const AcDbObjectId& coreWallId, AcGePoint2dArray& coreWallPoints)
-{
-	AcDbEntity *pEnt = NULL;
-	//下面语句需要判断操作成功与否
-	Acad::ErrorStatus es;
-	es = acdbOpenObject(pEnt, coreWallId, AcDb::kForRead);
-	if (es != Acad::eOk)
-	{
-		acutPrintf(_T("打开核心筒实体失败！"));
-		return;
-	}
-	std::vector<AcGePoint2d> allPoints;//得到的所有点
-	if (pEnt->isKindOf(AcDbPolyline::desc()))
-	{
-		AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
-		AcGeLineSeg2d line;
-		AcGeCircArc3d arc;
-		int n = pPline->numVerts();
-		for (int i = 0; i < n; i++)
-		{
-			if (pPline->segType(i) == AcDbPolyline::kLine)
-			{
-				pPline->getLineSegAt(i, line);
-				AcGePoint2d startPoint;
-				AcGePoint2d endPoint;
-				startPoint = line.startPoint();
-				endPoint = line.endPoint();
-				allPoints.push_back(startPoint);
-				allPoints.push_back(endPoint);
-			}
-			else if (pPline->segType(i) == AcDbPolyline::kArc)
-			{
-				pPline->getArcSegAt(i, arc);
-				AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
-				for (int x = 0; x < result.length(); x++)
-				{
-					AcGePoint2d onArcpoint(result[x].x, result[x].y);
-					allPoints.push_back(onArcpoint);
-				}
-			}
-		}
-		for (int x = 0; x < allPoints.size(); x++)
-		{
-			if (coreWallPoints.contains(allPoints[x]))
-			{
-				continue;
-			}
-			coreWallPoints.append(allPoints[x]);
-		}
-
-		//检测闭合
-		if (coreWallPoints.length() > 2 && coreWallPoints[coreWallPoints.length() - 1] != allPoints[0])
-			coreWallPoints.append(coreWallPoints[0]);
-	}
-	pEnt->close();
 }
 
 AcGePoint2dArray COperaCoreWall::getSegsOrderPoints(std::vector<AcGeLineSeg2d>& segs, AcGeTol tol/* = AcGeContext::gTol*/)
@@ -659,6 +613,7 @@ void COperaCoreWall::cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std
 
 	AcGePoint2d lastpt;
 
+	bool bIllegal = true;
 	for (int i = 0; i < segs.size(); ++i)
 	{
 		if(compareSegs.find(const_cast<AcGeLineSeg2d*>(&segs[i])) != compareSegs.end())
@@ -673,6 +628,7 @@ void COperaCoreWall::cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std
 			outpoints.append(tempstartpt);
 			outpoints.append(startpt);
 			lastpt = endpt;
+			bIllegal = false;
 			break;
 		}
 		else if (startpt.isEqualTo(tempendpt, tol))
@@ -682,6 +638,7 @@ void COperaCoreWall::cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std
 			outpoints.append(tempendpt);
 			outpoints.append(startpt);
 			lastpt = endpt;
+			bIllegal = false;
 			break;
 		}
 		else if (endpt.isEqualTo(tempstartpt, tol))
@@ -691,6 +648,7 @@ void COperaCoreWall::cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std
 			outpoints.append(tempstartpt);
 			outpoints.append(endpt);
 			lastpt = startpt;
+			bIllegal = false;
 			break;
 		}
 		else if (endpt.isEqualTo(tempendpt, tol))
@@ -700,9 +658,13 @@ void COperaCoreWall::cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std
 			outpoints.append(tempendpt);
 			outpoints.append(endpt);
 			lastpt = startpt;
+			bIllegal = false;
 			break;
 		}
 	}
+
+	if (bIllegal)
+		return;
 
 	if (compareSegs.size() != segs.size())
 	{

@@ -36,10 +36,14 @@ void COperaParkingSpaceShow::Start()
 		}
 		if (root["params"]["posturl"].isString() && root["params"]["geturl"].isString())
 		{
-			std::string postUrl = root["params"]["posturl"].asString();
-			std::string getUrl = root["params"]["geturl"].asString();
-			CDlgWaiting::setGetUrl(getUrl);
-			CArxDialog::setPostUrl(postUrl);
+			std::string postUrlOne = root["params"]["posturl"].asString();
+			std::string getUrlOne = root["params"]["geturl"].asString();
+			std::string postUrlTwo = root["params"]["posturlv2"].asString();
+			std::string getUrlTwo = root["params"]["geturlv2"].asString();
+			CDlgWaiting::setGetUrlPortOne(getUrlOne);
+			CDlgWaiting::setGetUrlPortTwo(getUrlTwo);
+			CArxDialog::setPostUrlPortone(postUrlOne);
+			CArxDialog::setPostUrlPorttwo(postUrlTwo);
 		}
 		else
 		{
