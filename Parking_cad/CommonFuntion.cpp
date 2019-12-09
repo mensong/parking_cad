@@ -1,9 +1,10 @@
 #include "stdafx.h"
-#include "CommonFuntion.h"
 #include <acedads.h>
 #include <vector>
 #include "LineSelect.h"
 #include <algorithm>
+#include "DBHelper.h"
+#include "CommonFuntion.h"
 #ifndef PI
 #define PI 3.1415926535898
 #endif
@@ -706,12 +707,12 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	}
 
-	void CCommonFuntion::DrowDimaligned(AcGeVector3d& vec, AcGePoint3d& point1, AcGePoint3d& point2)
+	void CCommonFuntion::DrowDimaligned(const AcString& setLayerName,AcGePoint3d& point1, AcGePoint3d& point2)
 	{
 		AcGePoint3d pt1 = point1;
 		AcGePoint3d pt2 = point2;
 		double movedata = pt1.distanceTo(pt2);
-
+		
 		AcGePoint3d centerpt = AcGePoint3d((pt1.x + pt2.x) / 2, (pt1.y + pt2.y) / 2, 0);
 
 		AcGeVector3d tempVec = AcGeVector3d(pt1 - pt2);
@@ -720,12 +721,11 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		AcGePoint3d Pt1 = pt1.transformBy(Linevec * 500);
 		AcGePoint3d Pt2 = pt2.transformBy(Linevec * 500);
 
-		char text[100];
-		memset(text, 0x00, sizeof(text));
-		sprintf_s(text, "%f", ceil(movedata));
-		ACHAR *printtext = CCommonFuntion::ChartoACHAR(text);
-
-		CreateDimAligned(Pt1, Pt2, centerpt,/* AcGeVector3d(4, 10, 0), */printtext);
+		CString disText;
+		int iDistance = ceil(movedata);
+		disText.Format(_T("%d"), iDistance);
+		
+		CreateDimAligned(setLayerName,Pt1, Pt2, centerpt,disText);
 	}
 
 	void CCommonFuntion::GetAllLineIntersectpoints(AcDbObjectIdArray& inputIds, AcGePoint3dArray& outptArr)
@@ -759,14 +759,14 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 			CString sPromptReport;
 			sPromptReport.Format(_T("Point (%.4f, %.4f, %.4f) - Entities [%s]\n"), ptKey.x, ptKey.y, ptKey.z, sEnts);
-			acutPrintf(sPromptReport);
+			//acutPrintf(sPromptReport);
 			AcGePoint3d tempPt = AcGePoint3d(ptKey.x, ptKey.y, ptKey.z);
 			outptArr.append(tempPt);
 
 		}
 	}
 
-	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, /*const AcGeVector3d& vecOffset,*/ const ACHAR* dimText)
+	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcString& setLayerName, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText)
 	{
 		/* 对齐标注：AcDbAlignedDimension类:
 		第一个参数：xLine1Point：第一条尺寸边界线的起点；第二个参数：xLine2Point：第二条尺寸边界线的起点：
@@ -777,6 +777,10 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		// 打开已经创建的标注，对文字的位置进行修改
 		AcDbEntity *pEnt = NULL;
 		Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, dimensionId, AcDb::kForWrite);
+		if (es != eOk)
+			return dimensionId;
+
+		pEnt->setLayer(setLayerName);
 
 		AcDbAlignedDimension *pDimension = AcDbAlignedDimension::cast(pEnt);
 		if (pDimension != NULL)
@@ -784,22 +788,19 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 			// 移动文字位置前，设置文字和尺寸线移动时的关系（这里指定为：尺寸线不动，在文字和尺寸线之间加箭头）
 			pDimension->setDimtmove(1);
 
-			// 根据偏移向量修正文字插入点的位置
-		//	AcGePoint3d ptText = pDimension->textPosition();
-		//	ptText = ptText + vecOffset;
-		//	pDimension->setTextPosition(ptText);//尺寸文本的移动
-			pDimension->setDimexe(300);//设置尺寸界线超出尺寸线距离为400
+			pDimension->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
+			pDimension->setDimexe(5);//设置尺寸界线超出尺寸线距离为400
 			pDimension->setDimexo(0);//设置尺寸界线的起点偏移量为300
-			pDimension->setDimtad(50);//文字位于标注线的上方
-			pDimension->setDimtxt(100);//标注文字的高度
-			pDimension->setDimasz(50);//箭头长度
+									 //pDimension->setDimtad(50);//文字位于标注线的上方
+			pDimension->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+			pDimension->setDimtxt(5);//标注文字的高度
+			pDimension->setDimdec(2);
+			pDimension->setDimasz(1);//箭头长度
 			pDimension->setDimlfac(1);//比例因子
 			AcCmColor suiceng;
 			suiceng.setColorIndex(3);
 			pDimension->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
 			pDimension->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
-		//	pDimension->setDimclrt(suiceng);//为标注文字指定颜色，0为随图层
-			pDimension->setDimdec(0);//设置标注主单位显示的小数位位数，0为随图层
 
 		}
 		pEnt->close();
@@ -855,7 +856,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	}
 
-	void CCommonFuntion::BatchLine(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId)
+	void CCommonFuntion::BatchLine(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId, double tol /*= 0.0*/)
 	{
 		AcDbEntity *pEnt = NULL;
 		AcDbEntity *tempEnt = NULL;
@@ -899,7 +900,8 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 					/*	AcGePoint3dArray intersectPoints;
 						tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);*/
-					if (IsParallel(startpt1, endpt1, startpt2, endpt2))
+					
+					if (IsParallel(startpt1, endpt1, startpt2, endpt2, tol))
 					{
 						tag = false;
 						bool ent_tag = true;
@@ -972,38 +974,35 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		}
 	}
 
-	bool CCommonFuntion::IsParallel(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3, AcGePoint3d& pt4)
+	bool CCommonFuntion::IsParallel(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3, AcGePoint3d& pt4, double tol/* = 0.0*/)
 	{
-		// 转换成一般式: Ax+By = C
-		double a1 = pt2.y - pt1.y;
-		double b1 = pt1.x - pt2.x;
-		double c1 = a1 * pt1.x + b1 * pt1.y;
-
-		//转换成一般式: Ax+By = C
-		double a2 = pt4.y - pt3.y;
-		double b2 = pt3.x - pt4.x;
-		double c2 = a2 * pt3.x + b2 * pt3.y;
-
-		// 计算交点		
-		double d = a1*b2 - a2*b1;
-		if (d == 0)
+		
+		double x1 = pt1.x;
+		double y1 = pt1.y;
+		double x2 = pt2.x;
+		double y2 = pt2.y;
+		double x3 = pt3.x;
+		double y3 = pt3.y;
+		double x4 = pt4.x;
+		double y4 = pt4.y;
+		double ax = x2 - x1;//vector of line 1
+		double ay = y2 - y1;
+		double bx = x4 - x3;//vector of line 2
+		double by = y4 - y3;
+		double dvalue = (ax*by - ay*bx) / (ax*bx + ay*by);
+		if (abs(dvalue) <= tol)
 			return true;
 		else
 			return false;
-
-
 	}
 
 	AcDbExtents CCommonFuntion::GetBigExtents(AcDbObjectIdArray& inputId)
 	{
-		AcDbEntity *pEnt = NULL;
 		AcDbExtents extents;
 		for (int i = 0; i < inputId.length(); i++)
 		{
-			if (Acad::eOk != acdbOpenObject(pEnt, inputId[i], AcDb::kForRead))
-				continue;
 			AcDbExtents tempextents;
-			pEnt->bounds(tempextents);
+			DBHelper::GetEntityExtents(tempextents,inputId[i]);
 			extents.addExt(tempextents);
 		}
 
@@ -1021,9 +1020,9 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		AcGeVector3d projectvec = vec.normalize();
 
 		AcGePoint3d startpoint = pt1;
-		startpoint.transformBy(-1 * projectvec * 100);
+		startpoint.transformBy(-1 * projectvec * 10);
 		AcGePoint3d endpoint = pt2;
-		endpoint.transformBy(projectvec * 100);
+		endpoint.transformBy(projectvec * 10);
 
 		//两点之间选择实体
 		AcDbObjectIdArray outIds;
@@ -1031,9 +1030,9 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 		for (int i = 0; i < outIds.length(); i++)
 		{
-
-			if (IsEntInLayer(outIds[i], LineLayerName))
-				return true;
+			
+			if (IsEntInLayer(outIds[i], LineLayerName))	
+				return true;		
 		}
 		return false;
 	}
@@ -1455,7 +1454,8 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		} while (true);
 	}
 
-	double CCommonFuntion::distance(AcGePoint3d& p, AcGePoint3d& p1) {
+	double CCommonFuntion::distance(AcGePoint3d& p, AcGePoint3d& p1) 
+	{
 		return hypot(p.x - p1.x, p.y - p1.y);
 	}
 
@@ -1497,4 +1497,34 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		ans = 2 * s / a;// 返回点到线的距离（利用三角形面积公式求高）
 		return ans;
 
+	}
+
+	void CCommonFuntion::setLayer(const CString& layerName, const int& layerColor)
+	{
+		// 获得当前图形的层表
+		AcDbLayerTable *pLayerTbl = NULL;
+		acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+
+		// 是否已经包含指定的层表记录
+		if (pLayerTbl->has(layerName))
+		{
+			pLayerTbl->close();
+			return;
+		}
+
+		// 创建新的层表记录
+		AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
+		pLayerTblRcd->setName(layerName);
+
+		// 设置颜色,层的其他属性（线型等）都用缺省值
+		AcCmColor color;
+		color.setColorIndex(layerColor);
+		pLayerTblRcd->setColor(color);
+
+		// 将新建的层表记录添加到层表中
+		AcDbObjectId layerTblRcdId;
+		pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
+		acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);
+		pLayerTblRcd->close();
+		pLayerTbl->close();
 	}

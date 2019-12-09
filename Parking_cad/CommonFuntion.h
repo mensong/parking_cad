@@ -45,9 +45,9 @@ public:
 	//将所有交点进行排序，取得左下、左上、右上、右下角的点
 	static void GetCornerPoint(AcGePoint3dArray& inputptArr,AcGePoint3d& lefdownPt,AcGePoint3d& lefupPt,AcGePoint3d& rigthupPt,AcGePoint3d& rigthdownPt);
 	//确定方向和两点，画尺寸标注
-	static void DrowDimaligned(AcGeVector3d& vec, AcGePoint3d& point1, AcGePoint3d& point2);
+	static void DrowDimaligned(const AcString& setLayerName, AcGePoint3d& point1, AcGePoint3d& point2);
 	//画尺寸标注
-	static AcDbObjectId CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine,/*const AcGeVector3d& vecOffset,*/ const ACHAR* dimText);
+	static AcDbObjectId CreateDimAligned(const AcString& setLayerName, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine,/*const AcGeVector3d& vecOffset,*/ const ACHAR* dimText);
 	//根据相对直角坐标来计算一个点的位置：
 	static AcGePoint3d RelativePoint(const AcGePoint3d& pt, double x, double y);
 	//求线段长度
@@ -56,9 +56,9 @@ public:
 	static void DeleteEnt(AcDbObjectIdArray& inputIds);
 	static void DeleteEnt(AcDbObjectId& inputId);
 	//将线段进行平行批量分组
-	static void BatchLine(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId);
+	static void BatchLine(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId, double tol = 0.0);
 	//两条线段是否平行,pt1和pt2为一条直线两端点，pt3和pt4为另外一条直线的两端点
-	static bool IsParallel(AcGePoint3d& pt1,AcGePoint3d& pt2,AcGePoint3d& pt3, AcGePoint3d& pt4);
+	static bool IsParallel(AcGePoint3d& pt1,AcGePoint3d& pt2,AcGePoint3d& pt3, AcGePoint3d& pt4, double tol=0.0);
 	//求多个实体组成的最大包围框
 	static AcDbExtents GetBigExtents(AcDbObjectIdArray& inputId);
 	//判断实体是否在指定图层
@@ -81,6 +81,7 @@ public:
 	static bool InserBlockFormDWG(const CString& dwgblockname, const CString& dwgpath, AcGePoint3d& inserpoint,AcDbObjectId& outinserblockid);
 	//获取指定数据库中指定块表中的所有实体的ID
 	static int getIdsByDwgBlkName(AcDbDatabase *pDwg, CString strBlkName, AcDbObjectIdArray &objIds);
+	static void setLayer(const CString& layerName, const int& layerColor);
 	
 public:
 	/*
