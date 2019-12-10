@@ -49,7 +49,11 @@ public:
 	void pillarShow(const AcGePoint2dArray& onePillarPts);
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
 	bool layerSet(const CString& layerName,const int& layerColor);
-	void setAxisLayerClose();
+	void setEntToLayer(const AcDbObjectId& entId, const CString& strLayerName);
+	void setLayerClose(const CString& layerName);
 	void creatNewParking(const double& dParkingLength,const double& dParkingWidth, CString& blockName);
 	bool getDataforJson(const std::string& json, CString& sMsg);
+	/*添加以实现车道标注*/
+	void setLandDismensions(double m_dDis, const AcString& CarLaneLayerName);
+	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText);
 };
