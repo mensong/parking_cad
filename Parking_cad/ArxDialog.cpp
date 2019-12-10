@@ -540,25 +540,25 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 
 void CArxDialog::setInitData()
 {
-	m_strLength = "5.1";
+	m_strLength = _T("5.1");
 	m_editLength.SetWindowText(m_strLength);
 
-	m_strWidth = "2.4";
+	m_strWidth = _T("2.4");
 	m_Width.SetWindowText(m_strWidth);
 
-	m_StrLaneWidth = "5.5";
+	m_StrLaneWidth = _T("5.5");
 	m_LaneWidth.SetWindowText(m_StrLaneWidth);
 
-	m_StrSquarcolumnLength = "0.6";
+	m_StrSquarcolumnLength = _T("0.6");
 	m_SquarcolumnLength.SetWindowText(m_StrSquarcolumnLength);
 
-	m_StrSquareColumnWidth = "0.6";
+	m_StrSquareColumnWidth = _T("0.6");
 	m_SquareColumnWidth.SetWindowText(m_StrSquareColumnWidth);
 
 	m_strUserId = g_auth.getCheckedUser();
 	m_strComputerId = g_auth.getCheckedSerial();
 
-	m_sNonConvexLevel = "0.2";
+	m_sNonConvexLevel = _T("0.2");
 	m_Non_Convexlevel.SetWindowText(m_sNonConvexLevel);
 }
 
@@ -672,11 +672,11 @@ void CArxDialog::selectPort(const bool& useV1)
 	{
 		direction = 0;
 	}
-	if (m_sParkingCount == _T(""))
-	{
-		acedAlert(_T("没有输入车位总数信息!"));
-		return;
-	}
+	//if (m_sParkingCount == _T(""))
+	//{
+	//	acedAlert(_T("没有输入车位总数信息!")); 
+	//	return;
+	//}
 	CString outlineLayer;
 	m_outlineLayer.GetWindowText(outlineLayer);
 	std::vector<AcGePoint2dArray> outlinePts = getPlinePointForLayer(outlineLayer);
@@ -908,7 +908,7 @@ void CArxDialog::OnBnClickedRadioDefault()
 	// TODO: 在此添加控件通知处理程序代码
 	GetDlgItem(IDC_EDIT_Length)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_STATIC_m)->ShowWindow(SW_HIDE);
-	m_strLength = "5.3";
+	m_strLength = _T("5.3");
 	m_editLength.SetWindowText(m_strLength);
 }
 
