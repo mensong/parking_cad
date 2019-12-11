@@ -326,9 +326,13 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	AcGeMatrix3d mat;
 	mat.setToScaling(mMultiple, mInserPicPoint);
 	AcDbObjectId mInserblockId;
-	DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat);
-
-	return true;
+	if (DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat))
+		return true;
+	else
+	{
+		acutPrintf(_T("车道指标表格插入失败"));
+		return false;
+	}
 
 }
 
