@@ -65,6 +65,7 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_BN_CLICKED(IDC_CHECK_Partition, &CArxDialog::OnBnClickedCheckPartition)
 	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
 	ON_BN_CLICKED(IDC_BUTTON_V2OK, &CArxDialog::OnBnClickedButtonV2ok)
+	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CArxDialog::OnBnClickedButtonGetendpoint)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -206,6 +207,7 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_PARKINGCOUNT, m_ParkingCount);
 	DDX_Control(pDX, IDC_EDIT_NON_CONVEXLEVEL, m_Non_Convexlevel);
 	DDX_Control(pDX, IDC_EDIT_PARTITION_LINE, m_PartitionLineEdit);
+	DDX_Control(pDX, IDC_EDIT_SHOWENDPOINT, m_EditShowEndPoint);
 }
 
 void CArxDialog::OnOK()
@@ -560,6 +562,9 @@ void CArxDialog::setInitData()
 
 	m_sNonConvexLevel = _T("0.2");
 	m_Non_Convexlevel.SetWindowText(m_sNonConvexLevel);
+
+	m_sParkingCount = _T("0");
+	m_ParkingCount.SetWindowText(m_sParkingCount);
 }
 
 int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
@@ -697,8 +702,15 @@ void CArxDialog::selectPort(const bool& useV1)
 	m_editStartPoint.GetWindowText(sStartPt);
 	if (sStartPt == _T(""))
 	{
-		acedAlert(_T("没有选择车位排布起点信息!"));
-		return;
+		startPtx = -1.0;
+		startPty = -1.0;
+	}
+	CString strEndPt;
+	m_EditShowEndPoint.GetWindowText(strEndPt);
+	if (strEndPt == _T(""))
+	{
+		dEndPtx = -1.0;
+		dEndPty = -1.0;
 	}
 	if (GetretreatlinePts.length() == 0)
 	{
@@ -820,6 +832,10 @@ void CArxDialog::selectPort(const bool& useV1)
 	startpoint.append(startPtx);
 	startpoint.append(startPty);
 	params["start_point"] = Json::Value(startpoint);
+	Json::Value endpoint;
+	endpoint.append(dEndPtx);
+	endpoint.append(dEndPty);
+	params["end_point"] = Json::Value(endpoint);
 	//子节点挂到根节点上
 	root["params"] = Json::Value(params);
 	Json::Value auth;
@@ -868,7 +884,7 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 	Doc_Locker doc_locker;
 	//提示用户输入一个点
 	ads_point pt;
-	if (acedGetPoint(NULL, _T("\n输入一个点："), pt) == RTNORM)
+	if (acedGetPoint(NULL, _T("\n请点选一个点作为车位排布起点："), pt) == RTNORM)
 	{
 		//如果点有效，继续执行
 		CompleteEditorCommand();
@@ -1068,4 +1084,31 @@ void CArxDialog::OnBnClickedButtonV2ok()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	selectPort(false);
+}
+
+
+void CArxDialog::OnBnClickedButtonGetendpoint()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	HideDialogHolder holder(this);
+	Doc_Locker doc_locker;
+	//提示用户输入一个点
+	ads_point pt;
+	if (acedGetPoint(NULL, _T("\n请点选一个点作为车位排布终点："), pt) == RTNORM)
+	{
+		//如果点有效，继续执行
+		CompleteEditorCommand();
+		m_strEndXPt.Format(_T("%.2f"), pt[X]);
+		m_strEndYPt.Format(_T("%.2f"), pt[Y]);
+		m_strEndPoint = _T("(") + m_strEndXPt + _T(",") + m_strEndYPt + _T(")");
+		//显示点的坐标	 
+		m_EditShowEndPoint.SetWindowText(m_strEndPoint);
+		dEndPtx = pt[X];
+		dEndPty = pt[Y];
+	}
+	else
+	{
+		m_strEndPoint = "选取了无效的点";
+		m_EditShowEndPoint.SetWindowText(m_strEndPoint);
+	}
 }

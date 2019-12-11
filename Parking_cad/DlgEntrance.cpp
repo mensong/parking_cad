@@ -27,6 +27,53 @@
 #include "DlgEntrance.h"
 #include "DBHelper.h"
 #include <json/json.h>
+#include "ModulesManager.h"
+#include "Convertor.h"
+#include "RTreeEx.h"
+
+std::string CDlgEntrance::ms_strEntrancePostUrlPort;
+std::string CDlgEntrance::ms_strEntrancePostUrlPortV2;
+
+void CDlgEntrance::deletParkingForEntrance()
+{
+	AcDbObjectIdArray parkingIds = DBHelper::GetEntitiesByLayerName(_T("parkings"));
+	if (parkingIds.length()<=0)
+	{
+		return;
+	}
+	//用于删除位于出入口的车位的rtree
+	RT::RTreeEx<UINT32, double, 2> rTreeOfParkingFilter;
+	for (int a = 0; a < parkingIds.length(); a++)
+	{
+		//对每个轴线操作
+		AcDbEntity* pEntArea = NULL;
+		Acad::ErrorStatus es;
+		es = acdbOpenAcDbEntity(pEntArea, parkingIds[a], kForRead);
+		if (es != eOk)
+		{
+			acutPrintf(_T("\n获取单个车位实体指针失败！"));
+			return;
+		}
+		if (pEntArea->isKindOf(AcDbBlockReference::desc()))
+		{
+			AcDbExtents BlkRefExtents;
+			DBHelper::GetEntityExtents(BlkRefExtents, pEntArea);
+			AcGePoint3d maxPoint = BlkRefExtents.maxPoint();
+			AcGePoint3d minPoint = BlkRefExtents.minPoint();
+			double positionMin[2];
+			double positionMax[2];
+			positionMin[0] = minPoint.x;
+			positionMin[1] = minPoint.y;
+			positionMax[0] = maxPoint.x;
+			positionMax[1] = maxPoint.y;
+			UINT32 handle = DBHelper::GetObjectIdHandle(parkingIds[a]);
+			rTreeOfParkingFilter.Insert(positionMin, positionMax, handle);//装handle
+		}
+		pEntArea->close();
+	}
+
+
+}
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgEntrance, CAcUiDialog)
@@ -219,4 +266,95 @@ void CDlgEntrance::OnBnClickedOk()
 	//子节点挂到根节点上
 	root["params"] = Json::Value(params);
 	std::string strData = root.toStyledString();
+	std::string uuid;
+	int res = postToAIApi(strData, uuid,true);
+	if (res != 0)
+	{
+		CString	sMsg = GL::Ansi2WideByte(uuid.c_str()).c_str();
+		acedAlert(sMsg);
+		return;
+	}
+	CAcUiDialog::OnOK();
+}
+
+void CDlgEntrance::setEntrancePostUrl(std::string& strEntrancePostUrl)
+{
+	ms_strEntrancePostUrlPort = strEntrancePostUrl;
+}
+
+void CDlgEntrance::setEntrancePostUrlV2(std::string& strEntrancePostUrlV2)
+{
+	ms_strEntrancePostUrlPortV2 = strEntrancePostUrlV2;
+}
+
+int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
+{
+	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
+	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
+	if (!fn_post)
+	{
+		sMsg = getHttpModule() + ":post模块错误。";
+		return 1;
+	}
+	const char * postUrl;
+	if (useV1)
+	{
+		postUrl = ms_strEntrancePostUrlPort.c_str();
+	}
+	else
+	{
+		postUrl = ms_strEntrancePostUrlPortV2.c_str();
+	}
+	//MessageBoxA(NULL, postUrl, "", 0);
+	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
+	if (code != 200)
+	{
+		if (useV1)
+		{
+			sMsg = ms_strEntrancePostUrlPort + ":网络或服务器错误。";
+		}
+		else
+		{
+			sMsg = ms_strEntrancePostUrlPortV2 + ":网络或服务器错误。";
+		}
+		return 2;
+	}
+
+	typedef const char* (*FN_getBody)(int&);
+	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
+	if (!fn_getBody)
+	{
+		sMsg = getHttpModule() + ":getBody模块错误。";
+		return 1;
+	}
+	int len = 0;
+	std::string json = fn_getBody(len);
+
+	Json::Reader reader;
+	Json::Value root;
+	//从字符串中读取数据
+	if (reader.parse(json, root))
+	{
+		if (root["status"].isInt())
+		{
+			int status = root["status"].asInt();
+			if (status != 0)
+			{
+				sMsg = "提交任务出错。";
+				return 3;
+			}
+		}
+		else
+		{
+			sMsg = "没有返回status字段。";
+			return 4;
+		}
+		//std::string messgae = root["messgae"].asString();
+		std::string result = root["result"].asString();
+		sMsg = result;
+		return 0;
+	}
+
+	sMsg = "json解析错误";
+	return 4;
 }
