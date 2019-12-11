@@ -58,6 +58,8 @@
 #define IDC_EDIT_TWOHORIZONTALDISTANCE  158
 #define IDC_EDIT_THIREHORZONTALDISTANCE 159
 #define IDC_BUTTON_GETENDPOINT          161
+#define IDC_EDIT1                       163
+#define IDC_EDIT_SHOWENDPOINT           163
 
 // Next default values for new objects
 // 
@@ -65,7 +67,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        113
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         162
+#define _APS_NEXT_CONTROL_VALUE         164
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif
