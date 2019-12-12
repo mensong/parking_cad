@@ -580,58 +580,62 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 				dParkingWidth = data["cell_width"].asDouble();
 				dLaneWidth = data["lane_width"].asDouble();
 				std::vector<double> dataVector;
-				std::vector<CString> strDataNameVector;
+				std::vector<std::string> strDataNameVector;
+				std::map < std::string , double > tableData;
 
 				double dSp = data["Sp"].asDouble();
-				strDataNameVector.push_back(_T("SP"));
+				strDataNameVector.push_back("SP");
 				dataVector.push_back(dSp);
 
 				double dSpt = data["Spt"].asDouble();
-				strDataNameVector.push_back(_T("SPT"));
+				strDataNameVector.push_back("SPT");
 				dataVector.push_back(dSpt);
 
 				double dSpf = data["Spf"].asDouble();
-				strDataNameVector.push_back(_T("SPF"));
+				strDataNameVector.push_back("SPF");
 				dataVector.push_back(dSpf);
 
 				double dSpf1 = data["Spf1"].asDouble();
-				strDataNameVector.push_back(_T("SPF1"));
+				strDataNameVector.push_back("SPF1");
 				dataVector.push_back(dSpf1);
 
 				double dSpf2 = data["Spf2"].asDouble();
-				strDataNameVector.push_back(_T("SPF2"));
+				strDataNameVector.push_back("SPF2");
 				dataVector.push_back(dSpf2);
 
 				double dSpf3 = data["Spf3"].asDouble();
-				strDataNameVector.push_back(_T("SPF3"));
+				strDataNameVector.push_back("SPF3");
 				dataVector.push_back(dSpf3);
 
 				double dCp = data["Cp"].asDouble();
-				strDataNameVector.push_back(_T("CP"));
+				strDataNameVector.push_back("CP");
 				dataVector.push_back(dCp);
 
 				double dJSpc = data["JSpc"].asDouble();
-				strDataNameVector.push_back(_T("JSPC"));
+				strDataNameVector.push_back("JSPC");
 				dataVector.push_back(dJSpc);
 
 				double dSpc = data["Spc"].asDouble();
-				strDataNameVector.push_back(_T("SPC"));
+				strDataNameVector.push_back("SPC");
 				dataVector.push_back(dSpc);
 
 				double dH = data["H"].asDouble();
-				strDataNameVector.push_back(_T("H"));
+				strDataNameVector.push_back("H");
 				dataVector.push_back(dH);
 
 				double Ht = data["Ht"].asDouble();
-				strDataNameVector.push_back(_T("HT"));
+				strDataNameVector.push_back("HT");
 				dataVector.push_back(Ht);
 				CString resultText;
 				for (int i = 0; i < dataVector.size(); i++)
 				{
 					CString strTempData;
 					strTempData.Format(_T("%.2f"), dataVector[i]);
-					resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
+					std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
+					tableData.insert(value);//²åÈëÐÂÔªËØ
+					//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
 				}
+				int gg = tableData.size();
 				std::string strText = CT2A((LPCTSTR)resultText);//CString->std::string
 				strText.erase(strText.end() - 1);
 				COperaAddFrame::setTextStr(strText);
@@ -883,7 +887,7 @@ void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayer
 		pLine->getEndPoint(endpoint);
 		AcGePoint3d centerpoint = AcGePoint3d((startpoint.x + endpoint.x) / 2, (startpoint.y + endpoint.y) / 2, (startpoint.z + endpoint.z) / 2);
 
-		AcGeVector3d movevec = AcGeVector3d(startpoint - endpoint);;
+		AcGeVector3d movevec = AcGeVector3d(startpoint - endpoint);
 		movevec.normalize();
 		centerpoint.transformBy(movevec * 800);
 

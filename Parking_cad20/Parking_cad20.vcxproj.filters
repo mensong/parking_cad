@@ -210,9 +210,6 @@
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ArxTools\ModulesManager.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -221,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\arxtools\ModulesManager.cpp">
+      <Filter>ArxTools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -404,9 +404,6 @@
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ArxTools\ModulesManager.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgEntrance.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -415,6 +412,9 @@
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\arxtools\ModulesManager.h">
+      <Filter>ArxTools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

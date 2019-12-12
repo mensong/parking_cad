@@ -14,8 +14,6 @@ IMPLEMENT_DYNAMIC(CDlgAddFrame, CAcUiDialog)
 
 CDlgAddFrame::CDlgAddFrame(CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(CDlgAddFrame::IDD, pParent)
-	, m_sFrameLen(_T(""))
-	, m_sFrameWidth(_T(""))
 {
 	
 }
@@ -192,9 +190,6 @@ void CDlgAddFrame::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_FRAME_LENGTH, m_editFrameLen);
 	DDX_Control(pDX, IDC_EDIT_FRAME_WIDTH, m_editFrameWidth);
 	DDX_Control(pDX, IDC_STA_PREVIEW, m_staPreview);
-	DDX_Control(pDX, IDC_BUTTON_EXCHANGE, m_btnExchange);
-	DDX_Text(pDX, IDC_EDIT_FRAME_LENGTH, m_sFrameLen);
-	DDX_Text(pDX, IDC_EDIT_FRAME_WIDTH, m_sFrameWidth);
 }
 
 
@@ -206,24 +201,7 @@ BOOL CDlgAddFrame::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_RAD_A0))->SetCheck(TRUE);
 	OnBnClickedRadA0();
 
-	setExchangeButtonImg();
-
 	return TRUE;
-}
-
-void CDlgAddFrame::setExchangeButtonImg()
-{
-	AcString ImgPath = DBHelper::GetArxDir() + _T("exchange.ico");
-
-	HICON hBitmap = (HICON)::LoadImage(
-		NULL,
-		ImgPath,                       // 图片全路径 
-		IMAGE_ICON,                   // 图片格式 
-		0, 0,
-		LR_LOADFROMFILE | LR_CREATEDIBSECTION);  // 注意LR_LOADFROMFILE
-
-	m_btnExchange.SetIcon(hBitmap);
-
 }
 
 BOOL CDlgAddFrame::PreTranslateMessage(MSG* pMsg)
@@ -248,7 +226,6 @@ BEGIN_MESSAGE_MAP(CDlgAddFrame, CAcUiDialog)
 	ON_BN_CLICKED(IDC_RAD_A3, &CDlgAddFrame::OnBnClickedRadA3)
 	ON_BN_CLICKED(IDC_RAD_A4, &CDlgAddFrame::OnBnClickedRadA4)
 	ON_BN_CLICKED(IDOK, &CDlgAddFrame::OnBnClickedOk)
-	ON_BN_CLICKED(IDC_BUTTON_EXCHANGE, &CDlgAddFrame::OnBnClickedButtonExchange)
 END_MESSAGE_MAP()
 
 
@@ -326,16 +303,24 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	std::map<AcString, AcString> mAttrMap;
 	for (int i = 0; i < outstr.size(); ++i)
 	{
+	    if(outstr[i].compare("") == 0)
+			continue;
+
 		std::vector<std::string> tempvt;
 		CCommonFuntion::Split(outstr[i], "=", tempvt);
-	    if(tempvt.size()!=2)
+
+		if(tempvt[0].compare("") == 0)
 			continue;
 
 		AcString bloacktag = CCommonFuntion::ChartoACHAR(tempvt[0].c_str());
 
+		if (tempvt[1].compare("") == 0)
+			continue;
+
 		AcString tagvalue = CCommonFuntion::ChartoACHAR(tempvt[1].c_str());
 
 		mAttrMap[bloacktag] = tagvalue;
+
 	}
 
 	AcGeMatrix3d mat;
@@ -438,20 +423,3 @@ bool CDlgAddFrame::IsDistanceAppoint(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoi
 
 }
 
-
-
-void CDlgAddFrame::OnBnClickedButtonExchange()
-{
-	// TODO: 在此添加控件通知处理程序代码
-	UpdateData(TRUE);
-
-	CString csExchang;
-
-	csExchang = m_sFrameLen;
-	m_sFrameLen = m_sFrameWidth;
-	m_sFrameWidth = csExchang;
-
-	UpdateData(FALSE);
-
-	refreshPreview();
-}

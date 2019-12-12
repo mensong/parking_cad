@@ -390,6 +390,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgEntrance.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgEquipmentRoomSet.cpp"
 				>
 			</File>
@@ -410,15 +414,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\ModulesManager.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\MyEdit.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaAddFrame.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaAxleNetMaking.cpp"
 				>
 			</File>
 			<File
@@ -459,6 +463,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaSetEntranceData.cpp"
 				>
 			</File>
 			<File
@@ -539,6 +547,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgEntrance.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgEquipmentRoomSet.h"
 				>
 			</File>
@@ -559,15 +571,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\ModulesManager.h"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\MyEdit.h"
 				>
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaAddFrame.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaAxleNetMaking.h"
 				>
 			</File>
 			<File
@@ -608,6 +620,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaSetEntranceData.h"
 				>
 			</File>
 			<File
@@ -758,6 +774,14 @@
 			</File>
 			<File
 				RelativePath="..\..\ArxTools\MixedHelper.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\arxtools\ModulesManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\arxtools\ModulesManager.h"
 				>
 			</File>
 			<File

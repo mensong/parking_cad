@@ -30,6 +30,7 @@
 #include "ModulesManager.h"
 #include "Convertor.h"
 #include "RTreeEx.h"
+#include "GeHelper.h"
 
 std::string CDlgEntrance::ms_strEntrancePostUrlPort;
 std::string CDlgEntrance::ms_strEntrancePostUrlPortV2;
@@ -73,6 +74,98 @@ void CDlgEntrance::deletParkingForEntrance()
 	}
 
 
+}
+
+void CDlgEntrance::getParkingIdAndAreaMap(std::map<AcDbObjectId, AcGePoint2dArray>& idAndParkingAreaMap, std::vector<AcGePoint2dArray>& parkingArea)
+{
+	AcDbObjectIdArray parkingIds = DBHelper::GetEntitiesByLayerName(_T("parkings"));
+	if (parkingIds.length()==0)
+	{
+		acutPrintf(_T("获取不到车位信息！"));
+		return;
+	}
+	for (int i=0; i<parkingIds.length(); i++)
+	{
+		AcDbEntity* pEntity = NULL;
+		if (acdbOpenAcDbEntity(pEntity, parkingIds[i], kForRead) != eOk)//这里只读即可
+		{
+			acutPrintf(_T("获取单个车位信息操作失败！"));
+			continue;
+		}
+		if (pEntity->isKindOf(AcDbBlockReference::desc()))
+		{
+			AcDbExtents boundaryOfBlk;
+			if (pEntity->bounds(boundaryOfBlk) != TRUE)
+			{
+				acutPrintf(_T("获取车位的边界信息失败！"));
+				continue;
+			}
+			AcGePoint3d positionOfBlkRefMax = boundaryOfBlk.maxPoint();
+			AcGePoint3d positionOfBlkRefMin = boundaryOfBlk.minPoint();
+			double positionMin[2];
+			double positionMax[2];
+			positionMin[0] = positionOfBlkRefMin.x;
+			positionMin[1] = positionOfBlkRefMin.y;
+			positionMax[0] = positionOfBlkRefMax.x;
+			positionMax[1] = positionOfBlkRefMax.y;
+			AcGePoint2d positionOfEnt;
+			positionOfEnt.x = (positionMax[0] + positionMin[0]) / 2;
+			positionOfEnt.y = (positionMax[1] + positionMin[1]) / 2;
+
+			AcGePoint2dArray pts;
+			AcGePoint2d ptLeftBottom(positionOfBlkRefMin.x, positionOfBlkRefMin.y);
+			AcGePoint2d ptRightBottom(positionOfBlkRefMax.x, positionOfBlkRefMin.y);
+			AcGePoint2d ptRightTop(positionOfBlkRefMax.x, positionOfBlkRefMax.y);
+			AcGePoint2d ptLeftTop(positionOfBlkRefMin.x, positionOfBlkRefMax.y);
+			pts.append(ptLeftBottom);
+			pts.append(ptRightBottom);
+			pts.append(ptRightTop);
+			pts.append(ptLeftTop);
+			std::pair<AcDbObjectId, AcGePoint2dArray> value(parkingIds[i], pts);
+			idAndParkingAreaMap.insert(value);//插入新元素
+			parkingArea.push_back(pts);
+		}
+		pEntity->close();
+	}
+}
+
+bool CDlgEntrance::isTwoPolyOverlap(AcGePoint2dArray pts1, AcGePoint2dArray pts2)
+{
+	/**
+	* 算法：判定两多段线是否重合：拿到交叉面积A1，拿到两多段线的其中最小面积A2，如果A1>(A2/3)，则判定为重合
+	*/
+	std::vector<AcGePoint2dArray> polysInter;
+	GeHelper::GetIntersectionOfTwoPolygon(pts1, pts2, polysInter);
+
+	double dAreaOverlap = 0;
+	for (int i=0; i<polysInter.size(); ++i)
+	{
+		dAreaOverlap += GeHelper::CalcPolygonArea(polysInter[i]);
+	}
+	//如果相交
+	if (GeHelper::eq(dAreaOverlap, 0.0))
+	{
+		return false;
+	}
+	return true;
+//下面部分代码可用于去重判断
+	//double dArea1 = 0;
+	//double width = 1;
+	//int countForPline = pts1.length();
+	//AcDbPolyline *pPline1 = new AcDbPolyline(countForPline);
+	//for (int j=0; j<countForPline; j++)
+	//{
+	//	pPline1->addVertexAt(0, pts1.at(j), 0, width, width);
+	//}
+	//pPline1->setClosed(true);
+	//pPline1->getArea(dArea1);
+	//double dArea2 = 1;
+	//pPline1->getArea(dArea2);
+	//double dAreaMin = std::min<>(dArea1, dArea2);
+	////!(A1>(A2/3))
+	//if (GeHelper::lteq(dAreaOverlap, dAreaMin / 3))//如果有相交部分大于自身1/3
+	//	return false;
+	//return true;
 }
 
 //-----------------------------------------------------------------------------
@@ -251,10 +344,10 @@ void CDlgEntrance::OnBnClickedOk()
 	params["entrance_width"] = Json::Value(dEntranceWidth);
 	params["one_gentle_slope"] = Json::Value(dOneGentleSlope);
 	params["two_gentle_slope"] = Json::Value(dTwoGentleSlope);
-	params["thire_gentle_slope"] = Json::Value(dThireGentleSlope);
+	params["three_gentle_slope"] = Json::Value(dThireGentleSlope);
 	params["one_horizontal_distance"] = Json::Value(dOneHorizontalDistance);
-	params["two_horizontalDistance"] = Json::Value(dTwoHorizontalDistance);
-	params["thire_horizontal_distance"] = Json::Value(dThireHorizontalDistance);
+	params["two_horizontal_distance"] = Json::Value(dTwoHorizontalDistance);
+	params["three_horizontal_distance"] = Json::Value(dThireHorizontalDistance);
 	Json::Value startpoint;
 	startpoint.append(dStartPtx);
 	startpoint.append(dStartPty);

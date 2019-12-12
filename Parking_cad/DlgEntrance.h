@@ -29,7 +29,7 @@
 #include "afxwin.h"
 #include "Resource.h"
 #include "MyEdit.h"
-
+#include <vector>
 //-----------------------------------------------------------------------------
 class CDlgEntrance : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgEntrance)
@@ -83,4 +83,6 @@ public:
 	static void setEntrancePostUrlV2(std::string& strEntrancePostUrlV2);
 	static std::string ms_strEntrancePostUrlPortV2;
 	void deletParkingForEntrance();
+	void getParkingIdAndAreaMap(std::map<AcDbObjectId,AcGePoint2dArray>& idAndParkingAreaMap,std::vector<AcGePoint2dArray>& parkingArea);
+	bool isTwoPolyOverlap(AcGePoint2dArray pts1, AcGePoint2dArray pts2);
 } ;

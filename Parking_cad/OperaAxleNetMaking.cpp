@@ -2,10 +2,8 @@
 #include "OperaAxleNetMaking.h"
 #include <tchar.h>
 #include "CommonFuntion.h"
-
-#ifndef PI
-#define PI 3.1415926535898
-#endif
+#include <algorithm>
+#include "GeHelper.h"
 
 REG_CMD(COperaAxleNetMaking, BGY, ANM);
 
@@ -80,7 +78,7 @@ void COperaAxleNetMaking::Start()
 			CCommonFuntion::DeleteEnt(Lineid);
 
 			//对距离排序
-			sort(distancevet.begin(), distancevet.end());
+			std::sort(distancevet.begin(), distancevet.end());
 
 			//按照排序好的距离，将结构体里对应的id，按照顺序存续在sortids，这样轴线的排序已完成
 			AcDbObjectIdArray sortIds;
@@ -137,7 +135,7 @@ void COperaAxleNetMaking::Start()
 				Line->close();
 			CCommonFuntion::DeleteEnt(Lineid);
 
-			sort(distancevet.begin(), distancevet.end());
+			std::sort(distancevet.begin(), distancevet.end());
 
 			AcDbObjectIdArray sortIds;
 			for (int m = 0; m < distancevet.size(); m++)
@@ -200,9 +198,9 @@ void COperaAxleNetMaking::InitialProcessing(const CString& layerNameofAXSI,AcDbO
 
 			AcGeVector3d vec = AcGeVector3d(interwithpointstemp[0] - interwithpoints[0]);
 			CCommonFuntion::DrowDimaligned(layerNameofAXSI,interwithpoints[0], interwithpointstemp[0]);
-			if (find(outputIds.begin(), outputIds.end(), sortIds[m]) == outputIds.end())
+			if (std::find(outputIds.begin(), outputIds.end(), sortIds[m]) == outputIds.end())
 				outputIds.push_back(sortIds[m]);
-			if (find(outputIds.begin(), outputIds.end(), sortIds[num]) == outputIds.end())
+			if (std::find(outputIds.begin(), outputIds.end(), sortIds[num]) == outputIds.end())
 				outputIds.push_back(sortIds[num]);
 			if (pTempEnt)
 				pTempEnt->close();
@@ -244,13 +242,13 @@ void COperaAxleNetMaking::DrowBigDimaligned(const CString& layerNameofAXSI,std::
 	AcGeVector3d Linevec;
 	double pi = 3.14159265;
 	if(angle== ((int)((3*pi / 2) * 100000000 + 0.5)) / 100000000.0)
-	     Linevec = tempVec.rotateBy(PI / 2, AcGeVector3d(0, 0, 1));
+	     Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
 	else if(angle== ((int)(pi * 100000000 + 0.5)) / 100000000.0)
-		Linevec = tempVec.rotateBy(3*PI / 2, AcGeVector3d(0, 0, 1));
+		Linevec = tempVec.rotateBy(3*ARX_PI / 2, AcGeVector3d(0, 0, 1));
 	else if(angle== ((int)((pi / 2) * 100000000 + 0.5)) / 100000000.0)
-		Linevec = tempVec.rotateBy(3*PI / 2, AcGeVector3d(0, 0, 1));
+		Linevec = tempVec.rotateBy(3*ARX_PI / 2, AcGeVector3d(0, 0, 1));
 	else if(angle==0)
-		Linevec = tempVec.rotateBy(PI / 2, AcGeVector3d(0, 0, 1));
+		Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
 
 	Linevec.normalize();
 	AcGePoint3d Pt1 = interwithpoints[0].transformBy(Linevec * 500);
@@ -272,7 +270,7 @@ AcDbObjectIdArray COperaAxleNetMaking::FilterIds(AcDbObjectIdArray& inputids, st
 	AcDbObjectIdArray specaildealIds;
 	for (int num = 0; num < inputids.length(); num++)
 	{
-		if (find(inputids1.begin(), inputids1.end(), inputids[num]) == inputids1.end() && find(inputids2.begin(), inputids2.end(), inputids[num]) == inputids2.end())
+		if (std::find(inputids1.begin(), inputids1.end(), inputids[num]) == inputids1.end() && find(inputids2.begin(), inputids2.end(), inputids[num]) == inputids2.end())
 			specaildealIds.append(inputids[num]);
 	}
 	return specaildealIds;
@@ -283,7 +281,7 @@ AcDbObjectIdArray COperaAxleNetMaking::FilterIds(AcDbObjectIdArray& inputtotalid
 	AcDbObjectIdArray specaildealIds;
 	for (int num = 0; num < inputtotalids.length(); num++)
 	{
-		if (find(inputids.begin(), inputids.end(), inputtotalids[num]) == inputids.end())
+		if (std::find(inputids.begin(), inputids.end(), inputtotalids[num]) == inputids.end())
 			specaildealIds.append(inputtotalids[num]);
 	}
 	return specaildealIds;
@@ -345,9 +343,9 @@ void COperaAxleNetMaking::SpecialDeal(const CString& layerNameofAXSI,AcDbObjectI
 	AcDbEntity *pTempEnt = NULL;
 
 	AcGeVector3d vect = AcGeVector3d(inputendpt - inputstartpt);
-	AcGeVector3d projectvect_90 = vect.rotateBy(PI, AcGeVector3d(0, 0, 1));
+	AcGeVector3d projectvect_90 = vect.rotateBy(ARX_PI, AcGeVector3d(0, 0, 1));
 	vect = AcGeVector3d(inputendpt - inputstartpt);
-	AcGeVector3d projectvect_180 = vect.rotateBy(2 * PI, AcGeVector3d(0, 0, 1));
+	AcGeVector3d projectvect_180 = vect.rotateBy(2 * ARX_PI, AcGeVector3d(0, 0, 1));
 
 	std::vector<std::vector<AcDbObjectId>> outputids;
 
@@ -399,9 +397,9 @@ void COperaAxleNetMaking::SpecialDeal(const CString& layerNameofAXSI,AcDbObjectI
 				bool tag = true;
 				for (int vectnum = 0; vectnum < outputids.size(); vectnum++)
 				{
-					if (find(outputids[vectnum].begin(), outputids[vectnum].end(), inputIds[i]) != outputids[vectnum].end())
+					if (std::find(outputids[vectnum].begin(), outputids[vectnum].end(), inputIds[i]) != outputids[vectnum].end())
 					{
-						if (find(outputids[vectnum].begin(), outputids[vectnum].end(), inputIds[m]) != outputids[vectnum].end())
+						if (std::find(outputids[vectnum].begin(), outputids[vectnum].end(), inputIds[m]) != outputids[vectnum].end())
 						{
 							tag = false;
 							break;

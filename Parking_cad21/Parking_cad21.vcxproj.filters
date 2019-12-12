@@ -117,9 +117,6 @@
     <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\ModulesManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\MyEdit.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -205,6 +202,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\arxtools\ModulesManager.cpp">
+      <Filter>ArxTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgEntrance.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -294,9 +303,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\HardDiskSerial.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\ModulesManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\MyEdit.h">
@@ -390,6 +396,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\arxtools\ModulesManager.h">
+      <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgEntrance.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
