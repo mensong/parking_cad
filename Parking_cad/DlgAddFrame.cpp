@@ -303,20 +303,12 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	std::map<AcString, AcString> mAttrMap;
 	for (int i = 0; i < outstr.size(); ++i)
 	{
-	    if(outstr[i].compare("") == 0)
-			continue;
-
 		std::vector<std::string> tempvt;
 		CCommonFuntion::Split(outstr[i], "=", tempvt);
-
-		if(tempvt[0].compare("") == 0)
+		if (tempvt.size() != 2)
 			continue;
 
-		AcString bloacktag = CCommonFuntion::ChartoACHAR(tempvt[0].c_str());
-
-		if (tempvt[1].compare("") == 0)
-			continue;
-
+		AcString bloacktag = CCommonFuntion::ChartoACHAR(tempvt[0].c_str());		
 		AcString tagvalue = CCommonFuntion::ChartoACHAR(tempvt[1].c_str());
 
 		mAttrMap[bloacktag] = tagvalue;
