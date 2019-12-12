@@ -1467,7 +1467,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		a = distance(linept1, linept2);
 		b = distance(linept1, pt);
 		c = distance(linept2, pt);
-		if (c + b == a)
+		if (abs(a-(c + b))<=0.1)
 		{
 			//点在线段上
 			ans = 0;
@@ -1496,7 +1496,6 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		double s = sqrt(p0 * (p0 - a) * (p0 - b) * (p0 - c));// 海伦公式求面积
 		ans = 2 * s / a;// 返回点到线的距离（利用三角形面积公式求高）
 		return ans;
-
 	}
 
 	void CCommonFuntion::setLayer(const CString& layerName, const int& layerColor)
