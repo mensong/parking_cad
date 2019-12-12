@@ -852,15 +852,15 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 		setLandDismensions(dTransLaneWidth, _T("lane"));
 	}
 	DBHelper::CallCADCommand(_T("ANM "));
-	setLayerClose(_T("axis"));
-	setLayerClose(_T("ÖáÍø±ê×¢"));
+	//setLayerClose(_T("axis"));
+	//setLayerClose(_T("ÖáÍø±ê×¢"));
 	layerSet(_T("0"), 7);
 	return true;
 }
 
 void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayerName)
 {
-	layerSet(_T("lanesDim"), 3);
+	layerSet(_T("lanesDim"), 7);
 	AcDbObjectIdArray RoadLineIds = DBHelper::GetEntitiesByLayerName(CarLaneLayerName);
 	if (RoadLineIds.length() == 0)
 	{

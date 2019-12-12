@@ -47,10 +47,15 @@ public:
 	CString m_sShearwallLayer;
 	int m_nDirectionCombo;
 	CString m_sStartPoint;
+	CString m_strEndPoint;
 	CString m_strXPt;
 	CString m_strYPt;
+	CString m_strEndXPt;
+	CString m_strEndYPt;
 	double startPtx;
 	double startPty;
+	double dEndPtx;
+	double dEndPty;
 	CString m_StrRetreatLine;
 	CString m_strLength;
 	double defaultLength;//默认单车位不靠墙长度
@@ -138,4 +143,9 @@ private:
 	CEdit m_PartitionLineEdit;
 public:
 	afx_msg void OnBnClickedButtonV2ok();
+private:
+	// 显示车位排布终点数据
+	CEdit m_EditShowEndPoint;
+public:
+	afx_msg void OnBnClickedButtonGetendpoint();
 } ;

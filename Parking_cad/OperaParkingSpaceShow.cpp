@@ -7,6 +7,7 @@
 #include "DlgWaiting.h"
 #include "ArxDialog.h"
 #include "FileHelper.h"
+#include "DlgEntrance.h"
 
 class CArxDialog* COperaParkingSpaceShow::ms_dlg = NULL;
 
@@ -40,10 +41,14 @@ void COperaParkingSpaceShow::Start()
 			std::string getUrlOne = root["params"]["geturl"].asString();
 			std::string postUrlTwo = root["params"]["posturlv2"].asString();
 			std::string getUrlTwo = root["params"]["geturlv2"].asString();
+			std::string strEntrancePostUrl = root["params"]["entrance_posturl"].asString();
+			std::string strEntrancePostUrlV2 = root["params"]["entrance_posturlv2"].asString();
 			CDlgWaiting::setGetUrlPortOne(getUrlOne);
 			CDlgWaiting::setGetUrlPortTwo(getUrlTwo);
 			CArxDialog::setPostUrlPortone(postUrlOne);
 			CArxDialog::setPostUrlPorttwo(postUrlTwo);
+			CDlgEntrance::setEntrancePostUrl(strEntrancePostUrl);
+			CDlgEntrance::setEntrancePostUrlV2(strEntrancePostUrlV2);
 		}
 		else
 		{

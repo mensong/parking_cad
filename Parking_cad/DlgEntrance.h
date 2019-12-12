@@ -77,4 +77,10 @@ private:
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedOk();
+	int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1);
+	static void setEntrancePostUrl(std::string& strEntrancePostUrl);
+	static std::string ms_strEntrancePostUrlPort;
+	static void setEntrancePostUrlV2(std::string& strEntrancePostUrlV2);
+	static std::string ms_strEntrancePostUrlPortV2;
+	void deletParkingForEntrance();
 } ;
