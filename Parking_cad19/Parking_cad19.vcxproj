@@ -31,7 +31,7 @@
     <ClCompile Include="..\..\ArxTools\LineSelect.cpp" />
     <ClCompile Include="..\..\ArxTools\LoadCuix.cpp" />
     <ClCompile Include="..\..\ArxTools\MixedHelper.cpp" />
-    <ClCompile Include="..\..\ArxTools\ModulesManager.cpp" />
+    <ClCompile Include="..\..\arxtools\ModulesManager.cpp" />
     <ClCompile Include="..\..\ArxTools\Opera.cpp" />
     <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp" />
     <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp" />
@@ -89,6 +89,7 @@
     <ClCompile Include="..\Parking_cad\Authenticate.cpp" />
     <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp" />
@@ -106,6 +108,7 @@
     <ClCompile Include="..\Parking_cad\OperaLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaParkingSpaceShow.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
     <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp" />
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
@@ -144,7 +147,7 @@
     <ClInclude Include="..\..\ArxTools\LineSelect.h" />
     <ClInclude Include="..\..\ArxTools\LoadCuix.h" />
     <ClInclude Include="..\..\ArxTools\MixedHelper.h" />
-    <ClInclude Include="..\..\ArxTools\ModulesManager.h" />
+    <ClInclude Include="..\..\arxtools\ModulesManager.h" />
     <ClInclude Include="..\..\ArxTools\Opera.h" />
     <ClInclude Include="..\..\ArxTools\PointInPolygon.h" />
     <ClInclude Include="..\..\ArxTools\RTreeEx.h" />
@@ -162,6 +165,7 @@
     <ClInclude Include="..\Parking_cad\Boundary.h" />
     <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
@@ -169,6 +173,7 @@
     <ClInclude Include="..\Parking_cad\HardDiskSerial.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h" />
     <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h" />
@@ -179,6 +184,7 @@
     <ClInclude Include="..\Parking_cad\OperaLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\OperaModuleCall.h" />
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h" />
+    <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
     <ClInclude Include="..\Parking_cad\OperaVillageSet.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />
@@ -232,7 +238,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="Autodesk.arx-2014.props" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
   <PropertyGroup Label="Configuration">
     <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v90'">v90</PlatformToolset>
     <PlatformToolset Condition="'$(ArxSDKPlatform)'=='v100'">v100</PlatformToolset>

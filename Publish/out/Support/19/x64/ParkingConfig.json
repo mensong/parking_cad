@@ -1,7 +1,9 @@
 {
    "params" : {
       "posturl" : "http://10.8.202.199:80/park",
-	  "geturl" : "http://10.8.202.199:80/query/"
+	  "geturl" : "http://10.8.202.199:80/query/",
+	  "posturlv2" : "http://10.8.202.199:81/park",
+	  "geturlv2" : "http://10.8.202.199:81/query/"
    },
    "layernames" : {
       "axislayer" : "axis"  

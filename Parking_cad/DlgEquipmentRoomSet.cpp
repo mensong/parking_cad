@@ -99,7 +99,7 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 	ads_name ent;
 	AcDbObjectIdArray arrPlineIds;
 	//获取选择集
-	acedPrompt(_T("\n请选择分区使用的多线段实体："));
+	acedPrompt(_T("\n请选择自定义设备房的多线段实体："));
 	struct resbuf *rb; // 结果缓冲区链表
 	rb = acutBuildList(RTDXF0, _T("LWPOLYLINE"), RTNONE);
 	// 选择复合要求的实体
@@ -136,10 +136,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 	if (vctEquipmentEnt.size() < 1)
 		return;
 	//拿到用户选择多线段实体指针
-	for (int i = 0; i < vctEquipmentEnt.size(); i++)
+	AcDbObjectIdArray EquipmentIds;
+	for (int i = 0; i < vctEquipmentEnt.size(); i++) 
 	{
 		if (vctEquipmentEnt[i]->isKindOf(AcDbPolyline::desc()))
 		{
+			AcDbObjectId EquipmentId = vctEquipmentEnt[i]->objectId();
+			EquipmentIds.append(EquipmentId);
 			std::vector<AcGePoint2d> allPoints;//得到的所有点
 			AcDbVoidPtrArray entsTempArray;
 			AcDbPolyline *pPline = AcDbPolyline::cast(vctEquipmentEnt[i]);
@@ -203,10 +206,31 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			CEquipmentroomTool::CreateHatch( _T("ANGLE"), onePlinePts, test);
 
 			//AcDbObjectId textId = CEquipmentroomTool::CreateText(tempPt2dto3d, sShowText, dArea / 10000);
-			AcDbObjectId textId = CEquipmentroomTool::CreateMText(tempPt2dto3d, sShowText, dArea / 10000, dArea / 2000);
+			AcDbExtents boundaryOfBlk;
+			if (pPline->bounds(boundaryOfBlk) != TRUE)
+			{
+				acutPrintf(_T("获取设备房的边界信息失败！"));
+				pPline->close();
+				vctEquipmentEnt[i]->close();
+				continue;
+			}
+			AcGePoint3d positionOfBlkRefMax = boundaryOfBlk.maxPoint();
+			AcGePoint3d positionOfBlkRefMin = boundaryOfBlk.minPoint();
+			AcGePoint2d ptLeftBottom(positionOfBlkRefMin.x, positionOfBlkRefMin.y);
+			AcGePoint2d ptRightBottom(positionOfBlkRefMax.x, positionOfBlkRefMin.y);
+			AcGePoint2d ptRightTop(positionOfBlkRefMax.x, positionOfBlkRefMax.y);
+			AcGePoint2d ptLeftTop(positionOfBlkRefMin.x, positionOfBlkRefMax.y);
+			double textheight = (ptLeftBottom.distanceTo(ptLeftTop))/6;
+			double textWidth = ptLeftBottom.distanceTo(ptRightBottom)/3*2;
+			AcDbObjectId textId = CEquipmentroomTool::CreateMText(tempPt2dto3d, sShowText, textheight, textWidth);
 			CEquipmentroomTool::textMove(tempPt2dto3d, textId);
+			pPline->close();
+			EquipmentIds.append(textId);
+			//CEquipmentroomTool::layerSet();//设置图层
+			//CEquipmentroomTool::setEntToLayer();//将实体置入图层
 		}
 		vctEquipmentEnt[i]->close();
-	}	
+	}
+	CEquipmentroomTool::setEntToLayer(EquipmentIds);
 }
 
