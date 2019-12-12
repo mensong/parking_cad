@@ -150,11 +150,11 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			AcGeLineSeg2d line;
 			AcGeCircArc3d arc;
 			int n = pPline->numVerts();
-			for (int i = 0; i < n; i++)
+			for (int j = 0; j < n; j++)
 			{
-				if (pPline->segType(i) == AcDbPolyline::kLine)
+				if (pPline->segType(j) == AcDbPolyline::kLine)
 				{
-					pPline->getLineSegAt(i, line);
+					pPline->getLineSegAt(j, line);
 					AcGePoint2d startPoint;
 					AcGePoint2d endPoint;
 					startPoint = line.startPoint();
@@ -162,9 +162,9 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 					allPoints.push_back(startPoint);
 					allPoints.push_back(endPoint);
 				}
-				else if (pPline->segType(i) == AcDbPolyline::kArc)
+				else if (pPline->segType(j) == AcDbPolyline::kArc)
 				{
-					pPline->getArcSegAt(i, arc);
+					pPline->getArcSegAt(j, arc);
 					AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
 					for (int x = 0; x < result.length(); x++)
 					{
