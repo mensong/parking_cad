@@ -38,14 +38,6 @@
 #include "Authenticate.h"
 #include "Convertor.h"
 
-#ifndef _ttof
-#ifdef UNICODE
-#define _ttof _wtof
-#else
-#define _ttof atof
-#endif
-#endif
-
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturlPortone;
 std::string CArxDialog::ms_posturlPorttwo;
@@ -650,14 +642,14 @@ void CArxDialog::selectPort(const bool& useV1)
 	m_ParkingCount.GetWindowText(m_sParkingCount);
 	m_Non_Convexlevel.GetWindowText(m_sNonConvexLevel);
 
-	double parkLength = _ttof(m_strLength.GetString());
-	double parkWidth = _ttof(m_strWidth.GetString());
-	double laneWidth = _ttof(m_StrLaneWidth.GetString());
-	double squarcolumnLength = _ttof(m_StrSquarcolumnLength.GetString());
-	double squareColumnWidth = _ttof(m_StrSquareColumnWidth.GetString());
+	double parkLength = _tstof(m_strLength.GetString());
+	double parkWidth = _tstof(m_strWidth.GetString());
+	double laneWidth = _tstof(m_StrLaneWidth.GetString());
+	double squarcolumnLength = _tstof(m_StrSquarcolumnLength.GetString());
+	double squareColumnWidth = _tstof(m_StrSquareColumnWidth.GetString());
 	//squareColumnWidth = ((float)((int)((squareColumnWidth + 0.005) * 100))) / 100;//保留精度操作
 	int nParkingCount = _ttoi(m_sParkingCount.GetString());
-	double dNon_Convexlevel = _ttof(m_sNonConvexLevel.GetString());
+	double dNon_Convexlevel = _tstof(m_sNonConvexLevel.GetString());
 	if (1 == m_checkPartition.GetCheck())
 	{
 		isPartition = true;
@@ -1071,7 +1063,7 @@ void CArxDialog::OnEnKillfocusEditNonConvexlevel()
 	// TODO: 在此添加控件通知处理程序代码
 	CString sTempNonLev;
 	m_Non_Convexlevel.GetWindowText(sTempNonLev);
-	double dNon_Convexlevel = _ttof(sTempNonLev.GetString());
+	double dNon_Convexlevel = _tstof(sTempNonLev.GetString());
 	if ((dNon_Convexlevel > 0.6) || (dNon_Convexlevel < 0.1))
 	{	
 		acedAlert(_T("请输入0.1到0.6之间数值!"));

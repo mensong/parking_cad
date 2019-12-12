@@ -327,14 +327,14 @@ void CDlgEntrance::OnBnClickedOk()
 	CString strThireHorizontalDistance;
 	m_ThireHorizontalDistance.GetWindowText(strThireHorizontalDistance);
 
-	double dLimitHeight = _ttof(strLimitHeight.GetString());
-	double dEntranceWidth = _ttof(strEntranceWidth.GetString());
-	double dOneGentleSlope = _ttof(strOneGentleSlope.GetString());
-	double dTwoGentleSlope = _ttof(strTwoGentleSlope.GetString());
-	double dThireGentleSlope = _ttof(strThireGentleSlope.GetString());
-	double dOneHorizontalDistance = _ttof(strOneHorizontalDistance.GetString());
-	double dTwoHorizontalDistance = _ttof(strTwoHorizontalDistance.GetString());
-	double dThireHorizontalDistance = _ttof(strThireHorizontalDistance.GetString());
+	double dLimitHeight = _tstof(strLimitHeight.GetString());
+	double dEntranceWidth = _tstof(strEntranceWidth.GetString());
+	double dOneGentleSlope = _tstof(strOneGentleSlope.GetString());
+	double dTwoGentleSlope = _tstof(strTwoGentleSlope.GetString());
+	double dThireGentleSlope = _tstof(strThireGentleSlope.GetString());
+	double dOneHorizontalDistance = _tstof(strOneHorizontalDistance.GetString());
+	double dTwoHorizontalDistance = _tstof(strTwoHorizontalDistance.GetString());
+	double dThireHorizontalDistance = _tstof(strThireHorizontalDistance.GetString());
 
 	Json::Value root;//根节点
 	//创建子节点
