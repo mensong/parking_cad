@@ -60,8 +60,14 @@ protected:
 	
 	bool InpromDRenceFromDWG(const double& inputLen);
 	bool IsDistanceAppoint(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3);
+	void setExchangeButtonImg();
 
 	double mBlockextentsLen;
 	double mBlockextentsWidth;
 	double mMultiple;
+public:
+	CButton m_btnExchange;
+	afx_msg void OnBnClickedButtonExchange();
+	CString m_sFrameLen;
+	CString m_sFrameWidth;
 };
