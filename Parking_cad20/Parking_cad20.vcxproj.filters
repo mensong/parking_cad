@@ -213,6 +213,15 @@
     <ClCompile Include="..\..\ArxTools\ModulesManager.cpp">
       <Filter>ArxTools</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgEntrance.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
@@ -397,6 +406,15 @@
     </ClInclude>
     <ClInclude Include="..\..\ArxTools\ModulesManager.h">
       <Filter>ArxTools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgEntrance.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
