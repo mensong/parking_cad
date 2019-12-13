@@ -21,6 +21,7 @@ void COperaAddFrame::Start()
 		return;
 
 	double SPF1area = getPloyLineArea(ids, _T("…Ë±∏∑ø"));
+	double CPvalue = getNumberOfCars(ids, _T("parkings"));
 
 	AcDbExtents extFrame;
 	for (int i = 0; i < ids.size(); ++i)
@@ -53,7 +54,7 @@ void COperaAddFrame::Start()
 		picAttributedata["H"] = 3.55;
 		picAttributedata["HT"] = 1;
 
-		std::string sPicAttributeText = setPicAttributeData(SPF1area, picAttributedata);
+		std::string sPicAttributeText = setPicAttributeData(SPF1area, CPvalue,picAttributedata);
 
 		dlg.setBlockInserPoint(sPicAttributeText);
 
@@ -78,16 +79,50 @@ void COperaAddFrame::Start()
 		std::vector<AcDbEntity*> vcEnts;
 		vcEnts.push_back(pFrame);
 		vcEnts.push_back(pOutermostFrame);
-		DBHelper::CreateBlock(_T("ÕºøÚ"), vcEnts);
+
+		AcString setblockname;
+		if (!isHasBlockName(_T("ÕºøÚ"), setblockname))
+			setblockname = _T("ÕºøÚ1");
+		
+		DBHelper::CreateBlock(setblockname, vcEnts);
 		if (pFrame)
 			pFrame->close();
 		if (pOutermostFrame)
 			pOutermostFrame->close();
 
 		AcDbObjectId idEnt;
-		DBHelper::InsertBlkRef(idEnt, _T("ÕºøÚ"), AcGePoint3d(0, 0, 0));
+		DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0));
+
+		dlg.setBlokcLayer(_T("ÕºøÚ"), idEnt);
 
 	}
+}
+
+bool COperaAddFrame::isHasBlockName(const AcString& blockname, AcString& outblockname)
+{
+	AcDbBlockTable *pBlockTable = NULL;
+	Acad::ErrorStatus es = acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
+	if (Acad::eOk != es)
+	{
+		return es;
+	}
+
+	for (int i=1; i<100; i++)
+	{
+		CString tempblockname;
+		tempblockname.Format(_T("%s%d"), blockname, i);
+		if (Adesk::kTrue == pBlockTable->has(tempblockname))
+		   continue;
+
+		outblockname = tempblockname;
+
+		if (pBlockTable)
+			pBlockTable->close();
+
+		return true;
+	}
+	
+	return false;
 }
 
 AcGePoint2d COperaAddFrame::GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& changpt)
@@ -186,7 +221,37 @@ double COperaAddFrame::getPloyLineArea(std::vector<AcDbObjectId>& inputIds, cons
 
 }
 
-std::string COperaAddFrame::setPicAttributeData(double SPF1value, std::map<std::string, double>& picAttributedata)
+double COperaAddFrame::getNumberOfCars(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty)
+{
+	int num = 0;
+	AcDbBlockReference* pBlkRef = NULL;
+
+	for (int i = 0; i < inputIds.size(); i++)
+	{
+		
+		if (acdbOpenObject(pBlkRef, inputIds[i], kForRead) != eOk)
+			continue;
+
+		CString layername = pBlkRef->layer();
+		if (layername.Compare(layerNameofEnty) == 0)
+		{
+			num++;
+
+			if (pBlkRef)
+				pBlkRef->close();
+			continue;
+		}
+		else
+		{
+			if (pBlkRef)
+				pBlkRef->close();
+		}
+	}
+
+	return (double)num;
+}
+
+std::string COperaAddFrame::setPicAttributeData(double SPF1value, double CPvalue, std::map<std::string, double>& picAttributedata)
 {
 	//"SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1"
 	double SPvalue = getPicAttributeValue(picAttributedata, "SP");
@@ -194,7 +259,7 @@ std::string COperaAddFrame::setPicAttributeData(double SPF1value, std::map<std::
 	double SPF3value = getPicAttributeValue(picAttributedata, "SPF3");
 	double SPF4value = getPicAttributeValue(picAttributedata, "SPF4");
 	double SPF5value = getPicAttributeValue(picAttributedata, "SPF5");
-	double CPvalue = getPicAttributeValue(picAttributedata, "CP");
+	//double CPvalue = getPicAttributeValue(picAttributedata, "CP");
 	double Hvalue = getPicAttributeValue(picAttributedata, "H");
 	double HTvalue = getPicAttributeValue(picAttributedata, "HT");
 
