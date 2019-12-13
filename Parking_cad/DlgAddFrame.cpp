@@ -14,6 +14,8 @@ IMPLEMENT_DYNAMIC(CDlgAddFrame, CAcUiDialog)
 
 CDlgAddFrame::CDlgAddFrame(CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(CDlgAddFrame::IDD, pParent)
+	, m_sFrameWidth(_T(""))
+	, m_sFrameLen(_T(""))
 {
 	
 }
@@ -190,6 +192,9 @@ void CDlgAddFrame::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_FRAME_LENGTH, m_editFrameLen);
 	DDX_Control(pDX, IDC_EDIT_FRAME_WIDTH, m_editFrameWidth);
 	DDX_Control(pDX, IDC_STA_PREVIEW, m_staPreview);
+	DDX_Text(pDX, IDC_EDIT_FRAME_WIDTH, m_sFrameWidth);
+	DDX_Text(pDX, IDC_EDIT_FRAME_LENGTH, m_sFrameLen);
+	DDX_Control(pDX, IDC_BUTTON_EXCHANGE, m_btnExchange);
 }
 
 
@@ -201,7 +206,24 @@ BOOL CDlgAddFrame::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_RAD_A0))->SetCheck(TRUE);
 	OnBnClickedRadA0();
 
+	setExchangeButtonImg();
+
 	return TRUE;
+}
+
+void CDlgAddFrame::setExchangeButtonImg()
+{
+	AcString ImgPath = DBHelper::GetArxDir() + _T("exchange.ico");
+
+	HICON hBitmap = (HICON)::LoadImage(
+		NULL,
+		ImgPath,                       // 图片全路径 
+		IMAGE_ICON,                   // 图片格式 
+		0, 0,
+		LR_LOADFROMFILE | LR_CREATEDIBSECTION);  // 注意LR_LOADFROMFILE
+
+	m_btnExchange.SetIcon(hBitmap);
+
 }
 
 BOOL CDlgAddFrame::PreTranslateMessage(MSG* pMsg)
@@ -226,6 +248,7 @@ BEGIN_MESSAGE_MAP(CDlgAddFrame, CAcUiDialog)
 	ON_BN_CLICKED(IDC_RAD_A3, &CDlgAddFrame::OnBnClickedRadA3)
 	ON_BN_CLICKED(IDC_RAD_A4, &CDlgAddFrame::OnBnClickedRadA4)
 	ON_BN_CLICKED(IDOK, &CDlgAddFrame::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON_EXCHANGE, &CDlgAddFrame::OnBnClickedButtonExchange)
 END_MESSAGE_MAP()
 
 
@@ -415,3 +438,20 @@ bool CDlgAddFrame::IsDistanceAppoint(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoi
 
 }
 
+
+
+void CDlgAddFrame::OnBnClickedButtonExchange()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData(TRUE);
+
+	CString csExchang;
+
+	csExchang = m_sFrameLen;
+	m_sFrameLen = m_sFrameWidth;
+	m_sFrameWidth = csExchang;
+
+	UpdateData(FALSE);
+
+	refreshPreview();
+}
