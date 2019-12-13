@@ -837,5 +837,5 @@ void CEquipmentroomTool::creatTextStyle(CString& textStyleName)
 	ts.FileName = _T("gbenor.shx");
 	ts.BigFontFileName = _T("gbcbig.shx");
 	ts.XScale = 1.0;
-	DBHelper::SetTextStyle(textStyleName, ts);
+	DBHelper::SetTextStyle(textStyleName, ts, false);
 }
