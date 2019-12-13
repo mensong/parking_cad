@@ -50,5 +50,7 @@ public:
 	//add by yangbing on 2019/11/29
 	/*面域填充*/
 	static AcDbObjectId CreateHatch( const CString& patName, const AcGePoint2dArray& allPlinePts, const AcGeDoubleArray& bulges);
+	/*创建文字样式*/
+	static void creatTextStyle(CString& textStyleName);
 };
 

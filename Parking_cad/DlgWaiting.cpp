@@ -636,10 +636,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 					//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
 				}
 				int gg = tableData.size();
-				std::string strText = CT2A((LPCTSTR)resultText);//CString->std::string
-				strText.erase(strText.end() - 1);
-				COperaAddFrame::setTextStr(strText);
-				std::string Textstr = "SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1";
+				COperaAddFrame::setTableDataMap(tableData);
 			}
 			else
 			{

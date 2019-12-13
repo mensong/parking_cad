@@ -95,7 +95,10 @@ AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaNa
 	useJigIds.append(squareId);
 	// 创建单行文字
 	AcGePoint3d ptInsert(sideLength / 2, sideLength / 2, 0);
-	AcDbObjectId textId = CreateText(ptInsert, areaName, sideLength / 3);
+	CString  textStyleName = _T("设备房用字体");
+	creatTextStyle(textStyleName);
+	AcDbObjectId textStyleId = DBHelper::GetTextStyle(textStyleName);
+	AcDbObjectId textId = CreateText(ptInsert, areaName, sideLength / 3,textStyleId);
 	textMove(ptInsert, textId);
 	useJigIds.append(textId);
 	return useJigIds;
@@ -826,4 +829,13 @@ AcDbObjectId CEquipmentroomTool::CreateHatch( const CString& patName, const AcGe
 	AcDbObjectId pHatchobjId;
 	DBHelper::AppendToDatabase(pHatchobjId, pHatch);
 	return pHatchobjId;*/
+}
+
+void CEquipmentroomTool::creatTextStyle(CString& textStyleName)
+{
+	TEXT_STYLE ts;
+	ts.FileName = _T("gbenor.shx");
+	ts.BigFontFileName = _T("gbcbig.shx");
+	ts.XScale = 1.0;
+	DBHelper::SetTextStyle(textStyleName, ts);
 }

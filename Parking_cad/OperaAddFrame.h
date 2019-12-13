@@ -7,8 +7,9 @@ class COperaAddFrame :
 public:
 	COperaAddFrame();
 	~COperaAddFrame();
-	virtual void Start();
 
+	virtual void Start();
+	
 public:
 	//zhangzechi
 	static AcGePoint2d GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& changpt);
@@ -18,7 +19,7 @@ public:
 	static double getPicAttributeValue(std::map<std::string, double>& picAttributedata, const std::string& picAttributeTage);
 	static std::string setStringData(double inputValue, const std::string& Keydata);
 	//yangbing
-	static void setTextStr(const std::string& strText);
-	static std::string ms_strText;
+	static void setTableDataMap(const std::map<std::string, double>& tableData);
+	static std::map<std::string, double> ms_mapTableData;
 };
 
