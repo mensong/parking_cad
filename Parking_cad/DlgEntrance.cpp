@@ -426,28 +426,67 @@ int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const
 	Json::Reader reader;
 	Json::Value root;
 	//从字符串中读取数据
+	std::vector<AcGePoint2dArray> delParkingPoints;
 	if (reader.parse(json, root))
 	{
-		if (root["status"].isInt())
+		Json::Value& del_cells = root["ent_for_del_cells"];
+		if (del_cells.isArray())
 		{
-			int status = root["status"].asInt();
-			if (status != 0)
+			int del_cellsSize = del_cells.size();
+			for (int k = 0; k < del_cellsSize; k++)
 			{
-				sMsg = "提交任务出错。";
-				return 3;
+				AcGePoint2dArray oneArrowPts;
+				if (del_cells[k].isArray())
+				{
+					int noneEnt_showSize = del_cells[k].size();
+					for (int g = 0; g < noneEnt_showSize; g++)
+					{
+						double ptX = del_cells[k][g][0].asDouble();
+						double ptY = del_cells[k][g][1].asDouble();
+						AcGePoint2d tempPt(ptX, ptY);
+						oneArrowPts.append(tempPt);
+					}
+				}
+				delParkingPoints.push_back(oneArrowPts);
 			}
 		}
 		else
 		{
-			sMsg = "没有返回status字段。";
+			sMsg = "没有返回ent_for_del_cells字段。";
 			return 4;
 		}
+		Json::Value& ent_show = root["ent_for_show"];
+		//if (ent_show.isArray())
+		//{
+		//	int ent_showSize = ent_show.size();
+		//	for (int k = 0; k < ent_showSize; k++)
+		//	{
+		//		AcGePoint2dArray oneArrowPts;
+		//		if (ent_show[k].isArray())
+		//		{
+		//			int noneEnt_showSize = ent_show[k].size();
+		//			for (int g = 0; g < noneEnt_showSize; g++)
+		//			{
+		//				double ptX = ent_show[k][g][0].asDouble();
+		//				double ptY = ent_show[k][g][1].asDouble();
+		//				AcGePoint2d tempPt(ptX, ptY);
+		//				oneArrowPts.append(tempPt);
+		//			}
+		//		}
+		//		entrancePoints.push_back(oneArrowPts);
+		//	}
+		//}
+		//else
+		//{
+		//	sMsg = "没有返回ent_for_del_cells字段。";
+		//	return 4;
+		//}
 		//std::string messgae = root["messgae"].asString();
 		std::string result = root["result"].asString();
 		sMsg = result;
+		int gg = delParkingPoints.size();
 		return 0;
 	}
-
 	sMsg = "json解析错误";
 	return 4;
 }

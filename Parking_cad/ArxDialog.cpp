@@ -836,7 +836,12 @@ void CArxDialog::selectPort(const bool& useV1)
 	auth["computer_id"] = GL::Ansi2Utf8(m_strComputerId.c_str());
 	auth["user_id"] = GL::Ansi2Utf8(m_strUserId.c_str());
 	root["auth"] = auth;
-
+	std::string strData = root.toStyledString();
+	if (strData == "")
+	{
+		acedAlert(_T("生成传输数据失败"));
+		return;
+	}
 	std::string uuid;
 	int res = postToAIApi(root.toStyledString(), uuid,useV1);
 	if (res != 0)
@@ -858,7 +863,7 @@ void CArxDialog::selectPort(const bool& useV1)
 	////输出到文件
 	//Json::StyledWriter sw;
 	//std::ofstream os;
-	//os.open("ParkingConfig");
+	//os.open("parkingConfigtest");
 	//if (!os.is_open())
 	//{
 	//	acedAlert(_T("打开或创建文件失败"));

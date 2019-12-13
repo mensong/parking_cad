@@ -4,7 +4,7 @@
 #include "DlgAddFrame.h"
 #include "..\..\ArxTools\GeHelper.h"
 
-std::string COperaAddFrame::ms_strText;
+std::map<std::string, double> COperaAddFrame::ms_mapTableData;
 
 COperaAddFrame::COperaAddFrame()
 {
@@ -296,9 +296,9 @@ double COperaAddFrame::getPicAttributeValue(std::map<std::string, double>& picAt
 }
 
 
-void COperaAddFrame::setTextStr(const std::string& strText)
+void COperaAddFrame::setTableDataMap(const std::map<std::string, double>& tableData)
 {
-	ms_strText = strText;
+	ms_mapTableData = tableData;
 }
 
 REG_CMD(COperaAddFrame, BGY, AddFrame);//Ôö¼ÓÍ¼¿ò
