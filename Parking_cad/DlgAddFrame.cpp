@@ -342,7 +342,10 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	mat.setToScaling(mMultiple, mInserPicPoint);
 	AcDbObjectId mInserblockId;
 	if (DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat))
+	{
+		setBlokcLayer(_T("图框"), mInserblockId);
 		return true;
+	}
 	else
 	{
 		acutPrintf(_T("车道指标表格插入失败"));
@@ -362,6 +365,43 @@ void CDlgAddFrame::SetPoints(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt
 	pt2 = pt6;
 	pt3 = AcGePoint2d(pt6.x, pt6.y + mBlockextentsWidth);
 	pt4 = AcGePoint2d(pt6.x - mBlockextentsLen, pt6.y + mBlockextentsWidth);
+}
+
+void CDlgAddFrame::setBlokcLayer(const AcString& setlayername, AcDbObjectId& entityId)
+{
+	// 获得当前图形的层表
+	AcDbLayerTable *pLayerTbl = NULL;
+	acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+
+	// 是否已经包含指定的层表记录
+	if (!pLayerTbl->has(setlayername))
+	{
+		// 创建新的层表记录
+		AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
+		pLayerTblRcd->setName(setlayername);
+
+		// 设置颜色,层的其他属性（线型等）都用缺省值
+		AcCmColor color;
+		color.setColorIndex(255);
+		pLayerTblRcd->setColor(color);
+
+		// 将新建的层表记录添加到层表中
+		AcDbObjectId layerTblRcdId;
+		pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
+		acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);
+		pLayerTblRcd->close();
+		pLayerTbl->close();
+	}
+
+	if (pLayerTbl)
+		pLayerTbl->close();
+
+	AcDbEntity *pEnt = NULL;
+	Acad::ErrorStatus es = acdbOpenObject(pEnt, entityId, AcDb::kForWrite);
+	if (es != eOk)
+		return;
+	pEnt->setLayer(setlayername);
+	pEnt->close();
 }
 
 bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
