@@ -94,6 +94,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 	// TODO: 在此添加控件通知处理程序代码
 	HideDialogHolder holder(this);
 	Doc_Locker doc_locker;
+	CEquipmentroomTool::layerSet(_T("0"), 7);
+	CEquipmentroomTool::layerSet();//设置图层
 	std::vector<AcDbEntity*> vctEquipmentEnt;
 	ads_name ssname;
 	ads_name ent;
@@ -194,7 +196,7 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			}
 			double dArea = GeHelper::CalcPolygonArea(onePlinePts);
 			AcGePoint2d plineCenterPt = GeHelper::CalcPolylineFocusPoint(onePlinePts);
-			AcGePoint3d tempPt2dto3d(plineCenterPt.x, plineCenterPt.y,0);
+			AcGePoint3d tempPt2dto3d(plineCenterPt.x, plineCenterPt.y,10);
 			double transArea = dArea / 1000000;
 			CString sArea;
 			sArea.Format(_T("%.1f"), transArea);
@@ -203,7 +205,7 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			allPartitionPts.push_back(onePlinePts);
 			AcGeDoubleArray test;
 			onePlinePts.append(onePlinePts[0]);
-			CEquipmentroomTool::CreateHatch( _T("ANGLE"), onePlinePts, test);
+			CEquipmentroomTool::CreateHatch( _T("ANSI31"), onePlinePts, test);
 
 			//AcDbObjectId textId = CEquipmentroomTool::CreateText(tempPt2dto3d, sShowText, dArea / 10000);
 			AcDbExtents boundaryOfBlk;
@@ -226,11 +228,10 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			CEquipmentroomTool::textMove(tempPt2dto3d, textId);
 			pPline->close();
 			EquipmentIds.append(textId);
-			//CEquipmentroomTool::layerSet();//设置图层
-			//CEquipmentroomTool::setEntToLayer();//将实体置入图层
 		}
 		vctEquipmentEnt[i]->close();
 	}
 	CEquipmentroomTool::setEntToLayer(EquipmentIds);
+	CEquipmentroomTool::layerSet(_T("0"), 7);//操作完成回到零图层
 }
 

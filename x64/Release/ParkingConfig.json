@@ -1,9 +1,11 @@
 {
    "params" : {
-      "posturl" : "http://10.8.202.199:80/park",
-	  "geturl" : "http://10.8.202.199:80/query/",
+      "posturl" : "http://10.8.202.199:90/park",
+	  "geturl" : "http://10.8.202.199:90/query/",
 	  "posturlv2" : "http://10.8.202.199:81/park",
-	  "geturlv2" : "http://10.8.202.199:81/query/"
+	  "geturlv2" : "http://10.8.202.199:81/query/",
+	  "entrance_posturl" : "http://10.8.202.199:90/entrance",
+	  "entrance_posturlv2" : "http://10.8.202.199:90/entrance"
    },
    "layernames" : {
       "axislayer" : "axis"  

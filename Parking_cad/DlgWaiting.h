@@ -42,14 +42,12 @@ public:
 	static bool ms_bUseV1;
 	static std::string ms_strGeturlPortone;//从初始化类取到配置文件中端口1的IP地址接口
 	static std::string ms_strGeturlPorttwo;//从初始化类取到配置文件中端口2的IP地址接
-	void parkingShow(const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName);
+	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName);
 	void axisShow(const AcGePoint2dArray& axisPts);
 	void laneShow(const AcGePoint2dArray& lanePts);
 	void scopeShow(const AcGePoint2dArray& park_columnPts);
 	void pillarShow(const AcGePoint2dArray& onePillarPts);
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
-	bool layerSet(const CString& layerName,const int& layerColor);
-	void setEntToLayer(const AcDbObjectId& entId, const CString& strLayerName);
 	void setLayerClose(const CString& layerName);
 	void creatNewParking(const double& dParkingLength,const double& dParkingWidth, CString& blockName);
 	bool getDataforJson(const std::string& json, CString& sMsg);

@@ -40,9 +40,9 @@ void COperaAddFrame::Start()
 	{
 		dlg.setBigFramePoints();
 		//"SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1"
-		std::map<std::string, double> picAttributedata;
+		std::map<std::string, double> picAttributedata = ms_mapTableData;
 		//≤‚ ‘ ˝æ›
-		picAttributedata["SP"] = 4865;
+		/*picAttributedata["SP"] = 4865;
 		picAttributedata["SPT"] = 3740;
 		picAttributedata["SPF"] = 1125;
 		picAttributedata["SPF1"] = 210;
@@ -52,8 +52,10 @@ void COperaAddFrame::Start()
 		picAttributedata["JSPC"] = 25;
 		picAttributedata["SPC"] = 33;
 		picAttributedata["H"] = 3.55;
-		picAttributedata["HT"] = 1;
+		picAttributedata["HT"] = 1;*/
 
+		
+		
 		std::string sPicAttributeText = setPicAttributeData(SPF1area, CPvalue,picAttributedata);
 
 		dlg.setBlockInserPoint(sPicAttributeText);

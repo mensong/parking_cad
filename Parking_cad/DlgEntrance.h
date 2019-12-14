@@ -30,6 +30,7 @@
 #include "Resource.h"
 #include "MyEdit.h"
 #include <vector>
+#include "LineSelect.h"
 //-----------------------------------------------------------------------------
 class CDlgEntrance : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgEntrance)
@@ -82,7 +83,11 @@ public:
 	static std::string ms_strEntrancePostUrlPort;
 	static void setEntrancePostUrlV2(std::string& strEntrancePostUrlV2);
 	static std::string ms_strEntrancePostUrlPortV2;
-	void deletParkingForEntrance();
-	void getParkingIdAndAreaMap(std::map<AcDbObjectId,AcGePoint2dArray>& idAndParkingAreaMap,std::vector<AcGePoint2dArray>& parkingArea);
-	bool isTwoPolyOverlap(AcGePoint2dArray pts1, AcGePoint2dArray pts2);
+
+	void deletParkingForEntrance(std::map<AcDbObjectId,AcGePoint2d>& parkingIdAndPt,const AcGePoint2dArray& useDeletParkingPts);
+	void deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds,const AcGePoint2dArray& useDeletParkingPts);
+	void getParkingIdAndPtMap(std::map < AcDbObjectId, AcGePoint2d>& parkingIdAndPtMap);
+	void showEntrance(const AcGePoint2dArray& oneEntrancePts);
+
+	LineSelect m_parkingSel;
 } ;
