@@ -46,9 +46,12 @@ public:
 	static bool layerSet();
 	static bool layerSet(const CString& layerName, const int& layerColor);
 	static void setEntToLayer(AcDbObjectIdArray objectIds);
+	static void setEntToLayer(const AcDbObjectId& entId, const CString& strLayerName);
 	static bool isLayerClose(AcDbEntity *pEnt);
 	//add by yangbing on 2019/11/29
 	/*面域填充*/
 	static AcDbObjectId CreateHatch( const CString& patName, const AcGePoint2dArray& allPlinePts, const AcGeDoubleArray& bulges);
+	/*创建文字样式*/
+	static void creatTextStyle(CString& textStyleName);
 };
 

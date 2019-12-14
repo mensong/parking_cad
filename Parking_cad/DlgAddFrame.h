@@ -23,6 +23,7 @@ public:
 	bool setBlockInserPoint(std::string& Textstr);
 	void SetPoints(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt3, AcGePoint2d& pt4
 		, AcGePoint2d& pt5, AcGePoint2d& pt6, AcGePoint2d& pt7, AcGePoint2d& pt8);
+	void setBlokcLayer(const AcString& setlayername, AcDbObjectId& entityId);
 
 protected:
 	void refreshPreview();
