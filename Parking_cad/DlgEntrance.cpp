@@ -475,20 +475,9 @@ int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const
 		int jj = showParkingPoints.size();
 		Doc_Locker _locker;
 		CEquipmentroomTool::layerSet(_T("0"), 7);
-		AcGePoint2dArray testarry;
-		AcGePoint2d pt1(287647, 114580);
-		testarry.append(pt1);
-		AcGePoint2d pt2(287647,224580);
-		testarry.append(pt2);
-		AcGePoint2d pt3(297647, 224580);
-		testarry.append(pt3);
-		AcGePoint2d pt4(297647, 114580);
-		testarry.append(pt4);
-		AcGePoint2d pt5(287647, 114580);
-		testarry.append(pt5);
 		std::map < AcDbObjectId, AcGePoint2d> parkingIdAndPtMap;
 		getParkingIdAndPtMap(parkingIdAndPtMap);
-		deletParkingForEntrance(parkingIdAndPtMap, testarry/*delParkingPoints*/);
+		deletParkingForEntrance(parkingIdAndPtMap, delParkingPoints);
 		for (int b=0; b<showParkingPoints.size(); b++)
 		{
 			showEntrance(showParkingPoints[b]);
