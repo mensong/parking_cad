@@ -46,6 +46,7 @@ public:
 	static bool layerSet();
 	static bool layerSet(const CString& layerName, const int& layerColor);
 	static void setEntToLayer(AcDbObjectIdArray objectIds);
+	static void setEntToLayer(const AcDbObjectId& entId, const CString& strLayerName);
 	static bool isLayerClose(AcDbEntity *pEnt);
 	//add by yangbing on 2019/11/29
 	/*√Ê”ÚÃÓ≥‰*/

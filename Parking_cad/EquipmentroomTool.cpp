@@ -16,7 +16,6 @@ CEquipmentroomTool::~CEquipmentroomTool()
 {
 }
 
-
 void CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 {
 	std::vector<AcDbEntity*> vctJigEnt;
@@ -697,7 +696,8 @@ bool CEquipmentroomTool::layerSet()
 
 bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColor)
 {
-	// 判断是否存在名称为“设备房”的图层
+	//----------------------------------------------------
+	//判断有就退出无就生成图层生，并设置颜色
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
@@ -715,6 +715,12 @@ bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColo
 			return false;
 		}
 		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
+		AcDbLayerTableRecord *pLayerTblRcd;
+		pLayerTbl->getAt(layerName, pLayerTblRcd, AcDb::kForWrite);
+		AcCmColor color;//设置图层颜色
+		color.setColorIndex(layerColor);
+		pLayerTblRcd->setColor(color);
+		pLayerTblRcd->close();
 		pLayerTbl->close();
 		if (es != eOk)
 		{
@@ -757,6 +763,20 @@ void CEquipmentroomTool::setEntToLayer(AcDbObjectIdArray objectIds)
 		}
 		//打开失败不需要关闭实体
 	}	
+}
+
+void CEquipmentroomTool::setEntToLayer(const AcDbObjectId& entId, const CString& strLayerName)
+{
+	AcDbEntity *pEnty = NULL;
+	AcDbObjectId idEnty = entId; //传如打开的实体ID，事先必须先获取到。否则会打开失败
+	Acad::ErrorStatus es;
+	es = acdbOpenObject(pEnty, idEnty, AcDb::kForWrite);
+	if (es == Acad::eOk)
+	{
+		pEnty->setLayer(strLayerName); //设置实体所在的图层
+		pEnty->close();
+	}
+	//打开失败不需要关闭实体
 }
 
 bool CEquipmentroomTool::isLayerClose(AcDbEntity *pEnt)
