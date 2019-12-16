@@ -40,13 +40,22 @@ void COperaEquipmentroomRelated::Start()
 		double windareaSideLength = 0;
 		AcDbObjectIdArray windareaJigUseIds = CEquipmentroomTool::createArea(VentilationroomArea, area1Name, windareaSideLength);
 		CEquipmentroomTool::setEntToLayer(windareaJigUseIds);
-		CEquipmentroomTool::jigShow(windareaJigUseIds, windareaSideLength);
+ 		if (!CEquipmentroomTool::jigShow(windareaJigUseIds, windareaSideLength))
+ 		{
+			break;
+ 		}
 		AcDbObjectIdArray windarea1JigUseIds = CEquipmentroomTool::createArea(VentilationroomArea, area2Name, windareaSideLength);
 		CEquipmentroomTool::setEntToLayer(windarea1JigUseIds);
-		CEquipmentroomTool::jigShow(windarea1JigUseIds, windareaSideLength);
+		if (!CEquipmentroomTool::jigShow(windarea1JigUseIds, windareaSideLength))
+		{
+			break;
+		}
 		AcDbObjectIdArray windarea2JigUseIds = CEquipmentroomTool::createArea(VentilationroomArea, area2Name, windareaSideLength);
 		CEquipmentroomTool::setEntToLayer(windarea2JigUseIds);
-		CEquipmentroomTool::jigShow(windarea2JigUseIds, windareaSideLength);
+		if (!CEquipmentroomTool::jigShow(windarea2JigUseIds, windareaSideLength))
+		{
+			break;
+		}
 	}
 }
 
