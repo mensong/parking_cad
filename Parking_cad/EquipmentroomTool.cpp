@@ -16,7 +16,7 @@ CEquipmentroomTool::~CEquipmentroomTool()
 {
 }
 
-void CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
+bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 {
 	std::vector<AcDbEntity*> vctJigEnt;
 	for (int i = 0; i < useJigIds.length(); i++)
@@ -30,7 +30,7 @@ void CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 		vctJigEnt.push_back(pEnt);
 	}
 	if (vctJigEnt.size() < 1)
-		return;
+		return false;
 	//获得实体的范围的左下角点作为jig基点
 	AcDbExtents extsAll;
 	AcDbExtents exts;
@@ -45,6 +45,7 @@ void CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 	jig.SetBasePoint(ptBase);
 	jig.RegisterAsJigEntity(vctJigEnt);
 	CJigHelper::RESULT ec = jig.startJig();
+	bool flag = false;
 	if (ec != CJigHelper::RET_POINT)
 	{
 		//无效输入则撤销
@@ -54,6 +55,7 @@ void CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 			//vctJigEnt[i]->transformBy(vec);
 			vctJigEnt[i]->erase();
 		}
+		flag = true;
 	}
 	//关闭图形实体
 	for (int i = 0; i < vctJigEnt.size(); ++i)
@@ -66,6 +68,11 @@ void CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 		//吸附移动
 		AcGePoint2d basePoint(jig.GetPosition().x, jig.GetPosition().y);
 		AdsorbentShow(useJigIds, basePoint, sideLength);
+		return true;
+	}
+	if (flag)
+	{
+		return false;
 	}
 }
 

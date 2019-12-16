@@ -7,6 +7,8 @@
 
 REG_CMD(COperaAxleNetMaking, BGY, ANM);
 
+AcDbObjectIdArray COperaAxleNetMaking::ms_axisIds;
+
 COperaAxleNetMaking::COperaAxleNetMaking()
 {
 }
@@ -21,7 +23,12 @@ void COperaAxleNetMaking::Start()
 
 	ACHAR *layername = _T("axis");//轴线所在图层，这里写死只是为了测试
 
-	AcDbObjectIdArray LineIds = CCommonFuntion::GetAllEntityId(layername);
+	AcDbObjectIdArray LineIds = ms_axisIds;
+	if (LineIds.length()==0)
+	{
+		acutPrintf(_T("\n未获取到轴线信息"));
+		return;
+	}
 
 	//分批存储轴线
 	std::vector<std::vector<AcDbObjectId>> outputId;
@@ -459,4 +466,9 @@ void COperaAxleNetMaking::SpecialDeal(const CString& layerNameofAXSI,AcDbObjectI
 			pEnt->close();
 	}
 
+}
+
+void COperaAxleNetMaking::setAxisIds(AcDbObjectIdArray axisIds)
+{
+	ms_axisIds = axisIds;
 }
