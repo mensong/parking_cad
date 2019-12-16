@@ -77,3 +77,5 @@ copy /Y /V ..\x64\Release\parking_cad.mnr .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\parking_cad_light.mnr .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\BGYBlockManager22.arx .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\exchange.ico .\out\Support\22\x64\
+
+copy /Y /V ..\GetSerial.exe .\out
