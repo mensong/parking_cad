@@ -24,7 +24,7 @@ public:
 	static AcDbObjectId CreateMText(const AcGePoint3d& ptInsert,
 		CString text ,double height = 2.5, double width = 10, AcDbObjectId style = AcDbObjectId::kNull);
 	/*jig展示效果*/
-	static void jigShow(AcDbObjectIdArray useJigIds, double sideLength);
+	static bool jigShow(AcDbObjectIdArray useJigIds, double sideLength);
 
 	/*吸附功能*/
 	static void AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d basePoint, double sideLength);

@@ -43,8 +43,8 @@ public:
 	static std::string ms_strGeturlPortone;//从初始化类取到配置文件中端口1的IP地址接口
 	static std::string ms_strGeturlPorttwo;//从初始化类取到配置文件中端口2的IP地址接
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName);
-	void axisShow(const AcGePoint2dArray& axisPts);
-	void laneShow(const AcGePoint2dArray& lanePts);
+	AcDbObjectId axisShow(const AcGePoint2dArray& axisPts);
+	AcDbObjectId laneShow(const AcGePoint2dArray& lanePts);
 	void scopeShow(const AcGePoint2dArray& park_columnPts);
 	void pillarShow(const AcGePoint2dArray& onePillarPts);
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
@@ -52,6 +52,6 @@ public:
 	void creatNewParking(const double& dParkingLength,const double& dParkingWidth, CString& blockName);
 	bool getDataforJson(const std::string& json, CString& sMsg);
 	/*添加以实现车道标注*/
-	void setLandDismensions(double m_dDis, const AcString& CarLaneLayerName);
+	void setLandDismensions(double m_dDis, const AcString& CarLaneLayerName, const AcDbObjectIdArray& RoadLineIds);
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText);
 };

@@ -16,6 +16,7 @@
 #include <iosfwd>
 #include <string>
 #include "EquipmentroomTool.h"
+#include "OperaAxleNetMaking.h"
 
 #ifndef PI
 #define PI 3.1415926535898
@@ -312,7 +313,7 @@ void CDlgWaiting::parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkin
 	CEquipmentroomTool::setEntToLayer(parkingId, _T("parkings"));
 }
 
-void CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
+AcDbObjectId CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 {
 	CEquipmentroomTool::layerSet(_T("axis"), 1);
 	AcGePoint3d ptStart(axisPts[0].x, axisPts[0].y, 0);
@@ -322,9 +323,10 @@ void CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 	DBHelper::AppendToDatabase(axisId,pLine);
 	pLine->close();
 	CEquipmentroomTool::setEntToLayer(axisId, _T("axis"));
+	return axisId;
 }
 
-void CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
+AcDbObjectId CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
 {
 	CEquipmentroomTool::layerSet(_T("lane"), 30);
 	AcGePoint3d ptStart(lanePts[0].x, lanePts[0].y, 0);
@@ -334,6 +336,7 @@ void CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
 	DBHelper::AppendToDatabase(laneId,pLine);
 	pLine->close();
 	CEquipmentroomTool::setEntToLayer(laneId, _T("lane"));
+	return laneId;
 }
 
 void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
@@ -755,14 +758,17 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 		AcGePoint2d parkingShowPt = parkingPts[a];
 		parkingShow(parkingId,parkingPts[a], rotation, blockName);
 	}
+	AcDbObjectIdArray axisIds;
 	for (int b = 0; b < axisesPoints.size(); b++)
 	{
-		axisShow(axisesPoints[b]);
+		axisIds.append(axisShow(axisesPoints[b]));
 	}
+	COperaAxleNetMaking::setAxisIds(axisIds);
 
+	AcDbObjectIdArray RoadLineIds;
 	for (int c = 0; c < lanesPoints.size(); c++)
 	{
-		laneShow(lanesPoints[c]);
+		RoadLineIds.append(laneShow(lanesPoints[c]));		
 	}
 
 	scopeShow(scopePts);
@@ -784,7 +790,7 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 	}
 	else
 	{
-		setLandDismensions(dTransLaneWidth, _T("lane"));
+		setLandDismensions(dTransLaneWidth, _T("lane"), RoadLineIds);
 	}
 	DBHelper::CallCADCommand(_T("ANM "));
 	//setLayerClose(_T("axis"));
@@ -793,13 +799,12 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 	return true;
 }
 
-void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayerName)
+void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayerName, const AcDbObjectIdArray& RoadLineIds)
 {
 	CEquipmentroomTool::layerSet(_T("lanesDim"), 7);
-	AcDbObjectIdArray RoadLineIds = DBHelper::GetEntitiesByLayerName(CarLaneLayerName);
 	if (RoadLineIds.length() == 0)
 	{
-		acutPrintf(_T("没有车道信息，生成车道标注失败！"));
+		acutPrintf(_T("\n没有车道信息，生成车道标注失败！"));
 		return;
 	}
 	AcDbEntity *pEnt = NULL;
@@ -809,38 +814,40 @@ void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayer
 		es = acdbOpenObject(pEnt, RoadLineIds[i], AcDb::kForRead);
 		if (es != eOk)
 			continue;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d startpoint;
+			pLine->getStartPoint(startpoint);
+			AcGePoint3d endpoint;
+			pLine->getEndPoint(endpoint);
+			AcGePoint3d centerpoint = AcGePoint3d((startpoint.x + endpoint.x) / 2, (startpoint.y + endpoint.y) / 2, (startpoint.z + endpoint.z) / 2);
 
-		AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGeVector3d movevec = AcGeVector3d(startpoint - endpoint);
+			movevec.normalize();
+			centerpoint.transformBy(movevec * 800);
 
-		AcGePoint3d startpoint;
-		pLine->getStartPoint(startpoint);
-		AcGePoint3d endpoint;
-		pLine->getEndPoint(endpoint);
-		AcGePoint3d centerpoint = AcGePoint3d((startpoint.x + endpoint.x) / 2, (startpoint.y + endpoint.y) / 2, (startpoint.z + endpoint.z) / 2);
+			AcGeVector3d tempVec = AcGeVector3d(startpoint - endpoint);
+			AcGeVector3d vec = tempVec.rotateBy(PI / 2, AcGeVector3d(0, 0, 1));
+			vec.normalize();
 
-		AcGeVector3d movevec = AcGeVector3d(startpoint - endpoint);
-		movevec.normalize();
-		centerpoint.transformBy(movevec * 800);
+			AcGePoint3d tempPoint = centerpoint;
+			AcGePoint3d movePt1 = tempPoint.transformBy(vec * (m_dDis / 2));
+			tempPoint = centerpoint;
+			AcGePoint3d movePt2 = tempPoint.transformBy(-vec * (m_dDis / 2));
 
-		AcGeVector3d tempVec = AcGeVector3d(startpoint - endpoint);
-		AcGeVector3d vec = tempVec.rotateBy(PI / 2, AcGeVector3d(0, 0, 1));
-		vec.normalize();
+			CString disText;
+			int iDistance = ceil(m_dDis);
+			disText.Format(_T("%d"), iDistance);
 
-		AcGePoint3d tempPoint = centerpoint;
-		AcGePoint3d movePt1 = tempPoint.transformBy(vec * (m_dDis / 2));
-		tempPoint = centerpoint;
-		AcGePoint3d movePt2 = tempPoint.transformBy(-vec * (m_dDis / 2));
-
-		CString disText;
-		int iDistance = ceil(m_dDis);
-		disText.Format(_T("%d"), iDistance);
-
-		centerpoint.transformBy(movevec * 300);
-		AcDbObjectId dimId;
-		dimId = createDimAligned(movePt1, movePt2, centerpoint, disText);
-		CEquipmentroomTool::setEntToLayer(dimId,_T("lanesDim"));
-		if (pEnt)
+			centerpoint.transformBy(movevec * 300);
+			AcDbObjectId dimId;
+			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText);
+			CEquipmentroomTool::setEntToLayer(dimId, _T("lanesDim"));
+			pLine->close();
 			pEnt->close();
+		}
+		pEnt->close();
 	}
 }
 
