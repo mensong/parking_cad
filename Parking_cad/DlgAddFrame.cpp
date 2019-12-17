@@ -371,6 +371,7 @@ void CDlgAddFrame::setBlokcLayer(const AcString& setlayername, AcDbObjectId& ent
 {
 	// 获得当前图形的层表
 	AcDbLayerTable *pLayerTbl = NULL;
+	//判断操作
 	acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
 
 	// 是否已经包含指定的层表记录

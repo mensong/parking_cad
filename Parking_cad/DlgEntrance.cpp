@@ -37,7 +37,7 @@
 std::string CDlgEntrance::ms_strEntrancePostUrlPort;
 std::string CDlgEntrance::ms_strEntrancePostUrlPortV2;
 
-void CDlgEntrance::deletParkingForEntrance(std::map<AcDbObjectId, AcGePoint2d>& parkingIdAndPt, const AcGePoint2dArray& useDeletParkingPts)
+void CDlgEntrance::deletParkingForEntrance(std::map<AcDbObjectId, AcGePoint2d>& parkingIdAndPt, AcGePoint2dArray& useDeletParkingPts)
 {
 	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(_T("parkings"));
 	std::map<AcDbObjectId, AcGePoint2d> newParkingAndPt;
@@ -95,12 +95,30 @@ void CDlgEntrance::deletParkingForEntrance(std::map<AcDbObjectId, AcGePoint2d>& 
 	deletParkingByLineSelect(lineSelectUseIds, useDeletParkingPts);
 }
 
-void CDlgEntrance::deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds, const AcGePoint2dArray& useDeletParkingPts)
+void CDlgEntrance::deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds, AcGePoint2dArray& useDeletParkingPts)
 {
 	//只能选到该id数组中的实体
 	m_parkingSel.init(parkingIds);
 	std::vector<AcDbObjectIdArray> allNeedDeletParkingIds;
-	for (int i=0; i<useDeletParkingPts.length()-1;i++)
+
+	useDeletParkingPts.removeLast();
+	AcGeVector2dArray vecs;
+	for (int a=0; a<useDeletParkingPts.length(); a++)
+	{
+		AcGeVector2d vec = useDeletParkingPts[(a + 1) % useDeletParkingPts.length()] - useDeletParkingPts[a];
+		vec.rotateBy(ARX_PI / 4);
+		vecs.append(vec);
+	}
+
+	int n = vecs.length();
+
+	for (int b=0; b<vecs.length(); b++)
+	{
+		AcGeVector2d unitvec = vecs[b].normalize();
+		useDeletParkingPts[b].transformBy(unitvec * 5);
+	}
+
+	for (int i=0; i<useDeletParkingPts.length();i++)
 	{
 		AcDbObjectIdArray sideSelectIds = m_parkingSel.select(useDeletParkingPts[i], useDeletParkingPts[(i + 1) % useDeletParkingPts.length()]);
 		allNeedDeletParkingIds.push_back(sideSelectIds);
@@ -300,6 +318,21 @@ BOOL CDlgEntrance::OnInitDialog()
 
 void CDlgEntrance::OnBnClickedOk()
 {
+	CString sStartPt;
+	m_StartPointEdit.GetWindowText(sStartPt);
+	if (sStartPt == _T(""))
+	{
+		acedAlert(_T("没有选择出入口起始点信息!"));
+		return;
+	}
+	CString strEndPt;
+	m_EndPointEdit.GetWindowText(strEndPt);
+	if (strEndPt == _T(""))
+	{
+		acedAlert(_T("没有选择出入口终止点信息!"));
+		return;
+	}
+
 	// TODO: 在此添加控件通知处理程序代码
 	CString strLimitHeight;
 	m_LimitHeight.GetWindowText(strLimitHeight);
@@ -395,11 +428,25 @@ int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const
 	{
 		if (useV1)
 		{
-			sMsg = ms_strEntrancePostUrlPort + ":网络或服务器错误。";
+			if (ms_strEntrancePostUrlPort=="")
+			{
+				sMsg = "请先进行车位排布操作！";
+			}
+			else
+			{
+				sMsg = ms_strEntrancePostUrlPort + ":网络或服务器错误。";
+			}		
 		}
 		else
 		{
-			sMsg = ms_strEntrancePostUrlPortV2 + ":网络或服务器错误。";
+			if (ms_strEntrancePostUrlPortV2 == "")
+			{
+				sMsg = "请先进行车位排布操作！";
+			}
+			else
+			{
+				sMsg = ms_strEntrancePostUrlPortV2 + ":网络或服务器错误。";
+			}
 		}
 		return 2;
 	}

@@ -84,8 +84,8 @@ public:
 	static void setEntrancePostUrlV2(std::string& strEntrancePostUrlV2);
 	static std::string ms_strEntrancePostUrlPortV2;
 
-	void deletParkingForEntrance(std::map<AcDbObjectId,AcGePoint2d>& parkingIdAndPt,const AcGePoint2dArray& useDeletParkingPts);
-	void deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds,const AcGePoint2dArray& useDeletParkingPts);
+	void deletParkingForEntrance(std::map<AcDbObjectId,AcGePoint2d>& parkingIdAndPt, AcGePoint2dArray& useDeletParkingPts);
+	void deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds, AcGePoint2dArray& useDeletParkingPts);
 	void getParkingIdAndPtMap(std::map < AcDbObjectId, AcGePoint2d>& parkingIdAndPtMap);
 	void showEntrance(const AcGePoint2dArray& oneEntrancePts);
 
