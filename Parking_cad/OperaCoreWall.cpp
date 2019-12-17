@@ -451,10 +451,10 @@ void COperaCoreWall::Start()
 	AcDbObjectId coreWallId;
 	DBHelper::AppendToDatabase(coreWallId,pPline);
 	pPline->close();
-	AcDbObjectIdArray coreWallIds;
-	coreWallIds.append(coreWallId);
+	CEquipmentroomTool::layerSet(_T("0"), 7);
 	CEquipmentroomTool::layerSet(_T("CoreWall"),2);
-	CEquipmentroomTool::setEntToLayer(coreWallIds);
+	CEquipmentroomTool::setEntToLayer(coreWallId,_T("CoreWall"));
+	CEquipmentroomTool::layerSet(_T("0"), 7);
 }
 
 void COperaCoreWall::seg2AABBBox(const AcGePoint2d& pt1, const AcGePoint2d& pt2, double minPt[2], double maxPt[2])

@@ -59,7 +59,7 @@ void COperaAddFrame::Start()
 		std::string sPicAttributeText = setPicAttributeData(SPF1area, CPvalue,picAttributedata);
 
 		dlg.setBlockInserPoint(sPicAttributeText);
-
+		std::vector<AcDbEntity*> vcEnts;
 		AcDbPolyline* pFrame = new AcDbPolyline;
 		pFrame->addVertexAt(0, dlg.mBigFramept0);
 		pFrame->addVertexAt(1, dlg.mBigFramept1);
@@ -67,6 +67,7 @@ void COperaAddFrame::Start()
 		pFrame->addVertexAt(3, dlg.mBigFramept3);
 		pFrame->setClosed(Adesk::kTrue);
 		pFrame->setColorIndex(255);
+		vcEnts.push_back(pFrame);
 
 		AcGePoint2d centerpt = AcGePoint2d((dlg.mBigFramept0.x + dlg.mBigFramept2.x) / 2, (dlg.mBigFramept0.y + dlg.mBigFramept2.y) / 2);
 
@@ -77,53 +78,83 @@ void COperaAddFrame::Start()
 		pOutermostFrame->addVertexAt(3, GetChangePoint(centerpt, dlg.mBigFramept3));
 		pOutermostFrame->setClosed(Adesk::kTrue);
 		pOutermostFrame->setColorIndex(255);
-
-		std::vector<AcDbEntity*> vcEnts;
-		vcEnts.push_back(pFrame);
 		vcEnts.push_back(pOutermostFrame);
 
-		AcString setblockname;
+		CString setblockname;
 		if (!isHasBlockName(_T("Í¼¿ò"), setblockname))
 			setblockname = _T("Í¼¿ò1");
 		
-		DBHelper::CreateBlock(setblockname, vcEnts);
-		if (pFrame)
-			pFrame->close();
-		if (pOutermostFrame)
-			pOutermostFrame->close();
+		if (!DBHelper::CreateBlock(setblockname, vcEnts))
+		{
+			acutPrintf(_T("\n´´½¨Í¼¿òÍ¼¿éÊ§°Ü£¡"));
+		}
+		
+		pFrame->close();
+		pOutermostFrame->close();
 
 		AcDbObjectId idEnt;
-		DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0));
-
-		dlg.setBlokcLayer(_T("Í¼¿ò"), idEnt);
-
+		if (DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0)))
+		{
+			dlg.setBlokcLayer(setblockname, idEnt);
+		}
+		else
+		{
+			acutPrintf(_T("\nÉú³ÉÍ¼¿òÊ§°Ü"));
+		}
 	}
 }
 
-bool COperaAddFrame::isHasBlockName(const AcString& blockname, AcString& outblockname)
+//bool COperaAddFrame::isHasBlockName(const AcString& blockname, AcString& outblockname)
+//{
+//	AcDbBlockTable *pBlockTable = NULL;
+//	Acad::ErrorStatus es = acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
+//	if (Acad::eOk != es)
+//	{
+//		return es;
+//	}
+//
+//	for (int i=1; i<100; i++)
+//	{
+//		CString tempblockname;
+//		tempblockname.Format(_T("%s%d"),blockname,i);
+//		if (Adesk::kTrue == pBlockTable->has(tempblockname))
+//		   continue;
+//
+//		outblockname = tempblockname;
+//
+//		if (pBlockTable)
+//			pBlockTable->close();
+//
+//		return true;
+//	}
+//	
+//	return false;
+//}
+
+bool COperaAddFrame::isHasBlockName(const CString& blockname, CString& outblockname)
 {
 	AcDbBlockTable *pBlockTable = NULL;
 	Acad::ErrorStatus es = acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
 	if (Acad::eOk != es)
 	{
-		return es;
+		return false;
 	}
 
 	for (int i=1; i<100; i++)
 	{
 		CString tempblockname;
-		tempblockname.Format(_T("%s%d"), blockname, i);
+		CString strCount;
+		strCount.Format(_T("%d"),i);
+		tempblockname = blockname + strCount;
 		if (Adesk::kTrue == pBlockTable->has(tempblockname))
-		   continue;
+			continue;
 
 		outblockname = tempblockname;
 
 		if (pBlockTable)
 			pBlockTable->close();
-
 		return true;
 	}
-	
 	return false;
 }
 
