@@ -862,7 +862,7 @@ AcDbObjectId CDlgWaiting::createDimAligned(const AcGePoint3d& pt1, const AcGePoi
 	AcDbDimStyleTable* pDimStyleTbl;
 	acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
 	if (pDimStyleTbl->has(str))
-		pDimStyleTbl->getIdAt(str, id);
+		pDimStyleTbl->getAt(str, id);
 	else
 	{
 		pDimStyleTbl->close();

@@ -779,7 +779,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		AcDbDimStyleTable* pDimStyleTbl;
 		acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
 		if (pDimStyleTbl->has(str))
-			pDimStyleTbl->getIdAt(str, id);
+			pDimStyleTbl->getAt(str, id);
 		else
 		{
 			pDimStyleTbl->close();
