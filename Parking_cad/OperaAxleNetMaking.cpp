@@ -101,7 +101,7 @@ void COperaAxleNetMaking::Start()
 				}
 			}
 
-			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("尺寸标注"));
+			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
 			CString setlayernameofAXSI = _T("轴网标注");//这里设置轴网标注所在图层，为硬代码，可根据需要进行更改
 			CCommonFuntion::setLayer(setlayernameofAXSI, 255);
@@ -156,7 +156,7 @@ void COperaAxleNetMaking::Start()
 				}
 			}
 
-			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("尺寸标注"));
+			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
 			CString setlayernameofAXSI = _T("轴网标注");//这里设置轴网标注所在图层，为硬代码，可根据需要进行更改
 			CCommonFuntion::setLayer(setlayernameofAXSI,0);
