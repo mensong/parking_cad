@@ -216,6 +216,9 @@
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaAxisShowOrHide.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
@@ -408,6 +411,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
