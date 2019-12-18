@@ -101,6 +101,8 @@ void COperaAxleNetMaking::Start()
 				}
 			}
 
+			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("尺寸标注"));
+
 			CString setlayernameofAXSI = _T("轴网标注");//这里设置轴网标注所在图层，为硬代码，可根据需要进行更改
 			CCommonFuntion::setLayer(setlayernameofAXSI, 255);
 
@@ -153,6 +155,8 @@ void COperaAxleNetMaking::Start()
 						sortIds.append(LDstructVet[j].Lineid);
 				}
 			}
+
+			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("尺寸标注"));
 
 			CString setlayernameofAXSI = _T("轴网标注");//这里设置轴网标注所在图层，为硬代码，可根据需要进行更改
 			CCommonFuntion::setLayer(setlayernameofAXSI,0);
@@ -263,6 +267,7 @@ void COperaAxleNetMaking::DrowBigDimaligned(const CString& layerNameofAXSI,std::
 
 	AcGeVector3d vec = AcGeVector3d(Pt2 - Pt1);
 	CCommonFuntion::DrowDimaligned(layerNameofAXSI,Pt1, Pt2);
+
 
 	if (pTempEnt)
 		pTempEnt->close();
