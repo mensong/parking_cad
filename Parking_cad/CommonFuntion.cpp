@@ -725,7 +725,12 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		int iDistance = ceil(movedata);
 		disText.Format(_T("%d"), iDistance);
 		
-		CreateDimAligned(setLayerName,Pt1, Pt2, centerpt,disText);
+		AcDbObjectId id = CreateDimAligned(Pt1, Pt2, centerpt,disText);
+		if (id == NULL)
+			return;
+
+        CCommonFuntion::setEntityLayer(setLayerName, id);
+
 	}
 
 	void CCommonFuntion::GetAllLineIntersectpoints(AcDbObjectIdArray& inputIds, AcGePoint3dArray& outptArr)
@@ -766,44 +771,30 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		}
 	}
 
-	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcString& setLayerName, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText)
+	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText)
 	{
-		/* 对齐标注：AcDbAlignedDimension类:
-		第一个参数：xLine1Point：第一条尺寸边界线的起点；第二个参数：xLine2Point：第二条尺寸边界线的起点：
-		第三个参数：dimLinePoint：通过尺寸线的一点；第四个参数：dimText ：标注文字；第五个参数：dimStyle ：样式。*/
-		AcDbAlignedDimension *pDim = new AcDbAlignedDimension(pt1, pt2, ptLine, dimText, AcDbObjectId::kNull);
-		AcDbObjectId dimensionId = CCommonFuntion::PostToModelSpace(pDim);
-
-		// 打开已经创建的标注，对文字的位置进行修改
-		AcDbEntity *pEnt = NULL;
-		Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, dimensionId, AcDb::kForWrite);
-		if (es != eOk)
-			return dimensionId;
-
-		pEnt->setLayer(setLayerName);
-
-		AcDbAlignedDimension *pDimension = AcDbAlignedDimension::cast(pEnt);
-		if (pDimension != NULL)
+		CString str = _T("尺寸标注");
+		AcDbObjectId id;
+		////获得当前图形的标注样式表  
+		AcDbDimStyleTable* pDimStyleTbl;
+		acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+		if (pDimStyleTbl->has(str))
+			pDimStyleTbl->getIdAt(str, id);
+		else
 		{
-			// 移动文字位置前，设置文字和尺寸线移动时的关系（这里指定为：尺寸线不动，在文字和尺寸线之间加箭头）
-			pDimension->setDimtmove(1);
-
-			pDimension->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
-			pDimension->setDimexe(5);//设置尺寸界线超出尺寸线距离为400
-			pDimension->setDimexo(0);//设置尺寸界线的起点偏移量为300
-									 //pDimension->setDimtad(50);//文字位于标注线的上方
-			pDimension->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
-			pDimension->setDimtxt(5);//标注文字的高度
-			pDimension->setDimdec(2);
-			pDimension->setDimasz(1);//箭头长度
-			pDimension->setDimlfac(1);//比例因子
-			AcCmColor suiceng;
-			suiceng.setColorIndex(3);
-			pDimension->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
-			pDimension->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
-
+			pDimStyleTbl->close();
+			return id;
 		}
-		pEnt->close();
+		pDimStyleTbl->close();
+
+		AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine, NULL, id);//创建标注实体
+		pnewdim->setDimtxt(500);//标注文字的高度
+		pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+		pnewdim->setDimtmove(1);
+
+		AcDbObjectId dimid;
+		AcDbObjectId dimensionId = CCommonFuntion::PostToModelSpace(pnewdim);
+
 		return dimensionId;
 	}
 
@@ -1527,4 +1518,83 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);
 		pLayerTblRcd->close();
 		pLayerTbl->close();
+	}
+
+	void CCommonFuntion::creatLaneGridDimensionsDimStyle(const CString& stylename)
+	{
+		// 获得当前图形的标注样式表
+		AcDbDimStyleTable *pDimStyleTbl = NULL;
+		acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+		if (pDimStyleTbl->has(stylename))
+		{
+			pDimStyleTbl->close();//已经存在
+			return;
+		}
+
+		// 创建新的标注样式表记录
+		AcDbDimStyleTableRecord *pDimStyleTblRcd = NULL;
+		pDimStyleTblRcd = new AcDbDimStyleTableRecord();
+
+		// 设置标注样式的特性
+		pDimStyleTblRcd->setName(stylename); // 样式名称
+		pDimStyleTblRcd->setDimasz(1);//设置箭头大小
+		pDimStyleTblRcd->setDimzin(8);//十进制小数显示时，抑制后续零
+		pDimStyleTblRcd->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
+		pDimStyleTblRcd->setDimexe(300);//设置尺寸界线超出尺寸线距离为400
+		pDimStyleTblRcd->setDimexo(0);//设置尺寸界线的起点偏移量为300
+		pDimStyleTblRcd->setDimtxt(800);//设置文字高度
+		pDimStyleTblRcd->setDimtad(1);//设置文字位置-垂直为上方，水平默认为居中，不用设置
+		pDimStyleTblRcd->setDimgap(50);//设置文字位置-从尺寸线的偏移量
+		pDimStyleTblRcd->setDimtih(0);
+		pDimStyleTblRcd->setDimtoh(0);//设置文字对齐为：与尺寸线对齐
+		pDimStyleTblRcd->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+		pDimStyleTblRcd->setDimtofl(1);//即使箭头放置于测量点之外，尺寸线也将绘制在测量点之间
+
+		AcCmColor suiceng;
+		suiceng.setColorIndex(3);
+		pDimStyleTblRcd->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
+		pDimStyleTblRcd->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
+
+											 // 将标注样式表记录添加到标注样式表中
+		pDimStyleTbl->add(pDimStyleTblRcd);
+		pDimStyleTblRcd->close();
+		pDimStyleTbl->close();
+	}
+
+	void CCommonFuntion::setEntityLayer(const AcString& setlayername, AcDbObjectId& entityId)
+	{
+		// 获得当前图形的层表
+		AcDbLayerTable *pLayerTbl = NULL;
+		//判断操作
+		acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+
+		// 是否已经包含指定的层表记录
+		if (!pLayerTbl->has(setlayername))
+		{
+			// 创建新的层表记录
+			AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
+			pLayerTblRcd->setName(setlayername);
+
+			// 设置颜色,层的其他属性（线型等）都用缺省值
+			AcCmColor color;
+			color.setColorIndex(255);
+			pLayerTblRcd->setColor(color);
+
+			// 将新建的层表记录添加到层表中
+			AcDbObjectId layerTblRcdId;
+			pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
+			acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);
+			pLayerTblRcd->close();
+			pLayerTbl->close();
+		}
+
+		if (pLayerTbl)
+			pLayerTbl->close();
+
+		AcDbEntity *pEnt = NULL;
+		Acad::ErrorStatus es = acdbOpenObject(pEnt, entityId, AcDb::kForWrite);
+		if (es != eOk)
+			return;
+		pEnt->setLayer(setlayername);
+		pEnt->close();
 	}

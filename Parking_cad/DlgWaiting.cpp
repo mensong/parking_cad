@@ -17,6 +17,7 @@
 #include <string>
 #include "EquipmentroomTool.h"
 #include "OperaAxleNetMaking.h"
+#include "CommonFuntion.h"
 
 #ifndef PI
 #define PI 3.1415926535898
@@ -801,6 +802,8 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 
 void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayerName, const AcDbObjectIdArray& RoadLineIds)
 {
+	CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("尺寸标注"));//创建新的标注样式
+
 	CEquipmentroomTool::layerSet(_T("lanesDim"), 7);
 	if (RoadLineIds.length() == 0)
 	{
@@ -853,38 +856,29 @@ void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayer
 
 AcDbObjectId CDlgWaiting::createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText)
 {
-	/* 对齐标注：AcDbAlignedDimension类:
-	第一个参数：xLine1Point：第一条尺寸边界线的起点；第二个参数：xLine2Point：第二条尺寸边界线的起点：
-	第三个参数：dimLinePoint：通过尺寸线的一点；第四个参数：dimText ：标注文字；第五个参数：dimStyle ：样式。*/
-	AcDbAlignedDimension *pDim = new AcDbAlignedDimension(pt1, pt2, ptLine, dimText, AcDbObjectId::kNull);
-	AcDbObjectId dimensionId;
-	DBHelper::AppendToDatabase(dimensionId,pDim);
-	pDim->close();
-	// 打开已经创建的标注，对文字的位置进行修改
-	AcDbEntity *pEnt = NULL;
-	Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, dimensionId, AcDb::kForWrite);
-
-	AcDbAlignedDimension *pDimension = AcDbAlignedDimension::cast(pEnt);
-	if (pDimension != NULL)
+	CString str = _T("尺寸标注");
+	AcDbObjectId id;
+	////获得当前图形的标注样式表  
+	AcDbDimStyleTable* pDimStyleTbl;
+	acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+	if (pDimStyleTbl->has(str))
+		pDimStyleTbl->getIdAt(str, id);
+	else
 	{
-		// 移动文字位置前，设置文字和尺寸线移动时的关系（这里指定为：尺寸线不动，在文字和尺寸线之间加箭头）
-		pDimension->setDimtmove(1);
-
-		pDimension->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
-		pDimension->setDimexe(5);//设置尺寸界线超出尺寸线距离为400
-		pDimension->setDimexo(0);//设置尺寸界线的起点偏移量为300
-								 //pDimension->setDimtad(50);//文字位于标注线的上方
-		pDimension->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
-		pDimension->setDimtxt(5);//标注文字的高度
-		pDimension->setDimdec(2);
-		pDimension->setDimasz(1);//箭头长度
-		pDimension->setDimlfac(1);//比例因子
-		AcCmColor suiceng;
-		suiceng.setColorIndex(3);
-		pDimension->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
-		pDimension->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
+		pDimStyleTbl->close();
+		return id;
 	}
-	pEnt->close();
+
+	pDimStyleTbl->close();
+
+	AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine, NULL, id);//创建标注实体
+	AcDbObjectId dimid;
+	AcDbObjectId dimensionId;
+	DBHelper::AppendToDatabase(dimensionId, pnewdim);
+
+	if (pnewdim)
+		pnewdim->close();
+
 	return dimensionId;
 }
 

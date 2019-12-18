@@ -47,7 +47,7 @@ public:
 	//确定方向和两点，画尺寸标注
 	static void DrowDimaligned(const AcString& setLayerName, AcGePoint3d& point1, AcGePoint3d& point2);
 	//画尺寸标注
-	static AcDbObjectId CreateDimAligned(const AcString& setLayerName, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine,/*const AcGeVector3d& vecOffset,*/ const ACHAR* dimText);
+	static AcDbObjectId CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine,/*const AcGeVector3d& vecOffset,*/ const ACHAR* dimText);
 	//根据相对直角坐标来计算一个点的位置：
 	static AcGePoint3d RelativePoint(const AcGePoint3d& pt, double x, double y);
 	//求线段长度
@@ -82,6 +82,9 @@ public:
 	//获取指定数据库中指定块表中的所有实体的ID
 	static int getIdsByDwgBlkName(AcDbDatabase *pDwg, CString strBlkName, AcDbObjectIdArray &objIds);
 	static void setLayer(const CString& layerName, const int& layerColor);
+	//车道轴网尺寸标注
+	static void creatLaneGridDimensionsDimStyle(const CString& stylename);
+	static void setEntityLayer(const AcString& setlayername, AcDbObjectId& entityId);
 	
 public:
 	/*
