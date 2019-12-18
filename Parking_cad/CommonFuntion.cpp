@@ -773,7 +773,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText)
 	{
-		CString str = _T("尺寸标注");
+		CString str = _T("车道轴网尺寸标注样式");
 		AcDbObjectId id;
 		////获得当前图形的标注样式表  
 		AcDbDimStyleTable* pDimStyleTbl;
