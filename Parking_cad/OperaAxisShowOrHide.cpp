@@ -46,7 +46,7 @@ void COperaAxisShowOrHide::setLayerClose(const CString& layerName)
 	{
 		AcDbLayerTableRecord *pLTR = NULL;
 		es = pLayerTbl->getAt(layerName, pLTR, AcDb::kForWrite);
-		if (es != ErrorStatus::eOk)
+		if (es != eOk)
 		{
 			pLayerTbl->close();
 			return;
@@ -72,7 +72,7 @@ bool COperaAxisShowOrHide::isLayerClosed(const CString& strLayerName)
 	{
 		AcDbLayerTableRecord *pLTR = NULL;
 		es = pLayerTbl->getAt(strLayerName, pLTR, AcDb::kForRead);
-		if (es != ErrorStatus::eOk)
+		if (es != eOk)
 		{
 			pLayerTbl->close();
 			return result;
@@ -98,7 +98,7 @@ void COperaAxisShowOrHide::setLayerOpen(const CString& strLayerName)
 	{
 		AcDbLayerTableRecord *pLTR = NULL;
 		es = pLayerTbl->getAt(strLayerName, pLTR, AcDb::kForWrite);
-		if (es != ErrorStatus::eOk)
+		if (es != eOk)
 		{
 			pLayerTbl->close();
 			return;
