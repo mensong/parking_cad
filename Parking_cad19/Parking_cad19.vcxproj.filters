@@ -222,6 +222,9 @@
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaAxisShowOrHide.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Parking_cad\ArxDialog.h">
@@ -419,6 +422,9 @@
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
@@ -438,5 +444,6 @@
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
+    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
 </Project>

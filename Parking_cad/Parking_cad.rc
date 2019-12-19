@@ -101,10 +101,10 @@ BEGIN
     LTEXT           "m",IDC_STATIC_m,332,56,12,12
     RTEXT           "单车位宽度：",IDC_STATIC,17,77,95,12
     EDITTEXT        IDC_EDIT_WIDTH,118,75,56,14,ES_AUTOHSCROLL
-    RTEXT           "车道宽度：",IDC_STATIC,196,98,78,12
+    RTEXT           "车道宽度：",IDC_STATIC,195,77,78,12
     EDITTEXT        IDC_EDIT_LaneWidth,274,75,56,14,ES_AUTOHSCROLL
     RTEXT           "方柱长度：",IDC_STATIC,17,98,95,12
-    RTEXT           "方柱宽度：",IDC_STATIC,196,77,78,12
+    RTEXT           "方柱宽度：",IDC_STATIC,192,98,78,12
     EDITTEXT        IDC_EDIT_SquarecolumnLength,118,96,56,14,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT_SquareColumnWidth,274,96,56,14,ES_AUTOHSCROLL
     RTEXT           "请选择建筑外轮廓图层：",IDC_STATIC,17,138,95,12

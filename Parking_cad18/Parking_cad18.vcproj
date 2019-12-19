@@ -422,6 +422,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaAxisShowOrHide.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaAxleNetMaking.cpp"
 				>
 			</File>
@@ -576,6 +580,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaAddFrame.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaAxisShowOrHide.h"
 				>
 			</File>
 			<File
@@ -1249,6 +1257,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath="..\Parking_cad\Parking_cad.aps"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
