@@ -452,8 +452,9 @@ void COperaCoreWall::Start()
 	DBHelper::AppendToDatabase(coreWallId,pPline);
 	pPline->close();
 	CEquipmentroomTool::layerSet(_T("0"), 7);
-	CEquipmentroomTool::layerSet(_T("CoreWall"),2);
-	CEquipmentroomTool::setEntToLayer(coreWallId,_T("CoreWall"));
+	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
+	CEquipmentroomTool::layerSet(sCoreWallLayer,2);
+	CEquipmentroomTool::setEntToLayer(coreWallId, sCoreWallLayer);
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 }
 

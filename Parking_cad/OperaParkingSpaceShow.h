@@ -11,11 +11,11 @@ public:
 
 	static class CArxDialog* ms_dlg;
 
+	bool setDesKey(const std::string& key);
+	std::string decrypt(const std::string& code);
+	std::string encrypt(const std::string& sData);
 private:
 	AcGeTol m_tol;
-	/*CString m_outlinelayerName;
-	CString m_shearwalllayerName;
-	int directionComboshow;*/
-	
+	std::string	 m_desKey;	
 };
 

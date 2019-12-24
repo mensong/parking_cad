@@ -6,6 +6,9 @@
 #include "DBHelper.h"
 #include <algorithm>
 #include "GeHelper.h"
+#include <fstream>
+#include <json/json.h>
+#include "FileHelper.h"
 
 CEquipmentroomTool::CEquipmentroomTool()
 {
@@ -675,14 +678,15 @@ bool CEquipmentroomTool::layerSet()
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
-	if (pLayerTbl->has(_T("设备房")))
+	CString sEquipmentroomLayer(getLayerName("equipmentroomlayer").c_str());
+	if (pLayerTbl->has(sEquipmentroomLayer))
 	{
 		pLayerTbl->close();
 		return true;
 	}
 	//acutPrintf(_T("\n当前图形中未包含\"设备房\"图层!"));
 	AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
-	pLayerTblRcd->setName(_T("设备房"));
+	pLayerTblRcd->setName(sEquipmentroomLayer);
 	AcDbObjectId layerTblRcdId;
 	pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
 
@@ -765,7 +769,8 @@ void CEquipmentroomTool::setEntToLayer(AcDbObjectIdArray objectIds)
 		es = acdbOpenObject(pEnty, idEnty, AcDb::kForWrite);
 		if (es == Acad::eOk)
 		{
-			pEnty->setLayer(_T("设备房")); //设置实体所在的图层
+			CString sEquipmentroomLayer(getLayerName("equipmentroomlayer").c_str());
+			pEnty->setLayer(sEquipmentroomLayer); //设置实体所在的图层
 			pEnty->close();
 		}
 		//打开失败不需要关闭实体
@@ -780,7 +785,7 @@ void CEquipmentroomTool::setEntToLayer(const AcDbObjectId& entId, const CString&
 	es = acdbOpenObject(pEnty, idEnty, AcDb::kForWrite);
 	if (es == Acad::eOk)
 	{
-		pEnty->setLayer(strLayerName); //设置实体所在的图层
+		es = pEnty->setLayer(strLayerName); //设置实体所在的图层
 		pEnty->close();
 	}
 	//打开失败不需要关闭实体
@@ -865,4 +870,136 @@ void CEquipmentroomTool::creatTextStyle(CString& textStyleName)
 	ts.BigFontFileName = _T("gbcbig.shx");
 	ts.XScale = 1.0;
 	DBHelper::SetTextStyle(textStyleName, ts, false);
+}
+
+std::string CEquipmentroomTool::getLayerName(const std::string& strLayer)
+{
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+	std::string strLayerName = "";
+	if (reader.parse(sConfigStr, root))
+	{
+		if (root["layernames"][strLayer].isNull())
+		{
+			CString strErrorMessage(strLayer.c_str());
+			acutPrintf(_T("配置文件不存在[\"layernames\"][\"%s]字段！"), strErrorMessage);
+			return strLayerName;
+		}
+		if (root["layernames"][strLayer].isString())
+		{
+			strLayerName = root["layernames"][strLayer].asString();
+		}
+		else
+		{
+			acedAlert(_T("配置文件字段格式不匹配！"));
+			return strLayerName;
+		}
+	}
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return strLayerName;
+	}
+	return strLayerName;
+}
+
+bool CEquipmentroomTool::deletLayerByName(const CString& layerName)
+{
+	AcDbLayerTable *pLayerTbl;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	if (es != eOk)
+	{
+		return false;
+	}
+	if (pLayerTbl->has(layerName))
+	{
+		AcDbLayerTableRecord *pLTR;
+		pLayerTbl->getAt(layerName, pLTR, AcDb::kForWrite);
+		if (CEquipmentroomTool::deletLayer(pLTR)!= eOk)
+		{
+			pLTR->close();
+			pLayerTbl->close();
+			return false;
+		}
+		pLTR->close();
+	}
+	pLayerTbl->close();
+	return true;
+}
+
+Acad::ErrorStatus CEquipmentroomTool::deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT/* = NULL*/)
+{
+	bool bUp = false;
+	if (!pLTR->isWriteEnabled())
+	{
+		pLTR->upgradeOpen();
+		bUp = true;
+	}
+
+	Acad::ErrorStatus es = Acad::eOk;
+
+	do
+	{
+		AcDbObjectId idCurLayer = acdbCurDwg()->clayer();
+
+		if (idCurLayer != pLTR->objectId())
+		{//如果不是当前图层
+			pLTR->erase();
+		}
+		else
+		{//如果是当前图层
+			AcDbLayerTable* pLT1 = NULL;
+
+			bool bUpLT = false;
+			if (!pLT)
+			{
+				es = acdbCurDwg()->getLayerTable(pLT1, AcDb::kForWrite);
+				if (Acad::eOk != es)
+					break;
+			}
+			else
+			{
+				pLT1 = pLT;
+				if (!pLT1->isWriteEnabled())
+				{
+					pLT1->upgradeOpen();
+					bUpLT = true;
+				}
+			}
+
+			AcDbLayerTableRecord* pTmp = new AcDbLayerTableRecord();
+			pTmp->setName(_T("__0__temp__"));
+
+			AcDbObjectId idTempLayer;
+			es = pLT1->add(idTempLayer, pTmp);
+
+			if (!pLT)
+				pLT1->close();
+			else if (bUpLT)
+				pLT1->downgradeOpen();
+
+			if (Acad::eOk != es)
+			{
+				delete pTmp;
+				break;
+			}
+
+			es = acdbCurDwg()->setClayer(idTempLayer);
+			pLTR->erase();
+			acdbCurDwg()->setClayer(idCurLayer);
+
+			pTmp->erase();
+			pTmp->close();
+		}
+	} while (0);
+
+	if (bUp)
+		pLTR->downgradeOpen();
+
+	return es;
 }
