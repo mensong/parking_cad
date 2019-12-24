@@ -6,6 +6,7 @@
 #include "afxdialogex.h"
 #include "DBHelper.h"
 #include "CommonFuntion.h"
+#include "EquipmentroomTool.h"
 
 
 // CDlgAddFrame 对话框
@@ -343,7 +344,13 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	AcDbObjectId mInserblockId;
 	if (DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat))
 	{
-		setBlokcLayer(_T("图框"), mInserblockId);
+		CEquipmentroomTool::layerSet(_T("0"), 7);
+		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsignlayer").c_str());
+		CEquipmentroomTool::layerSet(sMapSignLayer, 7);
+		CEquipmentroomTool::setEntToLayer(mInserblockId, sMapSignLayer);
+		CEquipmentroomTool::deletLayerByName(_T("图签文字"));
+		CEquipmentroomTool::deletLayerByName(_T("图签线"));
+		CEquipmentroomTool::layerSet(_T("0"), 7);
 		return true;
 	}
 	else
@@ -414,8 +421,20 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 	AcString name = _T("车库指标表格");
 	BlockNames.insert(name);
 
+	ObjectCollector oc;
+	oc.start(acdbCurDwg());
 	AcString filepath = DBHelper::GetArxDir() + _T("Mapsign.dwg");
 	DBHelper::ImportBlkDef(filepath, BlockNames);
+	if (oc.m_objsAppended.length() > 0)
+	{
+		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsignlayer").c_str());
+		CEquipmentroomTool::layerSet(sMapSignLayer, 7);
+
+		for (int i=0; i<oc.m_objsAppended.length();i++)
+		{
+			CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sMapSignLayer);
+		}
+	}
 
 	AcDbBlockTable *pBlockTable = NULL;
 	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);

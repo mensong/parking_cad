@@ -163,7 +163,8 @@ void CDlgEntrance::getParkingIdAndPtMap(std::map < AcDbObjectId, AcGePoint2d>& p
 
 void CDlgEntrance::showEntrance(const AcGePoint2dArray& oneEntrancePts)
 {
-	CEquipmentroomTool::layerSet(_T("entrance"), 4);
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrancelayer").c_str());
+	CEquipmentroomTool::layerSet(sEntranceLayer, 4);
 	AcDbPolyline *pPoly = new AcDbPolyline(oneEntrancePts.length());
 	double width = 0;//Ïß¿í
 	for (int i = 0; i < oneEntrancePts.length(); i++)

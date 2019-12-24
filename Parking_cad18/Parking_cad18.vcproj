@@ -398,6 +398,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgSetConfig.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.cpp"
 				>
 			</File>
@@ -467,6 +471,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaSetConfig.cpp"
 				>
 			</File>
 			<File
@@ -559,6 +567,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgSetConfig.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.h"
 				>
 			</File>
@@ -628,6 +640,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaSetConfig.h"
 				>
 			</File>
 			<File

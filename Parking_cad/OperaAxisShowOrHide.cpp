@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "OperaAxisShowOrHide.h"
 #include "DBHelper.h"
+#include "EquipmentroomTool.h"
 
 
 COperaAxisShowOrHide::COperaAxisShowOrHide()
@@ -14,21 +15,34 @@ COperaAxisShowOrHide::~COperaAxisShowOrHide()
 
 void COperaAxisShowOrHide::Start()
 {
-	if (isLayerClosed(_T("axis")))
+	CString sAxisLayerName(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	if (sAxisLayerName == _T(""))
 	{
-		setLayerOpen(_T("axis"));
+		acedAlert(_T("ªÒ»°÷·œﬂÕº≤„ ß∞‹£°"));
+		return;
+	}
+	if (isLayerClosed(sAxisLayerName))
+	{
+		setLayerOpen(sAxisLayerName);
+
 	}
 	else
 	{
-		setLayerClose(_T("axis"));
+		setLayerClose(sAxisLayerName);
 	}
-	if (isLayerClosed(_T("÷·Õ¯±Í◊¢")))
+	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
+	if (sAxisDimLayerName == _T(""))
 	{
-		setLayerOpen(_T("÷·Õ¯±Í◊¢"));
+		acedAlert(_T("ªÒ»°÷·Õ¯±Í◊¢Õº≤„ ß∞‹£°"));
+		return;
+	}
+	if (isLayerClosed(sAxisDimLayerName))
+	{
+		setLayerOpen(sAxisDimLayerName);
 	}
 	else
 	{
-		setLayerClose(_T("÷·Õ¯±Í◊¢"));
+		setLayerClose(sAxisDimLayerName);
 	}
 }
 

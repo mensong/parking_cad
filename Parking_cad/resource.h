@@ -21,11 +21,13 @@
 #define IDC_EDIT_SquareColumnWidth      106
 #define IDC_EDIT_FRAME_WIDTH            106
 #define IDC_EDIT_THIREGENTLESLOPE       106
+#define IDC_EDIT_LANEDIM                106
 #define IDC_BUTTON_GetStartPoint        107
 #define IDD_DLG_ADD_FRAME               107
 #define IDC_BUTTON_GetRetreatline       108
 #define IDD_DLG_ADD_EQUIPMENT_ROOM      108
 #define IDD_DIALOG_ENTRANCE             111
+#define IDD_DIALOG_CONFIG               114
 #define IDC_CHECK_Partition             119
 #define IDC_COMBO_Direction             128
 #define IDC_COMBO_OutlineLayer          129
@@ -60,16 +62,29 @@
 #define IDC_BUTTON_GETENDPOINT          161
 #define IDC_EDIT1                       163
 #define IDC_EDIT_SHOWENDPOINT           163
+#define IDC_EDIT_ENTRANCE               163
 #define IDC_BUTTON1                     164
 #define IDC_BUTTON_EXCHANGE             164
+#define IDC_BUTTON_INIT                 164
+#define IDC_EDIT_AXIS                   167
+#define IDC_EDIT_AXISDIM                168
+#define IDC_EDIT_LANE                   169
+#define IDC_EDIT_PARKINGS               170
+#define IDC_EDIT_ARROW                  171
+#define IDC_EDIT_PILLAR                 172
+#define IDC_EDIT_SCOPE                  173
+#define IDC_EDIT_MAPSIGN                174
+#define IDC_EDIT_PICTUREFRAME           175
+#define IDC_EDIT_EQUIPMENTROOM          176
+#define IDC_EDIT_COREWALL               177
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        114
+#define _APS_NEXT_RESOURCE_VALUE        116
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         165
+#define _APS_NEXT_CONTROL_VALUE         178
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

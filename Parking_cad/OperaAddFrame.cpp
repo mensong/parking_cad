@@ -3,6 +3,7 @@
 #include "DBHelper.h"
 #include "DlgAddFrame.h"
 #include "..\..\ArxTools\GeHelper.h"
+#include "EquipmentroomTool.h"
 
 std::map<std::string, double> COperaAddFrame::ms_mapTableData;
 
@@ -19,9 +20,10 @@ void COperaAddFrame::Start()
 	std::vector<AcDbObjectId> ids = DBHelper::SelectEntityPrompt(_T("\n选择要生成图框的实体:"));
 	if (ids.size() < 1)
 		return;
-
-	double SPF1area = getPloyLineArea(ids, _T("设备房"));
-	double CPvalue = getNumberOfCars(ids, _T("parkings"));
+	CString sParkingsLayer(CEquipmentroomTool::getLayerName("parkingslayer").c_str());
+	CString sEquipmentroomLayer(CEquipmentroomTool::getLayerName("equipmentroomlayer").c_str());
+	double SPF1area = getPloyLineArea(ids, sEquipmentroomLayer);
+	double CPvalue = getNumberOfCars(ids, sParkingsLayer);
 
 	AcDbExtents extFrame;
 	for (int i = 0; i < ids.size(); ++i)
@@ -95,7 +97,8 @@ void COperaAddFrame::Start()
 		AcDbObjectId idEnt;
 		if (DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0)))
 		{
-			dlg.setBlokcLayer(setblockname, idEnt);
+			CString strPictureframeLayer(CEquipmentroomTool::getLayerName("pictureframelayer").c_str());
+			dlg.setBlokcLayer(strPictureframeLayer, idEnt);
 		}
 		else
 		{
