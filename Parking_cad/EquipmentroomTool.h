@@ -53,5 +53,10 @@ public:
 	static AcDbObjectId CreateHatch( const CString& patName, const AcGePoint2dArray& allPlinePts, const AcGeDoubleArray& bulges);
 	/*创建文字样式*/
 	static void creatTextStyle(CString& textStyleName);
+	/*从配置文件获取图层名*/
+	static std::string getLayerName(const std::string& strLayer);
+	/*删除指定图层*/
+	static bool deletLayerByName(const CString& layerNaem);
+	static Acad::ErrorStatus deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT = NULL);
 };
 

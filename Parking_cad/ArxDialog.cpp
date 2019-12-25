@@ -37,6 +37,7 @@
 #include "OperaParkingSpaceShow.h"
 #include "Authenticate.h"
 #include "Convertor.h"
+#include "EquipmentroomTool.h"
 
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturlPortone;
@@ -710,9 +711,9 @@ void CArxDialog::selectPort(const bool& useV1)
 		return;
 	}
 	std::vector<int> types;
-	CString zonesLayer = _T("…Ë±∏∑ø");
+	CString zonesLayer(CEquipmentroomTool::getLayerName("equipmentroomlayer").c_str());
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
-	CString strCoreWallLayer = _T("CoreWall");
+	CString strCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
 	std::vector<AcGePoint2dArray> coreWallPts = getPlinePointForLayer(strCoreWallLayer);
 
 	if (isPartition)

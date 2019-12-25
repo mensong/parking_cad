@@ -4,6 +4,7 @@
 #include "CommonFuntion.h"
 #include <algorithm>
 #include "GeHelper.h"
+#include "EquipmentroomTool.h"
 
 REG_CMD(COperaAxleNetMaking, BGY, ANM);
 
@@ -20,9 +21,9 @@ COperaAxleNetMaking::~COperaAxleNetMaking()
 
 void COperaAxleNetMaking::Start()
 {
-
-	ACHAR *layername = _T("axis");//轴线所在图层，这里写死只是为了测试
-
+	CString sAxisLayer(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	const ACHAR *layername = sAxisLayer;//轴线所在图层
+	
 	AcDbObjectIdArray LineIds = ms_axisIds;
 	if (LineIds.length()==0)
 	{
@@ -103,7 +104,8 @@ void COperaAxleNetMaking::Start()
 
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
-			CString setlayernameofAXSI = _T("轴网标注");//这里设置轴网标注所在图层，为硬代码，可根据需要进行更改
+			//这里设置轴网标注所在图层
+			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
 			CCommonFuntion::setLayer(setlayernameofAXSI, 255);
 
 			//初次处理四边的轴线，标注
@@ -158,7 +160,8 @@ void COperaAxleNetMaking::Start()
 
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
-			CString setlayernameofAXSI = _T("轴网标注");//这里设置轴网标注所在图层，为硬代码，可根据需要进行更改
+			//这里设置轴网标注所在图层
+			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
 			CCommonFuntion::setLayer(setlayernameofAXSI,0);
 
 			std::vector<AcDbObjectId> outIds_1;

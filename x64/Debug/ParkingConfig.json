@@ -1,13 +1,22 @@
 {
-   "params" : {
-      "posturl" : "http://10.8.202.199:90/park",
-	  "geturl" : "http://10.8.202.199:90/query/",
-	  "posturlv2" : "http://10.8.202.199:81/park",
-	  "geturlv2" : "http://10.8.202.199:81/query/",
-	  "entrance_posturl" : "http://10.8.202.199:90/entrance",
-	  "entrance_posturlv2" : "http://10.8.202.199:90/entrance"
-   },
    "layernames" : {
-      "axislayer" : "axis"  
+      "arrowlayer" : "arrow",
+      "axisdimlayer" : "axisDim",
+      "axislayer" : "axis",
+      "corewalllayer" : "CoreWall",
+      "entrancelayer" : "entrance",
+      "equipmentroomlayer" : "Éè±¸·¿",
+      "lanelayer" : "lane",
+      "lanesdimlayer" : "laneDim",
+      "mapsignlayer" : "Í¼Ç©",
+      "parkingslayer" : "parkings",
+      "pictureframelayer" : "Í¼¿ò",
+      "pillarlayer" : "pillar",
+      "scopelayer" : "scope"
+   },
+   "params" : {
+      "entrance_posturl" : "1NyKVEAeS9drU0PMl+3TUP1Lt0x0XO2gSP9dXSOhXiw=",
+      "geturl" : "1NyKVEAeS9drU0PMl+3TUERGENfGbG4slpKd+BPHQa4=",
+      "posturl" : "1NyKVEAeS9drU0PMl+3TUIaPuCzb9Lt2+N8ZiljRz6g="
    }
 }

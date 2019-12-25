@@ -200,7 +200,8 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			{
 				acedAlert(sMsg);
 			}
-			acutPrintf(_T("the uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
+			acutPrintf(_T("\nthe uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
+			acutPrintf(_T("\n"));
 			DBHelper::CallCADCommandEx(_T("Redraw"));
 		}
 		else if (status == 0)
@@ -304,45 +305,49 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 
 void CDlgWaiting::parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName)
 {
-	CEquipmentroomTool::layerSet(_T("parkings"), 254);
+	CString sParkingsLayer(CEquipmentroomTool::getLayerName("parkingslayer").c_str());
+	CEquipmentroomTool::layerSet(sParkingsLayer, 254);
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
 	AcGeMatrix3d mat;
 	AcGeVector3d vec(0, 0, 1);
 	mat.setToRotation(parkingShowRotation, vec);//double = (rotation/180)*Π
 	mat.setTranslation(pt);
 	DBHelper::InsertBlkRef(parkingId, blockName, mat);
-	CEquipmentroomTool::setEntToLayer(parkingId, _T("parkings"));
+	CEquipmentroomTool::setEntToLayer(parkingId, sParkingsLayer);
 }
 
 AcDbObjectId CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 {
-	CEquipmentroomTool::layerSet(_T("axis"), 1);
+	CString sAxisLayer(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	CEquipmentroomTool::layerSet(sAxisLayer, 1);
 	AcGePoint3d ptStart(axisPts[0].x, axisPts[0].y, 0);
 	AcGePoint3d ptEnd(axisPts[1].x, axisPts[1].y, 0);
 	AcDbLine *pLine = new AcDbLine(ptStart, ptEnd);
 	AcDbObjectId axisId;
 	DBHelper::AppendToDatabase(axisId,pLine);
 	pLine->close();
-	CEquipmentroomTool::setEntToLayer(axisId, _T("axis"));
+	CEquipmentroomTool::setEntToLayer(axisId, sAxisLayer);
 	return axisId;
 }
 
 AcDbObjectId CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
 {
-	CEquipmentroomTool::layerSet(_T("lane"), 30);
+	CString sLaneLayer(CEquipmentroomTool::getLayerName("lanelayer").c_str());
+	CEquipmentroomTool::layerSet(sLaneLayer, 30);
 	AcGePoint3d ptStart(lanePts[0].x, lanePts[0].y, 0);
 	AcGePoint3d ptEnd(lanePts[1].x, lanePts[1].y, 0);
 	AcDbLine *pLine = new AcDbLine(ptStart, ptEnd);
 	AcDbObjectId laneId;
 	DBHelper::AppendToDatabase(laneId,pLine);
 	pLine->close();
-	CEquipmentroomTool::setEntToLayer(laneId, _T("lane"));
+	CEquipmentroomTool::setEntToLayer(laneId, sLaneLayer);
 	return laneId;
 }
 
 void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
 {
-	CEquipmentroomTool::layerSet(_T("scope"), 6);
+	CString sScopeLayer(CEquipmentroomTool::getLayerName("scopelayer").c_str());
+	CEquipmentroomTool::layerSet(sScopeLayer, 6);
 	AcDbPolyline *pPoly = new AcDbPolyline(park_columnPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < park_columnPts.length(); i++)
@@ -353,12 +358,13 @@ void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
 	AcDbObjectId scopeId;
 	DBHelper::AppendToDatabase(scopeId,pPoly);
 	pPoly->close();
-	CEquipmentroomTool::setEntToLayer(scopeId, _T("scope"));
+	CEquipmentroomTool::setEntToLayer(scopeId, sScopeLayer);
 }
 
 void CDlgWaiting::pillarShow(const AcGePoint2dArray& onePillarPts)
 {
-	CEquipmentroomTool::layerSet(_T("pillar"), 2);
+	CString sPillarLayer(CEquipmentroomTool::getLayerName("pillarlayer").c_str());
+	CEquipmentroomTool::layerSet(sPillarLayer, 2);
 	AcDbPolyline *pPoly = new AcDbPolyline(onePillarPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < onePillarPts.length(); i++)
@@ -369,12 +375,13 @@ void CDlgWaiting::pillarShow(const AcGePoint2dArray& onePillarPts)
 	AcDbObjectId pillarId;
 	DBHelper::AppendToDatabase(pillarId,pPoly);
 	pPoly->close();
-	CEquipmentroomTool::setEntToLayer(pillarId, _T("pillar"));
+	CEquipmentroomTool::setEntToLayer(pillarId, sPillarLayer);
 }
 
 void CDlgWaiting::arrowShow(const AcGePoint2dArray& oneArrowPts)
 {
-	CEquipmentroomTool::layerSet(_T("arrow"), 7);
+	CString sArrowLayer(CEquipmentroomTool::getLayerName("arrowlayer").c_str());
+	CEquipmentroomTool::layerSet(sArrowLayer, 7);
 	AcDbPolyline *pPoly = new AcDbPolyline(oneArrowPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < oneArrowPts.length(); i++)
@@ -385,7 +392,7 @@ void CDlgWaiting::arrowShow(const AcGePoint2dArray& oneArrowPts)
 	AcDbObjectId arrowId;
 	DBHelper::AppendToDatabase(arrowId,pPoly);
 	pPoly->close();
-	CEquipmentroomTool::setEntToLayer(arrowId, _T("arrow"));
+	CEquipmentroomTool::setEntToLayer(arrowId, sArrowLayer);
 }
 
 void CDlgWaiting::setLayerClose(const CString& layerName)
@@ -791,20 +798,18 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 	}
 	else
 	{
-		setLandDismensions(dTransLaneWidth, _T("lane"), RoadLineIds);
+		setLandDismensions(dTransLaneWidth, RoadLineIds);
 	}
 	DBHelper::CallCADCommand(_T("ANM "));
-	//setLayerClose(_T("axis"));
-	//setLayerClose(_T("轴网标注"));
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 	return true;
 }
 
-void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayerName, const AcDbObjectIdArray& RoadLineIds)
+void CDlgWaiting::setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds)
 {
 	CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));//创建新的标注样式
-
-	CEquipmentroomTool::layerSet(_T("lanesDim"), 7);
+	CString sLanesDimLayer(CEquipmentroomTool::getLayerName("lanesdimlayer").c_str());
+	CEquipmentroomTool::layerSet(sLanesDimLayer, 7);
 	if (RoadLineIds.length() == 0)
 	{
 		acutPrintf(_T("\n没有车道信息，生成车道标注失败！"));
@@ -846,7 +851,7 @@ void CDlgWaiting::setLandDismensions(double m_dDis, const AcString& CarLaneLayer
 			centerpoint.transformBy(movevec * 300);
 			AcDbObjectId dimId;
 			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText);
-			CEquipmentroomTool::setEntToLayer(dimId, _T("lanesDim"));
+			CEquipmentroomTool::setEntToLayer(dimId, sLanesDimLayer);
 			pLine->close();
 			pEnt->close();
 		}
