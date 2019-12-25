@@ -583,7 +583,7 @@ end
 <RTLReadingOrder>0</RTLReadingOrder>
 <Style>1</Style>
 <ReadOnly>1</ReadOnly>
-<SpecifyType>1</SpecifyType>
+<SpecifyType>0</SpecifyType>
 <Variable/>
 </Control>
 <Control>
@@ -637,10 +637,10 @@ end
 <IDS_CTRL_BUTTON_BACK>&lt; &amp;Back</IDS_CTRL_BUTTON_BACK>
 <IDS_CTRL_BUTTON_CANCEL>&amp;Cancel</IDS_CTRL_BUTTON_CANCEL>
 <IDS_CTRL_BUTTON_HELP>&amp;Help</IDS_CTRL_BUTTON_HELP>
-<IDS_CTRL_SCROLLTEXT_BODY>                        ´Ë°æ±¾ÎªÄÚ²â°æ±¾£¬½ûÖ¹Íâ´«¡£</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_BODY/>
 <IDS_CTRL_RADIOBTN_AGREE>ÎÒÍ¬Òâ</IDS_CTRL_RADIOBTN_AGREE>
 <IDS_CTRL_RADIOBTN_DISAGREE>ÎÒ²»Í¬Òâ</IDS_CTRL_RADIOBTN_DISAGREE>
-<IDS_CTRL_SCROLLTEXT_FILE/>
+<IDS_CTRL_SCROLLTEXT_FILE>.\ReadMe.txt</IDS_CTRL_SCROLLTEXT_FILE>
 </Messages>
 </SUF70Messages>
 </Languages>
@@ -4183,7 +4183,7 @@ g_HandleSystemReboot();
 </SessionVar>
 <SessionVar>
 <Name>%ProductVer%</Name>
-<Value>0.6</Value>
+<Value>0.7</Value>
 <Type>1</Type>
 </SessionVar>
 <SessionVar>
@@ -4226,7 +4226,7 @@ g_HandleSystemReboot();
 <PostBuildProg/>
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
-<Filename>±Ì¹ğÔ°³µ¿âÖÇÄÜÉè¼ÆÏµÍ³V0.6.exe</Filename>
+<Filename>±Ì¹ğÔ°³µ¿âÖÇÄÜÉè¼ÆÏµÍ³V0.7.exe</Filename>
 <OutputFolder>D:\</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>0</CustomSegSize>
@@ -4259,7 +4259,7 @@ g_HandleSystemReboot();
 <ResourceComments>Created with Setup Factory</ResourceComments>
 <ResourceInternalName>sf_rt</ResourceInternalName>
 <ResourceFileDescription>Setup Application</ResourceFileDescription>
-<ResourceCopyright>Setup Engine Copyright © 1992-2018 Indigo Rose Corporation</ResourceCopyright>
+<ResourceCopyright>Setup Engine Copyright ?1992-2018 Indigo Rose Corporation</ResourceCopyright>
 <ResourceTrademarks>Setup Factory is a trademark of Indigo Rose Corporation</ResourceTrademarks>
 <ResourcePrivateBuild/>
 <ResourceSpecialBuild/>
