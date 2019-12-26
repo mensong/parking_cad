@@ -38,6 +38,7 @@
 #include "Authenticate.h"
 #include "Convertor.h"
 #include "EquipmentroomTool.h"
+#include "OperaAddFrame.h"
 
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturlPortone;
@@ -678,6 +679,8 @@ void CArxDialog::selectPort(const bool& useV1)
 	CString outlineLayer;
 	m_outlineLayer.GetWindowText(outlineLayer);
 	std::vector<AcGePoint2dArray> outlinePts = getPlinePointForLayer(outlineLayer);
+	//传图层名过去
+	COperaAddFrame::setOutLineLayerName(outlineLayer);
 	if (outlinePts.size() == 0)
 	{
 		acedAlert(_T("没有选择外轮廓图层信息!"));
@@ -882,7 +885,8 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 	Doc_Locker doc_locker;
 	//提示用户输入一个点
 	ads_point pt;
-	if (acedGetPoint(NULL, _T("\n请点选一个点作为车位排布起点："), pt) == RTNORM)
+	int re = acedGetPoint(NULL, _T("\n请点选一个点作为车位排布起点："), pt);
+	if (re == RTNORM)
 	{
 		//如果点有效，继续执行
 		CompleteEditorCommand();
@@ -893,6 +897,12 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 		m_editStartPoint.SetWindowText(m_sStartPoint);
 		startPtx = pt[X];
 		startPty = pt[Y];
+	}
+	else if (re == RTCAN)
+	{
+		m_sStartPoint = "";
+		m_editStartPoint.SetWindowText(m_sStartPoint);
+		return;
 	}
 	else
 	{
@@ -1092,7 +1102,8 @@ void CArxDialog::OnBnClickedButtonGetendpoint()
 	Doc_Locker doc_locker;
 	//提示用户输入一个点
 	ads_point pt;
-	if (acedGetPoint(NULL, _T("\n请点选一个点作为车位排布终点："), pt) == RTNORM)
+	int re = acedGetPoint(NULL, _T("\n请点选一个点作为车位排布终点："), pt);
+	if (re == RTNORM)
 	{
 		//如果点有效，继续执行
 		CompleteEditorCommand();
@@ -1103,6 +1114,12 @@ void CArxDialog::OnBnClickedButtonGetendpoint()
 		m_EditShowEndPoint.SetWindowText(m_strEndPoint);
 		dEndPtx = pt[X];
 		dEndPty = pt[Y];
+	}
+	else if (re == RTCAN)
+	{
+		m_strEndPoint = "";
+		m_EditShowEndPoint.SetWindowText(m_strEndPoint);
+		return;
 	}
 	else
 	{
