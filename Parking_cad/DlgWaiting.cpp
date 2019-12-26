@@ -18,10 +18,7 @@
 #include "EquipmentroomTool.h"
 #include "OperaAxleNetMaking.h"
 #include "CommonFuntion.h"
-
-#ifndef PI
-#define PI 3.1415926535898
-#endif
+#include "GeHelper.h"
 
 std::string CDlgWaiting::ms_uuid;
 bool CDlgWaiting::ms_bUseV1;
@@ -801,6 +798,10 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 		setLandDismensions(dTransLaneWidth, RoadLineIds);
 	}
 	DBHelper::CallCADCommand(_T("ANM "));
+	CString sAxisLayerName(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	CEquipmentroomTool::setLayerClose(sAxisLayerName);
+	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
+	CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 	return true;
 }
@@ -836,7 +837,7 @@ void CDlgWaiting::setLandDismensions(double m_dDis, const AcDbObjectIdArray& Roa
 			centerpoint.transformBy(movevec * 800);
 
 			AcGeVector3d tempVec = AcGeVector3d(startpoint - endpoint);
-			AcGeVector3d vec = tempVec.rotateBy(PI / 2, AcGeVector3d(0, 0, 1));
+			AcGeVector3d vec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
 			vec.normalize();
 
 			AcGePoint3d tempPoint = centerpoint;

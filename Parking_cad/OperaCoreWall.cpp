@@ -24,16 +24,21 @@ COperaCoreWall::~COperaCoreWall(void)
 
 void COperaCoreWall::Start()
 {
+	setCoreWallData();
+}
+
+void COperaCoreWall::coreWallDataCulation()
+{
 	if (ACADV_RELMAJOR > 20)
 	{
 		acutPrintf(_T("\n核心筒生成功能只能在天正环境下工作。后继版本再优化。"));
 		return;
 	}
 
-	typedef int (*FN_calcConvexHull)(CPoint_2 resuls[], CPoint_2 points[], int pointsCount);
-	typedef int (*FN_calcArrangement)(CPoint_2 resuls[], int* arrFaceSegsLen, CPoint_2 segPoints[], int nSegs);
+	typedef int(*FN_calcConvexHull)(CPoint_2 resuls[], CPoint_2 points[], int pointsCount);
+	typedef int(*FN_calcArrangement)(CPoint_2 resuls[], int* arrFaceSegsLen, CPoint_2 segPoints[], int nSegs);
 
-	FN_calcConvexHull calcConvexHull = ModulesManager::Instance().func<FN_calcConvexHull>("Boundary.dll", "calcConvexHull");	
+	FN_calcConvexHull calcConvexHull = ModulesManager::Instance().func<FN_calcConvexHull>("Boundary.dll", "calcConvexHull");
 	FN_calcArrangement calcArrangement = ModulesManager::Instance().func<FN_calcArrangement>("Boundary.dll", "calcArrangement");
 	if (!calcConvexHull || !calcArrangement)
 	{
@@ -44,9 +49,9 @@ void COperaCoreWall::Start()
 	typedef IWatcherDwgOutFields* (*FN_CreateDwgOutFieldsWatcher)();
 	typedef IWatcherSubWorldDraw* (*FN_CreateSubWorldDrawWatcher)();
 	typedef IWatcherSubViewportDraw* (*FN_CreateSubViewportDrawWatcher)();
-	typedef void (*FN_ReleaseDwgOutFieldsWatcher)(IWatcherDwgOutFields* pWatcher);
-	typedef void (*FN_ReleaseSubWorldDrawWatcher)(IWatcherSubWorldDraw* pWatcher);
-	typedef void (*FN_ReleaseSubViewportDrawWatcher)(IWatcherSubViewportDraw* pWatcher);
+	typedef void(*FN_ReleaseDwgOutFieldsWatcher)(IWatcherDwgOutFields* pWatcher);
+	typedef void(*FN_ReleaseSubWorldDrawWatcher)(IWatcherSubWorldDraw* pWatcher);
+	typedef void(*FN_ReleaseSubViewportDrawWatcher)(IWatcherSubViewportDraw* pWatcher);
 
 	char szHackARX[20];
 	sprintf(szHackARX, "BGYHackARX%d.arx", ACADV_RELMAJOR);
@@ -70,7 +75,7 @@ void COperaCoreWall::Start()
 		acutPrintf(sHackARX);
 		return;
 	}
-		
+
 	IWatcherSubViewportDraw* pVdWatcher = CreateSubViewportDrawWatcher();
 
 	std::vector<AcGeLineSeg2d*> segs;
@@ -81,7 +86,7 @@ void COperaCoreWall::Start()
 
 	//先删除门窗洞，再处理
 	std::set<int> openingIdx;
-	for (int i=0; i<ids.size(); ++i)
+	for (int i = 0; i < ids.size(); ++i)
 	{
 		AcDbEntity* pEnt = NULL;
 		if (Acad::eOk != acdbOpenObject(pEnt, ids[i], AcDb::kForRead))
@@ -99,7 +104,7 @@ void COperaCoreWall::Start()
 		pEnt->close();
 	}
 
-	for (int i=0; i<ids.size(); ++i)
+	for (int i = 0; i < ids.size(); ++i)
 	{
 		if (openingIdx.find(i) != openingIdx.end())
 			continue;
@@ -139,10 +144,10 @@ void COperaCoreWall::Start()
 			if (hacker.isValid())
 			{
 				AcGePoint3dArray& pts = hacker.getSection();
-				for (int p=0; p<pts.length(); ++p)
+				for (int p = 0; p < pts.length(); ++p)
 				{
 					AcGePoint3d& pt1 = pts[p];
-					AcGePoint3d& pt2 = pts[(p+1) % pts.length()];
+					AcGePoint3d& pt2 = pts[(p + 1) % pts.length()];
 					segs.push_back(new AcGeLineSeg2d(GeHelper::PT32(pt1), GeHelper::PT32(pt2)));
 				}
 			}
@@ -156,17 +161,17 @@ void COperaCoreWall::Start()
 	ReleaseSubViewportDrawWatcher(pVdWatcher);
 
 	if (segs.size() == 0)
-		return ;
+		return;
 
 	PointKey pk;
 
 	RT::RTreeEx<AcGeLineSeg2d*, double, 2> rtSegs;
 	CPoint_2* result = new CPoint_2[segs.size() * segs.size()];
 	CPoint_2* segPointsForHull = new CPoint_2[2 * segs.size()];
-	for (int i=0; i<segs.size(); ++i)
+	for (int i = 0; i < segs.size(); ++i)
 	{
 		AcGeLineSeg2d* seg = segs[i];
-		int idx = 2*i;
+		int idx = 2 * i;
 		AcGePoint2d pt1 = pk.getPoint(seg->startPoint());
 		segPointsForHull[idx].x = pt1.x;
 		segPointsForHull[idx].y = pt1.y;
@@ -185,7 +190,7 @@ void COperaCoreWall::Start()
 	int nHullPointCount = calcConvexHull(result, segPointsForHull, 2 * segs.size());
 	std::vector<AcGePoint2d> convexHullPoints;
 	std::vector<AcGeLineSeg2d> convexHullSegs;
-	for (int i=0; i<nHullPointCount; ++i)
+	for (int i = 0; i < nHullPointCount; ++i)
 	{
 		convexHullPoints.push_back(AcGePoint2d(result[i].x, result[i].y));
 	}
@@ -193,7 +198,7 @@ void COperaCoreWall::Start()
 
 #ifdef _DEBUG
 	acutPrintf(_T("\r\n==============start convex hull=============="));
-	for (int i=0; i<convexHullPoints.size(); ++i)
+	for (int i = 0; i < convexHullPoints.size(); ++i)
 	{
 		acutPrintf(_T("\r\nline %.4f,%.4f %.4f,%.4f\r\n"), convexHullPoints[i].x, convexHullPoints[i].y, convexHullPoints[(i + 1) % convexHullPoints.size()].x, convexHullPoints[(i + 1) % convexHullPoints.size()].y);
 	}
@@ -202,10 +207,10 @@ void COperaCoreWall::Start()
 
 	std::vector<AcGeLineSeg2d> segsNeedOnHull;
 	std::vector<AcGeLineSeg2d> segsNoNeedOnHull;
-	for (int i=0; i<convexHullPoints.size(); ++i)
+	for (int i = 0; i < convexHullPoints.size(); ++i)
 	{
 		AcGePoint2d pt1 = pk.getPoint(convexHullPoints[i]);
-		AcGePoint2d pt2 = pk.getPoint(convexHullPoints[(i+1)%convexHullPoints.size()]);
+		AcGePoint2d pt2 = pk.getPoint(convexHullPoints[(i + 1) % convexHullPoints.size()]);
 		convexHullSegs.push_back(AcGeLineSeg2d(pt1, pt2));
 
 		bool bNeed = false;
@@ -213,7 +218,7 @@ void COperaCoreWall::Start()
 		seg2AABBBox(pt1, pt2, minPt, maxPt);
 		std::set<AcGeLineSeg2d*> setFind;
 		rtSegs.Search(minPt, maxPt, &setFind);
-		for (std::set<AcGeLineSeg2d*>::iterator it=setFind.begin(); it!=setFind.end(); ++it)
+		for (std::set<AcGeLineSeg2d*>::iterator it = setFind.begin(); it != setFind.end(); ++it)
 		{
 			AcGePoint2d pt3 = pk.getPoint((*it)->startPoint());
 			AcGePoint2d pt4 = pk.getPoint((*it)->endPoint());
@@ -228,17 +233,17 @@ void COperaCoreWall::Start()
 		if (!bNeed)
 			segsNoNeedOnHull.push_back(AcGeLineSeg2d(pt1, pt2));
 	}
-	
+
 #ifdef _DEBUG
 	acutPrintf(_T("\n===========segsNeedOnHull===========\n"));
-	for (int i=0; i<segsNeedOnHull.size(); ++i)
+	for (int i = 0; i < segsNeedOnHull.size(); ++i)
 	{
 		AcGeLineSeg2d& line = segsNeedOnHull[i];
 		acutPrintf(_T("LINE %.4f,%.4f %.4f,%.4f\r\n"), line.startPoint().x, line.startPoint().y, line.endPoint().x, line.endPoint().y);
 	}
 
 	acutPrintf(_T("\n===========segsNoNeedOnHull===========\n"));
-	for (int i=0; i<segsNoNeedOnHull.size(); ++i)
+	for (int i = 0; i < segsNoNeedOnHull.size(); ++i)
 	{
 		AcGeLineSeg2d& line = segsNoNeedOnHull[i];
 		acutPrintf(_T("LINE %.4f,%.4f %.4f,%.4f\r\n"), line.startPoint().x, line.startPoint().y, line.endPoint().x, line.endPoint().y);
@@ -250,14 +255,14 @@ void COperaCoreWall::Start()
 	int arrangementPointsCount = 2 * segs.size() + 2 * segsNoNeedOnHull.size();
 	CPoint_2* segPointsForArrangement = new CPoint_2[arrangementPointsCount];
 	int p = 0;
-	for (int i=0; i<2*segs.size(); i+=2, p+=2)
+	for (int i = 0; i < 2 * segs.size(); i += 2, p += 2)
 	{
 		//segPointsForArrangement[p].x = segPointsForHull[i].x;
 		//segPointsForArrangement[p].y = segPointsForHull[i].y;
 		//segPointsForArrangement[p + 1].x = segPointsForHull[i + 1].x;
 		//segPointsForArrangement[p + 1].y = segPointsForHull[i + 1].y;
 
-		AcGeVector2d dir(segPointsForHull[i + 1].x - segPointsForHull[i].x, 
+		AcGeVector2d dir(segPointsForHull[i + 1].x - segPointsForHull[i].x,
 			segPointsForHull[i + 1].y - segPointsForHull[i].y);
 		dir = dir.normal() * SEG_EX;
 
@@ -274,7 +279,7 @@ void COperaCoreWall::Start()
 		segPointsForArrangement[p + 1].x = ptEnd.x;
 		segPointsForArrangement[p + 1].y = ptEnd.y;
 	}
-	for (int i=0; i<segsNoNeedOnHull.size(); ++i, p+=2)
+	for (int i = 0; i < segsNoNeedOnHull.size(); ++i, p += 2)
 	{
 		//segPointsForArrangement[p].x = segsNoNeedOnHull[i].startPoint().x;
 		//segPointsForArrangement[p].y = segsNoNeedOnHull[i].startPoint().y;
@@ -304,24 +309,24 @@ void COperaCoreWall::Start()
 	//	acutPrintf(_T("\nline %f,%f %f,%f\r\n"), segPointsForArrangement[i].x, segPointsForArrangement[i].y, segPointsForArrangement[i+1].x, segPointsForArrangement[i+1].y);
 	//}
 	//acutPrintf(_T("\r\n==============end segPointsForArrangement=============="));
-	
+
 	std::vector<std::vector<AcGeLineSeg2d> > faces;
 	int* arrFaceSegsLen = new int[arrangementPointsCount * arrangementPointsCount];
 	int nFace = calcArrangement(result, arrFaceSegsLen, segPointsForArrangement, segs.size() + segsNoNeedOnHull.size());
 	p = 0;
-	for (int i=0; i<nFace; ++i)
+	for (int i = 0; i < nFace; ++i)
 	{
 		int faceSegsLen = arrFaceSegsLen[i];
 		std::vector<AcGeLineSeg2d> face;
-		for (int j=0; j<faceSegsLen; ++j)
+		for (int j = 0; j < faceSegsLen; ++j)
 		{
-			if (AcGePoint2d(result[p].x, result[p].y).distanceTo(AcGePoint2d(result[p+1].x, result[p+1].y)) < SEG_EX*2)
+			if (AcGePoint2d(result[p].x, result[p].y).distanceTo(AcGePoint2d(result[p + 1].x, result[p + 1].y)) < SEG_EX * 2)
 			{
 				p += 2;
 				continue;
 			}
 
-			face.push_back(AcGeLineSeg2d(AcGePoint2d(result[p].x, result[p].y), AcGePoint2d(result[p+1].x, result[p+1].y)));
+			face.push_back(AcGeLineSeg2d(AcGePoint2d(result[p].x, result[p].y), AcGePoint2d(result[p + 1].x, result[p + 1].y)));
 
 			//acutPrintf(_T("\r\nline %.4f,%.4f %.4f,%.4f\r\n"), result[p].x, result[p].y, result[p+1].x, result[p+1].y);
 
@@ -333,7 +338,7 @@ void COperaCoreWall::Start()
 
 		//acutPrintf(_T("\r\n========================="));
 	}
-	
+
 	delete[] result;
 	delete[] segPointsForHull;
 	delete[] segPointsForArrangement;
@@ -341,7 +346,7 @@ void COperaCoreWall::Start()
 
 	//根据面边线构造多段线
 	std::vector<AcGePoint2dArray> plines;
-	for (int f=0; f<faces.size(); ++f)
+	for (int f = 0; f < faces.size(); ++f)
 	{
 		std::vector<AcGeLineSeg2d>& face = faces[f];
 
@@ -351,11 +356,11 @@ void COperaCoreWall::Start()
 
 #ifdef _DEBUG
 	acutPrintf(_T("\n========FACES========\n"));
-	for (int i=0; i<plines.size(); ++i)
+	for (int i = 0; i < plines.size(); ++i)
 	{
 		AcGePoint2dArray& pts = plines[i];
 		acutPrintf(_T("\r\nline "));
-		for (int j=0; j<pts.length(); ++j)
+		for (int j = 0; j < pts.length(); ++j)
 		{
 			acutPrintf(_T("%.4f,%.4f "), pts[j].x, pts[j].y);
 		}
@@ -363,7 +368,7 @@ void COperaCoreWall::Start()
 #endif
 
 	//找到与不需要的hull边与之相向望的所有边
-	for (int i=0; i<segsNoNeedOnHull.size(); ++i)
+	for (int i = 0; i < segsNoNeedOnHull.size(); ++i)
 	{
 		AcGeLineSeg2d& seg = segsNoNeedOnHull[i];
 		AcGePoint2d ptCenter = seg.evalPoint(0.5);
@@ -375,7 +380,7 @@ void COperaCoreWall::Start()
 		//找到NoNeedOnHull所在的凹闭合区域
 		AcGePoint2d ptTest = ptCenter;
 		ptTest.transformBy(prepDir * 1);
-		for (int f=0; f<plines.size(); ++f)
+		for (int f = 0; f < plines.size(); ++f)
 		{
 			AcGePoint2dArray& pts = plines[f];
 			if (GeHelper::IsPointOnPolygon(pts, ptTest))
@@ -389,7 +394,7 @@ void COperaCoreWall::Start()
 		{
 			ptTest = ptCenter;
 			ptTest.transformBy(prepDir * -1);
-			for (int f=0; f<plines.size(); ++f)
+			for (int f = 0; f < plines.size(); ++f)
 			{
 				AcGePoint2dArray& pts = plines[f];
 				if (GeHelper::IsPointOnPolygon(pts, ptTest))
@@ -406,16 +411,16 @@ void COperaCoreWall::Start()
 #ifdef _DEBUG
 		acutPrintf(_T("\n========valid face========\n"));
 #endif
-		for (int j=0; j<ptsConcave.length(); ++j)
+		for (int j = 0; j < ptsConcave.length(); ++j)
 		{
 			AcGePoint2d& pt1 = ptsConcave[j];
-			AcGePoint2d& pt2 = ptsConcave[(j+1)%ptsConcave.length()];
+			AcGePoint2d& pt2 = ptsConcave[(j + 1) % ptsConcave.length()];
 
 #ifdef _DEBUG
 			acutPrintf(_T("\r\nline %.4f,%.4f %.4f,%.4f\n"), pt1.x, pt1.y, pt2.x, pt2.y);
 #endif
 
-			if ((pt1.isEqualTo(seg.startPoint(), m_tol) && pt2.isEqualTo(seg.endPoint(), m_tol)) || 
+			if ((pt1.isEqualTo(seg.startPoint(), m_tol) && pt2.isEqualTo(seg.endPoint(), m_tol)) ||
 				(pt1.isEqualTo(seg.endPoint(), m_tol) && pt2.isEqualTo(seg.startPoint(), m_tol)))
 			{//排除掉NoNeedOnHull的边
 				continue;
@@ -427,7 +432,7 @@ void COperaCoreWall::Start()
 
 #ifdef _DEBUG
 	acutPrintf(_T("\n===========RESULT1===========\n"));
-	for (int i=0; i<segsNeedOnHull.size(); ++i)
+	for (int i = 0; i < segsNeedOnHull.size(); ++i)
 	{
 		AcGeLineSeg2d& line = segsNeedOnHull[i];
 		acutPrintf(_T("LINE %.4f,%.4f %.4f,%.4f\r\n"), line.startPoint().x, line.startPoint().y, line.endPoint().x, line.endPoint().y);
@@ -436,26 +441,88 @@ void COperaCoreWall::Start()
 
 	AcGePoint2dArray ptsMaxEdge = getSegsOrderPoints(segsNeedOnHull, m_tol);
 #ifdef _DEBUG
-	std::string s = GeHelper::getCadDebugLine(ptsMaxEdge, false);		
+	std::string s = GeHelper::getCadDebugLine(ptsMaxEdge, false);
 	acutPrintf(_T("\n===========RESULT2===========\n"));
 	acutPrintf(GL::Ansi2WideByte(s.c_str()).c_str());
 #endif
 
 	AcDbPolyline* pPline = new AcDbPolyline;
-	for (int i=0; i<ptsMaxEdge.length(); ++i)
+	for (int i = 0; i < ptsMaxEdge.length(); ++i)
 	{
 		pPline->addVertexAt(i, ptsMaxEdge[i]);
 	}
 	pPline->setClosed(Adesk::kTrue);
 	pPline->setColorIndex(2);
 	AcDbObjectId coreWallId;
-	DBHelper::AppendToDatabase(coreWallId,pPline);
+	DBHelper::AppendToDatabase(coreWallId, pPline);
 	pPline->close();
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
-	CEquipmentroomTool::layerSet(sCoreWallLayer,2);
+	CEquipmentroomTool::layerSet(sCoreWallLayer, 2);
 	CEquipmentroomTool::setEntToLayer(coreWallId, sCoreWallLayer);
 	CEquipmentroomTool::layerSet(_T("0"), 7);
+}
+
+void COperaCoreWall::setCoreWallData()
+{
+	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
+	CEquipmentroomTool::layerSet(sCoreWallLayer, 1);
+
+	std::vector<AcDbEntity*> vctEquipmentEnt;
+	ads_name ssname;
+	ads_name ent;
+	//获取选择集
+	acedPrompt(_T("\n请选择核心筒的多线段实体："));
+	struct resbuf *rb; // 结果缓冲区链表
+	rb = acutBuildList(RTDXF0, _T("LWPOLYLINE"), RTNONE);
+	// 选择复合要求的实体
+	acedSSGet(NULL, NULL, NULL, rb, ssname);
+	//获取选择集的长度
+	Adesk::Int32 len = 0;
+	int nRes = acedSSLength(ssname, &len);
+	if (RTNORM == nRes)
+	{
+		//遍历选择集
+		for (int i = 0; i < len; i++)
+		{
+			//获取实体名
+			int nRes = acedSSName(ssname, i, ent);
+			if (nRes != RTNORM)
+				continue;
+			//根据实体名得到ID，然后打开自定义实体
+			AcDbObjectId id;
+			acdbGetObjectId(id, ent);
+			if (!id.isValid())
+				continue;
+			AcDbEntity *pEnt = NULL;
+			acdbOpenObject(pEnt, id, AcDb::kForWrite);
+			//判断自定义实体的类型
+			if (pEnt == NULL)
+				continue;
+			vctEquipmentEnt.push_back(pEnt);
+		}
+	}
+	//释放选择集和结果缓存区
+	acutRelRb(rb);
+	acedSSFree(ssname);
+	if (vctEquipmentEnt.size() < 1)
+		return;
+	//拿到用户选择多线段实体指针
+	AcDbObjectIdArray EquipmentIds;
+	for (int i = 0; i < vctEquipmentEnt.size(); i++)
+	{
+		if (vctEquipmentEnt[i]->isKindOf(AcDbPolyline::desc()))
+		{
+			AcDbObjectId EquipmentId = vctEquipmentEnt[i]->objectId();
+			EquipmentIds.append(EquipmentId);
+		}
+		vctEquipmentEnt[i]->close();
+	}
+	for (int j = 0; j < EquipmentIds.length(); j++)
+	{
+		CEquipmentroomTool::setEntToLayer(EquipmentIds[j], sCoreWallLayer);
+	}
+	CEquipmentroomTool::layerSet(_T("0"), 7);//操作完成回到零图层
 }
 
 void COperaCoreWall::seg2AABBBox(const AcGePoint2d& pt1, const AcGePoint2d& pt2, double minPt[2], double maxPt[2])

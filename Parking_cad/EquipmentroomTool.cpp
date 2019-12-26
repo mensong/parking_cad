@@ -314,7 +314,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		rectanglePts.append(squarePts[j]);
 		rectanglePts.append(squarePts[(j + 1) % vecs.length()]);
 		AcGeVector2d stretchVec = vecs[j];
-		stretchVec.rotateBy(4.7123889803846897);
+		stretchVec.rotateBy((ARX_PI2/4)*3);
 		AcGeVector2d unitvec = stretchVec.normalize();
 		closeMoveVecs.append(unitvec);
 
@@ -347,7 +347,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		AcGeVector2d unitTempvecs = tempvecs.normalize();
 		AcGeVector2d anotherVec = vecs[0].normalize();
 
-		if (compareVec(unitTempvecs, anotherVec) || compareVec(unitTempvecs, -anotherVec))
+		if (unitTempvecs == anotherVec || unitTempvecs == anotherVec.negate())
 		{
 			//判断是否为被放置图形边
 			AcGePoint2dArray compareLinePoints;
@@ -393,7 +393,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		AcGeVector2d unitTempvecs = tempvecs.normalize();
 		AcGeVector2d anotherVec = vecs[1].normalize();
 		//if (tempvecs==vecs[0]|| tempvecs == anotherVec)
-		if (compareVec(unitTempvecs, anotherVec) || compareVec(unitTempvecs, -anotherVec))
+		if (unitTempvecs==anotherVec || unitTempvecs== anotherVec.negate())
 		{
 			//判断是否为被放置图形边
 			AcGePoint2dArray compareLinePoints;
@@ -440,7 +440,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		AcGeVector2d unitTempvecs = tempvecs.normalize();
 		AcGeVector2d anotherVec = vecs[2].normalize();
 		//if (tempvecs==vecs[0]|| tempvecs == anotherVec)
-		if (compareVec(unitTempvecs, anotherVec) || compareVec(unitTempvecs, -anotherVec))
+		if (unitTempvecs==anotherVec || unitTempvecs==anotherVec.negate())
 		{
 			//判断是否为被放置图形边
 			AcGePoint2dArray compareLinePoints;
@@ -487,7 +487,7 @@ void CEquipmentroomTool::AdsorbentShow(AcDbObjectIdArray useJigIds, AcGePoint2d 
 		AcGeVector2d unitTempvecs = tempvecs.normalize();
 		AcGeVector2d anotherVec = vecs[3].normalize();
 		//if (tempvecs==vecs[0]|| tempvecs == anotherVec)
-		if (compareVec(unitTempvecs, anotherVec) || compareVec(unitTempvecs, -anotherVec))
+		if (unitTempvecs==anotherVec || unitTempvecs==anotherVec.negate())
 		{
 			//判断是否为被放置图形边
 			AcGePoint2dArray compareLinePoints;
@@ -567,6 +567,10 @@ double CEquipmentroomTool::getMinDistance(AcGePoint2d squarePoint, std::vector<A
 	std::vector<double> distanceVector;
 	for (int i = 0; i < targetLines.size(); i++)
 	{
+		/*-----------测试用-----------------*/
+		AcGePoint2d a = targetLines[i][0];
+		AcGePoint2d b = targetLines[i][1];
+		/*----------------------------*/
 		AcGeLine2d targetPLine(targetLines[i][0], targetLines[i][1]);
 		AcGePointOnCurve2d RectPtOnCurve;
 		targetPLine.getClosestPointTo(squarePoint, RectPtOnCurve);
@@ -585,15 +589,6 @@ double CEquipmentroomTool::getMinDistance(AcGePoint2d squarePoint, std::vector<A
 		double result = *smallest;
 		return result;
 	}
-}
-
-bool CEquipmentroomTool::compareVec(AcGeVector2d vec1, AcGeVector2d vec2)
-{
-	if (Equal(vec1.x, vec2.x) && Equal(vec1.y, vec2.y))
-	{
-		return true;
-	}
-	return false;
 }
 
 void CEquipmentroomTool::moveTest(AcDbObjectIdArray useJigIds, AcGeVector2d moveVec, double moveDistance)
@@ -1002,4 +997,83 @@ Acad::ErrorStatus CEquipmentroomTool::deletLayer(AcDbLayerTableRecord* pLTR, AcD
 		pLTR->downgradeOpen();
 
 	return es;
+}
+
+void CEquipmentroomTool::setLayerClose(const CString& layerName)
+{
+	AcDbLayerTable *pLayerTbl;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	if (es != eOk)
+	{
+		return;
+	}
+	if (pLayerTbl->has(layerName))
+	{
+		AcDbLayerTableRecord *pLTR = NULL;
+		es = pLayerTbl->getAt(layerName, pLTR, AcDb::kForWrite);
+		if (es != eOk)
+		{
+			pLayerTbl->close();
+			return;
+		}
+		DBHelper::SetLayerIsOff(pLTR);
+		pLTR->close();
+	}
+	pLayerTbl->close();
+}
+
+bool CEquipmentroomTool::isLayerClosed(const CString& strLayerName)
+{
+	AcDbLayerTable *pLayerTbl;
+	bool result = false;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	if (es != eOk)
+	{
+		return result;
+	}
+	if (pLayerTbl->has(strLayerName))
+	{
+		AcDbLayerTableRecord *pLTR = NULL;
+		es = pLayerTbl->getAt(strLayerName, pLTR, AcDb::kForRead);
+		if (es != eOk)
+		{
+			pLayerTbl->close();
+			return result;
+		}
+		result = pLTR->isOff();
+		pLTR->close();
+	}
+	pLayerTbl->close();
+	return result;
+}
+
+void CEquipmentroomTool::setLayerOpen(const CString& strLayerName)
+{
+	AcDbLayerTable *pLayerTbl;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	if (es != eOk)
+	{
+		return;
+	}
+	if (pLayerTbl->has(strLayerName))
+	{
+		AcDbLayerTableRecord *pLTR = NULL;
+		es = pLayerTbl->getAt(strLayerName, pLTR, AcDb::kForWrite);
+		if (es != eOk)
+		{
+			pLayerTbl->close();
+			return;
+		}
+		es = pLTR->upgradeOpen();
+		pLTR->setIsOff(false);
+		es = pLTR->downgradeOpen();
+		pLTR->close();
+	}
+	pLayerTbl->close();
 }

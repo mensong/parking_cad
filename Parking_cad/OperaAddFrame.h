@@ -16,7 +16,7 @@ public:
 	static std::vector<AcGePoint2dArray> getPlinePointForLayer(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty);
 	static double getPloyLineArea(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty);
 	static double getNumberOfCars(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty);
-	static std::string setPicAttributeData(double SPF1value, double CPvalue,std::map<std::string, double>& picAttributedata);
+	static std::string setPicAttributeData(double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata);
 	static double getPicAttributeValue(std::map<std::string, double>& picAttributedata, const std::string& picAttributeTage);
 	static std::string setStringData(double inputValue, const std::string& Keydata);
 	//static bool isHasBlockName(const AcString& blockname, AcString& outblockname);
@@ -24,5 +24,9 @@ public:
 	//yangbing
 	static void setTableDataMap(const std::map<std::string, double>& tableData);
 	static std::map<std::string, double> ms_mapTableData;
+	static void getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName);
+	static void setOutLineLayerName(const CString& sOutLineLayerName);
+	static CString ms_sOutLineLayerName;
+	static double getIntersectionArea(const std::vector<AcGePoint2dArray>& targetPlinePts,const std::vector<AcGePoint2dArray>& usePlinePts);
 };
 

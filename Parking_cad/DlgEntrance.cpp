@@ -223,7 +223,8 @@ void CDlgEntrance::OnBnClickedButtonGetstartpoint()
 	CString strStartPoint;
 	//提示用户输入一个点
 	ads_point pt;
-	if (acedGetPoint(NULL, _T("\n输入一个点："), pt) == RTNORM)
+	int re = acedGetPoint(NULL, _T("\n请输入一个点作为出入口起始点："), pt);
+	if (re == RTNORM)
 	{
 		//如果点有效，继续执行
 		CompleteEditorCommand();
@@ -237,6 +238,12 @@ void CDlgEntrance::OnBnClickedButtonGetstartpoint()
 		m_StartPointEdit.SetWindowText(strStartPoint);
 		dStartPtx = pt[X];
 		dStartPty = pt[Y];
+	}
+	else if (re == RTCAN)
+	{
+		strStartPoint = "";
+		m_StartPointEdit.SetWindowText(strStartPoint);
+		return;
 	}
 	else
 	{
@@ -255,7 +262,8 @@ void CDlgEntrance::OnBnClickedButtonGetendpoint()
 	CString strEndPoint;
 	//提示用户输入一个点
 	ads_point pt;
-	if (acedGetPoint(NULL, _T("\n输入一个点："), pt) == RTNORM)
+	int re = acedGetPoint(NULL, _T("\n输入一个点作为出入终止点："), pt);
+	if (re == RTNORM)
 	{
 		//如果点有效，继续执行
 		CompleteEditorCommand();
@@ -269,6 +277,12 @@ void CDlgEntrance::OnBnClickedButtonGetendpoint()
 		m_EndPointEdit.SetWindowText(strEndPoint);
 		dEndPtx = pt[X];
 		dEndPty = pt[Y];
+	}
+	else if (re == RTCAN)
+	{
+		strEndPoint = "";
+		m_EndPointEdit.SetWindowText(strEndPoint);
+		return;
 	}
 	else
 	{

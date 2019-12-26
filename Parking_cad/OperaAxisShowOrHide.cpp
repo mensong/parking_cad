@@ -21,14 +21,14 @@ void COperaAxisShowOrHide::Start()
 		acedAlert(_T("获取轴线图层失败！"));
 		return;
 	}
-	if (isLayerClosed(sAxisLayerName))
+	if (CEquipmentroomTool::isLayerClosed(sAxisLayerName))
 	{
-		setLayerOpen(sAxisLayerName);
+		CEquipmentroomTool::setLayerOpen(sAxisLayerName);
 
 	}
 	else
 	{
-		setLayerClose(sAxisLayerName);
+		CEquipmentroomTool::setLayerClose(sAxisLayerName);
 	}
 	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
 	if (sAxisDimLayerName == _T(""))
@@ -36,92 +36,14 @@ void COperaAxisShowOrHide::Start()
 		acedAlert(_T("获取轴网标注图层失败！"));
 		return;
 	}
-	if (isLayerClosed(sAxisDimLayerName))
+	if (CEquipmentroomTool::isLayerClosed(sAxisDimLayerName))
 	{
-		setLayerOpen(sAxisDimLayerName);
+		CEquipmentroomTool::setLayerOpen(sAxisDimLayerName);
 	}
 	else
 	{
-		setLayerClose(sAxisDimLayerName);
+		CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
 	}
 }
 
-void COperaAxisShowOrHide::setLayerClose(const CString& layerName)
-{
-	AcDbLayerTable *pLayerTbl;
-	//获取当前图形层表
-	Acad::ErrorStatus es;
-	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
-	if (es != eOk)
-	{
-		return;
-	}
-	if (pLayerTbl->has(layerName))
-	{
-		AcDbLayerTableRecord *pLTR = NULL;
-		es = pLayerTbl->getAt(layerName, pLTR, AcDb::kForWrite);
-		if (es != eOk)
-		{
-			pLayerTbl->close();
-			return;
-		}
-		DBHelper::SetLayerIsOff(pLTR);
-		pLTR->close();
-	}
-	pLayerTbl->close();
-}
-
-bool COperaAxisShowOrHide::isLayerClosed(const CString& strLayerName)
-{
-	AcDbLayerTable *pLayerTbl;
-	bool result = false;
-	//获取当前图形层表
-	Acad::ErrorStatus es;
-	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
-	if (es != eOk)
-	{
-		return result;
-	}
-	if (pLayerTbl->has(strLayerName))
-	{
-		AcDbLayerTableRecord *pLTR = NULL;
-		es = pLayerTbl->getAt(strLayerName, pLTR, AcDb::kForRead);
-		if (es != eOk)
-		{
-			pLayerTbl->close();
-			return result;
-		}
-		result = pLTR->isOff();
-		pLTR->close();
-	}
-	pLayerTbl->close();
-	return result;
-}
-
-void COperaAxisShowOrHide::setLayerOpen(const CString& strLayerName)
-{
-	AcDbLayerTable *pLayerTbl;
-	//获取当前图形层表
-	Acad::ErrorStatus es;
-	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
-	if (es != eOk)
-	{
-		return;
-	}
-	if (pLayerTbl->has(strLayerName))
-	{
-		AcDbLayerTableRecord *pLTR = NULL;
-		es = pLayerTbl->getAt(strLayerName, pLTR, AcDb::kForWrite);
-		if (es != eOk)
-		{
-			pLayerTbl->close();
-			return;
-		}
-		es = pLTR->upgradeOpen();
-		pLTR->setIsOff(false);
-		es = pLTR->downgradeOpen();
-		pLTR->close();
-	}
-	pLayerTbl->close();
-}
 REG_CMD(COperaAxisShowOrHide, BGY, AxisShowOrHide);//控制轴线和其对应标注图层显隐
