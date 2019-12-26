@@ -378,7 +378,6 @@ void COperaAddFrame::getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingE
 			for (int j = 0; j < tempEnts.length(); j++)
 			{
 				AcDbEntity* pEnty = (AcDbEntity*)tempEnts.at(j);
-				delete tempEnts[j];
 				if (pEnty != NULL)
 				{
 					if (pEnty->isKindOf(AcDbPolyline::desc()))
@@ -422,9 +421,8 @@ void COperaAddFrame::getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingE
 						//¼ì²â±ÕºÏ
 						if (arrTempPlinePts.length() > 2 && arrTempPlinePts[arrTempPlinePts.length() - 1] != arrTempPlinePts[0])
 							arrTempPlinePts.append(arrTempPlinePts[0]);
-						pPline->close();
 					}
-					pEnty->close();
+					delete pEnty;
 				}
 			}
 			parkingExtentPts.push_back(arrTempPlinePts);
