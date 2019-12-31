@@ -34,8 +34,6 @@ public:
 	static AcGePoint2d point3dTo2d(AcGePoint3d targetPt);
 	/*输入一个固定线段和一组平行与它的线段，输出距离固定线段最近的距离*/
 	static double getMinDistance(AcGePoint2d squarePoint, std::vector<AcGePoint2dArray>& targetLines);
-	/*比较两个单位向量是否相等*/
-	static bool compareVec(AcGeVector2d vec1, AcGeVector2d vec2);
 	/*吸附分步移动效果测试*/
 	static void moveTest(AcDbObjectIdArray useJigIds, AcGeVector2d moveVec, double moveDistance);
 	/*通过端点比较判断所取得直线是否为构成的多边形的边*/
@@ -58,5 +56,8 @@ public:
 	/*删除指定图层*/
 	static bool deletLayerByName(const CString& layerNaem);
 	static Acad::ErrorStatus deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT = NULL);
+	static void setLayerClose(const CString& layerName);
+	static bool isLayerClosed(const CString& strLayerName);
+	static void setLayerOpen(const CString& strLayerName);
 };
 

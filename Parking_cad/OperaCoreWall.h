@@ -19,4 +19,8 @@ protected:
 	void cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std::set<AcGeLineSeg2d*>& compareSegs, AcGeLineSeg2d*& lastSeg, AcGeTol tol, AcGePoint2dArray& outpoints);
 	void point2AABBBox(double minPt[2], double maxPt[2], const AcGePoint2d& pt, double width);
 	AcGeTol m_tol;
+
+	/*暂时简化核心筒功能*/
+	void setCoreWallData();
+	void coreWallDataCulation();
 };
