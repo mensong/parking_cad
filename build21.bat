@@ -1,9 +1,11 @@
 @echo off
 
-call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
-devenv "Parking_cad21.sln" /Build "Release|x64" >tmp21.txt
-
 set logfile=tmp21.txt
+
+call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+devenv "Parking_cad21.sln" /Build "Release|x64" >%logfile%
+
+webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
 
 find "失败 1 个" %logfile%
 if %errorlevel% equ 0 (
@@ -61,4 +63,6 @@ exit
 
 :error
 echo 生成有错误，请查看%logfile%
-notepad %logfile%
+::notepad %logfile%
+webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var?status=3"
+exit

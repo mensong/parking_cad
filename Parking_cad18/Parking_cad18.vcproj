@@ -45,7 +45,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;PARKING_CAD18_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -131,7 +131,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;PARKING_CAD18_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -217,7 +217,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;PARKING_CAD18_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -303,7 +303,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;PARKING_CAD18_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -378,10 +378,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\Authenticate.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\CommonFuntion.cpp"
 				>
 			</File>
@@ -411,10 +407,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\EquipmentroomTool.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\HardDiskSerial.cpp"
 				>
 			</File>
 			<File
@@ -543,10 +535,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\Authenticate.h"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\Boundary.h"
 				>
 			</File>
@@ -580,10 +568,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\EquipmentroomTool.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\HardDiskSerial.h"
 				>
 			</File>
 			<File
@@ -974,10 +958,10 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="base64"
+			Name="Authenticate"
 			>
 			<File
-				RelativePath="..\base64\base64.cpp"
+				RelativePath="..\..\Authenticate\Authenticate\Authenticate.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1013,15 +997,11 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\base64\base64.h"
+				RelativePath="..\..\Authenticate\Authenticate\Authenticate.h"
 				>
 			</File>
-		</Filter>
-		<Filter
-			Name="DES"
-			>
 			<File
-				RelativePath="..\DES_CBC_5\cipher_des.cpp"
+				RelativePath="..\..\Authenticate\DES_CBC_5\base64.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1057,55 +1037,11 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\DES_CBC_5\cipher_des.h"
+				RelativePath="..\..\Authenticate\DES_CBC_5\base64.h"
 				>
 			</File>
 			<File
-				RelativePath="..\DES_CBC_5\cipher_padding.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\DES_CBC_5\cipher_padding.h"
-				>
-			</File>
-			<File
-				RelativePath="..\DES_CBC_5\cipher_params.h"
-				>
-			</File>
-			<File
-				RelativePath="..\DES_CBC_5\DesHelper.cpp"
+				RelativePath="..\..\Authenticate\DES_CBC_5\cipher_des.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1141,11 +1077,11 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\DES_CBC_5\DesHelper.h"
+				RelativePath="..\..\Authenticate\DES_CBC_5\cipher_des.h"
 				>
 			</File>
 			<File
-				RelativePath="..\DES_CBC_5\utils.cpp"
+				RelativePath="..\..\Authenticate\DES_CBC_5\cipher_padding.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1181,7 +1117,131 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\DES_CBC_5\utils.h"
+				RelativePath="..\..\Authenticate\DES_CBC_5\cipher_padding.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\DES_CBC_5\cipher_params.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\DES_CBC_5\DesHelper.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\DES_CBC_5\DesHelper.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\Authenticate\HardDiskSerial.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\Authenticate\HardDiskSerial.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\DES_CBC_5\utils.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\Authenticate\DES_CBC_5\utils.h"
 				>
 			</File>
 		</Filter>

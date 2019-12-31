@@ -73,10 +73,8 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 		AdsorbentShow(useJigIds, basePoint, sideLength);
 		return true;
 	}
-	if (flag)
-	{
-		return false;
-	}
+
+	return !flag;
 }
 
 AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaName, double& sideLength)

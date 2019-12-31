@@ -9,8 +9,8 @@
 #include "FileHelper.h"
 #include "DlgEntrance.h"
 #include "Convertor.h"
-#include "../DES_CBC_5/DesHelper.h"
-#include "../base64/base64.h"
+#include "DES_CBC_5/DesHelper.h"
+#include "DES_CBC_5/base64.h"
 #include "EquipmentroomTool.h"
 
 class CArxDialog* COperaParkingSpaceShow::ms_dlg = NULL;

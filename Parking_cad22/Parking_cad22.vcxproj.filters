@@ -22,20 +22,11 @@
     <Filter Include="ArxTools">
       <UniqueIdentifier>{43daf24a-d21c-415e-baee-f3daca4d2e14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Auth">
-      <UniqueIdentifier>{f16c8043-c2b7-4136-a6ac-876a44eecdc3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Auth\DES">
-      <UniqueIdentifier>{2353d44f-6cde-4d25-a064-a580afb93919}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Auth\base64">
-      <UniqueIdentifier>{f2b09d44-7cea-4e55-b554-2f885eeee06c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Auth\Auth">
-      <UniqueIdentifier>{9b9f5f2b-f7f9-45d6-ac3c-d5d641139fe3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TangentReader">
       <UniqueIdentifier>{ba793342-b632-4694-b16f-e533ad0165b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Authenticate">
+      <UniqueIdentifier>{3b96a2f7-693f-4850-9e0c-b57b84c49ef1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -50,21 +41,6 @@
     </ClCompile>
     <ClCompile Include="..\pystring\pystring.cpp">
       <Filter>pystring</Filter>
-    </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\cipher_des.cpp">
-      <Filter>Auth\DES</Filter>
-    </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\cipher_padding.cpp">
-      <Filter>Auth\DES</Filter>
-    </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\DesHelper.cpp">
-      <Filter>Auth\DES</Filter>
-    </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\utils.cpp">
-      <Filter>Auth\DES</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base64\base64.cpp">
-      <Filter>Auth\base64</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp">
       <Filter>源文件</Filter>
@@ -113,12 +89,6 @@
     </ClCompile>
     <ClCompile Include="..\Parking_cad\StdAfx.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\Authenticate.cpp">
-      <Filter>Auth\Auth</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp">
-      <Filter>Auth\Auth</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp">
       <Filter>源文件</Filter>
@@ -237,6 +207,27 @@
     <ClCompile Include="..\Parking_cad\OperaSetConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Authenticate\Authenticate\Authenticate.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\base64.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\cipher_des.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\cipher_padding.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\DesHelper.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\utils.cpp">
+      <Filter>Authenticate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -247,24 +238,6 @@
     </ClInclude>
     <ClInclude Include="..\pystring\pystring.h">
       <Filter>pystring</Filter>
-    </ClInclude>
-    <ClInclude Include="..\DES_CBC_5\cipher_des.h">
-      <Filter>Auth\DES</Filter>
-    </ClInclude>
-    <ClInclude Include="..\DES_CBC_5\cipher_padding.h">
-      <Filter>Auth\DES</Filter>
-    </ClInclude>
-    <ClInclude Include="..\DES_CBC_5\cipher_params.h">
-      <Filter>Auth\DES</Filter>
-    </ClInclude>
-    <ClInclude Include="..\DES_CBC_5\DesHelper.h">
-      <Filter>Auth\DES</Filter>
-    </ClInclude>
-    <ClInclude Include="..\DES_CBC_5\utils.h">
-      <Filter>Auth\DES</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base64\base64.h">
-      <Filter>Auth\base64</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\ArxDialog.h">
       <Filter>头文件</Filter>
@@ -313,12 +286,6 @@
     </ClInclude>
     <ClInclude Include="..\Parking_cad\StdAfx.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\Authenticate.h">
-      <Filter>Auth\Auth</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\HardDiskSerial.h">
-      <Filter>Auth\Auth</Filter>
     </ClInclude>
     <ClInclude Include="OperaModuleCall.h">
       <Filter>头文件</Filter>
@@ -451,6 +418,30 @@
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaSetConfig.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\Authenticate\Authenticate.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\Authenticate\HardDiskSerial.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\base64.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_des.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_padding.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_params.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\DesHelper.h">
+      <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\utils.h">
+      <Filter>Authenticate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

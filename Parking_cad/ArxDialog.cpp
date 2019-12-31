@@ -35,7 +35,7 @@
 #include "Convertor.h"
 #include "ModulesManager.h"
 #include "OperaParkingSpaceShow.h"
-#include "Authenticate.h"
+#include "Authenticate\Authenticate.h"
 #include "Convertor.h"
 #include "EquipmentroomTool.h"
 

@@ -25,7 +25,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "DlgWaiting.h"
-#include "Authenticate.h"
+#include "Authenticate\Authenticate.h"
 #include "DBHelper.h"
 #include "Convertor.h"
 #include "ModulesManager.h"
@@ -35,6 +35,8 @@
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
+#define DES_KEY "#B-G-Y++"
+#define TIME_URL "http://licence.orzgod.com:8090/cur_time"
 
 Authenticate g_auth;
 
@@ -48,23 +50,100 @@ public:
 	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) 
 	{
 		// TODO: Load dependencies here
-
-		//DWORD dwIDESerial;
-		//CString str;
-		//GetVolumeInformation(_T("E:\\"), NULL, NULL,&dwIDESerial,NULL,NULL,NULL,NULL);
-		//str.Format( _T("硬盘序列号: %X - %X"),HIWORD(dwIDESerial),LOWORD(dwIDESerial));
-		//AfxMessageBox(str);
+		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
 		//授权检查
-		g_auth.setDesKey("#B-G-Y++");
-		
-		std::string s = g_auth.localEncode(20200101, "李明生");
-		//Authenticate::LICENSE_INFO li;
-		//g_auth.decode(li, "z/6ftPSRnF/a0YVdN0o8SAmROFe2jH9RAbsjKwrDcDo=");
+		Authenticate auth;
+		auth.setDesKey(DES_KEY);
 
+		DWORD nowTime = 0;
+		if (AcRx::kRetOK != getLicenceServerTime(auth, nowTime))
+			return AcRx::kRetError;
+
+		if (AcRx::kRetOK != checkLicence(auth, nowTime))
+			return AcRx::kRetError;
+
+		// You *must* call On_kInitAppMsg here
+		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
+		
+		// TODO: Add your initialization code here
+		AUTO_REG_CMD::Init();
+		
+		AcString filepath = DBHelper::GetArxDir() + _T("parking_cad.cuix");
+		LoadCuix::Load(filepath);
+		LoadCuix::ShowToolbarAsyn(_T("智能地库"));
+		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
+
+		return (retCode) ;
+	}
+
+	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
+	{
+		AUTO_REG_CMD::Clear();
+		ModulesManager::Relaese();
+
+		// You *must* call On_kUnloadAppMsg here
+		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;		
+
+		return (retCode) ;
+	}
+
+	virtual void RegisterServerComponents () {
+	}
+
+	AcRx::AppRetCode getLicenceServerTime(Authenticate& auth, DWORD& nowTime)
+	{
+		typedef int(*FN_get)(const char* url, bool dealRedirect /*= true*/);
+		FN_get get = ModulesManager::Instance().func<FN_get>("LibcurlHttp.dll", "get");
+		if (!get)
+		{
+			MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
+			return AcRx::kRetError;
+		}
+		typedef const char* (*FN_getBody)(int& len);
+		FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
+		if (!getBody)
+		{
+			MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
+			return AcRx::kRetError;
+		}
+		int code = get(TIME_URL, true);
+		if (code != 200)
+		{
+			MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
+			return AcRx::kRetError;
+		}
+		int nLen = 0;
+		const char* pBody = getBody(nLen);
+		if (nLen <= 0)
+		{
+			MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
+			return AcRx::kRetError;
+		}
+		std::string sNowTime(pBody, nLen);
+
+		nowTime = auth.decodeCurTime(sNowTime);
+		if (nowTime == 0)
+		{
+			MessageBox(NULL, AcString(_T("时间服务器错误！")), _T("服务器错误"), MB_OK | MB_ICONERROR);
+			return AcRx::kRetError;
+		}
+
+		return AcRx::kRetOK;
+	}
+
+	AcRx::AppRetCode checkLicence(Authenticate& auth, DWORD nowTime)
+	{
 		AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
-		g_auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
-		int res = g_auth.check();
+		auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
+		int res = auth.check(nowTime);
+
+		std::string user = auth.getCheckedUser();
+		std::string serial = auth.getCheckedSerial();
+		std::string license = auth.getCheckedLicenceCode();
+		DWORD		expireTime = auth.getCheckedExpireTime();
+		acutPrintf(_T("\n授权信息 - 【用户名:%s  到期时间:%u】\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
+
 		if (res == 1)
 		{
 			MessageBox(NULL, AcString(_T("初始化失败！")), _T("初始化失败"), MB_OK | MB_ICONERROR);
@@ -86,39 +165,7 @@ public:
 			return AcRx::kRetError;
 		}
 
-		std::string user = g_auth.getCheckedUser();
-		std::string serial = g_auth.getCheckedSerial();
-		std::string license = g_auth.getCheckedLicenceCode();
-		DWORD		expireTime = g_auth.getCheckedExpireTime();
-		acutPrintf(_T("\n授权信息 - 【用户名:%s  到期时间:%u】\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
-
-		// You *must* call On_kInitAppMsg here
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
-		
-		// TODO: Add your initialization code here
-		AUTO_REG_CMD::Init();
-		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
-
-		AcString filepath = DBHelper::GetArxDir() + _T("parking_cad.cuix");
-		LoadCuix::Load(filepath);
-		LoadCuix::ShowToolbarAsyn(_T("智能地库"));
-		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
-
-		return (retCode) ;
-	}
-
-	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
-	{
-		AUTO_REG_CMD::Clear();
-		ModulesManager::Relaese();
-
-		// You *must* call On_kUnloadAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;		
-
-		return (retCode) ;
-	}
-
-	virtual void RegisterServerComponents () {
+		return AcRx::kRetOK;
 	}
 	
 } ;

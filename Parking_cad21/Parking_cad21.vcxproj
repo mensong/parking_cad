@@ -36,31 +36,43 @@
     <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp" />
     <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp" />
     <ClCompile Include="..\..\ArxTools\win_iconv.cpp" />
-    <ClCompile Include="..\base64\base64.cpp">
+    <ClCompile Include="..\..\Authenticate\Authenticate\Authenticate.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\cipher_des.cpp">
+    <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\cipher_padding.cpp">
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\base64.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\DesHelper.cpp">
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\cipher_des.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\DES_CBC_5\utils.cpp">
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\cipher_padding.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\DesHelper.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Authenticate\DES_CBC_5\utils.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -86,7 +98,6 @@
     </ClCompile>
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp" />
     <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
-    <ClCompile Include="..\Parking_cad\Authenticate.cpp" />
     <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
@@ -95,7 +106,6 @@
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp" />
-    <ClCompile Include="..\Parking_cad\HardDiskSerial.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxisShowOrHide.cpp" />
@@ -155,16 +165,17 @@
     <ClInclude Include="..\..\ArxTools\PointInPolygon.h" />
     <ClInclude Include="..\..\ArxTools\RTreeEx.h" />
     <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h" />
-    <ClInclude Include="..\base64\base64.h" />
-    <ClInclude Include="..\DES_CBC_5\cipher_des.h" />
-    <ClInclude Include="..\DES_CBC_5\cipher_padding.h" />
-    <ClInclude Include="..\DES_CBC_5\cipher_params.h" />
-    <ClInclude Include="..\DES_CBC_5\DesHelper.h" />
-    <ClInclude Include="..\DES_CBC_5\utils.h" />
+    <ClInclude Include="..\..\Authenticate\Authenticate\Authenticate.h" />
+    <ClInclude Include="..\..\Authenticate\Authenticate\HardDiskSerial.h" />
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\base64.h" />
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_des.h" />
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_padding.h" />
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_params.h" />
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\DesHelper.h" />
+    <ClInclude Include="..\..\Authenticate\DES_CBC_5\utils.h" />
     <ClInclude Include="..\jsoncpp\src\json_tool.h" />
     <ClInclude Include="..\jsoncpp\src\version.h" />
     <ClInclude Include="..\Parking_cad\ArxDialog.h" />
-    <ClInclude Include="..\Parking_cad\Authenticate.h" />
     <ClInclude Include="..\Parking_cad\Boundary.h" />
     <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
@@ -174,7 +185,6 @@
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
-    <ClInclude Include="..\Parking_cad\HardDiskSerial.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h" />
@@ -267,10 +277,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</TreatWarningAsError>
