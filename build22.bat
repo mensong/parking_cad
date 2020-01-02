@@ -2,10 +2,10 @@
 
 set logfile=tmp22.txt
 
-call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
-devenv "Parking_cad22.sln" /Build "Release|x64" >%logfile%
+echo ============================ %~n0 ============================>%logfile%
 
-webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
+call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+devenv "Parking_cad22.sln" /Build "Release|x64" >>%logfile%
 
 find "失败 1 个" %logfile%
 if %errorlevel% equ 0 (
@@ -58,10 +58,14 @@ goto :error
 )
 
 :sucess
-exit
+goto finally
 
 :error
 echo 生成有错误，请查看%logfile%
 ::notepad %logfile%
+echo ============================ 生成错误 ============================>>%logfile%
 webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var?status=3"
-exit
+goto finally
+
+:finally
+webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
