@@ -53,14 +53,13 @@ public:
 		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
 		//ÊÚÈ¨¼ì²é
-		Authenticate auth;
-		auth.setDesKey(DES_KEY);
+		g_auth.setDesKey(DES_KEY);
 
 		DWORD nowTime = 0;
-		if (AcRx::kRetOK != getLicenceServerTime(auth, nowTime))
+		if (AcRx::kRetOK != getLicenceServerTime(g_auth, nowTime))
 			return AcRx::kRetError;
 
-		if (AcRx::kRetOK != checkLicence(auth, nowTime))
+		if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
 			return AcRx::kRetError;
 
 		// You *must* call On_kInitAppMsg here
