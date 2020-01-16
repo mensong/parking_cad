@@ -386,6 +386,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgBipLogin.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgEntrance.cpp"
 				>
 			</File>
@@ -547,6 +551,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgBipLogin.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgEntrance.h"
 				>
 			</File>
@@ -568,6 +576,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\EquipmentroomTool.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\lib_bipsignin.h"
 				>
 			</File>
 			<File

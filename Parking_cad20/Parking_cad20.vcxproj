@@ -100,6 +100,7 @@
     <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
     <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
@@ -179,12 +180,14 @@
     <ClInclude Include="..\Parking_cad\Boundary.h" />
     <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\DlgBipLogin.h" />
     <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
+    <ClInclude Include="..\Parking_cad\lib_bipsignin.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h" />

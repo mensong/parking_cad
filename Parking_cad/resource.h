@@ -28,6 +28,7 @@
 #define IDD_DLG_ADD_EQUIPMENT_ROOM      108
 #define IDD_DIALOG_ENTRANCE             111
 #define IDD_DIALOG_CONFIG               114
+#define IDD_DLG_BIP_LOGIN               116
 #define IDC_CHECK_Partition             119
 #define IDC_COMBO_Direction             128
 #define IDC_COMBO_OutlineLayer          129
@@ -63,6 +64,7 @@
 #define IDC_EDIT1                       163
 #define IDC_EDIT_SHOWENDPOINT           163
 #define IDC_EDIT_ENTRANCE               163
+#define IDC_EDIT_USER                   163
 #define IDC_BUTTON1                     164
 #define IDC_BUTTON_EXCHANGE             164
 #define IDC_BUTTON_INIT                 164
@@ -77,14 +79,16 @@
 #define IDC_EDIT_PICTUREFRAME           175
 #define IDC_EDIT_EQUIPMENTROOM          176
 #define IDC_EDIT_COREWALL               177
+#define IDC_EDIT_PASSWORD               178
+#define IDC_CHK_SAVE_PWD                180
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        116
+#define _APS_NEXT_RESOURCE_VALUE        118
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         178
+#define _APS_NEXT_CONTROL_VALUE         181
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

@@ -181,6 +181,7 @@
     <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
     <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="..\Parking_cad\Boundary.h" />
     <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\DlgBipLogin.h" />
     <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
@@ -300,7 +302,6 @@
     <None Include="..\..\ArxTools\DBHelper.inl" />
     <None Include="..\..\ArxTools\设置环境变量.bat" />
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
-    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />

@@ -32,6 +32,7 @@
 #include "AutoRegCmd.h"
 #include "CommonFuntion.h"
 #include "LoadCuix.h"
+#include "DlgBipLogin.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -52,15 +53,28 @@ public:
 		// TODO: Load dependencies here
 		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
-		//授权检查
-		g_auth.setDesKey(DES_KEY);
+		////授权检查
+		//g_auth.setDesKey(DES_KEY);
 
-		DWORD nowTime = 0;
-		if (AcRx::kRetOK != getLicenceServerTime(g_auth, nowTime))
-			return AcRx::kRetError;
+		//DWORD nowTime = 0;
+		//if (AcRx::kRetOK != getLicenceServerTime(g_auth, nowTime))
+		//	return AcRx::kRetError;
 
-		if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
+		//if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
+		//	return AcRx::kRetError;
+
+		CDlgBipLogin dlgLogin;
+		if (dlgLogin.DoModal() != IDOK)
+		{
+			ModulesManager::Relaese();
 			return AcRx::kRetError;
+		}
+		if (!dlgLogin.loginSuccess)
+		{
+			ModulesManager::Relaese();
+			return AcRx::kRetError;
+		}
+		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;

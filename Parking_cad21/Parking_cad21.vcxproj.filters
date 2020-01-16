@@ -222,6 +222,9 @@
     <ClCompile Include="..\..\Authenticate\DES_CBC_5\utils.cpp">
       <Filter>Authenticate</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ArxTools\ArxProgressBar.h">
@@ -424,6 +427,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\utils.h">
       <Filter>Authenticate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgBipLogin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\lib_bipsignin.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
