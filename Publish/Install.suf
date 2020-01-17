@@ -2859,7 +2859,7 @@ g_HandleSystemReboot();
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
 <Filename>SetupV0.1.exe</Filename>
-<OutputFolder>D:\</OutputFolder>
+<OutputFolder>D:\git_Repository\web\setup</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>0</CustomSegSize>
 <CustomSegSizeMode>0</CustomSegSizeMode>
