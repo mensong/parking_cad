@@ -6,5 +6,5 @@ echo ============================ %~n0 ============================>%logfile%
 
 UpdateSetupFactoryVersion -f Install.suf -s "<Filename>SetupV" -e ".exe</Filename>">ver.txt
 
-..\webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
-..\webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var" "ver.txt" "ver"
+webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
+webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var" "ver.txt" "ver"
