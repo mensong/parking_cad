@@ -30,6 +30,8 @@ If objArgs.Count = 1 Then
 	GetUrl(objArgs(0))
 End If
 
+Dim json
+
 If objArgs.Count = 2 Then
 	Dim log
 	log = ReadFile(objArgs(1))
@@ -40,8 +42,22 @@ If objArgs.Count = 2 Then
 	log = Replace(log, vbCr, "\\r")
 	log = Replace(log, vbTab, "\\t")
 	log = Replace(log, Chr(8), "\\b")
-	Dim json
 	json = "{""name"":""log"", ""value"":""" + log + """}"
+	'MsgBox json
+	PostUrl objArgs(0), json
+End If
+
+If objArgs.Count = 3 Then
+	Dim txt
+	txt = ReadFile(objArgs(1))
+	txt = txt & vbCrLf
+	txt = Replace(txt, "\", "\\")
+	txt = Replace(txt, """", "\""")
+	txt = Replace(txt, vbCrLf, "\\r\\n")
+	txt = Replace(txt, vbCr, "\\r")
+	txt = Replace(txt, vbTab, "\\t")
+	txt = Replace(txt, Chr(8), "\\b")
+	json = "{""name"":""" + objArgs(2) + """, ""value"":""" + txt + """}"
 	'MsgBox json
 	PostUrl objArgs(0), json
 End If
