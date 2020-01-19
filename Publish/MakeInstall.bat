@@ -10,3 +10,5 @@ SetupFactory9Trial\SUFDesign.exe Install.suf>>%logfile%
 echo ============================ 全部生成完毕 ============================>>%logfile%
 
 webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
+
+webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var" "ver.txt" "ver"
