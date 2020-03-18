@@ -153,7 +153,7 @@ void CDlgBipLogin::OnBnClickedOk()
 			{
 				std::wstring wErrMsg = GL::Ansi2WideByte(errMsg);
 				CString sErrMsg;
-				sErrMsg.Format(_T("µÇÂ¼Ê§°Ü£º%s"), wErrMsg.c_str());
+				sErrMsg.Format(_T("µÇÂ¼Ê§°Ü(%d)£º%s"), nRet, wErrMsg.c_str());
 				AfxMessageBox(sErrMsg);
 			}
 			UserInfo ui;
@@ -177,6 +177,12 @@ void CDlgBipLogin::OnBnClickedOk()
 		}
 
 		ReleaseSingnIn(bip);
+	}
+	else
+	{
+		CString sErrMsg;
+		sErrMsg.Format(_T("lib_bipsignin.dllÄ£¿é¼ÓÔØÊ§°Ü¡£"));
+		AfxMessageBox(sErrMsg);
 	}
 
 	if (!loginSuccess)

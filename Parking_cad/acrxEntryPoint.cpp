@@ -63,7 +63,7 @@ public:
 		//if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
 		//	return AcRx::kRetError;
 
-		/*CDlgBipLogin dlgLogin;
+		CDlgBipLogin dlgLogin;
 		if (dlgLogin.DoModal() != IDOK)
 		{
 			ModulesManager::Relaese();
@@ -74,7 +74,7 @@ public:
 			ModulesManager::Relaese();
 			return AcRx::kRetError;
 		}
-		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());*/
+		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
