@@ -2,6 +2,7 @@
 #include <vector>
 
 #define TolerantValue 0.5 //duoble比较误差
+
 class CEquipmentroomTool
 {
 public:
@@ -54,10 +55,22 @@ public:
 	/*从配置文件获取图层名*/
 	static std::string getLayerName(const std::string& strLayer);
 	/*删除指定图层*/
-	static bool deletLayerByName(const CString& layerNaem);
+	static bool deletLayerByName(const CString& layerNaem); 
 	static Acad::ErrorStatus deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT = NULL);
 	static void setLayerClose(const CString& layerName);
 	static bool isLayerClosed(const CString& strLayerName);
 	static void setLayerOpen(const CString& strLayerName);
+	static bool getLayerConfigForJson(const std::string& sLayerInfo, std::string& sProfessionalAttributes, std::string& sLayerName,
+		std::string& sLayerColor,std::string& sLayerLinetype, std::string& sLayerWidth,std::string& sIsPrintf, std::string& sTransparency);
+
+	static bool layerConfigSet(const CString& layerName, const CString& layerColor, const CString& lineWidth, const CString& lineType, const CString& transparency, const CString& isPrint);
+	static std::string getLayerNameByJson(const std::string& sLayerInfo);
+	static int SelColor(int& textColor);
+	static void creatLayerByjson(const std::string& sLayerInfo);
+
+	//设备房面积比例调整
+	static double areaScale(double oldArea);
+	//取得车位包围框点
+	static void getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName, std::map<AcDbObjectId,AcGePoint2dArray>& parkIdAndPts);
 };
 

@@ -22,14 +22,17 @@ void COperaAddFrame::Start()
 	std::vector<AcDbObjectId> ids = DBHelper::SelectEntityPrompt(_T("\n选择要生成图框的实体:"));
 	if (ids.size() < 1)
 		return;
-	CString sParkingsLayer(CEquipmentroomTool::getLayerName("parkingslayer").c_str());
-	CString sEquipmentroomLayer(CEquipmentroomTool::getLayerName("equipmentroomlayer").c_str());
-	CString sCoreWall(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
+	CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
+	CString sEquipmentroomLayer(CEquipmentroomTool::getLayerName("equipmentroom").c_str());
+	CString sCoreWall(CEquipmentroomTool::getLayerName("core_wall").c_str());
+	CString sScope(CEquipmentroomTool::getLayerName("rangeline").c_str());
 	double SPF1area = getPloyLineArea(ids, sEquipmentroomLayer);
 	double CPvalue = getNumberOfCars(ids, sParkingsLayer);
+	double SPvalue = getPloyLineArea(ids, sScope);
 	/*---------------------------------------------------*/
 	std::vector<AcGePoint2dArray> parkingsPoints;
-	getParkingExtentPts(parkingsPoints,ids,sParkingsLayer);
+	std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
+	CEquipmentroomTool::getParkingExtentPts(parkingsPoints,ids,sParkingsLayer, parkIdAndPts);
 	std::vector<AcGePoint2dArray> equipmentPoints = getPlinePointForLayer(ids, sEquipmentroomLayer);
 	std::vector<AcGePoint2dArray> outLinePoints = getPlinePointForLayer(ids, ms_sOutLineLayerName);
 	double dOutLineArea = getPloyLineArea(ids, ms_sOutLineLayerName);
@@ -71,7 +74,7 @@ void COperaAddFrame::Start()
 
 		
 		
-		std::string sPicAttributeText = setPicAttributeData(SPF1area, CPvalue, SPF2area, picAttributedata);
+		std::string sPicAttributeText = setPicAttributeData(SPvalue, SPF1area, CPvalue, SPF2area, picAttributedata);
 
 		dlg.setBlockInserPoint(sPicAttributeText);
 		std::vector<AcDbEntity*> vcEnts;
@@ -110,8 +113,10 @@ void COperaAddFrame::Start()
 		AcDbObjectId idEnt;
 		if (DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0)))
 		{
-			CString strPictureframeLayer(CEquipmentroomTool::getLayerName("pictureframelayer").c_str());
-			dlg.setBlokcLayer(strPictureframeLayer, idEnt);
+			CString strPictureframeLayer(CEquipmentroomTool::getLayerName("pictureframe").c_str());
+			CEquipmentroomTool::creatLayerByjson("pictureframe");
+			CEquipmentroomTool::setEntToLayer(idEnt, strPictureframeLayer);
+			//dlg.setBlokcLayer(strPictureframeLayer, idEnt);
 		}
 		else
 		{
@@ -300,10 +305,10 @@ double COperaAddFrame::getNumberOfCars(std::vector<AcDbObjectId>& inputIds, cons
 	return (double)num;
 }
 
-std::string COperaAddFrame::setPicAttributeData(double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata)
+std::string COperaAddFrame::setPicAttributeData(double SPvalue, double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata)
 {
 	//"SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1"
-	double SPvalue = getPicAttributeValue(picAttributedata, "SP");
+	//double SPvalue = getPicAttributeValue(picAttributedata, "SP");
 	//double SPF2value = getPicAttributeValue(picAttributedata, "SPF2");
 	double SPF3value = getPicAttributeValue(picAttributedata, "SPF3");
 	double SPF4value = getPicAttributeValue(picAttributedata, "SPF4");
@@ -313,11 +318,11 @@ std::string COperaAddFrame::setPicAttributeData(double SPF1value, double CPvalue
 	double HTvalue = getPicAttributeValue(picAttributedata, "HT");
 
 	double SPFvalue = (SPF1value / 1000000) + (SPF2value / 1000000) + SPF3value + SPF4value + SPF5value;
-	double SPTvalue = SPvalue - SPFvalue;
+	double SPTvalue = (SPvalue/ 1000000) - SPFvalue;
 	double JSPCvalue = SPTvalue / CPvalue;
 	double SPCvalue = (SPTvalue + (SPF1value / 1000000) + (SPF2value/ 1000000)) / CPvalue;
 
-	std::string sAttributeData = setStringData(SPvalue, "SP") + "|" + setStringData(SPTvalue, "SPT") + "|"
+	std::string sAttributeData = setStringData(SPvalue/ 1000000, "SP") + "|" + setStringData(SPTvalue, "SPT") + "|"
 		+ setStringData(SPFvalue, "SPF") + "|" + setStringData((SPF1value / 1000000), "SPF1") + "|"
 		+ setStringData(SPF2value/ 1000000, "SPF2") + "|" + setStringData(SPF3value, "SPF3") + "|"
 		+ setStringData(CPvalue, "CP") + "|" + setStringData(JSPCvalue, "JSPC") + "|"
@@ -353,82 +358,6 @@ void COperaAddFrame::setTableDataMap(const std::map<std::string, double>& tableD
 void COperaAddFrame::setOutLineLayerName(const CString& sOutLineLayerName)
 {
 	ms_sOutLineLayerName = sOutLineLayerName;
-}
-
-void COperaAddFrame::getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName)
-{
-	for (int i = 0; i < allChooseIds.size(); i++)
-	{
-		AcDbEntity* pEntity = NULL;
-		if (acdbOpenAcDbEntity(pEntity, allChooseIds[i], kForRead) != eOk)
-			continue;
-
-		CString layername = pEntity->layer();
-		if (layername.Compare(parkingLayerName) != 0)
-		{
-			pEntity->close();
-			continue;
-		}
-
-		if (pEntity->isKindOf(AcDbBlockReference::desc()))
-		{
-			AcDbVoidPtrArray tempEnts;
-			AcGePoint2dArray arrTempPlinePts;
-			DBHelper::ExplodeEntity(pEntity, tempEnts);
-			for (int j = 0; j < tempEnts.length(); j++)
-			{
-				AcDbEntity* pEnty = (AcDbEntity*)tempEnts.at(j);
-				if (pEnty != NULL)
-				{
-					if (pEnty->isKindOf(AcDbPolyline::desc()))
-					{
-						std::vector<AcGePoint2d> allPoints;//得到的所有点
-						AcDbPolyline *pPline = AcDbPolyline::cast(pEnty);
-						AcGeLineSeg2d line;
-						AcGeCircArc3d arc;
-						int n = pPline->numVerts();
-						for (int a = 0; a < n; a++)
-						{
-							if (pPline->segType(a) == AcDbPolyline::kLine)
-							{
-								pPline->getLineSegAt(a, line);
-								AcGePoint2d startPoint;
-								AcGePoint2d endPoint;
-								startPoint = line.startPoint();
-								endPoint = line.endPoint();
-								allPoints.push_back(startPoint);
-								allPoints.push_back(endPoint);
-							}
-							else if (pPline->segType(a) == AcDbPolyline::kArc)
-							{
-								pPline->getArcSegAt(a, arc);
-								AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
-								for (int x = 0; x < result.length(); x++)
-								{
-									AcGePoint2d onArcpoint(result[x].x, result[x].y);
-									allPoints.push_back(onArcpoint);
-								}
-							}
-						}
-						for (int x = 0; x < allPoints.size(); x++)
-						{
-							if (arrTempPlinePts.contains(allPoints[x]))
-							{
-								continue;
-							}
-							arrTempPlinePts.append(allPoints[x]);
-						}
-						//检测闭合
-						if (arrTempPlinePts.length() > 2 && arrTempPlinePts[arrTempPlinePts.length() - 1] != arrTempPlinePts[0])
-							arrTempPlinePts.append(arrTempPlinePts[0]);
-					}
-					delete pEnty;
-				}
-			}
-			parkingExtentPts.push_back(arrTempPlinePts);
-		}
-		pEntity->close();
-	}
 }
 
 double COperaAddFrame::getIntersectionArea(const std::vector<AcGePoint2dArray>& targetPlinePts, const std::vector<AcGePoint2dArray>& usePlinePts)

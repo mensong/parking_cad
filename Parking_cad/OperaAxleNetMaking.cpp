@@ -21,7 +21,7 @@ COperaAxleNetMaking::~COperaAxleNetMaking()
 
 void COperaAxleNetMaking::Start()
 {
-	CString sAxisLayer(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	const ACHAR *layername = sAxisLayer;//轴线所在图层
 	
 	AcDbObjectIdArray LineIds = ms_axisIds;
@@ -105,8 +105,9 @@ void COperaAxleNetMaking::Start()
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
 			//这里设置轴网标注所在图层
-			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
-			CCommonFuntion::setLayer(setlayernameofAXSI, 255);
+			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+			CEquipmentroomTool::creatLayerByjson("axis_dimensions");
+			//CCommonFuntion::setLayer(setlayernameofAXSI, 255);
 
 			//初次处理四边的轴线，标注
 			std::vector<AcDbObjectId> outIds_1;
@@ -161,8 +162,9 @@ void COperaAxleNetMaking::Start()
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
 			//这里设置轴网标注所在图层
-			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
-			CCommonFuntion::setLayer(setlayernameofAXSI,0);
+			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+			CEquipmentroomTool::creatLayerByjson("axis_dimensions");
+			//CCommonFuntion::setLayer(setlayernameofAXSI,0);
 
 			std::vector<AcDbObjectId> outIds_1;
 			COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI,sortIds, rigthupPt, lefupPt, outIds_1);

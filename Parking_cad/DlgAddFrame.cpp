@@ -345,8 +345,8 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	if (DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat))
 	{
 		CEquipmentroomTool::layerSet(_T("0"), 7);
-		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsignlayer").c_str());
-		CEquipmentroomTool::layerSet(sMapSignLayer, 7);
+		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsign").c_str());
+		CEquipmentroomTool::creatLayerByjson("mapsign");
 		CEquipmentroomTool::setEntToLayer(mInserblockId, sMapSignLayer);
 		CEquipmentroomTool::deletLayerByName(_T("图签文字"));
 		CEquipmentroomTool::deletLayerByName(_T("图签线"));
@@ -427,9 +427,9 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 	DBHelper::ImportBlkDef(filepath, BlockNames);
 	if (oc.m_objsAppended.length() > 0)
 	{
-		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsignlayer").c_str());
-		CEquipmentroomTool::layerSet(sMapSignLayer, 7);
-
+		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsign").c_str());
+		//CEquipmentroomTool::layerSet(sMapSignLayer, 7);
+		CEquipmentroomTool::creatLayerByjson("mapsign");
 		for (int i=0; i<oc.m_objsAppended.length();i++)
 		{
 			CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sMapSignLayer);

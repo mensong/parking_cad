@@ -9,6 +9,8 @@
 #include <fstream>
 #include <json/json.h>
 #include "FileHelper.h"
+#include "Convertor.h"
+
 
 CEquipmentroomTool::CEquipmentroomTool()
 {
@@ -73,8 +75,10 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 		AdsorbentShow(useJigIds, basePoint, sideLength);
 		return true;
 	}
-
-	return !flag;
+	if (flag)
+	{
+		return false;
+	}
 }
 
 AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaName, double& sideLength)
@@ -671,30 +675,27 @@ bool CEquipmentroomTool::layerSet()
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
-	CString sEquipmentroomLayer(getLayerName("equipmentroomlayer").c_str());
+	CString sEquipmentroomLayer(getLayerName("equipmentroom").c_str());
 	if (pLayerTbl->has(sEquipmentroomLayer))
 	{
 		pLayerTbl->close();
 		return true;
 	}
 	//acutPrintf(_T("\n当前图形中未包含\"设备房\"图层!"));
-	AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
-	pLayerTblRcd->setName(sEquipmentroomLayer);
-	AcDbObjectId layerTblRcdId;
-	pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
+	//AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
+	//pLayerTblRcd->setName(sEquipmentroomLayer);
+	//AcDbObjectId layerTblRcdId;
+	//pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
 
-	AcCmColor color;//设置图层颜色
-	color.setColorIndex(4);
-	pLayerTblRcd->setColor(color);
-	// 将新建的层表记录添加到层表中
-	pLayerTblRcd->close();
+	//AcCmColor color;//设置图层颜色
+	//color.setColorIndex(4);
+	//pLayerTblRcd->setColor(color);
+	//// 将新建的层表记录添加到层表中
+	//pLayerTblRcd->close();
+	//Acad::ErrorStatus es;
+	//es = acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);//设为当前图层
 	pLayerTbl->close();
-	Acad::ErrorStatus es;
-	es = acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);//设为当前图层
-	if (es != eOk)
-	{
-		return false;
-	}
+	CEquipmentroomTool::creatLayerByjson("equipmentroom");
 	return true;
 }
 
@@ -762,7 +763,7 @@ void CEquipmentroomTool::setEntToLayer(AcDbObjectIdArray objectIds)
 		es = acdbOpenObject(pEnty, idEnty, AcDb::kForWrite);
 		if (es == Acad::eOk)
 		{
-			CString sEquipmentroomLayer(getLayerName("equipmentroomlayer").c_str());
+			CString sEquipmentroomLayer(getLayerName("equipmentroom").c_str());
 			pEnty->setLayer(sEquipmentroomLayer); //设置实体所在的图层
 			pEnty->close();
 		}
@@ -875,15 +876,15 @@ std::string CEquipmentroomTool::getLayerName(const std::string& strLayer)
 	std::string strLayerName = "";
 	if (reader.parse(sConfigStr, root))
 	{
-		if (root["layernames"][strLayer].isNull())
+		if (root["layer_config"][strLayer].isNull())
 		{
 			CString strErrorMessage(strLayer.c_str());
-			acutPrintf(_T("配置文件不存在[\"layernames\"][\"%s]字段！"), strErrorMessage);
+			acutPrintf(_T("配置文件不存在[\"layer_config\"][\"%s]字段！"), strErrorMessage.GetString());
 			return strLayerName;
 		}
-		if (root["layernames"][strLayer].isString())
+		if (root["layer_config"][strLayer]["layer_name"].isString())
 		{
-			strLayerName = root["layernames"][strLayer].asString();
+			strLayerName = root["layer_config"][strLayer]["layer_name"].asString();
 		}
 		else
 		{
@@ -1074,4 +1075,341 @@ void CEquipmentroomTool::setLayerOpen(const CString& strLayerName)
 		pLTR->close();
 	}
 	pLayerTbl->close();
+}
+
+bool CEquipmentroomTool::getLayerConfigForJson(const std::string& sLayerInfo, std::string& sProfessionalAttributes, 
+	std::string& sLayerName, std::string& sLayerColor, std::string& sLayerLinetype, std::string& sLayerWidth, std::string& sIsPrintf, std::string& sTransparency)
+{
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+	if (reader.parse(sConfigStr, root))
+	{
+		if (root["layer_config"][sLayerInfo].isNull())
+		{
+			CString strErrorMessage(sLayerInfo.c_str());
+			//char* ErrorMessage = UnicodeToANSI(strErrorMessage);
+			acutPrintf(_T("配置文件不存在[\"layer_config\"][\"%s]字段！"), strErrorMessage.GetString());
+			return false;
+		}
+		if (root["layer_config"][sLayerInfo]["professional_attributes"].isString())
+		{
+			sProfessionalAttributes = root["layer_config"][sLayerInfo]["professional_attributes"].asString();
+			sLayerName = root["layer_config"][sLayerInfo]["layer_name"].asString();
+			sLayerColor = root["layer_config"][sLayerInfo]["layer_color"].asString();
+			sLayerLinetype = root["layer_config"][sLayerInfo]["layer_linetype"].asString();
+			sLayerWidth = root["layer_config"][sLayerInfo]["layer_width"].asString();
+			sIsPrintf = root["layer_config"][sLayerInfo]["isprintf"].asString();
+			sTransparency = root["layer_config"][sLayerInfo]["transparency"].asString();
+			return true;
+		}
+		else
+		{
+			acedAlert(_T("配置文件字段格式不匹配！"));
+			return false;
+		}
+	}
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return false;
+	}	
+}
+
+bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString& layerColor, const CString& lineWidth, const CString& lineType, const CString& transparency, const CString& isPrint)
+{
+	Doc_Locker _locker;
+	//----------------------------------------------------
+	//判断有就退出无就生成图层生，并设置颜色
+	AcDbLayerTable *pLayerTbl;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	if (es != eOk)
+	{
+		return false;
+	}
+	if (pLayerTbl->has(layerName))//判断已经有了该图层，应置为当前图层
+	{
+		AcDbObjectId layerId;
+		if (pLayerTbl->getAt(layerName, layerId) != Acad::eOk)
+		{
+			pLayerTbl->close();
+			return false;
+		}
+		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
+		AcDbLayerTableRecord *pLayerTblRcd;
+		pLayerTbl->getAt(layerName, pLayerTblRcd, AcDb::kForWrite);
+		AcCmColor color;//设置图层颜色
+		int iLayerColor = _ttoi(layerColor);
+		color.setColorIndex(iLayerColor);
+		pLayerTblRcd->setColor(color);
+		pLayerTblRcd->close();
+		pLayerTbl->close();
+		if (es != eOk)
+		{
+			return false;
+		}
+		return true;
+	}
+
+	AcDbLayerTableRecord *pLayerTblRcd = new AcDbLayerTableRecord();
+	pLayerTblRcd->setName(layerName);
+	AcDbObjectId layerTblRcdId;
+	pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
+
+	AcCmColor color;//设置图层颜色
+	int iLayerColor = _ttoi(layerColor);
+	es = color.setColorIndex(iLayerColor);
+	if (es != eOk)
+	{
+		acutPrintf(_T("\n图层颜色设置失败！"));
+		return false;
+	}
+	pLayerTblRcd->setColor(color);
+	if (lineWidth==_T("0.09"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt009); // 设置线宽为0.09
+	}
+	else if(lineWidth == _T("0.13"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt013); // 设置线宽为0.13
+	}
+	else if (lineWidth == _T("0.15"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt015); // 设置线宽为0.15
+	}
+	else if (lineWidth == _T("0.2"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt020); // 设置线宽为0.2
+	}
+	else if (lineWidth == _T("0.25"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt025); // 设置线宽为0.25
+	}
+	else if (lineWidth == _T("0.35"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt035); // 设置线宽为0.35
+	}
+	else if (lineWidth == _T("0.4"))
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWt040); // 设置线宽为0.4
+	}
+	else
+	{
+		pLayerTblRcd->setLineWeight(AcDb::kLnWtByLwDefault); // 设置线宽为默认
+	}
+	AcDbLinetypeTable *pLineTbl;
+	es = acdbCurDwg()->getLinetypeTable(pLineTbl, AcDb::kForRead);
+	if (es != eOk)
+	{
+		pLineTbl->close();
+		pLayerTblRcd->close();
+		return false;
+	}
+	AcDbObjectId dashId; //dash线形ID，你自己去得到，在线形表中查询
+	if (pLineTbl->getAt(lineType, dashId)!=eOk)
+	{
+		acutPrintf(_T("\n获取线型id失败！"));
+		pLineTbl->close();
+		pLayerTblRcd->close();
+		pLayerTbl->close();
+		return false;
+	}
+	pLayerTblRcd->setLinetypeObjectId(dashId); // 设置为dash线形
+	int iTransparency = _ttoi(transparency);
+	double dTransparency = (100 - iTransparency)*0.01;
+	AcCmTransparency trans = AcCmTransparency(dTransparency);
+	pLayerTblRcd->setTransparency(trans);
+	if (isPrint == _T("否")|| isPrint == _T(""))
+	{
+		pLayerTblRcd->setIsPlottable(false);
+	}
+	else
+	{
+		pLayerTblRcd->setIsPlottable(true);
+	}
+	// 将新建的层表记录添加到层表中
+	pLineTbl->close();
+	pLayerTblRcd->close();
+	pLayerTbl->close();
+	es = acdbCurDwg()->setClayer(layerTblRcdId);//设为当前图层
+	if (es != eOk)
+	{
+		return false;
+	}
+	return true;
+}
+
+std::string CEquipmentroomTool::getLayerNameByJson(const std::string& sLayerInfo)
+{
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+	std::string strLayerName = "";
+	if (reader.parse(sConfigStr, root))
+	{
+		if (root["layer_config"][sLayerInfo].isNull())
+		{
+			CString strErrorMessage(sLayerInfo.c_str());
+			//char* ErrorMessage = UnicodeToANSI(strErrorMessage);
+			acutPrintf(_T("配置文件不存在[\"layer_config\"][\"%s]字段！"), strErrorMessage.GetString());
+			return strLayerName;
+		}
+		if (root["layer_config"][sLayerInfo]["layer_name"].isString())
+		{
+			strLayerName = root["layer_config"][sLayerInfo]["layer_name"].asString();
+			return strLayerName;
+		}
+		else
+		{
+			acedAlert(_T("配置文件字段格式不匹配！"));
+			return strLayerName;
+		}
+	}
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return strLayerName;
+	}
+}
+
+int CEquipmentroomTool::SelColor(int& textColor)
+{
+	////先获得当前层的ID
+	AcDbObjectId layerId = acdbHostApplicationServices()->workingDatabase()->clayer();
+	////然后获得当前层指针
+	AcDbLayerTableRecordPointer ptLayer(layerId, AcDb::OpenMode::kForRead);
+	////获得当前层的颜色
+	//AcCmColor oldColor = ptLayer->color();
+	//int nCurColor = oldColor.colorIndex();//当前层的颜色
+	//int nNewColor = oldColor.colorIndex();//用户选择的颜色
+
+	if (acedSetColorDialog(textColor, Adesk::kFalse, textColor))
+	{
+		return textColor;
+	}
+	else
+	{
+		return textColor;
+	}
+}
+
+void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo)
+{
+	std::string strProfessionalAttributes = "";
+	std::string strLayerName = "";
+	std::string strLayerColor = "";
+	std::string strLayerLinetype = "";
+	std::string strLayerWidth = "";
+	std::string strIsPrintf = "";
+	std::string strTransparency = "";
+	getLayerConfigForJson(sLayerInfo, strProfessionalAttributes, strLayerName, strLayerColor, strLayerLinetype, strLayerWidth, strIsPrintf, strTransparency);
+	CString sProfessionalAttributes(strProfessionalAttributes.c_str());
+	CString sLayerName(strLayerName.c_str());
+	CString sLayerColor(strLayerColor.c_str());
+	CString sLayerLinetype(strLayerLinetype.c_str());
+	CString sLayerWidth(strLayerWidth.c_str());
+	CString sIsPrintf(strIsPrintf.c_str());
+	CString sTransparency(strTransparency.c_str());
+	CString sCount;
+	if (!CEquipmentroomTool::layerConfigSet(sLayerName, sLayerColor, sLayerWidth, sLayerLinetype, sTransparency, sIsPrintf))
+	{
+		acutPrintf(_T("\n创建图层时属性设置失败！"));
+	}
+	return;
+}
+
+double CEquipmentroomTool::areaScale(double oldArea)
+{
+	double dScale = CEquipmentroomTool::getTotalArea(_T("缩放程度百分比（1-100）:"));
+	if (dScale<1||dScale>100)
+	{
+		dScale = 100;
+	}
+	double dnewArea = oldArea*(dScale / 100);
+	return dnewArea;
+}
+
+
+void CEquipmentroomTool::getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName, std::map<AcDbObjectId, AcGePoint2dArray>& parkIdAndPts)
+{
+	for (int i = 0; i < allChooseIds.size(); i++)
+	{
+		AcDbEntity* pEntity = NULL;
+		if (acdbOpenAcDbEntity(pEntity, allChooseIds[i], kForRead) != eOk)
+			continue;
+
+		CString layername = pEntity->layer();
+		if (layername.Compare(parkingLayerName) != 0)
+		{
+			pEntity->close();
+			continue;
+		}
+
+		if (pEntity->isKindOf(AcDbBlockReference::desc()))
+		{
+			AcDbVoidPtrArray tempEnts;
+			AcGePoint2dArray arrTempPlinePts;
+			DBHelper::ExplodeEntity(pEntity, tempEnts);
+			for (int j = 0; j < tempEnts.length(); j++)
+			{
+				AcDbEntity* pEnty = (AcDbEntity*)tempEnts.at(j);
+				if (pEnty != NULL)
+				{
+					if (pEnty->isKindOf(AcDbPolyline::desc()))
+					{
+						std::vector<AcGePoint2d> allPoints;//得到的所有点
+						AcDbPolyline *pPline = AcDbPolyline::cast(pEnty);
+						AcGeLineSeg2d line;
+						AcGeCircArc3d arc;
+						int n = pPline->numVerts();
+						for (int a = 0; a < n; a++)
+						{
+							if (pPline->segType(a) == AcDbPolyline::kLine)
+							{
+								pPline->getLineSegAt(a, line);
+								AcGePoint2d startPoint;
+								AcGePoint2d endPoint;
+								startPoint = line.startPoint();
+								endPoint = line.endPoint();
+								allPoints.push_back(startPoint);
+								allPoints.push_back(endPoint);
+							}
+							else if (pPline->segType(a) == AcDbPolyline::kArc)
+							{
+								pPline->getArcSegAt(a, arc);
+								AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
+								for (int x = 0; x < result.length(); x++)
+								{
+									AcGePoint2d onArcpoint(result[x].x, result[x].y);
+									allPoints.push_back(onArcpoint);
+								}
+							}
+						}
+						for (int x = 0; x < allPoints.size(); x++)
+						{
+							if (arrTempPlinePts.contains(allPoints[x]))
+							{
+								continue;
+							}
+							arrTempPlinePts.append(allPoints[x]);
+						}
+						//检测闭合
+						if (arrTempPlinePts.length() > 2 && arrTempPlinePts[arrTempPlinePts.length() - 1] != arrTempPlinePts[0])
+							arrTempPlinePts.append(arrTempPlinePts[0]);
+					}
+					delete pEnty;
+				}
+			}
+			std::pair<AcDbObjectId, AcGePoint2dArray> value(allChooseIds[i], arrTempPlinePts);
+			parkIdAndPts.insert(value);
+			parkingExtentPts.push_back(arrTempPlinePts);
+		}
+		pEntity->close();
+	}
 }

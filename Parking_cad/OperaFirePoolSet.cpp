@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "OperaFirePoolSet.h"
 #include "EquipmentroomTool.h"
+#define IsDecrease false
 
 COperaFirePoolSet::COperaFirePoolSet()
 {
@@ -44,15 +45,19 @@ begin:acedInitGet(0, _T("Yes No"));
 	double FirePoolS = 0;
 	if (isRegardCharging)
 	{
-		FirePoolS = ((40 * 3.6 * 2 + 80 * 3.6 * 2 + 30 * 3.6 * 1) / (storeyHeight - 2.3)) * 1000000;
+		FirePoolS = ((40 * 3.6 * 2 + 20 * 3.6 * 2 + 80 * 3.6 * 1.5) / (storeyHeight - 2.3)) * 1000000;
 	}
 	else
 	{
 		FirePoolS = ((40 * 3.6 * 2 + 20 * 3.6 * 2 + 30 * 3.6 * 1) / (storeyHeight - 2.3)) * 1000000;
 	}
+	if (IsDecrease)
+	{
+		FirePoolS = FirePoolS - 288000000;
+	}
 	CEquipmentroomTool::layerSet();
 	double FirePoolsideLength = 0;
-	AcDbObjectIdArray FirePooljigUseIds = CEquipmentroomTool::createArea(FirePoolS/2,_T("消防水池"), FirePoolsideLength);
+	AcDbObjectIdArray FirePooljigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(FirePoolS),_T("消防水池"), FirePoolsideLength);
 	CEquipmentroomTool::setEntToLayer(FirePooljigUseIds);
 	CEquipmentroomTool::jigShow(FirePooljigUseIds, FirePoolsideLength);
 }

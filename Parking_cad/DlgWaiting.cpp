@@ -302,8 +302,8 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 
 void CDlgWaiting::parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName)
 {
-	CString sParkingsLayer(CEquipmentroomTool::getLayerName("parkingslayer").c_str());
-	CEquipmentroomTool::layerSet(sParkingsLayer, 254);
+	CString sParkingsLayer(CEquipmentroomTool::getLayerNameByJson("ordinary_parking").c_str());
+	CEquipmentroomTool::creatLayerByjson("ordinary_parking");
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
 	AcGeMatrix3d mat;
 	AcGeVector3d vec(0, 0, 1);
@@ -315,8 +315,8 @@ void CDlgWaiting::parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkin
 
 AcDbObjectId CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 {
-	CString sAxisLayer(CEquipmentroomTool::getLayerName("axislayer").c_str());
-	CEquipmentroomTool::layerSet(sAxisLayer, 1);
+	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
+	CEquipmentroomTool::creatLayerByjson("parking_axis");
 	AcGePoint3d ptStart(axisPts[0].x, axisPts[0].y, 0);
 	AcGePoint3d ptEnd(axisPts[1].x, axisPts[1].y, 0);
 	AcDbLine *pLine = new AcDbLine(ptStart, ptEnd);
@@ -329,8 +329,8 @@ AcDbObjectId CDlgWaiting::axisShow(const AcGePoint2dArray& axisPts)
 
 AcDbObjectId CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
 {
-	CString sLaneLayer(CEquipmentroomTool::getLayerName("lanelayer").c_str());
-	CEquipmentroomTool::layerSet(sLaneLayer, 30);
+	CString sLaneLayer(CEquipmentroomTool::getLayerName("lane_center_line_and_driving_direction").c_str());
+	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction");
 	AcGePoint3d ptStart(lanePts[0].x, lanePts[0].y, 0);
 	AcGePoint3d ptEnd(lanePts[1].x, lanePts[1].y, 0);
 	AcDbLine *pLine = new AcDbLine(ptStart, ptEnd);
@@ -343,8 +343,8 @@ AcDbObjectId CDlgWaiting::laneShow(const AcGePoint2dArray& lanePts)
 
 void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
 {
-	CString sScopeLayer(CEquipmentroomTool::getLayerName("scopelayer").c_str());
-	CEquipmentroomTool::layerSet(sScopeLayer, 6);
+	CString sScopeLayer(CEquipmentroomTool::getLayerName("rangeline").c_str());
+	CEquipmentroomTool::creatLayerByjson("rangeline");
 	AcDbPolyline *pPoly = new AcDbPolyline(park_columnPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < park_columnPts.length(); i++)
@@ -360,8 +360,8 @@ void CDlgWaiting::scopeShow(const AcGePoint2dArray& park_columnPts)
 
 void CDlgWaiting::pillarShow(const AcGePoint2dArray& onePillarPts)
 {
-	CString sPillarLayer(CEquipmentroomTool::getLayerName("pillarlayer").c_str());
-	CEquipmentroomTool::layerSet(sPillarLayer, 2);
+	CString sPillarLayer(CEquipmentroomTool::getLayerName("column").c_str());
+	CEquipmentroomTool::creatLayerByjson("column");
 	AcDbPolyline *pPoly = new AcDbPolyline(onePillarPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < onePillarPts.length(); i++)
@@ -377,8 +377,8 @@ void CDlgWaiting::pillarShow(const AcGePoint2dArray& onePillarPts)
 
 void CDlgWaiting::arrowShow(const AcGePoint2dArray& oneArrowPts)
 {
-	CString sArrowLayer(CEquipmentroomTool::getLayerName("arrowlayer").c_str());
-	CEquipmentroomTool::layerSet(sArrowLayer, 7);
+	CString sArrowLayer(CEquipmentroomTool::getLayerName("arrow").c_str());
+	CEquipmentroomTool::creatLayerByjson("arrow");
 	AcDbPolyline *pPoly = new AcDbPolyline(oneArrowPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < oneArrowPts.length(); i++)
@@ -798,9 +798,9 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 		setLandDismensions(dTransLaneWidth, RoadLineIds);
 	}
 	DBHelper::CallCADCommand(_T("ANM "));
-	CString sAxisLayerName(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	CEquipmentroomTool::setLayerClose(sAxisLayerName);
-	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
+	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 	return true;
@@ -809,8 +809,8 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 void CDlgWaiting::setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds)
 {
 	CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));//创建新的标注样式
-	CString sLanesDimLayer(CEquipmentroomTool::getLayerName("lanesdimlayer").c_str());
-	CEquipmentroomTool::layerSet(sLanesDimLayer, 7);
+	CString sLanesDimLayer(CEquipmentroomTool::getLayerName("dimensions_dimensiontext").c_str());
+	CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext");
 	if (RoadLineIds.length() == 0)
 	{
 		acutPrintf(_T("\n没有车道信息，生成车道标注失败！"));

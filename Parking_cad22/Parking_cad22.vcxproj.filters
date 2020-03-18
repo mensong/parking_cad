@@ -231,6 +231,15 @@
     <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgSlider.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaCheck.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -449,6 +458,18 @@
     <ClInclude Include="..\Parking_cad\DlgBipLogin.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgSlider.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\lib_bipsignin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ListCtrlCustom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaCheck.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
@@ -460,6 +481,7 @@
     <None Include="..\..\ArxTools\设置环境变量.bat">
       <Filter>ArxTools</Filter>
     </None>
+    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">

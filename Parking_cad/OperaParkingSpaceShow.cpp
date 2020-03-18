@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "OperaParkingSpaceShow.h"
 #include "DBHelper.h"
+#include "stdafx.h"
+#include "OperaParkingSpaceShow.h"
+#include "DBHelper.h"
 #include "ArxDialog.h"
 #include <fstream>
 #include <json/json.h>
@@ -63,8 +66,11 @@ std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 void COperaParkingSpaceShow::Start()
 {
 	setDesKey("#B-G-Y++");
-	//std::string sData = "http://10.8.202.199:80/entrance";
-	//std::string code = encrypt(sData);
+	std::string sData = "http://10.8.202.199:90/park";
+	std::string code = encrypt(sData);
+	std::string sData1 = "http://10.8.202.199:90/query/";
+	std::string code1 = encrypt(sData1);
+
 	//从文件中读取
 	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
@@ -119,7 +125,7 @@ void COperaParkingSpaceShow::Start()
 	}
 	if (oc.m_objsAppended.length() > 0)
 	{
-		CString sParkingsLayer(CEquipmentroomTool::getLayerName("parkingslayer").c_str());
+		CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
 		CEquipmentroomTool::layerSet(sParkingsLayer, 7);
 
 		for (int i = 0; i < oc.m_objsAppended.length(); i++)
@@ -135,6 +141,7 @@ void COperaParkingSpaceShow::Start()
 	ms_dlg->ShowWindow(SW_SHOW);
 	m_tol.setEqualPoint(200);
 }
+
 
 
 REG_CMD(COperaParkingSpaceShow, BGY, ParkingSpaceShow);//调用AI计算方案

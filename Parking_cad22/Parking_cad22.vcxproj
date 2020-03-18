@@ -185,13 +185,16 @@
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgSlider.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp" />
+    <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxisShowOrHide.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaCheck.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp" />
@@ -265,14 +268,18 @@
     <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
+    <ClInclude Include="..\Parking_cad\DlgSlider.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
+    <ClInclude Include="..\Parking_cad\lib_bipsignin.h" />
+    <ClInclude Include="..\Parking_cad\ListCtrlCustom.h" />
     <ClInclude Include="..\Parking_cad\ModulesManager.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h" />
     <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h" />
+    <ClInclude Include="..\Parking_cad\OperaCheck.h" />
     <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h" />
@@ -302,6 +309,7 @@
     <None Include="..\..\ArxTools\DBHelper.inl" />
     <None Include="..\..\ArxTools\设置环境变量.bat" />
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
+    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />

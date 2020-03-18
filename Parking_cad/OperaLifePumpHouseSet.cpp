@@ -2,7 +2,7 @@
 #include "OperaLifePumpHouseSet.h"
 #include "EquipmentroomTool.h"
 
-#define LifePumpHouse 100000000.0//生活泵房面积
+#define LifePumpHouse 80000000.0//生活泵房面积
 
 COperaLifePumpHouseSet::COperaLifePumpHouseSet()
 {
@@ -18,7 +18,7 @@ void COperaLifePumpHouseSet::Start()
 //生活泵房
 	CEquipmentroomTool::layerSet();
 	double LifepumpAreaSideLength = 0;
-	AcDbObjectIdArray LifepumpAreaJigUseIds = CEquipmentroomTool::createArea(LifePumpHouse/2, _T("生活泵房"), LifepumpAreaSideLength);
+	AcDbObjectIdArray LifepumpAreaJigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(LifePumpHouse), _T("生活泵房"), LifepumpAreaSideLength);
 	CEquipmentroomTool::setEntToLayer(LifepumpAreaJigUseIds);
 	CEquipmentroomTool::jigShow(LifepumpAreaJigUseIds, LifepumpAreaSideLength);
 }
