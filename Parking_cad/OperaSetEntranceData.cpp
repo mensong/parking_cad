@@ -4,6 +4,7 @@
 #include "CommonFuntion.h"
 #include "EquipmentroomTool.h"
 #include "DBHelper.h"
+#include <algorithm>
 
 class CDlgEntrance* COperaSetEntranceData::ms_EntranceDlg = NULL;
 COperaSetEntranceData::COperaSetEntranceData()
@@ -855,7 +856,7 @@ void COperaSetEntranceData::DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersec
 		pARC->getStartPoint(starpoint);
 		pARC->getEndPoint(endpoint);
 		AcGePoint3d centerpoint = pARC->center();
-		AcDbAttribute* pAttrib = nullptr;
+		AcDbAttribute* pAttrib = NULL;
 		if (starpoint.distanceTo(intersectPoints[0]) < endpoint.distanceTo(intersectPoints[0]))
 		{
 			AcGeVector2d changVec = AcGeVector2d(intersectPoints[0].x - centerpoint.x, intersectPoints[0].y - centerpoint.y);
