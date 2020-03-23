@@ -29,6 +29,7 @@
 #define IDD_DIALOG_ENTRANCE             111
 #define IDD_DIALOG_CONFIG               114
 #define IDD_DLG_BIP_LOGIN               116
+#define IDD_DIALOG_SLIDER               118
 #define IDC_CHECK_Partition             119
 #define IDC_COMBO_Direction             128
 #define IDC_COMBO_OutlineLayer          129
@@ -65,6 +66,7 @@
 #define IDC_EDIT_SHOWENDPOINT           163
 #define IDC_EDIT_ENTRANCE               163
 #define IDC_EDIT_USER                   163
+#define IDC_EDIT_SHOWVALUE              163
 #define IDC_BUTTON1                     164
 #define IDC_BUTTON_EXCHANGE             164
 #define IDC_BUTTON_INIT                 164
@@ -81,12 +83,18 @@
 #define IDC_EDIT_COREWALL               177
 #define IDC_EDIT_PASSWORD               178
 #define IDC_CHK_SAVE_PWD                180
+#define IDC_LAYERLIST                   184
+#define IDC_EDIT_LIST                   186
+#define IDC_COMBO_CONFIGCHOOSE          188
+#define IDC_COMBO_LINEWIDTH             189
+#define IDC_COMBO_LINETYPE              190
+#define IDC_SLIDER_CONTROL              196
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        118
+#define _APS_NEXT_RESOURCE_VALUE        120
 #define _APS_NEXT_COMMAND_VALUE         32768
 #define _APS_NEXT_CONTROL_VALUE         181
 #define _APS_NEXT_SYMED_VALUE           102

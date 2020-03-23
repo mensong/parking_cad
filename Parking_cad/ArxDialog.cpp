@@ -39,6 +39,7 @@
 #include "Convertor.h"
 #include "EquipmentroomTool.h"
 #include "OperaAddFrame.h"
+#include "OperaCheck.h"
 
 extern Authenticate g_auth;
 std::string CArxDialog::ms_posturlPortone;
@@ -688,6 +689,7 @@ void CArxDialog::selectPort(const bool& useV1)
 	}
 	CString shearwallLaye;
 	m_shearwallLayer.GetWindowText(shearwallLaye);
+	COperaCheck::setShearWallLayerName(shearwallLaye);
 	std::vector<AcGePoint2dArray> shearwallPts = getPlinePointForLayer(shearwallLaye);
 	if (shearwallPts.size() == 0)
 	{
@@ -714,9 +716,9 @@ void CArxDialog::selectPort(const bool& useV1)
 		return;
 	}
 	std::vector<int> types;
-	CString zonesLayer(CEquipmentroomTool::getLayerName("equipmentroomlayer").c_str());
+	CString zonesLayer(CEquipmentroomTool::getLayerName("equipmentroom").c_str());
 	std::vector<AcGePoint2dArray> zonesPts = getPlinePointForLayer(zonesLayer, types);
-	CString strCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
+	CString strCoreWallLayer(CEquipmentroomTool::getLayerName("core_wall").c_str());
 	std::vector<AcGePoint2dArray> coreWallPts = getPlinePointForLayer(strCoreWallLayer);
 
 	if (isPartition)

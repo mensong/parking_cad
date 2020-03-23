@@ -29,6 +29,7 @@ void COperaEquipmentroomRelated::Start()
 	{
 		acutPrintf(_T("\n输入总面积小于4000！"));
 	}
+	double scaleArea = CEquipmentroomTool::areaScale(VentilationroomArea);
 	for (int i = 0; i < roomCount; i++)
 	{
 		CString count;
@@ -38,19 +39,19 @@ void COperaEquipmentroomRelated::Start()
 
 		CEquipmentroomTool::layerSet();
 		double windareaSideLength = 0;
-		AcDbObjectIdArray windareaJigUseIds = CEquipmentroomTool::createArea(VentilationroomArea, area1Name, windareaSideLength);
+		AcDbObjectIdArray windareaJigUseIds = CEquipmentroomTool::createArea(scaleArea, area1Name, windareaSideLength);
 		CEquipmentroomTool::setEntToLayer(windareaJigUseIds);
  		if (!CEquipmentroomTool::jigShow(windareaJigUseIds, windareaSideLength))
  		{
 			break;
  		}
-		AcDbObjectIdArray windarea1JigUseIds = CEquipmentroomTool::createArea(VentilationroomArea, area2Name, windareaSideLength);
+		AcDbObjectIdArray windarea1JigUseIds = CEquipmentroomTool::createArea(scaleArea, area2Name, windareaSideLength);
 		CEquipmentroomTool::setEntToLayer(windarea1JigUseIds);
 		if (!CEquipmentroomTool::jigShow(windarea1JigUseIds, windareaSideLength))
 		{
 			break;
 		}
-		AcDbObjectIdArray windarea2JigUseIds = CEquipmentroomTool::createArea(VentilationroomArea, area2Name, windareaSideLength);
+		AcDbObjectIdArray windarea2JigUseIds = CEquipmentroomTool::createArea(scaleArea, area2Name, windareaSideLength);
 		CEquipmentroomTool::setEntToLayer(windarea2JigUseIds);
 		if (!CEquipmentroomTool::jigShow(windarea2JigUseIds, windareaSideLength))
 		{

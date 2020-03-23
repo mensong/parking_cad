@@ -1,18 +1,122 @@
 {
-   "layernames" : {
-      "arrowlayer" : "arrow",
-      "axisdimlayer" : "axisDim",
-      "axislayer" : "axis",
-      "corewalllayer" : "CoreWall",
-      "entrancelayer" : "entrance",
-      "equipmentroomlayer" : "设备房",
-      "lanelayer" : "lane",
-      "lanesdimlayer" : "laneDim",
-      "mapsignlayer" : "图签",
-      "parkingslayer" : "parkings",
-      "pictureframelayer" : "图框",
-      "pillarlayer" : "pillar",
-      "scopelayer" : "scope"
+   "layer_config" : {
+      "arrow" : {
+         "isprintf" : "是",
+         "layer_color" : "3",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-标注-箭头引注",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "axis_dimensions" : {
+         "isprintf" : "是",
+         "layer_color" : "3",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-标注-轴号",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "column" : {
+         "isprintf" : "是",
+         "layer_color" : "50",
+         "layer_linetype" : "CONTINUOUS",
+         "layer_name" : "S-墙柱-COLU",
+         "layer_width" : "0.2",
+         "professional_attributes" : "结构",
+         "transparency" : ""
+      },
+      "core_wall" : {
+         "isprintf" : "否",
+         "layer_color" : "8",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-车库-设备轮廓线",
+         "layer_width" : "0.25",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "dimensions_dimensiontext" : {
+         "isprintf" : "是",
+         "layer_color" : "105",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-标注-尺寸标注",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "entrance" : {
+         "isprintf" : "是",
+         "layer_color" : "3",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-车库-防火分区（疏散）",
+         "layer_width" : "0.2",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "equipmentroom" : {
+         "isprintf" : "是",
+         "layer_color" : "8",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-平面-设备基础等",
+         "layer_width" : "0.15",
+         "professional_attributes" : "建筑",
+         "transparency" : ""
+      },
+      "lane_center_line_and_driving_direction" : {
+         "isprintf" : "是",
+         "layer_color" : "42",
+         "layer_linetype" : "ACAD_ISO05W100",
+         "layer_name" : "A-车库-车道中线",
+         "layer_width" : "0.09",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "mapsign" : {
+         "isprintf" : "是",
+         "layer_color" : "7",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-文字-平面说明",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "ordinary_parking" : {
+         "isprintf" : "是",
+         "layer_color" : "2",
+         "layer_linetype" : "DASH",
+         "layer_name" : "A-车库-普通车位",
+         "layer_width" : "0.09",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "parking_axis" : {
+         "isprintf" : "是",
+         "layer_color" : "1",
+         "layer_linetype" : "DOTE",
+         "layer_name" : "A-轴线-车库",
+         "layer_width" : "0.09",
+         "professional_attributes" : "道路",
+         "transparency" : ""
+      },
+      "pictureframe" : {
+         "isprintf" : "否",
+         "layer_color" : "51",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-车库-图中分区",
+         "layer_width" : "0.25",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "rangeline" : {
+         "isprintf" : "是",
+         "layer_color" : "5",
+         "layer_linetype" : "DASH",
+         "layer_name" : "G-用地-地库范围线",
+         "layer_width" : "0.4",
+         "professional_attributes" : "用地",
+         "transparency" : ""
+      }
    },
    "params" : {
       "entrance_posturl" : "1NyKVEAeS9drU0PMl+3TUP1Lt0x0XO2gSP9dXSOhXiw=",

@@ -225,6 +225,12 @@
     <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgSlider.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Parking_cad\ArxDialog.h">
@@ -435,6 +441,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\lib_bipsignin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgSlider.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ListCtrlCustom.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

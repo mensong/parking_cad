@@ -457,16 +457,16 @@ void COperaCoreWall::coreWallDataCulation()
 	DBHelper::AppendToDatabase(coreWallId, pPline);
 	pPline->close();
 	CEquipmentroomTool::layerSet(_T("0"), 7);
-	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
-	CEquipmentroomTool::layerSet(sCoreWallLayer, 2);
+	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("core_wall").c_str());
+	CEquipmentroomTool::creatLayerByjson("core_wall");
 	CEquipmentroomTool::setEntToLayer(coreWallId, sCoreWallLayer);
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 }
 
 void COperaCoreWall::setCoreWallData()
 {
-	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("corewalllayer").c_str());
-	CEquipmentroomTool::layerSet(sCoreWallLayer, 1);
+	CString sCoreWallLayer(CEquipmentroomTool::getLayerName("core_wall").c_str());
+	CEquipmentroomTool::creatLayerByjson("core_wall");
 
 	std::vector<AcDbEntity*> vctEquipmentEnt;
 	ads_name ssname;

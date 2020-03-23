@@ -20,25 +20,23 @@
 //
 
 //-----------------------------------------------------------------------------
-//----- DlgSetConfig.h : Declaration of the CDlgSetConfig
+//----- DlgSlider.h : Declaration of the CDlgSlider
 //-----------------------------------------------------------------------------
 #pragma once
 
 //-----------------------------------------------------------------------------
 #include "acui.h"
-#include "afxwin.h"
-#include "Resource.h"
 #include "afxcmn.h"
-#include "ListCtrlCustom.h"
-#include "DlgSlider.h"
+#include "afxwin.h"
+
 //-----------------------------------------------------------------------------
-class CDlgSetConfig : public CAcUiDialog {
-	DECLARE_DYNAMIC (CDlgSetConfig)
+class CDlgSlider : public CAcUiDialog {
+	DECLARE_DYNAMIC (CDlgSlider)
 
 public:
-	CDlgSetConfig (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
+	CDlgSlider (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
 
-	enum { IDD = IDD_DIALOG_CONFIG} ;
+	enum { IDD = IDD_DIALOG_SLIDER} ;
 
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;
@@ -46,41 +44,10 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedOk();
 	virtual BOOL OnInitDialog();
-	void init();
-	
-	void changeLayerName(const CString& oldLayerName,const CString& newLayerName, const CString& layerColor, const CString& lineWidth,
-		const CString& lineType, const CString& transparency, const CString& isPrint);
-	std::string m_strUiPostUrl;
-	std::string m_strUiGetUrl;
-	std::string m_strEntranceUrl;
-	
-	
-	int hitRow;
-	int hitCol;
-	afx_msg void OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult);
-	afx_msg void OnNMClickLayerlist(NMHDR *pNMHDR, LRESULT *pResult);
-	void setListValueText(int hitRow, const CString& sCount, const CString& sAttribute, const CString& sLayerName,
-		const CString& sLayerColor,const CString& sLayerLinetype,const CString& sLayerLineWidth, const CString& sTransparency, const CString& isPrint = "是");
-	std::map<CString, int> m_mpColumnName;
-	// 层表记录
-	CListCtrlCustom m_ctrlConfigSetList;
-	int m_nLastRow;
-	int m_nLastCol;
-
-	// 下拉选择框
-	CComboBox m_ConfigChooseCombo;
-	// 层表编辑
-	CEdit m_EditTest;
-	void OnEditerEnter();
-	// 线宽选择下拉框
-	CComboBox m_LineWidthCombo;
-	// 图层线型下拉框
-	CComboBox m_LineTypeCombo;
-	// 透明度控制窗口
-	CDlgSlider* m_SliderDialog;
-
-	CString m_sLineStyle;
-	void initLinetypeCombo();
+	// 滑块控件
+	CSliderCtrl m_SliderControl;
+	// 滑块值显示
+	CEdit m_EditShowValue;
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 } ;

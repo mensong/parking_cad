@@ -402,6 +402,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgSlider.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.cpp"
 				>
 			</File>
@@ -411,6 +415,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\EquipmentroomTool.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\ListCtrlCustom.cpp"
 				>
 			</File>
 			<File
@@ -567,6 +575,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgSlider.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.h"
 				>
 			</File>
@@ -580,6 +592,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\lib_bipsignin.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\ListCtrlCustom.h"
 				>
 			</File>
 			<File

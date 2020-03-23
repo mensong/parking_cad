@@ -15,7 +15,7 @@ COperaAxisShowOrHide::~COperaAxisShowOrHide()
 
 void COperaAxisShowOrHide::Start()
 {
-	CString sAxisLayerName(CEquipmentroomTool::getLayerName("axislayer").c_str());
+	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	if (sAxisLayerName == _T(""))
 	{
 		acedAlert(_T("ªÒ»°÷·œﬂÕº≤„ ß∞‹£°"));
@@ -30,7 +30,7 @@ void COperaAxisShowOrHide::Start()
 	{
 		CEquipmentroomTool::setLayerClose(sAxisLayerName);
 	}
-	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axisdimlayer").c_str());
+	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	if (sAxisDimLayerName == _T(""))
 	{
 		acedAlert(_T("ªÒ»°÷·Õ¯±Í◊¢Õº≤„ ß∞‹£°"));
