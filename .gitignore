@@ -74,3 +74,5 @@
 /Publish/ver.txt
 /x64/Debug/dwg/*.dwg
 /x64/Debug/preview/*.bmp
+/x64/Release/preview/*.bmp
+/x64/Release/dwg/*.dwg

@@ -10,6 +10,7 @@
 #include "DBHelper.h"
 #include "DES_CBC_5\DesHelper.h"
 #include <shlwapi.h>
+#include "json/json.h"
 
 #define CONFIG_FILE "bip.ini"
 #define CONFIG_ENCRYPT_KEY   "B-G-Y++012345678"
@@ -153,19 +154,63 @@ void CDlgBipLogin::OnBnClickedOk()
 			{
 				std::wstring wErrMsg = GL::Ansi2WideByte(errMsg);
 				CString sErrMsg;
-				sErrMsg.Format(_T("登录失败(%d)：%s"), nRet, wErrMsg.c_str());
+				sErrMsg.Format(_T("统一身份认证失败(%d)：%s"), nRet, wErrMsg.c_str());
 				AfxMessageBox(sErrMsg);
 			}
 			UserInfo ui;
 			nRet = bip->getUserInfo(ui);
 			if (nRet == 0)
 			{
-				loginSuccess = true;
-				std::wstring wName = GL::Ansi2WideByte(ui.displayName);
+				typedef int(*FN_get_a)(const char* url, bool dealRedirect, ...);
+				FN_get_a get_a = ModulesManager::Instance().func<FN_get_a>("LibcurlHttp.dll", "get_a");
+				if (!get_a)
+				{
+					::MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
+					return;
+				}
+				typedef const char* (*FN_getBody)(int& len);
+				FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
+				if (!getBody)
+				{
+					::MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
+					return;
+				}
+				int code = get_a("http://parking.asdfqwer.net:9463/get_user", true, "udid", aUser.c_str(), NULL);
+				if (code != 200)
+				{
+					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
+					return;
+				}
+				int nLen = 0;
+				const char* pBody = getBody(nLen);
+				if (nLen <= 0)
+				{
+					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
+					return;
+				}
+
+				Json::Value js;
+				Json::Reader jsReader;
+				if (!jsReader.parse(pBody, js))
+				{
+					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
+					return;
+				}
+
+				std::string name = js["name"].asString();
+				std::string group_udid = js["group_udid"].asString();
+				std::string descr = js["descr"].asString();
+				std::string reg_time = js["reg_time"].asString();
+				std::string last_signin_time = js["last_signin_time"].asString();
+				int signin_count = js["signin_count"].asInt();
+
+				std::wstring wName = GL::Utf82WideByte(name.c_str());
 				userName = wName.c_str();
 				CString sName;
 				sName.Format(_T("登录成功，用户名：%s"), wName.c_str());
 				AfxMessageBox(sName);
+
+				loginSuccess = true;				
 			}
 			bip->uninit();
 		}
