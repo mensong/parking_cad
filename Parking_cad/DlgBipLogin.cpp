@@ -61,6 +61,25 @@ BOOL CDlgBipLogin::OnInitDialog()
 	if (CAcUiDialog::OnInitDialog() != TRUE)
 		return FALSE;
 
+#if 0
+	//写配置文件
+	typedef void(*FN_WriteConfigFile)(
+		const char* loginUrl, const char* getUserInfoUrl,
+		const char* clientId, const char* clientSecret,
+		const char* aesKey, const char* aesChain,
+		const char* configFile, const char* iniEncryptKey/* = NULL*/, const char* iniEncryptChain/* = NULL*/);
+	FN_WriteConfigFile WriteConfigFile = ModulesManager::Instance().func<FN_WriteConfigFile>("lib_bipsignin.dll", "WriteConfigFile");
+	if (WriteConfigFile)
+	{
+		WriteConfigFile(
+			"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate", "https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//测试
+			//"https://login.countrygarden.com.cn/idp/oauth2/authenticate", "https://login.countrygarden.com.cn/idp/oauth2/getUserInfo",//生产
+			//"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate","https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//私有云
+			"bppk", "46e8b3aaf78a4c9e880bbc4677ec33cb", "abcdef0123456789", "9iuj87y2hbi5wxl1",
+			(DBHelper::GetArxDirA() + CONFIG_FILE).c_str(), CONFIG_ENCRYPT_KEY, CONFIG_ENCRYPT_CHAIN);
+	}
+#endif
+
 	loginSuccess = false;
 
 	std::string sTempFile = _getSavePwdFilePath();
@@ -116,25 +135,6 @@ void CDlgBipLogin::OnBnClickedOk()
 
 	std::string aUser = GL::WideByte2Ansi(sUser.GetString());
 	std::string aPassword = GL::WideByte2Ansi(sPassword.GetString());
-
-#if 0
-	//写配置文件
-	typedef void(*FN_WriteConfigFile)(
-		const char* loginUrl, const char* getUserInfoUrl,
-		const char* clientId, const char* clientSecret,
-		const char* aesKey, const char* aesChain,
-		const char* configFile, const char* iniEncryptKey/* = NULL*/, const char* iniEncryptChain/* = NULL*/);
-	FN_WriteConfigFile WriteConfigFile = ModulesManager::Instance().func<FN_WriteConfigFile>("lib_bipsignin.dll", "WriteConfigFile");
-	if (WriteConfigFile)
-	{
-		WriteConfigFile(
-			"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate", "https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//测试
-			//"https://login.countrygarden.com.cn/idp/oauth2/authenticate", "https://login.countrygarden.com.cn/idp/oauth2/getUserInfo",//生产
-			//"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate","https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//私有云
-			"bppk", "46e8b3aaf78a4c9e880bbc4677ec33cb", "abcdef0123456789", "9iuj87y2hbi5wxl1",
-			(DBHelper::GetArxDirA() + CONFIG_FILE).c_str(), CONFIG_ENCRYPT_KEY, CONFIG_ENCRYPT_CHAIN);
-	}
-#endif
 
 	typedef LibBipSignIn* (*FN_CreateSingnIn)(void);
 	typedef void(*FN_ReleaseSingnIn)(LibBipSignIn* p);
