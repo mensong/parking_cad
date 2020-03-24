@@ -50,4 +50,5 @@ public:
 	// ª¨øÈ÷µœ‘ æ
 	CEdit m_EditShowValue;
 	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 } ;

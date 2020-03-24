@@ -32,6 +32,7 @@ IMPLEMENT_DYNAMIC (CDlgSlider, CAcUiDialog)
 BEGIN_MESSAGE_MAP(CDlgSlider, CAcUiDialog)
 	ON_MESSAGE(WM_ACAD_KEEPFOCUS, OnAcadKeepFocus)
 	ON_WM_HSCROLL()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -81,4 +82,22 @@ void CDlgSlider::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	m_EditShowValue.SetWindowText(sShowValue);
 	CAcUiDialog::OnHScroll(nSBCode, nPos, pScrollBar);
 	UpdateData(FALSE);
+}
+
+
+BOOL CDlgSlider::OnEraseBkgnd(CDC* pDC)
+{
+	//设置brush为希望的背景颜色
+	CBrush backBrush(RGB(255,255,255));
+
+	//保存旧的brush
+	CBrush* pOldBrush = pDC->SelectObject(&backBrush);
+	CRect rect;
+	pDC->GetClipBox(&rect);
+
+	//画需要的区域
+	pDC->PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATCOPY);
+	pDC->SelectObject(pOldBrush);
+
+	return TRUE;
 }

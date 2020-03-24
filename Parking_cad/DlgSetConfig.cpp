@@ -279,11 +279,11 @@ BOOL CDlgSetConfig::OnInitDialog()
 	m_mpColumnName[_T("序号")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("序号"), LVCFMT_CENTER, 50);
 	m_mpColumnName[_T("专业属性")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("专业属性"), LVCFMT_CENTER, 100);
 	m_mpColumnName[_T("图层名称")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层名称"), LVCFMT_CENTER, 200);
-	m_mpColumnName[_T("图层颜色")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层颜色"), LVCFMT_CENTER, 100);
+	m_mpColumnName[_T("图层颜色")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层颜色"), LVCFMT_CENTER, 60);
 	m_mpColumnName[_T("图层线型")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层线型"), LVCFMT_CENTER, 120);
-	m_mpColumnName[_T("线宽")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("线宽"), LVCFMT_CENTER, 100);
-	m_mpColumnName[_T("是否打印")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("是否打印"), LVCFMT_CENTER, 100);
-	m_mpColumnName[_T("淡显")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("淡显"), LVCFMT_CENTER, 170);
+	m_mpColumnName[_T("线宽")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("线宽"), LVCFMT_CENTER, 50);
+	m_mpColumnName[_T("是否打印")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("是否打印"), LVCFMT_CENTER, 60);
+	m_mpColumnName[_T("淡显")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("淡显"), LVCFMT_CENTER, 150);
 
 	m_ctrlConfigSetList.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT); // 整行选择、网格线
 	m_ctrlConfigSetList.SetRowHeight(20);
@@ -514,10 +514,7 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("是否打印")])
 		{
-			CEdit* pEdit = (CEdit*)m_ConfigChooseCombo.GetWindow(GW_CHILD);
-			// 将输入框色设置为只读
-			pEdit->SetReadOnly(TRUE);
-			m_ConfigChooseCombo.SetWindowText(sOldText);
+			m_ConfigChooseCombo.SetCurSel(m_ConfigChooseCombo.FindStringExact(0, sOldText));
 			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_ConfigChooseCombo, false, false, false);
 			m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
 			m_nLastRow = pNMItemActivate->iItem;
@@ -526,10 +523,7 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("线宽")])
 		{
-			CEdit* pEdit = (CEdit*)m_LineWidthCombo.GetWindow(GW_CHILD);
-			// 将输入框设置为只读
-			pEdit->SetReadOnly(TRUE);
-			m_LineWidthCombo.SetWindowText(sOldText);
+			m_LineWidthCombo.SetCurSel(m_LineWidthCombo.FindStringExact(0, sOldText));
 			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_LineWidthCombo, false, false, false);
 			m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
 			m_nLastRow = pNMItemActivate->iItem;
@@ -538,10 +532,7 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("图层线型")])
 		{
-			CEdit* pEdit = (CEdit*)m_LineTypeCombo.GetWindow(GW_CHILD);
-			// 将输入框色设置为只读
-			pEdit->SetReadOnly(TRUE);
-			m_LineTypeCombo.SetWindowText(sOldText);
+			m_LineTypeCombo.SetCurSel(m_LineTypeCombo.FindStringExact(0, sOldText));
 			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_LineTypeCombo, false, false, false);
 			m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
 			m_nLastRow = pNMItemActivate->iItem;
