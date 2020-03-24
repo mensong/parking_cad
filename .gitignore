@@ -72,3 +72,5 @@
 /Publish/tmp_makeInstall.txt
 /Publish/tmp_ver.txt
 /Publish/ver.txt
+/x64/Debug/dwg/*.dwg
+/x64/Debug/preview/*.bmp
