@@ -6,11 +6,12 @@
 #include "GeHelper.h"
 #include "EquipmentroomTool.h"
 
-REG_CMD(COperaAxleNetMaking, BGY, ANM);
+REG_CMD_P(COperaAxleNetMaking, BGY, ANM);
 
 AcDbObjectIdArray COperaAxleNetMaking::ms_axisIds;
 
-COperaAxleNetMaking::COperaAxleNetMaking()
+COperaAxleNetMaking::COperaAxleNetMaking(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 

@@ -2,7 +2,8 @@
 #include "OperaVillageSet.h"
 #include "EquipmentroomTool.h"
 
-COperaVillageSet::COperaVillageSet()
+COperaVillageSet::COperaVillageSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 
 }
@@ -55,4 +56,4 @@ begin:acedInitGet(0, _T("Yes No"));
 	CEquipmentroomTool::jigShow(jigUseIds, sideLength);
 }
 
-REG_CMD(COperaVillageSet, BGY, VillageSet);
+REG_CMD_P(COperaVillageSet, BGY, VillageSet);

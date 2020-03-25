@@ -1,11 +1,11 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 
 class COperaParkingSpaceShow :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaParkingSpaceShow();
+	COperaParkingSpaceShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaParkingSpaceShow();
 	virtual void Start();
 

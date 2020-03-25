@@ -77,6 +77,29 @@ extern AcApDataManager<CDocData> DocVars ;
 
 #pragma pack (pop)
 
+#include <vector>
 #include <string>
+#include "ParkingLog.h"
 
 std::string getHttpModule();
+
+#define LOG_BIP_LOGIN _T("bip_login")
+#define LOG_MISS_MOD _T("miss_mod")
+#define LOG_AUTH_LOGIN _T("auth_login")
+#define LOG_SAVE_PASSWORD _T("save_password")
+
+#define LOG_OPERA_ADD_FRAME _T("opera_add_frame")
+#define LOG_OPERA_AXIS_SW _T("opera_axis_sw")
+#define LOG_OPERA_AXIS_MARKING _T("opera_axis_marking")
+#define LOG_OPERA_CHECK_ERROR _T("opera_check_error")
+#define LOG_OPERA_VentilationEquipmentroomSet _T("opera_VentilationEquipmentroomSet")
+#define LOG_OPERA_EquipmentRoomSet _T("opera_EquipmentRoomSet")
+#define LOG_OPERA_FirePoolSet _T("opera_FirePoolSet")
+#define LOG_OPERA_FirePumpHouseSet _T("opera_FirePumpHouseSet")
+#define LOG_OPERA_LifePumpHouseSet _T("opera_LifePumpHouseSet")
+#define LOG_OPERA_LivingWaterTankSet _T("opera_LivingWaterTankSet")
+#define LOG_OPERA_ModuleCall _T("opera_ModuleCall")
+#define LOG_OPERA_ParkingSpaceShow _T("opera_ParkingSpaceShow")
+#define LOG_OPERA_SetConfig _T("opera_SetConfig")
+#define LOG_OPERA_SetEntranceData _T("opera_SetEntranceData")
+#define LOG_OPERA_VillageSet _T("opera_VillageSet")

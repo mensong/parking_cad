@@ -1,5 +1,5 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 
 
 typedef struct LineDistance
@@ -10,10 +10,10 @@ typedef struct LineDistance
 }LineDistance;
 
 class COperaAxleNetMaking :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaAxleNetMaking();
+	COperaAxleNetMaking(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaAxleNetMaking();
 	virtual void Start();
 

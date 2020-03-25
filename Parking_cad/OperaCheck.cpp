@@ -12,7 +12,8 @@ std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
 CString COperaCheck::ms_shearWallLayerName;
 
-COperaCheck::COperaCheck()
+COperaCheck::COperaCheck(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -497,4 +498,4 @@ void COperaCheck::setCurrentLayer(CString layerName)
 	}
 }
 
-REG_CMD(COperaCheck, BGY, Check);//Í¼Ö½ÖÇÄÜ»¯¼ì²â
+REG_CMD_P(COperaCheck, BGY, Check);//Í¼Ö½ÖÇÄÜ»¯¼ì²â

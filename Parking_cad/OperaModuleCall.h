@@ -1,11 +1,11 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 
 class COperaModuleCall :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaModuleCall();
+	COperaModuleCall(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaModuleCall();
 	virtual void Start();
 	void mirrorJigshow(const CString& blockName);

@@ -1,10 +1,10 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 class COperaAxisShowOrHide :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaAxisShowOrHide();
+	COperaAxisShowOrHide(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaAxisShowOrHide();
 	virtual void Start();
 };

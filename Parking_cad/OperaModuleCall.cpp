@@ -4,7 +4,8 @@
 #include "DBHelper.h"
 
 
-COperaModuleCall::COperaModuleCall()
+COperaModuleCall::COperaModuleCall(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -106,4 +107,4 @@ void COperaModuleCall::mirrorJigshow(const CString& blockName)
 	//关闭图形实体
 }
 
-REG_CMD(COperaModuleCall, BGY, ModuleCall);//车库精细化模块
+REG_CMD_P(COperaModuleCall, BGY, ModuleCall);//车库精细化模块

@@ -1,10 +1,10 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 class COperaLifePumpHouseSet :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaLifePumpHouseSet();
+	COperaLifePumpHouseSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaLifePumpHouseSet();
 	virtual void Start();
 };

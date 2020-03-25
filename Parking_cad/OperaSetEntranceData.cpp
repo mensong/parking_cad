@@ -7,7 +7,8 @@
 #include <algorithm>
 
 class CDlgEntrance* COperaSetEntranceData::ms_EntranceDlg = NULL;
-COperaSetEntranceData::COperaSetEntranceData()
+COperaSetEntranceData::COperaSetEntranceData(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -1833,4 +1834,4 @@ bool COperaSetEntranceData::IsOnLine(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoi
 }
 
 
-REG_CMD(COperaSetEntranceData, BGY, SetEntranceData);//设置出入口参数
+REG_CMD_P(COperaSetEntranceData, BGY, SetEntranceData);//设置出入口参数

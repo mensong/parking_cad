@@ -18,6 +18,7 @@ public:
 
 	bool loginSuccess;
 	CString userName;
+	CString bipId;
 
 private:
 	std::string _getSavePwdFilePath();

@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "OperaGergul.h"
 #include "GeHelper.h"
+#include "ParkingLog.h"
 
-
-COperaGergul::COperaGergul(void)
+COperaGergul::COperaGergul(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -14,14 +15,8 @@ COperaGergul::~COperaGergul(void)
 
 void COperaGergul::Start()
 {
-	AcGePoint2dArray pts;
-	pts.append(AcGePoint2d(0,0));
-	pts.append(AcGePoint2d(100,0));
-	pts.append(AcGePoint2d(100,100));
-	pts.append(AcGePoint2d(0,100));
-
-	bool b = GeHelper::IsPointOnPolygon(pts, AcGePoint2d(150,50));
+	CParkingLog::AddLogA("test", 0, "√Ë ˆ");
 
 }
 
-REG_CMD(COperaGergul, BGY, Gergul);
+REG_CMD_P(COperaGergul, BGY, Gergul);

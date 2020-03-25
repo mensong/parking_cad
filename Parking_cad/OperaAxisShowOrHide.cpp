@@ -4,7 +4,8 @@
 #include "EquipmentroomTool.h"
 
 
-COperaAxisShowOrHide::COperaAxisShowOrHide()
+COperaAxisShowOrHide::COperaAxisShowOrHide(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -46,4 +47,4 @@ void COperaAxisShowOrHide::Start()
 	}
 }
 
-REG_CMD(COperaAxisShowOrHide, BGY, AxisShowOrHide);//控制轴线和其对应标注图层显隐
+REG_CMD_P(COperaAxisShowOrHide, BGY, AxisShowOrHide);//控制轴线和其对应标注图层显隐

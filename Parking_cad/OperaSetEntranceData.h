@@ -1,5 +1,5 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 #include "DlgEntrance.h"
 
 struct InfoStructLine
@@ -16,10 +16,10 @@ struct InfoStructArc
 };
 
 class COperaSetEntranceData :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaSetEntranceData();
+	COperaSetEntranceData(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaSetEntranceData();
 	virtual void Start();
 	AcGeTol m_tol;

@@ -1,13 +1,13 @@
 #pragma once
-#include "opera.h"
+#include "IOperaLog.h"
 #include <vector>
 #include <set>
 
 class COperaCoreWall :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaCoreWall(void);
+	COperaCoreWall(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaCoreWall(void);
 
 	virtual void Start();

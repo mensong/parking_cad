@@ -4,7 +4,8 @@
 
 #define LifePumpHouse 80000000.0//生活泵房面积
 
-COperaLifePumpHouseSet::COperaLifePumpHouseSet()
+COperaLifePumpHouseSet::COperaLifePumpHouseSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -23,4 +24,4 @@ void COperaLifePumpHouseSet::Start()
 	CEquipmentroomTool::setEntToLayer(LifepumpAreaJigUseIds);
 	CEquipmentroomTool::jigShow(LifepumpAreaJigUseIds, LifepumpAreaSideLength);
 }
-REG_CMD(COperaLifePumpHouseSet, BGY, LifePumpHouseSet);
+REG_CMD_P(COperaLifePumpHouseSet, BGY, LifePumpHouseSet);

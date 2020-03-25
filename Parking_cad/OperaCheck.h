@@ -1,10 +1,11 @@
 #pragma once
-#include "E:\Programming\arxtools\Opera.h"
+#include "IOperaLog.h"
+
 class COperaCheck :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaCheck();
+	COperaCheck(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaCheck();
 	virtual void Start();
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口

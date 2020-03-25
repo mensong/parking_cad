@@ -155,29 +155,33 @@ void CDlgBipLogin::OnBnClickedOk()
 				std::wstring wErrMsg = GL::Ansi2WideByte(errMsg);
 				CString sErrMsg;
 				sErrMsg.Format(_T("统一身份认证失败(%d)：%s"), nRet, wErrMsg.c_str());
+				CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sUser);
 				AfxMessageBox(sErrMsg);
 			}
+			else
+			{
+				CParkingLog::AddLog(LOG_BIP_LOGIN, 0, _T("BIP统一身份认证成功"), 1, sUser);
+			}
+
 			UserInfo ui;
 			nRet = bip->getUserInfo(ui);
 			if (nRet == 0)
 			{
 				typedef int(*FN_get_a)(const char* url, bool dealRedirect, ...);
 				FN_get_a get_a = ModulesManager::Instance().func<FN_get_a>("LibcurlHttp.dll", "get_a");
-				if (!get_a)
-				{
-					::MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
-					return;
-				}
 				typedef const char* (*FN_getBody)(int& len);
 				FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
-				if (!getBody)
+				if (!get_a || !getBody)
 				{
+					CParkingLog::AddLog(LOG_MISS_MOD, 1, _T("缺少LibcurlHttp.dll模块！"), 1, sUser);
 					::MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
 					return;
 				}
+				
 				int code = get_a("http://parking.asdfqwer.net:9463/get_user", true, "udid", aUser.c_str(), NULL);
 				if (code != 200)
 				{
+					CParkingLog::AddLog(LOG_AUTH_LOGIN, 1, _T("鉴权失败！"), 1, sUser);
 					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
 					return;
 				}
@@ -185,6 +189,7 @@ void CDlgBipLogin::OnBnClickedOk()
 				const char* pBody = getBody(nLen);
 				if (nLen <= 0)
 				{
+					CParkingLog::AddLog(LOG_AUTH_LOGIN, 1, _T("鉴权失败！"), 1, sUser);
 					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
 					return;
 				}
@@ -193,6 +198,7 @@ void CDlgBipLogin::OnBnClickedOk()
 				Json::Reader jsReader;
 				if (!jsReader.parse(pBody, js))
 				{
+					CParkingLog::AddLog(LOG_AUTH_LOGIN, 1, _T("鉴权失败！"), 1, sUser);
 					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
 					return;
 				}
@@ -206,10 +212,13 @@ void CDlgBipLogin::OnBnClickedOk()
 
 				std::wstring wName = GL::Utf82WideByte(name.c_str());
 				userName = wName.c_str();
+				bipId = sUser;
 				CString sName;
 				sName.Format(_T("登录成功，用户名：%s"), wName.c_str());
-				AfxMessageBox(sName);
 
+				CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sName, 1, sUser);
+
+				AfxMessageBox(sName);
 				loginSuccess = true;				
 			}
 			bip->uninit();
@@ -218,6 +227,7 @@ void CDlgBipLogin::OnBnClickedOk()
 		{
 			CString sErrMsg;
 			sErrMsg.Format(_T("统一登录认证配置有误，请重新安装程序：%d"), nRet);
+			CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sUser);
 			AfxMessageBox(sErrMsg);
 		}
 
@@ -227,6 +237,7 @@ void CDlgBipLogin::OnBnClickedOk()
 	{
 		CString sErrMsg;
 		sErrMsg.Format(_T("lib_bipsignin.dll模块加载失败。"));
+		CParkingLog::AddLog(LOG_MISS_MOD, 1, _T("缺少lib_bipsignin.dll模块！"), 1, sUser);
 		AfxMessageBox(sErrMsg);
 	}
 
@@ -243,10 +254,11 @@ void CDlgBipLogin::_savePwd()
 	std::string sTempFile = _getSavePwdFilePath();
 	if (sTempFile != "")
 	{
+		CString sUser;
+		m_editUser.GetWindowText(sUser);
+
 		if (m_chkSavePwd.GetCheck() == TRUE)
 		{
-			CString sUser;
-			m_editUser.GetWindowText(sUser);
 			CString sPassword;
 			m_editPassword.GetWindowText(sPassword);
 			if (sUser.IsEmpty() || sPassword.IsEmpty())
@@ -263,10 +275,13 @@ void CDlgBipLogin::_savePwd()
 
 			::WritePrivateProfileStringA("BIP", "user", mmUser.c_str(), sTempFile.c_str());
 			::WritePrivateProfileStringA("BIP", "pwd", mmPassword.c_str(), sTempFile.c_str());
+
+			CParkingLog::AddLog(LOG_SAVE_PASSWORD, 0, _T("保存账号密码"), 1, sUser);
 		}
 		else
 		{
 			::DeleteFileA(sTempFile.c_str());
+			CParkingLog::AddLog(LOG_SAVE_PASSWORD, 0, _T("不保存账号密码"), 1, sUser);
 		}
 	}
 }

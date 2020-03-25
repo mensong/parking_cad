@@ -19,7 +19,8 @@
 class CArxDialog* COperaParkingSpaceShow::ms_dlg = NULL;
 
 
-COperaParkingSpaceShow::COperaParkingSpaceShow()
+COperaParkingSpaceShow::COperaParkingSpaceShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -144,4 +145,4 @@ void COperaParkingSpaceShow::Start()
 
 
 
-REG_CMD(COperaParkingSpaceShow, BGY, ParkingSpaceShow);//调用AI计算方案
+REG_CMD_P(COperaParkingSpaceShow, BGY, ParkingSpaceShow);//调用AI计算方案

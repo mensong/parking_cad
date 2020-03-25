@@ -5,7 +5,8 @@
 #define VentilationroomArea 15000000.0//通风设备房面积
 
 
-COperaEquipmentroomRelated::COperaEquipmentroomRelated()
+COperaEquipmentroomRelated::COperaEquipmentroomRelated(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -61,4 +62,4 @@ void COperaEquipmentroomRelated::Start()
 	}
 }
 
-REG_CMD(COperaEquipmentroomRelated, BGY, VentilationEquipmentroomSet);
+REG_CMD_P(COperaEquipmentroomRelated, BGY, VentilationEquipmentroomSet);

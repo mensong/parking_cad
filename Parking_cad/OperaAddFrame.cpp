@@ -9,7 +9,8 @@ std::map<std::string, double> COperaAddFrame::ms_mapTableData;
 CString COperaAddFrame::ms_sOutLineLayerName;
 
 
-COperaAddFrame::COperaAddFrame()
+COperaAddFrame::COperaAddFrame(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -387,4 +388,4 @@ double COperaAddFrame::getIntersectionArea(const std::vector<AcGePoint2dArray>& 
 	return dTotalArea;
 }
 
-REG_CMD(COperaAddFrame, BGY, AddFrame);//增加图框
+REG_CMD_P(COperaAddFrame, BGY, AddFrame);//增加图框
