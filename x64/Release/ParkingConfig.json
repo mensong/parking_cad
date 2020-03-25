@@ -116,6 +116,15 @@
          "layer_width" : "0.4",
          "professional_attributes" : "用地",
          "transparency" : ""
+      },
+	  "cloud_line" : {
+         "isprintf" : "否",
+         "layer_color" : "6",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-云线",
+         "layer_width" : "0.25",
+         "professional_attributes" : "标注",
+         "transparency" : ""
       }
    },
    "params" : {

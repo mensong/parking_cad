@@ -18,8 +18,11 @@ COperaSetEntranceData::~COperaSetEntranceData()
 
 void COperaSetEntranceData::Start()
 {
+
 	//deleParkInEntrance();
+	CEquipmentroomTool::creatLayerByjson("entrance");
 	creatEntrance();
+
 	////设置窗口
 	//CAcModuleResourceOverride resOverride;//资源定位
 
@@ -32,22 +35,54 @@ void COperaSetEntranceData::Start()
 //新建标注及其样式修改
 AcDbObjectId COperaSetEntranceData::creatDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const CString sLegth)
 {
-	AcDbDatabase *pcurdb = acdbHostApplicationServices()->workingDatabase();
-	AcDbDimStyleTable *pnewdimtable;
-	pcurdb->getSymbolTable(pnewdimtable, AcDb::kForWrite);
-	//AcDbDimStyleTableRecord *pnewdimrecord = new AcDbDimStyleTableRecord();
+	CString str = _T("出入口标注");
+	creatDimStyle(str);
+	AcDbObjectId dimStyleId;
+	////获得当前图形的标注样式表  
+	AcDbDimStyleTable* pDimStyleTbl;
+	acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+	if (pDimStyleTbl->has(str))
+		pDimStyleTbl->getAt(str, dimStyleId);
+	else
+	{
+		pDimStyleTbl->close();
+		return dimStyleId;
+	}
+	pDimStyleTbl->close();
+	AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, pt3, NULL, dimStyleId);//AcDbRadialDimension;
+	pnewdim->setDimensionText(sLegth);
+	pnewdim->setDimtxt(500);//标注文字的高度
+	pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+	pnewdim->setDimtmove(1);
+	AcDbObjectId dimId;
+	DBHelper::AppendToDatabase(dimId, pnewdim);
+	if (pnewdim)
+		pnewdim->close();
+	return dimId;
+}
+
+void COperaSetEntranceData::creatDimStyle(const CString &styleName)
+{
+	// 获得当前图形的标注样式表
+	AcDbDimStyleTable *pDimStyleTbl = NULL;
+	acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+	if (pDimStyleTbl->has(styleName))
+	{
+		pDimStyleTbl->close();//已经存在
+		return;
+	}
 
 	// 创建新的标注样式表记录
 	AcDbDimStyleTableRecord *pDimStyleTblRcd = NULL;
 	pDimStyleTblRcd = new AcDbDimStyleTableRecord();
 
 	// 设置标注样式的特性
-	pDimStyleTblRcd->setName(_T("出入口标注")); // 样式名称
+	pDimStyleTblRcd->setName(styleName); // 样式名称
 	pDimStyleTblRcd->setDimasz(1);//设置箭头大小
 	pDimStyleTblRcd->setDimzin(8);//十进制小数显示时，抑制后续零
 	pDimStyleTblRcd->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
-	pDimStyleTblRcd->setDimexe(200);//设置尺寸界线超出尺寸线距离为400
-	pDimStyleTblRcd->setDimexo(100);//设置尺寸界线的起点偏移量为300
+	pDimStyleTblRcd->setDimexe(300);//设置尺寸界线超出尺寸线距离为400
+	pDimStyleTblRcd->setDimexo(0);//设置尺寸界线的起点偏移量为300
 	pDimStyleTblRcd->setDimtxt(800);//设置文字高度
 	pDimStyleTblRcd->setDimtad(1);//设置文字位置-垂直为上方，水平默认为居中，不用设置
 	pDimStyleTblRcd->setDimgap(50);//设置文字位置-从尺寸线的偏移量
@@ -60,30 +95,11 @@ AcDbObjectId COperaSetEntranceData::creatDim(const AcGePoint3d& pt1, const AcGeP
 	suiceng.setColorIndex(3);
 	pDimStyleTblRcd->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
 	pDimStyleTblRcd->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
-	
-	AcDbObjectId dimrecordid;
-	pnewdimtable->add(dimrecordid, pDimStyleTblRcd);
-	pnewdimtable->close();
+
+										 // 将标注样式表记录添加到标注样式表中
+	pDimStyleTbl->add(pDimStyleTblRcd);
 	pDimStyleTblRcd->close();
-
-	/*AcGePoint3d Pt1(0, 0, 0);
-	AcGePoint3d Pt2(5200, 0, 0);
-	AcGePoint3d Pt3(0, 2000, 0);*/
-
-	AcDbBlockTable *pBlockTable;//定义块表指针
-	acdbHostApplicationServices()->workingDatabase()
-		->getSymbolTable(pBlockTable, AcDb::kForRead);
-	AcDbBlockTableRecord *pBlockTableRecord;
-	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
-		AcDb::kForWrite);
-	pBlockTable->close();
-	AcDbAlignedDimension *pDim1 = new AcDbAlignedDimension(pt1, pt2, pt3, NULL, dimrecordid);//AcDbRadialDimension;
-	pDim1->setDimensionText(sLegth);
-	AcDbObjectId Id;
-	pBlockTableRecord->appendAcDbEntity(Id, pDim1);
-	pBlockTableRecord->close();
-	pDim1->close();
-	return Id;
+	pDimStyleTbl->close();
 }
 
 AcDbObjectId COperaSetEntranceData::creatArcDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const AcGePoint3d& pt4)
@@ -166,60 +182,16 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 		acutPrintf(_T("\n输入错误！"));
 		return;
 	}
-	std::vector<AcDbEntity*> vctEnt;
+	//AcDbObjectIdArray EquipmentIds;
 	for (int i=0; i<entIds.length(); i++)
 	{
 		AcDbEntity *pEnt = NULL;
-		acdbOpenObject(pEnt, entIds[i], AcDb::kForRead);
-		if (pEnt == NULL)
+		if(acdbOpenObject(pEnt, entIds[i], AcDb::kForRead)!=eOk)
 			continue;
-		vctEnt.push_back(pEnt);
-	}
-	//ads_name ssname;
-	//ads_name ent;
-	////获取选择集
-	//acedPrompt(_T("\n请选择生成出入口多线段："));
-	//struct resbuf *rb; // 结果缓冲区链表
-	//rb = acutBuildList(RTDXF0, _T("ARC"), RTNONE);
-	//// 选择复合要求的实体
-	//acedSSGet(NULL, NULL, NULL, NULL, ssname);
-	////获取选择集的长度
-	//Adesk::Int32 len = 0;
-	//int nRes = acedSSLength(ssname, &len);
-	//if (RTNORM == nRes)
-	//{
-	//	//遍历选择集
-	//	for (int i = 0; i < len; i++)
-	//	{
-	//		//获取实体名
-	//		int nRes = acedSSName(ssname, i, ent);
-	//		if (nRes != RTNORM)
-	//			continue;
-	//		//根据实体名得到ID，然后打开自定义实体
-	//		AcDbObjectId id;
-	//		acdbGetObjectId(id, ent);
-	//		if (!id.isValid())
-	//			continue;
-	//		AcDbEntity *pEnt = NULL;
-	//		acdbOpenObject(pEnt, id, AcDb::kForRead);
-	//		//判断自定义实体的类型
-	//		if (pEnt == NULL)
-	//			continue;
-	//		vctEnt.push_back(pEnt);
-	//	}
-	//}
-	////释放选择集和结果缓存区
-	//acutRelRb(rb);
-	//acedSSFree(ssname);
-	if (vctEnt.size() < 1)
-		return;
-	//拿到用户选择多线段实体指针
-	AcDbObjectIdArray EquipmentIds;
-	for (int i = 0; i < vctEnt.size(); i++)
-	{
-		if (vctEnt[i]->isKindOf(AcDbArc::desc()))
+		
+		if (pEnt->isKindOf(AcDbArc::desc()))
 		{
-			AcDbArc *pArc = AcDbArc::cast(vctEnt[i]);
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
 
 			AcGeCircArc3d pGeArc(
 				pArc->center(),
@@ -234,8 +206,8 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			pArc->getEndPoint(endPt);
 			pArc->getStartPoint(startPt);
 			AcGePoint3d centerPt = pArc->center();
-			AcDbObjectId EquipmentId = vctEnt[i]->objectId();
-			EquipmentIds.append(EquipmentId);
+			//AcDbObjectId EquipmentId = pEnt->objectId();
+			//EquipmentIds.append(EquipmentId);
 			AcGeVector3d endPtMoveVec = endPt - centerPt;
 			AcGeVector3d unitEndVec = endPtMoveVec.normalize();
 			endPt.transformBy(unitEndVec * 100);
@@ -243,7 +215,7 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			AcGeVector3d unitStartVec = startPtMoveVec.normalize();
 			AcGePoint3d onArcPt = result[1];
 			startPt.transformBy(unitStartVec * 100);
-			onArcPt.transformBy(unitStartVec * 100);
+			onArcPt.transformBy(unitStartVec * 500);
 			//AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
 			//AcDbArcDimension(centerPt, movedPt, endPt, startPt);
 
@@ -272,9 +244,9 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			pDim1->close();
 			int jj = 0;
 		}
-		if (vctEnt[i]->isKindOf(AcDbLine::desc()))
+		else if (pEnt->isKindOf(AcDbLine::desc()))
 		{
-			AcDbLine *pLine = AcDbLine::cast(vctEnt[i]);
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
 			AcGePoint3d endPt;
 			AcGePoint3d startPt;
 			pLine->getEndPoint(endPt);
@@ -295,7 +267,7 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			sEntranceLength.Format(_T("%.1f"), showLength);
 			COperaSetEntranceData::creatDim(startPt, endPt, Pt1, sEntranceLength);
 		}
-		vctEnt[i]->close();
+		pEnt->close();
 	}
 }
 
@@ -335,8 +307,7 @@ void COperaSetEntranceData::creatEntrance()
 	//将用户选择的实体，以有相连为依据，分组存储
 	std::vector<std::vector<AcDbObjectId>> operaIds;
 	COperaSetEntranceData::BatchStorageEnt(useIds, operaIds);
-
-	double changdistance = 400;//车道距离
+	double changdistance = 2500;//车道距离
 	for (int i = 0; i < operaIds.size(); i++)
 	{
 		if (operaIds[i].empty())
@@ -366,7 +337,7 @@ void COperaSetEntranceData::creatEntrance()
 		            |  | |  			  |  | |
 		*
 		*/
-		double inputdistance = 2 * changdistance;
+		double inputdistance = changdistance;
 		COperaSetEntranceData::MultipleCycles(inputdistance, GuideIds);
 
 		std::vector<AcGePoint3dArray> allLinePts;
@@ -404,9 +375,11 @@ void COperaSetEntranceData::creatEntrance()
 		*                                ------
 		*/
 		COperaSetEntranceData::ConnectionPoint(GuideIds);
+		CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
 		AcDbObjectIdArray useforGetPtsID;
 		for (int g=0; g<GuideIds.length();g++)
 		{
+			CEquipmentroomTool::setEntToLayer(GuideIds[g], sEntranceLayer);
 			if (useIds.contains(GuideIds[g]))
 			{
 				continue;
@@ -448,7 +421,7 @@ void COperaSetEntranceData::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vec
 
 				//AcGePoint3dArray intersectPoints;
 			//	tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
-				if (COperaSetEntranceData::isIntersect(pEnt, tempEnt, 0.5))
+				if (COperaSetEntranceData::isIntersect(pEnt, tempEnt, 1))
 				{
 					tag = false;
 					bool ent_tag = true;
@@ -457,7 +430,6 @@ void COperaSetEntranceData::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vec
 					{
 						if (std::find(outputId[k].begin(), outputId[k].end(), inputId[i]) != outputId[k].end())//存在实体ID
 						{
-
 							ent_tag = false;
 							ent_num = k;
 							break;
@@ -1017,7 +989,7 @@ void COperaSetEntranceData::MultipleCycles(double& inputdistance, AcDbObjectIdAr
 	COperaSetEntranceData::DealIntersectEnt(GuideIds);
 
 	//因为第一次延长处理，有时并不能一次性可以，需要重复几次，但这一块代码其实是不严谨的，需要优化。
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		std::vector<InfoStructLine> saveLineInfoVector1;
 		std::vector<InfoStructArc> saveArcInfoVector1;
@@ -1291,7 +1263,7 @@ void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
 		AcGePoint2d tempplinePt = COperaSetEntranceData::getPlineNextPoint(targetPts, nextUsedPts, allLinePts, resultPts);
 		targetPts = tempplinePt;
 		resultPts.append(tempplinePt);
-		if (firstPt == tempplinePt)
+		if (firstPt == tempplinePt||resultPts.length()>100)
 		{
 			flag = false;
 		}
@@ -1589,8 +1561,8 @@ void COperaSetEntranceData::DealIntersectEnt(AcDbObjectIdArray& inputIds)
 				else
 				{
 					points.push_back(intersectPoints[0]);
-					COperaSetEntranceData::DealEnt(pEnt, intersectPoints);
-					COperaSetEntranceData::DealEnt(tempEnt, intersectPoints);
+					DealEnt(pEnt, intersectPoints);
+					DealEnt(tempEnt, intersectPoints);
 
 				}
 

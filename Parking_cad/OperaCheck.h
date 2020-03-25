@@ -20,5 +20,7 @@ public:
 	std::vector<AcGePoint2dArray>  getPlinePtsByLayer(const CString& layername);
 	AcGePoint2dArray getPlineExtentPts(AcGePoint2dArray plinePts);
 	void creatCloudLine(AcGePoint2dArray plineExtentPts);
+	CString doubleToCString(double num);
+	static void setCurrentLayer(CString layerName);
 };
 

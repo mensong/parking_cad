@@ -39,19 +39,20 @@ void COperaEquipmentroomRelated::Start()
 
 		CEquipmentroomTool::layerSet();
 		double windareaSideLength = 0;
-		AcDbObjectIdArray windareaJigUseIds = CEquipmentroomTool::createArea(scaleArea, area1Name, windareaSideLength);
+		double limitLength = 3500;
+		AcDbObjectIdArray windareaJigUseIds = CEquipmentroomTool::createArea(scaleArea, area1Name, windareaSideLength, limitLength);
 		CEquipmentroomTool::setEntToLayer(windareaJigUseIds);
  		if (!CEquipmentroomTool::jigShow(windareaJigUseIds, windareaSideLength))
  		{
 			break;
  		}
-		AcDbObjectIdArray windarea1JigUseIds = CEquipmentroomTool::createArea(scaleArea, area2Name, windareaSideLength);
+		AcDbObjectIdArray windarea1JigUseIds = CEquipmentroomTool::createArea(scaleArea, area2Name, windareaSideLength, limitLength);
 		CEquipmentroomTool::setEntToLayer(windarea1JigUseIds);
 		if (!CEquipmentroomTool::jigShow(windarea1JigUseIds, windareaSideLength))
 		{
 			break;
 		}
-		AcDbObjectIdArray windarea2JigUseIds = CEquipmentroomTool::createArea(scaleArea, area2Name, windareaSideLength);
+		AcDbObjectIdArray windarea2JigUseIds = CEquipmentroomTool::createArea(scaleArea, area2Name, windareaSideLength, limitLength);
 		CEquipmentroomTool::setEntToLayer(windarea2JigUseIds);
 		if (!CEquipmentroomTool::jigShow(windarea2JigUseIds, windareaSideLength))
 		{

@@ -15,7 +15,7 @@ public:
 	}
 
 	/*根据输入面积创建面域*/
-	static AcDbObjectIdArray createArea(double areaSize, CString areaName, double& sideLength);
+	static AcDbObjectIdArray createArea(double areaSize, CString areaName, double& sideLength, double& limitLength, bool limitType=true);
 	/*文字位移，使其居中于设备房*/
 	static void textMove(AcGePoint3d ptInsert, AcDbObjectId textId);
 
@@ -72,5 +72,6 @@ public:
 	static double areaScale(double oldArea);
 	//取得车位包围框点
 	static void getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName, std::map<AcDbObjectId,AcGePoint2dArray>& parkIdAndPts);
+	static CString getOpenDwgFilePath();
 };
 

@@ -57,7 +57,8 @@ begin:acedInitGet(0, _T("Yes No"));
 	}
 	CEquipmentroomTool::layerSet();
 	double FirePoolsideLength = 0;
-	AcDbObjectIdArray FirePooljigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(FirePoolS),_T("消防水池"), FirePoolsideLength);
+	double limitLength = 0;
+	AcDbObjectIdArray FirePooljigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(FirePoolS),_T("消防水池"), FirePoolsideLength, limitLength);
 	CEquipmentroomTool::setEntToLayer(FirePooljigUseIds);
 	CEquipmentroomTool::jigShow(FirePooljigUseIds, FirePoolsideLength);
 }
