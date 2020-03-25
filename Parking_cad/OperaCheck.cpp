@@ -46,6 +46,7 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 	for (int j = 0; j<clodLineIds.length(); j++)
 	{
 		CEquipmentroomTool::setEntToLayer(clodLineIds[j], sCloudLineLayer);
+		COperaCheck::setCloudLineWidth(clodLineIds[j]);
 	}
 	COperaCheck::setCurrentLayer(_T("0"));
 }
@@ -435,13 +436,19 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 
 void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
 {	
+	double distance = plineExtentPts[0].distanceTo(plineExtentPts[1]);
+	double minArcLength = distance / 5;
+	double maxArcLength = minArcLength * 2;
+	CString sminArcLength = COperaCheck::doubleToCString(minArcLength);
+	CString smaxArcLength = COperaCheck::doubleToCString(maxArcLength);
+	CString setArcLength = _T("REVCLOUD A ") + sminArcLength +_T(" ") + smaxArcLength+_T(" ");
 	CString sMinPtX = COperaCheck::doubleToCString(plineExtentPts[0].x);
 	CString sMinPtY = COperaCheck::doubleToCString(plineExtentPts[0].y);
 	CString sMinPt = sMinPtX + _T(",") + sMinPtY + _T(" ");
 	CString sMaxPtX = COperaCheck::doubleToCString(plineExtentPts[1].x);
 	CString sMaxPtY = COperaCheck::doubleToCString(plineExtentPts[1].y);
 	CString sMaxPt = sMaxPtX + _T(",") + sMaxPtY + _T(" ");
-	CString command = _T("REVCLOUD R ") + sMinPt + sMaxPt;
+	CString command = setArcLength + _T("R ") + sMinPt + sMaxPt;
 	DBHelper::CallCADCommand(command);
 }
 
@@ -450,6 +457,19 @@ CString COperaCheck::doubleToCString(double num)
 	CString sNum;
 	sNum.Format(_T("%.2f"), num);
 	return sNum;
+}
+
+void COperaCheck::setCloudLineWidth(AcDbObjectId cloudLineId)
+{
+	AcDbEntity *pEnty = NULL;
+	Acad::ErrorStatus es;
+	es = acdbOpenObject(pEnty, cloudLineId, AcDb::kForWrite);
+	if (es == Acad::eOk)
+	{
+		AcDbPolyline *pLine = AcDbPolyline::cast(pEnty);
+		es = pLine->setConstantWidth(10); 
+		pLine->close();
+	}
 }
 
 void COperaCheck::setCurrentLayer(CString layerName)
