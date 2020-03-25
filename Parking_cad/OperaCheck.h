@@ -21,6 +21,7 @@ public:
 	AcGePoint2dArray getPlineExtentPts(AcGePoint2dArray plinePts);
 	void creatCloudLine(AcGePoint2dArray plineExtentPts);
 	CString doubleToCString(double num);
+	static void setCloudLineWidth(AcDbObjectId cloudLineId);
 	static void setCurrentLayer(CString layerName);
 };
 
