@@ -438,6 +438,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaCheck.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaCoreWall.cpp"
 				>
 			</File>
@@ -612,6 +616,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaAxleNetMaking.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaCheck.h"
 				>
 			</File>
 			<File

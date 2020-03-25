@@ -113,6 +113,7 @@
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxisShowOrHide.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaCheck.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h" />
     <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h" />
+    <ClInclude Include="..\Parking_cad\OperaCheck.h" />
     <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h" />

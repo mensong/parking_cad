@@ -72,7 +72,7 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 	{
 		//吸附移动
 		AcGePoint2d basePoint(jig.GetPosition().x, jig.GetPosition().y);
-		AdsorbentShow(useJigIds, basePoint, sideLength);
+		//AdsorbentShow(useJigIds, basePoint, sideLength);
 		return true;
 	}
 	if (flag)
@@ -81,18 +81,48 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 	}
 }
 
-AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaName, double& sideLength)
+AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaName, double& sideLength, double& limitLength, bool limitType)
 {
 	sideLength = sqrt(areaSize);
-
+	if (limitType)
+	{
+		if (sideLength <= limitLength)
+		{
+			sideLength = areaSize / limitLength;
+			if (sideLength <= limitLength)
+			{
+				sideLength = limitLength;
+			}
+		}
+		else
+		{
+			limitLength = sideLength;
+		}
+	}
+	else
+	{
+		if (sideLength >= limitLength)
+		{
+			sideLength = areaSize / limitLength;
+			if (sideLength >= limitLength)
+			{
+				sideLength = limitLength;
+			}
+		}
+		else
+		{
+			limitLength = sideLength;
+		}
+	}
+	
 	AcDbObjectIdArray useJigIds;
 
 	AcGePoint2d squarePt1(0, 0);
 	AcGePoint2d squarePt2(0, sideLength);
-	AcGePoint2d squarePt3(sideLength, sideLength);
-	AcGePoint2d squarePt4(sideLength, 0);
+	AcGePoint2d squarePt3(limitLength, sideLength);
+	AcGePoint2d squarePt4(limitLength, 0);
 	AcDbPolyline *pPoly = new AcDbPolyline(4);
-	double width = 0;//正方形线宽
+	double width = 0;//正方形线宽/满足条件变形成矩形
 	pPoly->addVertexAt(0, squarePt1, 0, width, width);
 	pPoly->addVertexAt(1, squarePt2, 0, width, width);
 	pPoly->addVertexAt(2, squarePt3, 0, width, width);
@@ -1139,7 +1169,6 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 			pLayerTbl->close();
 			return false;
 		}
-		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
 		AcDbLayerTableRecord *pLayerTblRcd;
 		pLayerTbl->getAt(layerName, pLayerTblRcd, AcDb::kForWrite);
 		AcCmColor color;//设置图层颜色
@@ -1148,6 +1177,7 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 		pLayerTblRcd->setColor(color);
 		pLayerTblRcd->close();
 		pLayerTbl->close();
+		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
 		if (es != eOk)
 		{
 			return false;
@@ -1412,4 +1442,15 @@ void CEquipmentroomTool::getParkingExtentPts(std::vector<AcGePoint2dArray>& park
 		}
 		pEntity->close();
 	}
+}
+
+CString CEquipmentroomTool::getOpenDwgFilePath()
+{
+	const TCHAR* filePath;
+	acdbCurDwg()->getFilename(filePath);
+	CString s = filePath;
+	const ACHAR* file;
+	file = acdbHostApplicationServices()->workingDatabase()->originalFileName();
+	CString ss = file;
+	return s;
 }

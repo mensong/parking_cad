@@ -5,6 +5,8 @@
 #include "ModulesManager.h"
 #include "EquipmentroomTool.h"
 #include "GeHelper.h"
+#include "DelayExecuter.h"
+
 
 std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
@@ -19,9 +21,52 @@ COperaCheck::~COperaCheck()
 {
 }
 
+void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
+{
+	ObjectCollector* oc = (ObjectCollector*)anyVal;
+	AcDbObjectIdArray appendEntIds = oc->m_objsAppended;
+	AcDbObjectIdArray clodLineIds;
+	for (int i=0; i<appendEntIds.length(); i++)
+	{
+		AcDbEntity* pEntity = NULL;
+		if (acdbOpenAcDbEntity(pEntity, appendEntIds[i], kForRead) != eOk)
+		{
+			continue;
+		}
+		if (pEntity->isKindOf(AcDbPolyline::desc()))
+		{
+			AcDbObjectId coldLineID = pEntity->objectId();
+			clodLineIds.append(coldLineID);
+		}
+		pEntity->close();
+	}
+	delete oc;
+	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	Doc_Locker _locker;
+	for (int j = 0; j<clodLineIds.length(); j++)
+	{
+		CEquipmentroomTool::setEntToLayer(clodLineIds[j], sCloudLineLayer);
+	}
+	COperaCheck::setCurrentLayer(_T("0"));
+}
+
 void COperaCheck::Start()
 {
-	acutPrintf(_T("\nsb"));
+
+	CEquipmentroomTool::getOpenDwgFilePath();
+	CEquipmentroomTool::creatLayerByjson("cloud_line");
+	//CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	//CString init = _T("_layer S ") + sCloudLineLayer+_T("\r\r");
+	//CString init = _T("_layer s 0\r\r");
+	//DBHelper::CallCADCommand(init);
+	AcDbDatabase *pDb = acdbCurDwg();
+	ObjectCollector* oc = new ObjectCollector;
+	Acad::ErrorStatus es = oc->start(pDb);
+	overlapShow();
+	SetDelayExecute(ExeObjsCllecoter, 0, 0, (void*)oc, 0, false);
+		
+	int ct = 0;
+
 }
 
 void COperaCheck::setUuid(const std::string& uuid)
@@ -165,19 +210,21 @@ bool COperaCheck::getDataforJson(const std::string& json, CString& sMsg)
 
 void COperaCheck::blankCheckShow(const AcGePoint2dArray& blankCheckPts)
 {
-	CString sPillarLayer(CEquipmentroomTool::getLayerName("column").c_str());
-	CEquipmentroomTool::creatLayerByjson("column");
-	AcDbPolyline *pPoly = new AcDbPolyline(blankCheckPts.length());
-	double width = 0;//线宽
-	for (int i = 0; i < blankCheckPts.length(); i++)
-	{
-		pPoly->addVertexAt(0, blankCheckPts[i], 0, width, width);
-	}
-	pPoly->setClosed(true);
-	AcDbObjectId pillarId;
-	DBHelper::AppendToDatabase(pillarId, pPoly);
-	pPoly->close();
-	CEquipmentroomTool::setEntToLayer(pillarId, sPillarLayer);
+	AcGePoint2dArray plineExtentPts = getPlineExtentPts(blankCheckPts);
+	creatCloudLine(plineExtentPts);
+	//CString sPillarLayer(CEquipmentroomTool::getLayerName("column").c_str());
+	//CEquipmentroomTool::creatLayerByjson("column");
+	//AcDbPolyline *pPoly = new AcDbPolyline(blankCheckPts.length());
+	//double width = 0;//线宽
+	//for (int i = 0; i < blankCheckPts.length(); i++)
+	//{
+	//	pPoly->addVertexAt(0, blankCheckPts[i], 0, width, width);
+	//}
+	//pPoly->setClosed(true);
+	//AcDbObjectId pillarId;
+	//DBHelper::AppendToDatabase(pillarId, pPoly);
+	//pPoly->close();
+	//CEquipmentroomTool::setEntToLayer(pillarId, sPillarLayer);
 }
 
 
@@ -200,7 +247,7 @@ void COperaCheck::overlapShow()
 		return;
 	}
 	//获取所有方柱面域
-	CString columnLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
+	CString columnLayer(CEquipmentroomTool::getLayerName("column").c_str());
 	std::vector<AcGePoint2dArray> columnPts = getPlinePtsByLayer(columnLayer);
 	if (columnPts.empty())
 	{
@@ -220,6 +267,33 @@ void COperaCheck::overlapShow()
 		{
 			std::vector<AcGePoint2dArray> polyIntersections;
 			GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[one], columnPts[two], polyIntersections);
+			if (polyIntersections.size()>0)
+			{
+				for (int three=0; three<polyIntersections.size(); three++)
+				{
+					if (polyIntersections[three].length()<3)
+					{
+						continue;
+					}
+					double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+					if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
+					{
+						polyIntersections[three].append(polyIntersections[three][0]);
+					}
+					double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+					if (ss<1&&sss<1)
+					{
+						continue;
+					}
+					/*for (int four = 0; four < polyIntersections[three].length(); four++)
+					{
+						AcGePoint2d look = polyIntersections[three][four];
+						int as = polyIntersections[three].length();
+					}*/
+					AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+					creatCloudLine(plineExtentPts);
+				}
+			}
 		}	
 	}
 	for (int first=0; first<parkingsPoints.size(); first++)
@@ -228,6 +302,33 @@ void COperaCheck::overlapShow()
 		{
 			std::vector<AcGePoint2dArray> polyIntersections;
 			GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[first], shearWallPts[second], polyIntersections);
+			if (polyIntersections.size() > 0)
+			{
+				for (int three = 0; three < polyIntersections.size(); three++)
+				{
+					if (polyIntersections[three].length() < 3)
+					{
+						continue;
+					}
+					double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+					if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
+					{
+						polyIntersections[three].append(polyIntersections[three][0]);
+					}
+					double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+					if (ss < 1 && sss < 1)
+					{
+						continue;
+					}
+					/*for (int four=0; four<polyIntersections[three].length(); four++)
+					{
+						AcGePoint2d look = polyIntersections[three][four];
+						int as = polyIntersections[three].length();
+					}*/
+					AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+					creatCloudLine(plineExtentPts);
+				}
+			}
 		}
 		
 	}
@@ -333,8 +434,47 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 }
 
 void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
-{
+{	
+	CString sMinPtX = COperaCheck::doubleToCString(plineExtentPts[0].x);
+	CString sMinPtY = COperaCheck::doubleToCString(plineExtentPts[0].y);
+	CString sMinPt = sMinPtX + _T(",") + sMinPtY + _T(" ");
+	CString sMaxPtX = COperaCheck::doubleToCString(plineExtentPts[1].x);
+	CString sMaxPtY = COperaCheck::doubleToCString(plineExtentPts[1].y);
+	CString sMaxPt = sMaxPtX + _T(",") + sMaxPtY + _T(" ");
+	CString command = _T("REVCLOUD R ") + sMinPt + sMaxPt;
+	DBHelper::CallCADCommand(command);
+}
 
+CString COperaCheck::doubleToCString(double num)
+{
+	CString sNum;
+	sNum.Format(_T("%.2f"), num);
+	return sNum;
+}
+
+void COperaCheck::setCurrentLayer(CString layerName)
+{
+	//Doc_Locker _locker;
+	AcDbLayerTable *pLayerTbl;
+	//获取当前图形层表
+	Acad::ErrorStatus es;
+	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForRead);
+	if (es != eOk)
+	{
+		return;
+	}
+	if (pLayerTbl->has(layerName))//判断已经有了该图层，应置为当前图层
+	{
+		AcDbObjectId layerId;
+		if (pLayerTbl->getAt(layerName, layerId) != Acad::eOk)
+		{
+			pLayerTbl->close();
+			return;
+		}
+		pLayerTbl->close();
+
+		es = acdbCurDwg()->setClayer(layerId);//设为当前图层		
+	}
 }
 
 REG_CMD(COperaCheck, BGY, Check);//图纸智能化检测

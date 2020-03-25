@@ -25,6 +25,7 @@ public:
 	AcGeTol m_tol;
 	static class CDlgEntrance* ms_EntranceDlg;
 	AcDbObjectId creatDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const CString sLegth);
+	void creatDimStyle(const CString &styleName);
 	AcDbObjectId creatArcDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const AcGePoint3d& pt4);
 	void test(const AcDbObjectIdArray entIds);
 	void creatEntrance();

@@ -175,7 +175,7 @@ void CDlgEntrance::showEntrance(const AcGePoint2dArray& oneEntrancePts)
 	AcDbObjectId entranceId;
 	DBHelper::AppendToDatabase(entranceId, pPoly);
 	pPoly->close();
-	CEquipmentroomTool::setEntToLayer(entranceId, _T("entrance"));
+	CEquipmentroomTool::setEntToLayer(entranceId, sEntranceLayer);
 }
 
 //-----------------------------------------------------------------------------
