@@ -13,7 +13,8 @@
 #include "Convertor.h"
 #include "EquipmentroomTool.h"
 
-COperaCoreWall::COperaCoreWall(void)
+COperaCoreWall::COperaCoreWall(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 	m_tol.setEqualPoint(1);
 }
@@ -746,4 +747,4 @@ void COperaCoreWall::cycleProcessing(const std::vector<AcGeLineSeg2d>& segs, std
 }
 
 
-REG_CMD(COperaCoreWall, BGY, CoreWall);
+REG_CMD_P(COperaCoreWall, BGY, CoreWall);

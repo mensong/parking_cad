@@ -25,7 +25,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "DlgWaiting.h"
-#include "Authenticate\Authenticate.h"
+//#include "Authenticate\Authenticate.h"
 #include "DBHelper.h"
 #include "Convertor.h"
 #include "ModulesManager.h"
@@ -36,10 +36,14 @@
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
-#define DES_KEY "#B-G-Y++"
-#define TIME_URL "http://licence.orzgod.com:8090/cur_time"
 
-Authenticate g_auth;
+CString g_userName;
+CString g_bipId;
+CString g_computerId;
+
+// #define DES_KEY "#B-G-Y++"
+// #define TIME_URL "http://licence.orzgod.com:8090/cur_time"
+// Authenticate g_auth;
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
@@ -74,6 +78,8 @@ public:
 			ModulesManager::Relaese();
 			return AcRx::kRetError;
 		}
+		g_userName = dlgLogin.userName;
+		g_bipId = dlgLogin.bipId;
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
 		// You *must* call On_kInitAppMsg here
@@ -104,82 +110,83 @@ public:
 	virtual void RegisterServerComponents () {
 	}
 
-	AcRx::AppRetCode getLicenceServerTime(Authenticate& auth, DWORD& nowTime)
-	{
-		typedef int(*FN_get)(const char* url, bool dealRedirect /*= true*/);
-		FN_get get = ModulesManager::Instance().func<FN_get>("LibcurlHttp.dll", "get");
-		if (!get)
-		{
-			MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		typedef const char* (*FN_getBody)(int& len);
-		FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
-		if (!getBody)
-		{
-			MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		int code = get(TIME_URL, true);
-		if (code != 200)
-		{
-			MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		int nLen = 0;
-		const char* pBody = getBody(nLen);
-		if (nLen <= 0)
-		{
-			MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		std::string sNowTime(pBody, nLen);
 
-		nowTime = auth.decodeCurTime(sNowTime);
-		if (nowTime == 0)
-		{
-			MessageBox(NULL, AcString(_T("时间服务器错误！")), _T("服务器错误"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
+	//AcRx::AppRetCode getLicenceServerTime(Authenticate& auth, DWORD& nowTime)
+	//{
+	//	typedef int(*FN_get)(const char* url, bool dealRedirect /*= true*/);
+	//	FN_get get = ModulesManager::Instance().func<FN_get>("LibcurlHttp.dll", "get");
+	//	if (!get)
+	//	{
+	//		MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	typedef const char* (*FN_getBody)(int& len);
+	//	FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
+	//	if (!getBody)
+	//	{
+	//		MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	int code = get(TIME_URL, true);
+	//	if (code != 200)
+	//	{
+	//		MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	int nLen = 0;
+	//	const char* pBody = getBody(nLen);
+	//	if (nLen <= 0)
+	//	{
+	//		MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	std::string sNowTime(pBody, nLen);
 
-		return AcRx::kRetOK;
-	}
+	//	nowTime = auth.decodeCurTime(sNowTime);
+	//	if (nowTime == 0)
+	//	{
+	//		MessageBox(NULL, AcString(_T("时间服务器错误！")), _T("服务器错误"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
 
-	AcRx::AppRetCode checkLicence(Authenticate& auth, DWORD nowTime)
-	{
-		AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
-		auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
-		int res = auth.check(nowTime);
+	//	return AcRx::kRetOK;
+	//}
 
-		std::string user = auth.getCheckedUser();
-		std::string serial = auth.getCheckedSerial();
-		std::string license = auth.getCheckedLicenceCode();
-		DWORD		expireTime = auth.getCheckedExpireTime();
-		acutPrintf(_T("\n授权信息 - 【用户名:%s  到期时间:%u】\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
+	//AcRx::AppRetCode checkLicence(Authenticate& auth, DWORD nowTime)
+	//{
+	//	AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
+	//	auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
+	//	int res = auth.check(nowTime);
 
-		if (res == 1)
-		{
-			MessageBox(NULL, AcString(_T("初始化失败！")), _T("初始化失败"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		else if (res == 2)
-		{
-			MessageBox(NULL, AcString(_T("未授权终端，请联系管理员！")), _T("未授权"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		else if (res == 3)
-		{
-			MessageBox(NULL, AcString(_T("授权已过期，请联系管理员！")), _T("授权过期"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		else if (res == 4)
-		{
-			MessageBox(NULL, AcString(_T("用户信息有误，请联系管理员！")), _T("用户信息有误"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
+	//	std::string user = auth.getCheckedUser();
+	//	std::string serial = auth.getCheckedSerial();
+	//	std::string license = auth.getCheckedLicenceCode();
+	//	DWORD		expireTime = auth.getCheckedExpireTime();
+	//	acutPrintf(_T("\n授权信息 - 【用户名:%s  到期时间:%u】\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
 
-		return AcRx::kRetOK;
-	}
+	//	if (res == 1)
+	//	{
+	//		MessageBox(NULL, AcString(_T("初始化失败！")), _T("初始化失败"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	else if (res == 2)
+	//	{
+	//		MessageBox(NULL, AcString(_T("未授权终端，请联系管理员！")), _T("未授权"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	else if (res == 3)
+	//	{
+	//		MessageBox(NULL, AcString(_T("授权已过期，请联系管理员！")), _T("授权过期"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+	//	else if (res == 4)
+	//	{
+	//		MessageBox(NULL, AcString(_T("用户信息有误，请联系管理员！")), _T("用户信息有误"), MB_OK | MB_ICONERROR);
+	//		return AcRx::kRetError;
+	//	}
+
+	//	return AcRx::kRetOK;
+	//}
 	
 } ;
 

@@ -4,7 +4,8 @@
 
 class CDlgEquipmentRoomSet* COperaEquipmentRoomSet::ms_eqdlg = NULL;
 
-COperaEquipmentRoomSet::COperaEquipmentRoomSet()
+COperaEquipmentRoomSet::COperaEquipmentRoomSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -24,4 +25,4 @@ void COperaEquipmentRoomSet::Start()
 	m_tol.setEqualPoint(200);
 }
 
-REG_CMD(COperaEquipmentRoomSet, BGY, EquipmentRoomSet);
+REG_CMD_P(COperaEquipmentRoomSet, BGY, EquipmentRoomSet);

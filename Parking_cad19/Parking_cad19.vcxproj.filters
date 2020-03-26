@@ -234,6 +234,15 @@
     <ClCompile Include="..\Parking_cad\OperaCheck.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\IOperaLog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\ParkingLog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Parking_cad\ArxDialog.h">
@@ -453,6 +462,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaCheck.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\IOperaLog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ParkingLog.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

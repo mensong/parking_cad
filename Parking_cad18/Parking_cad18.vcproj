@@ -418,6 +418,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\IOperaLog.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\ListCtrlCustom.cpp"
 				>
 			</File>
@@ -490,11 +494,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaTest.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaVillageSet.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\Parking_cad\Parking_cad.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\ParkingLog.cpp"
 				>
 			</File>
 			<File
@@ -595,6 +607,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\IOperaLog.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\lib_bipsignin.h"
 				>
 			</File>
@@ -671,7 +687,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaTest.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaVillageSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\ParkingLog.h"
 				>
 			</File>
 			<File

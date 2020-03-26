@@ -2,7 +2,8 @@
 #include "OperaLivingWaterTankSet.h"
 #include "EquipmentroomTool.h"
 
-COperaLivingWaterTankSet::COperaLivingWaterTankSet()
+COperaLivingWaterTankSet::COperaLivingWaterTankSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -29,4 +30,4 @@ void COperaLivingWaterTankSet::Start()
 	CEquipmentroomTool::jigShow(LivingWaterTankJigUseIds, LivingWaterTankSideLength);
 }
 
-REG_CMD(COperaLivingWaterTankSet, BGY, LivingWaterTankSet);
+REG_CMD_P(COperaLivingWaterTankSet, BGY, LivingWaterTankSet);

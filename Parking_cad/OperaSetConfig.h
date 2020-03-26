@@ -1,11 +1,11 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
 #include "DlgSetConfig.h"
 class COperaSetConfig :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaSetConfig();
+	COperaSetConfig(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaSetConfig();
 	virtual void Start();
 	AcGeTol m_tol;

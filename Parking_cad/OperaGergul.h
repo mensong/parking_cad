@@ -1,11 +1,11 @@
 #pragma once
-#include "opera.h"
+#include "IOperaLog.h"
 
 class COperaGergul :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaGergul(void);
+	COperaGergul(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaGergul(void);
 
 	virtual void Start();

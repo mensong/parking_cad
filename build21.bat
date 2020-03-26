@@ -70,3 +70,5 @@ goto finally
 
 :finally
 webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
+
+exit

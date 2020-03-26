@@ -1,10 +1,11 @@
 #pragma once
-#include "Opera.h"
+#include "IOperaLog.h"
+
 class COperaLivingWaterTankSet :
-	public COpera
+	public CIOperaLog
 {
 public:
-	COperaLivingWaterTankSet();
+	COperaLivingWaterTankSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaLivingWaterTankSet();
 	virtual void Start();
 };

@@ -3,7 +3,8 @@
 #include "EquipmentroomTool.h"
 #define IsDecrease false
 
-COperaFirePoolSet::COperaFirePoolSet()
+COperaFirePoolSet::COperaFirePoolSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -63,4 +64,4 @@ begin:acedInitGet(0, _T("Yes No"));
 	CEquipmentroomTool::jigShow(FirePooljigUseIds, FirePoolsideLength);
 }
 
-REG_CMD(COperaFirePoolSet, BGY, FirePoolSet);
+REG_CMD_P(COperaFirePoolSet, BGY, FirePoolSet);

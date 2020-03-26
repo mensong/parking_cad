@@ -2,7 +2,9 @@
 #include "OperaSetConfig.h"
 
 class CDlgSetConfig* COperaSetConfig::ms_SetConfigDlg = NULL;
-COperaSetConfig::COperaSetConfig()
+
+COperaSetConfig::COperaSetConfig(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -22,4 +24,4 @@ void COperaSetConfig::Start()
 	m_tol.setEqualPoint(200);
 }
 
-REG_CMD(COperaSetConfig, BGY, SetConfig);//设置配置文件参数
+REG_CMD_P(COperaSetConfig, BGY, SetConfig);//设置配置文件参数

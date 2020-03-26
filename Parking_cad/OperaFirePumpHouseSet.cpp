@@ -4,7 +4,8 @@
 
 #define FirePumpHouse 120000000.0//Ïû·À±Ã·¿
 #define IsDecrease false
-COperaFirePumpHouseSet::COperaFirePumpHouseSet()
+COperaFirePumpHouseSet::COperaFirePumpHouseSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -28,4 +29,4 @@ void COperaFirePumpHouseSet::Start()
 	CEquipmentroomTool::jigShow(FirePumpHouseJigUseIds, FirePumpHouseSideLength);
 }
 
-REG_CMD(COperaFirePumpHouseSet, BGY, FirePumpHouseSet);
+REG_CMD_P(COperaFirePumpHouseSet, BGY, FirePumpHouseSet);
