@@ -246,6 +246,9 @@
     <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\MyMessageBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -474,6 +477,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Authenticate\Authenticate\HardDiskSerial.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\MyMessageBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

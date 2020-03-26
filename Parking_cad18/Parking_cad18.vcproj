@@ -430,6 +430,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\MyMessageBox.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaAddFrame.cpp"
 				>
 			</File>
@@ -611,6 +615,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\KV.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\lib_bipsignin.h"
 				>
 			</File>
@@ -620,6 +628,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\MyEdit.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\MyMessageBox.h"
 				>
 			</File>
 			<File

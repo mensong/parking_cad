@@ -186,6 +186,7 @@
     <ClCompile Include="..\Parking_cad\IOperaLog.cpp" />
     <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
+    <ClCompile Include="..\Parking_cad\MyMessageBox.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxisShowOrHide.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp" />
@@ -272,6 +273,7 @@
     <ClInclude Include="..\Parking_cad\lib_bipsignin.h" />
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
+    <ClInclude Include="..\Parking_cad\MyMessageBox.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
     <ClInclude Include="..\Parking_cad\OperaAxisShowOrHide.h" />
     <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h" />

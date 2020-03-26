@@ -11,6 +11,7 @@
 #include "DES_CBC_5\DesHelper.h"
 #include <shlwapi.h>
 #include "json/json.h"
+#include "MyMessageBox.h"
 
 #define CONFIG_FILE "bip.ini"
 #define CONFIG_ENCRYPT_KEY   "B-G-Y++012345678"
@@ -120,7 +121,6 @@ END_MESSAGE_MAP()
 
 // CDlgBipLogin 消息处理程序
 
-
 void CDlgBipLogin::OnBnClickedOk()
 {
 	CString sUser;
@@ -169,57 +169,91 @@ void CDlgBipLogin::OnBnClickedOk()
 			{
 				typedef int(*FN_get_a)(const char* url, bool dealRedirect, ...);
 				FN_get_a get_a = ModulesManager::Instance().func<FN_get_a>("LibcurlHttp.dll", "get_a");
+				typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
+				FN_post post = ModulesManager::Instance().func<FN_post>("LibcurlHttp.dll", "post");
 				typedef const char* (*FN_getBody)(int& len);
 				FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
-				if (!get_a || !getBody)
+				if (!get_a || !post || !getBody)
 				{
 					CParkingLog::AddLog(LOG_MISS_MOD, 1, _T("缺少LibcurlHttp.dll模块！"), 1, sUser);
 					::MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
 					return;
 				}
 				
+				bool bGetUser = true;
 				int code = get_a("http://parking.asdfqwer.net:9463/get_user", true, "udid", aUser.c_str(), NULL);
 				if (code != 200)
 				{
-					CParkingLog::AddLog(LOG_AUTH_LOGIN, 1, _T("鉴权失败！"), 1, sUser);
-					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
-					return;
+					bGetUser = false;
 				}
 				int nLen = 0;
 				const char* pBody = getBody(nLen);
-				if (nLen <= 0)
-				{
-					CParkingLog::AddLog(LOG_AUTH_LOGIN, 1, _T("鉴权失败！"), 1, sUser);
-					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
-					return;
-				}
-
 				Json::Value js;
 				Json::Reader jsReader;
 				if (!jsReader.parse(pBody, js))
 				{
-					CParkingLog::AddLog(LOG_AUTH_LOGIN, 1, _T("鉴权失败！"), 1, sUser);
-					::MessageBox(NULL, AcString(_T("鉴权失败！")), _T("登录"), MB_OK | MB_ICONERROR);
-					return;
+					bGetUser = false;
 				}
 
-				std::string name = js["name"].asString();
-				std::string group_udid = js["group_udid"].asString();
-				std::string descr = js["descr"].asString();
-				std::string reg_time = js["reg_time"].asString();
-				std::string last_signin_time = js["last_signin_time"].asString();
-				int signin_count = js["signin_count"].asInt();
+				if (!bGetUser)
+				{
+					std::string aUserName = ui.displayName;
 
-				std::wstring wName = GL::Utf82WideByte(name.c_str());
-				userName = wName.c_str();
-				bipId = sUser;
-				CString sName;
-				sName.Format(_T("登录成功，用户名：%s"), wName.c_str());
+					CString sMsg;
+					sMsg.Format(_T("鉴权失败（bip：%s），是否申请开通权限？"), sUser);
+					std::map<int, CString> btnText;
+					btnText[IDOK] = _T("申请开通权限");
+					btnText[IDCANCEL] = _T("取消");
+					int nRes = MyMessageBox::Show(NULL, sMsg, _T("是否开通权限"), MB_OKCANCEL, btnText);
+					if (nRes == IDOK)
+					{
+						Json::Value js;
+						js["udid"] = aUser;
+						js["name"] = GL::Ansi2Utf8(aUserName.c_str());
+						js["group_udid"] = "designer";
+						js["allow"] = 0;
+						js["descr"] = GL::WideByte2Utf8(L"来自客户端申请的用户");
+						Json::FastWriter jsWriter;
+						std::string sJson = jsWriter.write(js);
+						int code = post("http://parking.asdfqwer.net:9463/add_user", sJson.c_str(), sJson.size(), true, "application/json");
+						if (code == 200)
+						{
+							AfxMessageBox(_T("申请成功，请等待审核。"));
+						}
+						else
+						{
+							AfxMessageBox(_T("申请失败。"));
+						}
+					}
+				}
+				else
+				{
+					std::string name = js["name"].asString();
+					std::string group_udid = js["group_udid"].asString();
+					int allow = js["allow"].asInt();
+					std::string descr = js["descr"].asString();
+					std::string reg_time = js["reg_time"].asString();
+					std::string last_signin_time = js["last_signin_time"].asString();
+					int signin_count = js["signin_count"].asInt();
 
-				CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sName, 1, sUser);
+					std::wstring wName = GL::Utf82WideByte(name.c_str());
+					if (allow == 1)
+					{
+						userName = wName.c_str();
+						bipId = sUser;
 
-				AfxMessageBox(sName);
-				loginSuccess = true;				
+						CString sMsg;
+						sMsg.Format(_T("登录成功，用户名：%s"), wName.c_str());
+
+						CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sMsg, 1, sUser);
+
+						loginSuccess = true;
+					}
+					else
+					{
+						AfxMessageBox(_T("未开通用户权限，请联系管理员。"));
+					}
+				}
 			}
 			bip->uninit();
 		}
