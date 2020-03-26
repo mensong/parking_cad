@@ -437,17 +437,23 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 
 void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
 {	
-	double distance = plineExtentPts[0].distanceTo(plineExtentPts[1]);
-	double minArcLength = distance / 5;
+	AcGePoint2d minPoint = plineExtentPts[0];
+	AcGePoint2d maxPoint = plineExtentPts[1];
+	AcGeVector2d dirMove = maxPoint - minPoint;
+	AcGeVector2d vecDirMove = dirMove.normalize();
+	maxPoint.transformBy(dirMove * 50);
+	minPoint.transformBy(dirMove.negate() * 50);
+	double distance = minPoint.distanceTo(maxPoint);
+	double minArcLength = distance / 20;
 	double maxArcLength = minArcLength * 2;
 	CString sminArcLength = COperaCheck::doubleToCString(minArcLength);
 	CString smaxArcLength = COperaCheck::doubleToCString(maxArcLength);
-	CString setArcLength = _T("REVCLOUD A ") + sminArcLength +_T(" ") + smaxArcLength+_T(" ");
-	CString sMinPtX = COperaCheck::doubleToCString(plineExtentPts[0].x);
-	CString sMinPtY = COperaCheck::doubleToCString(plineExtentPts[0].y);
+	CString setArcLength = _T("REVCLOUD A ") + sminArcLength + _T(" ") + smaxArcLength + _T(" ");
+	CString sMinPtX = COperaCheck::doubleToCString(minPoint.x);
+	CString sMinPtY = COperaCheck::doubleToCString(minPoint.y);
 	CString sMinPt = sMinPtX + _T(",") + sMinPtY + _T(" ");
-	CString sMaxPtX = COperaCheck::doubleToCString(plineExtentPts[1].x);
-	CString sMaxPtY = COperaCheck::doubleToCString(plineExtentPts[1].y);
+	CString sMaxPtX = COperaCheck::doubleToCString(maxPoint.x);
+	CString sMaxPtY = COperaCheck::doubleToCString(maxPoint.y);
 	CString sMaxPt = sMaxPtX + _T(",") + sMaxPtY + _T(" ");
 	CString command = setArcLength + _T("R ") + sMinPt + sMaxPt;
 	DBHelper::CallCADCommand(command);
