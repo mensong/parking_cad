@@ -25,7 +25,6 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "DlgWaiting.h"
-//#include "Authenticate\Authenticate.h"
 #include "DBHelper.h"
 #include "Convertor.h"
 #include "ModulesManager.h"
@@ -33,12 +32,12 @@
 #include "CommonFuntion.h"
 #include "LoadCuix.h"
 #include "DlgBipLogin.h"
+#include "KV.h"
+#include "Authenticate\HardDiskSerial.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
 
-CString g_userName;
-CString g_bipId;
 CString g_computerId;
 
 // #define DES_KEY "#B-G-Y++"
@@ -67,6 +66,19 @@ public:
 		//if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
 		//	return AcRx::kRetError;
 
+		HMODULE hKVDll = ModulesManager::Instance().loadModule("KV.dll");
+		if (!hKVDll)
+		{
+			::MessageBox(NULL, AcString(_T("KV.dll文件缺失！")), _T("文件缺失"), MB_OK | MB_ICONERROR);
+			return AcRx::kRetError;
+		}
+		INIT_KV(hKVDll);
+
+		char serial[MAX_PATH];
+		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
+		std::string session = serial;
+		SetStrA("mac", serial);
+
 		CDlgBipLogin dlgLogin;
 		if (dlgLogin.DoModal() != IDOK)
 		{
@@ -78,8 +90,10 @@ public:
 			ModulesManager::Relaese();
 			return AcRx::kRetError;
 		}
-		g_userName = dlgLogin.userName;
-		g_bipId = dlgLogin.bipId;
+				
+		SetStr(_T("bip_id"), dlgLogin.bipId.GetString());
+		SetStr(_T("user_name"), dlgLogin.userName.GetString());
+		
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
 		// You *must* call On_kInitAppMsg here

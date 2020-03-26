@@ -201,9 +201,6 @@
     <ClCompile Include="..\Parking_cad\OperaSetConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Authenticate\Authenticate\Authenticate.cpp">
-      <Filter>Authenticate</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">
       <Filter>Authenticate</Filter>
     </ClCompile>
@@ -421,9 +418,6 @@
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaSetConfig.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Authenticate\Authenticate\Authenticate.h">
-      <Filter>Authenticate</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Authenticate\Authenticate\HardDiskSerial.h">
       <Filter>Authenticate</Filter>

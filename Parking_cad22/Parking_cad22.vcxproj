@@ -117,6 +117,12 @@
     <ClCompile Include="..\..\ArxTools\PointInPolygon.cpp" />
     <ClCompile Include="..\..\ArxTools\SDBDumyJigEntity.cpp" />
     <ClCompile Include="..\..\ArxTools\win_iconv.cpp" />
+    <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\Authenticate\DES_CBC_5\base64.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -241,6 +247,7 @@
     <ClInclude Include="..\..\ArxTools\PointInPolygon.h" />
     <ClInclude Include="..\..\ArxTools\RTreeEx.h" />
     <ClInclude Include="..\..\ArxTools\SDBDumyJigEntity.h" />
+    <ClInclude Include="..\..\Authenticate\Authenticate\HardDiskSerial.h" />
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\base64.h" />
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_des.h" />
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_padding.h" />

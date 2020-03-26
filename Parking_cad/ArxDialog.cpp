@@ -40,10 +40,7 @@
 #include "EquipmentroomTool.h"
 #include "OperaAddFrame.h"
 #include "OperaCheck.h"
-
-//extern Authenticate g_auth;
-extern CString g_userName;
-extern CString g_computerId;
+#include "KV.h"
 
 std::string CArxDialog::ms_posturlPortone;
 std::string CArxDialog::ms_posturlPorttwo;
@@ -555,8 +552,10 @@ void CArxDialog::setInitData()
 	m_StrSquareColumnWidth = _T("0.6");
 	m_SquareColumnWidth.SetWindowText(m_StrSquareColumnWidth);
 
-	m_strUserId = GL::WideByte2Ansi(g_userName.GetString());
-	m_strComputerId = GL::WideByte2Ansi(g_computerId.GetString());
+	INIT_KV(ModulesManager::Instance().loadModule("KV.dll"));
+
+	m_strUserId = GL::WideByte2Ansi(GetStr(_T("bip_id")));
+	//m_strComputerId = GL::WideByte2Ansi(g_computerId.GetString());
 
 	m_sNonConvexLevel = _T("0.2");
 	m_Non_Convexlevel.SetWindowText(m_sNonConvexLevel);
