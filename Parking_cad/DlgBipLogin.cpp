@@ -13,6 +13,7 @@
 #include "json/json.h"
 #include "MyMessageBox.h"
 
+#define CONFIG_FILE_DEV "bip_dev.ini"
 #define CONFIG_FILE "bip.ini"
 #define CONFIG_ENCRYPT_KEY   "B-G-Y++012345678"
 #define CONFIG_ENCRYPT_CHAIN "BBGGYYBBGGYYBBGG"
@@ -75,9 +76,12 @@ BOOL CDlgBipLogin::OnInitDialog()
 	{
 		WriteConfigFile(
 			"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate", "https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//测试
-			//"https://login.countrygarden.com.cn/idp/oauth2/authenticate", "https://login.countrygarden.com.cn/idp/oauth2/getUserInfo",//生产
-			//"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate","https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//私有云
 			"bppk", "46e8b3aaf78a4c9e880bbc4677ec33cb", "abcdef0123456789", "9iuj87y2hbi5wxl1",
+			(DBHelper::GetArxDirA() + CONFIG_FILE_DEV).c_str(), CONFIG_ENCRYPT_KEY, CONFIG_ENCRYPT_CHAIN);
+
+		WriteConfigFile(
+			"https://login.countrygarden.com.cn/idp/oauth2/authenticate", "https://login.countrygarden.com.cn/idp/oauth2/getUserInfo",//生产
+			"bppk", "f4021359b0ea4f11a20e52f9add990de", "abcdef0123456789", "9iuj87y2hbi5wxl1",
 			(DBHelper::GetArxDirA() + CONFIG_FILE).c_str(), CONFIG_ENCRYPT_KEY, CONFIG_ENCRYPT_CHAIN);
 	}
 #endif
