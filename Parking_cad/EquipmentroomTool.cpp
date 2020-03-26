@@ -79,6 +79,10 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 	{
 		return false;
 	}
+	else
+	{
+		return true;
+	}
 }
 
 AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaName, double& sideLength, double& limitLength, bool limitType)
