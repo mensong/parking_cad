@@ -12,7 +12,8 @@ std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
 CString COperaCheck::ms_shearWallLayerName;
 
-COperaCheck::COperaCheck()
+COperaCheck::COperaCheck(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -435,24 +436,18 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 }
 
 void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
-{
-	AcGePoint2d minPoint = plineExtentPts[0];
-	AcGePoint2d maxPoint = plineExtentPts[1];
-	AcGeVector2d dirMove = maxPoint - minPoint;
-	AcGeVector2d vecDirMove = dirMove.normalize();
-	maxPoint.transformBy(dirMove*50);
-	minPoint.transformBy(dirMove.negate() * 50);
-	double distance = minPoint.distanceTo(maxPoint);
-	double minArcLength = distance / 20;
+{	
+	double distance = plineExtentPts[0].distanceTo(plineExtentPts[1]);
+	double minArcLength = distance / 5;
 	double maxArcLength = minArcLength * 2;
 	CString sminArcLength = COperaCheck::doubleToCString(minArcLength);
 	CString smaxArcLength = COperaCheck::doubleToCString(maxArcLength);
 	CString setArcLength = _T("REVCLOUD A ") + sminArcLength +_T(" ") + smaxArcLength+_T(" ");
-	CString sMinPtX = COperaCheck::doubleToCString(minPoint.x);
-	CString sMinPtY = COperaCheck::doubleToCString(minPoint.y);
+	CString sMinPtX = COperaCheck::doubleToCString(plineExtentPts[0].x);
+	CString sMinPtY = COperaCheck::doubleToCString(plineExtentPts[0].y);
 	CString sMinPt = sMinPtX + _T(",") + sMinPtY + _T(" ");
-	CString sMaxPtX = COperaCheck::doubleToCString(maxPoint.x);
-	CString sMaxPtY = COperaCheck::doubleToCString(maxPoint.y);
+	CString sMaxPtX = COperaCheck::doubleToCString(plineExtentPts[1].x);
+	CString sMaxPtY = COperaCheck::doubleToCString(plineExtentPts[1].y);
 	CString sMaxPt = sMaxPtX + _T(",") + sMaxPtY + _T(" ");
 	CString command = setArcLength + _T("R ") + sMinPt + sMaxPt;
 	DBHelper::CallCADCommand(command);
@@ -503,4 +498,4 @@ void COperaCheck::setCurrentLayer(CString layerName)
 	}
 }
 
-REG_CMD(COperaCheck, BGY, Check);//Í¼Ö½ÖÇÄÜ»¯¼ì²â
+REG_CMD_P(COperaCheck, BGY, Check);//Í¼Ö½ÖÇÄÜ»¯¼ì²â

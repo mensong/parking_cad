@@ -7,7 +7,8 @@
 #include <algorithm>
 
 class CDlgEntrance* COperaSetEntranceData::ms_EntranceDlg = NULL;
-COperaSetEntranceData::COperaSetEntranceData()
+COperaSetEntranceData::COperaSetEntranceData(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
+	: CIOperaLog(group, cmd, alias, cmdFlag)
 {
 }
 
@@ -176,8 +177,7 @@ AcDbObjectId COperaSetEntranceData::creatArcDim(const AcGePoint3d& pt1, const Ac
 
 void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 {
-	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-	double height = CEquipmentroomTool::getTotalArea(_T("地下室高度(单位m):"));
+	double height = CEquipmentroomTool::getTotalArea(_T("地下室高度:"));
 	if (height == 0)
 	{
 		acutPrintf(_T("\n输入错误！"));
@@ -243,7 +243,7 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			pBlockTableRecord->appendAcDbEntity(Id, pDim1);
 			pBlockTableRecord->close();
 			pDim1->close();
-			CEquipmentroomTool::setEntToLayer(Id, sEntranceLayer);
+			int jj = 0;
 		}
 		else if (pEnt->isKindOf(AcDbLine::desc()))
 		{
@@ -266,8 +266,7 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			//double realLength = showLength * 1000000;
 			CString sEntranceLength;
 			sEntranceLength.Format(_T("%.1f"), showLength);
-			AcDbObjectId dimId = COperaSetEntranceData::creatDim(startPt, endPt, Pt1, sEntranceLength);
-			CEquipmentroomTool::setEntToLayer(dimId, sEntranceLayer);
+			COperaSetEntranceData::creatDim(startPt, endPt, Pt1, sEntranceLength);
 		}
 		pEnt->close();
 	}
@@ -1835,4 +1834,4 @@ bool COperaSetEntranceData::IsOnLine(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoi
 }
 
 
-REG_CMD(COperaSetEntranceData, BGY, SetEntranceData);//设置出入口参数
+REG_CMD_P(COperaSetEntranceData, BGY, SetEntranceData);//设置出入口参数
