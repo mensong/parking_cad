@@ -3,25 +3,14 @@
 #include "ModulesManager.h"
 #include <json/json.h>
 #include <Convertor.h>
-#include "KV.h"
+#include "KVHelp.h"
 
 bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	int trigger_count /*= 0*/, CString& user_udid/*=_T("")*/)
 {
-	HMODULE hDll = ModulesManager::Instance().loadModule("KV.dll");
-	if (!hDll)
-	{
-		acutPrintf(_T("\nÕÒ²»µ½KV.dllÄ£¿é"));
-		return false;
-	}
-	INIT_KV(hDll);
-	
 	if (user_udid.IsEmpty() || user_udid == _T(""))
 	{
-		if (HasStr(_T("bip_id")))
-		{
-			user_udid = GetStr(_T("bip_id"));
-		}
+		user_udid = KVHelp::getStr(_T("bip_id"), _T("unknow user"));
 	}
 
 	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
@@ -40,7 +29,7 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	js["error"] = error;
 	js["descr"] = GL::WideByte2Utf8(descr.GetString());
 	js["trigger_count"] = trigger_count;
-	js["mac"] = HasStrA("mac") ? GetStrA("mac") : "";
+	js["mac"] = KVHelp::getStrA("mac");
 
 	Json::FastWriter jsWriter;
 	std::string sJson = jsWriter.write(js);

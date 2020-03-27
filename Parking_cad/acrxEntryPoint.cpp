@@ -32,8 +32,8 @@
 #include "CommonFuntion.h"
 #include "LoadCuix.h"
 #include "DlgBipLogin.h"
-#include "KV.h"
 #include "Authenticate\HardDiskSerial.h"
+#include "KVHelp.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -66,18 +66,18 @@ public:
 		//if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
 		//	return AcRx::kRetError;
 
-		HMODULE hKVDll = ModulesManager::Instance().loadModule("KV.dll");
-		if (!hKVDll)
-		{
-			::MessageBox(NULL, AcString(_T("KV.dll文件缺失！")), _T("文件缺失"), MB_OK | MB_ICONERROR);
-			return AcRx::kRetError;
-		}
-		INIT_KV(hKVDll);
+		//HMODULE hKVDll = ModulesManager::Instance().loadModule("KV.dll");
+		//if (!hKVDll)
+		//{
+		//	::MessageBox(NULL, AcString(_T("KV.dll文件缺失！")), _T("文件缺失"), MB_OK | MB_ICONERROR);
+		//	return AcRx::kRetError;
+		//}
+		//INIT_KV(hKVDll);
 
 		char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
 		std::string session = serial;
-		SetStrA("mac", serial);
+		KVHelp::setStrA("mac", serial);
 
 		CDlgBipLogin dlgLogin;
 		if (dlgLogin.DoModal() != IDOK)
@@ -90,9 +90,9 @@ public:
 			ModulesManager::Relaese();
 			return AcRx::kRetError;
 		}
-				
-		SetStr(_T("bip_id"), dlgLogin.bipId.GetString());
-		SetStr(_T("user_name"), dlgLogin.userName.GetString());
+		
+		KVHelp::setStr(_T("bip_id"), dlgLogin.bipId.GetString());
+		KVHelp::setStr(_T("user_name"), dlgLogin.userName.GetString());
 		
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
