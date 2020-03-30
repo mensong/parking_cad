@@ -1,6 +1,9 @@
 @echo off
 ::cd /d %~dp0
 
+mkdir .\out\Support\18\x86\
+mkdir .\out\Support\18\x64\
+
 copy /Y /V ..\x64\Release\BGYParking_cad18.arx .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\loading.gif .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\template.dwg .\out\Support\18\x64\
