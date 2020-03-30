@@ -4,6 +4,9 @@
 #include <json/json.h>
 #include <Convertor.h>
 #include "KVHelp.h"
+#include "DBHelper.h"
+#include <windows.h>
+#include <shlwapi.h>
 
 bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	int trigger_count /*= 0*/, CString& user_udid/*=_T("")*/)
@@ -23,6 +26,21 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 		return false;
 	}
 
+	std::string add_logUrl;
+	std::string sIni4u7h = DBHelper::GetArxDirA() + "4u7h.ini";
+	if (::PathFileExistsA(sIni4u7h.c_str()))
+	{
+		char mm[1024];
+		DWORD len = ::GetPrivateProfileStringA("URL", "add_log", "", mm, 1024, sIni4u7h.c_str());
+		if (len < 1024 && len >0)
+			add_logUrl = mm;
+	}
+	if (add_logUrl.empty())
+	{
+		acutPrintf(_T("\n找不到4u7h.ini配置文件!"));
+		return false;
+	}
+
 	Json::Value js;
 	js["user_udid"] = GL::WideByte2Utf8(user_udid.GetString());
 	js["type"] = GL::WideByte2Utf8(type.GetString());
@@ -34,7 +52,7 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	Json::FastWriter jsWriter;
 	std::string sJson = jsWriter.write(js);
 
-	int code = post("http://parking.asdfqwer.net:9463/add_log", sJson.c_str(), sJson.size(), true, "application/json");
+	int code = post(add_logUrl.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
 	if (code != 200)
 		return false;
 
