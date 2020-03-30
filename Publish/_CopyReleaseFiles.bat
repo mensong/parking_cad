@@ -16,10 +16,7 @@ copy /Y /V ..\x64\Release\*.dll .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\*.ini .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\BGYBuildingLib18.arx .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\18\x64\
-mkdir .\out\Support\18\x64\dwg\
-mkdir .\out\Support\18\x64\preview\
-copy /Y /V ..\x64\Release\dwg\keep.txt .\out\Support\18\x64\dwg\
-copy /Y /V ..\x64\Release\preview\keep.txt .\out\Support\18\x64\preview\
+
 
 copy /Y /V ..\x64\Release\BGYParking_cad19.arx .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\loading.gif .\out\Support\19\x64\
@@ -36,10 +33,7 @@ copy /Y /V ..\x64\Release\*.dll .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\*.ini .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\BGYBuildingLib19.arx .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\19\x64\
-mkdir .\out\Support\19\x64\dwg\
-mkdir .\out\Support\19\x64\preview\
-copy /Y /V ..\x64\Release\dwg\keep.txt .\out\Support\19\x64\dwg\
-copy /Y /V ..\x64\Release\preview\keep.txt .\out\Support\19\x64\preview\
+
 
 copy /Y /V ..\x64\Release\BGYParking_cad20.arx .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\loading.gif .\out\Support\20\x64\
@@ -56,10 +50,7 @@ copy /Y /V ..\x64\Release\*.dll .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\*.ini .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\BGYBuildingLib20.arx .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\20\x64\
-mkdir .\out\Support\20\x64\dwg\
-mkdir .\out\Support\20\x64\preview\
-copy /Y /V ..\x64\Release\dwg\keep.txt .\out\Support\20\x64\dwg\
-copy /Y /V ..\x64\Release\preview\keep.txt .\out\Support\20\x64\preview\
+
 
 copy /Y /V ..\x64\Release\BGYParking_cad21.arx .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\loading.gif .\out\Support\21\x64\
@@ -75,10 +66,7 @@ copy /Y /V ..\x64\Release\*.dll .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\*.ini .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\BGYBuildingLib21.arx .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\21\x64\
-mkdir .\out\Support\21\x64\dwg\
-mkdir .\out\Support\21\x64\preview\
-copy /Y /V ..\x64\Release\dwg\keep.txt .\out\Support\21\x64\dwg\
-copy /Y /V ..\x64\Release\preview\keep.txt .\out\Support\21\x64\preview\
+
 
 copy /Y /V ..\x64\Release\BGYParking_cad22.arx .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\loading.gif .\out\Support\22\x64\
@@ -94,7 +82,4 @@ copy /Y /V ..\x64\Release\*.dll .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\*.ini .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\BGYBuildingLib22.arx .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\22\x64\
-mkdir .\out\Support\22\x64\dwg\
-mkdir .\out\Support\22\x64\preview\
-copy /Y /V ..\x64\Release\dwg\keep.txt .\out\Support\22\x64\dwg\
-copy /Y /V ..\x64\Release\preview\keep.txt .\out\Support\22\x64\preview\
+

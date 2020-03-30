@@ -33,6 +33,7 @@ KV_API void DelBuff(const char* k);
 
 
 #define INIT_KV(hDll) \
+	HMODULE __hDll__ = (hDll); \
 	typedef bool(*FN_SetStrA)(const char* k, const char* v); \
 	typedef bool(*FN_SetStrW)(const wchar_t* k, const wchar_t* v); \
 	typedef const char* (*FN_GetStrA)(const char* k); \
@@ -81,29 +82,29 @@ KV_API void DelBuff(const char* k);
 	FN_HasBuff HasBuff = NULL; \
 	FN_DelBuff DelBuff = NULL; \
 	 \
-	SetStrA = (FN_SetStrA)GetProcAddress(hDll, "SetStrA"); \
-	SetStrW = (FN_SetStrW)GetProcAddress(hDll, "SetStrW"); \
-	GetStrA = (FN_GetStrA)GetProcAddress(hDll, "GetStrA"); \
-	GetStrW = (FN_GetStrW)GetProcAddress(hDll, "GetStrW"); \
-	HasStrA = (FN_HasStrA)GetProcAddress(hDll, "HasStrA"); \
-	HasStrW = (FN_HasStrW)GetProcAddress(hDll, "HasStrW"); \
-	DelStrA = (FN_DelStrA)GetProcAddress(hDll, "DelStrA"); \
-	DelStrW = (FN_DelStrW)GetProcAddress(hDll, "DelStrW"); \
+	SetStrA = (FN_SetStrA)GetProcAddress(__hDll__, "SetStrA"); \
+	SetStrW = (FN_SetStrW)GetProcAddress(__hDll__, "SetStrW"); \
+	GetStrA = (FN_GetStrA)GetProcAddress(__hDll__, "GetStrA"); \
+	GetStrW = (FN_GetStrW)GetProcAddress(__hDll__, "GetStrW"); \
+	HasStrA = (FN_HasStrA)GetProcAddress(__hDll__, "HasStrA"); \
+	HasStrW = (FN_HasStrW)GetProcAddress(__hDll__, "HasStrW"); \
+	DelStrA = (FN_DelStrA)GetProcAddress(__hDll__, "DelStrA"); \
+	DelStrW = (FN_DelStrW)GetProcAddress(__hDll__, "DelStrW"); \
 	\
-	SetInt = (FN_SetInt)GetProcAddress(hDll, "SetInt");	\
-	GetInt = (FN_GetInt)GetProcAddress(hDll, "GetInt");	\
-	HasInt = (FN_HasInt)GetProcAddress(hDll, "HasInt");	\
-	DelInt = (FN_DelInt)GetProcAddress(hDll, "DelInt");	\
+	SetInt = (FN_SetInt)GetProcAddress(__hDll__, "SetInt");	\
+	GetInt = (FN_GetInt)GetProcAddress(__hDll__, "GetInt");	\
+	HasInt = (FN_HasInt)GetProcAddress(__hDll__, "HasInt");	\
+	DelInt = (FN_DelInt)GetProcAddress(__hDll__, "DelInt");	\
 	\
-	SetDouble = (FN_SetDouble)GetProcAddress(hDll, "SetDouble"); \
-	GetDouble = (FN_GetDouble)GetProcAddress(hDll, "GetDouble"); \
-	HasDouble = (FN_HasDouble)GetProcAddress(hDll, "HasDouble"); \
-	DelDouble = (FN_DelDouble)GetProcAddress(hDll, "DelDouble"); \
+	SetDouble = (FN_SetDouble)GetProcAddress(__hDll__, "SetDouble"); \
+	GetDouble = (FN_GetDouble)GetProcAddress(__hDll__, "GetDouble"); \
+	HasDouble = (FN_HasDouble)GetProcAddress(__hDll__, "HasDouble"); \
+	DelDouble = (FN_DelDouble)GetProcAddress(__hDll__, "DelDouble"); \
 	\
-	SetBuff = (FN_SetBuff)GetProcAddress(hDll, "SetBuff"); \
-	GetBuff = (FN_GetBuff)GetProcAddress(hDll, "GetBuff"); \
-	HasBuff = (FN_HasBuff)GetProcAddress(hDll, "HasBuff"); \
-	DelBuff = (FN_DelBuff)GetProcAddress(hDll, "DelBuff"); \
+	SetBuff = (FN_SetBuff)GetProcAddress(__hDll__, "SetBuff"); \
+	GetBuff = (FN_GetBuff)GetProcAddress(__hDll__, "GetBuff"); \
+	HasBuff = (FN_HasBuff)GetProcAddress(__hDll__, "HasBuff"); \
+	DelBuff = (FN_DelBuff)GetProcAddress(__hDll__, "DelBuff"); \
 	if (!SetStrA || !SetStrW || !GetStrA || !GetStrW || \
 	!HasStrA || !HasStrW || !DelStrA || !DelStrW || \
 	!SetInt || !GetInt || !HasInt || !DelInt || \
@@ -111,6 +112,7 @@ KV_API void DelBuff(const char* k);
 	!SetBuff || !GetBuff || !HasBuff || !DelBuff) { \
 		throw std::runtime_error("KV.dll¶ªÊ§"); \
 	}
+
 
 #ifdef UNICODE
 #define SetStr SetStrW

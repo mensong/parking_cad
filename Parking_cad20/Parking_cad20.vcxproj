@@ -103,6 +103,7 @@
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp" />
     <ClCompile Include="..\Parking_cad\IOperaLog.cpp" />
+    <ClCompile Include="..\Parking_cad\KVHelp.cpp" />
     <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\MyMessageBox.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
     <ClInclude Include="..\Parking_cad\IOperaLog.h" />
     <ClInclude Include="..\Parking_cad\KV.h" />
+    <ClInclude Include="..\Parking_cad\KVHelp.h" />
     <ClInclude Include="..\Parking_cad\lib_bipsignin.h" />
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
