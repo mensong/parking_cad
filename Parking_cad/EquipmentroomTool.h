@@ -73,5 +73,10 @@ public:
 	//取得车位包围框点
 	static void getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName, std::map<AcDbObjectId,AcGePoint2dArray>& parkIdAndPts);
 	static CString getOpenDwgFilePath();
+	//多方案对比
+	static void creatNewDwg();
+	static bool allEntMoveAndClone(AcDbDatabase *pDataBase);
+	static AcGePoint2dArray getAllEntCreatExten();
+	static void test();
 };
 
