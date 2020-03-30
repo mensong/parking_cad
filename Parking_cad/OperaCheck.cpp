@@ -55,7 +55,7 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 void COperaCheck::Start()
 {
 
-	CEquipmentroomTool::getOpenDwgFilePath();
+	//CEquipmentroomTool::test();
 	CEquipmentroomTool::creatLayerByjson("cloud_line");
 	//CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
 	//CString init = _T("_layer S ") + sCloudLineLayer+_T("\r\r");
