@@ -109,7 +109,7 @@ void COperaAxleNetMaking::Start()
 			}
 
 			//轴号标注
-			COperaAxleNetMaking::inserAadAxleNum(sortIds, lefupPt, lefdownPt, 1, 1);
+		//	COperaAxleNetMaking::inserAadAxleNum(sortIds, lefupPt, lefdownPt, 1, 1);
 
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
@@ -159,20 +159,20 @@ void COperaAxleNetMaking::Start()
 			std::sort(distancevet.begin(), distancevet.end());
 
 		
-			AcDbObjectIdArray tempsortIds;
+			AcDbObjectIdArray sortIds;
 			for (int m = 0; m < distancevet.size(); m++)
 			{
 				for (int j = 0; j < LDstructVet.size(); j++)
 				{
 					if (LDstructVet[j].distance == distancevet[m])
-						tempsortIds.append(LDstructVet[j].Lineid);
+						sortIds.append(LDstructVet[j].Lineid);
 				}
 			}
 
-			AcDbObjectIdArray sortIds;
+			/*AcDbObjectIdArray sortIds;
 			for (int k = tempsortIds.length() - 1; k >= 0; --k)
 				sortIds.append(tempsortIds[k]);
-			COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthupPt, lefupPt, 2, -1);
+			COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthupPt, lefupPt, 2, -1);*/
 
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"));
 
