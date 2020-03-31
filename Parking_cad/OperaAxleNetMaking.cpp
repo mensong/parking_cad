@@ -549,6 +549,8 @@ AcGePoint3d COperaAxleNetMaking::getChangPoint(AcGePoint3d& basept, AcGeVector3d
 
 void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, int casenum, int plusorminus/*=1*/)
 {
+	CEquipmentroomTool::creatLayerByjson("axis_dimensions");//创建轴号所在图层
+
 	CString sBlockName = _T("_AxleNumber");
 	std::set<AcString> setBlockNames;
 	setBlockNames.insert(sBlockName);
@@ -704,6 +706,10 @@ void COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d&
 	mpAttr[_T("A")] = tagvalue;
 	AcDbObjectId blockId;
 	DBHelper::InsertBlkRefWithAttribute(blockId, sBlockName, inserpt, mpAttr);
+	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName,blockId);
+	//uint16_t colornum = 255;
+	//COperaAxleNetMaking::setEntColor(blockId, colornum);
 
 	AcDbViewTableRecord *view = DBHelper::GetCurrentView();
 	double h = view->height();
@@ -722,13 +728,16 @@ void COperaAxleNetMaking::dealBlock(const AcString& sBlockName, AcGePoint3d& sta
 	//起始点引出一条直线，并连接轴号块
 	AcGePoint3d movept1 = COperaAxleNetMaking::getChangPoint(startpt, moveagvec1, scaleFactor);
 	AcDbObjectId GuideLineId1 = COperaAxleNetMaking::DrowLine(startpt, movept1);
+	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	COperaAxleNetMaking::setEntColor(GuideLineId1, 3);
+	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId1);
 	COperaAxleNetMaking::inserBlockRec(sBlockName, movept1, moveagvec1, circleradius, tagvalue);
 
 	//终止点引出一条直线，并连接轴号块
 	AcGePoint3d movept2 = COperaAxleNetMaking::getChangPoint(endpt, moveagvec2, scaleFactor);
 	AcDbObjectId GuideLineId2 = COperaAxleNetMaking::DrowLine(endpt, movept2);
 	COperaAxleNetMaking::setEntColor(GuideLineId2, 3);
+	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId2);
 	COperaAxleNetMaking::inserBlockRec(sBlockName, movept2, moveagvec2, circleradius, tagvalue);
 }
 
@@ -774,6 +783,8 @@ void COperaAxleNetMaking::creatOtherGuideLine(AcGePoint3d& startpt, AcGePoint3d&
 	movept1 = COperaAxleNetMaking::getChangPoint(startpt, moveagvec1, scaleFactor * 20);
 	AcDbObjectId GuideLineId1 = COperaAxleNetMaking::DrowLine(startpt, movept1);
 	COperaAxleNetMaking::setEntColor(GuideLineId1, 3);
+	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId1);
 	moveagvec1.rotateBy(plusorminus*PI / 4, AcGeVector3d(0, 0, 1));
 
 	moveagvec2 = AcGeVector3d(endpt - startpt);
@@ -781,47 +792,8 @@ void COperaAxleNetMaking::creatOtherGuideLine(AcGePoint3d& startpt, AcGePoint3d&
 	movept2 = COperaAxleNetMaking::getChangPoint(endpt, moveagvec2, scaleFactor * 20);
 	AcDbObjectId GuideLineId2 = COperaAxleNetMaking::DrowLine(endpt, movept2);
 	COperaAxleNetMaking::setEntColor(GuideLineId2, 3);
+	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId2);
 	moveagvec2.rotateBy(-(PI / 4)*plusorminus, AcGeVector3d(0, 0, 1));
-}
-
-void COperaAxleNetMaking::createAxleNumBlockTableRecord(const CString& blockname)
-{
-	// 获得当前数据库的块表
-	AcDbBlockTable *pBlkTbl = NULL;
-	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlkTbl, AcDb::kForWrite);
-	if (pBlkTbl->has(blockname))
-	{
-		pBlkTbl->close();
-		return;
-	}
-
-	// 创建新的块表记录
-	AcDbBlockTableRecord *pBlkTblRcd = new AcDbBlockTableRecord();
-	pBlkTblRcd->setName(blockname);
-
-	// 将块表记录添加到块表中
-	AcDbObjectId blkDefId;
-	pBlkTbl->add(blkDefId, pBlkTblRcd);
-	if (pBlkTbl)
-		pBlkTbl->close();
-
-	AcGeVector3d vecNormal(0, 0, 0);
-	AcDbCircle *pCircle = new AcDbCircle(AcGePoint3d(0, 0, 0), vecNormal, 3);
-	pCircle->setColorIndex(3);
-	AcDbObjectId entId;
-	pBlkTblRcd->appendAcDbEntity(entId, pCircle);
-
-	AcDbAttributeDefinition *pAtterDef = new AcDbAttributeDefinition(AcGePoint3d(-1.13, -1.3, 0), _T("A"), _T("A"), _T(""));
-	pAtterDef->setFieldLength(1);
-
-	pBlkTblRcd->appendAcDbEntity(entId, pAtterDef);
-
-	if (pAtterDef)
-		pAtterDef->close();
-	if (pCircle)
-		pCircle->close();
-	if (pBlkTblRcd)
-		pBlkTblRcd->close();
 }
 
 void COperaAxleNetMaking::setEntColor(AcDbObjectId& id, uint16_t colornum)
