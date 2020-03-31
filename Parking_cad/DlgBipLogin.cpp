@@ -12,6 +12,7 @@
 #include <shlwapi.h>
 #include "json/json.h"
 #include "MyMessageBox.h"
+#include "KVHelp.h"
 
 #define CONFIG_FILE_DEV "bip_dev.ini"
 #define CONFIG_FILE "bip.ini"
@@ -114,6 +115,26 @@ BOOL CDlgBipLogin::OnInitDialog()
 		}
 	}
 
+	std::string sIni4u7h = DBHelper::GetArxDirA() + "4u7h.ini";
+	if (::PathFileExistsA(sIni4u7h.c_str()))
+	{
+		char mm[1024];
+		DWORD len = ::GetPrivateProfileStringA("URL", "get_user", "", mm, 1024, sIni4u7h.c_str());
+		if (len < 1024 && len >0)
+			m_get_userUrl = mm;
+		len = ::GetPrivateProfileStringA("URL", "add_user", "", mm, 1024, sIni4u7h.c_str());
+		if (len < 1024 && len >0)
+			m_add_userUrl = mm;
+		len = ::GetPrivateProfileStringA("URL", "add_log", "", mm, 1024, sIni4u7h.c_str());
+		if (len < 1024 && len >0)
+			KVHelp::setStrA("add_log_url", mm);
+	}
+	if (m_get_userUrl.empty() || m_add_userUrl.empty())
+	{
+		::MessageBox(NULL, _T("缺少4u7h,ini配置文件！"), _T("缺少文件"), MB_OK | MB_ICONERROR);
+		return FALSE;
+	}
+
 	return TRUE;
 }
 
@@ -184,22 +205,44 @@ void CDlgBipLogin::OnBnClickedOk()
 					return;
 				}
 				
-				bool bGetUser = true;
-				int code = get_a("http://parking.asdfqwer.net:9463/get_user", true, "udid", aUser.c_str(), NULL);
-				if (code != 200)
-				{
-					bGetUser = false;
-				}
-				int nLen = 0;
-				const char* pBody = getBody(nLen);
-				Json::Value js;
-				Json::Reader jsReader;
-				if (!jsReader.parse(pBody, js))
-				{
-					bGetUser = false;
-				}
+				int code = get_a(m_get_userUrl.c_str(), true, "udid", aUser.c_str(), NULL);
 
-				if (!bGetUser)
+				if (code == 200)
+				{
+					int nLen = 0;
+					const char* pBody = getBody(nLen);
+					Json::Value js;
+					Json::Reader jsReader;
+					if (jsReader.parse(pBody, js))
+					{
+						std::string name = js["name"].asString();
+						std::string group_udid = js["group_udid"].asString();
+						int allow = js["allow"].asInt();
+						std::string descr = js["descr"].asString();
+						std::string reg_time = js["reg_time"].asString();
+						std::string last_signin_time = js["last_signin_time"].asString();
+						int signin_count = js["signin_count"].asInt();
+
+						std::wstring wName = GL::Utf82WideByte(name.c_str());
+						if (allow == 1)
+						{
+							userName = wName.c_str();
+							bipId = sUser;
+
+							CString sMsg;
+							sMsg.Format(_T("登录成功，用户名：%s"), wName.c_str());
+
+							CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sMsg, 1, sUser);
+
+							loginSuccess = true;
+						}
+						else
+						{
+							AfxMessageBox(_T("未开通用户权限，请联系管理员。"));
+						}
+					}					
+				}
+				else if (code == 404)
 				{
 					std::string aUserName = ui.displayName;
 
@@ -219,7 +262,7 @@ void CDlgBipLogin::OnBnClickedOk()
 						js["descr"] = GL::WideByte2Utf8(L"来自客户端申请的用户");
 						Json::FastWriter jsWriter;
 						std::string sJson = jsWriter.write(js);
-						int code = post("http://parking.asdfqwer.net:9463/add_user", sJson.c_str(), sJson.size(), true, "application/json");
+						int code = post(m_add_userUrl.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
 						if (code == 200)
 						{
 							AfxMessageBox(_T("申请成功，请等待审核。"));
@@ -232,31 +275,7 @@ void CDlgBipLogin::OnBnClickedOk()
 				}
 				else
 				{
-					std::string name = js["name"].asString();
-					std::string group_udid = js["group_udid"].asString();
-					int allow = js["allow"].asInt();
-					std::string descr = js["descr"].asString();
-					std::string reg_time = js["reg_time"].asString();
-					std::string last_signin_time = js["last_signin_time"].asString();
-					int signin_count = js["signin_count"].asInt();
-
-					std::wstring wName = GL::Utf82WideByte(name.c_str());
-					if (allow == 1)
-					{
-						userName = wName.c_str();
-						bipId = sUser;
-
-						CString sMsg;
-						sMsg.Format(_T("登录成功，用户名：%s"), wName.c_str());
-
-						CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sMsg, 1, sUser);
-
-						loginSuccess = true;
-					}
-					else
-					{
-						AfxMessageBox(_T("未开通用户权限，请联系管理员。"));
-					}
+					::MessageBox(NULL, _T("其它错误！"), _T("错误"), MB_OK | MB_ICONERROR);
 				}
 			}
 			bip->uninit();

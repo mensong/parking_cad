@@ -10,7 +10,7 @@
 #include <json/json.h>
 #include "FileHelper.h"
 #include "Convertor.h"
-
+#include<ctime>
 
 CEquipmentroomTool::CEquipmentroomTool()
 {
@@ -1458,3 +1458,175 @@ CString CEquipmentroomTool::getOpenDwgFilePath()
 	CString ss = file;
 	return s;
 }
+
+void CEquipmentroomTool::creatNewDwg()
+{
+	CString path = getOpenDwgFilePath();
+	CString deleName = _T(".dwg");
+	path = path.Trim(deleName);
+	CTime t = CTime::GetCurrentTime();
+	int day = t.GetDay(); //获得几号  
+	int year = t.GetYear(); //获取年份  
+	int month = t.GetMonth(); //获取当前月份  
+	int hour = t.GetHour(); //获取当前为几时   
+	int minute = t.GetMinute(); //获取分钟  
+	int second = t.GetSecond(); //获取秒  
+								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
+	CString sDay;
+	sDay.Format(_T("%d"), day);
+	CString sYear;
+	sYear.Format(_T("%d"), year);
+	CString sMonth;
+	sMonth.Format(_T("%d"), month);
+	CString sHour;
+	sHour.Format(_T("%d"), hour);
+	CString sMinute;
+	sMinute.Format(_T("%d"), minute);
+	CString sSecond;
+	sSecond.Format(_T("%d"), second);
+	CString sNum = _T("_")+sYear + sMonth + sDay + sHour + sMinute + sSecond+_T(".dwg");
+	CString newFileName = path + sNum;
+	Acad::ErrorStatus es;
+	// 创建新的图形数据库，分配内存空间
+	AcDbDatabase *pDb = new AcDbDatabase(true, false);
+	es = acdbHostApplicationServices()->workingDatabase()->wblock(pDb);
+	allEntMoveAndClone(pDb);
+	es =  pDb->saveAs(newFileName);
+	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
+
+	int stop = 0;
+}
+
+bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase)
+{
+	    AcGeMatrix3d xform;
+		AcGeVector3d VectrorPt;
+		AcGePoint2dArray extenPts = getAllEntCreatExten();
+		if (extenPts.length()!=2)
+		{
+			acutPrintf(_T("\n获取最大包围框失败！"));
+			return false;
+		}
+		AcGePoint3d endPt(extenPts[1].x, extenPts[0].y, 0);
+		AcGePoint3d starPt(extenPts[0].x, extenPts[0].y, 0);
+		VectrorPt = endPt - starPt;
+		xform.setToTranslation(VectrorPt);
+        //AcDbDatabase *pDataBase = NULL;
+		//pDataBase = acdbCurDwg();  //根据需要传入不同AcDbDatabase 就可以做到不同dwg克隆实体
+	
+		Acad::ErrorStatus es = Acad::eOk;
+			
+		//
+		AcDbBlockTable *pBlockTable = NULL;
+		es = pDataBase->getBlockTable(pBlockTable, AcDb::kForRead); //得到块表指针
+		if (Acad::eOk != es)
+			return false;
+ 
+		AcDbBlockTableRecord *pBlockTableRecord = NULL;
+		es = pBlockTable->getAt(ACDB_MODEL_SPACE,pBlockTableRecord,AcDb::kForWrite);	//得到块表记录指针
+		if (Acad::eOk != es)
+			return false;
+ 
+		pBlockTable->close();
+		pBlockTable = NULL;
+ 
+		AcDbBlockTableRecordIterator *pBlockIter = NULL;
+		es = pBlockTableRecord->newIterator(pBlockIter);
+		if (Acad::eOk != es)
+			return false;
+		AcDbObjectId objTmpId = AcDbObjectId::kNull;
+		std::vector<AcDbEntity*> pEnts;
+		for (pBlockIter->start(); !pBlockIter->done(); pBlockIter->step())
+		{
+			pBlockIter->getEntityId(objTmpId);
+			AcDbObjectPointer<AcDbEntity> pEnt(objTmpId, AcDb::kForWrite);
+			if (pEnt.openStatus() == Acad::eOk)
+			{
+				   AcDbEntity *pEntity = NULL;
+					//pEntity = AcDbEntity::cast(pEnt->clone());//克隆不移动
+					es = pEnt->getTransformedCopy(xform,(AcDbEntity*&)pEntity); //克隆移动实体
+					if (es!=Acad::eOk)
+					{
+						continue;
+					}
+					pEnt->erase();
+					pEnts.push_back(pEntity);
+			}
+		}
+		for (int size=0; size<pEnts.size(); size++)
+		{
+			AcDbObjectId tempId;
+			//pEnts[size]->setColorIndex(1);
+			pBlockTableRecord->appendAcDbEntity(tempId, pEnts[size]);
+			pEnts[size]->close();
+		}
+
+		pBlockTableRecord->close();
+		pBlockTableRecord = NULL;
+	
+		if (pBlockIter != NULL)
+		{
+			delete pBlockIter;
+			pBlockIter = NULL;
+		}
+		return true;
+}
+
+AcGePoint2dArray CEquipmentroomTool::getAllEntCreatExten()
+{
+	AcDbDatabase *pCurDb = NULL;
+	AcGePoint2dArray useExtenPts;
+	pCurDb = acdbHostApplicationServices()->workingDatabase();
+	AcDbBlockTable *pBlkTbl;
+	//Acad::ErrorStatus es;
+	if (pCurDb->getBlockTable(pBlkTbl, AcDb::kForRead) != Acad::eOk)
+	{
+		acutPrintf(_T("读取块表失败！"));
+		delete pCurDb;
+		return useExtenPts;
+	}
+	AcDbBlockTableRecord *pBlkTblRcd;
+	if (pBlkTbl->getAt(ACDB_MODEL_SPACE, pBlkTblRcd, AcDb::kForRead) != Acad::eOk)
+	{
+		acutPrintf(_T("读取块表记录失败！"));
+		pBlkTbl->close();
+		return useExtenPts;
+	}
+	pBlkTbl->close();
+
+	AcDbBlockTableRecordIterator *pItr = NULL;		                	            //块表记录遍历器
+	if (pBlkTblRcd->newIterator(pItr) != Acad::eOk)
+	{
+		acutPrintf(_T("创建块表记录遍历器失败！"));
+		pBlkTblRcd->close();
+		return useExtenPts;
+	}
+	pBlkTblRcd->close();
+
+	AcDbEntity *pEnt = NULL;
+	AcDbExtents allEntCreatExtents;
+	for (pItr->start(); !pItr->done(); pItr->step())
+	{
+		if (pItr->getEntity(pEnt, AcDb::kForRead) != Acad::eOk)
+		{
+			acutPrintf(_T("读取实体失败！"));
+			continue;
+		}
+		AcDbExtents entExtents;
+		DBHelper::GetEntityExtents(entExtents, pEnt);
+		allEntCreatExtents.addExt(entExtents);
+		pEnt->close();
+	}
+	AcGePoint2d maxPoint(allEntCreatExtents.maxPoint().x, allEntCreatExtents.maxPoint().y);
+	AcGePoint2d minPoint(allEntCreatExtents.minPoint().x, allEntCreatExtents.minPoint().y);
+	useExtenPts.append(minPoint);
+	useExtenPts.append(maxPoint);
+	return useExtenPts;
+}
+
+void CEquipmentroomTool::test()
+{
+	creatNewDwg();
+	//getAllEntCreatExten();
+}
+

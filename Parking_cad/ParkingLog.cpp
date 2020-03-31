@@ -8,6 +8,10 @@
 bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	int trigger_count /*= 0*/, CString& user_udid/*=_T("")*/)
 {
+	std::string add_log_url = KVHelp::getStrA("add_log_url");
+	if (add_log_url.empty())
+		return false;
+
 	if (user_udid.IsEmpty() || user_udid == _T(""))
 	{
 		user_udid = KVHelp::getStr(_T("bip_id"), _T("unknow user"));
@@ -34,7 +38,7 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	Json::FastWriter jsWriter;
 	std::string sJson = jsWriter.write(js);
 
-	int code = post("http://parking.asdfqwer.net:9463/add_log", sJson.c_str(), sJson.size(), true, "application/json");
+	int code = post(add_log_url.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
 	if (code != 200)
 		return false;
 

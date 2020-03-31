@@ -20,6 +20,10 @@ public:
 	CString userName;
 	CString bipId;
 
+protected:
+	std::string m_get_userUrl;
+	std::string m_add_userUrl;
+
 private:
 	std::string _getSavePwdFilePath();
 	void _savePwd();
