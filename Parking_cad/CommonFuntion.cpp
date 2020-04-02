@@ -707,7 +707,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	}
 
-	void CCommonFuntion::DrowDimaligned(const AcString& setLayerName,AcGePoint3d& point1, AcGePoint3d& point2, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+	void CCommonFuntion::DrowDimaligned(const AcString& setLayerName, AcGePoint3d& point1, AcGePoint3d& point2, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 	{
 		AcGePoint3d pt1 = point1;
 		AcGePoint3d pt2 = point2;
@@ -725,7 +725,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		int iDistance = ceil(movedata);
 		disText.Format(_T("%d"), iDistance);
 		
-		AcDbObjectId id = CreateDimAligned(Pt1, Pt2, centerpt,disText,pDb);
+		AcDbObjectId id = CreateDimAligned(Pt1, Pt2, centerpt, disText, pDb);
 		if (id == NULL)
 			return;
 

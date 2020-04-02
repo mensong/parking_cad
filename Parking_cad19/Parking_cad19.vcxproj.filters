@@ -246,6 +246,9 @@
     <ClCompile Include="..\Parking_cad\KVHelp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaMultiSchemeShow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Parking_cad\ArxDialog.h">
@@ -480,6 +483,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\KVHelp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaMultiSchemeShow.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

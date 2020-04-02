@@ -19,6 +19,7 @@
 #include "OperaAxleNetMaking.h"
 #include "CommonFuntion.h"
 #include "GeHelper.h"
+#include "OperaMultiSchemeShow.h"
 
 std::string CDlgWaiting::ms_uuid;
 bool CDlgWaiting::ms_bUseV1;
@@ -193,6 +194,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			//CDlgWaiting::Show(false);
 			this->OnOK();
 			CString sMsg;
+			COperaMultiSchemeShow::getJsonData(json);
 			if (!getDataforJson(json, sMsg))
 			{
 				acedAlert(sMsg);

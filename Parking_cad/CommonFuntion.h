@@ -47,7 +47,7 @@ public:
 	//确定方向和两点，画尺寸标注
 	static void DrowDimaligned(const AcString& setLayerName, AcGePoint3d& point1, AcGePoint3d& point2, AcDbDatabase *pDb = acdbCurDwg());
 	//画尺寸标注
-	static AcDbObjectId CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine,const ACHAR* dimText, AcDbDatabase *pDb= acdbCurDwg());
+	static AcDbObjectId CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText, AcDbDatabase *pDb = acdbCurDwg());
 	//根据相对直角坐标来计算一个点的位置：
 	static AcGePoint3d RelativePoint(const AcGePoint3d& pt, double x, double y);
 	//求线段长度
@@ -78,7 +78,7 @@ public:
 	//判断字符串是否为gbk
 	static bool is_str_gbk(const char* str);
 	//从外部DWG文件中导入带有属性的块参照到当前图纸中
-	static bool InserBlockFormDWG(const CString& dwgblockname, const CString& dwgpath, AcGePoint3d& inserpoint,AcDbObjectId& outinserblockid, AcDbDatabase *pDb = acdbCurDwg());
+	static bool InserBlockFormDWG(const CString& dwgblockname, const CString& dwgpath, AcGePoint3d& inserpoint, AcDbObjectId& outinserblockid, AcDbDatabase *pDb = acdbCurDwg());
 	//获取指定数据库中指定块表中的所有实体的ID
 	static int getIdsByDwgBlkName(AcDbDatabase *pDwg, CString strBlkName, AcDbObjectIdArray &objIds);
 	static void setLayer(const CString& layerName, const int& layerColor, AcDbDatabase *pDb = acdbCurDwg());

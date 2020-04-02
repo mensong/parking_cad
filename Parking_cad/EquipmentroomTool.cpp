@@ -1152,7 +1152,7 @@ bool CEquipmentroomTool::getLayerConfigForJson(const std::string& sLayerInfo, st
 	}	
 }
 
-bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString& layerColor, const CString& lineWidth, const CString& lineType, const CString& transparency, const CString& isPrint)
+bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString& layerColor, const CString& lineWidth, const CString& lineType, const CString& transparency, const CString& isPrint, AcDbDatabase *pDb /*= acdbCurDwg()*/ )
 {
 	Doc_Locker _locker;
 	//----------------------------------------------------
@@ -1160,7 +1160,7 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
-	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	es = pDb->getLayerTable(pLayerTbl, AcDb::kForWrite);
 	if (es != eOk)
 	{
 		return false;
@@ -1181,7 +1181,7 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 		pLayerTblRcd->setColor(color);
 		pLayerTblRcd->close();
 		pLayerTbl->close();
-		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
+		es = pDb->setClayer(layerId);//设为当前图层
 		if (es != eOk)
 		{
 			return false;
@@ -1236,7 +1236,7 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 		pLayerTblRcd->setLineWeight(AcDb::kLnWtByLwDefault); // 设置线宽为默认
 	}
 	AcDbLinetypeTable *pLineTbl;
-	es = acdbCurDwg()->getLinetypeTable(pLineTbl, AcDb::kForRead);
+	es = pDb->getLinetypeTable(pLineTbl, AcDb::kForRead);
 	if (es != eOk)
 	{
 		pLineTbl->close();
@@ -1269,7 +1269,7 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 	pLineTbl->close();
 	pLayerTblRcd->close();
 	pLayerTbl->close();
-	es = acdbCurDwg()->setClayer(layerTblRcdId);//设为当前图层
+	es = pDb->setClayer(layerTblRcdId);//设为当前图层
 	if (es != eOk)
 	{
 		return false;
@@ -1333,7 +1333,7 @@ int CEquipmentroomTool::SelColor(int& textColor)
 	}
 }
 
-void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo)
+void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo,AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	std::string strProfessionalAttributes = "";
 	std::string strLayerName = "";
@@ -1351,7 +1351,7 @@ void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo)
 	CString sIsPrintf(strIsPrintf.c_str());
 	CString sTransparency(strTransparency.c_str());
 	CString sCount;
-	if (!CEquipmentroomTool::layerConfigSet(sLayerName, sLayerColor, sLayerWidth, sLayerLinetype, sTransparency, sIsPrintf))
+	if (!CEquipmentroomTool::layerConfigSet(sLayerName, sLayerColor, sLayerWidth, sLayerLinetype, sTransparency, sIsPrintf, pDb))
 	{
 		acutPrintf(_T("\n创建图层时属性设置失败！"));
 	}
@@ -1497,7 +1497,7 @@ void CEquipmentroomTool::creatNewDwg()
 	int stop = 0;
 }
 
-bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase)
+bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase,int iCount /*= 0*/)
 {
 	    AcGeMatrix3d xform;
 		AcGeVector3d VectrorPt;
@@ -1510,7 +1510,7 @@ bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase)
 		AcGePoint3d endPt(extenPts[1].x, extenPts[0].y, 0);
 		AcGePoint3d starPt(extenPts[0].x, extenPts[0].y, 0);
 		VectrorPt = endPt - starPt;
-		xform.setToTranslation(VectrorPt);
+		xform.setToTranslation(VectrorPt*iCount);
         //AcDbDatabase *pDataBase = NULL;
 		//pDataBase = acdbCurDwg();  //根据需要传入不同AcDbDatabase 就可以做到不同dwg克隆实体
 	
