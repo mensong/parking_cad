@@ -369,7 +369,7 @@ void CCommonFuntion::DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints
 	}
 }
 
-AcDbObjectIdArray CCommonFuntion::GetAllEntityId(const TCHAR* layername)
+AcDbObjectIdArray CCommonFuntion::GetAllEntityId(const TCHAR* layername, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 {
 	AcDbObjectIdArray entIds;
 	bool bFilterlayer = false;
@@ -378,7 +378,7 @@ AcDbObjectIdArray CCommonFuntion::GetAllEntityId(const TCHAR* layername)
 	if (layername != NULL)
 	{
 		AcDbLayerTable *pLayerTbl = NULL;
-		acdbHostApplicationServices()->workingDatabase()->getSymbolTable(pLayerTbl, AcDb::kForRead);
+		pDb->getSymbolTable(pLayerTbl, AcDb::kForRead);
 		if (!pLayerTbl->has(layername))
 		{
 			pLayerTbl->close();
@@ -390,7 +390,7 @@ AcDbObjectIdArray CCommonFuntion::GetAllEntityId(const TCHAR* layername)
 	}
 	//获得块表
 	AcDbBlockTable *pBlkTbl = NULL;
-	acdbHostApplicationServices()->workingDatabase()->getSymbolTable(pBlkTbl, AcDb::kForRead);
+	pDb->getSymbolTable(pBlkTbl, AcDb::kForRead);
 	//块表记录
 	AcDbBlockTableRecord *pBlkTblRcd = NULL;
 	pBlkTbl->getAt(ACDB_MODEL_SPACE, pBlkTblRcd, AcDb::kForRead);
@@ -540,7 +540,7 @@ void CCommonFuntion::GetEntPointofinBlock()
 
 }
 
-void CCommonFuntion::DrowPloyLine(AcGePoint2dArray& inputpoints)
+void CCommonFuntion::DrowPloyLine(AcGePoint2dArray& inputpoints, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 {
 	if (inputpoints.length() < 3)
 		return;
@@ -554,7 +554,7 @@ void CCommonFuntion::DrowPloyLine(AcGePoint2dArray& inputpoints)
 	}
 
 	AcDbBlockTable *pBlockTable = NULL;
-	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
+	pDb->getBlockTable(pBlockTable, AcDb::kForRead);
 	AcDbBlockTableRecord *pBlockTableRocord;
 	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRocord, AcDb::kForWrite);
 	AcDbObjectId lineId;
@@ -707,7 +707,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	}
 
-	void CCommonFuntion::DrowDimaligned(const AcString& setLayerName,AcGePoint3d& point1, AcGePoint3d& point2)
+	void CCommonFuntion::DrowDimaligned(const AcString& setLayerName, AcGePoint3d& point1, AcGePoint3d& point2, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 	{
 		AcGePoint3d pt1 = point1;
 		AcGePoint3d pt2 = point2;
@@ -725,7 +725,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		int iDistance = ceil(movedata);
 		disText.Format(_T("%d"), iDistance);
 		
-		AcDbObjectId id = CreateDimAligned(Pt1, Pt2, centerpt,disText);
+		AcDbObjectId id = CreateDimAligned(Pt1, Pt2, centerpt, disText, pDb);
 		if (id == NULL)
 			return;
 
@@ -771,13 +771,13 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		}
 	}
 
-	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText)
+	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
 		CString str = _T("车道轴网尺寸标注样式");
 		AcDbObjectId id;
 		////获得当前图形的标注样式表  
 		AcDbDimStyleTable* pDimStyleTbl;
-		acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+		pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
 		if (pDimStyleTbl->has(str))
 			pDimStyleTbl->getAt(str, id);
 		else
@@ -1022,17 +1022,17 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		for (int i = 0; i < outIds.length(); i++)
 		{
 			
-			if (IsEntInLayer(outIds[i], LineLayerName))	
+			if (CCommonFuntion::IsEntInLayer(outIds[i], LineLayerName))
 				return true;		
 		}
 		return false;
 	}
 
-	void CCommonFuntion::GetALLTextStyle(std::vector<CString>& textStyle)
+	void CCommonFuntion::GetALLTextStyle(std::vector<CString>& textStyle, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
 		textStyle.clear();
 		AcDbTextStyleTable *pTextStyleTbl = NULL;
-		acdbHostApplicationServices()->workingDatabase()->getSymbolTable(pTextStyleTbl, AcDb::kForRead);
+		pDb->getSymbolTable(pTextStyleTbl, AcDb::kForRead);
 		AcDbTextStyleTableIterator *pIt = NULL;
 		pTextStyleTbl->newIterator(pIt);
 		for (; !pIt->done(); pIt->step())
@@ -1200,7 +1200,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		return true;
 	}
 
-	bool CCommonFuntion::InserBlockFormDWG(const CString& dwgblockname, const CString& dwgpath, AcGePoint3d& inserpoint, AcDbObjectId& outinserblockid)
+	bool CCommonFuntion::InserBlockFormDWG(const CString& dwgblockname, const CString& dwgpath, AcGePoint3d& inserpoint, AcDbObjectId& outinserblockid, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
 		//获取指定的外部图纸中的数据库
 		AcDbDatabase *pDwg = new AcDbDatabase(Adesk::kFalse); // 外部图形数据库
@@ -1211,7 +1211,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		}
 
 		//判断在当前图纸中是否已经被定义
-		AcDbDatabase *pCurDb = acdbHostApplicationServices()->workingDatabase();
+		AcDbDatabase *pCurDb = pDb;
 		AcDbBlockTable *pBlkTab;
 		AcDbObjectId blockId;
 		pCurDb->getBlockTable(pBlkTab, AcDb::kForRead);
@@ -1251,7 +1251,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 		//获得模型空间块表记录，并插入块参照
 		AcDbBlockTable *pBlockTab;
-		acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTab, AcDb::kForRead);
+		pDb->getBlockTable(pBlockTab, AcDb::kForRead);
 		AcDbBlockTableRecord *pBlockTabRcd;
 		pBlockTab->getAt(ACDB_MODEL_SPACE, pBlockTabRcd, AcDb::kForWrite);
 		pBlockTab->close();
@@ -1490,11 +1490,11 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	}
 
-	void CCommonFuntion::setLayer(const CString& layerName, const int& layerColor)
+	void CCommonFuntion::setLayer(const CString& layerName, const int& layerColor, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
 		// 获得当前图形的层表
 		AcDbLayerTable *pLayerTbl = NULL;
-		acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+		pDb->getLayerTable(pLayerTbl, AcDb::kForWrite);
 
 		// 是否已经包含指定的层表记录
 		if (pLayerTbl->has(layerName))
@@ -1515,16 +1515,16 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		// 将新建的层表记录添加到层表中
 		AcDbObjectId layerTblRcdId;
 		pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
-		acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);
+		pDb->setClayer(layerTblRcdId);
 		pLayerTblRcd->close();
 		pLayerTbl->close();
 	}
 
-	void CCommonFuntion::creatLaneGridDimensionsDimStyle(const CString& stylename)
+	void CCommonFuntion::creatLaneGridDimensionsDimStyle(const CString& stylename, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
 		// 获得当前图形的标注样式表
 		AcDbDimStyleTable *pDimStyleTbl = NULL;
-		acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+		pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
 		if (pDimStyleTbl->has(stylename))
 		{
 			pDimStyleTbl->close();//已经存在
@@ -1561,12 +1561,12 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		pDimStyleTbl->close();
 	}
 
-	void CCommonFuntion::setEntityLayer(const AcString& setlayername, AcDbObjectId& entityId)
+	void CCommonFuntion::setEntityLayer(const AcString& setlayername, AcDbObjectId& entityId, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
 		// 获得当前图形的层表
 		AcDbLayerTable *pLayerTbl = NULL;
 		//判断操作
-		acdbHostApplicationServices()->workingDatabase()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+		pDb->getLayerTable(pLayerTbl, AcDb::kForWrite);
 
 		// 是否已经包含指定的层表记录
 		if (!pLayerTbl->has(setlayername))
@@ -1583,7 +1583,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 			// 将新建的层表记录添加到层表中
 			AcDbObjectId layerTblRcdId;
 			pLayerTbl->add(layerTblRcdId, pLayerTblRcd);
-			acdbHostApplicationServices()->workingDatabase()->setClayer(layerTblRcdId);
+			pDb->setClayer(layerTblRcdId);
 			pLayerTblRcd->close();
 			pLayerTbl->close();
 		}

@@ -63,10 +63,10 @@ public:
 	static bool getLayerConfigForJson(const std::string& sLayerInfo, std::string& sProfessionalAttributes, std::string& sLayerName,
 		std::string& sLayerColor,std::string& sLayerLinetype, std::string& sLayerWidth,std::string& sIsPrintf, std::string& sTransparency);
 
-	static bool layerConfigSet(const CString& layerName, const CString& layerColor, const CString& lineWidth, const CString& lineType, const CString& transparency, const CString& isPrint);
+	static bool layerConfigSet(const CString& layerName, const CString& layerColor, const CString& lineWidth, const CString& lineType, const CString& transparency, const CString& isPrint,AcDbDatabase *pDb = acdbCurDwg());
 	static std::string getLayerNameByJson(const std::string& sLayerInfo);
 	static int SelColor(int& textColor);
-	static void creatLayerByjson(const std::string& sLayerInfo);
+	static void creatLayerByjson(const std::string& sLayerInfo,AcDbDatabase *pDb = acdbCurDwg());
 
 	//设备房面积比例调整
 	static double areaScale(double oldArea);
@@ -75,7 +75,7 @@ public:
 	static CString getOpenDwgFilePath();
 	//多方案对比
 	static void creatNewDwg();
-	static bool allEntMoveAndClone(AcDbDatabase *pDataBase);
+	static bool allEntMoveAndClone(AcDbDatabase *pDataBase,int iCount = 0);
 	static AcGePoint2dArray getAllEntCreatExten();
 	static void test();
 };

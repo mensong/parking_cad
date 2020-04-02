@@ -1314,12 +1314,9 @@ AcGePoint2d COperaSetEntranceData::getPlineNextPoint(const AcGePoint2d targetPt,
 			}
 			return startPt;
 		}
-		else
-		{
-			AcGePoint2d errorPt(0, 0);
-			return errorPt;
-		}
 	}
+	AcGePoint2d errorPt(0, 0);
+	return errorPt;
 }
 
 bool COperaSetEntranceData::checkClosed(const AcGePoint2d checkPt, const std::vector<AcGePoint2dArray> allLinePts)
