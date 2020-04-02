@@ -768,7 +768,7 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 		if (CCommonFuntion::GetLineDistance(sortIds[i], LineId) >= 2)
 			continue;
 
-		tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]);
+		tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]).constPtr();
 
 		/*switch (casenum)
 		{
