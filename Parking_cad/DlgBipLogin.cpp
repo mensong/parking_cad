@@ -89,6 +89,8 @@ BOOL CDlgBipLogin::OnInitDialog()
 
 	loginSuccess = false;
 
+	this->CenterWindow(GetDesktopWindow());
+
 	std::string sTempFile = _getSavePwdFilePath();
 	if (sTempFile != "")
 	{
