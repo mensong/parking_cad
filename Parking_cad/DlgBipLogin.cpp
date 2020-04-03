@@ -65,6 +65,8 @@ BOOL CDlgBipLogin::OnInitDialog()
 	if (CAcUiDialog::OnInitDialog() != TRUE)
 		return FALSE;
 
+	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+
 #if 0
 	//写配置文件
 	typedef void(*FN_WriteConfigFile)(
@@ -88,9 +90,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 #endif
 
 	loginSuccess = false;
-
-	this->CenterWindow(GetDesktopWindow());
-
+	
 	std::string sTempFile = _getSavePwdFilePath();
 	if (sTempFile != "")
 	{

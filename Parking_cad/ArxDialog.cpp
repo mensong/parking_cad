@@ -233,6 +233,8 @@ BOOL CArxDialog::OnInitDialog()
 	// TODO:  在此添加额外的初始化
 	BOOL bRet = CAcUiDialog::OnInitDialog();
 
+	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+
 	loadoutlineLayers();
 	loadshearwallLayers();
 	loaddirectionCombo();

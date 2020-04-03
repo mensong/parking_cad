@@ -128,6 +128,8 @@ BOOL CDlgWaiting::OnInitDialog()
 {
 	BOOL bRet = CAcUiDialog::OnInitDialog();
 
+	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+
 	AcString strFile = DBHelper::GetArxDir() + _T("\\loading.gif");
 	if (m_ctrlGif.Load(strFile.constPtr()))
 	{

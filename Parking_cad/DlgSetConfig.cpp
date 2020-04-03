@@ -241,6 +241,8 @@ BOOL CDlgSetConfig::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 	
+	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+
 	m_EditTest.ShowWindow(SW_HIDE);
 	m_ConfigChooseCombo.ShowWindow(SW_HIDE);
 	m_LineWidthCombo.ShowWindow(SW_HIDE);
