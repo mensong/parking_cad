@@ -41,6 +41,10 @@ BEGIN_MESSAGE_MAP(CDlgSetConfig, CAcUiDialog)
 	ON_NOTIFY(NM_DBLCLK, IDC_LAYERLIST, &CDlgSetConfig::OnNMDblclkLayerlist)
 	ON_NOTIFY(NM_CLICK, IDC_LAYERLIST, &CDlgSetConfig::OnNMClickLayerlist)
 	ON_WM_HSCROLL()
+	ON_CBN_KILLFOCUS(IDC_COMBO_LINETYPE, &CDlgSetConfig::OnCbnKillfocusComboLinetype)
+	ON_CBN_KILLFOCUS(IDC_COMBO_LINEWIDTH, &CDlgSetConfig::OnCbnKillfocusComboLinewidth)
+	ON_CBN_KILLFOCUS(IDC_COMBO_CONFIGCHOOSE, &CDlgSetConfig::OnCbnKillfocusComboConfigchoose)
+	ON_EN_KILLFOCUS(IDC_EDIT_LIST, &CDlgSetConfig::OnEnKillfocusEditList)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -54,7 +58,7 @@ void CDlgSetConfig::DoDataExchange (CDataExchange *pDX) {
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LAYERLIST, m_ctrlConfigSetList);
 	DDX_Control(pDX, IDC_EDIT_LIST, m_EditTest);
-	DDX_Control(pDX, IDC_COMBO_CONFIGCHOOSE, m_ConfigChooseCombo);
+	DDX_Control(pDX, IDC_COMBO_CONFIGCHOOSE, m_PrintableCombo);
 	DDX_Control(pDX, IDC_COMBO_LINEWIDTH, m_LineWidthCombo);
 	DDX_Control(pDX, IDC_COMBO_LINETYPE, m_LineTypeCombo);
 }
@@ -211,7 +215,6 @@ void CDlgSetConfig::OnBnClickedOk()
 	{
 		acedAlert(_T("设置配置参数失败"));
 		return;
-		CAcUiDialog::OnOK();
 	}
 	os << sw.write(root);
 	os.close();
@@ -233,6 +236,8 @@ void CDlgSetConfig::OnBnClickedOk()
 	CString sTransparency(strTransparency.c_str());
 	CString sCount;
 	CEquipmentroomTool::layerConfigSet(sLayerName, sLayerColor, sLayerWidth, sLayerLinetype, sTransparency, sIsPrintf);*/
+
+	DBHelper::CallCADCommand(_T("REGEN "));
 	CAcUiDialog::OnOK();
 }
 
@@ -244,18 +249,18 @@ BOOL CDlgSetConfig::OnInitDialog()
 	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
 
 	m_EditTest.ShowWindow(SW_HIDE);
-	m_ConfigChooseCombo.ShowWindow(SW_HIDE);
+	m_PrintableCombo.ShowWindow(SW_HIDE);
 	m_LineWidthCombo.ShowWindow(SW_HIDE);
 	m_LineTypeCombo.ShowWindow(SW_HIDE);
 	// TODO:  在此添加额外的初始化
 	init();
 
-	m_ConfigChooseCombo.SetDroppedWidth(100);
+	m_PrintableCombo.SetDroppedWidth(100);
 	m_LineWidthCombo.SetDroppedWidth(100);
 
 	int nRow = 0;// m_ConfigChooseCombo.AddString(_T("是否打印"));
-	nRow = m_ConfigChooseCombo.AddString(_T("是"));
-	nRow = m_ConfigChooseCombo.AddString(_T("否"));
+	nRow = m_PrintableCombo.AddString(_T("是"));
+	nRow = m_PrintableCombo.AddString(_T("否"));
 
 	int nLineWidth = 0;
 	nLineWidth = m_LineWidthCombo.AddString(_T("默认"));
@@ -516,12 +521,12 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("是否打印")])
 		{
-			m_ConfigChooseCombo.SetCurSel(m_ConfigChooseCombo.FindStringExact(0, sOldText));
-			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_ConfigChooseCombo, false, false, false);
+			m_PrintableCombo.SetCurSel(m_PrintableCombo.FindStringExact(0, sOldText));
+			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_PrintableCombo, false, false, false);
 			m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
 			m_nLastRow = pNMItemActivate->iItem;
 			m_nLastCol = pNMItemActivate->iSubItem;
-			m_ConfigChooseCombo.SetFocus();
+			m_PrintableCombo.SetFocus();
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("线宽")])
 		{
@@ -567,7 +572,7 @@ void CDlgSetConfig::OnNMClickLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 
 	//单击隐藏编辑按钮
 	m_EditTest.ShowWindow(SW_HIDE);
-	m_ConfigChooseCombo.ShowWindow(SW_HIDE);
+	m_PrintableCombo.ShowWindow(SW_HIDE);
 	m_LineTypeCombo.ShowWindow(SW_HIDE);
 	m_LineWidthCombo.ShowWindow(SW_HIDE);
 	if (m_nLastRow > -1 && m_nLastCol > -1)
@@ -607,15 +612,15 @@ void CDlgSetConfig::OnEditerEnter()
 		m_EditTest.SetWindowText(_T(""));
 		m_EditTest.ShowWindow(SW_HIDE);
 	}
-	else if (m_ConfigChooseCombo.IsWindowVisible())
+	else if (m_PrintableCombo.IsWindowVisible())
 	{
 		//设置值
 		CString sText;
-		m_ConfigChooseCombo.GetWindowText(sText);
+		m_PrintableCombo.GetWindowText(sText);
 		m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
 		//恢复编辑框
-		m_ConfigChooseCombo.SetWindowText(_T(""));
-		m_ConfigChooseCombo.ShowWindow(SW_HIDE);
+		m_PrintableCombo.SetWindowText(_T(""));
+		m_PrintableCombo.ShowWindow(SW_HIDE);
 	}
 	else if (m_LineWidthCombo.IsWindowVisible())
 	{
@@ -689,3 +694,47 @@ void CDlgSetConfig::initLinetypeCombo()
 	}
 }
 
+
+
+void CDlgSetConfig::OnCbnKillfocusComboLinetype()
+{
+	if (m_nLastRow > -1 && m_nLastCol > -1)
+	{
+		CString sText;
+		m_LineTypeCombo.GetWindowText(sText);
+		m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+	}
+}
+
+
+void CDlgSetConfig::OnCbnKillfocusComboLinewidth()
+{
+	if (m_nLastRow > -1 && m_nLastCol > -1)
+	{
+		CString sText;
+		m_LineWidthCombo.GetWindowText(sText);
+		m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+	}
+}
+
+
+void CDlgSetConfig::OnCbnKillfocusComboConfigchoose()
+{
+	if (m_nLastRow > -1 && m_nLastCol > -1)
+	{
+		CString sText;
+		m_PrintableCombo.GetWindowText(sText);
+		m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+	}
+}
+
+
+void CDlgSetConfig::OnEnKillfocusEditList()
+{
+	if (m_nLastRow > -1 && m_nLastCol > -1)
+	{
+		CString sText;
+		m_EditTest.GetWindowText(sText);
+		m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+	}
+}

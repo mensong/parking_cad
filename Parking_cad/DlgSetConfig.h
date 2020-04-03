@@ -70,7 +70,7 @@ public:
 	int m_nLastCol;
 
 	// 下拉选择框
-	CComboBox m_ConfigChooseCombo;
+	CComboBox m_PrintableCombo;
 	// 层表编辑
 	CEdit m_EditTest;
 	void OnEditerEnter();
@@ -83,4 +83,8 @@ public:
 
 	CString m_sLineStyle;
 	void initLinetypeCombo();
+	afx_msg void OnCbnKillfocusComboLinetype();
+	afx_msg void OnCbnKillfocusComboLinewidth();
+	afx_msg void OnCbnKillfocusComboConfigchoose();
+	afx_msg void OnEnKillfocusEditList();
 } ;
