@@ -61,6 +61,7 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
 	ON_BN_CLICKED(IDC_BUTTON_V2OK, &CArxDialog::OnBnClickedButtonV2ok)
 	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CArxDialog::OnBnClickedButtonGetendpoint)
+	ON_BN_CLICKED(IDC_BUTTON_MANYSHOW, &CArxDialog::OnBnClickedButtonManyshow)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -677,7 +678,7 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 	return 4;
 }
 
-void CArxDialog::selectPort(const bool& useV1)
+void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 {
 	// TODO: 在此添加控件通知处理程序代码
 	m_editLength.GetWindowText(m_strLength);
@@ -899,7 +900,7 @@ void CArxDialog::selectPort(const bool& useV1)
 		acedAlert(sMsg);
 		return;
 	}
-	CDlgWaiting::setUuid(uuid,useV1);
+	CDlgWaiting::setUuid(uuid,useV1,useManyShow);
 
 	//CDlgWaiting::Show(true);
 	//CDlgWaiting dlg;
@@ -1171,4 +1172,11 @@ void CArxDialog::OnBnClickedButtonGetendpoint()
 		m_strEndPoint = "选取了无效的点";
 		m_EditShowEndPoint.SetWindowText(m_strEndPoint);
 	}
+}
+
+
+void CArxDialog::OnBnClickedButtonManyshow()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	selectPort(true,true);
 }

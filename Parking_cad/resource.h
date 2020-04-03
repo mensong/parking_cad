@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 生成的包含文件。
-// 供 Parking_cad.rc 使用
+// Microsoft Visual C++ generated include file.
+// Used by Parking_cad.rc
 //
 #define IDS_PROJNAME                    100
 #define IDC_RADIO_Default               100
@@ -70,6 +70,8 @@
 #define IDC_BUTTON1                     164
 #define IDC_BUTTON_EXCHANGE             164
 #define IDC_BUTTON_INIT                 164
+#define IDC_BUTTON_mou                  164
+#define IDC_BUTTON_MANYSHOW             164
 #define IDC_EDIT_AXIS                   167
 #define IDC_EDIT_AXISDIM                168
 #define IDC_EDIT_LANE                   169

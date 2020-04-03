@@ -86,7 +86,7 @@ protected:
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, std::vector<int>& types);
 	void setInitData();
 	int postToAIApi(const std::string& js, std::string& sMsg, const bool& useV1);
-	void selectPort(const bool& useV1);
+	void selectPort(const bool& useV1,bool useManyShow = false);
 
 protected:
 	virtual BOOL OnInitDialog();
@@ -148,4 +148,5 @@ private:
 	CEdit m_EditShowEndPoint;
 public:
 	afx_msg void OnBnClickedButtonGetendpoint();
+	afx_msg void OnBnClickedButtonManyshow();
 } ;
