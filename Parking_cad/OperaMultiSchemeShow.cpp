@@ -547,7 +547,7 @@ void COperaMultiSchemeShow::creatNewDwg()
 		CString sMsg1;
 		loadModelFile(pTempDb);
 		COperaMultiSchemeShow::addEntToDb(ms_json, sMsg1,pTempDb);
-		CEquipmentroomTool::allEntMoveAndClone(pTempDb,i);
+		CEquipmentroomTool::allEntMoveAndClone(pTempDb,i+0.5);
 		es = pDb->insert(AcGeMatrix3d::kIdentity, pTempDb);
 		if (es!=eOk)
 		{

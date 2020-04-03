@@ -783,7 +783,12 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		AcDbObjectId id;
 		////获得当前图形的标注样式表  
 		AcDbDimStyleTable* pDimStyleTbl;
-		es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+		es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+		if (es!=eOk)
+		{
+			acutPrintf(_T("\n打开标注样式表失败！"));
+			return id;
+		}
 		if (pDimStyleTbl->has(str))
 			pDimStyleTbl->getAt(str, id);
 		else

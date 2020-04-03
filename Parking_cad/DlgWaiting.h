@@ -12,7 +12,7 @@ class CDlgWaiting : public CAcUiDialog
 public:
 	static void Show(bool bShow = true);
 	static void Destroy();
-	static void setUuid(const std::string& uuid, const bool& useV1);
+	static void setUuid(const std::string& uuid, const bool& useV1, const bool& useManyShow);
 	static void setGetUrlPortOne(const std::string& strGeturlPortone);
 	static void setGetUrlPortTwo(const std::string& strGeturlPorttwo);
 
@@ -40,6 +40,7 @@ public:
 	int getStatus(std::string& josn, std::string& sMsg,CString& sIndex);
 	static std::string ms_uuid;//从界面类获取到回传的uuid的接口
 	static bool ms_bUseV1;
+	static bool ms_bUseManyShow;
 	static std::string ms_strGeturlPortone;//从初始化类取到配置文件中端口1的IP地址接口
 	static std::string ms_strGeturlPorttwo;//从初始化类取到配置文件中端口2的IP地址接
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, const CString& blockName);
