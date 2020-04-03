@@ -91,11 +91,20 @@ void CArxDialog::loadoutlineLayers()
 	if (acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead) != Acad::eOk)
 		return;
 
+	static std::vector<AcString> s_Keys;
+	if (s_Keys.size() == 0)
+	{
+		s_Keys.push_back(_T("外轮廓"));
+		//添加更多的关键字
+	}
+
 	do
 	{
 		AcDbLayerTableIterator* pLTIter = NULL;
 		if (pLT->newIterator(pLTIter) != Acad::eOk)
 			break;
+
+		bool bHasSetDef = false;
 
 		pLTIter->setSkipHidden(true);
 		for (pLTIter->start(); !pLTIter->done(); pLTIter->step())
@@ -106,7 +115,20 @@ void CArxDialog::loadoutlineLayers()
 
 			AcString name;
 			pLTR->getName(name);
-			m_outlineLayer.AddString(name);
+			int n = m_outlineLayer.AddString(name);
+
+			if (!bHasSetDef)
+			{//自动设置默认图层
+				for (int i = 0; i < s_Keys.size(); ++i)
+				{
+					name.makeUpper();
+					if (name.find(s_Keys[i]) > -1)
+					{
+						m_outlineLayer.SetCurSel(n);
+						break;
+					}
+				}
+			}
 
 			pLTR->close();
 		}
@@ -131,11 +153,22 @@ void CArxDialog::loadshearwallLayers()
 	if (acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead) != Acad::eOk)
 		return;
 
+	static std::vector<AcString> s_Keys;
+	if (s_Keys.size() == 0)
+	{
+		s_Keys.push_back(_T("COL"));
+		s_Keys.push_back(_T("WALL"));
+		s_Keys.push_back(_T("墙"));
+		//添加更多的关键字
+	}
+
 	do
 	{
 		AcDbLayerTableIterator* pLTIter = NULL;
 		if (pLT->newIterator(pLTIter) != Acad::eOk)
 			break;
+
+		bool bHasSetDef = false;
 
 		pLTIter->setSkipHidden(true);
 		for (pLTIter->start(); !pLTIter->done(); pLTIter->step())
@@ -146,7 +179,20 @@ void CArxDialog::loadshearwallLayers()
 
 			AcString name;
 			pLTR->getName(name);
-			m_shearwallLayer.AddString(name);
+			int n = m_shearwallLayer.AddString(name);
+
+			if (!bHasSetDef)
+			{//自动设置默认图层
+				for (int i = 0; i < s_Keys.size(); ++i)
+				{
+					name.makeUpper();
+					if (name.find(s_Keys[i]) > -1)
+					{
+						m_shearwallLayer.SetCurSel(n);
+						break;
+					}
+				}
+			}
 
 			pLTR->close();
 		}
@@ -239,14 +285,7 @@ BOOL CArxDialog::OnInitDialog()
 	loadshearwallLayers();
 	loaddirectionCombo();
 
-	int nIdxLayer = m_outlineLayer.FindStringExact(0, m_sOutlineLayer);
-	if (nIdxLayer > -1)
-		m_outlineLayer.SetCurSel(nIdxLayer);
 	m_outlineLayer.SetDroppedWidth(200);
-
-	int mIdxLayer = m_shearwallLayer.FindStringExact(0, m_sShearwallLayer);
-	if (mIdxLayer > -1)
-		m_shearwallLayer.SetCurSel(mIdxLayer);
 	m_shearwallLayer.SetDroppedWidth(200);
 
 	setInitData();
