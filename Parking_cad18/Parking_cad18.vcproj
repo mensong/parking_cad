@@ -490,6 +490,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaMultiSchemeShow.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.cpp"
 				>
 			</File>
@@ -692,6 +696,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaModuleCall.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaMultiSchemeShow.h"
 				>
 			</File>
 			<File

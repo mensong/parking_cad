@@ -122,8 +122,9 @@ void CArxDialog::loadoutlineLayers()
 			{//自动设置默认图层
 				for (int i = 0; i < s_Keys.size(); ++i)
 				{
-					name.makeUpper();
-					if (name.find(s_Keys[i]) > -1)
+					CString upName = name.constPtr();
+					upName.MakeUpper();
+					if (upName.Find(s_Keys[i]) > -1)
 					{
 						m_outlineLayer.SetCurSel(n);
 						break;
@@ -186,8 +187,9 @@ void CArxDialog::loadshearwallLayers()
 			{//自动设置默认图层
 				for (int i = 0; i < s_Keys.size(); ++i)
 				{
-					name.makeUpper();
-					if (name.find(s_Keys[i]) > -1)
+					CString upName = name.constPtr();
+					upName.MakeUpper();
+					if (upName.Find(s_Keys[i]) > -1)
 					{
 						m_shearwallLayer.SetCurSel(n);
 						break;
