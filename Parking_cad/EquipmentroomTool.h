@@ -43,7 +43,7 @@ public:
 	static bool comparePoint(AcGePoint2d a, AcGePoint2d b);
 
 	static bool layerSet();
-	static bool layerSet(const CString& layerName, const int& layerColor);
+	static bool layerSet(const CString& layerName, const int& layerColor, AcDbDatabase *pDb = acdbCurDwg());
 	static void setEntToLayer(AcDbObjectIdArray objectIds);
 	static void setEntToLayer(const AcDbObjectId& entId, const CString& strLayerName);
 	static bool isLayerClose(AcDbEntity *pEnt);
@@ -57,7 +57,7 @@ public:
 	/*É¾³ýÖ¸¶¨Í¼²ã*/
 	static bool deletLayerByName(const CString& layerNaem); 
 	static Acad::ErrorStatus deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT = NULL);
-	static void setLayerClose(const CString& layerName);
+	static void setLayerClose(const CString& layerName,AcDbDatabase *pDb = acdbCurDwg());
 	static bool isLayerClosed(const CString& strLayerName);
 	static void setLayerOpen(const CString& strLayerName);
 	static bool getLayerConfigForJson(const std::string& sLayerInfo, std::string& sProfessionalAttributes, std::string& sLayerName,

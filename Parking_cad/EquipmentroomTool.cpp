@@ -733,14 +733,14 @@ bool CEquipmentroomTool::layerSet()
 	return true;
 }
 
-bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColor)
+bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColor, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	//----------------------------------------------------
 	//判断有就退出无就生成图层生，并设置颜色
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
-	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	es = pDb->getLayerTable(pLayerTbl, AcDb::kForWrite);
 	if (es != eOk)
 	{
 		return false;
@@ -753,7 +753,7 @@ bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColo
 			pLayerTbl->close();
 			return false;
 		}
-		es = acdbCurDwg()->setClayer(layerId);//设为当前图层
+		es = pDb->setClayer(layerId);//设为当前图层
 		AcDbLayerTableRecord *pLayerTblRcd;
 		pLayerTbl->getAt(layerName, pLayerTblRcd, AcDb::kForWrite);
 		AcCmColor color;//设置图层颜色
@@ -779,7 +779,7 @@ bool CEquipmentroomTool::layerSet(const CString& layerName, const int& layerColo
 	// 将新建的层表记录添加到层表中
 	pLayerTblRcd->close();
 	pLayerTbl->close();
-	es = acdbCurDwg()->setClayer(layerTblRcdId);//设为当前图层
+	es = pDb->setClayer(layerTblRcdId);//设为当前图层
 	if (es != eOk)
 	{
 		return false;
@@ -1032,12 +1032,12 @@ Acad::ErrorStatus CEquipmentroomTool::deletLayer(AcDbLayerTableRecord* pLTR, AcD
 	return es;
 }
 
-void CEquipmentroomTool::setLayerClose(const CString& layerName)
+void CEquipmentroomTool::setLayerClose(const CString& layerName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	AcDbLayerTable *pLayerTbl;
 	//获取当前图形层表
 	Acad::ErrorStatus es;
-	es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
+	es = pDb->getLayerTable(pLayerTbl, AcDb::kForWrite);
 	if (es != eOk)
 	{
 		return;
@@ -1051,7 +1051,7 @@ void CEquipmentroomTool::setLayerClose(const CString& layerName)
 			pLayerTbl->close();
 			return;
 		}
-		DBHelper::SetLayerIsOff(pLTR);
+		DBHelper::SetLayerIsOff(pLTR,pLayerTbl);
 		pLTR->close();
 	}
 	pLayerTbl->close();

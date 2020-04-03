@@ -32,13 +32,13 @@ public:
 	static ACHAR* ChartoACHAR(const char* src);
 	static char* ACHARtoChar(const ACHAR* src);
 	//将实体添加到模型空间中
-	static AcDbObjectId PostToModelSpace(AcDbEntity* pEnt); 
+	static AcDbObjectId PostToModelSpace(AcDbEntity* pEnt, AcDbDatabase *pDb = acdbCurDwg()); 
 	//插入块参照后，将块内对象坐标换算为其当前dwg中的坐标
 	static void GetEntPointofinBlock();
 	//画多段线
 	static void DrowPloyLine(AcGePoint2dArray& inputpoints, AcDbDatabase *pDb = acdbCurDwg());
 	//画直线
-	static AcDbObjectIdArray DrowLine(AcGePoint3dArray& inputpoints);
+	static AcDbObjectIdArray DrowLine(AcGePoint3dArray& inputpoints, AcDbDatabase *pDb = acdbCurDwg());
 	//得到线之间所有的交点
 	static void GetAllLineIntersectpoints(AcDbObjectIdArray& inputIds, AcGePoint3dArray& outptArr);
 	static void getlinepoint(AcDbObjectIdArray& lineIds, CMap<AcGePoint3d, AcGePoint3d, AcDbObjectIdArray, AcDbObjectIdArray&> &mapLines);
