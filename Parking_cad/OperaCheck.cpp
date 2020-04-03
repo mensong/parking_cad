@@ -436,7 +436,21 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 }
 
 void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
-{	
+{
+	
+//TODO: Со±ш
+#if (ACADV_RELMAJOR == 18)
+
+#elif (ACADV_RELMAJOR == 19)
+
+#elif (ACADV_RELMAJOR == 20)
+
+#elif (ACADV_RELMAJOR == 21)
+
+#elif (ACADV_RELMAJOR == 22)
+
+#endif
+
 	AcGePoint2d minPoint = plineExtentPts[0];
 	AcGePoint2d maxPoint = plineExtentPts[1];
 	AcGeVector2d dirMove = maxPoint - minPoint;
