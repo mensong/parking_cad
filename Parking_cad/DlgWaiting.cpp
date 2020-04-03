@@ -753,58 +753,58 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 		sMsg = _T("解析回传json文件出错！");
 		return false;
 	}
-	Doc_Locker _locker;
-	CEquipmentroomTool::layerSet(_T("0"), 7);
-	CString blockName;
-	creatNewParking(dParkingLength, dParkingWidth, blockName);
-	for (int a = 0; a < parkingPts.length(); a++)
-	{
-		//double = (rotation/180)*Π(顺时针和逆时针)
-		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
-		AcDbObjectId parkingId;
-		AcGePoint2d parkingShowPt = parkingPts[a];
-		parkingShow(parkingId,parkingPts[a], rotation, blockName);
-	}
-	AcDbObjectIdArray axisIds;
-	for (int b = 0; b < axisesPoints.size(); b++)
-	{
-		axisIds.append(axisShow(axisesPoints[b]));
-	}
-	COperaAxleNetMaking::setAxisIds(axisIds);
+	//Doc_Locker _locker;
+	//CEquipmentroomTool::layerSet(_T("0"), 7);
+	//CString blockName;
+	//creatNewParking(dParkingLength, dParkingWidth, blockName);
+	//for (int a = 0; a < parkingPts.length(); a++)
+	//{
+	//	//double = (rotation/180)*Π(顺时针和逆时针)
+	//	double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
+	//	AcDbObjectId parkingId;
+	//	AcGePoint2d parkingShowPt = parkingPts[a];
+	//	parkingShow(parkingId,parkingPts[a], rotation, blockName);
+	//}
+	//AcDbObjectIdArray axisIds;
+	//for (int b = 0; b < axisesPoints.size(); b++)
+	//{
+	//	axisIds.append(axisShow(axisesPoints[b]));
+	//}
+	//COperaAxleNetMaking::setAxisIds(axisIds);
 
-	AcDbObjectIdArray RoadLineIds;
-	for (int c = 0; c < lanesPoints.size(); c++)
-	{
-		RoadLineIds.append(laneShow(lanesPoints[c]));		
-	}
+	//AcDbObjectIdArray RoadLineIds;
+	//for (int c = 0; c < lanesPoints.size(); c++)
+	//{
+	//	RoadLineIds.append(laneShow(lanesPoints[c]));		
+	//}
 
-	scopeShow(scopePts);
+	//scopeShow(scopePts);
 
-	for (int d = 0; d < pillarPoints.size(); d++)
-	{
-		pillarShow(pillarPoints[d]);
-	}
+	//for (int d = 0; d < pillarPoints.size(); d++)
+	//{
+	//	pillarShow(pillarPoints[d]);
+	//}
 
-	for (int e = 0; e < arrowPoints.size(); e++)
-	{
-		arrowShow(arrowPoints[e]);
-	}
-	//生成车道标注
-	double dTransLaneWidth = dLaneWidth * 1000;
-	if (dTransLaneWidth == 0)
-	{
-		acutPrintf(_T("车道宽度数据有误！"));
-	}
-	else
-	{
-		setLandDismensions(dTransLaneWidth, RoadLineIds);
-	}
-	DBHelper::CallCADCommand(_T("ANM "));
-	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
-	CEquipmentroomTool::setLayerClose(sAxisLayerName);
-	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-	CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
-	CEquipmentroomTool::layerSet(_T("0"), 7);
+	//for (int e = 0; e < arrowPoints.size(); e++)
+	//{
+	//	arrowShow(arrowPoints[e]);
+	//}
+	////生成车道标注
+	//double dTransLaneWidth = dLaneWidth * 1000;
+	//if (dTransLaneWidth == 0)
+	//{
+	//	acutPrintf(_T("车道宽度数据有误！"));
+	//}
+	//else
+	//{
+	//	setLandDismensions(dTransLaneWidth, RoadLineIds);
+	//}
+	//DBHelper::CallCADCommand(_T("ANM "));
+	//CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
+	//CEquipmentroomTool::setLayerClose(sAxisLayerName);
+	//CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+	//CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
+	//CEquipmentroomTool::layerSet(_T("0"), 7);
 	return true;
 }
 

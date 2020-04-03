@@ -474,12 +474,12 @@ char* CCommonFuntion::ACHARtoChar(const ACHAR* src)
 	WideCharToMultiByte(CP_ACP, 0, src, -1, pszMultiByte, iSize, NULL, NULL);
 	return pszMultiByte;
 }
-AcDbObjectId CCommonFuntion::PostToModelSpace(AcDbEntity* pEnt)
+AcDbObjectId CCommonFuntion::PostToModelSpace(AcDbEntity* pEnt, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	// 获得指向块表的指针
 	AcDbBlockTable *pBlockTable = NULL;
 	//workingDatabase()能够获得一个指向当前活动的图形数据库的指针，
-	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
+	pDb->getBlockTable(pBlockTable, AcDb::kForRead);
 	// 获得指向特定的块表记录（模型空间）的指针
 	AcDbBlockTableRecord *pBlockTableRecord = NULL;
 	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord, AcDb::kForWrite);
@@ -564,7 +564,7 @@ void CCommonFuntion::DrowPloyLine(AcGePoint2dArray& inputpoints, AcDbDatabase *p
 	pPolyLine->close();
 }
 
-AcDbObjectIdArray CCommonFuntion::DrowLine(AcGePoint3dArray& inputpoints)
+AcDbObjectIdArray CCommonFuntion::DrowLine(AcGePoint3dArray& inputpoints, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	AcDbObjectIdArray ids;
 	if (inputpoints.length() < 2)
@@ -575,7 +575,7 @@ AcDbObjectIdArray CCommonFuntion::DrowLine(AcGePoint3dArray& inputpoints)
 		if (i == inputpoints.length() - 1)
 		{
 			AcDbLine *pPline = new AcDbLine(inputpoints[i], inputpoints[0]);
-			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline);
+			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline,pDb);
 			if (pPline)
 				pPline->close();
 			ids.append(ID);
@@ -583,7 +583,7 @@ AcDbObjectIdArray CCommonFuntion::DrowLine(AcGePoint3dArray& inputpoints)
 		else
 		{
 			AcDbLine *pPline = new AcDbLine(inputpoints[i], inputpoints[i + 1]);
-			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline);
+			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline,pDb);
 			if (pPline)
 				pPline->close();
 			ids.append(ID);
@@ -724,11 +724,10 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		CString disText;
 		int iDistance = ceil(movedata);
 		disText.Format(_T("%d"), iDistance);
-		
 		AcDbObjectId id = CreateDimAligned(Pt1, Pt2, centerpt, disText, pDb);
+
 		if (id == NULL)
 			return;
-
         CCommonFuntion::setEntityLayer(setLayerName, id,pDb);
 
 	}
@@ -773,11 +772,18 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	AcDbObjectId CCommonFuntion::CreateDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 	{
+		//AcGePoint3d pt1s(0,0,0);
+		//AcGePoint3d pt2s(1000,0,0);
+		//AcGePoint3d ptLines(0,100,0);
+		//AcDbAlignedDimension *pnewdims = new AcDbAlignedDimension(pt1s, pt2s, ptLines);//创建标注实体
+		//AcDbObjectId dimids;
+		//DBHelper::AppendToDatabase(dimids,pnewdims,pDb);
+		Acad::ErrorStatus es = eOk;
 		CString str = _T("车道轴网尺寸标注样式");
 		AcDbObjectId id;
 		////获得当前图形的标注样式表  
 		AcDbDimStyleTable* pDimStyleTbl;
-		pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+		es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
 		if (pDimStyleTbl->has(str))
 			pDimStyleTbl->getAt(str, id);
 		else
@@ -787,15 +793,15 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		}
 		pDimStyleTbl->close();
 
-		AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine, NULL, id);//创建标注实体
-		pnewdim->setDimtxt(500);//标注文字的高度
-		pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
-		pnewdim->setDimtmove(1);
-
+		AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine,NULL,id);//创建标注实体
+		//pnewdim->setDimtxt(500);//标注文字的高度
+		//pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+		//pnewdim->setDimtmove(1);
 		AcDbObjectId dimid;
-		AcDbObjectId dimensionId = CCommonFuntion::PostToModelSpace(pnewdim);
-
-		return dimensionId;
+		es = DBHelper::AppendToDatabase(dimid,pnewdim,pDb);
+		//AcDbObjectId dimensionId = CCommonFuntion::PostToModelSpace(pnewdim,pDb);
+		pnewdim->close();
+		return dimid;
 	}
 
 	//根据相对直角坐标来计算一个点的位置：
@@ -1524,7 +1530,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 	{
 		// 获得当前图形的标注样式表
 		AcDbDimStyleTable *pDimStyleTbl = NULL;
-		pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+		Acad:;ErrorStatus es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
 		if (pDimStyleTbl->has(stylename))
 		{
 			pDimStyleTbl->close();//已经存在

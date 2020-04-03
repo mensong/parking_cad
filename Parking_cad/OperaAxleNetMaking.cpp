@@ -116,7 +116,7 @@ void COperaAxleNetMaking::Start()
 
 			//这里设置轴网标注所在图层
 			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-			CEquipmentroomTool::creatLayerByjson("axis_dimensions");
+			CEquipmentroomTool::creatLayerByjson("axis_dimensions",pDb);
 			//CCommonFuntion::setLayer(setlayernameofAXSI, 255);
 
 			//初次处理四边的轴线，标注
@@ -179,7 +179,7 @@ void COperaAxleNetMaking::Start()
 
 			//这里设置轴网标注所在图层
 			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-			CEquipmentroomTool::creatLayerByjson("axis_dimensions");
+			CEquipmentroomTool::creatLayerByjson("axis_dimensions",pDb);
 			//CCommonFuntion::setLayer(setlayernameofAXSI,0);
 
 			std::vector<AcDbObjectId> outIds_1;
@@ -261,7 +261,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 		if (CCommonFuntion::IsParallel(lefupPt, rigthupPt, startpt, endptpt))
 		{
 			AcDbLine *Line = new AcDbLine(lefupPt, rigthupPt);
-			AcDbObjectId Lineid = CCommonFuntion::PostToModelSpace(Line);
+			AcDbObjectId Lineid = CCommonFuntion::PostToModelSpace(Line,pDb);
 			if (Line)
 				Line->close();
 
@@ -301,11 +301,12 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			//轴号标注
 			COperaAxleNetMaking::inserAadAxleNum(sortIds, lefupPt, lefdownPt,/* 1,*/ 1, AxisNumberMap,pDb);
 
+		
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"),pDb);
 
 			//这里设置轴网标注所在图层
 			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-			CEquipmentroomTool::creatLayerByjson("axis_dimensions");
+			CEquipmentroomTool::creatLayerByjson("axis_dimensions",pDb);
 			//CCommonFuntion::setLayer(setlayernameofAXSI, 255);
 
 			//初次处理四边的轴线，标注
@@ -327,7 +328,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 		else
 		{
 			AcDbLine *Line = new AcDbLine(lefupPt, lefdownPt);
-			AcDbObjectId Lineid = CCommonFuntion::PostToModelSpace(Line);
+			AcDbObjectId Lineid = CCommonFuntion::PostToModelSpace(Line,pDb);
 			AcDbObjectIdArray LeftIds;
 
 			std::vector<double> distancevet;
@@ -368,7 +369,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 
 			//这里设置轴网标注所在图层
 			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-			CEquipmentroomTool::creatLayerByjson("axis_dimensions");
+			CEquipmentroomTool::creatLayerByjson("axis_dimensions",pDb);
 			//CCommonFuntion::setLayer(setlayernameofAXSI,0);
 
 			std::vector<AcDbObjectId> outIds_1;
@@ -388,6 +389,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 void COperaAxleNetMaking::InitialProcessing(const CString& layerNameofAXSI,AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt
 	, std::vector<AcDbObjectId>& outputIds, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
+
 	AcDbEntity *pEnt = NULL;
 	AcDbEntity *pTempEnt = NULL;
 	AcDbLine *TempLine = new AcDbLine(inputstartpt, inputendpt);
@@ -419,6 +421,7 @@ void COperaAxleNetMaking::InitialProcessing(const CString& layerNameofAXSI,AcDbO
 			}
 
 			AcGeVector3d vec = AcGeVector3d(interwithpointstemp[0] - interwithpoints[0]);
+
 			CCommonFuntion::DrowDimaligned(layerNameofAXSI,interwithpoints[0], interwithpointstemp[0],pDb);
 			if (std::find(outputIds.begin(), outputIds.end(), sortIds[m]) == outputIds.end())
 				outputIds.push_back(sortIds[m]);
@@ -741,7 +744,7 @@ AcGePoint3d COperaAxleNetMaking::getChangPoint(AcGePoint3d& basept, AcGeVector3d
 
 void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, /*int casenum,*/ int plusorminus/*=1*/, std::map<AcDbObjectId, AcString>& AxisNumberMap, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
-	CEquipmentroomTool::creatLayerByjson("axis_dimensions");//创建轴号所在图层
+	CEquipmentroomTool::creatLayerByjson("axis_dimensions",pDb);//创建轴号所在图层
 
 	CString sBlockName = _T("_AxleNumber");
 	std::set<AcString> setBlockNames;

@@ -10,18 +10,18 @@
 
 
 std::string COperaMultiSchemeShow::ms_json;
-void OpenDoc( void *pData)
-{
-	AcApDocument* pDoc = acDocManager->curDocument();
-	if (acDocManager->isApplicationContext()) 
-	{
-		acDocManager->appContextOpenDocument((const ACHAR *)pData);
-	} 
-	else
-	{
-		acutPrintf(_T("\nERROR To Open Doc!\n"));
-	}
-}
+//void OpenDoc( void *pData)
+//{
+//	AcApDocument* pDoc = acDocManager->curDocument();
+//	if (acDocManager->isApplicationContext()) 
+//	{
+//		acDocManager->appContextOpenDocument((const ACHAR *)pData);
+//	} 
+//	else
+//	{
+//		acutPrintf(_T("\nERROR To Open Doc!\n"));
+//	}
+//}
 
 
 COperaMultiSchemeShow::COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
@@ -37,6 +37,8 @@ COperaMultiSchemeShow::~COperaMultiSchemeShow()
 void COperaMultiSchemeShow::Start()
 {
 	creatNewDwg();
+	/*CString sLineTypeFile = _T("C:\\Users\\admin\\AppData\\Roaming\\Autodesk\\AutoCAD 2014\\R19.1\\chs\\Support\\acad.lin");
+	acdbLoadLineTypeFile(_T("continuousx"),sLineTypeFile,NULL);*/
 	/*acDocManager->executeInApplicationContext(OpenDoc, (void *)pData);
 	if (acDocManager->isApplicationContext())
 	{
@@ -339,6 +341,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 		return false;
 	}
 	Doc_Locker _locker;
+	CEquipmentroomTool::layerSet(_T("0"), 7,pDataBase);
 	CString blockName;
 	creatNewParking(dParkingLength, dParkingWidth, blockName, pDataBase);
 	for (int a = 0; a < parkingPts.length(); a++)
@@ -382,14 +385,27 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	{
 		setLandDismensions(dTransLaneWidth, RoadLineIds,pDataBase);
 	}
+	int tagnum = 0;
+	int addtagnum = 0;
+	int num = 0;//横向编号
+	CString tagvalue;//轴号属性值
+	CString csAddtagvalue = _T("");
+	std::map<AcDbObjectId, AcString> AxisNumberMap;
+	for (int i = 0; i < axisIds.length(); ++i)
+	{
+		COperaAxleNetMaking::LongitudinalNumbering(tagnum, addtagnum, tagvalue, csAddtagvalue);
+		AxisNumberMap[axisIds[i]] = tagvalue;
+	}
+	
+	COperaAxleNetMaking::drawAxisNumber(axisIds, AxisNumberMap,pDataBase);
 
 	//COperaAxleNetMaking::creatAxisDim(axisIds,pDataBase);
 	//DBHelper::CallCADCommand(_T("ANM "));
 	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
-	CEquipmentroomTool::setLayerClose(sAxisLayerName);
-	//CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-	//CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
-	//CEquipmentroomTool::layerSet(_T("0"), 7);
+	CEquipmentroomTool::setLayerClose(sAxisLayerName,pDataBase);
+	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+	CEquipmentroomTool::setLayerClose(sAxisDimLayerName,pDataBase);
+	CEquipmentroomTool::layerSet(_T("0"), 7,pDataBase);
 	return true;
 }
 
@@ -521,7 +537,7 @@ void COperaMultiSchemeShow::creatNewDwg()
 	if (CEquipmentroomTool::allEntMoveAndClone(pDb))
 	{
 		acutPrintf(_T("\n多方案排布放置失败！"));
-		return;
+		//return;
 	}
 	
 	for (int i=1; i<3; i++)
@@ -543,8 +559,12 @@ void COperaMultiSchemeShow::creatNewDwg()
 	
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
-	DBHelper::OpenFile(newFileName);
-
+	es = acDocManager->activateDocument(DBHelper::OpenFile(newFileName));
+	if (es!=eOk)
+	{
+		acutPrintf(_T("文件打开失败！"));
+		return;
+	}
 	int stop = 0;
 }
 
@@ -554,7 +574,7 @@ void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 	std::set<AcString> setBlockNames;
 	setBlockNames.insert(_T("car_1"));
 	ObjectCollector oc;
-	oc.start(acdbCurDwg());
+	oc.start(pDb);
 	if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/,pDb))
 	{
 		acedAlert(_T("加载模板文件出错！"));
@@ -563,7 +583,8 @@ void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 	if (oc.m_objsAppended.length() > 0)
 	{
 		CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
-		CEquipmentroomTool::layerSet(sParkingsLayer, 7);
+		CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext",pDb);
+		//CEquipmentroomTool::layerSet(sParkingsLayer, 7,pDb);
 
 		for (int i = 0; i < oc.m_objsAppended.length(); i++)
 		{
