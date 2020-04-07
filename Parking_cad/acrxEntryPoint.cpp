@@ -34,6 +34,7 @@
 #include "DlgBipLogin.h"
 #include "Authenticate\HardDiskSerial.h"
 #include "KVHelp.h"
+#include "OperaSetConfig.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -106,6 +107,9 @@ public:
 		LoadCuix::Load(filepath);
 		LoadCuix::ShowToolbarAsyn(_T("智能地库"));
 		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
+
+		//加载天正所有线型
+		COperaSetConfig::loadAllLinetype();
 
 		return (retCode) ;
 	}

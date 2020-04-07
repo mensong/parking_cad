@@ -54,6 +54,7 @@ public:
 	static void creatTextStyle(CString& textStyleName);
 	/*从配置文件获取图层名*/
 	static std::string getLayerName(const std::string& strLayer);
+	static std::string getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key);
 	/*删除指定图层*/
 	static bool deletLayerByName(const CString& layerNaem); 
 	static Acad::ErrorStatus deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT = NULL);
