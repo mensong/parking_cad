@@ -32,6 +32,7 @@
 #include "ListCtrlCustom.h"
 #include "DlgSlider.h"
 #include "json\value.h"
+
 //-----------------------------------------------------------------------------
 class CDlgSetConfig : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgSetConfig)

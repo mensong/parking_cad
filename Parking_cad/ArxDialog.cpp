@@ -41,6 +41,7 @@
 #include "OperaAddFrame.h"
 #include "OperaCheck.h"
 #include "KV.h"
+#include "OperaSetConfig.h"
 
 std::string CArxDialog::ms_posturlPortone;
 std::string CArxDialog::ms_posturlPorttwo;
@@ -297,6 +298,10 @@ BOOL CArxDialog::OnInitDialog()
 	GetDlgItem(IDC_EDIT_Length)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_STATIC_m)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_HIDE);
+
+	//加载天正所有线型
+	COperaSetConfig::loadAllLinetype();
+
 	return bRet;
 }
 

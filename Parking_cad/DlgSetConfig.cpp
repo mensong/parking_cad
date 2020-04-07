@@ -32,6 +32,7 @@
 #include "DBHelper.h"
 #include "FileHelper.h"
 #include "EquipmentroomTool.h"
+#include "OperaSetConfig.h"
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgSetConfig, CAcUiDialog)
 
@@ -183,9 +184,9 @@ void CDlgSetConfig::OnBnClickedOk()
 		CString sTemp5(items[aCount][2].c_str());
 		changeLayerName(oldLayerName[aCount], sTemp5, sTemp, sTemp2, sTemp1, sTemp4, sTemp3);
 	}
-
-	//添加线型数组
-	m_root["alllinetype"]["tag"] = linetypearray;
+// 
+// 	//添加线型数组
+// 	m_root["alllinetype"]["tag"] = linetypearray;
 
 	//Json::Value root;//根节点
 	Json::Value params;
@@ -251,6 +252,9 @@ BOOL CDlgSetConfig::OnInitDialog()
 	CAcUiDialog::OnInitDialog();
 	
 	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+
+	//加载天正所有线型
+	COperaSetConfig::loadAllLinetype();
 
 	m_EditTest.ShowWindow(SW_HIDE);
 	m_PrintableCombo.ShowWindow(SW_HIDE);
@@ -339,7 +343,7 @@ BOOL CDlgSetConfig::OnInitDialog()
 		sCount.Format(_T("%d"), i+1);
 		setListValueText(i, sCount, sProfessionalAttributes, sLayerName, sLayerColor, sLayerLinetype, sLayerWidth, sTransparency, sIsPrintf);
 	}
-
+	
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -351,7 +355,7 @@ void CDlgSetConfig::init()
 	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
-	
+
 	if (reader.parse(sConfigStr, m_root))
 	{
 		if (m_root["params"]["posturl"].isNull() || m_root["params"]["geturl"].isNull())
@@ -360,6 +364,7 @@ void CDlgSetConfig::init()
 			return;
 		}
 		if (m_root["params"]["posturl"].isString() && m_root["params"]["geturl"].isString())
+
 		{
 			m_strUiPostUrl = m_root["params"]["posturl"].asString();
 			m_strUiGetUrl = m_root["params"]["geturl"].asString();
