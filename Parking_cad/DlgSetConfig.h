@@ -31,6 +31,7 @@
 #include "afxcmn.h"
 #include "ListCtrlCustom.h"
 #include "DlgSlider.h"
+#include "json\value.h"
 //-----------------------------------------------------------------------------
 class CDlgSetConfig : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgSetConfig)
@@ -55,8 +56,10 @@ public:
 	std::string m_strUiPostUrl;
 	std::string m_strUiGetUrl;
 	std::string m_strEntranceUrl;
+	Json::Value linetypearray;
 	
-	
+	Json::Value m_root;
+
 	int hitRow;
 	int hitCol;
 	afx_msg void OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult);

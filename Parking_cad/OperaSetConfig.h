@@ -12,9 +12,7 @@ public:
 	static class CDlgSetConfig* ms_SetConfigDlg;
 
 	//获取acad.lin文件里的线型名称
-	static std::vector<CString> getACADLINtag(const AcString& filepath);
-	//字符串分割到数组
-	static void splitTagValue(CString& src, const std::string& separator, std::vector<std::string>& dest);
+	static std::vector<CString> getACADLINtag();
 	static Acad::ErrorStatus getLineTypeId(AcDbObjectId &linetypeid, const AcString& tag, const AcString& acadlinfilepath, AcDbDatabase *pDb = acdbCurDwg());
 	static Acad::ErrorStatus getLinetypeIdFromString(const AcString& tag, AcDbObjectId& id, AcDbDatabase *pDb = acdbCurDwg());
 	static void loadAllLinetype();
