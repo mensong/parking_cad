@@ -31,6 +31,8 @@
 #include "afxcmn.h"
 #include "ListCtrlCustom.h"
 #include "DlgSlider.h"
+#include "json\value.h"
+
 //-----------------------------------------------------------------------------
 class CDlgSetConfig : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgSetConfig)
@@ -56,6 +58,7 @@ public:
 	std::string m_strUiGetUrl;
 	std::string m_strEntranceUrl;
 	
+	Json::Value m_root;
 	
 	int hitRow;
 	int hitCol;
