@@ -982,6 +982,64 @@ std::string CEquipmentroomTool::getJsonInformation(const std::string& inputroot,
 	return keyvalue;
 }
 
+void CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key, std::vector<std::string>& arrayvector)
+{
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+
+	if (reader.parse(sConfigStr, root))
+	{
+		if (root[inputroot][object].isNull())
+		{
+			if (!root[inputroot][key].isNull())
+			{
+				if (root[inputroot][key].isArray())
+				{
+					Json::Value& keyvalue = root[inputroot][key];
+					for (int i = 0; i < keyvalue.size(); i++)
+					{
+						std::string str = keyvalue[i].asString();
+						arrayvector.push_back(str);
+					}
+					return;
+				}
+				else
+				{
+					acedAlert(_T("配置文件字段格式不匹配！"));
+					return ;
+				}
+			}
+
+			CString strErrorMessage(object.c_str());
+			acutPrintf(_T("配置文件不存在[\"layer_config\"][\"%s]字段！"), strErrorMessage.GetString());
+			return ;
+		}
+		if (root[inputroot][object][key].isArray())
+		{
+			Json::Value& keyvalue = root[inputroot][key];
+			for (int i = 0; i < keyvalue.size(); i++)
+			{
+				std::string str = keyvalue[i].asString();
+				arrayvector.push_back(str);
+			}
+		}
+		else
+		{
+			acedAlert(_T("配置文件字段格式不匹配！"));
+			return ;
+		}
+	}
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return ;
+	}	
+
+}
+
 bool CEquipmentroomTool::deletLayerByName(const CString& layerName)
 {
 	AcDbLayerTable *pLayerTbl;

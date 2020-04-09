@@ -26,23 +26,11 @@ void COperaSetConfig::Start()
 	m_tol.setEqualPoint(200);
 }
 
-std::vector<CString> COperaSetConfig::getACADLINtag(const AcString& filepath)
+std::vector<CString> COperaSetConfig::getACADLINtag()
 {
-	/*ACHAR keyvalue[1024];
-	memset(keyvalue, 0x00, sizeof(keyvalue));
-	DWORD ret = GetPrivateProfileStringW(_T("ACADLIN"), _T("Tag"), NULL, keyvalue, 1024, filepath);
-	if (ret == 0)
-	{
-		return csVector;
-	}*/
-
-	std::string keyvalue = CEquipmentroomTool::getJsonInformation("layer_config", "alllinetype", "tag");
-
-	std::vector<CString> csVector;
-	CString valuedata(keyvalue.c_str());
 	std::vector<std::string> keyvaluevector;
-	COperaSetConfig::splitTagValue(valuedata, "|", keyvaluevector);
-
+	CEquipmentroomTool::getJsonInformation("alllinetype", "", "tag", keyvaluevector);
+	std::vector<CString> csVector;
 	for (int i = 0; i < keyvaluevector.size(); ++i)
 	{
 		CString cstr(keyvaluevector[i].data());
@@ -50,32 +38,6 @@ std::vector<CString> COperaSetConfig::getACADLINtag(const AcString& filepath)
 	}
 
 	return csVector;
-}
-
-void COperaSetConfig::splitTagValue(CString& src, const std::string& separator, std::vector<std::string>& dest)
-{
-	//参数1：要分割的字符串；参数2：作为分隔符的字符；参数3：存放分割后的字符串的vector向量
-
-	std::string str = CT2A(src.GetBuffer());
-	std::string substring;
-	std::string::size_type start = 0, index;
-	dest.clear();
-	index = str.find_first_of(separator, start);
-	do
-	{
-		if (index != std::string::npos)
-		{
-			substring = str.substr(start, index - start);
-			dest.push_back(substring);
-			start = index + separator.size();
-			index = str.find(separator, start);
-			if (start == std::string::npos) break;
-		}
-	} while (index != std::string::npos);
-
-	//the last part
-	substring = str.substr(start);
-	dest.push_back(substring);
 }
 
 Acad::ErrorStatus COperaSetConfig::getLineTypeId(AcDbObjectId &linetypeid, const AcString& tag, const AcString& acadlinfilepath, AcDbDatabase *pDb /*= acdbCurDwg()*/)
@@ -111,8 +73,7 @@ Acad::ErrorStatus COperaSetConfig::getLinetypeIdFromString(const AcString& tag, 
 
 void COperaSetConfig::loadAllLinetype()
 {
-	AcString filepath = DBHelper::GetArxDir() + _T("getacadlinconfig.ini");
-	std::vector<CString> tagvaluevector = COperaSetConfig::getACADLINtag(filepath);
+	std::vector<CString> tagvaluevector = COperaSetConfig::getACADLINtag();
 
 	AcString acadlinfilepath = DBHelper::GetArxDir() + _T("ACAD.LIN");
 	for (int i = 0; i < tagvaluevector.size(); ++i)
