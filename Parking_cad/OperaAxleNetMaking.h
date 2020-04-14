@@ -60,6 +60,5 @@ public:
 	//设置实体的颜色
 	static void setEntColor(AcDbObjectId& id, uint16_t colornum);
 	static AcDbObjectId DrowLine(AcGePoint3d& starpt, AcGePoint3d& endpt, AcDbDatabase *pDb = acdbCurDwg());
-
 	static AcString getTagvaluefromMap(std::map<AcDbObjectId, AcString>& AxisNumberMap, AcDbObjectId& id);
 };

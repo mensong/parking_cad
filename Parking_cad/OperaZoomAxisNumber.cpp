@@ -5,6 +5,7 @@
 #include "CommonFuntion.h"
 #include "MinimumRectangle.h"
 #include "DBHelper.h"
+#include <algorithm>
 
 REG_CMD(COperaZoomAxisNumber, BGY, COZSN);
 
@@ -52,7 +53,6 @@ void COperaZoomAxisNumber::Start()
 
 		AcGePoint3dArray pts = COperaZoomAxisNumber::getLinesPoints(lineids);
 		AcGePoint3dArray fectanglepts = CMinimumRectangle::getMinRact(pts);
-
 		if (fectanglepts.length() != 4)
 			continue;
 

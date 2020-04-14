@@ -105,6 +105,7 @@
     <ClCompile Include="..\Parking_cad\IOperaLog.cpp" />
     <ClCompile Include="..\Parking_cad\KVHelp.cpp" />
     <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp" />
+    <ClCompile Include="..\Parking_cad\MinimumRectangle.cpp" />
     <ClCompile Include="..\Parking_cad\MyEdit.cpp" />
     <ClCompile Include="..\Parking_cad\MyMessageBox.cpp" />
     <ClCompile Include="..\Parking_cad\OperaAddFrame.cpp" />
@@ -126,6 +127,7 @@
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
     <ClCompile Include="..\Parking_cad\OperaTest.cpp" />
     <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaZoomAxisNumber.cpp" />
     <ClCompile Include="..\Parking_cad\ParkingLog.cpp" />
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
@@ -195,6 +197,7 @@
     <ClInclude Include="..\Parking_cad\KVHelp.h" />
     <ClInclude Include="..\Parking_cad\lib_bipsignin.h" />
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h" />
+    <ClInclude Include="..\Parking_cad\MinimumRectangle.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />
     <ClInclude Include="..\Parking_cad\MyMessageBox.h" />
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h" />
@@ -216,6 +219,7 @@
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
     <ClInclude Include="..\Parking_cad\OperaTest.h" />
     <ClInclude Include="..\Parking_cad\OperaVillageSet.h" />
+    <ClInclude Include="..\Parking_cad\OperaZoomAxisNumber.h" />
     <ClInclude Include="..\Parking_cad\ParkingLog.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />

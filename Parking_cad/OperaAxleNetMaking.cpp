@@ -247,7 +247,6 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			continue;
 
 		AcDbExtents exts = CCommonFuntion::GetBigExtents(Ids);
-
 		AcGePoint3d lefdownPt = exts.minPoint();
 		AcGePoint3d lefupPt = AcGePoint3d(exts.minPoint().x, exts.maxPoint().y, 0);
 		AcGePoint3d rigthupPt = exts.maxPoint();
@@ -328,8 +327,6 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			AcDbObjectIdArray specialoutputIds_1;
 			if (specaildealIds.length() >= 2)
 				SpecialDeal(setlayernameofAXSI, specaildealIds, lefupPt, lefdownPt, rigthdownPt, rigthupPt, layername,pDb);
-
-
 		}
 		else
 		{
@@ -354,7 +351,6 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			CCommonFuntion::DeleteEnt(Lineid);
 
 			std::sort(distancevet.begin(), distancevet.end());
-
 
 			AcDbObjectIdArray tempsortIds;
 			for (int m = 0; m < distancevet.size(); m++)
@@ -780,7 +776,8 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 		//tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]).constPtr();
 		AcString keyvalue;
 		DBHelper::GetXData(sortIds[i], _T("ÖáºÅ"),keyvalue);
-		tagvalue = keyvalue;
+		ACHAR *strtochar = DBHelper::ACHARAcString(keyvalue);
+		tagvalue = strtochar;
 		
 		if (i == 0 && i != sortIds.length() - 1)
 		{

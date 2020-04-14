@@ -7,7 +7,6 @@ class COperaZoomAxisNumber :
 public:
 	COperaZoomAxisNumber();
 	~COperaZoomAxisNumber();
-
 	virtual void Start();
 
 public:

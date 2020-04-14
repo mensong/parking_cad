@@ -1610,7 +1610,6 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		pEnt->close();
 	}
 
-
 void CCommonFuntion::addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcString& sBlockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 	{
 		AcDbEntity *pEnt = NULL;

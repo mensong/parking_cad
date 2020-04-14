@@ -91,11 +91,7 @@ public:
 	static void deleteAcDbBlockTableRecord(CString& strBlockName);
 	
 public:
-	/*
-	*
-	  两条曲线最短距离
-	                  *
-	                   */
+	/**两条曲线最短距离**/
 	static double GetLineDistance(AcDbObjectId& Line1,AcDbObjectId& Line2);
 	static AcGeLineSeg2d GetGeLineObj(AcDbObjectId lineId);
 	static AcGePoint2d ToPoint2d(const AcGePoint3d &point3d);

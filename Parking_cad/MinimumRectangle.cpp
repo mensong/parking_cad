@@ -6,7 +6,6 @@ CMinimumRectangle::CMinimumRectangle()
 {
 }
 
-
 CMinimumRectangle::~CMinimumRectangle()
 {
 }
