@@ -20,7 +20,10 @@ void COperaLifePumpHouseSet::Start()
 	CEquipmentroomTool::layerSet();
 	double LifepumpAreaSideLength = 0;
 	double limitLength = 4000;
-	AcDbObjectIdArray LifepumpAreaJigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(LifePumpHouse), _T("生活泵房"), LifepumpAreaSideLength, limitLength);
+	double dnewArea = CEquipmentroomTool::areaScale(LifePumpHouse);
+	if (dnewArea == 0)
+		return;
+	AcDbObjectIdArray LifepumpAreaJigUseIds = CEquipmentroomTool::createArea(dnewArea, _T("生活泵房"), LifepumpAreaSideLength, limitLength);
 	CEquipmentroomTool::setEntToLayer(LifepumpAreaJigUseIds);
 	CEquipmentroomTool::jigShow(LifepumpAreaJigUseIds, LifepumpAreaSideLength);
 }

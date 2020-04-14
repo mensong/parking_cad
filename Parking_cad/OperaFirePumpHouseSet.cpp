@@ -24,7 +24,10 @@ void COperaFirePumpHouseSet::Start()
 	CEquipmentroomTool::layerSet();
 	double FirePumpHouseSideLength = 0;
 	double limitLength = 5500;
-	AcDbObjectIdArray FirePumpHouseJigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(dfirePumpHouseArea), _T("消防泵房"), FirePumpHouseSideLength, limitLength);
+	double dnewArea = CEquipmentroomTool::areaScale(dfirePumpHouseArea);
+	if (dnewArea == 0)
+		return;
+	AcDbObjectIdArray FirePumpHouseJigUseIds = CEquipmentroomTool::createArea(dnewArea, _T("消防泵房"), FirePumpHouseSideLength, limitLength);
 	CEquipmentroomTool::setEntToLayer(FirePumpHouseJigUseIds);
 	CEquipmentroomTool::jigShow(FirePumpHouseJigUseIds, FirePumpHouseSideLength);
 }

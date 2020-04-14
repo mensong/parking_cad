@@ -19,7 +19,8 @@ void COperaEquipmentroomRelated::Start()
 {
 
 //通风设备房
-	double totalArea = CEquipmentroomTool::getTotalArea(_T("地库总面积:"));
+	double totalArea = 0;
+	CEquipmentroomTool::getTotalArea(_T("地库总面积:"), totalArea);
 	if (totalArea == 0)
 	{
 		acutPrintf(_T("\n输入错误！"));
