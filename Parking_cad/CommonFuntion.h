@@ -85,6 +85,10 @@ public:
 	//车道轴网尺寸标注
 	static void creatLaneGridDimensionsDimStyle(const CString& stylename, AcDbDatabase *pDb = acdbCurDwg());
 	static void setEntityLayer(const AcString& setlayername, AcDbObjectId& entityId, AcDbDatabase *pDb = acdbCurDwg());
+	//将实体添加到指定块定义中
+	static void addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcString& sBlockName, AcDbDatabase *pDb = acdbCurDwg());
+	//删除块定义
+	static void deleteAcDbBlockTableRecord(CString& strBlockName);
 	
 public:
 	/*
