@@ -1609,3 +1609,68 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		pEnt->setLayer(setlayername);
 		pEnt->close();
 	}
+
+void CCommonFuntion::addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcString& sBlockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+	{
+		AcDbEntity *pEnt = NULL;
+		std::vector<AcDbEntity*> vctEnts;
+
+		for (int i=0; i<EntyIds.length(); ++i)
+		{
+			Acad::ErrorStatus es = acdbOpenObject(pEnt, EntyIds[i], AcDb::kForWrite);
+			if (es != eOk)
+				continue;
+
+			vctEnts.push_back(pEnt);
+
+			if (pEnt)
+				pEnt->close();
+		}
+		
+		DBHelper::CreateBlock(sBlockName,vctEnts);
+}
+
+void CCommonFuntion::deleteAcDbBlockTableRecord(CString& strBlockName)
+{
+	//获取当前图形数据库
+	AcDbBlockTable* pBlkTbl = NULL;
+	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlkTbl, AcDb::kForWrite);
+	//查询块是否已存在
+	if (!pBlkTbl->has(strBlockName))
+	{
+		pBlkTbl->close();
+		return;
+	}
+		
+	//获取块的插入点
+	AcGePoint3d ptInsert(0, 0, 0);
+	//获取块表记录
+	AcDbObjectId blkDefId;
+	pBlkTbl->getAt(strBlockName, blkDefId);
+	pBlkTbl->close();
+	AcDbBlockTableRecord *pDBlkRe = NULL;
+	if (acdbOpenObject(pDBlkRe, blkDefId, AcDb::kForWrite) != eOk)
+		return;
+
+	AcDbObjectIdArray ids;
+	pDBlkRe->getBlockReferenceIds(ids);
+
+	AcDbBlockTableRecordIterator *pIte = NULL;
+	 Acad::ErrorStatus es = pDBlkRe->newIterator(pIte);
+	 AcDbEntity *pEnt = NULL;
+	 for (pIte->start(); !pIte->done(); pIte->step())
+	 {
+		 if(pIte->getEntity(pEnt, AcDb::kForWrite)!=eOk)
+			 continue;
+
+		 pEnt->erase();
+		 if (pEnt)
+			 pEnt->close();
+	 }
+	 delete pIte;
+	
+	pDBlkRe->erase();
+	if (pDBlkRe)
+		pDBlkRe->close();
+
+}
