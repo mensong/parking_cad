@@ -24,5 +24,11 @@ public:
 	CString doubleToCString(double num);
 	static void setCloudLineWidth(AcDbObjectId cloudLineId);
 	static void setCurrentLayer(CString layerName);
+	AcGePoint2dArray getLineOtherPoint(const AcGePoint2d& lineStartPoint,const AcGePoint2d& lineEndPoint,const double& minArcLength, const double& maxArcLength);
+	AcDbObjectId creatArcPline(AcGePoint2dArray points, double width);
+	int getRandNum(const int& min,const int& max);
+	//AcGePoint2d afterMobile(AcGeVector2d moveDir,AcGePoint2d startPoint);
+	AcGePoint2dArray getOneParkPts(UINT32 parkHandle);
+	AcGePoint2dArray getOnePlineEntPts(AcDbEntity* pEntity);
 };
 

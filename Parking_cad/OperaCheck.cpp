@@ -6,7 +6,9 @@
 #include "EquipmentroomTool.h"
 #include "GeHelper.h"
 #include "DelayExecuter.h"
-
+#include "stdafx.h"
+#include <ctime>
+#include "RTreeEx.h"
 
 std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
@@ -54,21 +56,17 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaCheck::Start()
 {
-
 	//CEquipmentroomTool::test();
 	CEquipmentroomTool::creatLayerByjson("cloud_line");
-	//CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
-	//CString init = _T("_layer S ") + sCloudLineLayer+_T("\r\r");
-	//CString init = _T("_layer s 0\r\r");
-	//DBHelper::CallCADCommand(init);
-	AcDbDatabase *pDb = acdbCurDwg();
-	ObjectCollector* oc = new ObjectCollector;
-	Acad::ErrorStatus es = oc->start(pDb);
+	clock_t start, finish;
+	double totaltime;
+	start = clock();
 	overlapShow();
-	SetDelayExecute(ExeObjsCllecoter, 0, 0, (void*)oc, 0, false);
-		
+	finish = clock();
+	totaltime = (double)(finish - start) / CLOCKS_PER_SEC;
+	/*acedGetAcadDwgView()->SetFocus();
+	DBHelper::CallCADCommandEx(_T("REGEN"));*/
 	int ct = 0;
-
 }
 
 void COperaCheck::setUuid(const std::string& uuid)
@@ -232,108 +230,271 @@ void COperaCheck::blankCheckShow(const AcGePoint2dArray& blankCheckPts)
 
 void COperaCheck::overlapShow()
 {
+
+	//用于直线筛选的rtree
+	RT::RTreeEx<UINT32, double, 2> rTreeOfLineFilter;
+
 	//获取到所有车位面域
 	CString parkingLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
 	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(parkingLayer);
-	std::vector<AcDbObjectId> parkIds;
-	for (int i = 0; i < allParkingIds.length(); i++)
+	for (int a=0; a<allParkingIds.length(); a++)
 	{
-		parkIds.push_back(allParkingIds[i]);
+		AcDbEntity* pEntity = NULL;
+		if (acdbOpenAcDbEntity(pEntity, allParkingIds[a], kForRead) != eOk)
+			continue;
+		if (pEntity->isKindOf(AcDbBlockReference::desc()))
+		{
+			AcDbExtents LineExtents;
+			DBHelper::GetEntityExtents(LineExtents, pEntity);
+			AcGePoint3d maxPoint = LineExtents.maxPoint();
+			AcGePoint3d minPoint = LineExtents.minPoint();
+			double positionMin[2];
+			double positionMax[2];
+			positionMin[0] = minPoint.x;
+			positionMin[1] = minPoint.y;
+			positionMax[0] = maxPoint.x;
+			positionMax[1] = maxPoint.y;
+			AcDbObjectId id = pEntity->objectId();
+			UINT32 handle = DBHelper::GetObjectIdHandle(id);
+			rTreeOfLineFilter.Insert(positionMin, positionMax, handle);//装handle
+		}
+		pEntity->close();
 	}
-	std::vector<AcGePoint2dArray> parkingsPoints;
-	std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
-	CEquipmentroomTool::getParkingExtentPts(parkingsPoints, parkIds, parkingLayer, parkIdAndPts);
-	if (parkingsPoints.empty())
-	{
-		acutPrintf(_T("\n获取车位面域点组失败！"));
-		return;
-	}
-	//获取所有方柱面域
+
 	CString columnLayer(CEquipmentroomTool::getLayerName("column").c_str());
-	std::vector<AcGePoint2dArray> columnPts = getPlinePtsByLayer(columnLayer);
-	if (columnPts.empty())
+	AcDbObjectIdArray columnEntIds = DBHelper::GetEntitiesByLayerName(columnLayer);
+	for (int b=0; b<columnEntIds.length(); b++)
 	{
-		acutPrintf(_T("\n获取方柱面域点组失败！"));
-		return;
-	}
-	//获取剪力墙的面域
-	std::vector<AcGePoint2dArray> shearWallPts = getPlinePtsByLayer(ms_shearWallLayerName);
-	if (shearWallPts.empty())
-	{
-		acutPrintf(_T("\n获取剪力墙面域点组失败！"));
-		return;
-	}
-	for (int one=0; one<parkingsPoints.size(); one++)
-	{
-		for (int two=0; two<columnPts.size(); two++)
+		AcDbEntity* pEnt = NULL;
+		if (acdbOpenAcDbEntity(pEnt, columnEntIds[b], kForRead) != eOk)
+			continue;
+		if (pEnt->isKindOf(AcDbPolyline::desc()))
 		{
-			std::vector<AcGePoint2dArray> polyIntersections;
-			GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[one], columnPts[two], polyIntersections);
-			if (polyIntersections.size()>0)
+			std::vector<AcGePoint2dArray> allChekParkPts;
+			AcDbExtents columnExtents;
+			DBHelper::GetEntityExtents(columnExtents, pEnt);
+			AcGePoint3d maxPoint = columnExtents.maxPoint();
+			AcGePoint3d minPoint = columnExtents.minPoint();
+			double positionMin[2];
+			double positionMax[2];
+			positionMin[0] = minPoint.x;
+			positionMin[1] = minPoint.y;
+			positionMax[0] = maxPoint.x;
+			positionMax[1] = maxPoint.y;
+			std::set<UINT32 > parkEntset;
+			rTreeOfLineFilter.Search(positionMin, positionMax, &parkEntset);
+			std::set<UINT32>::const_iterator columnEntIter;
+			for (columnEntIter = parkEntset.begin(); columnEntIter != parkEntset.end(); columnEntIter++)
 			{
-				for (int three=0; three<polyIntersections.size(); three++)
+				UINT32 ptempEntHandle = *columnEntIter;//取得句柄
+				AcGePoint2dArray allPoints = COperaCheck::getOneParkPts(ptempEntHandle);
+				if (allPoints.length() == 0)
 				{
-					if (polyIntersections[three].length()<3)
-					{
-						continue;
-					}
-					double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-					if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
-					{
-						polyIntersections[three].append(polyIntersections[three][0]);
-					}
-					double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-					if (ss<1&&sss<1)
-					{
-						continue;
-					}
-					/*for (int four = 0; four < polyIntersections[three].length(); four++)
-					{
-						AcGePoint2d look = polyIntersections[three][four];
-						int as = polyIntersections[three].length();
-					}*/
-					AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-					creatCloudLine(plineExtentPts);
+					continue;
 				}
+				allChekParkPts.push_back(allPoints);
 			}
-		}	
-	}
-	for (int first=0; first<parkingsPoints.size(); first++)
-	{
-		for (int second=0; second<shearWallPts.size(); second++)
-		{
-			std::vector<AcGePoint2dArray> polyIntersections;
-			GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[first], shearWallPts[second], polyIntersections);
-			if (polyIntersections.size() > 0)
+			AcGePoint2dArray allPoints = getOnePlineEntPts(pEnt);
+			for (int b = 0; b < allChekParkPts.size(); b++)
 			{
-				for (int three = 0; three < polyIntersections.size(); three++)
+				std::vector<AcGePoint2dArray> polyIntersections;
+				GeHelper::GetIntersectionOfTwoPolygon(allChekParkPts[b], allPoints, polyIntersections);
+				if (polyIntersections.size()>0)
 				{
-					if (polyIntersections[three].length() < 3)
+					for (int three = 0; three<polyIntersections.size(); three++)
 					{
-						continue;
-					}
-					double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-					if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
-					{
-						polyIntersections[three].append(polyIntersections[three][0]);
-					}
-					double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-					if (ss < 1 && sss < 1)
-					{
-						continue;
-					}
-					/*for (int four=0; four<polyIntersections[three].length(); four++)
-					{
+						if (polyIntersections[three].length()<3)
+						{
+							continue;
+						}
+						double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+						if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
+						{
+							polyIntersections[three].append(polyIntersections[three][0]);
+						}
+						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+						if (ss<1 && sss<1)
+						{
+							continue;
+						}
+						/*for (int four = 0; four < polyIntersections[three].length(); four++)
+						{
 						AcGePoint2d look = polyIntersections[three][four];
 						int as = polyIntersections[three].length();
-					}*/
-					AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-					creatCloudLine(plineExtentPts);
+						}*/
+						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+						creatCloudLine(plineExtentPts);
+					}
 				}
 			}
 		}
-		
+		pEnt->close();
 	}
+
+	AcDbObjectIdArray shearWallEntIds = DBHelper::GetEntitiesByLayerName(ms_shearWallLayerName);
+	for (int c = 0; c<shearWallEntIds.length(); c++)
+	{
+		AcDbEntity* pWallEnt = NULL;
+		if (acdbOpenAcDbEntity(pWallEnt, shearWallEntIds[c], kForRead) != eOk)
+			continue;
+		if (pWallEnt->isKindOf(AcDbPolyline::desc()))
+		{
+			std::vector<AcGePoint2dArray> allChekParkPts;
+			AcDbExtents shearWallExtents;
+			DBHelper::GetEntityExtents(shearWallExtents, pWallEnt);
+			AcGePoint3d maxPoint = shearWallExtents.maxPoint();
+			AcGePoint3d minPoint = shearWallExtents.minPoint();
+			double positionMin[2];
+			double positionMax[2];
+			positionMin[0] = minPoint.x;
+			positionMin[1] = minPoint.y;
+			positionMax[0] = maxPoint.x;
+			positionMax[1] = maxPoint.y;
+			std::set<UINT32 > parkEntset;
+			rTreeOfLineFilter.Search(positionMin, positionMax, &parkEntset);
+			std::set<UINT32>::const_iterator columnEntIter;
+			for (columnEntIter = parkEntset.begin(); columnEntIter != parkEntset.end(); columnEntIter++)
+			{
+				UINT32 ptempEntHandle = *columnEntIter;//取得句柄
+				AcGePoint2dArray allPoints = COperaCheck::getOneParkPts(ptempEntHandle);
+				if (allPoints.length() == 0)
+				{
+					continue;
+				}
+				allChekParkPts.push_back(allPoints);
+			}
+			AcGePoint2dArray allPoints = getOnePlineEntPts(pWallEnt);
+			for (int b = 0; b < allChekParkPts.size(); b++)
+			{
+				std::vector<AcGePoint2dArray> polyIntersections;
+				GeHelper::GetIntersectionOfTwoPolygon(allChekParkPts[b], allPoints, polyIntersections);
+				if (polyIntersections.size()>0)
+				{
+					for (int three = 0; three<polyIntersections.size(); three++)
+					{
+						if (polyIntersections[three].length()<3)
+						{
+							continue;
+						}
+						double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+						if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
+						{
+							polyIntersections[three].append(polyIntersections[three][0]);
+						}
+						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+						if (ss<1 && sss<1)
+						{
+							continue;
+						}
+						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+						creatCloudLine(plineExtentPts);
+					}
+				}
+			}
+		}
+		pWallEnt->close();
+	}
+
+	
+	//std::vector<AcDbObjectId> parkIds;
+	//for (int i = 0; i < allParkingIds.length(); i++)
+	//{
+	//	parkIds.push_back(allParkingIds[i]);
+	//}
+	//std::vector<AcGePoint2dArray> parkingsPoints;
+	//std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
+	//CEquipmentroomTool::getParkingExtentPts(parkingsPoints, parkIds, parkingLayer, parkIdAndPts);
+	//if (parkingsPoints.empty())
+	//{
+	//	acutPrintf(_T("\n获取车位面域点组失败！"));
+	//	return;
+	//}
+	////获取所有方柱面域
+	//CString columnLayer(CEquipmentroomTool::getLayerName("column").c_str());
+	//std::vector<AcGePoint2dArray> columnPts = getPlinePtsByLayer(columnLayer);
+	//if (columnPts.empty())
+	//{
+	//	acutPrintf(_T("\n获取方柱面域点组失败！"));
+	//	return;
+	//}
+	////获取剪力墙的面域
+	//std::vector<AcGePoint2dArray> shearWallPts = getPlinePtsByLayer(ms_shearWallLayerName);
+	//if (shearWallPts.empty())
+	//{
+	//	acutPrintf(_T("\n获取剪力墙面域点组失败！"));
+	//	return;
+	//}
+	//for (int one=0; one<parkingsPoints.size(); one++)
+	//{
+	//	for (int two=0; two<columnPts.size(); two++)
+	//	{
+	//		std::vector<AcGePoint2dArray> polyIntersections;
+	//		GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[one], columnPts[two], polyIntersections);
+	//		if (polyIntersections.size()>0)
+	//		{
+	//			for (int three=0; three<polyIntersections.size(); three++)
+	//			{
+	//				if (polyIntersections[three].length()<3)
+	//				{
+	//					continue;
+	//				}
+	//				double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+	//				if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
+	//				{
+	//					polyIntersections[three].append(polyIntersections[three][0]);
+	//				}
+	//				double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+	//				if (ss<1&&sss<1)
+	//				{
+	//					continue;
+	//				}
+	//				/*for (int four = 0; four < polyIntersections[three].length(); four++)
+	//				{
+	//					AcGePoint2d look = polyIntersections[three][four];
+	//					int as = polyIntersections[three].length();
+	//				}*/
+	//				AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+	//				creatCloudLine(plineExtentPts);
+	//			}
+	//		}
+	//	}	
+	//}
+	//for (int first=0; first<parkingsPoints.size(); first++)
+	//{
+	//	for (int second=0; second<shearWallPts.size(); second++)
+	//	{
+	//		std::vector<AcGePoint2dArray> polyIntersections;
+	//		GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[first], shearWallPts[second], polyIntersections);
+	//		if (polyIntersections.size() > 0)
+	//		{
+	//			for (int three = 0; three < polyIntersections.size(); three++)
+	//			{
+	//				if (polyIntersections[three].length() < 3)
+	//				{
+	//					continue;
+	//				}
+	//				double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+	//				if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
+	//				{
+	//					polyIntersections[three].append(polyIntersections[three][0]);
+	//				}
+	//				double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+	//				if (ss < 1 && sss < 1)
+	//				{
+	//					continue;
+	//				}
+	//				/*for (int four=0; four<polyIntersections[three].length(); four++)
+	//				{
+	//					AcGePoint2d look = polyIntersections[three][four];
+	//					int as = polyIntersections[three].length();
+	//				}*/
+	//				AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+	//				creatCloudLine(plineExtentPts);
+	//			}
+	//		}
+	//	}
+	//	
+	//}
 
 }
 
@@ -437,23 +598,59 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 
 void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
 {
-	
 //TODO: 杨兵
-#if (ACADV_RELMAJOR == 18)
-
-#elif (ACADV_RELMAJOR == 19)
-
-#elif (ACADV_RELMAJOR == 20)
-
-#elif (ACADV_RELMAJOR == 21)
-
-#elif (ACADV_RELMAJOR == 22)
-
-#endif
-
 	AcGePoint2d minPoint = plineExtentPts[0];
 	AcGePoint2d maxPoint = plineExtentPts[1];
+
 	AcGeVector2d dirMove = maxPoint - minPoint;
+	AcGeVector2d vecDirMove = dirMove.normalize();
+	maxPoint.transformBy(dirMove * 50);
+	minPoint.transformBy(dirMove.negate() * 50);
+	double distance = minPoint.distanceTo(maxPoint);
+	double minArcLength = distance / 20;
+	double maxArcLength = minArcLength * 2;
+
+	AcGePoint2d leftUpPt(minPoint.x,maxPoint.y);
+	AcGePoint2d rightDownPt(maxPoint.x,minPoint.y);
+	AcGePoint2dArray midUpPt = COperaCheck::getLineOtherPoint(maxPoint,leftUpPt,minArcLength,maxArcLength);
+	AcGePoint2dArray midDownPt = COperaCheck::getLineOtherPoint(minPoint,rightDownPt, minArcLength, maxArcLength);
+	AcGePoint2dArray midLeftPt = COperaCheck::getLineOtherPoint(leftUpPt,minPoint, minArcLength, maxArcLength);
+	AcGePoint2dArray midRightPt = COperaCheck::getLineOtherPoint(rightDownPt,maxPoint, minArcLength, maxArcLength);
+	AcGePoint2dArray plineUsePts;
+	plineUsePts.append(minPoint);
+	for (int a=0;a<midDownPt.length(); a++)
+	{
+		AcGePoint2d look = midDownPt[a];
+		plineUsePts.append(midDownPt[a]);
+	}
+	//plineUsePts.append(midDownPt);
+	plineUsePts.append(rightDownPt);
+	for (int b = 0; b < midRightPt.length(); b++)
+	{
+		AcGePoint2d look = midRightPt[b];
+		plineUsePts.append(midRightPt[b]);
+	}
+	//plineUsePts.append(midRightPt);
+	plineUsePts.append(maxPoint);
+	for (int c = 0; c < midUpPt.length(); c++)
+	{
+		AcGePoint2d look = midUpPt[c];
+		plineUsePts.append(midUpPt[c]);
+	}
+	//plineUsePts.append(midUpPt);
+	plineUsePts.append(leftUpPt);
+	for (int d = 0; d < midLeftPt.length(); d++)
+	{
+		AcGePoint2d look = midLeftPt[d];
+		plineUsePts.append(midLeftPt[d]);
+	}
+	//plineUsePts.append(midLeftPt);
+	plineUsePts.append(minPoint);
+	Doc_Locker _locker;
+	AcDbObjectId cloudId = COperaCheck::creatArcPline(plineUsePts, 10);
+	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	CEquipmentroomTool::setEntToLayer(cloudId, sCloudLineLayer);
+	/*AcGeVector2d dirMove = maxPoint - minPoint;
 	AcGeVector2d vecDirMove = dirMove.normalize();
 	maxPoint.transformBy(dirMove * 50);
 	minPoint.transformBy(dirMove.negate() * 50);
@@ -470,7 +667,7 @@ void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
 	CString sMaxPtY = COperaCheck::doubleToCString(maxPoint.y);
 	CString sMaxPt = sMaxPtX + _T(",") + sMaxPtY + _T(" ");
 	CString command = setArcLength + _T("R ") + sMinPt + sMaxPt;
-	DBHelper::CallCADCommand(command);
+	DBHelper::CallCADCommand(command);*/
 }
 
 CString COperaCheck::doubleToCString(double num)
@@ -517,5 +714,185 @@ void COperaCheck::setCurrentLayer(CString layerName)
 		es = acdbCurDwg()->setClayer(layerId);//设为当前图层		
 	}
 }
+
+AcGePoint2dArray COperaCheck::getLineOtherPoint(const AcGePoint2d& lineStartPoint, const AcGePoint2d& lineEndPoint, 
+	const double& minArcLength, const double& maxArcLength)
+{
+	AcGePoint3d startPt(lineStartPoint.x, lineStartPoint.y,0);
+	AcGePoint3d endPt(lineEndPoint.x, lineEndPoint.y, 0);
+	double lineDistance = startPt.distanceTo(endPt);
+	int sum = 0;
+	std::vector<int> moveDistances;
+	while (sum < lineDistance)
+	{
+		int temp = getRandNum(minArcLength, maxArcLength);
+		sum += temp;
+		moveDistances.push_back(temp);
+	}
+	double sub = sum - lineDistance;
+	int endNum = moveDistances.back();
+	double newNum = endNum - sub;
+	if (newNum >= minArcLength)
+	{
+		moveDistances.back() = newNum;
+	}
+	moveDistances.pop_back();
+	AcGePoint2dArray allUsePts;
+	AcGeVector2d dirVec = lineEndPoint - lineStartPoint;
+	AcGeVector2d vecDirMove = dirVec.normalize();
+	AcGePoint2d lineMidPoint = lineStartPoint;
+	for (int i=0; i<moveDistances.size();i++)
+	{
+		lineMidPoint.transformBy(vecDirMove*moveDistances[i]);
+		allUsePts.append(lineMidPoint);
+	}
+	return allUsePts;
+}
+
+AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width)
+{
+	int numCount = points.length();
+	AcDbPolyline *pPline = new AcDbPolyline(numCount);
+	for (int i=0; i<numCount; i++)
+	{
+		pPline->addVertexAt(i, points.at(i), 0.516, width, width);
+	}
+	AcDbObjectId polyId;
+	DBHelper::AppendToDatabase(polyId, pPline);
+	pPline->close();
+	return polyId;
+}
+
+int COperaCheck::getRandNum(const int& min, const int& max)
+{
+	//根据系统时间设置随机数种子
+	srand((unsigned)time(NULL));
+	int inum = rand() % (max - min + 1) + min;
+	return inum;
+}
+
+AcGePoint2dArray COperaCheck::getOneParkPts(UINT32 parkHandle)
+{
+	AcGePoint2dArray arrTempPlinePts;
+	AcDbObjectId idOfTheEntity = DBHelper::GetObjectIdByHandle(parkHandle);
+	AcDbEntity* ptempEnt = NULL;
+	Acad::ErrorStatus es = acdbOpenAcDbEntity(ptempEnt, idOfTheEntity, kForRead);
+	if (es != eOk)
+	{
+		acutPrintf(_T("\n获取单个实体指针失败！"));
+		return arrTempPlinePts;
+	}
+	if (ptempEnt->isKindOf(AcDbBlockReference::desc()))//对search到的车位进行取点操作
+	{
+		AcDbVoidPtrArray tempEnts;
+		DBHelper::ExplodeEntity(ptempEnt, tempEnts);
+		for (int j = 0; j < tempEnts.length(); j++)
+		{
+			AcDbEntity* pEnty = (AcDbEntity*)tempEnts.at(j);
+			if (pEnty != NULL)
+			{
+				if (pEnty->isKindOf(AcDbPolyline::desc()))
+				{
+					AcGePoint2dArray allPoints;
+					AcDbPolyline *pPline = AcDbPolyline::cast(pEnty);
+					AcGeLineSeg2d line;
+					AcGeCircArc3d arc;
+					int n = pPline->numVerts();
+					for (int a = 0; a < n; a++)
+					{
+						if (pPline->segType(a) == AcDbPolyline::kLine)
+						{
+							pPline->getLineSegAt(a, line);
+							AcGePoint2d startPoint;
+							AcGePoint2d endPoint;
+							startPoint = line.startPoint();
+							endPoint = line.endPoint();
+							allPoints.append(startPoint);
+							allPoints.append(endPoint);
+						}
+						else if (pPline->segType(a) == AcDbPolyline::kArc)
+						{
+							pPline->getArcSegAt(a, arc);
+							AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
+							for (int x = 0; x < result.length(); x++)
+							{
+								AcGePoint2d onArcpoint(result[x].x, result[x].y);
+								allPoints.append(onArcpoint);
+							}
+						}
+					}
+					for (int x = 0; x < allPoints.length(); x++)
+					{
+						if (arrTempPlinePts.contains(allPoints[x]))
+						{
+							continue;
+						}
+						arrTempPlinePts.append(allPoints[x]);
+					}
+					//检测闭合
+					if (arrTempPlinePts.length() > 2 && arrTempPlinePts[arrTempPlinePts.length() - 1] != arrTempPlinePts[0])
+						arrTempPlinePts.append(arrTempPlinePts[0]);
+				}
+				delete pEnty;
+			}
+		}
+	}
+	ptempEnt->close();
+	return arrTempPlinePts;
+}
+
+AcGePoint2dArray COperaCheck::getOnePlineEntPts(AcDbEntity* pEntity)
+{
+	AcGePoint2dArray onePlinePts;//装取去完重的有效点
+	if (pEntity->isKindOf(AcDbPolyline::desc()))
+	{
+		std::vector<AcGePoint2d> allPoints;//得到的所有点
+		AcDbVoidPtrArray entsTempArray;
+		AcDbPolyline *pPline = AcDbPolyline::cast(pEntity);
+		AcGeLineSeg2d line;
+		AcGeCircArc3d arc;
+		int n = pPline->numVerts();
+		for (int i = 0; i < n; i++)
+		{
+			if (pPline->segType(i) == AcDbPolyline::kLine)
+			{
+				pPline->getLineSegAt(i, line);
+				AcGePoint2d startPoint;
+				AcGePoint2d endPoint;
+				startPoint = line.startPoint();
+				endPoint = line.endPoint();
+				allPoints.push_back(startPoint);
+				allPoints.push_back(endPoint);
+			}
+			else if (pPline->segType(i) == AcDbPolyline::kArc)
+			{
+				pPline->getArcSegAt(i, arc);
+				AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
+				for (int x = 0; x < result.length(); x++)
+				{
+					AcGePoint2d onArcpoint(result[x].x, result[x].y);
+					allPoints.push_back(onArcpoint);
+				}
+			}
+		}
+		for (int x = 0; x < allPoints.size(); x++)
+		{
+			if (onePlinePts.contains(allPoints[x]))
+			{
+				continue;
+			}
+			onePlinePts.append(allPoints[x]);
+		}
+		bool bClosed = true;
+		//检查闭合
+		if (onePlinePts.length() > 1 && pPline->isClosed() ||
+			(bClosed && onePlinePts.length() > 1 && onePlinePts[onePlinePts.length() - 1] != onePlinePts[0]))
+		{
+			onePlinePts.append(onePlinePts[0]);
+		}
+	}
+	return onePlinePts;
+}
+
 
 REG_CMD_P(COperaCheck, BGY, Check);//图纸智能化检测

@@ -55,4 +55,5 @@ public:
 	/*添加以实现车道标注*/
 	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds);
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText);
+	int getJsonForLocal(std::string& json, std::string& sMsg, CString& sIndex, int& iCount);
 };

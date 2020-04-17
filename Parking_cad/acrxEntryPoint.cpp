@@ -74,7 +74,7 @@ public:
 		//}
 		//INIT_KV(hKVDll);
 
-		char serial[MAX_PATH];
+		/*char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
 		std::string session = serial;
 		KVHelp::setStrA("mac", serial);
@@ -90,11 +90,11 @@ public:
 			ModulesManager::Relaese();
 			return AcRx::kRetError;
 		}
-		
+
 		KVHelp::setStr(_T("bip_id"), dlgLogin.bipId.GetString());
 		KVHelp::setStr(_T("user_name"), dlgLogin.userName.GetString());
-		
-		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
+
+		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());*/
 
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
