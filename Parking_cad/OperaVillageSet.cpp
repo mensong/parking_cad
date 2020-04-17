@@ -17,7 +17,13 @@ void COperaVillageSet::Start()
 {
 	//用电设备房
 
-	double villageArea = CEquipmentroomTool::getTotalArea(_T("小区总面积:"));
+	double villageArea = 0;
+	CEquipmentroomTool::getTotalArea(_T("小区总面积:"), villageArea);
+	if (villageArea == 0)
+	{
+		acutPrintf(_T("\n输入错误！"));
+		return;
+	}
 begin:acedInitGet(0, _T("Yes No"));
 	ACHAR Input[256];
 	bool isRegardCharging = false;
