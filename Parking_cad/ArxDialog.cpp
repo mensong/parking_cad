@@ -60,7 +60,6 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_WM_TIMER()
 	ON_BN_CLICKED(IDC_CHECK_Partition, &CArxDialog::OnBnClickedCheckPartition)
 	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
-	ON_BN_CLICKED(IDC_BUTTON_V2OK, &CArxDialog::OnBnClickedButtonV2ok)
 	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CArxDialog::OnBnClickedButtonGetendpoint)
 	ON_BN_CLICKED(IDC_BUTTON_MANYSHOW, &CArxDialog::OnBnClickedButtonManyshow)
 END_MESSAGE_MAP()
@@ -1139,14 +1138,6 @@ void CArxDialog::OnEnKillfocusEditNonConvexlevel()
 		m_Non_Convexlevel.SetWindowText(_T("0.2"));
 	}
 }
-
-
-void CArxDialog::OnBnClickedButtonV2ok()
-{
-	// TODO: 在此添加控件通知处理程序代码
-	selectPort(false);
-}
-
 
 void CArxDialog::OnBnClickedButtonGetendpoint()
 {

@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by Parking_cad.rc
+// Microsoft Visual C++ 生成的包含文件。
+// 供 Parking_cad.rc 使用
 //
 #define IDS_PROJNAME                    100
 #define IDC_RADIO_Default               100
@@ -17,11 +17,9 @@
 #define IDC_EDIT_SquarecolumnLength     105
 #define IDD_DLG_WAITTING_SHOW_RES       105
 #define IDC_EDIT_FRAME_LENGTH           105
-#define IDC_EDIT5                       106
 #define IDC_EDIT_SquareColumnWidth      106
 #define IDC_EDIT_FRAME_WIDTH            106
 #define IDC_EDIT_THIREGENTLESLOPE       106
-#define IDC_EDIT_LANEDIM                106
 #define IDC_BUTTON_GetStartPoint        107
 #define IDD_DLG_ADD_FRAME               107
 #define IDC_BUTTON_GetRetreatline       108
@@ -50,8 +48,6 @@
 #define IDC_BUTTON_FIREPUMPHOUSE_SET    143
 #define IDC_BUTTON_FIREPOOL_SET         144
 #define IDC_BUTTON_CUSTOM               145
-#define IDC_BUTTON_OKV2                 146
-#define IDC_BUTTON_V2OK                 146
 #define IDC_EDIT_STARTPOINTSHOW         151
 #define IDC_EDIT_ENDPOINTSHOW           152
 #define IDC_EDIT_ONEGENTLESLOPE         153
@@ -62,27 +58,11 @@
 #define IDC_EDIT_TWOHORIZONTALDISTANCE  158
 #define IDC_EDIT_THIREHORZONTALDISTANCE 159
 #define IDC_BUTTON_GETENDPOINT          161
-#define IDC_EDIT1                       163
 #define IDC_EDIT_SHOWENDPOINT           163
-#define IDC_EDIT_ENTRANCE               163
 #define IDC_EDIT_USER                   163
 #define IDC_EDIT_SHOWVALUE              163
-#define IDC_BUTTON1                     164
 #define IDC_BUTTON_EXCHANGE             164
-#define IDC_BUTTON_INIT                 164
-#define IDC_BUTTON_mou                  164
 #define IDC_BUTTON_MANYSHOW             164
-#define IDC_EDIT_AXIS                   167
-#define IDC_EDIT_AXISDIM                168
-#define IDC_EDIT_LANE                   169
-#define IDC_EDIT_PARKINGS               170
-#define IDC_EDIT_ARROW                  171
-#define IDC_EDIT_PILLAR                 172
-#define IDC_EDIT_SCOPE                  173
-#define IDC_EDIT_MAPSIGN                174
-#define IDC_EDIT_PICTUREFRAME           175
-#define IDC_EDIT_EQUIPMENTROOM          176
-#define IDC_EDIT_COREWALL               177
 #define IDC_EDIT_PASSWORD               178
 #define IDC_CHK_SAVE_PWD                180
 #define IDC_LAYERLIST                   184
