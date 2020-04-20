@@ -430,6 +430,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\MinimumRectangle.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\MyEdit.cpp"
 				>
 			</File>
@@ -511,6 +515,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaVillageSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaZoomAxisNumber.cpp"
 				>
 			</File>
 			<File
@@ -639,6 +647,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\MinimumRectangle.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\MyEdit.h"
 				>
 			</File>
@@ -720,6 +732,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaVillageSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaZoomAxisNumber.h"
 				>
 			</File>
 			<File

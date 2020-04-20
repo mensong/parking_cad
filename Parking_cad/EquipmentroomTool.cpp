@@ -169,17 +169,17 @@ void CEquipmentroomTool::textMove(AcGePoint3d ptInsert, AcDbObjectId textId)
 	pEnt->close();
 }
 
-ads_real CEquipmentroomTool::getTotalArea(CString totalName)
+bool CEquipmentroomTool::getTotalArea(CString totalName, ads_real& totalArea)
 {
 	CString str = _T("\n请输入") + totalName;
-	ads_real totalArea = 0;
 	if (acedGetReal(str, &totalArea) == RTNORM)
 	{
-		return totalArea;
+		return true;
 	}
 	else
 	{
-		return 0;
+		totalArea = 0;
+		return false;
 	}
 }
 
@@ -1466,7 +1466,10 @@ void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo,AcDbData
 
 double CEquipmentroomTool::areaScale(double oldArea)
 {
-	double dScale = CEquipmentroomTool::getTotalArea(_T("缩放程度百分比（1-100）:"));
+	double dScale = 0;
+	if (!CEquipmentroomTool::getTotalArea(_T("缩放程度百分比（1-100）:"), dScale))
+		return 0;
+
 	if (dScale<1||dScale>100)
 	{
 		dScale = 100;

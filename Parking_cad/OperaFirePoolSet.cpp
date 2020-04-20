@@ -15,12 +15,13 @@ COperaFirePoolSet::~COperaFirePoolSet()
 
 void COperaFirePoolSet::Start()
 {
-	double storeyHeight = CEquipmentroomTool::getTotalArea(_T("层高:"));
-	if (storeyHeight == 0)
+	double storeyHeight = 0;
+	if (!CEquipmentroomTool::getTotalArea(_T("层高:"), storeyHeight))
 	{
 		acutPrintf(_T("\n输入错误！"));
 		return;
 	}
+
 begin:acedInitGet(0, _T("Yes No"));
 	ACHAR Input[256];//数组即是指针
 	bool isRegardCharging = false;
