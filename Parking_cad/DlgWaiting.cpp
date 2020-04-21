@@ -118,11 +118,24 @@ CDlgWaiting::~CDlgWaiting()
 {
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgWaiting::DoDataExchange");
+		delete data;
+	}
+}
+
 void CDlgWaiting::DoDataExchange(CDataExchange* pDX)
 {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STC_GIF, m_ctrlGif);
 	DDX_Control(pDX, IDC_STA_STATUS, m_staStatusText);
+	*(end()) = true;
 }
 
 

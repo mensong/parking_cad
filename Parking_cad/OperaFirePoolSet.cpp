@@ -5,6 +5,7 @@
 
 COperaFirePoolSet::COperaFirePoolSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
+	, m_holder(NULL)
 {
 }
 
@@ -15,6 +16,10 @@ COperaFirePoolSet::~COperaFirePoolSet()
 
 void COperaFirePoolSet::Start()
 {
+	if (g_dlg)
+	{
+		m_holder = new HideDialogHolder(g_dlg);
+	}
 	double storeyHeight = CEquipmentroomTool::getTotalArea(_T("²ã¸ß:"));
 	if (storeyHeight == 0)
 	{
@@ -62,6 +67,19 @@ begin:acedInitGet(0, _T("Yes No"));
 	AcDbObjectIdArray FirePooljigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(FirePoolS),_T("Ïû·ÀË®³Ø"), FirePoolsideLength, limitLength);
 	CEquipmentroomTool::setEntToLayer(FirePooljigUseIds);
 	CEquipmentroomTool::jigShow(FirePooljigUseIds, FirePoolsideLength);
+}
+
+CWnd* COperaFirePoolSet::g_dlg = NULL;
+
+void COperaFirePoolSet::Ended()
+{
+	if (g_dlg && m_holder)
+	{
+		delete m_holder;
+		m_holder = NULL;
+	}
+
+	g_dlg = NULL;
 }
 
 REG_CMD_P(COperaFirePoolSet, BGY, FirePoolSet);

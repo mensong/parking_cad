@@ -7,6 +7,7 @@
 
 COperaEquipmentroomRelated::COperaEquipmentroomRelated(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
+	, m_holder(NULL)
 {
 }
 
@@ -17,6 +18,10 @@ COperaEquipmentroomRelated::~COperaEquipmentroomRelated()
 
 void COperaEquipmentroomRelated::Start()
 {
+	if (g_dlg)
+	{
+		m_holder = new HideDialogHolder(g_dlg);
+	}
 
 //通风设备房
 	double totalArea = CEquipmentroomTool::getTotalArea(_T("地库总面积:"));
@@ -60,6 +65,19 @@ void COperaEquipmentroomRelated::Start()
 			break;
 		}
 	}
+}
+
+CWnd* COperaEquipmentroomRelated::g_dlg = NULL;
+
+void COperaEquipmentroomRelated::Ended()
+{
+	if (g_dlg && m_holder)
+	{
+		delete m_holder;
+		m_holder = NULL;
+	}
+
+	g_dlg = NULL;
 }
 
 REG_CMD_P(COperaEquipmentroomRelated, BGY, VentilationEquipmentroomSet);

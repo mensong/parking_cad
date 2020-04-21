@@ -53,14 +53,27 @@ CDlgSetConfig::CDlgSetConfig (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NU
 	m_nLastCol = -1;
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgSetConfig::DoDataExchange");
+		delete data;
+	}
+}
+
 //-----------------------------------------------------------------------------
 void CDlgSetConfig::DoDataExchange (CDataExchange *pDX) {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LAYERLIST, m_ctrlConfigSetList);
 	DDX_Control(pDX, IDC_EDIT_LIST, m_EditTest);
 	DDX_Control(pDX, IDC_COMBO_CONFIGCHOOSE, m_PrintableCombo);
 	DDX_Control(pDX, IDC_COMBO_LINEWIDTH, m_LineWidthCombo);
 	DDX_Control(pDX, IDC_COMBO_LINETYPE, m_LineTypeCombo);
+	*(end()) = true;
 }
 
 //-----------------------------------------------------------------------------

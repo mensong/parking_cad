@@ -3,6 +3,13 @@
 #include "DBHelper.h"
 #include "GeHelper.h"
 #include "EquipmentroomTool.h"
+#include "OperaEquipmentroomRelated.h"
+#include "OperaEquipmentRoomSet.h"
+#include "OperaFirePoolSet.h"
+#include "OperaFirePumpHouseSet.h"
+#include "OperaLivingWaterTankSet.h"
+#include "OperaLifePumpHouseSet.h"
+#include "OperaVillageSet.h"
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgEquipmentRoomSet, CAcUiDialog)
 
@@ -20,11 +27,24 @@ END_MESSAGE_MAP()
 //-----------------------------------------------------------------------------
 CDlgEquipmentRoomSet::CDlgEquipmentRoomSet (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog (CDlgEquipmentRoomSet::IDD, pParent, hInstance) {
 }
+ 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgEquipmentRoomSet::DoDataExchange");
+		delete data;
+	}
+}
 
 //-----------------------------------------------------------------------------
 void CDlgEquipmentRoomSet::DoDataExchange (CDataExchange *pDX) {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_BUTTON_VENTILATE, m_btnVentilate);
+	*(end()) = true;
 }
 
 //-----------------------------------------------------------------------------
@@ -38,7 +58,8 @@ LRESULT CDlgEquipmentRoomSet::OnAcadKeepFocus (WPARAM, LPARAM) {
 void CDlgEquipmentRoomSet::OnBnClickedButtonVentilate()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	HideDialogHolder holder(this);
+	//HideDialogHolder holder(this);
+	COperaEquipmentroomRelated::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	Doc_Locker doc_locker;
 	DBHelper::CallCADCommand(_T("VentilationEquipmentroomSet "));
 }
@@ -47,7 +68,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVentilate()
 void CDlgEquipmentRoomSet::OnBnClickedButtonVillageSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	HideDialogHolder holder(this);
+	//HideDialogHolder holder(this);
+	COperaVillageSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	Doc_Locker doc_locker;
 	DBHelper::CallCADCommand(_T("VillageSet "));
 }
@@ -56,7 +78,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVillageSet()
 void CDlgEquipmentRoomSet::OnBnClickedButtonLifepumphouseSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	HideDialogHolder holder(this);
+	//HideDialogHolder holder(this);
+	COperaLifePumpHouseSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	Doc_Locker doc_locker;
 	DBHelper::CallCADCommand(_T("LifePumpHouseSet "));
 }
@@ -65,7 +88,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLifepumphouseSet()
 void CDlgEquipmentRoomSet::OnBnClickedButtonLivingwatertankSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	HideDialogHolder holder(this);
+	//HideDialogHolder holder(this);
+	COperaLivingWaterTankSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	Doc_Locker doc_locker;
 	DBHelper::CallCADCommand(_T("LivingwatertankSet "));
 }
@@ -74,7 +98,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLivingwatertankSet()
 void CDlgEquipmentRoomSet::OnBnClickedButtonFirepumphouseSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	HideDialogHolder holder(this);
+	//HideDialogHolder holder(this);
+	COperaFirePumpHouseSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	Doc_Locker doc_locker;
 	DBHelper::CallCADCommand(_T("FirePumpHouseSet "));
 }
@@ -83,7 +108,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonFirepumphouseSet()
 void CDlgEquipmentRoomSet::OnBnClickedButtonFirepoolSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	HideDialogHolder holder(this);
+	//HideDialogHolder holder(this);
+	COperaFirePoolSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	Doc_Locker doc_locker;
 	DBHelper::CallCADCommand(_T("FirePoolSet "));
 }

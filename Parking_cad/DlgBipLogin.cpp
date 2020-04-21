@@ -51,12 +51,26 @@ std::string CDlgBipLogin::_getSavePwdFilePath()
 	return "";
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgBipLogin::DoDataExchange");
+		delete data;
+	}
+}
+
+
 void CDlgBipLogin::DoDataExchange(CDataExchange* pDX)
 {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_USER, m_editUser);
 	DDX_Control(pDX, IDC_EDIT_PASSWORD, m_editPassword);
 	DDX_Control(pDX, IDC_CHK_SAVE_PWD, m_chkSavePwd);
+	*(end()) = true;
 }
 
 

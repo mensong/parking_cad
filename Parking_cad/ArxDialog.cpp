@@ -231,9 +231,19 @@ void CArxDialog::loaddirectionCombo()
 	}
 }
 
-
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CArxDialog::DoDataExchange");
+		delete data;
+	}
+}
 //-----------------------------------------------------------------------------
 void CArxDialog::DoDataExchange(CDataExchange *pDX) {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_OutlineLayer, m_outlineLayer);
 	DDX_Control(pDX, IDC_COMBO_ShearwallLayer, m_shearwallLayer);
@@ -252,6 +262,7 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_NON_CONVEXLEVEL, m_Non_Convexlevel);
 	DDX_Control(pDX, IDC_EDIT_PARTITION_LINE, m_PartitionLineEdit);
 	DDX_Control(pDX, IDC_EDIT_SHOWENDPOINT, m_EditShowEndPoint);
+	*(end()) = true;
 }
 
 void CArxDialog::OnOK()
