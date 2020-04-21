@@ -1,5 +1,6 @@
 #pragma once
 #include "IOperaLog.h"
+#include "DBHelper.h"
 class COperaLifePumpHouseSet :
 	public CIOperaLog
 {
@@ -7,5 +8,9 @@ public:
 	COperaLifePumpHouseSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaLifePumpHouseSet();
 	virtual void Start();
+	static CWnd* g_dlg;
+	HideDialogHolder* m_holder;
+	virtual void Ended() override;
+
 };
 

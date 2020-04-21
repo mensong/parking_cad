@@ -118,11 +118,24 @@ CDlgWaiting::~CDlgWaiting()
 {
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgWaiting::DoDataExchange");
+		delete data;
+	}
+}
+
 void CDlgWaiting::DoDataExchange(CDataExchange* pDX)
 {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STC_GIF, m_ctrlGif);
 	DDX_Control(pDX, IDC_STA_STATUS, m_staStatusText);
+	*(end()) = true;
 }
 
 
@@ -177,20 +190,21 @@ END_MESSAGE_MAP()
 void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 {
 	std::string json;
-	//FILE* f = fopen("d:\\result.json", "r");
-	//fseek(f, 0, SEEK_END);
-	//size_t fileLen = ftell(f);
-	//char* fileText = new char[fileLen + 1];
-	//fread(fileText, 1, fileLen, f);
-	//fileText[fileLen] = '\0';
-	//json = fileText;
-	//delete[] fileText;
 	if (nIDEvent == 1)
 	{
 		//调用检查是否计算完成函数（）；
 		std::string sMsg;
 		CString sIndex;
-		int status = getStatus(json, sMsg, sIndex);
+		int iCount = 0;
+		int status;
+		if (ms_bUseManyShow)
+		{
+			status = getJsonForLocal(json, sMsg, sIndex, iCount);
+		}
+		else
+		{
+			status = getStatus(json, sMsg, sIndex);
+		}
 		//如果完成后
 		if (status == 2)
 		{
@@ -198,16 +212,21 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			//CDlgWaiting::Show(false);
 			this->OnOK();
 			CString sMsg;
-			COperaMultiSchemeShow::getJsonData(json);
-			if (!getDataforJson(json, sMsg))
+			if (ms_bUseManyShow)
 			{
-				acedAlert(sMsg);
+				COperaMultiSchemeShow::getJsonData(json, iCount);
+				DBHelper::CallCADCommand(_T("MultiSchemeShow "));
 			}
-			acutPrintf(_T("\nthe uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
-			acutPrintf(_T("\n"));
-
-			acedGetAcadDwgView()->SetFocus();
-			DBHelper::CallCADCommandEx(_T("REGEN"));
+			else
+			{
+				if (!getDataforJson(json, sMsg))
+				{
+					acedAlert(sMsg);
+				}
+				acutPrintf(_T("\nthe uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
+				acutPrintf(_T("\n"));
+				DBHelper::CallCADCommandEx(_T("Redraw"));
+			}
 		}
 		else if (status == 0)
 		{
@@ -759,65 +778,59 @@ bool CDlgWaiting::getDataforJson(const std::string& json, CString& sMsg)
 		sMsg = _T("解析回传json文件出错！");
 		return false;
 	}
-	if (ms_bUseManyShow)
+	Doc_Locker _locker;
+	CEquipmentroomTool::layerSet(_T("0"), 7);
+	CString blockName;
+	creatNewParking(dParkingLength, dParkingWidth, blockName);
+	for (int a = 0; a < parkingPts.length(); a++)
 	{
-		DBHelper::CallCADCommand(_T("MultiSchemeShow "));
+		//double = (rotation/180)*Π(顺时针和逆时针)
+		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
+		AcDbObjectId parkingId;
+		AcGePoint2d parkingShowPt = parkingPts[a];
+		parkingShow(parkingId,parkingPts[a], rotation, blockName);
+	}
+	AcDbObjectIdArray axisIds;
+	for (int b = 0; b < axisesPoints.size(); b++)
+	{
+		axisIds.append(axisShow(axisesPoints[b]));
+	}
+	COperaAxleNetMaking::setAxisIds(axisIds);
+
+	AcDbObjectIdArray RoadLineIds;
+	for (int c = 0; c < lanesPoints.size(); c++)
+	{
+		RoadLineIds.append(laneShow(lanesPoints[c]));		
+	}
+
+	scopeShow(scopePts);
+
+	for (int d = 0; d < pillarPoints.size(); d++)
+	{
+		pillarShow(pillarPoints[d]);
+	}
+
+	for (int e = 0; e < arrowPoints.size(); e++)
+	{
+		arrowShow(arrowPoints[e]);
+	}
+	//生成车道标注
+	double dTransLaneWidth = dLaneWidth * 1000;
+	if (dTransLaneWidth == 0)
+	{
+		acutPrintf(_T("车道宽度数据有误！"));
 	}
 	else
 	{
-		Doc_Locker _locker;
-		CEquipmentroomTool::layerSet(_T("0"), 7);
-		CString blockName;
-		creatNewParking(dParkingLength, dParkingWidth, blockName);
-		for (int a = 0; a < parkingPts.length(); a++)
-		{
-			//double = (rotation/180)*Π(顺时针和逆时针)
-			double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
-			AcDbObjectId parkingId;
-			AcGePoint2d parkingShowPt = parkingPts[a];
-			parkingShow(parkingId,parkingPts[a], rotation, blockName);
-		}
-		AcDbObjectIdArray axisIds;
-		for (int b = 0; b < axisesPoints.size(); b++)
-		{
-			axisIds.append(axisShow(axisesPoints[b]));
-		}
-		COperaAxleNetMaking::setAxisIds(axisIds);
-
-		AcDbObjectIdArray RoadLineIds;
-		for (int c = 0; c < lanesPoints.size(); c++)
-		{
-			RoadLineIds.append(laneShow(lanesPoints[c]));		
-		}
-
-		scopeShow(scopePts);
-
-		for (int d = 0; d < pillarPoints.size(); d++)
-		{
-			pillarShow(pillarPoints[d]);
-		}
-
-		for (int e = 0; e < arrowPoints.size(); e++)
-		{
-			arrowShow(arrowPoints[e]);
-		}
-		//生成车道标注
-		double dTransLaneWidth = dLaneWidth * 1000;
-		if (dTransLaneWidth == 0)
-		{
-			acutPrintf(_T("车道宽度数据有误！"));
-		}
-		else
-		{
-			setLandDismensions(dTransLaneWidth, RoadLineIds);
-		}
-		DBHelper::CallCADCommand(_T("ANM "));
-		CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
-		CEquipmentroomTool::setLayerClose(sAxisLayerName);
-		CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-		CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
-		CEquipmentroomTool::layerSet(_T("0"), 7);
+		setLandDismensions(dTransLaneWidth, RoadLineIds);
 	}
+	DBHelper::CallCADCommand(_T("ANM "));
+	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
+	CEquipmentroomTool::setLayerClose(sAxisLayerName);
+	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
+	CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
+	CEquipmentroomTool::layerSet(_T("0"), 7);
+	
 	return true;
 }
 
@@ -903,4 +916,64 @@ AcDbObjectId CDlgWaiting::createDimAligned(const AcGePoint3d& pt1, const AcGePoi
 	return dimensionId;
 }
 
+int CDlgWaiting::getJsonForLocal(std::string& json, std::string& sMsg, CString& sIndex, int& iCount)
+{
+	std::string tempUrl = "https://parking.asdfqwer.net/query2.php";
+	
+	const char * sendUrl = tempUrl.c_str();
+
+	typedef void(*FN_setTimeout)(int timeout);
+	FN_setTimeout fn_setTimeout = ModulesManager::Instance().func<FN_setTimeout>(getHttpModule(), "setTimeout");
+	if (fn_setTimeout)
+	{
+		fn_setTimeout(600);
+	}
+
+	typedef int(*FN_get)(const char* url, bool dealRedirect);
+	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
+	if (!fn_get)
+	{
+		sMsg = "get Http模块加载失败！";
+		return 5;
+	}
+	int code = fn_get(sendUrl, true);
+
+	if (code != 200)
+	{
+		char szCode[10];
+		sprintf(szCode, "%d", code);
+		sMsg = tempUrl + ":网络或服务器错误。(" + szCode + ")";
+		return 3;
+	}
+	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
+
+	typedef const char* (*FN_getBody)(int&);
+	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
+	if (!fn_getBody)
+	{
+		sMsg = "getBody Http模块加载失败！";
+		return 5;
+	}
+	int len = 0;
+	json = fn_getBody(len);
+
+	Json::Reader reader;
+	Json::Value root;
+	//从字符串中读取数据
+	if (reader.parse(json, root))
+	{
+#ifdef _DEBUG
+		WriteFile("result.json", json.c_str(), json.size(), NULL, 0, false);
+#endif
+		int status = root["status"].asInt();
+		int index = root["index"].asInt();
+		iCount = root["count"].asInt();
+		sIndex.Format(_T("%d"), index);
+		sMsg = GL::Utf82Ansi(root["message"].asString().c_str()).c_str();
+		return status;
+	}
+
+	sMsg = "结果格式有误。";
+	return 3;
+}
 

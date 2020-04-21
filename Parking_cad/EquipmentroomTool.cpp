@@ -1606,7 +1606,7 @@ void CEquipmentroomTool::creatNewDwg()
 	int stop = 0;
 }
 
-bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase,int iCount /*= 0*/)
+bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase,double dCount /*= 0*/)
 {
 	    AcGeMatrix3d xform;
 		AcGeVector3d VectrorPt;
@@ -1619,7 +1619,7 @@ bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase,int iCount /
 		AcGePoint3d endPt(extenPts[1].x, extenPts[0].y, 0);
 		AcGePoint3d starPt(extenPts[0].x, extenPts[0].y, 0);
 		VectrorPt = endPt - starPt;
-		xform.setToTranslation(VectrorPt*iCount);
+		xform.setToTranslation(VectrorPt*dCount);
         //AcDbDatabase *pDataBase = NULL;
 		//pDataBase = acdbCurDwg();  //根据需要传入不同AcDbDatabase 就可以做到不同dwg克隆实体
 	

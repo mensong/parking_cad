@@ -90,10 +90,10 @@ public:
 			ModulesManager::Relaese();
 			return AcRx::kRetError;
 		}
-		
+
 		KVHelp::setStr(_T("bip_id"), dlgLogin.bipId.GetString());
 		KVHelp::setStr(_T("user_name"), dlgLogin.userName.GetString());
-		
+
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
 		// You *must* call On_kInitAppMsg here

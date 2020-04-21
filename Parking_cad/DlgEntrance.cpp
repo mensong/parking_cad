@@ -192,8 +192,20 @@ END_MESSAGE_MAP()
 CDlgEntrance::CDlgEntrance (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog (CDlgEntrance::IDD, pParent, hInstance) {
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgEntrance::DoDataExchange");
+		delete data;
+	}
+}
+
 //-----------------------------------------------------------------------------
 void CDlgEntrance::DoDataExchange (CDataExchange *pDX) {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_STARTPOINTSHOW, m_StartPointEdit);
 	DDX_Control(pDX, IDC_EDIT_ENDPOINTSHOW, m_EndPointEdit);
@@ -205,6 +217,7 @@ void CDlgEntrance::DoDataExchange (CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_ONEHORIZONTALDISTANCE, m_OneHorizontalDistance);
 	DDX_Control(pDX, IDC_EDIT_TWOHORIZONTALDISTANCE, m_TwoHorizontalDistance);
 	DDX_Control(pDX, IDC_EDIT_THIREHORZONTALDISTANCE, m_ThireHorizontalDistance);
+	*(end()) = true;
 }
 
 //-----------------------------------------------------------------------------

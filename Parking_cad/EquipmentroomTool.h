@@ -77,7 +77,7 @@ public:
 	static CString getOpenDwgFilePath();
 	//多方案对比
 	static void creatNewDwg();
-	static bool allEntMoveAndClone(AcDbDatabase *pDataBase,int iCount = 0);
+	static bool allEntMoveAndClone(AcDbDatabase *pDataBase,double dCount = 0);
 	static AcGePoint2dArray getAllEntCreatExten();
 	static void test();
 };

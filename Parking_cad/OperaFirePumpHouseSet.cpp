@@ -6,6 +6,7 @@
 #define IsDecrease false
 COperaFirePumpHouseSet::COperaFirePumpHouseSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
+	, m_holder(NULL)
 {
 }
 
@@ -16,6 +17,10 @@ COperaFirePumpHouseSet::~COperaFirePumpHouseSet()
 
 void COperaFirePumpHouseSet::Start()
 { 
+	if (g_dlg)
+	{
+		m_holder = new HideDialogHolder(g_dlg);
+	}
 	double dfirePumpHouseArea = FirePumpHouse;
 	if (IsDecrease)
 	{
@@ -30,6 +35,19 @@ void COperaFirePumpHouseSet::Start()
 	AcDbObjectIdArray FirePumpHouseJigUseIds = CEquipmentroomTool::createArea(dnewArea, _T("Ïû·À±Ã·¿"), FirePumpHouseSideLength, limitLength);
 	CEquipmentroomTool::setEntToLayer(FirePumpHouseJigUseIds);
 	CEquipmentroomTool::jigShow(FirePumpHouseJigUseIds, FirePumpHouseSideLength);
+}
+
+CWnd* COperaFirePumpHouseSet::g_dlg = NULL;
+
+void COperaFirePumpHouseSet::Ended()
+{
+	if (g_dlg && m_holder)
+	{
+		delete m_holder;
+		m_holder = NULL;
+	}
+
+	g_dlg = NULL;
 }
 
 REG_CMD_P(COperaFirePumpHouseSet, BGY, FirePumpHouseSet);

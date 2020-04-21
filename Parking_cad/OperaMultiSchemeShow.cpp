@@ -10,6 +10,7 @@
 
 
 std::string COperaMultiSchemeShow::ms_json;
+int COperaMultiSchemeShow::ms_count;
 //void OpenDoc( void *pData)
 //{
 //	AcApDocument* pDoc = acDocManager->curDocument();
@@ -36,7 +37,10 @@ COperaMultiSchemeShow::~COperaMultiSchemeShow()
 
 void COperaMultiSchemeShow::Start()
 {
+	//AcDbDatabase *rootPDb = new AcDbDatabase(true, false);
+	//Acad::ErrorStatus es = acdbCurDwg()->wblock(rootPDb);
 	creatNewDwg();
+	//delete rootPDb;  //pDb不是数据库的常驻对象，必须手工销毁
 	/*CString sLineTypeFile = _T("C:\\Users\\admin\\AppData\\Roaming\\Autodesk\\AutoCAD 2014\\R19.1\\chs\\Support\\acad.lin");
 	acdbLoadLineTypeFile(_T("continuousx"),sLineTypeFile,NULL);*/
 	/*acDocManager->executeInApplicationContext(OpenDoc, (void *)pData);
@@ -47,12 +51,13 @@ void COperaMultiSchemeShow::Start()
 	}*/
 }
 
-void COperaMultiSchemeShow::getJsonData(const std::string& json)
+void COperaMultiSchemeShow::getJsonData(const std::string& json, const int& count)
 {
 	ms_json = json;
+	ms_count = count;
 }
 
-bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, AcDbDatabase *pDataBase)
+bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, AcDbDatabase *pDataBase, int scheme /*= 0*/)
 {
 	Json::Reader reader;
 	Json::Value root;
@@ -69,271 +74,504 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	double dLaneWidth;
 	if (reader.parse(json, root))
 	{
-		Json::Value& parkings = root["result"]["parkings"];
-		if (parkings.isNull())
+		if (root["result"].isArray())
 		{
-			sMsg = _T("回传json不存在[\"result\"][\"parkings\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (parkings.isArray())
+			Json::Value& oneScheme = root["result"][scheme];
+			Json::Value& parkings = oneScheme["parkings"];
+			if (parkings.isNull())
 			{
-				int nArraySize = parkings.size();
-				for (int i = 0; i < nArraySize; i++)
-				{
-					double ptX = parkings[i]["position"][0].asDouble();
-					double ptY = parkings[i]["position"][1].asDouble();
-					AcGePoint2d pt(ptX, ptY);
-					parkingPts.append(pt);
-					double direction = parkings[i]["direction"].asDouble();
-					parkingDirections.push_back(direction);
-				}
+				sMsg = _T("回传json不存在[\"result\"][\"parkings\"]字段！");
+				return false;
 			}
 			else
 			{
-				sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
-				return false;
-			}
-		}
-		Json::Value& data = root["result"]["data"];
-		if (data.isNull())
-		{
-			sMsg = _T("回传json不存在[\"result\"][\"data\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (data["cell_length"].isDouble() && data["cell_num"].isInt())
-			{
-				dParkingLength = data["cell_length"].asDouble();
-				dParkingWidth = data["cell_width"].asDouble();
-				dLaneWidth = data["lane_width"].asDouble();
-				std::vector<double> dataVector;
-				std::vector<std::string> strDataNameVector;
-				std::map < std::string, double > tableData;
-
-				double dSp = data["Sp"].asDouble();
-				strDataNameVector.push_back("SP");
-				dataVector.push_back(dSp);
-
-				double dSpt = data["Spt"].asDouble();
-				strDataNameVector.push_back("SPT");
-				dataVector.push_back(dSpt);
-
-				double dSpf = data["Spf"].asDouble();
-				strDataNameVector.push_back("SPF");
-				dataVector.push_back(dSpf);
-
-				double dSpf1 = data["Spf1"].asDouble();
-				strDataNameVector.push_back("SPF1");
-				dataVector.push_back(dSpf1);
-
-				double dSpf2 = data["Spf2"].asDouble();
-				strDataNameVector.push_back("SPF2");
-				dataVector.push_back(dSpf2);
-
-				double dSpf3 = data["Spf3"].asDouble();
-				strDataNameVector.push_back("SPF3");
-				dataVector.push_back(dSpf3);
-
-				double dCp = data["Cp"].asDouble();
-				strDataNameVector.push_back("CP");
-				dataVector.push_back(dCp);
-
-				double dJSpc = data["JSpc"].asDouble();
-				strDataNameVector.push_back("JSPC");
-				dataVector.push_back(dJSpc);
-
-				double dSpc = data["Spc"].asDouble();
-				strDataNameVector.push_back("SPC");
-				dataVector.push_back(dSpc);
-
-				double dH = data["H"].asDouble();
-				strDataNameVector.push_back("H");
-				dataVector.push_back(dH);
-
-				double Ht = data["Ht"].asDouble();
-				strDataNameVector.push_back("HT");
-				dataVector.push_back(Ht);
-				CString resultText;
-				for (int i = 0; i < dataVector.size(); i++)
+				if (parkings.isArray())
 				{
-					CString strTempData;
-					strTempData.Format(_T("%.2f"), dataVector[i]);
-					std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
-					tableData.insert(value);//插入新元素
-											//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
-				}
-				int gg = tableData.size();
-				COperaAddFrame::setTableDataMap(tableData);
-			}
-			else
-			{
-				sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
-				return false;
-			}
-		}
-
-		Json::Value& axis = root["result"]["axis"];
-		if (axis.isNull())
-		{
-			sMsg = _T("回传json不存在[\"result\"][\"axis\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (axis.isArray())
-			{
-				int nAxisSize = axis.size();
-				for (int j = 0; j < nAxisSize; j++)
-				{
-					double ptX1 = axis[j][0][0].asDouble();
-					double ptY1 = axis[j][0][1].asDouble();
-					double ptX2 = axis[j][1][0].asDouble();
-					double ptY2 = axis[j][1][1].asDouble();
-					AcGePoint2d startPt(ptX1, ptY1);
-					AcGePoint2d endPt(ptX2, ptY2);
-					AcGePoint2dArray axisPts;
-					axisPts.append(startPt);
-					axisPts.append(endPt);
-					axisesPoints.push_back(axisPts);
-				}
-			}
-			else
-			{
-				sMsg = _T("回传json中[\"result\"][\"axis\"]字段格式不匹配！");
-				return false;
-			}
-		}
-
-		Json::Value& lane = root["result"]["lane"];
-		if (lane.isNull())
-		{
-			sMsg = _T("回传json不存在[\"result\"][\"lane\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (lane.isArray())
-			{
-				int nLaneSize = lane.size();
-				for (int m = 0; m < nLaneSize; m++)
-				{
-					double ptX1 = lane[m][0][0].asDouble();
-					double ptY1 = lane[m][0][1].asDouble();
-					double ptX2 = lane[m][1][0].asDouble();
-					double ptY2 = lane[m][1][1].asDouble();
-					AcGePoint2d startPt(ptX1, ptY1);
-					AcGePoint2d endPt(ptX2, ptY2);
-					AcGePoint2dArray lanePts;
-					lanePts.append(startPt);
-					lanePts.append(endPt);
-					lanesPoints.push_back(lanePts);
-				}
-			}
-			else
-			{
-				sMsg = _T("回传json中[\"result\"][\"lane\"]字段格式不匹配！");
-				return false;
-			}
-		}
-
-		Json::Value& scope = root["result"]["scope"];
-		if (scope.isNull())
-		{
-			sMsg = _T("回传json不存在[\"result\"][\"scope\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (scope.isArray())
-			{
-				int nPark_columSize = scope.size();
-				for (int n = 0; n < nPark_columSize; n++)
-				{
-					double ptX = scope[n][0].asDouble();
-					double ptY = scope[n][1].asDouble();
-					AcGePoint2d plinePt(ptX, ptY);
-					scopePts.append(plinePt);
-				}
-			}
-			else
-			{
-				sMsg = _T("回传json中[\"result\"][\"scope\"]字段格式不匹配！");
-				return false;
-			}
-		}
-
-		Json::Value& pillar = root["result"]["pillar"];
-		if (pillar.isNull())
-		{
-			sMsg = _T("回传json不存在[\"result\"][\"pillar\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (pillar.isArray())
-			{
-				int npillarSize = pillar.size();
-				for (int k = 0; k < npillarSize; k++)
-				{
-					AcGePoint2dArray onePillarPts;
-					if (pillar[k].isArray())
+					int nArraySize = parkings.size();
+					for (int i = 0; i < nArraySize; i++)
 					{
-						int onepillarSize = pillar[k].size();
-						for (int g = 0; g < onepillarSize; g++)
-						{
-							double ptX = pillar[k][g][0].asDouble();
-							double ptY = pillar[k][g][1].asDouble();
-							AcGePoint2d tempPt(ptX, ptY);
-							onePillarPts.append(tempPt);
-						}
+						double ptX = parkings[i]["position"][0].asDouble();
+						double ptY = parkings[i]["position"][1].asDouble();
+						AcGePoint2d pt(ptX, ptY);
+						parkingPts.append(pt);
+						double direction = parkings[i]["direction"].asDouble();
+						parkingDirections.push_back(direction);
 					}
-					pillarPoints.push_back(onePillarPts);
 				}
-			}
-			else
-			{
-				sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
-				return false;
-			}
-		}
-
-		Json::Value& arrow = root["result"]["arrow"];
-		if (arrow.isNull())
-		{
-			sMsg = _T("回传json不存在[\"result\"][\"arrow\"]字段！");
-			return false;
-		}
-		else
-		{
-			if (arrow.isArray())
-			{
-				int narrowSize = arrow.size();
-				for (int k = 0; k < narrowSize; k++)
+				else
 				{
-					AcGePoint2dArray oneArrowPts;
-					if (arrow[k].isArray())
-					{
-						int nonearrowSize = arrow[k].size();
-						for (int g = 0; g < nonearrowSize; g++)
-						{
-							double ptX = arrow[k][g][0].asDouble();
-							double ptY = arrow[k][g][1].asDouble();
-							AcGePoint2d tempPt(ptX, ptY);
-							oneArrowPts.append(tempPt);
-						}
-					}
-					arrowPoints.push_back(oneArrowPts);
+					sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+					return false;
 				}
+			}
+			Json::Value& data = oneScheme["data"];
+			if (data.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"data\"]字段！");
+				return false;
 			}
 			else
 			{
-				sMsg = _T("回传json中[\"result\"][\"arrow\"]字段格式不匹配！");
+				if (data["cell_length"].isDouble() && data["cell_num"].isInt())
+				{
+					dParkingLength = data["cell_length"].asDouble();
+					dParkingWidth = data["cell_width"].asDouble();
+					dLaneWidth = data["lane_width"].asDouble();
+					std::vector<double> dataVector;
+					std::vector<std::string> strDataNameVector;
+					std::map < std::string, double > tableData;
+
+					double dSp = data["Sp"].asDouble();
+					strDataNameVector.push_back("SP");
+					dataVector.push_back(dSp);
+
+					double dSpt = data["Spt"].asDouble();
+					strDataNameVector.push_back("SPT");
+					dataVector.push_back(dSpt);
+
+					double dSpf = data["Spf"].asDouble();
+					strDataNameVector.push_back("SPF");
+					dataVector.push_back(dSpf);
+
+					double dSpf1 = data["Spf1"].asDouble();
+					strDataNameVector.push_back("SPF1");
+					dataVector.push_back(dSpf1);
+
+					double dSpf2 = data["Spf2"].asDouble();
+					strDataNameVector.push_back("SPF2");
+					dataVector.push_back(dSpf2);
+
+					double dSpf3 = data["Spf3"].asDouble();
+					strDataNameVector.push_back("SPF3");
+					dataVector.push_back(dSpf3);
+
+					double dCp = data["Cp"].asDouble();
+					strDataNameVector.push_back("CP");
+					dataVector.push_back(dCp);
+
+					double dJSpc = data["JSpc"].asDouble();
+					strDataNameVector.push_back("JSPC");
+					dataVector.push_back(dJSpc);
+
+					double dSpc = data["Spc"].asDouble();
+					strDataNameVector.push_back("SPC");
+					dataVector.push_back(dSpc);
+
+					double dH = data["H"].asDouble();
+					strDataNameVector.push_back("H");
+					dataVector.push_back(dH);
+
+					double Ht = data["Ht"].asDouble();
+					strDataNameVector.push_back("HT");
+					dataVector.push_back(Ht);
+					CString resultText;
+					for (int i = 0; i < dataVector.size(); i++)
+					{
+						CString strTempData;
+						strTempData.Format(_T("%.2f"), dataVector[i]);
+						std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
+						tableData.insert(value);//插入新元素
+												//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
+					}
+					int gg = tableData.size();
+					COperaAddFrame::setTableDataMap(tableData);
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+					return false;
+				}
+			}
+			Json::Value& axis = oneScheme["axis"];
+			if (axis.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"axis\"]字段！");
 				return false;
 			}
+			else
+			{
+				if (axis.isArray())
+				{
+					int nAxisSize = axis.size();
+					for (int j = 0; j < nAxisSize; j++)
+					{
+						double ptX1 = axis[j][0][0].asDouble();
+						double ptY1 = axis[j][0][1].asDouble();
+						double ptX2 = axis[j][1][0].asDouble();
+						double ptY2 = axis[j][1][1].asDouble();
+						AcGePoint2d startPt(ptX1, ptY1);
+						AcGePoint2d endPt(ptX2, ptY2);
+						AcGePoint2dArray axisPts;
+						axisPts.append(startPt);
+						axisPts.append(endPt);
+						axisesPoints.push_back(axisPts);
+					}
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"axis\"]字段格式不匹配！");
+					return false;
+				}
+			}
+			Json::Value& scope = oneScheme["scope"];
+			if (scope.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"scope\"]字段！");
+				return false;
+			}
+			else
+			{
+				if (scope.isArray())
+				{
+					int nPark_columSize = scope.size();
+					for (int n = 0; n < nPark_columSize; n++)
+					{
+						double ptX = scope[n][0].asDouble();
+						double ptY = scope[n][1].asDouble();
+						AcGePoint2d plinePt(ptX, ptY);
+						scopePts.append(plinePt);
+					}
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"scope\"]字段格式不匹配！");
+					return false;
+				}
+			}
+			Json::Value& pillar = oneScheme["pillar"];
+			if (pillar.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"pillar\"]字段！");
+				return false;
+			}
+			else
+			{
+				if (pillar.isArray())
+				{
+					int npillarSize = pillar.size();
+					for (int k = 0; k < npillarSize; k++)
+					{
+						AcGePoint2dArray onePillarPts;
+						if (pillar[k].isArray())
+						{
+							int onepillarSize = pillar[k].size();
+							for (int g = 0; g < onepillarSize; g++)
+							{
+								double ptX = pillar[k][g][0].asDouble();
+								double ptY = pillar[k][g][1].asDouble();
+								AcGePoint2d tempPt(ptX, ptY);
+								onePillarPts.append(tempPt);
+							}
+						}
+						pillarPoints.push_back(onePillarPts);
+					}
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
+					return false;
+				}
+			}
+			Json::Value& arrow = oneScheme["arrow"];
+			if (arrow.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"arrow\"]字段！");
+				return false;
+			}
+			else
+			{
+				if (arrow.isArray())
+				{
+					int narrowSize = arrow.size();
+					for (int k = 0; k < narrowSize; k++)
+					{
+						AcGePoint2dArray oneArrowPts;
+						if (arrow[k].isArray())
+						{
+							int nonearrowSize = arrow[k].size();
+							for (int g = 0; g < nonearrowSize; g++)
+							{
+								double ptX = arrow[k][g][0].asDouble();
+								double ptY = arrow[k][g][1].asDouble();
+								AcGePoint2d tempPt(ptX, ptY);
+								oneArrowPts.append(tempPt);
+							}
+						}
+						arrowPoints.push_back(oneArrowPts);
+					}
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"arrow\"]字段格式不匹配！");
+					return false;
+				}
+			}
 		}
+		//Json::Value& parkings = root["result"]["parkings"];
+		//if (parkings.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"parkings\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (parkings.isArray())
+		//	{
+		//		int nArraySize = parkings.size();
+		//		for (int i = 0; i < nArraySize; i++)
+		//		{
+		//			double ptX = parkings[i]["position"][0].asDouble();
+		//			double ptY = parkings[i]["position"][1].asDouble();
+		//			AcGePoint2d pt(ptX, ptY);
+		//			parkingPts.append(pt);
+		//			double direction = parkings[i]["direction"].asDouble();
+		//			parkingDirections.push_back(direction);
+		//		}
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
+		//Json::Value& data = root["result"]["data"];
+		//if (data.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"data\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (data["cell_length"].isDouble() && data["cell_num"].isInt())
+		//	{
+		//		dParkingLength = data["cell_length"].asDouble();
+		//		dParkingWidth = data["cell_width"].asDouble();
+		//		dLaneWidth = data["lane_width"].asDouble();
+		//		std::vector<double> dataVector;
+		//		std::vector<std::string> strDataNameVector;
+		//		std::map < std::string, double > tableData;
+
+		//		double dSp = data["Sp"].asDouble();
+		//		strDataNameVector.push_back("SP");
+		//		dataVector.push_back(dSp);
+
+		//		double dSpt = data["Spt"].asDouble();
+		//		strDataNameVector.push_back("SPT");
+		//		dataVector.push_back(dSpt);
+
+		//		double dSpf = data["Spf"].asDouble();
+		//		strDataNameVector.push_back("SPF");
+		//		dataVector.push_back(dSpf);
+
+		//		double dSpf1 = data["Spf1"].asDouble();
+		//		strDataNameVector.push_back("SPF1");
+		//		dataVector.push_back(dSpf1);
+
+		//		double dSpf2 = data["Spf2"].asDouble();
+		//		strDataNameVector.push_back("SPF2");
+		//		dataVector.push_back(dSpf2);
+
+		//		double dSpf3 = data["Spf3"].asDouble();
+		//		strDataNameVector.push_back("SPF3");
+		//		dataVector.push_back(dSpf3);
+
+		//		double dCp = data["Cp"].asDouble();
+		//		strDataNameVector.push_back("CP");
+		//		dataVector.push_back(dCp);
+
+		//		double dJSpc = data["JSpc"].asDouble();
+		//		strDataNameVector.push_back("JSPC");
+		//		dataVector.push_back(dJSpc);
+
+		//		double dSpc = data["Spc"].asDouble();
+		//		strDataNameVector.push_back("SPC");
+		//		dataVector.push_back(dSpc);
+
+		//		double dH = data["H"].asDouble();
+		//		strDataNameVector.push_back("H");
+		//		dataVector.push_back(dH);
+
+		//		double Ht = data["Ht"].asDouble();
+		//		strDataNameVector.push_back("HT");
+		//		dataVector.push_back(Ht);
+		//		CString resultText;
+		//		for (int i = 0; i < dataVector.size(); i++)
+		//		{
+		//			CString strTempData;
+		//			strTempData.Format(_T("%.2f"), dataVector[i]);
+		//			std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
+		//			tableData.insert(value);//插入新元素
+		//									//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
+		//		}
+		//		int gg = tableData.size();
+		//		COperaAddFrame::setTableDataMap(tableData);
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
+
+		//Json::Value& axis = root["result"]["axis"];
+		//if (axis.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"axis\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (axis.isArray())
+		//	{
+		//		int nAxisSize = axis.size();
+		//		for (int j = 0; j < nAxisSize; j++)
+		//		{
+		//			double ptX1 = axis[j][0][0].asDouble();
+		//			double ptY1 = axis[j][0][1].asDouble();
+		//			double ptX2 = axis[j][1][0].asDouble();
+		//			double ptY2 = axis[j][1][1].asDouble();
+		//			AcGePoint2d startPt(ptX1, ptY1);
+		//			AcGePoint2d endPt(ptX2, ptY2);
+		//			AcGePoint2dArray axisPts;
+		//			axisPts.append(startPt);
+		//			axisPts.append(endPt);
+		//			axisesPoints.push_back(axisPts);
+		//		}
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"axis\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
+
+		//Json::Value& lane = root["result"]["lane"];
+		//if (lane.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"lane\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (lane.isArray())
+		//	{
+		//		int nLaneSize = lane.size();
+		//		for (int m = 0; m < nLaneSize; m++)
+		//		{
+		//			double ptX1 = lane[m][0][0].asDouble();
+		//			double ptY1 = lane[m][0][1].asDouble();
+		//			double ptX2 = lane[m][1][0].asDouble();
+		//			double ptY2 = lane[m][1][1].asDouble();
+		//			AcGePoint2d startPt(ptX1, ptY1);
+		//			AcGePoint2d endPt(ptX2, ptY2);
+		//			AcGePoint2dArray lanePts;
+		//			lanePts.append(startPt);
+		//			lanePts.append(endPt);
+		//			lanesPoints.push_back(lanePts);
+		//		}
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"lane\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
+
+		//Json::Value& scope = root["result"]["scope"];
+		//if (scope.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"scope\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (scope.isArray())
+		//	{
+		//		int nPark_columSize = scope.size();
+		//		for (int n = 0; n < nPark_columSize; n++)
+		//		{
+		//			double ptX = scope[n][0].asDouble();
+		//			double ptY = scope[n][1].asDouble();
+		//			AcGePoint2d plinePt(ptX, ptY);
+		//			scopePts.append(plinePt);
+		//		}
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"scope\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
+
+		//Json::Value& pillar = root["result"]["pillar"];
+		//if (pillar.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"pillar\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (pillar.isArray())
+		//	{
+		//		int npillarSize = pillar.size();
+		//		for (int k = 0; k < npillarSize; k++)
+		//		{
+		//			AcGePoint2dArray onePillarPts;
+		//			if (pillar[k].isArray())
+		//			{
+		//				int onepillarSize = pillar[k].size();
+		//				for (int g = 0; g < onepillarSize; g++)
+		//				{
+		//					double ptX = pillar[k][g][0].asDouble();
+		//					double ptY = pillar[k][g][1].asDouble();
+		//					AcGePoint2d tempPt(ptX, ptY);
+		//					onePillarPts.append(tempPt);
+		//				}
+		//			}
+		//			pillarPoints.push_back(onePillarPts);
+		//		}
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
+
+		//Json::Value& arrow = root["result"]["arrow"];
+		//if (arrow.isNull())
+		//{
+		//	sMsg = _T("回传json不存在[\"result\"][\"arrow\"]字段！");
+		//	return false;
+		//}
+		//else
+		//{
+		//	if (arrow.isArray())
+		//	{
+		//		int narrowSize = arrow.size();
+		//		for (int k = 0; k < narrowSize; k++)
+		//		{
+		//			AcGePoint2dArray oneArrowPts;
+		//			if (arrow[k].isArray())
+		//			{
+		//				int nonearrowSize = arrow[k].size();
+		//				for (int g = 0; g < nonearrowSize; g++)
+		//				{
+		//					double ptX = arrow[k][g][0].asDouble();
+		//					double ptY = arrow[k][g][1].asDouble();
+		//					AcGePoint2d tempPt(ptX, ptY);
+		//					oneArrowPts.append(tempPt);
+		//				}
+		//			}
+		//			arrowPoints.push_back(oneArrowPts);
+		//		}
+		//	}
+		//	else
+		//	{
+		//		sMsg = _T("回传json中[\"result\"][\"arrow\"]字段格式不匹配！");
+		//		return false;
+		//	}
+		//}
 	}
 	else
 	{
@@ -488,7 +726,7 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 	return axisId;
 }
 
-void COperaMultiSchemeShow::creatNewDwg()
+void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/)
 {
 	CString path = CEquipmentroomTool::getOpenDwgFilePath();
 	CString deleName = _T(".dwg");
@@ -519,7 +757,7 @@ void COperaMultiSchemeShow::creatNewDwg()
 	// 创建新的图形数据库，分配内存空间
 	
 	AcDbDatabase *pDb = new AcDbDatabase(true, false);
-	es = acdbCurDwg()->wblock(pDb);
+	es = rootPDb->wblock(pDb);
 	if (es!=eOk)
 	{
 		acutPrintf(_T("\n多方案数据库拷贝失败！"));
@@ -540,14 +778,14 @@ void COperaMultiSchemeShow::creatNewDwg()
 		//return;
 	}
 	
-	for (int i=1; i<3; i++)
+	for (int i=1; i<ms_count; i++)
 	{
 		AcDbDatabase *pTempDb; // 临时图形数据库
-		es = acdbCurDwg()->wblock(pTempDb);
+		es = rootPDb->wblock(pTempDb);
 		CString sMsg1;
 		loadModelFile(pTempDb);
-		COperaMultiSchemeShow::addEntToDb(ms_json, sMsg1,pTempDb);
-		CEquipmentroomTool::allEntMoveAndClone(pTempDb,i+0.5);
+		COperaMultiSchemeShow::addEntToDb(ms_json, sMsg1,pTempDb,i);
+		CEquipmentroomTool::allEntMoveAndClone(pTempDb,(i*1.2));
 		es = pDb->insert(AcGeMatrix3d::kIdentity, pTempDb);
 		if (es!=eOk)
 		{

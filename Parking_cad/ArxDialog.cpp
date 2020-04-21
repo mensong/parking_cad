@@ -231,9 +231,19 @@ void CArxDialog::loaddirectionCombo()
 	}
 }
 
-
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CArxDialog::DoDataExchange");
+		delete data;
+	}
+}
 //-----------------------------------------------------------------------------
 void CArxDialog::DoDataExchange(CDataExchange *pDX) {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_OutlineLayer, m_outlineLayer);
 	DDX_Control(pDX, IDC_COMBO_ShearwallLayer, m_shearwallLayer);
@@ -252,6 +262,7 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_NON_CONVEXLEVEL, m_Non_Convexlevel);
 	DDX_Control(pDX, IDC_EDIT_PARTITION_LINE, m_PartitionLineEdit);
 	DDX_Control(pDX, IDC_EDIT_SHOWENDPOINT, m_EditShowEndPoint);
+	*(end()) = true;
 }
 
 void CArxDialog::OnOK()
@@ -675,8 +686,8 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 			return 4;
 		}
 		//std::string messgae = root["messgae"].asString();
-		std::string result = root["result"].asString();
-		sMsg = result;
+		//std::string result = root["result"].asString();
+		sMsg = root["result"].asString();
 		return 0;
 	}
 
@@ -687,6 +698,13 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 {
 	// TODO: 在此添加控件通知处理程序代码
+
+	int iMulti = 0;
+	if (useManyShow)
+	{
+		iMulti = 1;
+	}
+
 	m_editLength.GetWindowText(m_strLength);
 	m_Width.GetWindowText(m_strWidth);
 	m_LaneWidth.GetWindowText(m_StrLaneWidth);
@@ -892,6 +910,7 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 	auth["computer_id"] = GL::Ansi2Utf8(m_strComputerId.c_str());
 	auth["user_id"] = GL::Ansi2Utf8(m_strUserId.c_str());
 	root["auth"] = auth;
+	root["multi"] = Json::Value(iMulti);
 	std::string strData = root.toStyledString();
 	if (strData == "")
 	{
@@ -899,14 +918,14 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 		return;
 	}
 	std::string uuid;
-	int res = postToAIApi(root.toStyledString(), uuid,useV1);
+	int res = postToAIApi(root.toStyledString(), uuid, useV1);
 	if (res != 0)
 	{
 		CString	sMsg = GL::Ansi2WideByte(uuid.c_str()).c_str();
 		acedAlert(sMsg);
 		return;
 	}
-	CDlgWaiting::setUuid(uuid,useV1,useManyShow);
+	CDlgWaiting::setUuid(uuid, useV1, useManyShow);
 
 	//CDlgWaiting::Show(true);
 	//CDlgWaiting dlg;

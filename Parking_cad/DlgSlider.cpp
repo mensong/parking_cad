@@ -25,6 +25,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "DlgSlider.h"
+#include "DBHelper.h"
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgSlider, CAcUiDialog)
@@ -39,11 +40,24 @@ END_MESSAGE_MAP()
 CDlgSlider::CDlgSlider (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog (CDlgSlider::IDD, pParent, hInstance) {
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgSlider::DoDataExchange");
+		delete data;
+	}
+}
+
 //-----------------------------------------------------------------------------
 void CDlgSlider::DoDataExchange (CDataExchange *pDX) {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_SLIDER_CONTROL, m_SliderControl);
 	DDX_Control(pDX, IDC_EDIT_SHOWVALUE, m_EditShowValue);
+	*(end()) = true;
 }
 
 //-----------------------------------------------------------------------------

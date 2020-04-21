@@ -4,6 +4,7 @@
 
 COperaVillageSet::COperaVillageSet(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
+	, m_holder(NULL)
 {
 
 }
@@ -16,9 +17,11 @@ COperaVillageSet::~COperaVillageSet()
 void COperaVillageSet::Start()
 {
 	//用电设备房
-
-	double villageArea = 0;
-	CEquipmentroomTool::getTotalArea(_T("小区总面积:"), villageArea);
+	if (g_dlg)
+	{
+		m_holder = new HideDialogHolder(g_dlg);
+	}
+	double villageArea = CEquipmentroomTool::getTotalArea(_T("小区总面积:"));
 	if (villageArea == 0)
 	{
 		acutPrintf(_T("\n输入错误！"));
@@ -60,6 +63,19 @@ begin:acedInitGet(0, _T("Yes No"));
 	AcDbObjectIdArray jigUseIds = CEquipmentroomTool::createArea(CEquipmentroomTool::areaScale(distributionRoomS), _T("配电房"), sideLength, limitLength, false);
 	CEquipmentroomTool::setEntToLayer(jigUseIds);
 	CEquipmentroomTool::jigShow(jigUseIds, sideLength);
+}
+
+CWnd* COperaVillageSet::g_dlg = NULL;
+
+void COperaVillageSet::Ended()
+{
+	if (g_dlg && m_holder)
+	{
+		delete m_holder;
+		m_holder = NULL;
+	}
+
+	g_dlg = NULL;
 }
 
 REG_CMD_P(COperaVillageSet, BGY, VillageSet);

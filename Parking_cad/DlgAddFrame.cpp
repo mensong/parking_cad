@@ -188,8 +188,20 @@ void CDlgAddFrame::refreshPreview()
 		CCadPreviewCtrl::meMBWheel);
 }
 
+static void __smartLog(bool*& data, bool isDataValid)
+{
+	if (isDataValid)
+	{
+		bool end = (*data);
+		if (!end)
+			CParkingLog::AddLogA("DEBUG_不支持尝试执行的操作", 0, "CDlgAddFrame::DoDataExchange");
+		delete data;
+	}
+}
+
 void CDlgAddFrame::DoDataExchange(CDataExchange* pDX)
 {
+	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_FRAME_LENGTH, m_editFrameLen);
 	DDX_Control(pDX, IDC_EDIT_FRAME_WIDTH, m_editFrameWidth);
@@ -197,6 +209,7 @@ void CDlgAddFrame::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_FRAME_WIDTH, m_sFrameWidth);
 	DDX_Text(pDX, IDC_EDIT_FRAME_LENGTH, m_sFrameLen);
 	DDX_Control(pDX, IDC_BUTTON_EXCHANGE, m_btnExchange);
+	*(end()) = true;
 }
 
 
