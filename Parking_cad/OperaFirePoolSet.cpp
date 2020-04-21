@@ -20,8 +20,8 @@ void COperaFirePoolSet::Start()
 	{
 		m_holder = new HideDialogHolder(g_dlg);
 	}
-	double storeyHeight = CEquipmentroomTool::getTotalArea(_T("≤„∏ﬂ:"));
-	if (storeyHeight == 0)
+	double storeyHeight = 0;
+	if (!CEquipmentroomTool::getTotalArea(_T("≤„∏ﬂ:"), storeyHeight))
 	{
 		acutPrintf(_T("\n ‰»Î¥ÌŒÛ£°"));
 		return;
