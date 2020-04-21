@@ -19,7 +19,7 @@ public:
 	/*文字位移，使其居中于设备房*/
 	static void textMove(AcGePoint3d ptInsert, AcDbObjectId textId);
 
-	static ads_real getTotalArea(CString totalName);
+	static bool getTotalArea(CString totalName, ads_real& totalArea);
 	static AcDbObjectId CreateText(const AcGePoint3d& ptInsert, CString text, double height,
 		AcDbObjectId style = AcDbObjectId::kNull, double rotation = 0);
 	static AcDbObjectId CreateMText(const AcGePoint3d& ptInsert,
@@ -54,6 +54,8 @@ public:
 	static void creatTextStyle(CString& textStyleName);
 	/*从配置文件获取图层名*/
 	static std::string getLayerName(const std::string& strLayer);
+	static std::string getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key);
+	static void getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key, std::vector<std::string>& arrayvector);
 	/*删除指定图层*/
 	static bool deletLayerByName(const CString& layerNaem); 
 	static Acad::ErrorStatus deletLayer(AcDbLayerTableRecord* pLTR, AcDbLayerTable* pLT = NULL);

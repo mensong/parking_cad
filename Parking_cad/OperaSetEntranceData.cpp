@@ -178,7 +178,9 @@ AcDbObjectId COperaSetEntranceData::creatArcDim(const AcGePoint3d& pt1, const Ac
 void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 {
 	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-	double height = CEquipmentroomTool::getTotalArea(_T("地下室高度(单位m):"));
+
+	double height = 0;
+	CEquipmentroomTool::getTotalArea(_T("地下室高度(单位m):"), height);
 	if (height == 0)
 	{
 		acutPrintf(_T("\n输入错误！"));

@@ -22,6 +22,11 @@ void COperaVillageSet::Start()
 		m_holder = new HideDialogHolder(g_dlg);
 	}
 	double villageArea = CEquipmentroomTool::getTotalArea(_T("小区总面积:"));
+	if (villageArea == 0)
+	{
+		acutPrintf(_T("\n输入错误！"));
+		return;
+	}
 begin:acedInitGet(0, _T("Yes No"));
 	ACHAR Input[256];
 	bool isRegardCharging = false;

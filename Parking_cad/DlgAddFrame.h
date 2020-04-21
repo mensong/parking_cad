@@ -65,7 +65,7 @@ protected:
 
 	double mBlockextentsLen;
 	double mBlockextentsWidth;
-	double mMultiple;
+	double mMultiple;//Í¼Ç©Ëõ·Å±¶Êý
 public:
 	afx_msg void OnBnClickedButtonExchange();
 	CString m_sFrameWidth;

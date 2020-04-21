@@ -219,11 +219,17 @@ void COperaAxleNetMaking::Start()
 		AxisNumberMap[LineIds[i]] = tagvalue;
 	}
 
-	COperaAxleNetMaking::drawAxisNumber(LineIds, AxisNumberMap);
+	COperaAxleNetMaking::drawAxisNumber(LineIds,AxisNumberMap);
 }
 
-void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<AcDbObjectId, AcString>& AxisNumberMap, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<AcDbObjectId, AcString>& AxisNumberMap,AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
+	for (int i = 0; i < LineIds.length(); ++i)
+	{
+		AcString keyvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, LineIds[i]).constPtr();	
+		DBHelper::AddXData(LineIds[i], _T("轴号"), keyvalue);
+	}
+
 	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	const ACHAR *layername = sAxisLayer;//轴线所在图层
 
@@ -241,7 +247,6 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			continue;
 
 		AcDbExtents exts = CCommonFuntion::GetBigExtents(Ids);
-
 		AcGePoint3d lefdownPt = exts.minPoint();
 		AcGePoint3d lefupPt = AcGePoint3d(exts.minPoint().x, exts.maxPoint().y, 0);
 		AcGePoint3d rigthupPt = exts.maxPoint();
@@ -299,7 +304,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			}
 
 			//轴号标注
-			COperaAxleNetMaking::inserAadAxleNum(sortIds, lefupPt, lefdownPt,/* 1,*/ 1, AxisNumberMap,pDb);
+			COperaAxleNetMaking::inserAadAxleNum(sortIds, lefupPt, lefdownPt, 1,1, pDb);
 
 		
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"),pDb);
@@ -322,8 +327,6 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			AcDbObjectIdArray specialoutputIds_1;
 			if (specaildealIds.length() >= 2)
 				SpecialDeal(setlayernameofAXSI, specaildealIds, lefupPt, lefdownPt, rigthdownPt, rigthupPt, layername,pDb);
-
-
 		}
 		else
 		{
@@ -349,7 +352,6 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 
 			std::sort(distancevet.begin(), distancevet.end());
 
-
 			AcDbObjectIdArray tempsortIds;
 			for (int m = 0; m < distancevet.size(); m++)
 			{
@@ -363,7 +365,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 			AcDbObjectIdArray sortIds;
 			for (int k = tempsortIds.length() - 1; k >= 0; --k)
 				sortIds.append(tempsortIds[k]);
-			COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthupPt, lefupPt, /*2,*/ -1, AxisNumberMap,pDb);
+			COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthupPt, lefupPt, 1,-1, pDb);
 
 			CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"),pDb);
 
@@ -742,7 +744,7 @@ AcGePoint3d COperaAxleNetMaking::getChangPoint(AcGePoint3d& basept, AcGeVector3d
 	return temppt;
 }
 
-void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, /*int casenum,*/ int plusorminus/*=1*/, std::map<AcDbObjectId, AcString>& AxisNumberMap, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, double zoomcoefficient /*= 1*/, int plusorminus/*=1*/, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	CEquipmentroomTool::creatLayerByjson("axis_dimensions",pDb);//创建轴号所在图层
 
@@ -754,8 +756,8 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 	if (!es)
 		return;
 
-	double scaleFactor = 150;// 折线长度
-	double circleradius = 450;//圆半径，写死
+	double scaleFactor = 150* zoomcoefficient;// 折线长度
+	double circleradius = 450* zoomcoefficient;//圆半径
 	double dis = (scaleFactor + circleradius)*sin(45 * PI / 180);//折线导致增加的移动距离
 
 	AcDbObjectId LineId = COperaAxleNetMaking::DrowLine(inputstartpt, inputendpt,pDb);
@@ -771,21 +773,12 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 		if (CCommonFuntion::GetLineDistance(sortIds[i], LineId) >= 2)
 			continue;
 
-		tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]).constPtr();
-
-		/*switch (casenum)
-		{
-		case 1:
-			COperaAxleNetMaking::LongitudinalNumbering(tagnum, addtagnum, tagvalue, csAddtagvalue);
-			break;
-		case 2:
-			num++;
-			tagvalue.Format(_T("%d"), num);
-			break;
-		default:
-			acutPrintf(_T("选项值输入错误!"));
-		}*/
-
+		//tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]).constPtr();
+		AcString keyvalue;
+		DBHelper::GetXData(sortIds[i], _T("轴号"),keyvalue);
+		ACHAR *strtochar = DBHelper::ACHARAcString(keyvalue);
+		tagvalue = strtochar;
+		
 		if (i == 0 && i != sortIds.length() - 1)
 		{
 			if (CCommonFuntion::GetLineDistance(sortIds[i], sortIds[i + 1]) <= circleradius * 2 + dis)
@@ -810,7 +803,8 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 				COperaAxleNetMaking::getLinePoint(sortIds[i], startpt, endpt);
 
 				//对插入的块参照进行移动
-				COperaAxleNetMaking::dealBlock(sBlockName, startpt, AcGeVector3d(startpt - endpt), endpt, AcGeVector3d(endpt - startpt), scaleFactor * 20, circleradius, tagvalue,pDb);
+				COperaAxleNetMaking::dealBlock(sBlockName, startpt, AcGeVector3d(startpt - endpt), endpt
+					, AcGeVector3d(endpt - startpt), scaleFactor * 20, circleradius, tagvalue, pDb);
 			}
 			continue;
 		}
@@ -859,7 +853,7 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 
 					//对插入的块参照进行移动
 					COperaAxleNetMaking::dealBlock(sBlockName, startpt, AcGeVector3d(startpt - endpt), endpt, AcGeVector3d(endpt - startpt)
-						, scaleFactor * 20, circleradius, tagvalue,pDb);
+						, scaleFactor * 20, circleradius, tagvalue, pDb);
 
 				}
 
@@ -892,7 +886,7 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 				AcGeVector3d moveagvec1, moveagvec2;
 				COperaAxleNetMaking::creatOtherGuideLine(startpt, endpt, movept1, moveagvec1, movept2, moveagvec2, scaleFactor, -plusorminus,pDb);
 				//对插入的块参照进行移动
-				COperaAxleNetMaking::dealBlock(sBlockName, movept1, moveagvec1, movept2, moveagvec2, scaleFactor, circleradius, tagvalue,pDb);
+				COperaAxleNetMaking::dealBlock(sBlockName, movept1, moveagvec1, movept2, moveagvec2, scaleFactor, circleradius, tagvalue, pDb);
 			}
 			else
 			{
@@ -902,7 +896,8 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 				COperaAxleNetMaking::getLinePoint(sortIds[i], startpt, endpt);
 
 				//对插入的块参照进行移动
-				COperaAxleNetMaking::dealBlock(sBlockName, startpt, AcGeVector3d(startpt - endpt), endpt, AcGeVector3d(endpt - startpt), scaleFactor * 20, circleradius, tagvalue,pDb);
+				COperaAxleNetMaking::dealBlock(sBlockName, startpt, AcGeVector3d(startpt - endpt), endpt, 
+					AcGeVector3d(endpt - startpt), scaleFactor * 20, circleradius, tagvalue, pDb);
 			}
 		}
 	}
@@ -925,6 +920,17 @@ void COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d&
 	DBHelper::InsertBlkRefWithAttribute(blockId, sBlockName, inserpt, mpAttr,0,pDb);
 	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName,blockId,pDb);
+
+	AcDbEntity *pEnt = NULL;
+	if (acdbOpenObject(pEnt, blockId, AcDb::kForWrite) == eOk)
+	{
+		AcGeMatrix3d xform;
+		xform.setToScaling(circleradius/450, inserpt);
+		pEnt->transformBy(xform);
+
+		if (pEnt)
+			pEnt->close();
+	}
 }
 
 void COperaAxleNetMaking::dealBlock(const AcString& sBlockName, AcGePoint3d& startpt, AcGeVector3d& moveagvec1
@@ -936,14 +942,14 @@ void COperaAxleNetMaking::dealBlock(const AcString& sBlockName, AcGePoint3d& sta
 	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	COperaAxleNetMaking::setEntColor(GuideLineId1, 3);
 	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId1,pDb);
-	COperaAxleNetMaking::inserBlockRec(sBlockName, movept1, moveagvec1, circleradius, tagvalue,pDb);
+	COperaAxleNetMaking::inserBlockRec(sBlockName, movept1, moveagvec1, circleradius, tagvalue, pDb);
 
 	//终止点引出一条直线，并连接轴号块
 	AcGePoint3d movept2 = COperaAxleNetMaking::getChangPoint(endpt, moveagvec2, scaleFactor);
 	AcDbObjectId GuideLineId2 = COperaAxleNetMaking::DrowLine(endpt, movept2,pDb);
 	COperaAxleNetMaking::setEntColor(GuideLineId2, 3);
 	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId2,pDb);
-	COperaAxleNetMaking::inserBlockRec(sBlockName, movept2, moveagvec2, circleradius, tagvalue,pDb);
+	COperaAxleNetMaking::inserBlockRec(sBlockName, movept2, moveagvec2, circleradius, tagvalue, pDb);
 }
 
 void COperaAxleNetMaking::LongitudinalNumbering(int& tagnum, int& addtagnum, CString& tagvalue, CString& csAddtagvalue)

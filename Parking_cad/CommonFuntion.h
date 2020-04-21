@@ -85,13 +85,13 @@ public:
 	//车道轴网尺寸标注
 	static void creatLaneGridDimensionsDimStyle(const CString& stylename, AcDbDatabase *pDb = acdbCurDwg());
 	static void setEntityLayer(const AcString& setlayername, AcDbObjectId& entityId, AcDbDatabase *pDb = acdbCurDwg());
+	//将实体添加到指定块定义中
+	static void addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcString& sBlockName, AcDbDatabase *pDb = acdbCurDwg());
+	//删除块定义
+	static void deleteAcDbBlockTableRecord(CString& strBlockName);
 	
 public:
-	/*
-	*
-	  两条曲线最短距离
-	                  *
-	                   */
+	/**两条曲线最短距离**/
 	static double GetLineDistance(AcDbObjectId& Line1,AcDbObjectId& Line2);
 	static AcGeLineSeg2d GetGeLineObj(AcDbObjectId lineId);
 	static AcGePoint2d ToPoint2d(const AcGePoint3d &point3d);

@@ -106,7 +106,7 @@ public:
 		LoadCuix::Load(filepath);
 		LoadCuix::ShowToolbarAsyn(_T("ÖÇÄÜµØ¿â"));
 		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
-
+				
 		return (retCode) ;
 	}
 

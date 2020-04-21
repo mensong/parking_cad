@@ -8,7 +8,8 @@
 #include "CommonFuntion.h"
 #include "EquipmentroomTool.h"
 
-
+//图签倍数之放大系数
+#define Magnification 2
 // CDlgAddFrame 对话框
 
 IMPLEMENT_DYNAMIC(CDlgAddFrame, CAcUiDialog)
@@ -494,7 +495,8 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 
 	double improblockLen = abs(extents.maxPoint().x - extents.minPoint().x);
 
-	mMultiple = (inputLen * 48) / (improblockLen * 315);
+	//图签缩放倍数
+	mMultiple = Magnification*(inputLen * 48) / (improblockLen * 315);
 
 	mBlockextentsLen = abs(extents.maxPoint().x - extents.minPoint().x)* mMultiple;
 	mBlockextentsWidth = abs(extents.maxPoint().y - extents.minPoint().y) * mMultiple;

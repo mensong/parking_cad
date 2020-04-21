@@ -226,7 +226,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 				acutPrintf(_T("\nthe uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
 				acutPrintf(_T("\n"));
 				DBHelper::CallCADCommandEx(_T("Redraw"));
-			}		
+			}
 		}
 		else if (status == 0)
 		{

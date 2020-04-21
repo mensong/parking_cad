@@ -169,17 +169,17 @@ void CEquipmentroomTool::textMove(AcGePoint3d ptInsert, AcDbObjectId textId)
 	pEnt->close();
 }
 
-ads_real CEquipmentroomTool::getTotalArea(CString totalName)
+bool CEquipmentroomTool::getTotalArea(CString totalName, ads_real& totalArea)
 {
 	CString str = _T("\n请输入") + totalName;
-	ads_real totalArea = 0;
 	if (acedGetReal(str, &totalArea) == RTNORM)
 	{
-		return totalArea;
+		return true;
 	}
 	else
 	{
-		return 0;
+		totalArea = 0;
+		return false;
 	}
 }
 
@@ -934,6 +934,112 @@ std::string CEquipmentroomTool::getLayerName(const std::string& strLayer)
 	return strLayerName;
 }
 
+std::string CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key)
+{
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+	std::string keyvalue = "";
+	if (reader.parse(sConfigStr, root))
+	{
+		if (root[inputroot][object].isNull())
+		{
+			if (!root[inputroot][key].isNull())
+			{
+				if (root[inputroot][key].isString())
+				{
+					keyvalue = root[inputroot][key].asString();
+					return keyvalue;
+				}
+				else
+				{
+					acedAlert(_T("配置文件字段格式不匹配！"));
+					return keyvalue;
+				}
+			}
+
+			CString strErrorMessage(object.c_str());
+			acutPrintf(_T("配置文件不存在[\"layer_config\"][\"%s]字段！"), strErrorMessage.GetString());
+			return keyvalue;
+		}
+		if (root[inputroot][object][key].isString())
+		{
+			keyvalue = root[inputroot][object][key].asString();
+		}
+		else
+		{
+			acedAlert(_T("配置文件字段格式不匹配！"));
+			return keyvalue;
+		}
+	}
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return keyvalue;
+	}
+	return keyvalue;
+}
+
+void CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key, std::vector<std::string>& arrayvector)
+{
+	//从文件中读取
+	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+
+	if (reader.parse(sConfigStr, root))
+	{
+		if (root[inputroot][object].isNull())
+		{
+			if (!root[inputroot][key].isNull())
+			{
+				if (root[inputroot][key].isArray())
+				{
+					Json::Value& keyvalue = root[inputroot][key];
+					for (int i = 0; i < keyvalue.size(); i++)
+					{
+						std::string str = keyvalue[i].asString();
+						arrayvector.push_back(str);
+					}
+					return;
+				}
+				else
+				{
+					acedAlert(_T("配置文件字段格式不匹配！"));
+					return ;
+				}
+			}
+
+			CString strErrorMessage(object.c_str());
+			acutPrintf(_T("配置文件不存在[\"layer_config\"][\"%s]字段！"), strErrorMessage.GetString());
+			return ;
+		}
+		if (root[inputroot][object][key].isArray())
+		{
+			Json::Value& keyvalue = root[inputroot][key];
+			for (int i = 0; i < keyvalue.size(); i++)
+			{
+				std::string str = keyvalue[i].asString();
+				arrayvector.push_back(str);
+			}
+		}
+		else
+		{
+			acedAlert(_T("配置文件字段格式不匹配！"));
+			return ;
+		}
+	}
+	else
+	{
+		acedAlert(_T("加载配置文件出错！"));
+		return ;
+	}	
+
+}
+
 bool CEquipmentroomTool::deletLayerByName(const CString& layerName)
 {
 	AcDbLayerTable *pLayerTbl;
@@ -1360,7 +1466,10 @@ void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo,AcDbData
 
 double CEquipmentroomTool::areaScale(double oldArea)
 {
-	double dScale = CEquipmentroomTool::getTotalArea(_T("缩放程度百分比（1-100）:"));
+	double dScale = 0;
+	if (!CEquipmentroomTool::getTotalArea(_T("缩放程度百分比（1-100）:"), dScale))
+		return 0;
+
 	if (dScale<1||dScale>100)
 	{
 		dScale = 100;
