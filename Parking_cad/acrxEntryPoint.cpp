@@ -33,7 +33,7 @@
 #include "LoadCuix.h"
 #include "DlgBipLogin.h"
 #include "Authenticate\HardDiskSerial.h"
-#include "KVHelp.h"
+#include "KV.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -77,7 +77,7 @@ public:
 		char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
 		std::string session = serial;
-		KVHelp::setStrA("mac", serial);
+		KV::Ins().SetStrA("mac", serial);
 
 		CDlgBipLogin dlgLogin;
 		if (dlgLogin.DoModal() != IDOK)
@@ -91,8 +91,8 @@ public:
 			return AcRx::kRetError;
 		}
 
-		KVHelp::setStr(_T("bip_id"), dlgLogin.bipId.GetString());
-		KVHelp::setStr(_T("user_name"), dlgLogin.userName.GetString());
+		KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());
+		KV::Ins().SetStrW(_T("user_name"), dlgLogin.userName.GetString());
 
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 

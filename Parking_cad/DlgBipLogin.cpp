@@ -12,7 +12,7 @@
 #include <shlwapi.h>
 #include "json/json.h"
 #include "MyMessageBox.h"
-#include "KVHelp.h"
+#include "KV.h"
 
 #define CONFIG_FILE_DEV "bip_dev.ini"
 #define CONFIG_FILE "bip.ini"
@@ -143,7 +143,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 			m_add_userUrl = mm;
 		len = ::GetPrivateProfileStringA("URL", "add_log", "", mm, 1024, sIni4u7h.c_str());
 		if (len < 1024 && len >0)
-			KVHelp::setStrA("add_log_url", mm);
+			KV::Ins().SetStrA("add_log_url", mm);
 	}
 	if (m_get_userUrl.empty() || m_add_userUrl.empty())
 	{

@@ -610,10 +610,8 @@ void CArxDialog::setInitData()
 
 	m_StrSquareColumnWidth = _T("0.6");
 	m_SquareColumnWidth.SetWindowText(m_StrSquareColumnWidth);
-
-	INIT_KV(ModulesManager::Instance().loadModule("KV.dll"));
-
-	m_strUserId = GL::WideByte2Ansi(GetStr(_T("bip_id")));
+	
+	m_strUserId = GL::WideByte2Ansi(KVGetStr(_T("bip_id"), _T("")));
 	//m_strComputerId = GL::WideByte2Ansi(g_computerId.GetString());
 
 	m_sNonConvexLevel = _T("0.2");
