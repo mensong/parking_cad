@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <ctime>
 #include "RTreeEx.h"
+#include "Convertor.h"
 
 std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
@@ -58,6 +59,22 @@ void COperaCheck::Start()
 {
 	//CEquipmentroomTool::test();
 	CEquipmentroomTool::creatLayerByjson("cloud_line");
+
+	std::string json;
+	std::string sMsg;
+	int status = getCheckData(sMsg, json);
+	if (status != 1)
+	{
+		acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
+		return;
+	}
+	CString serrorMsg;
+	if (!getDataforJson(json, serrorMsg))
+	{
+		acedAlert(serrorMsg);
+		return;
+	}
+
 	clock_t start, finish;
 	double totaltime;
 	start = clock();
@@ -141,6 +158,13 @@ int COperaCheck::getCheckData(std::string& sMsg, std::string& json)
 #ifdef _DEBUG
 		WriteFile("check.json", json.c_str(), json.size(), NULL, 0, false);
 #endif
+		Json::Value& blank = root["blank"];
+		if (blank.isNull())
+		{
+			return 0;
+			sMsg = "数据缺失。";
+		}
+		return 1;
 	}
 
 	sMsg = "结果格式有误。";

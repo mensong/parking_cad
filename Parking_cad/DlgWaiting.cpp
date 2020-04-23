@@ -20,6 +20,7 @@
 #include "CommonFuntion.h"
 #include "GeHelper.h"
 #include "OperaMultiSchemeShow.h"
+#include "OperaCheck.h"
 
 std::string CDlgWaiting::ms_uuid;
 bool CDlgWaiting::ms_bUseV1;
@@ -227,6 +228,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 				acutPrintf(_T("\n"));
 				DBHelper::CallCADCommandEx(_T("Redraw"));
 			}
+			COperaCheck::setUuid(ms_uuid);
 		}
 		else if (status == 0)
 		{
