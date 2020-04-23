@@ -168,6 +168,15 @@
          "professional_attributes" : "用地",
          "transparency" : ""
       },
+	  "cloud_line" : {
+         "isprintf" : "否",
+         "layer_color" : "6",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-云线",
+         "layer_width" : "0.25",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
 	  "alllinetype" : {
          "tag" : "DOTE|DASH|BORDER|BORDER2|BORDERX2|CENTER|CENTER2|CENTERX2|DASHDOT|DASHDOT2|DASHDOTX2|DASHED|DASHED2|DASHEDX2|DIVIDE|DIVIDE2|DIVIDEX2|DOT|DOT2|DOTX2|HIDDEN|HIDDEN2|HIDDENX2|PHANTOM|PHANTOM2|PHANTOMX2|ACAD_ISO02W100|ACAD_ISO03W100|ACAD_ISO04W100|ACAD_ISO05W100|ACAD_ISO06W100|ACAD_ISO07W100|ACAD_ISO08W100|ACAD_ISO09W100|ACAD_ISO10W100|ACAD_ISO11W100|ACAD_ISO12W100|ACAD_ISO13W100|ACAD_ISO14W100|ACAD_ISO15W100|FENCELINE1|FENCELINE2|TRACKS|BATTING|HOT_WATER_SUPPLY|GAS_LINE|ZIGZAG"
    }
@@ -177,5 +186,4 @@
       "geturl" : "1NyKVEAeS9drU0PMl+3TUERGENfGbG4slpKd+BPHQa4=",
       "posturl" : "1NyKVEAeS9drU0PMl+3TUIaPuCzb9Lt2+N8ZiljRz6g="
    }
-
 }
