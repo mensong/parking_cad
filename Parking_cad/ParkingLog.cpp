@@ -3,6 +3,7 @@
 #include "ModulesManager.h"
 #include <json/json.h>
 #include <Convertor.h>
+#include "LibcurlHttp.h"
 #include "KV.h"
 
 bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
@@ -17,16 +18,6 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 		user_udid = KV::Ins().GetStrW(_T("bip_id"), _T("unknow user"));
 	}
 
-	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
-	FN_post post = ModulesManager::Instance().func<FN_post>("LibcurlHttp.dll", "post");
-	typedef const char* (*FN_getBody)(int&);
-	FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
-	if (!post || !getBody)
-	{
-		acutPrintf(_T("\nÕÒ²»µ½LibcurlHttp.dllÄ£¿é"));
-		return false;
-	}
-
 	Json::Value js;
 	js["user_udid"] = GL::WideByte2Utf8(user_udid.GetString());
 	js["type"] = GL::WideByte2Utf8(type.GetString());
@@ -38,12 +29,12 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	Json::FastWriter jsWriter;
 	std::string sJson = jsWriter.write(js);
 
-	int code = post(add_log_url.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
+	int code = HTTP_CLIENT::Ins().post(add_log_url.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
 	if (code != 200)
 		return false;
 
 	int len = 0;
-	std::string sBody = getBody(len);
+	std::string sBody = HTTP_CLIENT::Ins().getBody(len);
 	if (sBody == "ok")
 		return true;
 

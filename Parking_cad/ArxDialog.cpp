@@ -42,6 +42,7 @@
 #include "OperaCheck.h"
 #include "KV.h"
 #include "OperaSetConfig.h"
+#include "LibcurlHttp.h"
 
 std::string CArxDialog::ms_posturlPortone;
 std::string CArxDialog::ms_posturlPorttwo;
@@ -623,13 +624,6 @@ void CArxDialog::setInitData()
 
 int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
 {
-	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
-	FN_post fn_post = ModulesManager::Instance().func<FN_post>(getHttpModule(), "post");
-	if (!fn_post)
-	{
-		sMsg = getHttpModule() + ":postÄ£¿é´íÎó¡£";
-		return 1;
-	}
 	const char * postUrl;
 	if (useV1)
 	{
@@ -640,7 +634,7 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 		postUrl = ms_posturlPorttwo.c_str();
 	}
 	//MessageBoxA(NULL, postUrl, "", 0);
-	int code = fn_post(postUrl, sData.c_str(), sData.size(), true, "application/json");
+	int code = HTTP_CLIENT::Ins().post(postUrl, sData.c_str(), sData.size(), true, "application/json");
 	if (code != 200)
 	{
 		if (useV1)
@@ -654,15 +648,8 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 		return 2;
 	}
 
-	typedef const char* (*FN_getBody)(int&);
-	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
-	if (!fn_getBody)
-	{
-		sMsg = getHttpModule() + ":getBodyÄ£¿é´íÎó¡£";
-		return 1;
-	}
 	int len = 0;
-	std::string json = fn_getBody(len);
+	std::string json = HTTP_CLIENT::Ins().getBody(len);
 
 	Json::Reader reader;
 	Json::Value root;

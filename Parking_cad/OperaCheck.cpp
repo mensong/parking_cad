@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <ctime>
 #include "RTreeEx.h"
+#include "LibcurlHttp.h"
 
 std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
@@ -98,22 +99,8 @@ int COperaCheck::getCheckData(std::string& sMsg, std::string& json)
 
 	const char * sendUrl = tempUrl.c_str();
 	
-	typedef void(*FN_setTimeout)(int timeout);
-	FN_setTimeout fn_setTimeout = ModulesManager::Instance().func<FN_setTimeout>(getHttpModule(), "setTimeout");
-	if (fn_setTimeout)
-	{
-		fn_setTimeout(60);
-	}
-
-	typedef int(*FN_get)(const char* url, bool dealRedirect);
-	FN_get fn_get = ModulesManager::Instance().func<FN_get>(getHttpModule(), "get");
-	if (!fn_get)
-	{
-		sMsg = "get Httpƒ£øÈº”‘ÿ ß∞‹£°";
-		return 5;
-	}
-	int code = fn_get(sendUrl, true);
-
+	HTTP_CLIENT::Ins().setTimeout(60);
+	int code = HTTP_CLIENT::Ins().get(sendUrl, true);
 	if (code != 200)
 	{
 		char szCode[10];
@@ -123,15 +110,8 @@ int COperaCheck::getCheckData(std::string& sMsg, std::string& json)
 	}
 	//std::string sRes = GL::Utf82Ansi(http.response.body.c_str());
 
-	typedef const char* (*FN_getBody)(int&);
-	FN_getBody fn_getBody = ModulesManager::Instance().func<FN_getBody>(getHttpModule(), "getBody");
-	if (!fn_getBody)
-	{
-		sMsg = "getBody Httpƒ£øÈº”‘ÿ ß∞‹£°";
-		return 5;
-	}
 	int len = 0;
-	json = fn_getBody(len);
+	json = HTTP_CLIENT::Ins().getBody(len);
 
 	Json::Reader reader;
 	Json::Value root;
