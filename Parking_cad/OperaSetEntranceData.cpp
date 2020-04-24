@@ -1468,6 +1468,15 @@ void COperaSetEntranceData::changeLine2Polyline(AcDbObjectIdArray targetEntIds)
 		else if (pEnt->isKindOf(AcDbArc::desc()))
 		{
 			AcDbArc *pArc = AcDbArc::cast(pEnt);
+			AcGeCircArc3d pGeArc(
+				pArc->center(),
+				pArc->normal(),
+				pArc->normal().perpVector(),
+				pArc->radius(),
+				pArc->startAngle(),
+				pArc->endAngle());
+			AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(pGeArc, 1);
+			AcGePoint3d midArcPt = result[1];
 			double radiu = pArc->radius();
 			AcGePoint3d startPt;
 			pArc->getStartPoint(startPt);
@@ -1478,8 +1487,8 @@ void COperaSetEntranceData::changeLine2Polyline(AcDbObjectIdArray targetEntIds)
 			midPt.x = (startPt.x + endPt.x) / 2;
 			midPt.y = (startPt.y + endPt.y) / 2;
 			midPt.z = 0;
-			double dis = centerPt.distanceTo(midPt);
-			double bowLength = radiu - dis;
+			//double dis = midArcPt.distanceTo(midPt);
+			double bowLength = midArcPt.distanceTo(midPt);
 			double chordLength = startPt.distanceTo(endPt);
 			double bulge = (2 * bowLength) / chordLength;
 			AcDbPolyline *pPline = new AcDbPolyline(1);
