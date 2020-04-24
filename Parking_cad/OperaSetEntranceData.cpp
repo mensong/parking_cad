@@ -55,6 +55,9 @@ AcDbObjectId COperaSetEntranceData::creatDim(const AcGePoint3d& pt1, const AcGeP
 	pnewdim->setDimtxt(500);//标注文字的高度
 	pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
 	pnewdim->setDimtmove(1);
+	AcCmColor textcolor;
+	textcolor.setColorIndex(7);
+	pnewdim->setDimclrt(textcolor);
 	AcDbObjectId dimId;
 	DBHelper::AppendToDatabase(dimId, pnewdim);
 	if (pnewdim)
@@ -175,7 +178,7 @@ AcDbObjectId COperaSetEntranceData::creatArcDim(const AcGePoint3d& pt1, const Ac
 	//return Id;
 }
 
-void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
+bool COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 {
 	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
 
@@ -184,15 +187,15 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 	if (height == 0)
 	{
 		acutPrintf(_T("\n输入错误！"));
-		return;
+		return false;
 	}
 	//AcDbObjectIdArray EquipmentIds;
-	for (int i=0; i<entIds.length(); i++)
+	for (int i = 0; i<entIds.length(); i++)
 	{
 		AcDbEntity *pEnt = NULL;
-		if(acdbOpenObject(pEnt, entIds[i], AcDb::kForRead)!=eOk)
+		if (acdbOpenObject(pEnt, entIds[i], AcDb::kForRead) != eOk)
 			continue;
-		
+
 		if (pEnt->isKindOf(AcDbArc::desc()))
 		{
 			AcDbArc *pArc = AcDbArc::cast(pEnt);
@@ -233,15 +236,19 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 				AcDb::kForWrite);
 			pBlockTable->close();
 			AcDbArcDimension *pDim1 = new AcDbArcDimension(centerPt, startPt, endPt, onArcPt);//AcDbRadialDimension;
-			double showLength = 2400 * 2 + (height - 280) / 0.12;
+			int showLength = 2400 * 2 + (height - 280) / 0.12;
 			//double realLength = showLength * 1000000;
 			CString sEntranceLength;
-			sEntranceLength.Format(_T("%.1f"), showLength);
+			//sEntranceLength.Format(_T("%.1f"), showLength);
+			sEntranceLength.Format(_T("%d"), showLength);
 			pDim1->setDimensionText(sEntranceLength);
 			AcCmColor suiceng;
 			suiceng.setColorIndex(3);
 			pDim1->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
 			pDim1->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
+			AcCmColor textcolor;
+			textcolor.setColorIndex(7);
+			pDim1->setDimclrt(textcolor);
 			AcDbObjectId Id;
 			pBlockTableRecord->appendAcDbEntity(Id, pDim1);
 			pBlockTableRecord->close();
@@ -264,16 +271,18 @@ void COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			//startPt.transformBy(Linevec * 50);
 			//endPt.transformBy(Linevec * 50);
 			AcGePoint3d Pt1 = startPt;
-			Pt1.transformBy(Linevec * 500);
-			double showLength = 3600 * 2 + (height - 540) / 0.15;
+			Pt1.transformBy(Linevec * 1000);
+			int showLength = 3600 * 2 + (height - 540) / 0.15;
 			//double realLength = showLength * 1000000;
 			CString sEntranceLength;
-			sEntranceLength.Format(_T("%.1f"), showLength);
+			//sEntranceLength.Format(_T("%.1f"), showLength);
+			sEntranceLength.Format(_T("%d"), showLength);
 			AcDbObjectId dimId = COperaSetEntranceData::creatDim(startPt, endPt, Pt1, sEntranceLength);
 			CEquipmentroomTool::setEntToLayer(dimId, sEntranceLayer);
 		}
 		pEnt->close();
 	}
+	return true;
 }
 
 
@@ -292,9 +301,13 @@ void COperaSetEntranceData::creatEntrance()
 	{
 		return;
 	}
-	test(useIds);
-
+	if (!test(useIds))
+	{
+		return;
+	}
 	
+
+
 
 	//用户在画图的过程中，有可能因为操作失误，实体之间并没有端点与端点连接，而且端点与端点交叉，特此进行处理，如果有交叉的情况，改为连接情况。
 	/*
@@ -322,10 +335,10 @@ void COperaSetEntranceData::creatEntrance()
 		*    ____________
 		*    ——————       --> ____________
 		*    ————-|—| |	    ——————
-		              |  | |		————-   | |
-		              |  | |		         |  | |
-		              |  | |				 |  | |
-		              |  | |				 |  | |
+		|  | |		————-   | |
+		|  | |		         |  | |
+		|  | |				 |  | |
+		|  | |				 |  | |
 		*									 |  | |
 		*/
 		AcDbObjectIdArray GuideIds;//GuideIds为两边车道线id
@@ -336,17 +349,17 @@ void COperaSetEntranceData::creatEntrance()
 		*   ____________		   ____________
 		*   ——————      --> —————— |
 		*   -———-   | |        -———-   | |
-		            |  | |  	  	  	  |  | |
-		            |  | |  	  		  |  | |
-		            |  | |  			  |  | |
-		            |  | |  			  |  | |
+		|  | |  	  	  	  |  | |
+		|  | |  	  		  |  | |
+		|  | |  			  |  | |
+		|  | |  			  |  | |
 		*
 		*/
 		double inputdistance = changdistance;
 		COperaSetEntranceData::MultipleCycles(inputdistance, GuideIds);
 
 		std::vector<AcGePoint3dArray> allLinePts;
-		for (int count=0; count<GuideIds.length(); count++)
+		for (int count = 0; count<GuideIds.length(); count++)
 		{
 			AcGePoint3dArray linePts;
 			AcDbEntity *pEnt = NULL;
@@ -373,16 +386,16 @@ void COperaSetEntranceData::creatEntrance()
 		*    ____________	    | ____________
 		*   —————— |  --> |—————— |
 		*   -———-   | |      |-———-   | |
-		            |  | |       	     |  | |
-		            |  | |               |  | |
-		            |  | |               |  | |
-		            |  | |               |  | |
+		|  | |       	     |  | |
+		|  | |               |  | |
+		|  | |               |  | |
+		|  | |               |  | |
 		*                                ------
 		*/
 		COperaSetEntranceData::ConnectionPoint(GuideIds);
 		CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
 		AcDbObjectIdArray useforGetPtsID;
-		for (int g=0; g<GuideIds.length();g++)
+		for (int g = 0; g<GuideIds.length(); g++)
 		{
 			CEquipmentroomTool::setEntToLayer(GuideIds[g], sEntranceLayer);
 			if (useIds.contains(GuideIds[g]))
@@ -393,7 +406,9 @@ void COperaSetEntranceData::creatEntrance()
 		}
 		int count = useforGetPtsID.length();
 		COperaSetEntranceData::creatPlinePoints(useforGetPtsID);
+		COperaSetEntranceData::changeLine2Polyline(useforGetPtsID);
 	}
+
 }
 
 void COperaSetEntranceData::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId)
@@ -425,7 +440,7 @@ void COperaSetEntranceData::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vec
 					continue;
 
 				//AcGePoint3dArray intersectPoints;
-			//	tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
+				//	tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
 				if (COperaSetEntranceData::isIntersect(pEnt, tempEnt, 1))
 				{
 					tag = false;
@@ -1129,14 +1144,14 @@ void COperaSetEntranceData::deleParkInEntrance(const AcGePoint2dArray plinePts)
 	CString parkingLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
 	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(parkingLayer);
 	std::vector<AcDbObjectId> parkIds;
-	for (int i=0; i<allParkingIds.length(); i++)
+	for (int i = 0; i<allParkingIds.length(); i++)
 	{
 		parkIds.push_back(allParkingIds[i]);
 	}
 	std::vector<AcGePoint2dArray> parkingsPoints;
 	std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
 	CEquipmentroomTool::getParkingExtentPts(parkingsPoints, parkIds, parkingLayer, parkIdAndPts);
-	for (int j=0; j<parkIdAndPts.size(); j++)
+	for (int j = 0; j<parkIdAndPts.size(); j++)
 	{
 		std::vector<AcGePoint2dArray> polyIntersections;
 		GeHelper::GetIntersectionOfTwoPolygon(plinePts, parkingsPoints[j], polyIntersections);
@@ -1169,7 +1184,7 @@ void COperaSetEntranceData::deleParkInEntrance(const AcGePoint2dArray plinePts)
 			}
 		}
 	}
-	
+
 }
 
 void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
@@ -1191,7 +1206,7 @@ void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
 			linePts.append(start2dPt);
 			linePts.append(enf2dPt);
 		}
-		else if(pEnt->isKindOf(AcDbArc::desc()))
+		else if (pEnt->isKindOf(AcDbArc::desc()))
 		{
 			AcDbArc *pArc = AcDbArc::cast(pEnt);
 			AcGeCircArc3d pGeArc(
@@ -1202,7 +1217,7 @@ void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
 				pArc->startAngle(),
 				pArc->endAngle());
 			AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(pGeArc, 18);
-			for (int length=0; length<result.length();length++)
+			for (int length = 0; length<result.length(); length++)
 			{
 				AcGePoint2d temp(result[length].x, result[length].y);
 				linePts.append(temp);
@@ -1241,7 +1256,7 @@ void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
 				if (!linePoints.isEmpty())
 				{
 					allLinePts.push_back(linePoints);
-				}	
+				}
 			}
 		}
 		if (!linePts.isEmpty())
@@ -1263,17 +1278,17 @@ void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
 	resultPts.append(targetPts);
 	AcGePoint2d firstPt = targetPts;
 	bool flag = true;
-	do 
+	do
 	{
 		AcGePoint2d tempplinePt = COperaSetEntranceData::getPlineNextPoint(targetPts, nextUsedPts, allLinePts, resultPts);
 		targetPts = tempplinePt;
 		resultPts.append(tempplinePt);
-		if (firstPt == tempplinePt||resultPts.length()>100)
+		if (firstPt == tempplinePt || resultPts.length()>100)
 		{
 			flag = false;
 		}
 	} while (flag);
-	for (int o=0; o<resultPts.length();o++)
+	for (int o = 0; o<resultPts.length(); o++)
 	{
 		AcGePoint2d show = resultPts[o];
 		int re = resultPts.length();
@@ -1281,7 +1296,7 @@ void COperaSetEntranceData::creatPlinePoints(const AcDbObjectIdArray allLineIds)
 	deleParkInEntrance(resultPts);
 }
 
-AcGePoint2d COperaSetEntranceData::getPlineNextPoint(const AcGePoint2d targetPt,AcGePoint2dArray &nextUsedPts, const std::vector<AcGePoint2dArray> allLinePts, AcGePoint2dArray &resultPts)
+AcGePoint2d COperaSetEntranceData::getPlineNextPoint(const AcGePoint2d targetPt, AcGePoint2dArray &nextUsedPts, const std::vector<AcGePoint2dArray> allLinePts, AcGePoint2dArray &resultPts)
 {
 	for (int a = 0; a < allLinePts.size(); a++)
 	{
@@ -1291,16 +1306,16 @@ AcGePoint2d COperaSetEntranceData::getPlineNextPoint(const AcGePoint2d targetPt,
 		}
 		AcGePoint2d startPt = allLinePts[a][0];
 		int size = allLinePts[a].length();
-		AcGePoint2d endPt = allLinePts[a][size-1];
+		AcGePoint2d endPt = allLinePts[a][size - 1];
 		if (targetPt == startPt)
 		{
 			nextUsedPts = allLinePts[a];
 			if (size>2)
 			{
-				for (int v=1; v<size-1;v++)
+				for (int v = 1; v<size - 1; v++)
 				{
 					resultPts.append(allLinePts[a][v]);
-				}	
+				}
 			}
 			return endPt;
 		}
@@ -1324,9 +1339,9 @@ AcGePoint2d COperaSetEntranceData::getPlineNextPoint(const AcGePoint2d targetPt,
 bool COperaSetEntranceData::checkClosed(const AcGePoint2d checkPt, const std::vector<AcGePoint2dArray> allLinePts)
 {
 	int count = 0;
-	for (int i=0; i<allLinePts.size();i++)
+	for (int i = 0; i<allLinePts.size(); i++)
 	{
-		for (int j=0; j<allLinePts[i].length();j++)
+		for (int j = 0; j<allLinePts[i].length(); j++)
 		{
 			AcGePoint2d debugShow = allLinePts[i][j];
 			if (checkPt == allLinePts[i][j])
@@ -1335,7 +1350,7 @@ bool COperaSetEntranceData::checkClosed(const AcGePoint2d checkPt, const std::ve
 			}
 		}
 	}
-	if (count==1||count==0)
+	if (count == 1 || count == 0)
 	{
 		return false;
 	}
@@ -1364,7 +1379,7 @@ AcDbObjectIdArray COperaSetEntranceData::explodeEnty(AcDbObjectIdArray& entIds)
 				AcDbEntity* pSubEnt = (AcDbEntity*)ents[i];
 				AcDbEntity* entity = AcDbEntity::cast(pSubEnt);
 				AcDbObjectId entId;
-				DBHelper::AppendToDatabase(entId,entity);
+				DBHelper::AppendToDatabase(entId, entity);
 				returnIds.append(entId);
 				entity->close();
 			}
@@ -1373,7 +1388,7 @@ AcDbObjectIdArray COperaSetEntranceData::explodeEnty(AcDbObjectIdArray& entIds)
 		else
 		{
 			returnIds.append(entIds[i]);
-		}	
+		}
 		if (pEnt)
 			pEnt->close();
 	}
@@ -1421,6 +1436,77 @@ bool COperaSetEntranceData::isIntersect(AcDbEntity* pEnt, AcDbEntity* pTempEnt, 
 
 	return false;
 
+}
+
+
+void COperaSetEntranceData::changeLine2Polyline(AcDbObjectIdArray targetEntIds)
+{
+	AcDbEntity *pEnt = NULL;
+	AcDbObjectIdArray changeColorIds;
+	for (int i = 0; i < targetEntIds.length(); i++)
+	{
+		if (Acad::eOk != acdbOpenObject(pEnt, targetEntIds[i], AcDb::kForWrite))
+			continue;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d starpoint = pLine->startPoint();
+			AcGePoint3d endpoint = pLine->endPoint();
+
+			AcGePoint2d startpt2d(starpoint.x, starpoint.y);
+			AcGePoint2d endpt2d(endpoint.x, endpoint.y);
+			AcDbPolyline *pPoly = new AcDbPolyline(1);
+			double width = 100;//正方形线宽/满足条件变形成矩形
+			pPoly->addVertexAt(0, startpt2d, 0, width, width);
+			pPoly->addVertexAt(1, endpt2d, 0, width, width);
+			pPoly->setClosed(false);
+			AcDbObjectId lineId = COperaSetEntranceData::PostToModelSpace(pPoly);
+			pPoly->close();
+			changeColorIds.append(lineId);
+			pEnt->erase();
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+			double radiu = pArc->radius();
+			AcGePoint3d startPt;
+			pArc->getStartPoint(startPt);
+			AcGePoint3d endPt;
+			pArc->getEndPoint(endPt);
+			AcGePoint3d centerPt = pArc->center();
+			AcGePoint3d midPt;
+			midPt.x = (startPt.x + endPt.x) / 2;
+			midPt.y = (startPt.y + endPt.y) / 2;
+			midPt.z = 0;
+			double dis = centerPt.distanceTo(midPt);
+			double bowLength = radiu - dis;
+			double chordLength = startPt.distanceTo(endPt);
+			double bulge = (2 * bowLength) / chordLength;
+			AcDbPolyline *pPline = new AcDbPolyline(1);
+			AcGePoint2d startpt2d(startPt.x, startPt.y);
+			AcGePoint2d endpt2d(endPt.x, endPt.y);
+			pPline->addVertexAt(0, startpt2d, bulge, 100, 100);
+			pPline->addVertexAt(1, endpt2d, bulge, 100, 100);
+			pPline->setClosed(false);
+			AcDbObjectId polyId;
+			DBHelper::AppendToDatabase(polyId, pPline);
+			pPline->close();
+			changeColorIds.append(polyId);
+			pEnt->erase();
+		}
+		else
+		{
+			pEnt->close();
+		}
+	}
+	AcDbEntity *pchangeEnt = NULL;
+	for (int size=0; size<changeColorIds.length(); size++)
+	{
+		if (Acad::eOk != acdbOpenObject(pchangeEnt, changeColorIds[size], AcDb::kForWrite))
+			continue;
+		pchangeEnt->setColorIndex(8);
+		pchangeEnt->close();
+	}
 }
 
 void COperaSetEntranceData::SaveEntInfo(double& movedistance, AcDbObjectIdArray& inputIds, std::vector<InfoStructLine>& saveLineInfoVector, std::vector<InfoStructArc>& saveArcInfoVector, std::vector<AcGePoint3d>& inserpoint)

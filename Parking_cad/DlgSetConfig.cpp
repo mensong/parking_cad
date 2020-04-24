@@ -206,7 +206,7 @@ void CDlgSetConfig::OnBnClickedOk()
 	//字节点属性
 	params["posturl"] = Json::Value(m_strUiPostUrl);
 	params["geturl"] = Json::Value(m_strUiGetUrl);
-	params["entrance_posturl"] = Json::Value(m_strEntranceUrl);
+	params["check_geturl"] = Json::Value(m_strEntranceUrl);
 	m_root["params"] = Json::Value(params);
 
 	Json::Value layer_config;
@@ -381,7 +381,7 @@ void CDlgSetConfig::init()
 		{
 			m_strUiPostUrl = m_root["params"]["posturl"].asString();
 			m_strUiGetUrl = m_root["params"]["geturl"].asString();
-			m_strEntranceUrl = m_root["params"]["entrance_posturl"].asString();
+			m_strEntranceUrl = m_root["params"]["check_geturl"].asString();
 		}
 		else
 		{
@@ -541,20 +541,26 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 			int nColor = CEquipmentroomTool::SelColor(num);
 			CString sColor;
 			sColor.Format(_T("%d"), nColor);
-			m_EditTest.SetWindowText(sColor);
-			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_EditTest, false, false, false);
-			m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
-			m_nLastRow = pNMItemActivate->iItem;
-			m_nLastCol = pNMItemActivate->iSubItem;
-			m_EditTest.SetFocus();
-			if (m_EditTest.IsWindowVisible())
-			{
-				CString sText;
-				m_EditTest.GetWindowText(sText);
-				m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
-				m_EditTest.SetWindowText(_T(""));
-				m_EditTest.ShowWindow(SW_HIDE);
-			}
+			m_ctrlConfigSetList.SetItemText(pNMItemActivate->iItem, pNMItemActivate->iSubItem, sColor);
+			m_ctrlConfigSetList.SetFocus();
+			
+			//m_EditTest.SetWindowText(sColor);
+			//m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_EditTest, false, false, false);
+			//m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
+			//m_nLastRow = pNMItemActivate->iItem;
+			//m_nLastCol = pNMItemActivate->iSubItem;
+			//m_EditTest.SetFocus();
+			//if (m_EditTest.IsWindowVisible())
+			//{
+			//	CString sText;
+			//	m_EditTest.GetWindowText(sText);
+			//	m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+			//	/*m_EditTest.SetWindowText(_T(""));
+			//	m_EditTest.ShowWindow(SW_HIDE);*/
+			//}
+			//m_ctrlConfigSetList.SetFocus();
+			//m_EditTest.SetWindowText(_T(""));
+			//m_EditTest.ShowWindow(SW_HIDE);
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("是否打印")])
 		{
