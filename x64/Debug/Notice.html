@@ -10,16 +10,16 @@
 
   <style type="text/css">
     #winpop { width:100%; height:100%; position:absolute; top:2px;right:0px; bottom:5px;
-    border:1px solid #999999; margin:0; padding:1px; overflow:hidden; display:block;
-    background:url(http://www.niutw.com/images/bg.png) #FFFFFF}#winpop .title
+    border:1px solid #999999; margin:0; padding:1px; overflow:hidden; display:block;}
+	#winpop .title
     { width:100%; height:20px; line-height:20px; background:#FFCC00; font-weight:bold;
     text-align:center; font-size:12px;}#winpop .con { width:100%; height:30px;
     line-height:40px; font-weight:bold; font-size:14px; 
     text-align:center} .stro { text-decoration:underline; color:#FF0000} 
 	.close { position:absolute; right:4px; top:-1px; color:#FFFFFF; cursor:pointer}
 	
-	.btn{
-		width: 200px;
+	.btn1{
+		width: 150px;
 		height: 50px;
 		background: green;
 		line-height: 50px;
@@ -29,6 +29,22 @@
 		margin: 0 auto;
 	}
 	
+	.btn2{
+		width: 150px;
+		height: 50px;
+		background: red;
+		line-height: 50px;
+		text-align: center;
+		color: white;
+		border-radius: 10px;
+		margin: 0 auto;
+	}
+
+	.btn-wrap {
+		display: flex;
+		justify-content: space-around;
+	}
+	
 	a{ text-decoration:none} 
 	a:hover{ text-decoration:underline}
   </style>
@@ -36,36 +52,41 @@
   <body>
     <div id="winpop">
 	
-      <div class="title">
-        有新的注册用户需要您激活
-        <span class="close" onclick="tips_pop()">
-          X
-        </span>
-      </div>
+		<div class="title">
+			有新的注册用户需要您审核
+			<!--<span class="close" onclick="tips_pop()">X</span>-->
+		</div>
 
-	  <div id="contain">
-		  <div class="con">
-			BIP: <strong class="stro" id="bip"><!--BIP--></strong>
-		  </div>
-		  <div class="con">
-			名字: <strong class="stro" id="name"><!--NAME--></strong>
-		  </div>
-		  <div class="con">
-			用户组: <strong class="stro" id="group"><!--GROUP--></strong>
-		  </div>
-		  <div class="con">
-			描述: <strong class="stro" id="desc"><!--DESC--></strong>
-		  </div>
-		  <div class="con">
-			注册时间: <strong class="stro" id="regtime"><!--REG_TIME--></strong>
-		  </div>
-	  </div>
-	  <br>
-	  <a href="active://<!--BIP-->">
-			<div class="btn">
-			<span>确定激活该用户</span>
+		<div id="contain">
+			<div class="con">
+				BIP: <strong class="stro" id="bip"><!--BIP--></strong>
 			</div>
-	  </a>
+			<div class="con">
+				名字: <strong class="stro" id="name"><!--NAME--></strong>
+			</div>
+			<div class="con">
+				用户组: <strong class="stro" id="group"><!--GROUP--></strong>
+			</div>
+			<div class="con">
+				描述: <strong class="stro" id="desc"><!--DESC--></strong>
+			</div>
+			<div class="con">
+				注册时间: <strong class="stro" id="regtime"><!--REG_TIME--></strong>
+			</div>
+		</div>
+		<br>
+		<div class="btn-wrap">
+			<a href="active://<!--BIP-->">
+				<div class="btn1">
+				<span>激活该用户</span>
+				</div>
+			</a>
+			<a href="refuse://<!--BIP-->">
+				<div class="btn2">
+				<span>不激活该用户</span>
+				</div>
+			</a>
+		</div>
     </div>
   </body>
   

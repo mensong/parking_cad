@@ -76,7 +76,9 @@ public:
 		KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());//使用这个判定是否加载了主模块
 		KV::Ins().SetStrW(_T("user_name"), dlgLogin.userName.GetString());
 		KV::Ins().SetStrW(_T("group_udid"), dlgLogin.groupUdid.GetString());
-		KV::Ins().SetStrW(_T("allow"), dlgLogin.allow?_T("1") : _T("0"));
+		CString sAllow;
+		sAllow.Format(_T("%d"), dlgLogin.allow);
+		KV::Ins().SetStrW(_T("allow"), sAllow.GetString());
 		KV::Ins().SetStrW(_T("descr"), dlgLogin.descr.GetString());
 		KV::Ins().SetStrW(_T("reg_time"), dlgLogin.regTime.GetString());
 		KV::Ins().SetStrW(_T("last_signin_time"), dlgLogin.lastSigninTime.GetString());

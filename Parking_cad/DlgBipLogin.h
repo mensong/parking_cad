@@ -21,7 +21,7 @@ public:
 	CString userName;
 	CString bipId;
 	CString groupUdid;
-	bool allow;
+	int allow;
 	CString descr;
 	CString regTime;
 	CString lastSigninTime;

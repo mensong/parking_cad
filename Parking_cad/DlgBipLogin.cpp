@@ -217,7 +217,7 @@ void CDlgBipLogin::OnBnClickedOk()
 						userName = wName.c_str();
 						bipId = sBip;
 						groupUdid = GL::Utf82WideByte(jgroup_udid.c_str()).c_str();
-						allow = (jallow == 1);
+						allow = jallow;
 						descr = GL::Utf82WideByte(jdescr.c_str()).c_str();
 						regTime = GL::Utf82WideByte(jreg_time.c_str()).c_str();
 						lastSigninTime = GL::Utf82WideByte(jlast_signin_time.c_str()).c_str();
