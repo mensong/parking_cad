@@ -27,7 +27,7 @@ public:
 	AcDbObjectId creatDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const CString sLegth);
 	void creatDimStyle(const CString &styleName);
 	AcDbObjectId creatArcDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const AcGePoint3d& pt4);
-	void test(const AcDbObjectIdArray entIds);
+	bool test(const AcDbObjectIdArray entIds);
 	void creatEntrance();
 
 	void BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId);//分批存储相连实体
@@ -52,6 +52,6 @@ public:
 	AcDbObjectIdArray explodeEnty(AcDbObjectIdArray& entIds);
 	void getpoint(AcDbEntity* pEnt, AcGePoint3d& startpt, AcGePoint3d& endpt);
 	bool isIntersect(AcDbEntity* pEnt, AcDbEntity* pTempEnt, double tol);//判断是否相交
-
+	void changeLine2Polyline(AcDbObjectIdArray targetEntIds);
 };
 

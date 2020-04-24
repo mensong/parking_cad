@@ -15,6 +15,7 @@
 #include "DES_CBC_5/DesHelper.h"
 #include "DES_CBC_5/base64.h"
 #include "EquipmentroomTool.h"
+#include "OperaCheck.h"
 
 class CArxDialog* COperaParkingSpaceShow::ms_dlg = NULL;
 
@@ -69,7 +70,7 @@ void COperaParkingSpaceShow::Start()
 	setDesKey("#B-G-Y++");
 	std::string sData = "http://10.8.202.199:90/park";
 	std::string code = encrypt(sData);
-	std::string sData1 = "http://10.8.202.199:90/query/";
+	std::string sData1 = "http://10.8.202.199:80/check/";
 	std::string code1 = encrypt(sData1);
 
 	//从文件中读取
@@ -88,13 +89,13 @@ void COperaParkingSpaceShow::Start()
 		{
 			std::string postUrlOne = root["params"]["posturl"].asString();
 			std::string getUrlOne = root["params"]["geturl"].asString();
-			std::string entrancePostUrl = root["params"]["entrance_posturl"].asString();
+			std::string entrancePostUrl = root["params"]["check_geturl"].asString();
 			std::string strPostUrl = decrypt(postUrlOne);
 			std::string strGetUrl = decrypt(getUrlOne);
 			std::string strEntrancePostUrl = decrypt(entrancePostUrl);
 			CArxDialog::setPostUrlPortone(strPostUrl);
 			CDlgWaiting::setGetUrlPortOne(strGetUrl);
-			CDlgEntrance::setEntrancePostUrl(strEntrancePostUrl);
+			COperaCheck::setGetCheckUrl(strEntrancePostUrl);
 			//std::string postUrlTwo = root["params"]["posturlv2"].asString();
 			//std::string getUrlTwo = root["params"]["geturlv2"].asString();
 			//std::string strEntrancePostUrlV2 = root["params"]["entrance_posturlv2"].asString();
