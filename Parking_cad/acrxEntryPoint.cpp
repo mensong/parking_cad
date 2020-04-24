@@ -56,24 +56,6 @@ public:
 		// TODO: Load dependencies here
 		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
-		////授权检查
-		//g_auth.setDesKey(DES_KEY);
-
-		//DWORD nowTime = 0;
-		//if (AcRx::kRetOK != getLicenceServerTime(g_auth, nowTime))
-		//	return AcRx::kRetError;
-
-		//if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
-		//	return AcRx::kRetError;
-
-		//HMODULE hKVDll = ModulesManager::Instance().loadModule("KV.dll");
-		//if (!hKVDll)
-		//{
-		//	::MessageBox(NULL, AcString(_T("KV.dll文件缺失！")), _T("文件缺失"), MB_OK | MB_ICONERROR);
-		//	return AcRx::kRetError;
-		//}
-		//INIT_KV(hKVDll);
-
 		char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
 		std::string session = serial;
@@ -91,8 +73,16 @@ public:
 			return AcRx::kRetError;
 		}
 
-		KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());
+		KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());//使用这个判定是否加载了主模块
 		KV::Ins().SetStrW(_T("user_name"), dlgLogin.userName.GetString());
+		KV::Ins().SetStrW(_T("group_udid"), dlgLogin.groupUdid.GetString());
+		KV::Ins().SetStrW(_T("allow"), dlgLogin.allow?_T("1") : _T("0"));
+		KV::Ins().SetStrW(_T("descr"), dlgLogin.descr.GetString());
+		KV::Ins().SetStrW(_T("reg_time"), dlgLogin.regTime.GetString());
+		KV::Ins().SetStrW(_T("last_signin_time"), dlgLogin.lastSigninTime.GetString());
+		CString sSigninCount;
+		sSigninCount.Format(_T("%d"), dlgLogin.signinCount);
+		KV::Ins().SetStrW(_T("signin_count"), sSigninCount.GetString());
 
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
@@ -112,6 +102,15 @@ public:
 
 	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
 	{
+		KV::Ins().DelStrW(_T("bip_id"));
+		KV::Ins().DelStrW(_T("user_name"));
+		KV::Ins().DelStrW(_T("group_udid"));
+		KV::Ins().DelStrW(_T("allow"));
+		KV::Ins().DelStrW(_T("descr"));
+		KV::Ins().DelStrW(_T("reg_time"));
+		KV::Ins().DelStrW(_T("last_signin_time"));
+		KV::Ins().DelStrW(_T("signin_count"));
+
 		AUTO_REG_CMD::Clear();
 		ModulesManager::Relaese();
 

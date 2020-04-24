@@ -503,6 +503,9 @@
     <ClInclude Include="..\..\arxtools\SDBDumyJigEntity.h">
       <Filter>ArxTools</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\LibcurlHttp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl">

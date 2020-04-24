@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <title>
+      右下角的弹窗，消息框
+    </title>
+  </head>
+
+  <style type="text/css">
+    #winpop { width:100%; height:100%; position:absolute; top:2px;right:0px; bottom:5px;
+    border:1px solid #999999; margin:0; padding:1px; overflow:hidden; display:block;
+    background:url(http://www.niutw.com/images/bg.png) #FFFFFF}#winpop .title
+    { width:100%; height:20px; line-height:20px; background:#FFCC00; font-weight:bold;
+    text-align:center; font-size:12px;}#winpop .con { width:100%; height:30px;
+    line-height:40px; font-weight:bold; font-size:14px; 
+    text-align:center} .stro { text-decoration:underline; color:#FF0000} 
+	.close { position:absolute; right:4px; top:-1px; color:#FFFFFF; cursor:pointer}
+	
+	.btn{
+		width: 200px;
+		height: 50px;
+		background: green;
+		line-height: 50px;
+		text-align: center;
+		color: white;
+		border-radius: 10px;
+		margin: 0 auto;
+	}
+	
+	a{ text-decoration:none} 
+	a:hover{ text-decoration:underline}
+  </style>
+
+  <body>
+    <div id="winpop">
+	
+      <div class="title">
+        有新的注册用户需要您激活
+        <span class="close" onclick="tips_pop()">
+          X
+        </span>
+      </div>
+
+	  <div id="contain">
+		  <div class="con">
+			BIP: <strong class="stro" id="bip"><!--BIP--></strong>
+		  </div>
+		  <div class="con">
+			名字: <strong class="stro" id="name"><!--NAME--></strong>
+		  </div>
+		  <div class="con">
+			用户组: <strong class="stro" id="group"><!--GROUP--></strong>
+		  </div>
+		  <div class="con">
+			描述: <strong class="stro" id="desc"><!--DESC--></strong>
+		  </div>
+		  <div class="con">
+			注册时间: <strong class="stro" id="regtime"><!--REG_TIME--></strong>
+		  </div>
+	  </div>
+	  <br>
+	  <a href="active://<!--BIP-->">
+			<div class="btn">
+			<span>确定激活该用户</span>
+			</div>
+	  </a>
+    </div>
+  </body>
+  
+  <script type="text/javascript">
+    function SetUser(bip, name, group, desc, regtime)
+	{
+		document.getElementById('bip').innerText = bip;
+		document.getElementById('name').innerText = name;
+		document.getElementById('group').innerText = group;
+		document.getElementById('desc').innerText = desc;
+		document.getElementById('regtime').innerText = regtime;
+	}
+  </script>
+  
+</html>

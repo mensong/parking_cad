@@ -82,7 +82,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 
 	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
 
-#if 1
+#if 0
 	BIP_SIGNIN::Ins().WriteConfigFile(
 		"https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/authenticate", "https://uatlogin.countrygarden.com.cn:8443/idp/oauth2/getUserInfo",//测试
 		"bppk", "46e8b3aaf78a4c9e880bbc4677ec33cb", "abcdef0123456789", "9iuj87y2hbi5wxl1",
@@ -155,18 +155,18 @@ END_MESSAGE_MAP()
 
 void CDlgBipLogin::OnBnClickedOk()
 {
-	CString sUser;
-	m_editUser.GetWindowText(sUser);
+	CString sBip;
+	m_editUser.GetWindowText(sBip);
 	CString sPassword;
 	m_editPassword.GetWindowText(sPassword);
 
-	if (sUser.IsEmpty() || sPassword.IsEmpty())
+	if (sBip.IsEmpty() || sPassword.IsEmpty())
 	{
 		AfxMessageBox(_T("请输入用户名和密码。"));
 		return;
 	}
 
-	std::string aUser = GL::WideByte2Ansi(sUser.GetString());
+	std::string aUser = GL::WideByte2Ansi(sBip.GetString());
 	std::string aPassword = GL::WideByte2Ansi(sPassword.GetString());
 
 	LibBipSignIn* bip = BIP_SIGNIN::Ins().CreateSingnIn();
@@ -181,12 +181,12 @@ void CDlgBipLogin::OnBnClickedOk()
 			std::wstring wErrMsg = GL::Ansi2WideByte(errMsg);
 			CString sErrMsg;
 			sErrMsg.Format(_T("统一身份认证失败(%d)：%s"), nRet, wErrMsg.c_str());
-			CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sUser);
+			CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sBip);
 			AfxMessageBox(sErrMsg);
 		}
 		else
 		{
-			CParkingLog::AddLog(LOG_BIP_LOGIN, 0, _T("BIP统一身份认证成功"), 1, sUser);
+			CParkingLog::AddLog(LOG_BIP_LOGIN, 0, _T("BIP统一身份认证成功"), 1, sBip);
 		}
 
 		UserInfo ui;
@@ -203,24 +203,30 @@ void CDlgBipLogin::OnBnClickedOk()
 				Json::Reader jsReader;
 				if (jsReader.parse(pBody, js))
 				{
-					std::string name = js["name"].asString();
-					std::string group_udid = js["group_udid"].asString();
-					int allow = js["allow"].asInt();
-					std::string descr = js["descr"].asString();
-					std::string reg_time = js["reg_time"].asString();
-					std::string last_signin_time = js["last_signin_time"].asString();
-					int signin_count = js["signin_count"].asInt();
+					std::string jname = js["name"].asString();
+					std::string jgroup_udid = js["group_udid"].asString();
+					int jallow = js["allow"].asInt();
+					std::string jdescr = js["descr"].asString();
+					std::string jreg_time = js["reg_time"].asString();
+					std::string jlast_signin_time = js["last_signin_time"].asString();
+					int jsignin_count = js["signin_count"].asInt();
 
-					std::wstring wName = GL::Utf82WideByte(name.c_str());
-					if (allow == 1)
+					std::wstring wName = GL::Utf82WideByte(jname.c_str());
+					if (jallow == 1)
 					{
 						userName = wName.c_str();
-						bipId = sUser;
+						bipId = sBip;
+						groupUdid = GL::Utf82WideByte(jgroup_udid.c_str()).c_str();
+						allow = (jallow == 1);
+						descr = GL::Utf82WideByte(jdescr.c_str()).c_str();
+						regTime = GL::Utf82WideByte(jreg_time.c_str()).c_str();
+						lastSigninTime = GL::Utf82WideByte(jlast_signin_time.c_str()).c_str();
+						signinCount = jsignin_count;
 
 						CString sMsg;
 						sMsg.Format(_T("登录成功，用户名：%s"), wName.c_str());
 
-						CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sMsg, 1, sUser);
+						CParkingLog::AddLog(LOG_AUTH_LOGIN, 0, sMsg, 1, sBip);
 
 						loginSuccess = true;
 					}
@@ -235,7 +241,7 @@ void CDlgBipLogin::OnBnClickedOk()
 				std::string aUserName = ui.displayName;
 
 				CString sMsg;
-				sMsg.Format(_T("鉴权失败（bip：%s），是否申请开通权限？"), sUser);
+				sMsg.Format(_T("鉴权失败（bip：%s），是否申请开通权限？"), sBip);
 				std::map<int, CString> btnText;
 				btnText[IDOK] = _T("申请开通权限");
 				btnText[IDCANCEL] = _T("取消");
@@ -272,7 +278,7 @@ void CDlgBipLogin::OnBnClickedOk()
 	{
 		CString sErrMsg;
 		sErrMsg.Format(_T("统一登录认证配置有误，请重新安装程序：%d"), nRet);
-		CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sUser);
+		CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sBip);
 		AfxMessageBox(sErrMsg);
 	}
 

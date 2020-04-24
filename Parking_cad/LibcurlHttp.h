@@ -82,6 +82,7 @@ LIBCURLHTTP_API int post(const char* url, const char* content, int contentLen, b
 LIBCURLHTTP_API int post_a(const char* url, bool dealRedirect, ...);
 LIBCURLHTTP_API const char* getLocation();
 LIBCURLHTTP_API const char* getBody(int& len);
+LIBCURLHTTP_API int getCode();
 
 LIBCURLHTTP_API int download(const char* url, const char* localFileName=NULL);
 
@@ -108,6 +109,7 @@ typedef int(*FN_post)(const char* url, const char* content, int contentLen, bool
 typedef int(*FN_post_a)(const char* url, bool dealRedirect, ...);
 typedef const char* (*FN_getLocation)();
 typedef const char* (*FN_getBody)(int& len);
+typedef int (*FN_getCode)();
 typedef int(*FN_download)(const char* url, const char* localFileName);
 typedef int(*FN_postForm)(const char* url, ...);
 typedef const char* (*FN_UrlGB2312Encode)(const char * strIn);
@@ -135,6 +137,7 @@ typedef const char* (*FN_UrlUTF8Decode)(const char * strIn);
 	DEF_PROC(__hDll__, post_a); \
 	DEF_PROC(__hDll__, getLocation); \
 	DEF_PROC(__hDll__, getBody); \
+	DEF_PROC(__hDll__, getCode); \
 	DEF_PROC(__hDll__, download); \
 	DEF_PROC(__hDll__, postForm); \
 	DEF_PROC(__hDll__, UrlGB2312Encode); \
@@ -185,6 +188,7 @@ public:
 			this->post_a				=   post_a;
 			this->getLocation			=   getLocation; 
 			this->getBody				=   getBody; 
+			this->getCode				=   getCode;
 			this->download				=   download; 
 			this->postForm				=   postForm; 
 			this->UrlGB2312Encode		=   UrlGB2312Encode;
@@ -220,6 +224,7 @@ public:
 	FN_post_a				post_a;
 	FN_getLocation			getLocation;
 	FN_getBody				getBody;
+	FN_getCode				getCode;
 	FN_download				download;
 	FN_postForm				postForm;
 	FN_UrlGB2312Encode		UrlGB2312Encode;
