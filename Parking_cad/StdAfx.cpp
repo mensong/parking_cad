@@ -26,9 +26,3 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "DBHelper.h"
-
-
-std::string getHttpModule()
-{
-	return DBHelper::GetArxDirA() + "LibcurlHttp.dll";
-}

@@ -4,7 +4,8 @@
 
 // CDlgBipLogin ¶Ô»°¿ò
 
-class CDlgBipLogin : public CAcUiDialog
+class CDlgBipLogin 
+	: public CAcUiDialog
 {
 	DECLARE_DYNAMIC(CDlgBipLogin)
 
@@ -19,6 +20,12 @@ public:
 	bool loginSuccess;
 	CString userName;
 	CString bipId;
+	CString groupUdid;
+	bool allow;
+	CString descr;
+	CString regTime;
+	CString lastSigninTime;
+	int signinCount;
 
 protected:
 	std::string m_get_userUrl;

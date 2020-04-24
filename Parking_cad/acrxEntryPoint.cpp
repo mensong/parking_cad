@@ -33,7 +33,7 @@
 #include "LoadCuix.h"
 #include "DlgBipLogin.h"
 #include "Authenticate\HardDiskSerial.h"
-#include "KVHelp.h"
+#include "KV.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -56,28 +56,10 @@ public:
 		// TODO: Load dependencies here
 		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
-		////授权检查
-		//g_auth.setDesKey(DES_KEY);
-
-		//DWORD nowTime = 0;
-		//if (AcRx::kRetOK != getLicenceServerTime(g_auth, nowTime))
-		//	return AcRx::kRetError;
-
-		//if (AcRx::kRetOK != checkLicence(g_auth, nowTime))
-		//	return AcRx::kRetError;
-
-		//HMODULE hKVDll = ModulesManager::Instance().loadModule("KV.dll");
-		//if (!hKVDll)
-		//{
-		//	::MessageBox(NULL, AcString(_T("KV.dll文件缺失！")), _T("文件缺失"), MB_OK | MB_ICONERROR);
-		//	return AcRx::kRetError;
-		//}
-		//INIT_KV(hKVDll);
-
 		char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
 		std::string session = serial;
-		KVHelp::setStrA("mac", serial);
+		KV::Ins().SetStrA("mac", serial);
 
 		CDlgBipLogin dlgLogin;
 		if (dlgLogin.DoModal() != IDOK)
@@ -91,8 +73,16 @@ public:
 			return AcRx::kRetError;
 		}
 
-		KVHelp::setStr(_T("bip_id"), dlgLogin.bipId.GetString());
-		KVHelp::setStr(_T("user_name"), dlgLogin.userName.GetString());
+		KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());//使用这个判定是否加载了主模块
+		KV::Ins().SetStrW(_T("user_name"), dlgLogin.userName.GetString());
+		KV::Ins().SetStrW(_T("group_udid"), dlgLogin.groupUdid.GetString());
+		KV::Ins().SetStrW(_T("allow"), dlgLogin.allow?_T("1") : _T("0"));
+		KV::Ins().SetStrW(_T("descr"), dlgLogin.descr.GetString());
+		KV::Ins().SetStrW(_T("reg_time"), dlgLogin.regTime.GetString());
+		KV::Ins().SetStrW(_T("last_signin_time"), dlgLogin.lastSigninTime.GetString());
+		CString sSigninCount;
+		sSigninCount.Format(_T("%d"), dlgLogin.signinCount);
+		KV::Ins().SetStrW(_T("signin_count"), sSigninCount.GetString());
 
 		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
@@ -112,6 +102,15 @@ public:
 
 	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 
 	{
+		KV::Ins().DelStrW(_T("bip_id"));
+		KV::Ins().DelStrW(_T("user_name"));
+		KV::Ins().DelStrW(_T("group_udid"));
+		KV::Ins().DelStrW(_T("allow"));
+		KV::Ins().DelStrW(_T("descr"));
+		KV::Ins().DelStrW(_T("reg_time"));
+		KV::Ins().DelStrW(_T("last_signin_time"));
+		KV::Ins().DelStrW(_T("signin_count"));
+
 		AUTO_REG_CMD::Clear();
 		ModulesManager::Relaese();
 
@@ -122,86 +121,7 @@ public:
 	}
 
 	virtual void RegisterServerComponents () {
-	}
-
-
-	//AcRx::AppRetCode getLicenceServerTime(Authenticate& auth, DWORD& nowTime)
-	//{
-	//	typedef int(*FN_get)(const char* url, bool dealRedirect /*= true*/);
-	//	FN_get get = ModulesManager::Instance().func<FN_get>("LibcurlHttp.dll", "get");
-	//	if (!get)
-	//	{
-	//		MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	typedef const char* (*FN_getBody)(int& len);
-	//	FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
-	//	if (!getBody)
-	//	{
-	//		MessageBox(NULL, AcString(_T("缺少LibcurlHttp.dll模块！")), _T("缺少模块"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	int code = get(TIME_URL, true);
-	//	if (code != 200)
-	//	{
-	//		MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	int nLen = 0;
-	//	const char* pBody = getBody(nLen);
-	//	if (nLen <= 0)
-	//	{
-	//		MessageBox(NULL, AcString(_T("连接到服务器失败！")), _T("网路错误"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	std::string sNowTime(pBody, nLen);
-
-	//	nowTime = auth.decodeCurTime(sNowTime);
-	//	if (nowTime == 0)
-	//	{
-	//		MessageBox(NULL, AcString(_T("时间服务器错误！")), _T("服务器错误"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-
-	//	return AcRx::kRetOK;
-	//}
-
-	//AcRx::AppRetCode checkLicence(Authenticate& auth, DWORD nowTime)
-	//{
-	//	AcString swFileName = DBHelper::GetArxDir() + _T("license.lst");
-	//	auth.loadLicenseFile(GL::WideByte2Ansi(swFileName.constPtr()).c_str());
-	//	int res = auth.check(nowTime);
-
-	//	std::string user = auth.getCheckedUser();
-	//	std::string serial = auth.getCheckedSerial();
-	//	std::string license = auth.getCheckedLicenceCode();
-	//	DWORD		expireTime = auth.getCheckedExpireTime();
-	//	acutPrintf(_T("\n授权信息 - 【用户名:%s  到期时间:%u】\n"), GL::Ansi2WideByte(user.c_str()).c_str(), expireTime);
-
-	//	if (res == 1)
-	//	{
-	//		MessageBox(NULL, AcString(_T("初始化失败！")), _T("初始化失败"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	else if (res == 2)
-	//	{
-	//		MessageBox(NULL, AcString(_T("未授权终端，请联系管理员！")), _T("未授权"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	else if (res == 3)
-	//	{
-	//		MessageBox(NULL, AcString(_T("授权已过期，请联系管理员！")), _T("授权过期"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-	//	else if (res == 4)
-	//	{
-	//		MessageBox(NULL, AcString(_T("用户信息有误，请联系管理员！")), _T("用户信息有误"), MB_OK | MB_ICONERROR);
-	//		return AcRx::kRetError;
-	//	}
-
-	//	return AcRx::kRetOK;
-	//}
-	
+	}	
 } ;
 
 //-----------------------------------------------------------------------------

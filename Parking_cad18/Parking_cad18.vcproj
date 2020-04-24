@@ -422,10 +422,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\KVHelp.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\ListCtrlCustom.cpp"
 				>
 			</File>
@@ -632,10 +628,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\KV.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\KVHelp.h"
 				>
 			</File>
 			<File

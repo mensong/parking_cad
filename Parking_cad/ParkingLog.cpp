@@ -3,28 +3,19 @@
 #include "ModulesManager.h"
 #include <json/json.h>
 #include <Convertor.h>
-#include "KVHelp.h"
+#include "LibcurlHttp.h"
+#include "KV.h"
 
 bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	int trigger_count /*= 0*/, CString& user_udid/*=_T("")*/)
 {
-	std::string add_log_url = KVHelp::getStrA("add_log_url");
+	std::string add_log_url = KV::Ins().GetStrA("add_log_url", "");
 	if (add_log_url.empty())
 		return false;
 
 	if (user_udid.IsEmpty() || user_udid == _T(""))
 	{
-		user_udid = KVHelp::getStr(_T("bip_id"), _T("unknow user"));
-	}
-
-	typedef int(*FN_post)(const char* url, const char*, int, bool, const char*);
-	FN_post post = ModulesManager::Instance().func<FN_post>("LibcurlHttp.dll", "post");
-	typedef const char* (*FN_getBody)(int&);
-	FN_getBody getBody = ModulesManager::Instance().func<FN_getBody>("LibcurlHttp.dll", "getBody");
-	if (!post || !getBody)
-	{
-		acutPrintf(_T("\nÕÒ²»µ½LibcurlHttp.dllÄ£¿é"));
-		return false;
+		user_udid = KV::Ins().GetStrW(_T("bip_id"), _T("unknow user"));
 	}
 
 	Json::Value js;
@@ -33,17 +24,17 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	js["error"] = error;
 	js["descr"] = GL::WideByte2Utf8(descr.GetString());
 	js["trigger_count"] = trigger_count;
-	js["mac"] = KVHelp::getStrA("mac");
+	js["mac"] = KV::Ins().GetStrA("mac", "");
 
 	Json::FastWriter jsWriter;
 	std::string sJson = jsWriter.write(js);
 
-	int code = post(add_log_url.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
+	int code = HTTP_CLIENT::Ins().post(add_log_url.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
 	if (code != 200)
 		return false;
 
 	int len = 0;
-	std::string sBody = getBody(len);
+	std::string sBody = HTTP_CLIENT::Ins().getBody(len);
 	if (sBody == "ok")
 		return true;
 

@@ -81,8 +81,6 @@ extern AcApDataManager<CDocData> DocVars ;
 #include <string>
 #include "ParkingLog.h"
 
-std::string getHttpModule();
-
 #define LOG_BIP_LOGIN _T("bip_login")
 #define LOG_MISS_MOD _T("miss_mod")
 #define LOG_AUTH_LOGIN _T("auth_login")
