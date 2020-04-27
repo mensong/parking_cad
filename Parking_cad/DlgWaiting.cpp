@@ -900,7 +900,16 @@ AcDbObjectId CDlgWaiting::createDimAligned(const AcGePoint3d& pt1, const AcGePoi
 
 int CDlgWaiting::getJsonForLocal(std::string& json, std::string& sMsg, CString& sIndex, int& iCount)
 {
-	std::string tempUrl = "https://parking.asdfqwer.net/query2.php";
+	if (ms_uuid == "")
+	{
+		sMsg = "uuid²»ÄÜÎª¿Õ¡£";
+		return 4;
+	}
+	std::string tempUrl;
+	tempUrl = ms_strGeturlPortone + ms_uuid;
+	//const char * sendUrl = tempUrl.c_str();
+
+	//std::string tempUrl = "https://parking.asdfqwer.net/query2.php";
 	
 	const char * sendUrl = tempUrl.c_str();
 

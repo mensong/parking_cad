@@ -23,5 +23,9 @@ public:
 	void arrowShow(const AcGePoint2dArray& oneArrowPts,AcDbDatabase *pDb = acdbCurDwg());
 	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds,AcDbDatabase *pDb = acdbCurDwg());
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText,AcDbDatabase *pDb = acdbCurDwg());
+
+	class ArxProgressBar* m_ProgressBar;
+	virtual void Ended() override;
+
 };
 
