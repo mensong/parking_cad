@@ -9,51 +9,84 @@
   </head>
 
   <style type="text/css">
-    #winpop { width:100%; height:100%; position:absolute; top:2px;right:0px; bottom:5px;
-    border:1px solid #999999; margin:0; padding:1px; overflow:hidden; display:block;}
-	#winpop .title
-    { width:100%; height:20px; line-height:20px; background:#FFCC00; font-weight:bold;
-    text-align:center; font-size:12px;}#winpop .con { width:100%; height:30px;
-    line-height:40px; font-weight:bold; font-size:14px; 
-    text-align:center} .stro { text-decoration:underline; color:#FF0000} 
-	.close { position:absolute; right:4px; top:-1px; color:#FFFFFF; cursor:pointer}
-	
+    #winpop { 
+		width:100%; 
+		height:100%; 
+		position:absolute; 
+		top:2px;
+		right:0px; 
+		bottom:5px;
+		border:1px solid #999999; 
+		margin:0; 
+		padding:1px; 
+		overflow:hidden; 
+		display:block;
+	}
+	#winpop .title { 
+		width:100%; 
+		height:40px; 
+		line-height:40px; 
+		background:#FFCC00; 
+		font-weight:bold;
+		text-align:center; 
+		font-size:16px;
+	}
+	#winpop .con { 
+		width:100%; 
+		height:30px;
+		line-height:40px; 
+		font-weight:bold; 
+		font-size:14px; 
+		text-align:center
+	} 
+	.stro { 
+		text-decoration:underline; 
+		color:#FF0000
+	} 
+	.close { 
+		position:absolute; 
+		right:4px; 
+		top:-1px; 
+		color:#FFFFFF; 
+		cursor:pointer
+	}	
 	.btn1{
 		width: 150px;
-		height: 50px;
+		height: 40px;
 		background: green;
-		line-height: 50px;
+		line-height: 40px;
 		text-align: center;
 		color: white;
 		border-radius: 10px;
 		margin: 0 auto;
-	}
-	
+	}	
 	.btn2{
 		width: 150px;
-		height: 50px;
+		height: 40px;
 		background: red;
-		line-height: 50px;
+		line-height: 40px;
 		text-align: center;
 		color: white;
 		border-radius: 10px;
 		margin: 0 auto;
 	}
-
 	.btn-wrap {
 		display: flex;
 		justify-content: space-around;
+	}	
+	a{ 
+		text-decoration:none
+	} 
+	a:hover{ 
+		text-decoration:underline
 	}
-	
-	a{ text-decoration:none} 
-	a:hover{ text-decoration:underline}
   </style>
 
   <body>
     <div id="winpop">
 	
 		<div class="title">
-			有新的注册用户需要您审核
+			车库智能设计系统：新用户审批
 			<!--<span class="close" onclick="tips_pop()">X</span>-->
 		</div>
 
