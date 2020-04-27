@@ -1568,43 +1568,43 @@ CString CEquipmentroomTool::getOpenDwgFilePath()
 	return s;
 }
 
-void CEquipmentroomTool::creatNewDwg()
-{
-	CString path = getOpenDwgFilePath();
-	CString deleName = _T(".dwg");
-	path = path.Trim(deleName);
-	CTime t = CTime::GetCurrentTime();
-	int day = t.GetDay(); //获得几号  
-	int year = t.GetYear(); //获取年份  
-	int month = t.GetMonth(); //获取当前月份  
-	int hour = t.GetHour(); //获取当前为几时   
-	int minute = t.GetMinute(); //获取分钟  
-	int second = t.GetSecond(); //获取秒  
-								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
-	CString sDay;
-	sDay.Format(_T("%d"), day);
-	CString sYear;
-	sYear.Format(_T("%d"), year);
-	CString sMonth;
-	sMonth.Format(_T("%d"), month);
-	CString sHour;
-	sHour.Format(_T("%d"), hour);
-	CString sMinute;
-	sMinute.Format(_T("%d"), minute);
-	CString sSecond;
-	sSecond.Format(_T("%d"), second);
-	CString sNum = _T("_")+sYear + sMonth + sDay + sHour + sMinute + sSecond+_T(".dwg");
-	CString newFileName = path + sNum;
-	Acad::ErrorStatus es;
-	// 创建新的图形数据库，分配内存空间
-	AcDbDatabase *pDb = new AcDbDatabase(true, false);
-	es = acdbHostApplicationServices()->workingDatabase()->wblock(pDb);
-	allEntMoveAndClone(pDb);
-	es =  pDb->saveAs(newFileName);
-	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
-
-	int stop = 0;
-}
+//void CEquipmentroomTool::creatNewDwg()
+//{
+//	CString path = getOpenDwgFilePath();
+//	CString deleName = _T(".dwg");
+//	path = path.Trim(deleName);
+//	CTime t = CTime::GetCurrentTime();
+//	int day = t.GetDay(); //获得几号  
+//	int year = t.GetYear(); //获取年份  
+//	int month = t.GetMonth(); //获取当前月份  
+//	int hour = t.GetHour(); //获取当前为几时   
+//	int minute = t.GetMinute(); //获取分钟  
+//	int second = t.GetSecond(); //获取秒  
+//								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
+//	CString sDay;
+//	sDay.Format(_T("%d"), day);
+//	CString sYear;
+//	sYear.Format(_T("%d"), year);
+//	CString sMonth;
+//	sMonth.Format(_T("%d"), month);
+//	CString sHour;
+//	sHour.Format(_T("%d"), hour);
+//	CString sMinute;
+//	sMinute.Format(_T("%d"), minute);
+//	CString sSecond;
+//	sSecond.Format(_T("%d"), second);
+//	CString sNum = _T("_")+sYear + sMonth + sDay + sHour + sMinute + sSecond+_T(".dwg");
+//	CString newFileName = path + sNum;
+//	Acad::ErrorStatus es;
+//	// 创建新的图形数据库，分配内存空间
+//	AcDbDatabase *pDb = new AcDbDatabase(true, false);
+//	es = acdbHostApplicationServices()->workingDatabase()->wblock(pDb);
+//	//allEntMoveAndClone(pDb);
+//	es =  pDb->saveAs(newFileName);
+//	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
+//
+//	int stop = 0;
+//}
 
 bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase,double dCount /*= 0*/)
 {
@@ -1733,9 +1733,9 @@ AcGePoint2dArray CEquipmentroomTool::getAllEntCreatExten()
 	return useExtenPts;
 }
 
-void CEquipmentroomTool::test()
-{
-	creatNewDwg();
-	//getAllEntCreatExten();
-}
+//void CEquipmentroomTool::test()
+//{
+//	creatNewDwg();
+//	//getAllEntCreatExten();
+//}
 

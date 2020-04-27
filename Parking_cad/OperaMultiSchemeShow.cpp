@@ -8,6 +8,7 @@
 #include "GeHelper.h"
 #include "CommonFuntion.h"
 #include "ArxProgressBar.h"
+#include "DelayExecuter.h"
 
 
 std::string COperaMultiSchemeShow::ms_json;
@@ -39,7 +40,7 @@ COperaMultiSchemeShow::~COperaMultiSchemeShow()
 
 void COperaMultiSchemeShow::Start()
 {
-	m_ProgressBar = new ArxProgressBar(_T("正在进行多方案排布"));
+	m_ProgressBar = new ArxProgressBar(_T("正在进行多方案排布"), 0, 3);
 	creatNewDwg();
 	//delete rootPDb;  //pDb不是数据库的常驻对象，必须手工销毁
 	/*CString sLineTypeFile = _T("C:\\Users\\admin\\AppData\\Roaming\\Autodesk\\AutoCAD 2014\\R19.1\\chs\\Support\\acad.lin");
@@ -354,7 +355,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	Doc_Locker _locker;
 	CEquipmentroomTool::layerSet(_T("0"), 7,pDataBase);
 	CString blockName;
-	creatNewParking(dParkingLength, dParkingWidth, blockName, pDataBase);
+	creatNewParkingBlock(dParkingLength, dParkingWidth, blockName, pDataBase);
 	for (int a = 0; a < parkingPts.length(); a++)
 	{
 		//double = (rotation/180)*Π(顺时针和逆时针)
@@ -418,7 +419,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	return true;
 }
 
-void COperaMultiSchemeShow::creatNewParking(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb/* = acdbCurDwg()*/)
+void COperaMultiSchemeShow::creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 {
 	double dUseLength = dParkingLength * 1000;
 	double dUseWidth = dParkingWidth * 1000;
@@ -497,6 +498,16 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 	return axisId;
 }
 
+static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
+{
+	AcApDocument* pDoc = (AcApDocument*)anyVal;
+	Acad::ErrorStatus es = acDocManager->activateDocument(pDoc);
+	if (es!=eOk)
+	{
+		acutPrintf(_T("文件打开失败！"));
+	}
+}
+
 void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/)
 {
 	m_ProgressBar->set(_T("创建新文件"));
@@ -539,7 +550,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	m_ProgressBar->forward();
 	//pDb->saveAs(newFileName);
 	//return;
-	m_ProgressBar->set(_T("排布进行中"), 0, 4);
+	m_ProgressBar->set(_T("排布进行中"));
 	CString sMsg;
 	loadModelFile(pDb);
 	if (!COperaMultiSchemeShow::addEntToDb(ms_json, sMsg,pDb))
@@ -547,24 +558,39 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		acedAlert(sMsg);
 		return;
 	}
-	if (CEquipmentroomTool::allEntMoveAndClone(pDb))
-	{
-		acutPrintf(_T("\n多方案排布放置失败！"));
-		//return;
-	}
 	
 	for (int i=1; i<ms_count; i++)
 	{
 		AcDbDatabase *pTempDb; // 临时图形数据库
 		es = rootPDb->wblock(pTempDb);
+		if (es!=eOk)
+		{
+			acutPrintf(_T("\n生成图纸失败:%d"), i);
+			continue;
+		}
+
 		CString sMsg1;
 		loadModelFile(pTempDb);
 		COperaMultiSchemeShow::addEntToDb(ms_json, sMsg1,pTempDb,i);
-		CEquipmentroomTool::allEntMoveAndClone(pTempDb,(i*1.5));
-		es = pDb->insert(AcGeMatrix3d::kIdentity, pTempDb);
+		//CEquipmentroomTool::allEntMoveAndClone(pTempDb,(i*1.5));
+
+		AcDbExtents extDb;
+		es = DBHelper::GetBlockExtents(extDb, ACDB_MODEL_SPACE, pTempDb);
 		if (es!=eOk)
 		{
+			acutPrintf(_T("\n生成图纸失败:%d"), i);
 			continue;
+		}
+		AcGeVector3d dir(1,0,0);
+		double lenght = extDb.maxPoint().x - extDb.minPoint().x;
+		double offset = (lenght * 1.5) * i;
+		AcGeMatrix3d mat;
+		mat.setTranslation(dir * offset);
+
+		es = pDb->insert(mat, pTempDb);
+		if (es!=eOk)
+		{
+			acutPrintf(_T("\n生成图纸失败:%d"), i);
 		}
 	}
 	es = pDb->saveAs(newFileName);
@@ -574,13 +600,10 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	m_ProgressBar->set(_T("打开排布好文件"), 0, 3);
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
-	es = acDocManager->activateDocument(DBHelper::OpenFile(newFileName));
-	if (es!=eOk)
-	{
-		acutPrintf(_T("文件打开失败！"));
-		return;
-	}
-	int stop = 0;
+	AcApDocument* pDoc = DBHelper::OpenFile(newFileName);
+
+	SetDelayExecute(ActiveDocExecute, 0, 0, (void*)pDoc, 1, false);
+		
 	m_ProgressBar->forward();
 }
 

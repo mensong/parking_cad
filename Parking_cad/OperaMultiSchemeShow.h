@@ -11,7 +11,7 @@ public:
 	static int ms_count;//多方案总数
 	static void getJsonData(const std::string& json,const int& count);
 	bool addEntToDb(const std::string& json, CString& sMsg, AcDbDatabase *pDataBase,int scheme = 0);
-	void creatNewParking(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
+	void creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, 
 		const CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	AcDbObjectId axisShow(const AcGePoint2dArray& axisPts, AcDbDatabase *pDb = acdbCurDwg());

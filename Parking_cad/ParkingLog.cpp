@@ -38,7 +38,7 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	if (sBody == "ok")
 		return true;
 
-	acutPrintf(_T("\nLog faild!"));
+	acutPrintf(_T("\nLog failed!"));
 	return false;
 }
 
