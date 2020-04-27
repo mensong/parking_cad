@@ -68,11 +68,12 @@ std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 void COperaParkingSpaceShow::Start()
 {
 	setDesKey("#B-G-Y++");
-	std::string sData = "http://10.8.202.199:90/park";
+	std::string sData = "http://10.8.170.202:80/park";
 	std::string code = encrypt(sData);
-	std::string sData1 = "http://10.8.202.199:80/check/";
+	std::string sData1 = "http://10.8.170.202:80/query/";
 	std::string code1 = encrypt(sData1);
-
+	std::string sData2 = "http://10.8.170.202:80/check/";
+	std::string code2 = encrypt(sData2);
 	//从文件中读取
 	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());

@@ -180,6 +180,7 @@ void CDlgSetConfig::OnBnClickedOk()
 	layerconfigs.push_back("ordinary_parking");
 	layerconfigs.push_back("parking_axis");
 	layerconfigs.push_back("rangeline");
+	layerconfigs.push_back("cloud_line");
 	std::vector<CString> oldLayerName;
 	for (int a = 0; a < layerconfigs.size(); a++)
 	{
@@ -335,6 +336,7 @@ BOOL CDlgSetConfig::OnInitDialog()
 	layerconfigs.push_back("ordinary_parking");
 	layerconfigs.push_back("parking_axis");
 	layerconfigs.push_back("rangeline");
+	layerconfigs.push_back("cloud_line");
 	for (int i=0; i<layerconfigs.size();i++)
 	{
 		std::string strProfessionalAttributes = "";

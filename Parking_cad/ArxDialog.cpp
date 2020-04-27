@@ -264,6 +264,7 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_PARTITION_LINE, m_PartitionLineEdit);
 	DDX_Control(pDX, IDC_EDIT_SHOWENDPOINT, m_EditShowEndPoint);
 	*(end()) = true;
+	DDX_Control(pDX, IDC_CHECK_MANYSHOW, m_checkIsManySHow);
 }
 
 void CArxDialog::OnOK()
@@ -672,7 +673,10 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 		}
 		//std::string messgae = root["messgae"].asString();
 		//std::string result = root["result"].asString();
-		sMsg = root["result"].asString();
+		int uuid = root["result"]["uuid"].asInt();
+		CString suuid;
+		suuid.Format(_T("%d"), uuid);
+		sMsg = CStringA(suuid);
 		return 0;
 	}
 
@@ -683,12 +687,6 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 {
 	// TODO: 在此添加控件通知处理程序代码
-
-	int iMulti = 0;
-	if (useManyShow)
-	{
-		iMulti = 1;
-	}
 
 	m_editLength.GetWindowText(m_strLength);
 	m_Width.GetWindowText(m_strWidth);
@@ -713,6 +711,14 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 	else
 	{
 		isPartition = false;
+	}
+	if (1== m_checkIsManySHow.GetCheck())
+	{
+		bIsManyShow = true;
+	}
+	else
+	{
+		bIsManyShow = false;
 	}
 	int direction = 0;
 	CString showDirection;
@@ -895,6 +901,11 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 	auth["computer_id"] = GL::Ansi2Utf8(m_strComputerId.c_str());
 	auth["user_id"] = GL::Ansi2Utf8(m_strUserId.c_str());
 	root["auth"] = auth;
+	int iMulti = 0;
+	if (bIsManyShow)
+	{
+		iMulti = 1;
+	}
 	root["multi"] = Json::Value(iMulti);
 	std::string strData = root.toStyledString();
 	if (strData == "")
@@ -970,7 +981,7 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 
 void CArxDialog::OnBnClickedOk()
 {
-	selectPort(true);
+	selectPort(true, true);
 }
 
 
@@ -1182,3 +1193,5 @@ void CArxDialog::OnBnClickedButtonManyshow()
 	// TODO: 在此添加控件通知处理程序代码
 	selectPort(true,true);
 }
+
+

@@ -148,4 +148,7 @@ private:
 public:
 	afx_msg void OnBnClickedButtonGetendpoint();
 	afx_msg void OnBnClickedButtonManyshow();
+	// 是否选择多方案展示
+	CButton m_checkIsManySHow;
+	bool bIsManyShow;
 } ;
