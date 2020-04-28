@@ -1423,7 +1423,7 @@ int CEquipmentroomTool::SelColor(int& textColor)
 	////先获得当前层的ID
 	AcDbObjectId layerId = acdbHostApplicationServices()->workingDatabase()->clayer();
 	////然后获得当前层指针
-	AcDbLayerTableRecordPointer ptLayer(layerId, AcDb::OpenMode::kForRead);
+	AcDbLayerTableRecordPointer ptLayer(layerId, AcDb::kForRead);
 	////获得当前层的颜色
 	//AcCmColor oldColor = ptLayer->color();
 	//int nCurColor = oldColor.colorIndex();//当前层的颜色
