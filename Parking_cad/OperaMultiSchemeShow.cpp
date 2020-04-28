@@ -725,22 +725,22 @@ void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectId
 
 			AcGeVector3d movevec = AcGeVector3d(startpoint - endpoint);
 			movevec.normalize();
-			centerpoint.transformBy(movevec * 800);
+			AcGePoint3d pt = centerpoint;
+			pt.transformBy(movevec * 800);
 
 			AcGeVector3d tempVec = AcGeVector3d(startpoint - endpoint);
 			AcGeVector3d vec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
 			vec.normalize();
 
-			AcGePoint3d tempPoint = centerpoint;
+			AcGePoint3d tempPoint = pt;
 			AcGePoint3d movePt1 = tempPoint.transformBy(vec * (m_dDis / 2));
-			tempPoint = centerpoint;
+			tempPoint = pt;
 			AcGePoint3d movePt2 = tempPoint.transformBy(-vec * (m_dDis / 2));
 
 			CString disText;
 			int iDistance = ceil(m_dDis);
 			disText.Format(_T("%d"), iDistance);
 
-			centerpoint.transformBy(movevec * 300);
 			AcDbObjectId dimId;
 			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText,pDb);
 			CEquipmentroomTool::setEntToLayer(dimId, sLanesDimLayer);
@@ -775,6 +775,38 @@ AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, con
 
 	if (pnewdim)
 		pnewdim->close();
+
+	// 打开已经创建的标注，对文字的位置进行修改
+	AcDbEntity *pEnt = NULL;
+	Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, dimensionId, AcDb::kForWrite);
+
+	AcDbAlignedDimension *pDimension = AcDbAlignedDimension::cast(pEnt);
+	if (pDimension != NULL)
+	{
+		// 移动文字位置前，设置文字和尺寸线移动时的关系（这里指定为：尺寸线不动，在文字和尺寸线之间加箭头）
+		pDimension->setDimtmove(1);
+
+		pDimension->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
+		pDimension->setDimexe(300);//设置尺寸界线超出尺寸线距离为400
+		pDimension->setDimexo(500);//设置尺寸界线的起点偏移量为300
+								 //pDimension->setDimtad(50);//文字位于标注线的上方
+		pDimension->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+		pDimension->setDimtxt(900);//标注文字的高度
+		pDimension->setDimdec(2);
+		pDimension->setDimasz(150);//箭头长度
+		pDimension->setDimlfac(1);//比例因子
+
+		AcCmColor suiceng;
+		suiceng.setColorIndex(3);
+		pDimension->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
+		pDimension->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
+
+		AcCmColor textcolor;
+		textcolor.setColorIndex(255);
+		pDimension->setDimclrt(textcolor);
+	}
+	if (pEnt)
+		pEnt->close();
 
 	return dimensionId;
 }
