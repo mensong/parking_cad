@@ -155,7 +155,7 @@ BOOL CDlgWaiting::OnInitDialog()
 
 	m_bIsReady = true;
 
-	SetTimer(1, 1000, NULL);
+	SetTimer(1, 3000, NULL);
 
 	return bRet;
 }
@@ -194,6 +194,8 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 	std::string json;
 	if (nIDEvent == 1)
 	{
+		KillTimer(nIDEvent);
+
 		//调用检查是否计算完成函数（）；
 		std::string sMsg;
 		CString sIndex;
@@ -207,10 +209,10 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		{
 			status = getStatus(json, sMsg, sIndex);
 		}
+
 		//如果完成后
 		if (status == 2)
 		{
-			KillTimer(nIDEvent);
 			//CDlgWaiting::Show(false);
 			this->OnOK();
 			CString sMsg;
@@ -235,11 +237,15 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 		{
 			m_sStatus = _T("任务正在排队中，当前排在第") + sIndex + _T("位。");
 			m_staStatusText.SetWindowText(m_sStatus);
+
+			SetTimer(nIDEvent, 3000, NULL);
 		}
 		else if (status == 1)
 		{
 			m_sStatus = _T("任务正在进行中……");
 			m_staStatusText.SetWindowText(m_sStatus);
+
+			SetTimer(nIDEvent, 3000, NULL);
 		}
 		else
 		{
@@ -276,7 +282,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 
 	const char * sendUrl = tempUrl.c_str();
 
-	HTTP_CLIENT::Ins().setTimeout(600);
+	HTTP_CLIENT::Ins().setTimeout(60);
 	int code = HTTP_CLIENT::Ins().get(sendUrl, true);
 	if (code != 200)
 	{
@@ -913,7 +919,9 @@ int CDlgWaiting::getJsonForLocal(std::string& json, std::string& sMsg, CString& 
 	
 	const char * sendUrl = tempUrl.c_str();
 
-	HTTP_CLIENT::Ins().setTimeout(600);
+	//MessageBoxA(NULL, sendUrl, "url", MB_OK);
+
+	HTTP_CLIENT::Ins().setTimeout(60);
 	int code = HTTP_CLIENT::Ins().get(sendUrl, true);
 
 	if (code != 200)

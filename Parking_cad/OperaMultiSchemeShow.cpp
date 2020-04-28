@@ -55,7 +55,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	double dLaneWidth;
 	if (reader.parse(json, root))
 	{
-		if (root["result"].isArray())
+		if (root["result"].isArray() && root["result"].size() > scheme)
 		{
 			Json::Value& oneScheme = root["result"][scheme];
 			Json::Value& parkings = oneScheme["parkings"];
