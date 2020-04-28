@@ -38,12 +38,6 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
 
-CString g_computerId;
-
-// #define DES_KEY "#B-G-Y++"
-// #define TIME_URL "http://licence.orzgod.com:8090/cur_time"
-// Authenticate g_auth;
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class CArxProject2App : public AcRxArxApp {

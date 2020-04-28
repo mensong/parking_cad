@@ -8,6 +8,7 @@
 #include "GeHelper.h"
 #include "CommonFuntion.h"
 #include "ArxProgressBar.h"
+#include "DelayExecuter.h"
 
 
 std::string COperaMultiSchemeShow::ms_json;
@@ -39,7 +40,7 @@ COperaMultiSchemeShow::~COperaMultiSchemeShow()
 
 void COperaMultiSchemeShow::Start()
 {
-	m_ProgressBar = new ArxProgressBar(_T("正在进行多方案排布"));
+	m_ProgressBar = new ArxProgressBar(_T("正在进行多方案排布"), 0, 3);
 	creatNewDwg();
 	//delete rootPDb;  //pDb不是数据库的常驻对象，必须手工销毁
 	/*CString sLineTypeFile = _T("C:\\Users\\admin\\AppData\\Roaming\\Autodesk\\AutoCAD 2014\\R19.1\\chs\\Support\\acad.lin");
@@ -63,8 +64,8 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	Json::Reader reader;
 	Json::Value root;
 	//从字符串中读取数据
-	//AcGePoint2dArray parkingPts;
-	//std::vector<double> parkingDirections;
+	AcGePoint2dArray parkingPts;
+	std::vector<double> parkingDirections;
 	std::vector<AcGePoint2dArray> axisesPoints;
 	std::vector<AcGePoint2dArray> lanesPoints;
 	AcGePoint2dArray scopePts;
@@ -78,15 +79,111 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 		if (root["result"].isArray())
 		{
 			Json::Value& oneScheme = root["result"][scheme];
-			Json::Value& data = oneScheme["data"];
-			parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg);
 			Json::Value& parkings = oneScheme["parkings"];
-			Doc_Locker _locker;
-			CEquipmentroomTool::layerSet(_T("0"), 7, pDataBase);
-			CString blockName;
-			creatNewParking(dParkingLength, dParkingWidth, blockName, pDataBase);
-			parsingParkingData(parkings,sMsg,blockName,pDataBase);
+			if (parkings.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"parkings\"]字段！");
+				return false;
+			}
+			else
+			{
+				if (parkings.isArray())
+				{
+					int nArraySize = parkings.size();
+					for (int i = 0; i < nArraySize; i++)
+					{
+						double ptX = parkings[i]["position"][0].asDouble();
+						double ptY = parkings[i]["position"][1].asDouble();
+						AcGePoint2d pt(ptX, ptY);
+						parkingPts.append(pt);
+						double direction = parkings[i]["direction"].asDouble();
+						parkingDirections.push_back(direction);
+					}
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+					return false;
+				}
+			}
+			Json::Value& data = oneScheme["data"];
+			if (data.isNull())
+			{
+				sMsg = _T("回传json不存在[\"result\"][\"data\"]字段！");
+				return false;
+			}
+			else
+			{
+				if (data["cell_length"].isDouble() && data["cell_num"].isInt())
+				{
+					dParkingLength = data["cell_length"].asDouble();
+					dParkingWidth = data["cell_width"].asDouble();
+					dLaneWidth = data["lane_width"].asDouble();
+					std::vector<double> dataVector;
+					std::vector<std::string> strDataNameVector;
+					std::map < std::string, double > tableData;
 
+					double dSp = data["Sp"].asDouble();
+					strDataNameVector.push_back("SP");
+					dataVector.push_back(dSp);
+
+					double dSpt = data["Spt"].asDouble();
+					strDataNameVector.push_back("SPT");
+					dataVector.push_back(dSpt);
+
+					double dSpf = data["Spf"].asDouble();
+					strDataNameVector.push_back("SPF");
+					dataVector.push_back(dSpf);
+
+					double dSpf1 = data["Spf1"].asDouble();
+					strDataNameVector.push_back("SPF1");
+					dataVector.push_back(dSpf1);
+
+					double dSpf2 = data["Spf2"].asDouble();
+					strDataNameVector.push_back("SPF2");
+					dataVector.push_back(dSpf2);
+
+					double dSpf3 = data["Spf3"].asDouble();
+					strDataNameVector.push_back("SPF3");
+					dataVector.push_back(dSpf3);
+
+					double dCp = data["Cp"].asDouble();
+					strDataNameVector.push_back("CP");
+					dataVector.push_back(dCp);
+
+					double dJSpc = data["JSpc"].asDouble();
+					strDataNameVector.push_back("JSPC");
+					dataVector.push_back(dJSpc);
+
+					double dSpc = data["Spc"].asDouble();
+					strDataNameVector.push_back("SPC");
+					dataVector.push_back(dSpc);
+
+					double dH = data["H"].asDouble();
+					strDataNameVector.push_back("H");
+					dataVector.push_back(dH);
+
+					double Ht = data["Ht"].asDouble();
+					strDataNameVector.push_back("HT");
+					dataVector.push_back(Ht);
+					CString resultText;
+					for (int i = 0; i < dataVector.size(); i++)
+					{
+						CString strTempData;
+						strTempData.Format(_T("%.2f"), dataVector[i]);
+						std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
+						tableData.insert(value);//插入新元素
+												//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
+					}
+					int gg = tableData.size();
+					COperaAddFrame::setTableDataMap(tableData);
+				}
+				else
+				{
+					sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
+					return false;
+				}
+			}
 			//Json::Value& axis = oneScheme["axis"];
 			/*if (axis.isNull())
 			{
@@ -244,21 +341,29 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 				}
 			}*/
 		}
+		else
+		{
+			sMsg = _T("返回json文件数据格式解析出错！");
+			return false;
+		}
 	}
 	else
 	{
 		sMsg = _T("解析回传json文件出错！");
 		return false;
 	}
-	
-	//for (int a = 0; a < parkingPts.length(); a++)
-	//{
-	//	//double = (rotation/180)*Π(顺时针和逆时针)
-	//	double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
-	//	AcDbObjectId parkingId;
-	//	AcGePoint2d parkingShowPt = parkingPts[a];
-	//	parkingShow(parkingId, parkingPts[a], rotation, blockName,pDataBase);
-	//}
+	Doc_Locker _locker;
+	CEquipmentroomTool::layerSet(_T("0"), 7,pDataBase);
+	CString blockName;
+	creatNewParkingBlock(dParkingLength, dParkingWidth, blockName, pDataBase);
+	for (int a = 0; a < parkingPts.length(); a++)
+	{
+		//double = (rotation/180)*Π(顺时针和逆时针)
+		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
+		AcDbObjectId parkingId;
+		AcGePoint2d parkingShowPt = parkingPts[a];
+		parkingShow(parkingId, parkingPts[a], rotation, blockName,pDataBase);
+	}
 	/*AcDbObjectIdArray axisIds;
 	for (int b = 0; b < axisesPoints.size(); b++)
 	{
@@ -314,7 +419,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	return true;
 }
 
-void COperaMultiSchemeShow::creatNewParking(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb/* = acdbCurDwg()*/)
+void COperaMultiSchemeShow::creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 {
 	double dUseLength = dParkingLength * 1000;
 	double dUseWidth = dParkingWidth * 1000;
@@ -393,6 +498,16 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 	return axisId;
 }
 
+static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
+{
+	AcApDocument* pDoc = (AcApDocument*)anyVal;
+	Acad::ErrorStatus es = acDocManager->activateDocument(pDoc);
+	if (es!=eOk)
+	{
+		acutPrintf(_T("文件打开失败！"));
+	}
+}
+
 void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/)
 {
 	m_ProgressBar->set(_T("创建新文件"));
@@ -435,7 +550,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	m_ProgressBar->forward();
 	//pDb->saveAs(newFileName);
 	//return;
-	m_ProgressBar->set(_T("排布进行中"), 0, 4);
+	m_ProgressBar->set(_T("排布进行中"));
 	CString sMsg;
 	loadModelFile(pDb);
 	if (!COperaMultiSchemeShow::addEntToDb(ms_json, sMsg,pDb))
@@ -443,24 +558,39 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		acedAlert(sMsg);
 		return;
 	}
-	if (CEquipmentroomTool::allEntMoveAndClone(pDb))
-	{
-		acutPrintf(_T("\n多方案排布放置失败！"));
-		//return;
-	}
 	
 	for (int i=1; i<ms_count; i++)
 	{
 		AcDbDatabase *pTempDb; // 临时图形数据库
 		es = rootPDb->wblock(pTempDb);
+		if (es!=eOk)
+		{
+			acutPrintf(_T("\n生成图纸失败:%d"), i);
+			continue;
+		}
+
 		CString sMsg1;
 		loadModelFile(pTempDb);
 		COperaMultiSchemeShow::addEntToDb(ms_json, sMsg1,pTempDb,i);
-		CEquipmentroomTool::allEntMoveAndClone(pTempDb,(i*1.5));
-		es = pDb->insert(AcGeMatrix3d::kIdentity, pTempDb);
+		//CEquipmentroomTool::allEntMoveAndClone(pTempDb,(i*1.5));
+
+		AcDbExtents extDb;
+		es = DBHelper::GetBlockExtents(extDb, ACDB_MODEL_SPACE, pTempDb);
 		if (es!=eOk)
 		{
+			acutPrintf(_T("\n生成图纸失败:%d"), i);
 			continue;
+		}
+		AcGeVector3d dir(1,0,0);
+		double lenght = extDb.maxPoint().x - extDb.minPoint().x;
+		double offset = (lenght * 1.5) * i;
+		AcGeMatrix3d mat;
+		mat.setTranslation(dir * offset);
+
+		es = pDb->insert(mat, pTempDb);
+		if (es!=eOk)
+		{
+			acutPrintf(_T("\n生成图纸失败:%d"), i);
 		}
 	}
 	es = pDb->saveAs(newFileName);
@@ -470,13 +600,10 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	m_ProgressBar->set(_T("打开排布好文件"), 0, 3);
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
-	es = acDocManager->activateDocument(DBHelper::OpenFile(newFileName));
-	if (es!=eOk)
-	{
-		acutPrintf(_T("文件打开失败！"));
-		return;
-	}
-	int stop = 0;
+	AcApDocument* pDoc = DBHelper::OpenFile(newFileName);
+
+	SetDelayExecute(ActiveDocExecute, 0, 0, (void*)pDoc, 1, false);
+		
 	m_ProgressBar->forward();
 }
 
@@ -657,127 +784,6 @@ void COperaMultiSchemeShow::Ended()
 	if (m_ProgressBar)
 		delete m_ProgressBar;
 	m_ProgressBar = NULL;
-}
-
-bool COperaMultiSchemeShow::parsingParkingData(Json::Value& parkings, CString& sMsg, CString& blockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
-{
-	AcGePoint2dArray parkingPts;
-	std::vector<double> parkingDirections;
-	if (parkings.isNull())
-	{
-		sMsg = _T("回传json不存在[\"result\"][\"parkings\"]字段！");
-		return false;
-	}
-	else
-	{
-		if (parkings.isArray())
-		{
-			int nArraySize = parkings.size();
-			for (int i = 0; i < nArraySize; i++)
-			{
-				double ptX = parkings[i]["position"][0].asDouble();
-				double ptY = parkings[i]["position"][1].asDouble();
-				AcGePoint2d pt(ptX, ptY);
-				parkingPts.append(pt);
-				double direction = parkings[i]["direction"].asDouble();
-				parkingDirections.push_back(direction);
-			}
-		}
-		else
-		{
-			sMsg = _T("回传json中[\"result\"][\"parkings\"]字段格式不匹配！");
-			return false;
-		}
-	}
-	for (int a = 0; a < parkingPts.length(); a++)
-	{
-		//double = (rotation/180)*Π(顺时针和逆时针)
-		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
-		AcDbObjectId parkingId;
-		AcGePoint2d parkingShowPt = parkingPts[a];
-		parkingShow(parkingId, parkingPts[a], rotation, blockName, pDb);
-	}
-}
-
-bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg)
-{
-	if (data.isNull())
-	{
-		sMsg = _T("回传json不存在[\"result\"][\"data\"]字段！");
-		return false;
-	}
-	else
-	{
-		if (data["cell_length"].isDouble() && data["cell_num"].isInt())
-		{
-			dParkingLength = data["cell_length"].asDouble();
-			dParkingWidth = data["cell_width"].asDouble();
-			dLaneWidth = data["lane_width"].asDouble();
-			std::vector<double> dataVector;
-			std::vector<std::string> strDataNameVector;
-			std::map < std::string, double > tableData;
-
-			double dSp = data["Sp"].asDouble();
-			strDataNameVector.push_back("SP");
-			dataVector.push_back(dSp);
-
-			double dSpt = data["Spt"].asDouble();
-			strDataNameVector.push_back("SPT");
-			dataVector.push_back(dSpt);
-
-			double dSpf = data["Spf"].asDouble();
-			strDataNameVector.push_back("SPF");
-			dataVector.push_back(dSpf);
-
-			double dSpf1 = data["Spf1"].asDouble();
-			strDataNameVector.push_back("SPF1");
-			dataVector.push_back(dSpf1);
-
-			double dSpf2 = data["Spf2"].asDouble();
-			strDataNameVector.push_back("SPF2");
-			dataVector.push_back(dSpf2);
-
-			double dSpf3 = data["Spf3"].asDouble();
-			strDataNameVector.push_back("SPF3");
-			dataVector.push_back(dSpf3);
-
-			double dCp = data["Cp"].asDouble();
-			strDataNameVector.push_back("CP");
-			dataVector.push_back(dCp);
-
-			double dJSpc = data["JSpc"].asDouble();
-			strDataNameVector.push_back("JSPC");
-			dataVector.push_back(dJSpc);
-
-			double dSpc = data["Spc"].asDouble();
-			strDataNameVector.push_back("SPC");
-			dataVector.push_back(dSpc);
-
-			double dH = data["H"].asDouble();
-			strDataNameVector.push_back("H");
-			dataVector.push_back(dH);
-
-			double Ht = data["Ht"].asDouble();
-			strDataNameVector.push_back("HT");
-			dataVector.push_back(Ht);
-			CString resultText;
-			for (int i = 0; i < dataVector.size(); i++)
-			{
-				CString strTempData;
-				strTempData.Format(_T("%.2f"), dataVector[i]);
-				std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
-				tableData.insert(value);//插入新元素
-										//resultText += (strDataNameVector[i] + _T("=") + strTempData + _T("|"));
-			}
-			int gg = tableData.size();
-			COperaAddFrame::setTableDataMap(tableData);
-		}
-		else
-		{
-			sMsg = _T("回传json中[\"result\"][\"data\"]字段格式不匹配！");
-			return false;
-		}
-	}
 }
 
 REG_CMD_P(COperaMultiSchemeShow, BGY, MultiSchemeShow);//多方案排布展示
