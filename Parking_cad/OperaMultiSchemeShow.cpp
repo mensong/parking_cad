@@ -530,7 +530,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		es = rootPDb->wblock(pTempDb);
 		if (es!=eOk)
 		{
-			acutPrintf(_T("\n生成图纸失败:%d"), i);
+			acutPrintf(_T("\n生成图纸失败:%d。请启用必要的天正等专业软件。"), i);
 			continue;
 		}
 
@@ -542,6 +542,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		es = DBHelper::GetBlockExtents(extDb, ACDB_MODEL_SPACE, pTempDb);
 		if (es!=eOk)
 		{
+			delete pTempDb;
 			acutPrintf(_T("\n生成图纸失败:%d"), i);
 			continue;
 		}
