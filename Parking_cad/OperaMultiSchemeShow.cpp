@@ -477,6 +477,11 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 	return axisId;
 }
 
+static void ZoomEExecute(WPARAM wp, LPARAM lp, void* anyVal)
+{
+	DBHelper::CallCADCommand(_T("ZOOM E "));
+}
+
 static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
 {
 	AcApDocument* pDoc = (AcApDocument*)anyVal;
@@ -485,6 +490,8 @@ static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
 	{
 		acutPrintf(_T("文件打开失败！"));
 	}
+
+	SetDelayExecute(ZoomEExecute, 0, 0, NULL, 100, true);
 }
 
 void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/)
