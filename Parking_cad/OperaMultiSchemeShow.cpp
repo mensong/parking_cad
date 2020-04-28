@@ -13,18 +13,6 @@
 
 std::string COperaMultiSchemeShow::ms_json;
 int COperaMultiSchemeShow::ms_count;
-//void OpenDoc( void *pData)
-//{
-//	AcApDocument* pDoc = acDocManager->curDocument();
-//	if (acDocManager->isApplicationContext()) 
-//	{
-//		acDocManager->appContextOpenDocument((const ACHAR *)pData);
-//	} 
-//	else
-//	{
-//		acutPrintf(_T("\nERROR To Open Doc!\n"));
-//	}
-//}
 
 
 COperaMultiSchemeShow::COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
@@ -42,15 +30,6 @@ void COperaMultiSchemeShow::Start()
 {
 	m_ProgressBar = new ArxProgressBar(_T("正在进行多方案排布"), 0, 3);
 	creatNewDwg();
-	//delete rootPDb;  //pDb不是数据库的常驻对象，必须手工销毁
-	/*CString sLineTypeFile = _T("C:\\Users\\admin\\AppData\\Roaming\\Autodesk\\AutoCAD 2014\\R19.1\\chs\\Support\\acad.lin");
-	acdbLoadLineTypeFile(_T("continuousx"),sLineTypeFile,NULL);*/
-	/*acDocManager->executeInApplicationContext(OpenDoc, (void *)pData);
-	if (acDocManager->isApplicationContext())
-	{
-		static TCHAR pData[] = _T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
-		Acad::ErrorStatus es = acDocManager->appContextOpenDocument(pData);
-	}*/
 }
 
 void COperaMultiSchemeShow::getJsonData(const std::string& json, const int& count)
@@ -359,7 +338,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 	for (int a = 0; a < parkingPts.length(); a++)
 	{
 		//double = (rotation/180)*Π(顺时针和逆时针)
-		double rotation = ((360 - parkingDirections[a]) / 180)*ARX_PI;
+		double rotation = (parkingDirections[a] / 180)*ARX_PI;
 		AcDbObjectId parkingId;
 		AcGePoint2d parkingShowPt = parkingPts[a];
 		parkingShow(parkingId, parkingPts[a], rotation, blockName,pDataBase);
@@ -541,25 +520,11 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	// 创建新的图形数据库，分配内存空间
 	
 	AcDbDatabase *pDb = new AcDbDatabase(true, false);
-	es = rootPDb->wblock(pDb);
-	if (es!=eOk)
-	{
-		acutPrintf(_T("\n内含天正实体,请加载天正后尝试！"));
-		return;
-	}
-	m_ProgressBar->forward();
-	//pDb->saveAs(newFileName);
-	//return;
-	m_ProgressBar->set(_T("排布进行中"));
-	CString sMsg;
-	loadModelFile(pDb);
-	if (!COperaMultiSchemeShow::addEntToDb(ms_json, sMsg,pDb))
-	{
-		acedAlert(sMsg);
-		return;
-	}
 	
-	for (int i=1; i<ms_count; i++)
+	if (ms_count == 0)
+		ms_count = 1;
+
+	for (int i=0; i<ms_count; i++)
 	{
 		AcDbDatabase *pTempDb; // 临时图形数据库
 		es = rootPDb->wblock(pTempDb);
@@ -572,7 +537,6 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		CString sMsg1;
 		loadModelFile(pTempDb);
 		COperaMultiSchemeShow::addEntToDb(ms_json, sMsg1,pTempDb,i);
-		//CEquipmentroomTool::allEntMoveAndClone(pTempDb,(i*1.5));
 
 		AcDbExtents extDb;
 		es = DBHelper::GetBlockExtents(extDb, ACDB_MODEL_SPACE, pTempDb);
@@ -592,6 +556,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		{
 			acutPrintf(_T("\n生成图纸失败:%d"), i);
 		}
+		delete pTempDb;
 	}
 	es = pDb->saveAs(newFileName);
 	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
@@ -600,6 +565,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	m_ProgressBar->set(_T("打开排布好文件"), 0, 3);
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
+
 	AcApDocument* pDoc = DBHelper::OpenFile(newFileName);
 
 	SetDelayExecute(ActiveDocExecute, 0, 0, (void*)pDoc, 1, false);
