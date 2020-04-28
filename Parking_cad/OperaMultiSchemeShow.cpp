@@ -285,7 +285,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 					return false;
 				}
 			}
-			/*Json::Value& arrow = oneScheme["arrow"];
+			Json::Value& arrow = oneScheme["arrow"];
 			if (arrow.isNull())
 			{
 				sMsg = _T("回传json不存在[\"result\"][\"arrow\"]字段！");
@@ -318,7 +318,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 					sMsg = _T("回传json中[\"result\"][\"arrow\"]字段格式不匹配！");
 					return false;
 				}
-			}*/
+			}
 		}
 		else
 		{
@@ -362,10 +362,10 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, CString& sMsg, A
 		pillarShow(pillarPoints[d],pDataBase);
 	}
 
-	/*for (int e = 0; e < arrowPoints.size(); e++)
+	for (int e = 0; e < arrowPoints.size(); e++)
 	{
-		arrowShow(arrowPoints[e],pDataBase);
-	}*/
+		arrowShow(arrowPoints[e], pDataBase);
+	}
 	//生成车道标注
 	double dTransLaneWidth = dLaneWidth * 1000;
 	if (dTransLaneWidth == 0)
