@@ -657,13 +657,21 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 	//从字符串中读取数据
 	if (reader.parse(json, root))
 	{
-		if (root["status"].isInt())
+		if (!root["status"].isNull())
 		{
-			int status = root["status"].asInt();
-			if (status != 0)
+			if (root["status"].isInt())
 			{
-				sMsg = "提交任务出错。";
-				return 3;
+				int status = root["status"].asInt();
+				if (status != 0)
+				{
+					sMsg = "提交任务出错。";
+					return 3;
+				}
+			}
+			else
+			{
+				sMsg = "返回status字段格式错误。";
+				return 4;
 			}
 		}
 		else
@@ -671,13 +679,35 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 			sMsg = "没有返回status字段。";
 			return 4;
 		}
-		//std::string messgae = root["messgae"].asString();
-		//std::string result = root["result"].asString();
-		int uuid = root["result"]["uuid"].asInt();
-		CString suuid;
-		suuid.Format(_T("%d"), uuid);
-		sMsg = CStringA(suuid);
-		return 0;
+		if (!root["result"].isNull())
+		{
+			if (!root["result"]["uuid"].isNull())
+			{
+				if (root["result"]["uuid"].isInt())
+				{
+					int uuid = root["result"]["uuid"].asInt();
+					CString suuid;
+					suuid.Format(_T("%d"), uuid);
+					sMsg = CStringA(suuid);
+					return 0;
+				}
+				else
+				{
+					sMsg = "返回[\"result\"][\"uuid\"]字段格式错误。";
+					return 4;
+				}
+			}
+			else
+			{
+				sMsg = "没有返回[\"result\"][\"uuid\"]字段。";
+				return 4;
+			}
+		}
+		else
+		{
+			sMsg = "没有返回result字段。";
+			return 4;
+		}
 	}
 
 	sMsg = "json解析错误";

@@ -1,4 +1,5 @@
 #pragma once
+#include <json/json.h>
 #include "IOperaLog.h"
 class COperaMultiSchemeShow :
 	public CIOperaLog
@@ -11,7 +12,7 @@ public:
 	static int ms_count;//多方案总数
 	static void getJsonData(const std::string& json,const int& count);
 	bool addEntToDb(const std::string& json, CString& sMsg, AcDbDatabase *pDataBase,int scheme = 0);
-	void creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
+	void creatNewParking(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, 
 		const CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	AcDbObjectId axisShow(const AcGePoint2dArray& axisPts, AcDbDatabase *pDb = acdbCurDwg());
@@ -26,6 +27,8 @@ public:
 
 	class ArxProgressBar* m_ProgressBar;
 	virtual void Ended() override;
-
+	bool parsingParkingData(Json::Value& parkings, CString& sMsg, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
+	bool parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg);
+	//bool parsingAxis(Json::Value& axis, CString& sMsg, AcDbDatabase *pDb = acdbCurDwg());
 };
 
