@@ -63,6 +63,7 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
 	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CArxDialog::OnBnClickedButtonGetendpoint)
 	ON_BN_CLICKED(IDC_BUTTON_MANYSHOW, &CArxDialog::OnBnClickedButtonManyshow)
+	ON_BN_CLICKED(IDC_BUTTON_PARTPLAN, &CArxDialog::OnBnClickedButtonPartplan)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -265,6 +266,7 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_SHOWENDPOINT, m_EditShowEndPoint);
 	*(end()) = true;
 	DDX_Control(pDX, IDC_CHECK_MANYSHOW, m_checkIsManySHow);
+	DDX_Control(pDX, IDC_BUTTON_PARTPLAN, m_btPartPlanOK);
 }
 
 void CArxDialog::OnOK()
@@ -310,7 +312,15 @@ BOOL CArxDialog::OnInitDialog()
 	GetDlgItem(IDC_EDIT_Length)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_STATIC_m)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_EDIT_PARTITION_LINE)->ShowWindow(SW_HIDE);
-
+	//暂时隐藏掉界面部分按钮
+	GetDlgItem(IDC_STATIC)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_COMBO_Direction)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_BUTTON_GetStartPoint)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_EDIT_StartPoint)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_BUTTON_GETENDPOINT)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_EDIT_SHOWVALUE)->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_CHECK_Partition)->ShowWindow(SW_HIDE);
+	
 	//加载天正所有线型
 	COperaSetConfig::loadAllLinetype();
 
@@ -1225,3 +1235,10 @@ void CArxDialog::OnBnClickedButtonManyshow()
 }
 
 
+
+
+void CArxDialog::OnBnClickedButtonPartplan()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	selectPort(false, true);
+}

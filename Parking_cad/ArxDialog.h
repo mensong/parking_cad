@@ -151,4 +151,7 @@ public:
 	// 是否选择多方案展示
 	CButton m_checkIsManySHow;
 	bool bIsManyShow;
+	// 分区排布按钮
+	CButton m_btPartPlanOK;
+	afx_msg void OnBnClickedButtonPartplan();
 } ;
