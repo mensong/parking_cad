@@ -65,8 +65,9 @@
 #define IDC_BUTTON_MANYSHOW             164
 #define IDC_EDIT_PASSWORD               178
 #define IDC_CHK_SAVE_PWD                180
-#define IDC_CHECK1                      181
 #define IDC_CHECK_MANYSHOW              181
+#define IDC_BUTTON_PART                 182
+#define IDC_BUTTON_PARTPLAN             182
 #define IDC_LAYERLIST                   184
 #define IDC_EDIT_LIST                   186
 #define IDC_COMBO_CONFIGCHOOSE          188
@@ -80,7 +81,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        120
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         182
+#define _APS_NEXT_CONTROL_VALUE         183
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

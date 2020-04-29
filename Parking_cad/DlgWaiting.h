@@ -51,7 +51,7 @@ public:
 	void arrowShow(const AcGePoint2dArray& oneArrowPts);
 	void setLayerClose(const CString& layerName);
 	void creatNewParking(const double& dParkingLength,const double& dParkingWidth, CString& blockName);
-	bool getDataforJson(const std::string& json, CString& sMsg);
+	//bool getDataforJson(const std::string& json, CString& sMsg);
 	/*添加以实现车道标注*/
 	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds);
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText);
