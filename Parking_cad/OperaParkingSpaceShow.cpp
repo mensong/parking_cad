@@ -68,9 +68,9 @@ std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 void COperaParkingSpaceShow::Start()
 {
 	setDesKey("#B-G-Y++");
-	std::string sData = "http://parking-v2.asdfqwer.net:80/park";
+	std::string sData = "http://parking-v2.asdfqwer.net:80/auto/park";
 	std::string code = encrypt(sData);
-	std::string sData1 = "http://parking-v2.asdfqwer.net:80/query/";
+	std::string sData1 = "http://parking-v2.asdfqwer.net:80/auto/query/";
 	std::string code1 = encrypt(sData1);
 	std::string sData2 = "http://parking-v2.asdfqwer.net:80/check/";
 	std::string code2 = encrypt(sData2);
@@ -97,11 +97,13 @@ void COperaParkingSpaceShow::Start()
 			CArxDialog::setPostUrlPortone(strPostUrl);
 			CDlgWaiting::setGetUrlPortOne(strGetUrl);
 			COperaCheck::setGetCheckUrl(strEntrancePostUrl);
-			//std::string postUrlTwo = root["params"]["posturlv2"].asString();
-			//std::string getUrlTwo = root["params"]["geturlv2"].asString();
+			std::string postUrlTwo = root["params"]["part_posturl"].asString();
+			std::string getUrlTwo = root["params"]["part_geturl"].asString();
+			std::string strPartPostUrl = decrypt(postUrlTwo);
+			std::string strPartGetUrl = decrypt(getUrlTwo);
 			//std::string strEntrancePostUrlV2 = root["params"]["entrance_posturlv2"].asString();
-			//CDlgWaiting::setGetUrlPortTwo(getUrlTwo);
-			//CArxDialog::setPostUrlPorttwo(postUrlTwo);	
+			CDlgWaiting::setGetUrlPortTwo(strPartGetUrl);
+			CArxDialog::setPostUrlPorttwo(strPartPostUrl);
 			//CDlgEntrance::setEntrancePostUrlV2(strEntrancePostUrlV2);
 		}
 		else
