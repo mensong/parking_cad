@@ -136,6 +136,11 @@ void COperaParkingSpaceShow::Start()
 			CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sParkingsLayer);
 		}
 	}
+
+	//强行切换值wcs
+	DBHelper::CallCADCommand(_T("UCS W "));
+
+
 	//设置窗口
 	CAcModuleResourceOverride resOverride;//资源定位
 
