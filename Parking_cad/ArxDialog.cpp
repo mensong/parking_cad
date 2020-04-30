@@ -108,7 +108,7 @@ void CArxDialog::loadoutlineLayers()
 			break;
 
 		bool bHasSetDef = false;
-
+		//忽略隐藏层
 		pLTIter->setSkipHidden(true);
 		for (pLTIter->start(); !pLTIter->done(); pLTIter->step())
 		{
@@ -320,7 +320,8 @@ BOOL CArxDialog::OnInitDialog()
 	GetDlgItem(IDC_BUTTON_GETENDPOINT)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_EDIT_SHOWVALUE)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_CHECK_Partition)->ShowWindow(SW_HIDE);
-	
+	GetDlgItem(IDC_CHECK_MANYSHOW)->ShowWindow(SW_HIDE);
+
 	//加载天正所有线型
 	COperaSetConfig::loadAllLinetype();
 
