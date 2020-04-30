@@ -321,7 +321,7 @@ BOOL CArxDialog::OnInitDialog()
 	GetDlgItem(IDC_EDIT_SHOWVALUE)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_CHECK_Partition)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_CHECK_MANYSHOW)->ShowWindow(SW_HIDE);
-
+	
 	//加载天正所有线型
 	COperaSetConfig::loadAllLinetype();
 

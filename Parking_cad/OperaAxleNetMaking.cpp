@@ -452,17 +452,25 @@ void COperaAxleNetMaking::DrowBigDimaligned(const CString& layerNameofAXSI,std::
 	AcGeVector2d targetvect = AcGeVector2d(inputendpt.x - inputstartpt.x,inputendpt.y-inputstartpt.y);
 	double angle = ((int)((targetvect.angle()) * 100000000 + 0.5)) / 100000000.0;
 
+	while (0)
+	{
 	std::vector<AcDbObjectId> bigdimalignedids;
-	acdbOpenObject(pEnt, inputids[0], AcDb::kForRead);
+	if(acdbOpenObject(pEnt, inputids[0], AcDb::kForRead)!=eOk)
+		break;
 
 	AcGePoint3dArray interwithpoints;
 	pEnt->intersectWith(TempLine, AcDb::kOnBothOperands, interwithpoints);
+	if(interwithpoints.length()<=0)
+		break;
 
 	int num = inputids.size() - 1;
-	acdbOpenObject(pTempEnt, inputids[num], AcDb::kForRead);
+	if(acdbOpenObject(pTempEnt, inputids[num], AcDb::kForRead)!=eOk)
+		break;
 
 	AcGePoint3dArray interwithpointstemp;
 	pTempEnt->intersectWith(TempLine, AcDb::kOnBothOperands, interwithpointstemp);
+	if(interwithpointstemp.length()<=0)
+		break;
 
 	AcGeVector3d tempVec = AcGeVector3d(interwithpoints[0] - interwithpointstemp[0]);
 
@@ -483,7 +491,7 @@ void COperaAxleNetMaking::DrowBigDimaligned(const CString& layerNameofAXSI,std::
 
 	AcGeVector3d vec = AcGeVector3d(Pt2 - Pt1);
 	CCommonFuntion::DrowDimaligned(layerNameofAXSI,Pt1, Pt2,pDb);
-
+	}
 
 	if (pTempEnt)
 		pTempEnt->close();

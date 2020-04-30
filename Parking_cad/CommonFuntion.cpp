@@ -1394,14 +1394,22 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 	AcGeLineSeg2d CCommonFuntion::GetGeLineObj(AcDbObjectId lineId)
 	{
 		AcGeLineSeg2d geLine; //AcGeLineSeg2d:在二维空间中表示一个有界的线段。
-		AcDbLine *pLine = NULL;
-		if (acdbOpenObject(pLine, lineId, AcDb::kForRead) == Acad::eOk)
+		AcDbEntity *pEnt = NULL;
+		if (acdbOpenObject(pEnt, lineId, AcDb::kForRead) == Acad::eOk)
 			//指针pLine指向打开的对象lineId
 		{
-			geLine.set(ToPoint2d(pLine->startPoint()),
-				ToPoint2d(pLine->endPoint()));
-			pLine->close();
+			if (pEnt->isKindOf(AcDbLine::desc()))
+			{
+				AcDbLine *pLine = AcDbLine::cast(pEnt);
+				geLine.set(ToPoint2d(pLine->startPoint()),
+					ToPoint2d(pLine->endPoint()));
+
+				if(pLine)
+				   pLine->close();
+			}	
 		}
+		if (pEnt)
+			pEnt->close();
 		return geLine;
 	}
 

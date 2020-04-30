@@ -61,7 +61,7 @@ void COperaCheck::Start()
 	//CEquipmentroomTool::test();
 	CEquipmentroomTool::creatLayerByjson("cloud_line");
 
-	std::string json;
+	/*std::string json;
 	std::string sMsg;
 	int status = getCheckData(sMsg, json);
 	if (status != 1)
@@ -74,7 +74,7 @@ void COperaCheck::Start()
 	{
 		acedAlert(serrorMsg);
 		return;
-	}
+	}*/
 
 	clock_t start, finish;
 	double totaltime;
@@ -205,30 +205,18 @@ bool COperaCheck::getDataforJson(const std::string& json, CString& sMsg)
 	
 	for (int d = 0; d < blankPoints.size(); d++)
 	{
-		blankCheckShow(blankPoints[d]);
+		AcDbObjectId blankId;
+		blankCheckShow(blankPoints[d], blankId);
 	}
 	CEquipmentroomTool::layerSet(_T("0"), 7);
 	return true;
 }
 
 
-void COperaCheck::blankCheckShow(const AcGePoint2dArray& blankCheckPts)
+void COperaCheck::blankCheckShow(const AcGePoint2dArray& blankCheckPts, AcDbObjectId& blankId, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	AcGePoint2dArray plineExtentPts = getPlineExtentPts(blankCheckPts);
-	creatCloudLine(plineExtentPts);
-	//CString sPillarLayer(CEquipmentroomTool::getLayerName("column").c_str());
-	//CEquipmentroomTool::creatLayerByjson("column");
-	//AcDbPolyline *pPoly = new AcDbPolyline(blankCheckPts.length());
-	//double width = 0;//线宽
-	//for (int i = 0; i < blankCheckPts.length(); i++)
-	//{
-	//	pPoly->addVertexAt(0, blankCheckPts[i], 0, width, width);
-	//}
-	//pPoly->setClosed(true);
-	//AcDbObjectId pillarId;
-	//DBHelper::AppendToDatabase(pillarId, pPoly);
-	//pPoly->close();
-	//CEquipmentroomTool::setEntToLayer(pillarId, sPillarLayer);
+	creatCloudLine(plineExtentPts,blankId,pDb);
 }
 
 
@@ -327,7 +315,8 @@ void COperaCheck::overlapShow()
 						int as = polyIntersections[three].length();
 						}*/
 						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-						creatCloudLine(plineExtentPts);
+						AcDbObjectId cloudId;
+						creatCloudLine(plineExtentPts, cloudId);
 					}
 				}
 			}
@@ -391,115 +380,14 @@ void COperaCheck::overlapShow()
 							continue;
 						}
 						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-						creatCloudLine(plineExtentPts);
+						AcDbObjectId cloudID;
+						creatCloudLine(plineExtentPts, cloudID);
 					}
 				}
 			}
 		}
 		pWallEnt->close();
 	}
-
-	
-	//std::vector<AcDbObjectId> parkIds;
-	//for (int i = 0; i < allParkingIds.length(); i++)
-	//{
-	//	parkIds.push_back(allParkingIds[i]);
-	//}
-	//std::vector<AcGePoint2dArray> parkingsPoints;
-	//std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
-	//CEquipmentroomTool::getParkingExtentPts(parkingsPoints, parkIds, parkingLayer, parkIdAndPts);
-	//if (parkingsPoints.empty())
-	//{
-	//	acutPrintf(_T("\n获取车位面域点组失败！"));
-	//	return;
-	//}
-	////获取所有方柱面域
-	//CString columnLayer(CEquipmentroomTool::getLayerName("column").c_str());
-	//std::vector<AcGePoint2dArray> columnPts = getPlinePtsByLayer(columnLayer);
-	//if (columnPts.empty())
-	//{
-	//	acutPrintf(_T("\n获取方柱面域点组失败！"));
-	//	return;
-	//}
-	////获取剪力墙的面域
-	//std::vector<AcGePoint2dArray> shearWallPts = getPlinePtsByLayer(ms_shearWallLayerName);
-	//if (shearWallPts.empty())
-	//{
-	//	acutPrintf(_T("\n获取剪力墙面域点组失败！"));
-	//	return;
-	//}
-	//for (int one=0; one<parkingsPoints.size(); one++)
-	//{
-	//	for (int two=0; two<columnPts.size(); two++)
-	//	{
-	//		std::vector<AcGePoint2dArray> polyIntersections;
-	//		GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[one], columnPts[two], polyIntersections);
-	//		if (polyIntersections.size()>0)
-	//		{
-	//			for (int three=0; three<polyIntersections.size(); three++)
-	//			{
-	//				if (polyIntersections[three].length()<3)
-	//				{
-	//					continue;
-	//				}
-	//				double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-	//				if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
-	//				{
-	//					polyIntersections[three].append(polyIntersections[three][0]);
-	//				}
-	//				double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-	//				if (ss<1&&sss<1)
-	//				{
-	//					continue;
-	//				}
-	//				/*for (int four = 0; four < polyIntersections[three].length(); four++)
-	//				{
-	//					AcGePoint2d look = polyIntersections[three][four];
-	//					int as = polyIntersections[three].length();
-	//				}*/
-	//				AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-	//				creatCloudLine(plineExtentPts);
-	//			}
-	//		}
-	//	}	
-	//}
-	//for (int first=0; first<parkingsPoints.size(); first++)
-	//{
-	//	for (int second=0; second<shearWallPts.size(); second++)
-	//	{
-	//		std::vector<AcGePoint2dArray> polyIntersections;
-	//		GeHelper::GetIntersectionOfTwoPolygon(parkingsPoints[first], shearWallPts[second], polyIntersections);
-	//		if (polyIntersections.size() > 0)
-	//		{
-	//			for (int three = 0; three < polyIntersections.size(); three++)
-	//			{
-	//				if (polyIntersections[three].length() < 3)
-	//				{
-	//					continue;
-	//				}
-	//				double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-	//				if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
-	//				{
-	//					polyIntersections[three].append(polyIntersections[three][0]);
-	//				}
-	//				double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-	//				if (ss < 1 && sss < 1)
-	//				{
-	//					continue;
-	//				}
-	//				/*for (int four=0; four<polyIntersections[three].length(); four++)
-	//				{
-	//					AcGePoint2d look = polyIntersections[three][four];
-	//					int as = polyIntersections[three].length();
-	//				}*/
-	//				AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-	//				creatCloudLine(plineExtentPts);
-	//			}
-	//		}
-	//	}
-	//	
-	//}
-
 }
 
 std::vector<AcGePoint2dArray> COperaCheck::getPlinePtsByLayer(const CString& layername)
@@ -600,7 +488,7 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 	return plineExtentPts;
 }
 
-void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
+void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts, AcDbObjectId& cloudId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 //TODO: 杨兵
 	AcGePoint2d minPoint = plineExtentPts[0];
@@ -651,27 +539,9 @@ void COperaCheck::creatCloudLine(AcGePoint2dArray plineExtentPts)
 	//plineUsePts.append(midLeftPt);
 	plineUsePts.append(minPoint);
 	Doc_Locker _locker;
-	AcDbObjectId cloudId = COperaCheck::creatArcPline(plineUsePts, 10);
+	cloudId = COperaCheck::creatArcPline(plineUsePts, 10,pDb);
 	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
 	CEquipmentroomTool::setEntToLayer(cloudId, sCloudLineLayer);
-	/*AcGeVector2d dirMove = maxPoint - minPoint;
-	AcGeVector2d vecDirMove = dirMove.normalize();
-	maxPoint.transformBy(dirMove * 50);
-	minPoint.transformBy(dirMove.negate() * 50);
-	double distance = minPoint.distanceTo(maxPoint);
-	double minArcLength = distance / 20;
-	double maxArcLength = minArcLength * 2;
-	CString sminArcLength = COperaCheck::doubleToCString(minArcLength);
-	CString smaxArcLength = COperaCheck::doubleToCString(maxArcLength);
-	CString setArcLength = _T("REVCLOUD A ") + sminArcLength + _T(" ") + smaxArcLength + _T(" ");
-	CString sMinPtX = COperaCheck::doubleToCString(minPoint.x);
-	CString sMinPtY = COperaCheck::doubleToCString(minPoint.y);
-	CString sMinPt = sMinPtX + _T(",") + sMinPtY + _T(" ");
-	CString sMaxPtX = COperaCheck::doubleToCString(maxPoint.x);
-	CString sMaxPtY = COperaCheck::doubleToCString(maxPoint.y);
-	CString sMaxPt = sMaxPtX + _T(",") + sMaxPtY + _T(" ");
-	CString command = setArcLength + _T("R ") + sMinPt + sMaxPt;
-	DBHelper::CallCADCommand(command);*/
 }
 
 CString COperaCheck::doubleToCString(double num)
@@ -753,7 +623,7 @@ AcGePoint2dArray COperaCheck::getLineOtherPoint(const AcGePoint2d& lineStartPoin
 	return allUsePts;
 }
 
-AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width)
+AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 {
 	int numCount = points.length();
 	AcDbPolyline *pPline = new AcDbPolyline(numCount);
@@ -762,7 +632,7 @@ AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width)
 		pPline->addVertexAt(i, points.at(i), 0.516, width, width);
 	}
 	AcDbObjectId polyId;
-	DBHelper::AppendToDatabase(polyId, pPline);
+	DBHelper::AppendToDatabase(polyId, pPline,pDb);
 	pPline->close();
 	return polyId;
 }

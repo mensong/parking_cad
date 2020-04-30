@@ -9,6 +9,7 @@
 #include "CommonFuntion.h"
 #include "ArxProgressBar.h"
 #include "DelayExecuter.h"
+#include "OperaCheck.h"
 
 
 std::string COperaMultiSchemeShow::ms_json;
@@ -69,18 +70,18 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 				acedAlert(sMsg);
 			}
 			//轴线展示
-			//Json::Value& axis = oneScheme["axis"];
-			//std::map<AcDbObjectId, AcString> idAndNumMap;
-			//AcDbObjectIdArray axisIds;
-			//if (parsingAxisData(axis, sMsg, idAndNumMap, axisIds, pDataBase))
-			//{
-			//	//生成轴线标注
-			//	COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
-			//}
-			//else
-			//{
-			//	acedAlert(sMsg);
-			//}
+			Json::Value& axis = oneScheme["grid"];
+			std::map<AcDbObjectId, AcString> idAndNumMap;
+			AcDbObjectIdArray axisIds;
+			if (parsingAxisData(axis, sMsg, idAndNumMap, axisIds, pDataBase))
+			{
+				//生成轴线标注
+				COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
+			}
+			else
+			{
+				acedAlert(sMsg);
+			}
 			//车道线展示
 			Json::Value& lane = oneScheme["lane"];
 			AcDbObjectIdArray RoadLineIds;
@@ -930,6 +931,60 @@ bool COperaMultiSchemeShow::parsingPillarData(Json::Value& pillar, CString& sMsg
 	else
 	{
 		sMsg = _T("生成方柱失败！");
+		return false;
+	}
+}
+
+bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg, AcDbObjectIdArray& blankIds, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+{
+	std::vector<AcGePoint2dArray> blanksPoints;
+	if (blanks.isNull())
+	{
+		sMsg = _T("回传json不存在[\"result\"][\"blanks\"]字段！");
+		return false;
+	}
+	else
+	{
+		if (blanks.isArray())
+		{
+			int nblanksSize = blanks.size();
+			for (int k = 0; k < nblanksSize; k++)
+			{
+				AcGePoint2dArray oneBlankPts;
+				if (blanks[k].isArray())
+				{
+					int oneblankSize = blanks[k].size();
+					for (int g = 0; g < oneblankSize; g++)
+					{
+						double ptX = blanks[k][g][0].asDouble();
+						double ptY = blanks[k][g][1].asDouble();
+						AcGePoint2d tempPt(ptX, ptY);
+						oneBlankPts.append(tempPt);
+					}
+				}
+				blanksPoints.push_back(oneBlankPts);
+			}
+		}
+		else
+		{
+			sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
+			return false;
+		}
+	}
+	for (int d = 0; d < blanksPoints.size(); d++)
+	{
+		AcDbObjectId blankId;
+		//替换成云线生成api
+		COperaCheck::blankCheckShow(blanksPoints[d], blankId, pDb);
+		blankIds.append(blankId);
+	}
+	if (!blankIds.isEmpty())
+	{
+		return true;
+	}
+	else
+	{
+		sMsg = _T("生成空白区云线失败！");
 		return false;
 	}
 }
