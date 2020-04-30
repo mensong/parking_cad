@@ -66,7 +66,6 @@
 #define IDC_EDIT_PASSWORD               178
 #define IDC_CHK_SAVE_PWD                180
 #define IDC_CHECK_MANYSHOW              181
-#define IDC_BUTTON_PART                 182
 #define IDC_BUTTON_PARTPLAN             182
 #define IDC_LAYERLIST                   184
 #define IDC_EDIT_LIST                   186
