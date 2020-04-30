@@ -68,9 +68,9 @@ std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 void COperaParkingSpaceShow::Start()
 {
 	setDesKey("#B-G-Y++");
-	std::string sData = "http://parking-v2.asdfqwer.net:80/auto/park";
+	std::string sData = "http://parking-v2.asdfqwer.net:80/park";
 	std::string code = encrypt(sData);
-	std::string sData1 = "http://parking-v2.asdfqwer.net:80/auto/query/";
+	std::string sData1 = "http://parking-v2.asdfqwer.net:80/query/";
 	std::string code1 = encrypt(sData1);
 	std::string sData2 = "http://parking-v2.asdfqwer.net:80/check/";
 	std::string code2 = encrypt(sData2);
