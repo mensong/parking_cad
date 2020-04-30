@@ -34,5 +34,6 @@ public:
 	bool parsingScopeData(Json::Value& scope, CString& sMsg, AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingArrowData(Json::Value& arrow, CString& sMsg, AcDbObjectIdArray& arrowIds,AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingPillarData(Json::Value& pillar, CString& sMsg, AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb = acdbCurDwg());
+	bool parsingBlanksData(Json::Value& blanks, CString& sMsg, AcDbObjectIdArray& blankIds, AcDbDatabase *pDb = acdbCurDwg());
 };
 
