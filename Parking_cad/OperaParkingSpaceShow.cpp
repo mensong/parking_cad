@@ -40,7 +40,7 @@ bool COperaParkingSpaceShow::setDesKey(const std::string& key)
 
 std::string COperaParkingSpaceShow::decrypt(const std::string& code)
 {
-	char sDeBase64[2048];
+	/*char sDeBase64[2048];
 	int nDeBase64Len = 0;
 	base64_decode(code.c_str(), code.size(), (unsigned char*)sDeBase64, nDeBase64Len);
 	char sDeDes[1024];
@@ -49,12 +49,14 @@ std::string COperaParkingSpaceShow::decrypt(const std::string& code)
 		m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 	sDeDes[nDeDesLen] = '\0';
 	std::string strResultUrl(sDeDes, sDeDes+strlen(sDeDes));
-	return strResultUrl;
+	return strResultUrl;*/
+
+	return GL::DES_cbc_decrypt_base64(code.c_str(), code.size(), m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 }
 
 std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 {
-	char mmCode[1024];
+	/*char mmCode[1024];
 	int nOutLen = 0;
 	GL::DES_cbc_encrypt(sData.c_str(), sData.size(), mmCode, nOutLen, m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 	char szBase64[1024 * 2];
@@ -62,18 +64,34 @@ std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 	base64_encode((const unsigned char*)mmCode, nOutLen, szBase64, nBase64);
 	szBase64[nBase64] = '\0';
 	std::string code(szBase64, szBase64 + strlen(szBase64));
-	return code;
+	return code;*/
+
+	return GL::DES_cbc_encrypt_base64(sData.c_str(), sData.size(), m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 }
 
 void COperaParkingSpaceShow::Start()
 {
 	setDesKey("#B-G-Y++");
-	std::string sData = "http://parking-v2.asdfqwer.net:80/park";
-	std::string code = encrypt(sData);
-	std::string sData1 = "http://parking-v2.asdfqwer.net:80/query/";
-	std::string code1 = encrypt(sData1);
-	std::string sData2 = "http://parking-v2.asdfqwer.net:80/check/";
-	std::string code2 = encrypt(sData2);
+
+#if 0	//是否去掉调试信息。1:调试；0:发版
+	std::string posturl			= encrypt("http://parking-v2.asdfqwer.net:81/park");
+	std::string geturl			= encrypt("http://parking-v2.asdfqwer.net:81/query/");
+	std::string check_geturl	= encrypt("http://parking-v2.asdfqwer.net:81/check/");
+	std::string part_posturl	= encrypt("http://parking-v2.asdfqwer.net:81/auto/park");
+	std::string part_geturl		= encrypt("http://parking-v2.asdfqwer.net:81/auto/query/");
+
+	Json::Value jsTest;
+	jsTest["params"]["posturl"] = posturl;
+	jsTest["params"]["geturl"] = geturl;
+	jsTest["params"]["check_geturl"] = check_geturl;
+	jsTest["params"]["part_posturl"] = part_posturl;
+	jsTest["params"]["part_geturl"] = part_geturl;
+
+	std::string sJsonParams = jsTest.toStyledString();
+	MessageBoxA(NULL, sJsonParams.c_str(), "请到代码里删除测试信息", MB_OK);
+
+#endif
+
 	//从文件中读取
 	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());

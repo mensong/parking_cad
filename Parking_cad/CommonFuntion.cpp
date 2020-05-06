@@ -860,6 +860,81 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	void CCommonFuntion::BatchLine(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId, double tol /*= 0.0*/)
 	{
+		std::vector<AcDbObjectId> vecid_1;
+		std::vector<AcDbObjectId> vecid_2;
+
+		AcDbEntity *pEnt = NULL;
+		AcDbEntity *tempEnt = NULL;
+		if (inputId.length() == 1)
+		{
+			std::vector<AcDbObjectId> tempcompare;
+			tempcompare.push_back(inputId[0]);
+			outputId.push_back(tempcompare);
+		}
+		else
+		{
+			AcDbObjectId compareid;
+			for (int i = 0; i < inputId.length(); i++)
+			{
+				if (Acad::eOk != acdbOpenObject(pEnt, inputId[i], AcDb::kForRead))
+					continue;
+
+				compareid = inputId[i];
+				break;
+			}
+
+			AcDbLine *Line1 = AcDbLine::cast(pEnt);
+			AcGePoint3d startpt1;
+			AcGePoint3d endpt1;
+			Line1->getStartPoint(startpt1);
+			Line1->getEndPoint(endpt1);
+			if (Line1)
+				Line1->close();
+			if (pEnt)
+				pEnt->close();
+
+			for (int j = 0; j < inputId.length(); j++)
+			{
+
+				std::vector<AcDbObjectId> tempcompare;
+				if (compareid == inputId[j])
+				{
+					vecid_1.push_back(compareid);
+					continue;
+				}
+
+				if (Acad::eOk != acdbOpenObject(tempEnt, inputId[j], AcDb::kForRead))
+					continue;
+
+				AcDbLine *Line2 = AcDbLine::cast(tempEnt);
+				AcGePoint3d startpt2;
+				AcGePoint3d endpt2;
+				Line2->getStartPoint(startpt2);
+				Line2->getEndPoint(endpt2);
+				if (Line2)
+					Line2->close();
+				if (tempEnt)
+					tempEnt->close();
+
+				/*	AcGePoint3dArray intersectPoints;
+				tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);*/
+
+				if (IsParallel(startpt1, endpt1, startpt2, endpt2, tol))
+				{
+					vecid_1.push_back(inputId[j]);
+				}
+				else
+				{
+					vecid_2.push_back(inputId[j]);
+				}
+			}
+
+			outputId.push_back(vecid_1);
+			outputId.push_back(vecid_2);
+		}
+
+
+#if 0
 		AcDbEntity *pEnt = NULL;
 		AcDbEntity *tempEnt = NULL;
 		if (inputId.length() == 1)
@@ -974,6 +1049,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 					pEnt->close();
 			}
 		}
+#endif
 	}
 
 	bool CCommonFuntion::IsParallel(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3, AcGePoint3d& pt4, double tol/* = 0.0*/)
@@ -991,8 +1067,9 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		double ay = y2 - y1;
 		double bx = x4 - x3;//vector of line 2
 		double by = y4 - y3;
-		double dvalue = (ax*by - ay*bx) / (ax*bx + ay*by);
-		if (abs(dvalue) <= tol)
+		double dvalue = abs((ax*by - ay*bx) / (ax*bx + ay*by));
+		double sum = abs(dvalue - tol);
+		if (sum <= tol)
 			return true;
 		else
 			return false;
@@ -1574,7 +1651,11 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		pDimStyleTblRcd->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
 		pDimStyleTblRcd->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
 
-											 // 将标注样式表记录添加到标注样式表中
+		AcCmColor textcolor;
+		textcolor.setColorIndex(255);
+		pDimStyleTblRcd->setDimclrt(textcolor);
+
+	   // 将标注样式表记录添加到标注样式表中
 		pDimStyleTbl->add(pDimStyleTblRcd);
 		pDimStyleTblRcd->close();
 		pDimStyleTbl->close();
