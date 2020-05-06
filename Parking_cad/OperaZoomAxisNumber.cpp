@@ -43,7 +43,7 @@ void COperaZoomAxisNumber::Start()
 
 	//分批存储轴线,将平行的轴线存储在容器中。
 	std::vector<std::vector<AcDbObjectId>> outputId;
-	CCommonFuntion::BatchLine(LineIds, outputId);
+	CCommonFuntion::BatchLine(LineIds, outputId,1);
 
 	for (int i = 0; i<outputId.size(); ++i)
 	{
