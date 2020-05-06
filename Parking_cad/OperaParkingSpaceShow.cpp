@@ -71,8 +71,9 @@ std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 
 void COperaParkingSpaceShow::Start()
 {
-#if 0	//是否去掉调试信息。1:调试；0:发版
 	setDesKey("#B-G-Y++");
+
+#if 0	//是否去掉调试信息。1:调试；0:发版
 	std::string posturl			= encrypt("http://parking-v2.asdfqwer.net:81/park");
 	std::string geturl			= encrypt("http://parking-v2.asdfqwer.net:81/query/");
 	std::string check_geturl	= encrypt("http://parking-v2.asdfqwer.net:81/check/");
