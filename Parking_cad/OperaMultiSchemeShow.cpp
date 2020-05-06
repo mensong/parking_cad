@@ -76,7 +76,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			if (parsingAxisData(axis, sMsg, idAndNumMap, axisIds, pDataBase))
 			{
 				//生成轴线标注
-				COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
+				//COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
 			}
 			else
 			{
@@ -118,7 +118,14 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			if (!parsingArrowData(arrow, sMsg, arrowIds, pDataBase))
 			{
 				acedAlert(sMsg);
-			}	
+			}
+			//空白区域检测
+			Json::Value& blanks = oneScheme["blanks"];
+			AcDbObjectIdArray blankIds;
+			if (!parsingBlanksData(blanks, sMsg, blankIds, pDataBase))
+			{
+				acedAlert(sMsg);
+			}
 		}
 		else
 		{
@@ -241,6 +248,7 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 
 static void ZoomEExecute(WPARAM wp, LPARAM lp, void* anyVal)
 {
+	DBHelper::CallCADCommand(_T("CHECK "));
 	DBHelper::CallCADCommand(_T("ZOOM E "));
 }
 
@@ -940,8 +948,7 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 	std::vector<AcGePoint2dArray> blanksPoints;
 	if (blanks.isNull())
 	{
-		sMsg = _T("回传json不存在[\"result\"][\"blanks\"]字段！");
-		return false;
+		return true;
 	}
 	else
 	{

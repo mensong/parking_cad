@@ -59,7 +59,6 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 void COperaCheck::Start()
 {
 	//CEquipmentroomTool::test();
-	CEquipmentroomTool::creatLayerByjson("cloud_line");
 
 	/*std::string json;
 	std::string sMsg;
@@ -215,6 +214,7 @@ bool COperaCheck::getDataforJson(const std::string& json, CString& sMsg)
 
 void COperaCheck::blankCheckShow(const AcGePoint2dArray& blankCheckPts, AcDbObjectId& blankId, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
+	CEquipmentroomTool::creatLayerByjson("cloud_line",pDb);
 	AcGePoint2dArray plineExtentPts = getPlineExtentPts(blankCheckPts);
 	creatCloudLine(plineExtentPts,blankId,pDb);
 }
@@ -299,21 +299,20 @@ void COperaCheck::overlapShow()
 						{
 							continue;
 						}
-						double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+
 						if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
 						{
 							polyIntersections[three].append(polyIntersections[three][0]);
 						}
 						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-						if (ss<1 && sss<1)
+						/*for (int length=0; length<polyIntersections[three].length(); length++)
+						{
+							AcGePoint2d look = polyIntersections[three][length];
+						}	*/
+						if (sss<50)
 						{
 							continue;
 						}
-						/*for (int four = 0; four < polyIntersections[three].length(); four++)
-						{
-						AcGePoint2d look = polyIntersections[three][four];
-						int as = polyIntersections[three].length();
-						}*/
 						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
 						AcDbObjectId cloudId;
 						creatCloudLine(plineExtentPts, cloudId);
@@ -369,13 +368,16 @@ void COperaCheck::overlapShow()
 						{
 							continue;
 						}
-						double ss = GeHelper::CalcPolygonArea(polyIntersections[three]);
 						if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
 						{
 							polyIntersections[three].append(polyIntersections[three][0]);
 						}
+						/*for (int length = 0; length < polyIntersections[three].length(); length++)
+						{
+							AcGePoint2d look = polyIntersections[three][length];
+						}*/
 						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-						if (ss<1 && sss<1)
+						if (sss<50)
 						{
 							continue;
 						}
