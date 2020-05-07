@@ -25,7 +25,6 @@ public:
 	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds,AcDbDatabase *pDb = acdbCurDwg());
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText,AcDbDatabase *pDb = acdbCurDwg());
 
-	class ArxProgressBar* m_ProgressBar;
 	virtual void Ended() override;
 	bool parsingParkingData(Json::Value& parkings, CString& sMsg, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg);

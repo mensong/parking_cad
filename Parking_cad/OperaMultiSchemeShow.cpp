@@ -18,7 +18,6 @@ int COperaMultiSchemeShow::ms_count;
 
 COperaMultiSchemeShow::COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
-	,m_ProgressBar(NULL)
 {
 }
 
@@ -29,7 +28,9 @@ COperaMultiSchemeShow::~COperaMultiSchemeShow()
 
 void COperaMultiSchemeShow::Start()
 {
-	m_ProgressBar = new ArxProgressBar(_T("正在进行多方案排布"), 0, 3);
+	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str());
+	WD::SetTitle(_T("正在生成地库排布方案……"));
+	
 	creatNewDwg();
 }
 
@@ -248,8 +249,12 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 
 static void ZoomEExecute(WPARAM wp, LPARAM lp, void* anyVal)
 {
+	WD::AppendMsg(_T("检测图纸"));
 	DBHelper::CallCADCommand(_T("CHECK "));
+	WD::AppendMsg(_T("刷新图纸"));
 	DBHelper::CallCADCommand(_T("ZOOM E "));
+
+	WD::Close();
 }
 
 static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
@@ -266,7 +271,6 @@ static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/)
 {
-	m_ProgressBar->set(_T("创建新文件"));
 	CString path = CEquipmentroomTool::getOpenDwgFilePath();
 	CString deleName = _T(".dwg");
 	path = path.Trim(deleName);
@@ -301,8 +305,14 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	if (ms_count == 0)
 		ms_count = 1;
 
+	WD::SetRange(0, ms_count + 4);
+
 	for (int i=0; i<ms_count; i++)
 	{
+		CString sMsg;
+		sMsg.Format(_T("写入方案%d"), i + 1);
+		WD::AppendMsg(sMsg.GetString());
+
 		AcDbDatabase *pTempDb; // 临时图形数据库
 		es = rootPDb->wblock(pTempDb);
 		if (es!=eOk)
@@ -335,19 +345,20 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		}
 		delete pTempDb;
 	}
+
+	WD::AppendMsg(_T("保存方案图纸"));
 	es = pDb->saveAs(newFileName);
 	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
-	m_ProgressBar->forward();
+	
+	WD::AppendMsg(_T("打开排布后的图纸"));
 
-	m_ProgressBar->set(_T("打开排布好文件"), 0, 3);
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
 
 	AcApDocument* pDoc = DBHelper::OpenFile(newFileName);
 
 	SetDelayExecute(ActiveDocExecute, 0, 0, (void*)pDoc, 1, false);
-		
-	m_ProgressBar->forward();
+	
 }
 
 void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
@@ -553,9 +564,6 @@ AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, con
 
 void COperaMultiSchemeShow::Ended()
 {
-	if (m_ProgressBar)
-		delete m_ProgressBar;
-	m_ProgressBar = NULL;
 }
 
 bool COperaMultiSchemeShow::parsingParkingData(Json::Value& parkings, CString& sMsg, CString& blockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)

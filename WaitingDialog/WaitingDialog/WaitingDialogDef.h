@@ -19,7 +19,7 @@ typedef struct WD_MSG
 	int curPos;
 	TCHAR msg[512];
 
-	WD_MSG(int curPos=0, TCHAR* msg=_T(""))
+	WD_MSG(int curPos=0, const TCHAR* msg=_T(""))
 	{
 		this->curPos = curPos;
 		if (msg)
@@ -33,7 +33,7 @@ typedef struct WD_SETTITLE
 {
 	TCHAR title[MAX_PATH];
 
-	WD_SETTITLE(TCHAR* title=_T(""))
+	WD_SETTITLE(const TCHAR* title=_T(""))
 	{
 		if (title)
 			_tcscpy_s(this->title, title);
@@ -168,7 +168,7 @@ public:
 	}
 
 	//设置窗口标题
-	static LRESULT SetTitle(TCHAR* title)
+	static LRESULT SetTitle(const TCHAR* title)
 	{
 		HWND h = FindWindow(_T("WaitingDialog"), NULL);
 		if (!h)
@@ -198,12 +198,12 @@ public:
 	}
 
 	//消息，curPos==-1时，进度+1
-	static LRESULT AppendMsg(TCHAR* msg, int curPos = -1)
+	static LRESULT AppendMsg(const TCHAR* msg, int curPos = -1)
 	{
 		HWND h = FindWindow(_T("WaitingDialog"), NULL);
 		if (!h)
 			return -1;
-
+		
 		WD_MSG m(curPos, msg);
 		COPYDATASTRUCT cds;
 		cds.dwData = 0;

@@ -130,6 +130,8 @@ BOOL CWaitingDialogDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 		int minRange = 0, maxRange = 100;
 		m_progressCtrl.GetRange(minRange, maxRange);
 
+		if (pMsg->curPos < 0)
+			pMsg->curPos = m_progressCtrl.GetPos() + 1;
 		m_progressCtrl.SetPos(pMsg->curPos);
 
 		CString sPrecent;

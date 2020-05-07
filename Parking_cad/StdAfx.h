@@ -80,6 +80,7 @@ extern AcApDataManager<CDocData> DocVars ;
 #include <vector>
 #include <string>
 #include "ParkingLog.h"
+#include "WaitingDialog/WaitingDialog/WaitingDialogDef.h"
 
 #define LOG_BIP_LOGIN _T("bip_login")
 #define LOG_MISS_MOD _T("miss_mod")
