@@ -11,6 +11,7 @@
 #include "RTreeEx.h"
 #include "Convertor.h"
 #include "LibcurlHttp.h"
+#include "MinimumRectangle.h"
 
 std::string COperaCheck::ms_uuid;
 std::string COperaCheck::ms_strGetCheckUrl;
@@ -305,11 +306,32 @@ void COperaCheck::overlapShow()
 							polyIntersections[three].append(polyIntersections[three][0]);
 						}
 						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-						/*for (int length=0; length<polyIntersections[three].length(); length++)
-						{
-							AcGePoint2d look = polyIntersections[three][length];
-						}	*/
 						if (sss<50)
+						{
+							continue;
+						}
+						AcGePoint3dArray getMinRactUsePts;
+						for (int length=0; length<polyIntersections[three].length(); length++)
+						{
+							AcGePoint3d look(polyIntersections[three][length].x, polyIntersections[three][length].y, 0);
+							getMinRactUsePts.append(look);
+						}	
+						AcGePoint3dArray minRactPts = CMinimumRectangle::getMinRact(getMinRactUsePts);
+						double aspectRatio = 0;//长宽比
+						if (minRactPts.length()>3)
+						{
+							double ractLength = minRactPts[0].distanceTo(minRactPts[1]);
+							double ractWidth = minRactPts[1].distanceTo(minRactPts[2]);
+							if (ractLength>=ractWidth)
+							{
+								aspectRatio = ractLength / ractWidth;
+							}
+							else
+							{
+								aspectRatio = ractWidth / ractLength;
+							}
+						}
+						if (aspectRatio>50)
 						{
 							continue;
 						}
@@ -378,6 +400,31 @@ void COperaCheck::overlapShow()
 						}*/
 						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
 						if (sss<50)
+						{
+							continue;
+						}
+						AcGePoint3dArray getMinRactUsePts;
+						for (int length = 0; length < polyIntersections[three].length(); length++)
+						{
+							AcGePoint3d look(polyIntersections[three][length].x, polyIntersections[three][length].y, 0);
+							getMinRactUsePts.append(look);
+						}
+						AcGePoint3dArray minRactPts = CMinimumRectangle::getMinRact(getMinRactUsePts);
+						double aspectRatio = 0;//长宽比
+						if (minRactPts.length() > 3)
+						{
+							double ractLength = minRactPts[0].distanceTo(minRactPts[1]);
+							double ractWidth = minRactPts[1].distanceTo(minRactPts[2]);
+							if (ractLength >= ractWidth)
+							{
+								aspectRatio = ractLength / ractWidth;
+							}
+							else
+							{
+								aspectRatio = ractWidth / ractLength;
+							}
+						}
+						if (aspectRatio > 50)
 						{
 							continue;
 						}
