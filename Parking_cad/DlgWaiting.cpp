@@ -218,6 +218,10 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 			CString sMsg;
 			if (ms_bUseManyShow)
 			{
+#if 0	//是否去掉调试信息。1:调试；0:发版
+				std::string sConfigFile = DBHelper::GetArxDirA() + "rr.json";
+				FileHelper::WriteFile(sConfigFile.c_str(), json.c_str(), json.size(), NULL, 0);
+#endif
 				COperaMultiSchemeShow::getJsonData(json, iCount);
 				DBHelper::CallCADCommand(_T("MultiSchemeShow "));
 				acutPrintf(_T("\nthe uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
@@ -294,9 +298,8 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 	//从字符串中读取数据
 	if (reader.parse(json, root))
 	{
-#ifdef _DEBUG
-		WriteFile("result.json", json.c_str(), json.size(), NULL, 0, false);
-#endif
+		//WriteFile("result.json", json.c_str(), json.size(), NULL, 0, false);
+
 		int status = root["status"].asInt();
 		int index = root["index"].asInt();
 		sIndex.Format(_T("%d"), index);
