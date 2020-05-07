@@ -76,3 +76,10 @@
 /x64/Debug/preview/*.bmp
 /x64/Release/preview/*.bmp
 /x64/Release/dwg/*.dwg
+/WaitingDialog/WaitingDialog.sdf
+/WaitingDialog/WaitingDialog.suo
+/WaitingDialog/WaitingDialog/WaitingDialog.aps
+/WaitingDialog/WaitingDialog/Debug
+/WaitingDialog/WaitingDialog/Release
+/WaitingDialog/Release
+/WaitingDialog/Debug
