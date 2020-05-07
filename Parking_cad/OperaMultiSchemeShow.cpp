@@ -56,11 +56,18 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			Json::Value& oneScheme = root["result"][scheme];
 			//指标数据解析
 			Json::Value& data = oneScheme["data"];
+
+			CString sMsg;
+			sMsg.Format(_T("方案%d : 车位指标表"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			if (!parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg))
 			{
 				acedAlert(sMsg);
 			}
+
 			//排布结果车位展示
+			sMsg.Format(_T("方案%d : 生成车位"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& parkings = oneScheme["parkings"];
 			Doc_Locker _locker;
 			CEquipmentroomTool::layerSet(_T("0"), 7, pDataBase);
@@ -70,7 +77,10 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			{
 				acedAlert(sMsg);
 			}
+
 			//轴线展示
+			sMsg.Format(_T("方案%d : 生成轴线"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& axis = oneScheme["grid"];
 			std::map<AcDbObjectId, AcString> idAndNumMap;
 			AcDbObjectIdArray axisIds;
@@ -83,14 +93,20 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			{
 				acedAlert(sMsg);
 			}
+
 			//车道线展示
+			sMsg.Format(_T("方案%d : 生成车道线"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& lane = oneScheme["lane"];
 			AcDbObjectIdArray RoadLineIds;
 			if (!parsingLaneData(lane, sMsg, RoadLineIds, pDataBase))
 			{
 				acedAlert(sMsg);
 			}
+
 			//生成车道标注
+			sMsg.Format(_T("方案%d : 生成车道标注"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			double dTransLaneWidth = dLaneWidth * 1000;
 			if (dTransLaneWidth == 0)
 			{
@@ -100,27 +116,39 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			{
 				setLandDismensions(dTransLaneWidth, RoadLineIds, pDataBase);
 			}
+
 			//地库范围线展示
+			sMsg.Format(_T("方案%d : 生成地库范围线"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& scope = oneScheme["scope"];
 			if (!parsingScopeData(scope, sMsg, pDataBase))
 			{
 				acedAlert(sMsg);
 			}
+
 			//方柱展示
+			sMsg.Format(_T("方案%d : 生成方柱"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& pillar = oneScheme["pillar"];
 			AcDbObjectIdArray pillarIds;
 			if (!parsingPillarData(pillar, sMsg, pillarIds, pDataBase))
 			{
 				acedAlert(sMsg);
 			}
+
 			//车道方向箭头展示
+			sMsg.Format(_T("方案%d : 生成车道方向"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& arrow = oneScheme["arrow"];
 			AcDbObjectIdArray arrowIds;
 			if (!parsingArrowData(arrow, sMsg, arrowIds, pDataBase))
 			{
 				acedAlert(sMsg);
 			}
+
 			//空白区域检测
+			sMsg.Format(_T("方案%d : 生成空白区域检测线"), scheme + 1);
+			WD::AppendMsg(sMsg.GetString());
 			Json::Value& blanks = oneScheme["blanks"];
 			AcDbObjectIdArray blankIds;
 			if (!parsingBlanksData(blanks, sMsg, blankIds, pDataBase))
@@ -305,7 +333,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	if (ms_count == 0)
 		ms_count = 1;
 
-	WD::SetRange(0, ms_count + 4);
+	WD::SetRange(0, ms_count + ms_count*9 + 4);
 
 	for (int i=0; i<ms_count; i++)
 	{

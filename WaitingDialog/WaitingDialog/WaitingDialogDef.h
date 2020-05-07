@@ -1,6 +1,7 @@
 #pragma once
 #include <tchar.h>
 #include <string>
+#include <process.h>
 
 typedef struct WD_RANGE
 {
