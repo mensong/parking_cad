@@ -87,7 +87,7 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 			if (parsingAxisData(axis, sMsg, idAndNumMap, axisIds, pDataBase))
 			{
 				//生成轴线标注
-				//COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
+				COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
 			}
 			else
 			{
