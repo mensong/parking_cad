@@ -230,6 +230,9 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 	{
 		AcString keyvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, LineIds[i]).constPtr();	
 		bool es = DBHelper::AddXRecord(LineIds[i], _T("ÖáºÅ"), keyvalue);
+
+		CString batchNum;
+
 	}
 
 	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
@@ -339,11 +342,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 		}
 		else
 		{
-			
-			AcDbObjectIdArray tempsortIds;
-			for (int k = sortIds.length() - 1; k >= 0; --k)
-				tempsortIds.append(sortIds[k]);
-			COperaAxleNetMaking::inserAadAxleNum(tempsortIds, lefdownPt, rigthdownPt, 1,-1, pDb);
+			COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, 1,-1, pDb);
 
 			//ÕâÀïÉèÖÃÖáÍø±ê×¢ËùÔÚÍ¼²ã
 			CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
@@ -760,8 +759,8 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 		//tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]).constPtr();
 		AcString keyvalue;	
 		DBHelper::GetXRecord(sortIds[i], _T("ÖáºÅ"), keyvalue);
-		ACHAR *strtochar = DBHelper::ACHARAcString(keyvalue);
-		tagvalue = strtochar;
+		//ACHAR *strtochar = DBHelper::ACHARAcString(keyvalue);
+		tagvalue = DBHelper::ACHARAcString(keyvalue);
 
 		if (i == 0 && i != sortIds.length() - 1)
 		{
@@ -925,9 +924,12 @@ void COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d&
 				continue;
 			}
 
-			AcString sTag = pAttrib->tagConst();
 			AcString pStr = pAttrib->textString();
+			int len = pStr.length();
 			
+			pAttrib->setWidthFactor((circleradius*2) / (857.51293*len));
+
+		
 			//Acad::ErrorStatus es = pAttrib->setWidthFactor(len);
 			//pAttrib->setHorizontalMode(AcDb::TextHorzMode::kTextFit);
 			//pAttrib->setVerticalMode(AcDb::TextVertMode::kTextVertMid);
