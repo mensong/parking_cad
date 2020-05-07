@@ -62,6 +62,7 @@ BOOL CWaitingDialogDlg::OnInitDialog()
 	// TODO: 在此添加额外的初始化代码
 	this->SetWindowText(_T(""));
 	m_staMsg.SetWindowText(_T(""));
+	m_staPrecent.SetWindowText(_T(""));
 
 	ModifyStyleEx(WS_EX_APPWINDOW,WS_EX_TOOLWINDOW);//从任务栏中去掉.
 	::SetWindowPos(this->GetSafeHwnd(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);//置顶
