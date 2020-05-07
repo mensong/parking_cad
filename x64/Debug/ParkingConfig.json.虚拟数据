@@ -1,0 +1,188 @@
+{
+   "alllinetype" : {
+      "tag" : [
+         "DOTE",
+         "DASH",
+         "BORDER",
+         "BORDER2",
+         "BORDERX2",
+         "CENTER",
+         "CENTER2",
+         "CENTERX2",
+         "DASHDOT",
+         "DASHDOT2",
+         "DASHDOTX2",
+         "DASHED",
+         "DASHED2",
+         "DASHEDX2",
+         "DIVIDE",
+         "DIVIDE2",
+         "DIVIDEX2",
+         "DOT",
+         "DOT2",
+         "DOTX2",
+         "HIDDEN",
+         "HIDDEN2",
+         "HIDDENX2",
+         "PHANTOM",
+         "PHANTOM2",
+         "PHANTOMX2",
+         "ACAD_ISO02W100",
+         "ACAD_ISO03W100",
+         "ACAD_ISO04W100",
+         "ACAD_ISO05W100",
+         "ACAD_ISO06W100",
+         "ACAD_ISO07W100",
+         "ACAD_ISO08W100",
+         "ACAD_ISO09W100",
+         "ACAD_ISO10W100",
+         "ACAD_ISO11W100",
+         "ACAD_ISO12W100",
+         "ACAD_ISO13W100",
+         "ACAD_ISO14W100",
+         "ACAD_ISO15W100",
+         "FENCELINE1",
+         "FENCELINE2",
+         "TRACKS",
+         "BATTING",
+         "HOT_WATER_SUPPLY",
+         "GAS_LINE",
+         "ZIGZAG"
+      ]
+   },
+   "layer_config" : {
+      "arrow" : {
+         "isprintf" : "是",
+         "layer_color" : "3",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-标注-箭头引注",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "axis_dimensions" : {
+         "isprintf" : "是",
+         "layer_color" : "3",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-标注-轴号",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "cloud_line" : {
+         "isprintf" : "否",
+         "layer_color" : "6",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-云线",
+         "layer_width" : "0.25",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "column" : {
+         "isprintf" : "是",
+         "layer_color" : "50",
+         "layer_linetype" : "CONTINUOUS",
+         "layer_name" : "S-墙柱-COLU",
+         "layer_width" : "0.2",
+         "professional_attributes" : "结构",
+         "transparency" : ""
+      },
+      "core_wall" : {
+         "isprintf" : "否",
+         "layer_color" : "8",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-车库-设备轮廓线",
+         "layer_width" : "0.25",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "dimensions_dimensiontext" : {
+         "isprintf" : "是",
+         "layer_color" : "105",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-标注-尺寸标注",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "entrance" : {
+         "isprintf" : "是",
+         "layer_color" : "3",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-车库-防火分区（疏散）",
+         "layer_width" : "0.2",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "equipmentroom" : {
+         "isprintf" : "是",
+         "layer_color" : "8",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-平面-设备基础等",
+         "layer_width" : "0.15",
+         "professional_attributes" : "建筑",
+         "transparency" : ""
+      },
+      "lane_center_line_and_driving_direction" : {
+         "isprintf" : "是",
+         "layer_color" : "42",
+         "layer_linetype" : "ACAD_ISO05W100",
+         "layer_name" : "A-车库-车道中线",
+         "layer_width" : "0.09",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "mapsign" : {
+         "isprintf" : "是",
+         "layer_color" : "7",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-文字-平面说明",
+         "layer_width" : "0.15",
+         "professional_attributes" : "标注",
+         "transparency" : ""
+      },
+      "ordinary_parking" : {
+         "isprintf" : "是",
+         "layer_color" : "2",
+         "layer_linetype" : "DASH",
+         "layer_name" : "A-车库-普通车位",
+         "layer_width" : "0.09",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "parking_axis" : {
+         "isprintf" : "是",
+         "layer_color" : "1",
+         "layer_linetype" : "DOTE",
+         "layer_name" : "A-轴线-车库",
+         "layer_width" : "0.09",
+         "professional_attributes" : "道路",
+         "transparency" : ""
+      },
+      "pictureframe" : {
+         "isprintf" : "否",
+         "layer_color" : "51",
+         "layer_linetype" : "Continuous",
+         "layer_name" : "A-车库-图中分区",
+         "layer_width" : "0.25",
+         "professional_attributes" : "地库",
+         "transparency" : ""
+      },
+      "rangeline" : {
+         "isprintf" : "是",
+         "layer_color" : "5",
+         "layer_linetype" : "DASH",
+         "layer_name" : "G-用地-地库范围线",
+         "layer_width" : "0.4",
+         "professional_attributes" : "用地",
+         "transparency" : ""
+      }
+   },
+   "params" : {
+      "check_geturl" : "A8WgsY1YIpqljlHb4dKgMLVNv6ztRvia9ns+10ogWKYA9pAhtx07dkoz+3hpZDCP",
+      "geturl" : "A8WgsY1YIpqljlHb4dKgMLVNv6ztRvia9ns+10ogWKYA9pAhtx07dtXsmG2nJSmG",
+      "part_geturl" : "A8WgsY1YIpqljlHb4dKgMLVNv6ztRvia9ns+10ogWKYA9pAhtx07dtB2JliC8jBQu3PtDleLlrw=",
+      "part_posturl" : "A8WgsY1YIpqljlHb4dKgMLVNv6ztRvia9ns+10ogWKYA9pAhtx07dpY2YMDmsU//JKOFYAbjeNw=",
+      "posturl" : "A8WgsY1YIpqljlHb4dKgMLVNv6ztRvia9ns+10ogWKYA9pAhtx07dke2C0UeZVYA"
+   }
+}

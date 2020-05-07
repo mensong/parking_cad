@@ -264,9 +264,9 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	DDX_Control(pDX, IDC_EDIT_NON_CONVEXLEVEL, m_Non_Convexlevel);
 	DDX_Control(pDX, IDC_EDIT_PARTITION_LINE, m_PartitionLineEdit);
 	DDX_Control(pDX, IDC_EDIT_SHOWENDPOINT, m_EditShowEndPoint);
-	*(end()) = true;
 	DDX_Control(pDX, IDC_CHECK_MANYSHOW, m_checkIsManySHow);
 	DDX_Control(pDX, IDC_BUTTON_PARTPLAN, m_btPartPlanOK);
+	*(end()) = true;
 }
 
 void CArxDialog::OnOK()
@@ -646,6 +646,7 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 		postUrl = ms_posturlPorttwo.c_str();
 	}
 	//MessageBoxA(NULL, postUrl, "", 0);
+	
 	int code = HTTP_CLIENT::Ins().post(postUrl, sData.c_str(), sData.size(), true, "application/json");
 	if (code != 200)
 	{
