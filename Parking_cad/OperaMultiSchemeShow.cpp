@@ -184,6 +184,8 @@ bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pD
 	CEquipmentroomTool::setLayerClose(sAxisLayerName,pDataBase);
 	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	CEquipmentroomTool::setLayerClose(sAxisDimLayerName,pDataBase);
+	CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("dimensions_dimensiontext").c_str());
+	CEquipmentroomTool::setLayerClose(setlayernameofAXSI, pDataBase);
 	CEquipmentroomTool::layerSet(_T("0"), 7,pDataBase);
 	return true;
 }
@@ -580,9 +582,9 @@ AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, con
 		pDimension->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
 		pDimension->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
 
-		AcCmColor textcolor;
+		/*AcCmColor textcolor;
 		textcolor.setColorIndex(255);
-		pDimension->setDimclrt(textcolor);
+		pDimension->setDimclrt(textcolor);*/
 	}
 	if (pEnt)
 		pEnt->close();

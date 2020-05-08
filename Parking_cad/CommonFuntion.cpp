@@ -575,7 +575,7 @@ AcDbObjectIdArray CCommonFuntion::DrowLine(AcGePoint3dArray& inputpoints, AcDbDa
 		if (i == inputpoints.length() - 1)
 		{
 			AcDbLine *pPline = new AcDbLine(inputpoints[i], inputpoints[0]);
-			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline,pDb);
+			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline, pDb);
 			if (pPline)
 				pPline->close();
 			ids.append(ID);
@@ -583,7 +583,7 @@ AcDbObjectIdArray CCommonFuntion::DrowLine(AcGePoint3dArray& inputpoints, AcDbDa
 		else
 		{
 			AcDbLine *pPline = new AcDbLine(inputpoints[i], inputpoints[i + 1]);
-			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline,pDb);
+			AcDbObjectId ID = CCommonFuntion::PostToModelSpace(pPline, pDb);
 			if (pPline)
 				pPline->close();
 			ids.append(ID);
@@ -712,7 +712,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		AcGePoint3d pt1 = point1;
 		AcGePoint3d pt2 = point2;
 		double movedata = pt1.distanceTo(pt2);
-		
+
 		AcGePoint3d centerpt = AcGePoint3d((pt1.x + pt2.x) / 2, (pt1.y + pt2.y) / 2, 0);
 
 		AcGeVector3d tempVec = AcGeVector3d(pt1 - pt2);
@@ -728,7 +728,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 		if (id == NULL)
 			return;
-        CCommonFuntion::setEntityLayer(setLayerName, id,pDb);
+		CCommonFuntion::setEntityLayer(setLayerName, id, pDb);
 
 	}
 
@@ -784,7 +784,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		////获得当前图形的标注样式表  
 		AcDbDimStyleTable* pDimStyleTbl;
 		es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
-		if (es!=eOk)
+		if (es != eOk)
 		{
 			acutPrintf(_T("\n打开标注样式表失败！"));
 			return id;
@@ -798,12 +798,12 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		}
 		pDimStyleTbl->close();
 
-		AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine,NULL,id);//创建标注实体
-		//pnewdim->setDimtxt(500);//标注文字的高度
-		//pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
-		//pnewdim->setDimtmove(1);
+		AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine, NULL, id);//创建标注实体
+																							 //pnewdim->setDimtxt(500);//标注文字的高度
+																							 //pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+																							 //pnewdim->setDimtmove(1);
 		AcDbObjectId dimid;
-		es = DBHelper::AppendToDatabase(dimid,pnewdim,pDb);
+		es = DBHelper::AppendToDatabase(dimid, pnewdim, pDb);
 		//AcDbObjectId dimensionId = CCommonFuntion::PostToModelSpace(pnewdim,pDb);
 		pnewdim->close();
 		return dimid;
@@ -976,8 +976,8 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 						Line2->close();
 
 					/*	AcGePoint3dArray intersectPoints;
-						tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);*/
-					
+					tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);*/
+
 					if (IsParallel(startpt1, endpt1, startpt2, endpt2, tol))
 					{
 						tag = false;
@@ -1054,7 +1054,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 	bool CCommonFuntion::IsParallel(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3, AcGePoint3d& pt4, double tol/* = 0.0*/)
 	{
-		
+
 		double x1 = pt1.x;
 		double y1 = pt1.y;
 		double x2 = pt2.x;
@@ -1081,7 +1081,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		for (int i = 0; i < inputId.length(); i++)
 		{
 			AcDbExtents tempextents;
-			DBHelper::GetEntityExtents(tempextents,inputId[i]);
+			DBHelper::GetEntityExtents(tempextents, inputId[i]);
 			extents.addExt(tempextents);
 		}
 
@@ -1109,9 +1109,9 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 		for (int i = 0; i < outIds.length(); i++)
 		{
-			
+
 			if (CCommonFuntion::IsEntInLayer(outIds[i], LineLayerName))
-				return true;		
+				return true;
 		}
 		return false;
 	}
@@ -1313,7 +1313,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 			AcDbObjectIdArray objIds;
 			getIdsByDwgBlkName(pDwg, dwgblockname, objIds);//该函数属于自己编写，将在后面给出
 
-														//将外部数据库中对应ID的实体写入到pDb数据库中，该操作的作用是选择出我们所需要的所有实体
+														   //将外部数据库中对应ID的实体写入到pDb数据库中，该操作的作用是选择出我们所需要的所有实体
 
 			AcDbDatabase *pDb = NULL;
 			pDwg->wblock(pDb, objIds, AcGePoint3d(0, 0, 0));
@@ -1481,9 +1481,9 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 				geLine.set(ToPoint2d(pLine->startPoint()),
 					ToPoint2d(pLine->endPoint()));
 
-				if(pLine)
-				   pLine->close();
-			}	
+				if (pLine)
+					pLine->close();
+			}
 		}
 		if (pEnt)
 			pEnt->close();
@@ -1541,7 +1541,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		} while (true);
 	}
 
-	double CCommonFuntion::distance(AcGePoint3d& p, AcGePoint3d& p1) 
+	double CCommonFuntion::distance(AcGePoint3d& p, AcGePoint3d& p1)
 	{
 		return hypot(p.x - p1.x, p.y - p1.y);
 	}
@@ -1620,7 +1620,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 	{
 		// 获得当前图形的标注样式表
 		AcDbDimStyleTable *pDimStyleTbl = NULL;
-		Acad:;ErrorStatus es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+	Acad:; ErrorStatus es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
 		if (pDimStyleTbl->has(stylename))
 		{
 			pDimStyleTbl->close();//已经存在
@@ -1651,11 +1651,11 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		pDimStyleTblRcd->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
 		pDimStyleTblRcd->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
 
-		AcCmColor textcolor;
-		textcolor.setColorIndex(255);
-		pDimStyleTblRcd->setDimclrt(textcolor);
+											 /*AcCmColor textcolor;
+											 textcolor.setColorIndex(255);
+											 pDimStyleTblRcd->setDimclrt(textcolor);*/
 
-	   // 将标注样式表记录添加到标注样式表中
+											 // 将标注样式表记录添加到标注样式表中
 		pDimStyleTbl->add(pDimStyleTblRcd);
 		pDimStyleTblRcd->close();
 		pDimStyleTbl->close();
@@ -1699,12 +1699,12 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		pEnt->close();
 	}
 
-void CCommonFuntion::addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcString& sBlockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+	void CCommonFuntion::addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcString& sBlockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 	{
 		AcDbEntity *pEnt = NULL;
 		std::vector<AcDbEntity*> vctEnts;
 
-		for (int i=0; i<EntyIds.length(); ++i)
+		for (int i = 0; i<EntyIds.length(); ++i)
 		{
 			Acad::ErrorStatus es = acdbOpenObject(pEnt, EntyIds[i], AcDb::kForWrite);
 			if (es != eOk)
@@ -1715,51 +1715,51 @@ void CCommonFuntion::addEntyToBlkTblRcd(AcDbObjectIdArray& EntyIds, const AcStri
 			if (pEnt)
 				pEnt->close();
 		}
-		
-		DBHelper::CreateBlock(sBlockName,vctEnts);
-}
 
-void CCommonFuntion::deleteAcDbBlockTableRecord(CString& strBlockName)
-{
-	//获取当前图形数据库
-	AcDbBlockTable* pBlkTbl = NULL;
-	acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlkTbl, AcDb::kForWrite);
-	//查询块是否已存在
-	if (!pBlkTbl->has(strBlockName))
-	{
-		pBlkTbl->close();
-		return;
+		DBHelper::CreateBlock(sBlockName, vctEnts);
 	}
-		
-	//获取块的插入点
-	AcGePoint3d ptInsert(0, 0, 0);
-	//获取块表记录
-	AcDbObjectId blkDefId;
-	pBlkTbl->getAt(strBlockName, blkDefId);
-	pBlkTbl->close();
-	AcDbBlockTableRecord *pDBlkRe = NULL;
-	if (acdbOpenObject(pDBlkRe, blkDefId, AcDb::kForWrite) != eOk)
-		return;
 
-	AcDbObjectIdArray ids;
-	pDBlkRe->getBlockReferenceIds(ids);
+	void CCommonFuntion::deleteAcDbBlockTableRecord(CString& strBlockName)
+	{
+		//获取当前图形数据库
+		AcDbBlockTable* pBlkTbl = NULL;
+		acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlkTbl, AcDb::kForWrite);
+		//查询块是否已存在
+		if (!pBlkTbl->has(strBlockName))
+		{
+			pBlkTbl->close();
+			return;
+		}
 
-	AcDbBlockTableRecordIterator *pIte = NULL;
-	 Acad::ErrorStatus es = pDBlkRe->newIterator(pIte);
-	 AcDbEntity *pEnt = NULL;
-	 for (pIte->start(); !pIte->done(); pIte->step())
-	 {
-		 if(pIte->getEntity(pEnt, AcDb::kForWrite)!=eOk)
-			 continue;
+		//获取块的插入点
+		AcGePoint3d ptInsert(0, 0, 0);
+		//获取块表记录
+		AcDbObjectId blkDefId;
+		pBlkTbl->getAt(strBlockName, blkDefId);
+		pBlkTbl->close();
+		AcDbBlockTableRecord *pDBlkRe = NULL;
+		if (acdbOpenObject(pDBlkRe, blkDefId, AcDb::kForWrite) != eOk)
+			return;
 
-		 pEnt->erase();
-		 if (pEnt)
-			 pEnt->close();
-	 }
-	 delete pIte;
-	
-	pDBlkRe->erase();
-	if (pDBlkRe)
-		pDBlkRe->close();
+		AcDbObjectIdArray ids;
+		pDBlkRe->getBlockReferenceIds(ids);
 
-}
+		AcDbBlockTableRecordIterator *pIte = NULL;
+		Acad::ErrorStatus es = pDBlkRe->newIterator(pIte);
+		AcDbEntity *pEnt = NULL;
+		for (pIte->start(); !pIte->done(); pIte->step())
+		{
+			if (pIte->getEntity(pEnt, AcDb::kForWrite) != eOk)
+				continue;
+
+			pEnt->erase();
+			if (pEnt)
+				pEnt->close();
+		}
+		delete pIte;
+
+		pDBlkRe->erase();
+		if (pDBlkRe)
+			pDBlkRe->close();
+
+	}
