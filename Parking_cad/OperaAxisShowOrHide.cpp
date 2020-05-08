@@ -45,6 +45,22 @@ void COperaAxisShowOrHide::Start()
 	{
 		CEquipmentroomTool::setLayerClose(sAxisDimLayerName);
 	}
+
+	CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("dimensions_dimensiontext").c_str());
+	if (setlayernameofAXSI == _T(""))
+	{
+		acedAlert(_T("获取A-标注-尺寸标注失败！"));
+		return;
+	}
+	if (CEquipmentroomTool::isLayerClosed(setlayernameofAXSI))
+	{
+		CEquipmentroomTool::setLayerOpen(setlayernameofAXSI);
+
+	}
+	else
+	{
+		CEquipmentroomTool::setLayerClose(setlayernameofAXSI);
+	}
 }
 
 REG_CMD_P(COperaAxisShowOrHide, BGY, AxisShowOrHide);//控制轴线和其对应标注图层显隐

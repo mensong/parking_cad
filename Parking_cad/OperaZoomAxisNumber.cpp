@@ -37,24 +37,24 @@ void COperaZoomAxisNumber::Start()
 	//删除轴号
 	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	COperaZoomAxisNumber::deleteEntitys(sAadAxleNumLayerName);
-	 
+
 	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	const ACHAR *layername = sAxisLayer;//轴线所在图层
 
-	/*std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(LineIds);
-	for (int i=0; i<idsvec.size(); ++i)
-	{
-		for (int k = 0; k < idsvec[i].size(); ++k)
-		{
-			AcDbEntity *pEnt = NULL;
-			if(acdbOpenObject(pEnt, idsvec[i][k], AcDb::kForWrite)!=eOk)
-				continue;
+										/*std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(LineIds);
+										for (int i=0; i<idsvec.size(); ++i)
+										{
+										for (int k = 0; k < idsvec[i].size(); ++k)
+										{
+										AcDbEntity *pEnt = NULL;
+										if(acdbOpenObject(pEnt, idsvec[i][k], AcDb::kForWrite)!=eOk)
+										continue;
 
-			pEnt->setColorIndex(i);
-			pEnt->close();
-		}
-	}
-	return;*/
+										pEnt->setColorIndex(i);
+										pEnt->close();
+										}
+										}
+										return;*/
 
 	std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(axisIds);
 	for (int idsvecNum = 0; idsvecNum < idsvec.size(); ++idsvecNum)
@@ -134,11 +134,11 @@ void COperaZoomAxisNumber::Start()
 			if (CCommonFuntion::IsParallel(lefdownPt, rigthdownPt, startpt, endptpt, 1))
 			{
 				//轴号标注
-				COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, zoomcoefficient, 1);
+				COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, zoomcoefficient);
 			}
 			else
 			{
-				COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, zoomcoefficient, 1);
+				COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, zoomcoefficient);
 			}
 		}
 	}
@@ -214,14 +214,14 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 {
 	std::vector<std::vector<AcDbObjectId>> outidsVec;
 
-	for (int i=0; i<AxisIds.length(); ++i)
+	for (int i = 0; i<AxisIds.length(); ++i)
 	{
 		AcDbEntity *pEnt = NULL;
 		if (acdbOpenObject(pEnt, AxisIds[i], AcDb::kForRead) != eOk)
 			continue;
 		AcDbObjectId id_1 = AxisIds[i];
 
-		for (int k=i+1; k<AxisIds.length(); ++k)
+		for (int k = i + 1; k<AxisIds.length(); ++k)
 		{
 			AcDbEntity *pEnt_ = NULL;
 			if (acdbOpenObject(pEnt_, AxisIds[k], AcDb::kForRead) != eOk)
@@ -237,7 +237,7 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 			else
 			{
 				bool tag = true;
-				for (int Vecnum=0;Vecnum<outidsVec.size();++Vecnum)
+				for (int Vecnum = 0; Vecnum<outidsVec.size(); ++Vecnum)
 				{
 					//如果id_1是容器中
 					if (std::find(outidsVec[Vecnum].begin(), outidsVec[Vecnum].end(), id_1) != outidsVec[Vecnum].end())
@@ -246,7 +246,7 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 						if (std::find(outidsVec[Vecnum].begin(), outidsVec[Vecnum].end(), id_2) == outidsVec[Vecnum].end())
 							outidsVec[Vecnum].push_back(id_2);
 						tag = false;
-						break;		
+						break;
 					}
 					else if (std::find(outidsVec[Vecnum].begin(), outidsVec[Vecnum].end(), id_2) != outidsVec[Vecnum].end())
 					{
@@ -255,7 +255,7 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 						tag = false;
 						break;
 					}
-									
+
 				}
 
 				//如果id_1和id_2都不在容器中，则加入到新建容器中
@@ -267,11 +267,11 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 					outidsVec.push_back(tempvec);
 				}
 			}
-			
+
 			if (pEnt_)
 				pEnt_->close();
 		}
-		
+
 		if (pEnt)
 			pEnt->close();
 	}
