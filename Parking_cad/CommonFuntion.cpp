@@ -1541,6 +1541,98 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		} while (true);
 	}
 
+	float CCommonFuntion::relationshipWithLinePosition(AcGePoint3d& pt, AcGePoint3d& linept1, AcGePoint3d& linept2)
+	{
+		AcGePoint3d point1, point2;
+
+		point1.x = linept1.x - linept2.x;
+		point1.y = linept1.y - linept2.y;
+
+		point2.x = pt.x - linept1.x;
+		point2.y = pt.y - linept1.y;
+		
+		float sum = point1.x*point2.y - point2.x*point1.y;
+		return sum;
+	}
+
+	float CCommonFuntion::relationshipWithLinePosition(AcGePoint3d&pt, AcDbObjectId& lineid)
+	{
+		AcDbEntity *pEnt = NULL;
+		if (acdbOpenObject(pEnt, lineid, AcDb::kForRead) != eOk)
+			return 0;
+
+		AcDbLine *pLine = AcDbLine::cast(pEnt);
+		AcGePoint3d startpt = pLine->startPoint();
+		AcGePoint3d endpt = pLine->endPoint();
+		delete pLine;
+
+		return relationshipWithLinePosition(pt, startpt, endpt);
+	}
+
+	bool CCommonFuntion::isVerticalBothLines(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3, AcGePoint3d& pt4, double tol)
+	{
+		double dis_1 = pt1.distanceTo(pt2);
+		double dis_2 = pt3.distanceTo(pt4);
+		double dis = pt1.distanceTo(pt4);
+
+		if (abs(pow(dis_1, 2) + pow(dis_2, 2) - pow(dis, 2)) <= tol)
+			return true;
+		return false;
+
+	}
+
+	bool CCommonFuntion::isVerticalBothLines(AcDbObjectId& Line1, AcDbObjectId& Line2, double tol)
+	{
+		AcDbEntity *pEnt_1 = NULL;
+		if (acdbOpenObject(pEnt_1, Line1, AcDb::kForRead) != eOk)
+			return false;
+		AcDbLine *pLine_1 = AcDbLine::cast(pEnt_1);
+		AcGePoint3d startpt_1 = pLine_1->startPoint();
+		AcGePoint3d endpt_1 = pLine_1->endPoint();
+		delete pLine_1;
+		pEnt_1->close();
+
+		AcDbEntity *pEnt_2 = NULL;
+		if (acdbOpenObject(pEnt_2, Line2, AcDb::kForRead) != eOk)
+			return false;
+		AcDbLine *pLine_2 = AcDbLine::cast(pEnt_2);
+		AcGePoint3d startpt_2 = pLine_2->startPoint();
+		AcGePoint3d endpt_2 = pLine_2->endPoint();
+		delete pLine_2;
+		pEnt_2->close();
+
+		AcGePoint3d pt1, pt2, pt3, pt4;
+		if (startpt_1.distanceTo(startpt_2) <= 1)
+		{
+			pt1 = endpt_1;
+			pt2 = startpt_1;
+			pt3 = startpt_2;
+			pt4 = endpt_2;
+		}
+		else if(startpt_1.distanceTo(endpt_2)<= 1)
+		{
+			pt1 = endpt_1;
+			pt2 = startpt_1;
+			pt3 = endpt_2;
+			pt4 = startpt_2;
+		}
+
+		return  isVerticalBothLines(pt1, pt2, pt3, pt4, tol);
+
+	}
+
+	double CCommonFuntion::angularRadian(double angle)
+	{
+		double pi = 3.1415926535898;
+		return angle*(pi / 180);
+	}
+
+	double CCommonFuntion::radianAngle(double radian)
+	{
+		double pi = 3.1415926535898;
+		return radian * (180 / pi);
+	}
+
 	double CCommonFuntion::distance(AcGePoint3d& p, AcGePoint3d& p1)
 	{
 		return hypot(p.x - p1.x, p.y - p1.y);

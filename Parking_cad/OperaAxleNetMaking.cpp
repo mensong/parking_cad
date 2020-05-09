@@ -811,7 +811,7 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 }
 
 
-void COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d& basept,
+AcDbObjectId COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d& basept,
 	AcGeVector3d& moveagvec, double circleradius, const AcString& tagvalue, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	AcGePoint3d movept = basept;
@@ -832,7 +832,7 @@ void COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d&
 		if (NULL == pIter)
 		{
 			acutPrintf(_T("\n获取属性迭代器失败!"));
-			return;
+			return blockId;
 		}
 		//设置判断是否能获取到属性
 		bool bIsAttribBlock = false;
@@ -899,6 +899,8 @@ void COperaAxleNetMaking::inserBlockRec(const AcString& sBlockName, AcGePoint3d&
 		if (pEnt)
 			pEnt->close();
 	}
+
+	return blockId;
 }
 
 void COperaAxleNetMaking::dealBlock(const AcString& sBlockName, AcGePoint3d& startpt, AcGeVector3d& moveagvec1
@@ -910,14 +912,19 @@ void COperaAxleNetMaking::dealBlock(const AcString& sBlockName, AcGePoint3d& sta
 	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	COperaAxleNetMaking::setEntColor(GuideLineId1, 3);
 	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId1, pDb);
-	COperaAxleNetMaking::inserBlockRec(sBlockName, movept1, moveagvec1, circleradius, tagvalue, pDb);
+	AcDbObjectId blockid_1 = COperaAxleNetMaking::inserBlockRec(sBlockName, movept1, moveagvec1, circleradius, tagvalue, pDb);
+	//旋转轴号
+	//rotateEntity(startpt, endpt, blockid_1, movept1, moveagvec1, circleradius,scaleFactor);
+	
 
 	//终止点引出一条直线，并连接轴号块
 	AcGePoint3d movept2 = COperaAxleNetMaking::getChangPoint(endpt, moveagvec2, scaleFactor);
 	AcDbObjectId GuideLineId2 = COperaAxleNetMaking::DrowLine(endpt, movept2, pDb);
 	COperaAxleNetMaking::setEntColor(GuideLineId2, 3);
 	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId2, pDb);
-	COperaAxleNetMaking::inserBlockRec(sBlockName, movept2, moveagvec2, circleradius, tagvalue, pDb);
+	AcDbObjectId blockid_2 = COperaAxleNetMaking::inserBlockRec(sBlockName, movept2, moveagvec2, circleradius, tagvalue, pDb);
+	//旋转轴号
+	//rotateEntity(endpt, startpt, blockid_2, movept2, moveagvec2, circleradius, scaleFactor);
 }
 
 void COperaAxleNetMaking::LongitudinalNumbering(int& tagnum, int& addtagnum, CString& tagvalue, CString& csAddtagvalue)
@@ -1070,4 +1077,47 @@ AcDbObjectId COperaAxleNetMaking::createGuideLine(AcGePoint3d& inputPt, AcGeVect
 	CCommonFuntion::setEntityLayer(sAadAxleNumLayerName, GuideLineId, pDb);
 
 	return GuideLineId;
+}
+
+void COperaAxleNetMaking::rotateEntity(AcGePoint3d& startpt, AcGePoint3d& endpt, AcDbObjectId& blockid, AcGePoint3d& movepoint, AcGeVector3d& vec, double circleradius, double scaleFactor)
+{
+	AcGePoint3d movept = movepoint;
+	AcGeVector3d tempvec = vec;
+	tempvec.normalize();
+	AcGePoint3d inserpt = movept.transformBy(tempvec*circleradius);
+
+	AcGePoint3d originpt = COperaAxleNetMaking::getChangPoint(startpt, AcGeVector3d(AcGePoint3d(startpt.x, startpt.y - 20, 0) - startpt), scaleFactor);
+	AcGeVector3d vec_1 = AcGeVector3d(AcGePoint3d(startpt.x, startpt.y - 20, 0) - startpt);
+	AcGeVector3d vec_2 = AcGeVector3d(startpt - endpt);
+	AcGePoint3d pt = COperaAxleNetMaking::getChangPoint(startpt, vec_2, scaleFactor - 100);
+
+	if (CCommonFuntion::isVerticalBothLines(pt, startpt, startpt, originpt, 1) || CCommonFuntion::IsOnLine(pt,startpt,originpt))
+		return;
+
+	int tag = CCommonFuntion::relationshipWithLinePosition(pt, startpt, originpt);
+
+	double angle = vec_1.angleTo(vec_2);
+	if (tag > 0)//左侧
+	{
+		if (CCommonFuntion::radianAngle(angle) >= 90)
+			angle = vec_1.angleTo(-vec_2);
+		else
+			angle = -angle;
+	}
+	else if (tag < 0)//右侧
+	{
+		if (CCommonFuntion::radianAngle(angle) >= 90)
+			angle = -(vec_1.angleTo(-vec_2));
+		else
+			angle = angle;
+	}
+	
+	AcDbEntity *pEnt = NULL;
+	if (acdbOpenObject(pEnt, blockid, AcDb::kForWrite) == eOk)
+	{
+		AcGeMatrix3d mat;
+		mat.setToRotation(angle, AcGeVector3d::kZAxis, inserpt);
+		pEnt->transformBy(mat);
+		pEnt->close();
+	}
 }
