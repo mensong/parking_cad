@@ -59,23 +59,6 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaCheck::Start()
 {
-	//CEquipmentroomTool::test();
-
-	/*std::string json;
-	std::string sMsg;
-	int status = getCheckData(sMsg, json);
-	if (status != 1)
-	{
-		acedAlert(GL::Ansi2WideByte(sMsg.c_str()).c_str());
-		return;
-	}
-	CString serrorMsg;
-	if (!getDataforJson(json, serrorMsg))
-	{
-		acedAlert(serrorMsg);
-		return;
-	}*/
-
 	clock_t start, finish;
 	double totaltime;
 	start = clock();
@@ -84,6 +67,12 @@ void COperaCheck::Start()
 	totaltime = (double)(finish - start) / CLOCKS_PER_SEC;
 	/*acedGetAcadDwgView()->SetFocus();
 	DBHelper::CallCADCommandEx(_T("REGEN"));*/
+	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	AcDbObjectIdArray allCloudIds = DBHelper::GetEntitiesByLayerName(sCloudLineLayer);
+	if (!allCloudIds.isEmpty())
+	{
+		DBHelper::CallCADCommand(_T("FindCloudShow "));
+	}
 	int ct = 0;
 }
 
@@ -226,7 +215,6 @@ void COperaCheck::overlapShow()
 
 	//用于直线筛选的rtree
 	RT::RTreeEx<UINT32, double, 2> rTreeOfLineFilter;
-
 	//获取到所有车位面域
 	CString parkingLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
 	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(parkingLayer);
@@ -338,6 +326,12 @@ void COperaCheck::overlapShow()
 						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
 						AcDbObjectId cloudId;
 						creatCloudLine(plineExtentPts, cloudId);
+						double dArea = sss / 1000000;
+						CString sArea;
+						sArea.Format(_T("%.2f"), dArea);
+						DBHelper::AddXRecord(cloudId, _T("cloud_area"), sArea);
+						CString cloudInf = _T("车位与方柱重叠区域");
+						DBHelper::AddXRecord(cloudId, _T("cloud"), cloudInf);
 					}
 				}
 			}
@@ -431,6 +425,12 @@ void COperaCheck::overlapShow()
 						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
 						AcDbObjectId cloudID;
 						creatCloudLine(plineExtentPts, cloudID);
+						double dArea = sss / 1000000;
+						CString sArea;
+						sArea.Format(_T("%.2f"), dArea);
+						DBHelper::AddXRecord(cloudID, _T("cloud_area"), sArea);
+						CString cloudInf = _T("车位与剪力墙重叠区域");
+						DBHelper::AddXRecord(cloudID, _T("cloud"), cloudInf);
 					}
 				}
 			}

@@ -29,6 +29,7 @@
 #define IDD_DLG_BIP_LOGIN               116
 #define IDD_DIALOG_SLIDER               118
 #define IDC_CHECK_Partition             119
+#define IDD_DLG_FINDCLOUD               120
 #define IDC_COMBO_Direction             128
 #define IDC_COMBO_OutlineLayer          129
 #define IDC_COMBO_ShearwallLayer        130
@@ -67,6 +68,7 @@
 #define IDC_CHK_SAVE_PWD                180
 #define IDC_CHECK_MANYSHOW              181
 #define IDC_BUTTON_PARTPLAN             182
+#define IDC_LIST                        183
 #define IDC_LAYERLIST                   184
 #define IDC_EDIT_LIST                   186
 #define IDC_COMBO_CONFIGCHOOSE          188
@@ -78,9 +80,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        120
+#define _APS_NEXT_RESOURCE_VALUE        122
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         183
+#define _APS_NEXT_CONTROL_VALUE         184
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

@@ -1021,6 +1021,12 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		AcDbObjectId blankId;
 		//替换成云线生成api
 		COperaCheck::blankCheckShow(blanksPoints[d], blankId, pDb);
+		double dArea = GeHelper::CalcPolygonArea(blanksPoints[d])/1000000;
+		CString sArea;
+		sArea.Format(_T("%.2f"), dArea);
+		DBHelper::AddXRecord(blankId, _T("cloud_area"), sArea);
+		CString cloudInf = _T("空白区域");
+		DBHelper::AddXRecord(blankId, _T("cloud"), cloudInf);
 		blankIds.append(blankId);
 	}
 	if (!blankIds.isEmpty())
