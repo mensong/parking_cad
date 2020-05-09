@@ -54,4 +54,5 @@ public:
 	afx_msg void OnBnClickedOk();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	void init(bool isRefresh = false);
+	void reDraw(const AcDbObjectId& targetId);
 } ;
