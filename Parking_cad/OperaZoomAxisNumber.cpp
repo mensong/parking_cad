@@ -41,20 +41,20 @@ void COperaZoomAxisNumber::Start()
 	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	const ACHAR *layername = sAxisLayer;//÷·œﬂÀ˘‘⁄Õº≤„
 
-										/*std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(LineIds);
-										for (int i=0; i<idsvec.size(); ++i)
-										{
-										for (int k = 0; k < idsvec[i].size(); ++k)
-										{
-										AcDbEntity *pEnt = NULL;
-										if(acdbOpenObject(pEnt, idsvec[i][k], AcDb::kForWrite)!=eOk)
-										continue;
+	/*std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(LineIds);
+	for (int i=0; i<idsvec.size(); ++i)
+	{
+		for (int k = 0; k < idsvec[i].size(); ++k)
+		{
+		AcDbEntity *pEnt = NULL;
+		if(acdbOpenObject(pEnt, idsvec[i][k], AcDb::kForWrite)!=eOk)
+		continue;
 
-										pEnt->setColorIndex(i);
-										pEnt->close();
-										}
-										}
-										return;*/
+		pEnt->setColorIndex(i);
+		pEnt->close();
+		}
+	}
+	return;*/
 
 	std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(axisIds);
 	for (int idsvecNum = 0; idsvecNum < idsvec.size(); ++idsvecNum)

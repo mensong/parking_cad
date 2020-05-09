@@ -100,5 +100,19 @@ public:
 	//通配符
 	static bool PathernMatch(char *pat, char *str);
 
+public:
+	//与点与直线的位置关系： >0在右侧；=0在线上；<0在左侧
+	static float relationshipWithLinePosition(AcGePoint3d&pt, AcGePoint3d& linept1, AcGePoint3d& linept2);
+	static float relationshipWithLinePosition(AcGePoint3d&pt,AcDbObjectId& lineid);
+	//判断两条直线是否垂直,pt1和pt2为一条边，pt3和pt4为一条边,pt1和pt4为斜边，其中pt2和pt3是公共点
+	static bool isVerticalBothLines(AcGePoint3d& pt1, AcGePoint3d& pt2, AcGePoint3d& pt3, AcGePoint3d& pt4, double tol);
+	static bool isVerticalBothLines(AcDbObjectId& Line1, AcDbObjectId& Line2, double tol);
+	//角度、弧度互转
+	//角度转弧度
+	static double angularRadian(double angle);
+	//弧度转角度
+	static double radianAngle(double radian);
+	
+
 };
 
