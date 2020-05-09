@@ -90,6 +90,7 @@ BOOL CDlgFindCloud::OnInitDialog()
 
 	// TODO:  在此添加额外的初始化
 	init();
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -104,13 +105,13 @@ void CDlgFindCloud::OnNMClickList(NMHDR *pNMHDR, LRESULT *pResult)
 	//将屏幕坐标转到客户区坐标
 	m_listRes.ScreenToClient(&point);
 
-		LVHITTESTINFO info;
+	LVHITTESTINFO info;
 	info.pt = point;
 	int Itsub = m_listRes.SubItemHitTest(&info);
 	int row = info.iItem;//行号从0开始
 	int col = info.iSubItem;//列号从0开始
 
-	std::map<int, AcDbObjectId>::const_iterator itTag = m_listRowAndIds.find(row+1);
+	std::map<int, AcDbObjectId>::const_iterator itTag = m_listRowAndIds.find(row);
 	if (itTag == m_listRowAndIds.end())
 		return;
 	reDraw(itTag->second);
@@ -180,14 +181,14 @@ void CDlgFindCloud::init(bool isRefresh /*= false*/)
 			showText = _T("车位与剪力墙重叠区域") + sCount;
 			DBHelper::GetXRecord(allIds[i], _T("cloud_area"), araeText);
 		}
-		int nRow = m_listRes.InsertItem(i + 1, showText);
+		int nRow = m_listRes.InsertItem(i, showText);
 		m_listRes.SetItemText(nRow, 1, araeText);
-		std::pair<int, AcDbObjectId> value(i + 1, allIds[i]);
+		std::pair<int, AcDbObjectId> value(i, allIds[i]);
 		m_listRowAndIds.insert(value);
 		//m_listRowAndIds.insert(std::pair<int, AcDbObjectId>(i + 1, allIds[i]));
 	}
 	m_listRes.SetExtendedStyle(m_listRes.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
-	m_listRes.ModifyStyle(0, LVS_SINGLESEL);
+	m_listRes.ModifyStyle(0, LVS_SINGLESEL | LVS_SHOWSELALWAYS);
 }
 
 void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
