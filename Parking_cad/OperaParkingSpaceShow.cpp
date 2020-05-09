@@ -80,16 +80,16 @@ void COperaParkingSpaceShow::Start()
 	//std::string part_posturl	= encrypt("http://parking-v2.asdfqwer.net:81/auto/park");
 	//std::string part_geturl		= encrypt("http://parking-v2.asdfqwer.net:81/auto/query/");
 
-	std::string posturl			= encrypt("http://parking.asdfqwer.net:8080/parking/park");
-	std::string geturl			= encrypt("http://parking.asdfqwer.net:8080/parking/query/");
-	std::string check_geturl	= encrypt("http://parking.asdfqwer.net:8080/parking/check/");
+	std::string posturl			= encrypt("http://parking-v2.asdfqwer.net:81/guo/park");
+	std::string geturl			= encrypt("http://parking-v2.asdfqwer.net:81/guo/query/");
+	//std::string check_geturl	= encrypt("http://parking.asdfqwer.net:8080/parking/check/");
 	std::string part_posturl	= encrypt("http://parking.asdfqwer.net:8080/parking/auto/park");
 	std::string part_geturl		= encrypt("http://parking.asdfqwer.net:8080/parking/auto/query/");
 
 	Json::Value jsTest;
 	jsTest["params"]["posturl"] = posturl;
 	jsTest["params"]["geturl"] = geturl;
-	jsTest["params"]["check_geturl"] = check_geturl;
+	//jsTest["params"]["check_geturl"] = check_geturl;
 	jsTest["params"]["part_posturl"] = part_posturl;
 	jsTest["params"]["part_geturl"] = part_geturl;
 
@@ -117,10 +117,10 @@ void COperaParkingSpaceShow::Start()
 			std::string entrancePostUrl = root["params"]["check_geturl"].asString();
 			std::string strPostUrl = decrypt(postUrlOne);
 			std::string strGetUrl = decrypt(getUrlOne);
-			std::string strEntrancePostUrl = decrypt(entrancePostUrl);
+			//std::string strEntrancePostUrl = decrypt(entrancePostUrl);
 			CArxDialog::setPostUrlPortone(strPostUrl);
 			CDlgWaiting::setGetUrlPortOne(strGetUrl);
-			COperaCheck::setGetCheckUrl(strEntrancePostUrl);
+			//COperaCheck::setGetCheckUrl(strEntrancePostUrl);
 			std::string postUrlTwo = root["params"]["part_posturl"].asString();
 			std::string getUrlTwo = root["params"]["part_geturl"].asString();
 			std::string strPartPostUrl = decrypt(postUrlTwo);
@@ -142,26 +142,26 @@ void COperaParkingSpaceShow::Start()
 		return;
 	}
 
-	AcString sTemplateFile = DBHelper::GetArxDir() + _T("template.dwg");
-	std::set<AcString> setBlockNames;
-	setBlockNames.insert(_T("car_1"));
-	ObjectCollector oc;
-	oc.start(acdbCurDwg());
-	if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/))
-	{
-		acedAlert(_T("加载模板文件出错！"));
-		return;
-	}
-	if (oc.m_objsAppended.length() > 0)
-	{
-		CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
-		CEquipmentroomTool::layerSet(sParkingsLayer, 7);
+	//AcString sTemplateFile = DBHelper::GetArxDir() + _T("template.dwg");
+	//std::set<AcString> setBlockNames;
+	//setBlockNames.insert(_T("car_1"));
+	//ObjectCollector oc;
+	//oc.start(acdbCurDwg());
+	//if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/))
+	//{
+	//	acedAlert(_T("加载模板文件出错！"));
+	//	return;
+	//}
+	//if (oc.m_objsAppended.length() > 0)
+	//{
+	//	CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
+	//	CEquipmentroomTool::layerSet(sParkingsLayer, 7);
 
-		for (int i = 0; i < oc.m_objsAppended.length(); i++)
-		{
-			CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sParkingsLayer);
-		}
-	}
+	//	for (int i = 0; i < oc.m_objsAppended.length(); i++)
+	//	{
+	//		CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sParkingsLayer);
+	//	}
+	//}
 
 	//强行切换值wcs
 	DBHelper::CallCADCommand(_T("UCS W "));

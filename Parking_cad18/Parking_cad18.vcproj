@@ -398,6 +398,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgFindCloud.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgSetConfig.cpp"
 				>
 			</File>
@@ -466,6 +470,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaFindCloudShow.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaFirePoolSet.cpp"
 				>
 			</File>
@@ -515,6 +523,14 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaZoomAxisNumber.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteCmpResTwoCad.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteSetCmpRes.cpp"
 				>
 			</File>
 			<File
@@ -603,6 +619,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgFindCloud.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgSetConfig.h"
 				>
 			</File>
@@ -632,6 +652,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\lib_bipsignin.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\LibcurlHttp.h"
 				>
 			</File>
 			<File
@@ -676,6 +700,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaEquipmentRoomSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaFindCloudShow.h"
 				>
 			</File>
 			<File
@@ -728,6 +756,14 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaZoomAxisNumber.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteCmpResTwoCad.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteSetCmpRes.h"
 				>
 			</File>
 			<File
