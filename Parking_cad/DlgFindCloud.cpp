@@ -113,8 +113,8 @@ void CDlgFindCloud::OnNMClickList(NMHDR *pNMHDR, LRESULT *pResult)
 	std::map<int, AcDbObjectId>::const_iterator itTag = m_listRowAndIds.find(row+1);
 	if (itTag == m_listRowAndIds.end())
 		return;
+	reDraw(itTag->second);
 	DBHelper::ZoomOptimum(itTag->second);
-
 	*pResult = 0;
 }
 
@@ -188,4 +188,22 @@ void CDlgFindCloud::init(bool isRefresh /*= false*/)
 	}
 	m_listRes.SetExtendedStyle(m_listRes.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 	m_listRes.ModifyStyle(0, LVS_SINGLESEL);
+}
+
+void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
+{
+	Doc_Locker _locker;
+	AcDbEntity *pEnt = NULL;
+	Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, targetId, AcDb::kForWrite);
+	if (es == eOk)
+	{
+		pEnt->setVisibility(AcDb::kInvisible);
+		pEnt->setVisibility(AcDb::kVisible);
+		pEnt->close();
+	}
+	else
+	{
+		acutPrintf(_T("打开实体失败"));
+	}
+	acedGetAcadDwgView()->SetFocus();
 }
