@@ -112,10 +112,12 @@ void CDlgFindCloud::OnNMClickList(NMHDR *pNMHDR, LRESULT *pResult)
 	int col = info.iSubItem;//列号从0开始
 
 	std::map<int, AcDbObjectId>::const_iterator itTag = m_listRowAndIds.find(row);
-	if (itTag == m_listRowAndIds.end())
-		return;
-	reDraw(itTag->second);
-	DBHelper::ZoomOptimum(itTag->second);
+	if (itTag != m_listRowAndIds.end() && itTag->second.isValid())
+	{
+		DBHelper::ZoomOptimum(itTag->second);
+		reDraw(itTag->second);
+	}
+
 	*pResult = 0;
 }
 
@@ -195,17 +197,18 @@ void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
 {
 	Doc_Locker _locker;
 	AcDbEntity *pEnt = NULL;
-	Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, targetId, AcDb::kForWrite);
+	Acad::ErrorStatus es = targetId.isValid()? acdbOpenObject(pEnt, targetId, AcDb::kForWrite) : Acad::eInvalidObjectId;
 	if (es == eOk)
 	{
 		pEnt->setVisibility(AcDb::kInvisible);
 		pEnt->setVisibility(AcDb::kVisible);
 		pEnt->close();
+
+		acedGetAcadDwgView()->SetFocus();
+		m_listRes.SetFocus();
 	}
 	else
 	{
 		acutPrintf(_T("打开实体失败"));
 	}
-	acedGetAcadDwgView()->SetFocus();
-	m_listRes.SetFocus();
 }
