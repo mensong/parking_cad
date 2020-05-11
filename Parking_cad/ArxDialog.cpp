@@ -972,19 +972,6 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 	CDlgWaiting* pWaitDlg = new CDlgWaiting;
 	pWaitDlg->Create(CDlgWaiting::IDD, acedGetAcadDwgView());
 	pWaitDlg->ShowWindow(SW_SHOW);
-
-	////输出到文件
-	//Json::StyledWriter sw;
-	//std::ofstream os;
-	//os.open("parkingConfigtest");
-	//if (!os.is_open())
-	//{
-	//	acedAlert(_T("打开或创建文件失败"));
-	//	return;	
-	//}
-	//os << sw.write(root);
-	//os.close();
-
 	CAcUiDialog::OnOK();
 }
 
@@ -1242,5 +1229,9 @@ void CArxDialog::OnBnClickedButtonManyshow()
 void CArxDialog::OnBnClickedButtonPartplan()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	selectPort(false, true);
+	int result = MessageBox(TEXT("该排布方式耗时较久，确定进行此次排布任务吗？"), TEXT("分区排布"), MB_YESNO);
+	if (result==6)
+	{
+		selectPort(false, true);
+	}
 }

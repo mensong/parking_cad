@@ -59,6 +59,29 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaCheck::Start()
 {
+	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	AcDbObjectIdArray oldCloudIds = DBHelper::GetEntitiesByLayerName(sCloudLineLayer);
+	for (int i=0; i<oldCloudIds.length(); i++)
+	{
+		AcString XRecordText;
+		DBHelper::GetXRecord(oldCloudIds[i], _T("cloud"), XRecordText);
+		if (XRecordText==_T("车位与方柱重叠区域")|| XRecordText==_T("车位与剪力墙重叠区域"))
+		{
+			Doc_Locker _locker;
+			AcDbEntity *pEnt = NULL;
+			Acad::ErrorStatus es = acdbOpenAcDbEntity(pEnt, oldCloudIds[i], AcDb::kForWrite);
+			if (es == eOk)
+			{
+				pEnt->erase();
+			}
+			else
+			{
+				acutPrintf(_T("打开实体失败"));
+			}
+			pEnt->close();
+			acedGetAcadDwgView()->SetFocus();
+		}
+	}
 	clock_t start, finish;
 	double totaltime;
 	start = clock();
@@ -67,7 +90,6 @@ void COperaCheck::Start()
 	totaltime = (double)(finish - start) / CLOCKS_PER_SEC;
 	/*acedGetAcadDwgView()->SetFocus();
 	DBHelper::CallCADCommandEx(_T("REGEN"));*/
-	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
 	AcDbObjectIdArray allCloudIds = DBHelper::GetEntitiesByLayerName(sCloudLineLayer);
 	if (!allCloudIds.isEmpty())
 	{
