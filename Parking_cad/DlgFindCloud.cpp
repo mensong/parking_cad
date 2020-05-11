@@ -207,4 +207,5 @@ void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
 		acutPrintf(_T("打开实体失败"));
 	}
 	acedGetAcadDwgView()->SetFocus();
+	m_listRes.SetFocus();
 }
