@@ -64,89 +64,6 @@ typedef struct PROCESS_READ_WRITE
 class WD
 {
 public:
-	static bool Execute(const char* szFile, const char* szParam, unsigned long& exitCode, std::string* sPrintText = NULL, unsigned long timeout = 0)
-	{
-		if (!szFile || szFile[0] == '\0')
-			return false;
-
-		HANDLE hRead, hWrite;
-		//创建匿名管道
-		SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), NULL, TRUE };
-		if (!CreatePipe(&hRead, &hWrite, &sa, 0))
-		{
-			return false;
-		}
-
-		int nCmdLen = (strlen(szFile) + (szParam?strlen(szParam):0) + 4) * sizeof(char);
-		char* szCmd = (char*)_alloca(nCmdLen);//_alloca在栈上申请的，会自动释放
-		memset(szCmd, 0, nCmdLen);
-		strcpy(szCmd, "\"");
-		strcat(szCmd, szFile);
-		strcat(szCmd, "\"");
-		if (szParam)
-		{
-			strcat(szCmd, " ");
-			strcat(szCmd, szParam);
-		}
-
-		//设置命令行进程启动信息(以隐藏方式启动命令并定位其输出到hWrite)
-		STARTUPINFOA si = { sizeof(STARTUPINFOA) };
-		GetStartupInfoA(&si);
-		si.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
-		si.wShowWindow = SW_NORMAL;
-		si.hStdError = hWrite;
-		si.hStdOutput = hWrite;
-
-		//启动命令行
-		PROCESS_INFORMATION pi;
-		if (!CreateProcessA(NULL, (char *)szCmd, NULL, NULL, TRUE, NULL, NULL, NULL, &si, &pi))
-		{
-			CloseHandle(hWrite);
-			CloseHandle(hRead);
-			return false;
-		}
-
-		//立即关闭hWrite
-		CloseHandle(hWrite);
-
-		HANDLE ev = CreateEventA(NULL, TRUE, FALSE, NULL);
-
-		bool bRet = true;
-
-		unsigned int uiThreadID = 0;
-		HANDLE hThreadRW = (HANDLE)_beginthreadex(NULL, 0, _Execute_readAndWrite, 
-			(void*)&(PROCESS_READ_WRITE(hRead, sPrintText, ev)), 0, &uiThreadID);
-
-		DWORD waitRet = 0;
-		if (timeout > 0)
-			waitRet = WaitForSingleObject(ev, timeout);
-		else
-			waitRet = WaitForSingleObject(ev, INFINITE);
-
-		switch (waitRet)
-		{
-		case WAIT_TIMEOUT:
-			bRet = true;
-			break;
-		case WAIT_FAILED:
-			TerminateThread(hThreadRW, 1);
-			TerminateProcess(pi.hProcess, 1);
-			bRet = false;
-			break;
-		case WAIT_OBJECT_0:		
-			GetExitCodeProcess(pi.hProcess, &exitCode);//获得返回值
-			bRet = true;
-			break;
-		}
-
-		CloseHandle(hRead);
-		CloseHandle(pi.hProcess);
-		CloseHandle(pi.hThread);
-		CloseHandle(ev);
-
-		return bRet;
-	}
-
 	//创建窗口
 	static LRESULT Create(const char* exe = NULL)
 	{
@@ -256,5 +173,88 @@ protected:
 		SetEvent(ev);
 
 		return 0;
+	}
+
+	static bool Execute(const char* szFile, const char* szParam, unsigned long& exitCode, std::string* sPrintText = NULL, unsigned long timeout = 0)
+	{
+		if (!szFile || szFile[0] == '\0')
+			return false;
+
+		HANDLE hRead, hWrite;
+		//创建匿名管道
+		SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), NULL, TRUE };
+		if (!CreatePipe(&hRead, &hWrite, &sa, 0))
+		{
+			return false;
+		}
+
+		int nCmdLen = (strlen(szFile) + (szParam?strlen(szParam):0) + 4) * sizeof(char);
+		char* szCmd = (char*)_alloca(nCmdLen);//_alloca在栈上申请的，会自动释放
+		memset(szCmd, 0, nCmdLen);
+		strcpy(szCmd, "\"");
+		strcat(szCmd, szFile);
+		strcat(szCmd, "\"");
+		if (szParam)
+		{
+			strcat(szCmd, " ");
+			strcat(szCmd, szParam);
+		}
+
+		//设置命令行进程启动信息(以隐藏方式启动命令并定位其输出到hWrite)
+		STARTUPINFOA si = { sizeof(STARTUPINFOA) };
+		GetStartupInfoA(&si);
+		si.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
+		si.wShowWindow = SW_NORMAL;
+		si.hStdError = hWrite;
+		si.hStdOutput = hWrite;
+
+		//启动命令行
+		PROCESS_INFORMATION pi;
+		if (!CreateProcessA(NULL, (char *)szCmd, NULL, NULL, TRUE, NULL, NULL, NULL, &si, &pi))
+		{
+			CloseHandle(hWrite);
+			CloseHandle(hRead);
+			return false;
+		}
+
+		//立即关闭hWrite
+		CloseHandle(hWrite);
+
+		HANDLE ev = CreateEventA(NULL, TRUE, FALSE, NULL);
+
+		bool bRet = true;
+
+		unsigned int uiThreadID = 0;
+		HANDLE hThreadRW = (HANDLE)_beginthreadex(NULL, 0, _Execute_readAndWrite, 
+			(void*)&(PROCESS_READ_WRITE(hRead, sPrintText, ev)), 0, &uiThreadID);
+
+		DWORD waitRet = 0;
+		if (timeout > 0)
+			waitRet = WaitForSingleObject(ev, timeout);
+		else
+			waitRet = WaitForSingleObject(ev, INFINITE);
+
+		switch (waitRet)
+		{
+		case WAIT_TIMEOUT:
+			bRet = true;
+			break;
+		case WAIT_FAILED:
+			TerminateThread(hThreadRW, 1);
+			TerminateProcess(pi.hProcess, 1);
+			bRet = false;
+			break;
+		case WAIT_OBJECT_0:		
+			GetExitCodeProcess(pi.hProcess, &exitCode);//获得返回值
+			bRet = true;
+			break;
+		}
+
+		CloseHandle(hRead);
+		CloseHandle(pi.hProcess);
+		CloseHandle(pi.hThread);
+		CloseHandle(ev);
+
+		return bRet;
 	}
 };
