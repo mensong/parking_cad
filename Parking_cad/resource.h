@@ -70,6 +70,7 @@
 #define IDC_BUTTON_PARTPLAN             182
 #define IDC_LIST                        183
 #define IDC_LAYERLIST                   184
+#define IDC_ANIMATE1                    184
 #define IDC_EDIT_LIST                   186
 #define IDC_COMBO_CONFIGCHOOSE          188
 #define IDC_COMBO_LINEWIDTH             189
@@ -82,7 +83,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        122
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         184
+#define _APS_NEXT_CONTROL_VALUE         185
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif
