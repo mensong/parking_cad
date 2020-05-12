@@ -222,7 +222,7 @@ void CDlgWaiting::OnTimer(UINT_PTR nIDEvent)
 				std::string sConfigFile = DBHelper::GetArxDirA() + "rr.json";
 				FileHelper::WriteFile(sConfigFile.c_str(), json.c_str(), json.size(), NULL, 0);
 #endif
-				COperaMultiSchemeShow::getJsonData(json, iCount);
+				COperaMultiSchemeShow::getJsonData(json);
 				DBHelper::CallCADCommand(_T("MultiSchemeShow "));
 				acutPrintf(_T("\nthe uuid is :%s"), GL::Ansi2WideByte(ms_uuid.c_str()).c_str());
 				acutPrintf(_T("\n"));

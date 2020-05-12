@@ -43,6 +43,7 @@
 #include "KV.h"
 #include "OperaSetConfig.h"
 #include "LibcurlHttp.h"
+#include "OperaMultiSchemeShow.h"
 
 std::string CArxDialog::ms_posturlPortone;
 std::string CArxDialog::ms_posturlPorttwo;
@@ -404,6 +405,7 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 		m_StrRetreatLine += CString(_T("(")) + tempStr_X + _T(",") + tempStr_Y + _T(")");
 		m_editRetreatLine.SetWindowText(m_StrRetreatLine);
 	}
+	getDatabaseBackup();
 }
 
 
@@ -1234,4 +1236,34 @@ void CArxDialog::OnBnClickedButtonPartplan()
 	{
 		selectPort(false, true);
 	}
+}
+
+void CArxDialog::getDatabaseBackup()
+{
+	CString path = CEquipmentroomTool::getOpenDwgFilePath();
+	CString deleName = _T(".dwg");
+	path = path.Trim(deleName);
+	CTime t = CTime::GetCurrentTime();
+	int day = t.GetDay(); //获得几号  
+	int year = t.GetYear(); //获取年份  
+	int month = t.GetMonth(); //获取当前月份  
+	int hour = t.GetHour(); //获取当前为几时   
+	int minute = t.GetMinute(); //获取分钟  
+	int second = t.GetSecond(); //获取秒  
+								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
+	CString sDay;
+	sDay.Format(_T("%d"), day);
+	CString sYear;
+	sYear.Format(_T("%d"), year);
+	CString sMonth;
+	sMonth.Format(_T("%d"), month);
+	CString sHour;
+	sHour.Format(_T("%d"), hour);
+	CString sMinute;
+	sMinute.Format(_T("%d"), minute);
+	CString sSecond;
+	sSecond.Format(_T("%d"), second);
+	CString sNum = _T("_") + sYear + sMonth + sDay + sHour + sMinute + sSecond + _T(".dwg");
+	CString newFileName = path + sNum;
+	COperaMultiSchemeShow::getRootDataBaseAndFileName(acdbCurDwg(),newFileName);
 }
