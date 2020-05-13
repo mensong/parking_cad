@@ -153,7 +153,7 @@ public:
 	}
 
 	//获得当前位置
-	static int GetPost()
+	static int GetPos()
 	{
 		HWND h = FindWindow(_T("WaitingDialog"), NULL);
 		if (!h)
