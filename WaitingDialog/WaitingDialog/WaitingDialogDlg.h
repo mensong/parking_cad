@@ -34,6 +34,8 @@ protected:
 	afx_msg BOOL OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct);
 	afx_msg LRESULT OnReset(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnMyClose(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnGetPos(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnGetRange(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
 
 public:

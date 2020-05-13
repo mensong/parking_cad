@@ -45,6 +45,8 @@ BEGIN_MESSAGE_MAP(CWaitingDialogDlg, CDialogEx)
 	ON_WM_COPYDATA()
 	ON_MESSAGE(WM_WD_RESET, OnReset)
 	ON_MESSAGE(WM_WD_CLOSE, OnMyClose)
+	ON_MESSAGE(WM_WD_GETPOS, OnGetPos)
+	ON_MESSAGE(WM_WD_GETRANGE, OnGetRange)
 END_MESSAGE_MAP()
 
 
@@ -176,4 +178,22 @@ LRESULT CWaitingDialogDlg::OnMyClose(WPARAM wParam, LPARAM lParam)
 {
 	this->DestroyWindow();
 	return 0;
+}
+
+LRESULT CWaitingDialogDlg::OnGetPos(WPARAM wParam, LPARAM lParam)
+{
+	return m_progressCtrl.GetPos();
+}
+
+LRESULT CWaitingDialogDlg::OnGetRange(WPARAM wParam, LPARAM lParam)
+{
+	int mi = 0, ma = 0;
+	m_progressCtrl.GetRange(mi, ma);
+
+	if ((int)lParam == 1)
+		return mi;
+	if ((int)lParam == 2)
+		return ma;
+
+	return -1;
 }

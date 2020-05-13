@@ -238,7 +238,6 @@
     <ClInclude Include="..\TangentReader\HackerLineStair.h" />
     <ClInclude Include="..\TangentReader\HackerRectStair.h" />
     <ClInclude Include="..\TangentReader\HackerWall_VD.h" />
-    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />

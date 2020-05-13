@@ -43,8 +43,10 @@ typedef struct WD_SETTITLE
 	}
 } WD_SETTITLE;
 
-#define WM_WD_RESET	(WM_USER + 1)
-#define WM_WD_CLOSE (WM_USER + 2)
+#define WM_WD_RESET		(WM_USER + 1)
+#define WM_WD_CLOSE		(WM_USER + 2)
+#define WM_WD_GETPOS	(WM_USER + 3)
+#define WM_WD_GETRANGE	(WM_USER + 4)
 
 typedef struct PROCESS_READ_WRITE
 {
@@ -150,6 +152,28 @@ public:
 		return SendMessage(h, WM_WD_CLOSE, 0, 0);
 	}
 
+	//获得当前位置
+	static int GetPost()
+	{
+		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		if (!h)
+			return -1;
+
+		return SendMessage(h, WM_WD_GETPOS, 0, 0);
+	}
+
+	//获得范围
+	static LRESULT GetRange(int& mi, int& ma)
+	{
+		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		if (!h)
+			return -1;
+
+		mi = SendMessage(h, WM_WD_GETRANGE, 0, 1);
+		ma = SendMessage(h, WM_WD_GETRANGE, 0, 2);
+		return S_OK;
+	}
+	
 protected:
 	static unsigned __stdcall _Execute_readAndWrite(void* arg)
 	{
