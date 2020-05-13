@@ -89,60 +89,6 @@ void CDlgSetConfig::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
 
- //    Doc_Locker _locker;
-	////判断有就退出无就生成图层生，并设置颜色
- //   AcDbLayerTable *pLayerTbl;
- //   //获取当前图形层表
- //   Acad::ErrorStatus es;
-	//es = acdbCurDwg()->getLayerTable(pLayerTbl, AcDb::kForWrite);
-	//if (es != eOk)
-	//{
-	//	return;
-	//}
-	//if (pLayerTbl->has(_T("0")))//判断已经有了该图层，应置为当前图层
-	//{
-	//	AcDbObjectId layerId;
-	//	if (pLayerTbl->getAt(_T("0"), layerId) != Acad::eOk)
-	//	{
-	//		pLayerTbl->close();
-	//		return;
-	//	}
-	//	es = acdbCurDwg()->setClayer(layerId);//设为当前图层
-	//	AcDbLayerTableRecord *pLayerTblRcd;
-	//	pLayerTbl->getAt(_T("0"), pLayerTblRcd, AcDb::kForWrite);
-	//	AcDb::LineWeight l = pLayerTblRcd->lineWeight();
-	//	AcCmTransparency trans = pLayerTblRcd->transparency();
-	//	AcCmTransparency test = AcCmTransparency(0.3);
-	//	Acad::ErrorStatus ew = pLayerTblRcd->setTransparency(test);
-	//	ew = pLayerTblRcd->setIsPlottable(true);
-	//	pLayerTblRcd->setLineWeight(AcDb::kLnWt009); // 设置线宽为0.09
-	//	AcDbLinetypeTable *pLineTbl;
-	//	es = acdbCurDwg()->getLinetypeTable(pLineTbl, AcDb::kForRead);
-	//	if (es != eOk)
-	//	{
-	//		pLineTbl->close();
-	//		pLayerTblRcd->close();
-	//		return;
-	//	}
-	//	AcDbObjectId dashId; //dash线形ID，你自己去得到，在线形表中查询
-	//	if (pLineTbl->getAt(_T("DASH"), dashId) != eOk)
-	//	{
-	//		pLineTbl->close();
-	//		pLayerTblRcd->close();
-	//		pLayerTbl->close(); 
-	//		return;
-	//		CAcUiDialog::OnOK();
-	//	}
-	//	pLayerTblRcd->setLinetypeObjectId(dashId); // 设置为dash线形
-	//	pLineTbl->close();
-	//	pLayerTblRcd->close(); 
-	//	pLayerTbl->close();
-	//	if (es != eOk)
-	//	{
-	//		return;
-	//	}
-	//}
-    
     std::vector<std::vector<std::string>> items;
     int max_row = 0, max_col = 0;
 	if (m_ctrlConfigSetList.GetHeaderCtrl())
@@ -207,7 +153,9 @@ void CDlgSetConfig::OnBnClickedOk()
 	//字节点属性
 	params["posturl"] = Json::Value(m_strUiPostUrl);
 	params["geturl"] = Json::Value(m_strUiGetUrl);
-	params["check_geturl"] = Json::Value(m_strEntranceUrl);
+	params["part_posturl"] = Json::Value(m_strUiPartPostUrl);
+	params["part_geturl"] = Json::Value(m_strUiPartGetUrl);
+
 	m_root["params"] = Json::Value(params);
 
 	Json::Value layer_config;
@@ -383,7 +331,8 @@ void CDlgSetConfig::init()
 		{
 			m_strUiPostUrl = m_root["params"]["posturl"].asString();
 			m_strUiGetUrl = m_root["params"]["geturl"].asString();
-			m_strEntranceUrl = m_root["params"]["check_geturl"].asString();
+			m_strUiPartPostUrl = m_root["params"]["part_posturl"].asString();
+			m_strUiPartGetUrl = m_root["params"]["part_geturl"].asString();
 		}
 		else
 		{

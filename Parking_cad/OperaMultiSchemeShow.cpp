@@ -60,7 +60,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	WD::AppendMsg(sMsg.GetString());
 	if (!parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//排布结果车位展示
 	sMsg.Format(_T("方案%d : 生成车位"), scheme + 1);
@@ -72,7 +72,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	creatNewParkingBlock(dParkingLength, dParkingWidth, blockName, pDataBase);
 	if (!parsingParkingData(parkings, sMsg, blockName, pDataBase))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//轴线展示
 	sMsg.Format(_T("方案%d : 生成轴线"), scheme + 1);
@@ -87,7 +87,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	}
 	else
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//车道线展示
 	sMsg.Format(_T("方案%d : 生成车道线"), scheme + 1);
@@ -96,7 +96,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	AcDbObjectIdArray RoadLineIds;
 	if (!parsingLaneData(lane, sMsg, RoadLineIds, pDataBase))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//生成车道标注
 	sMsg.Format(_T("方案%d : 生成车道标注"), scheme + 1);
@@ -116,7 +116,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	Json::Value& scope = oneScheme["scope"];
 	if (!parsingScopeData(scope, sMsg, pDataBase))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//方柱展示
 	sMsg.Format(_T("方案%d : 生成方柱"), scheme + 1);
@@ -125,7 +125,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	AcDbObjectIdArray pillarIds;
 	if (!parsingPillarData(pillar, sMsg, pillarIds, pDataBase))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//车道方向箭头展示
 	sMsg.Format(_T("方案%d : 生成车道方向"), scheme + 1);
@@ -134,7 +134,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	AcDbObjectIdArray arrowIds;
 	if (!parsingArrowData(arrow, sMsg, arrowIds, pDataBase))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//空白区域检测
 	sMsg.Format(_T("方案%d : 生成空白区域检测线"), scheme + 1);
@@ -143,7 +143,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	AcDbObjectIdArray blankIds;
 	if (!parsingBlanksData(blanks, sMsg, blankIds, pDataBase))
 	{
-		acedAlert(sMsg);
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
 	//图层显隐控制
 	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
@@ -177,7 +177,7 @@ void COperaMultiSchemeShow::creatNewParkingBlock(const double& dParkingLength, c
 	pPoly->addVertexAt(3, squarePt4, 0, width, width);
 	pPoly->setClosed(true);
 	AcDbObjectId squareId;
-	pPoly->setColorIndex(6);
+	pPoly->setColorIndex(253);
 	DBHelper::AppendToDatabase(squareId, pPoly, pDb);
 	pPoly->close();
 	AcDbObjectIdArray allIds;
@@ -936,13 +936,18 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 	std::vector<AcGePoint2dArray> blanksPoints;
 	if (blanks.isNull())
 	{
-		return true;
+		return false;
+		sMsg = _T("回传json中没有[\"result\"][\"blank\"]字段！");
 	}
 	else
 	{
 		if (blanks.isArray())
 		{
 			int nblanksSize = blanks.size();
+			if (nblanksSize==0)
+			{
+				return true;
+			}
 			for (int k = 0; k < nblanksSize; k++)
 			{
 				AcGePoint2dArray oneBlankPts;
@@ -962,7 +967,7 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		}
 		else
 		{
-			sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
+			sMsg = _T("回传json中[\"result\"][\"blank\"]字段格式不匹配！");
 			return false;
 		}
 	}
