@@ -380,9 +380,6 @@
     <ClInclude Include="..\Parking_cad\OperaAddFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
