@@ -2815,7 +2815,7 @@ g_HandleSystemReboot();
 </SessionVar>
 <SessionVar>
 <Name>%ProductVer%</Name>
-<Value>1.1.4</Value>
+<Value>1.1.6</Value>
 <Type>1</Type>
 </SessionVar>
 <SessionVar>
@@ -2858,7 +2858,7 @@ g_HandleSystemReboot();
 <PostBuildProg/>
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
-<Filename>碧桂园车库智能设计系统V1.1.4.exe</Filename>
+<Filename>碧桂园车库智能设计系统V1.1.6.exe</Filename>
 <OutputFolder>D:\</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>0</CustomSegSize>

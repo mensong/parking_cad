@@ -8,10 +8,14 @@ public:
 	COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag);
 	~COperaMultiSchemeShow();
 	virtual void Start();
+	virtual void Ended() override;
+
 	static std::string ms_json;//ai返回数据待解析使用
-	static int ms_count;//多方案总数
-	static void getJsonData(const std::string& json,const int& count);
-	bool addEntToDb(const std::string& json, AcDbDatabase *pDataBase,int scheme = 0);
+	static AcDbDatabase *ms_prootDb;
+	static CString ms_newFileName;
+	static void getJsonData(const std::string& json);
+	static void getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName);
+	bool addEntToDb(Json::Value json, AcDbDatabase *pDataBase,int scheme = 0);
 	void creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, 
 		const CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
@@ -25,7 +29,6 @@ public:
 	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds,AcDbDatabase *pDb = acdbCurDwg());
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText,AcDbDatabase *pDb = acdbCurDwg());
 
-	virtual void Ended() override;
 	bool parsingParkingData(Json::Value& parkings, CString& sMsg, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg);
 	bool parsingAxisData(Json::Value& axis, CString& sMsg, std::map<AcDbObjectId, AcString>& idAndNumMap,AcDbObjectIdArray& axisIds, AcDbDatabase *pDb = acdbCurDwg());
@@ -34,5 +37,8 @@ public:
 	bool parsingArrowData(Json::Value& arrow, CString& sMsg, AcDbObjectIdArray& arrowIds,AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingPillarData(Json::Value& pillar, CString& sMsg, AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingBlanksData(Json::Value& blanks, CString& sMsg, AcDbObjectIdArray& blankIds, AcDbDatabase *pDb = acdbCurDwg());
+
+private:
+	Json::Value m_json;
 };
 

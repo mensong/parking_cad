@@ -154,4 +154,5 @@ public:
 	// 分区排布按钮
 	CButton m_btPartPlanOK;
 	afx_msg void OnBnClickedButtonPartplan();
+	void getDatabaseBackup();
 } ;

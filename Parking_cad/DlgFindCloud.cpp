@@ -37,6 +37,7 @@ BEGIN_MESSAGE_MAP(CDlgFindCloud, CAcUiDialog)
 	ON_WM_SIZE()
 	ON_NOTIFY(NM_CLICK, IDC_LIST, &CDlgFindCloud::OnNMClickList)
 	ON_BN_CLICKED(IDOK, &CDlgFindCloud::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON_CHECK, &CDlgFindCloud::OnBnClickedButtonCheck)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -211,4 +212,11 @@ void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
 	{
 		acutPrintf(_T("打开实体失败"));
 	}
+}
+
+
+void CDlgFindCloud::OnBnClickedButtonCheck()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	DBHelper::CallCADCommand(_T("CHECK "));
 }

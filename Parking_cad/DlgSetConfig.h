@@ -56,7 +56,8 @@ public:
 		const CString& lineType, const CString& transparency, const CString& isPrint);
 	std::string m_strUiPostUrl;
 	std::string m_strUiGetUrl;
-	std::string m_strEntranceUrl;
+	std::string m_strUiPartPostUrl;
+	std::string m_strUiPartGetUrl;
 	Json::Value linetypearray;
 	
 	Json::Value m_root;

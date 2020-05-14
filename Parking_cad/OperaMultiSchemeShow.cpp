@@ -13,7 +13,8 @@
 
 
 std::string COperaMultiSchemeShow::ms_json;
-int COperaMultiSchemeShow::ms_count;
+AcDbDatabase* COperaMultiSchemeShow::ms_prootDb;
+CString COperaMultiSchemeShow::ms_newFileName;
 
 
 COperaMultiSchemeShow::COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
@@ -30,163 +31,128 @@ void COperaMultiSchemeShow::Start()
 {
 	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str());
 	WD::SetTitle(_T("正在生成地库排布方案……"));
-	
-	creatNewDwg();
+	creatNewDwg(ms_prootDb);
+	delete ms_prootDb;
 }
 
-void COperaMultiSchemeShow::getJsonData(const std::string& json, const int& count)
+void COperaMultiSchemeShow::getJsonData(const std::string& json)
 {
 	ms_json = json;
-	ms_count = count;
 }
 
-bool COperaMultiSchemeShow::addEntToDb(const std::string& json, AcDbDatabase *pDataBase, int scheme /*= 0*/)
+void COperaMultiSchemeShow::getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName)
 {
-	Json::Reader reader;
-	Json::Value root;
+	Acad::ErrorStatus es = backUpDataBase->wblock(ms_prootDb);
+	ms_newFileName = fileName;
+}
+
+bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase, int scheme /*= 0*/)
+{
 	//从字符串中读取数据
 	double dParkingLength;
 	double dParkingWidth;
 	double dLaneWidth;
 	CString sMsg;
-	if (reader.parse(json, root))
+	Json::Value& oneScheme = json;
+	//指标数据解析
+	Json::Value& data = oneScheme["data"];
+	sMsg.Format(_T("方案%d : 车位指标表"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	if (!parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg))
 	{
-		if (root["result"].isArray())
-		{
-			Json::Value& oneScheme = root["result"][scheme];
-			//指标数据解析
-			Json::Value& data = oneScheme["data"];
-
-			CString sMsg;
-			sMsg.Format(_T("方案%d : 车位指标表"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			if (!parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg))
-			{
-				acedAlert(sMsg);
-			}
-
-			//排布结果车位展示
-			sMsg.Format(_T("方案%d : 生成车位"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& parkings = oneScheme["parkings"];
-			Doc_Locker _locker;
-			CEquipmentroomTool::layerSet(_T("0"), 7, pDataBase);
-			CString blockName;
-			creatNewParkingBlock(dParkingLength, dParkingWidth, blockName, pDataBase);
-			if (!parsingParkingData(parkings, sMsg, blockName, pDataBase))
-			{
-				acedAlert(sMsg);
-			}
-
-			//轴线展示
-			sMsg.Format(_T("方案%d : 生成轴线"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& axis = oneScheme["grid"];
-			std::map<AcDbObjectId, AcString> idAndNumMap;
-			AcDbObjectIdArray axisIds;
-			if (parsingAxisData(axis, sMsg, idAndNumMap, axisIds, pDataBase))
-			{
-				//生成轴线标注
-				COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
-			}
-			else
-			{
-				acedAlert(sMsg);
-			}
-
-			//车道线展示
-			sMsg.Format(_T("方案%d : 生成车道线"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& lane = oneScheme["lane"];
-			AcDbObjectIdArray RoadLineIds;
-			if (!parsingLaneData(lane, sMsg, RoadLineIds, pDataBase))
-			{
-				acedAlert(sMsg);
-			}
-
-			//生成车道标注
-			sMsg.Format(_T("方案%d : 生成车道标注"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			double dTransLaneWidth = dLaneWidth * 1000;
-			if (dTransLaneWidth == 0)
-			{
-				acutPrintf(_T("车道宽度数据有误！"));
-			}
-			else
-			{
-				setLandDismensions(dTransLaneWidth, RoadLineIds, pDataBase);
-			}
-
-			//地库范围线展示
-			sMsg.Format(_T("方案%d : 生成地库范围线"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& scope = oneScheme["scope"];
-			if (!parsingScopeData(scope, sMsg, pDataBase))
-			{
-				acedAlert(sMsg);
-			}
-
-			//方柱展示
-			sMsg.Format(_T("方案%d : 生成方柱"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& pillar = oneScheme["pillar"];
-			AcDbObjectIdArray pillarIds;
-			if (!parsingPillarData(pillar, sMsg, pillarIds, pDataBase))
-			{
-				acedAlert(sMsg);
-			}
-
-			//车道方向箭头展示
-			sMsg.Format(_T("方案%d : 生成车道方向"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& arrow = oneScheme["arrow"];
-			AcDbObjectIdArray arrowIds;
-			if (!parsingArrowData(arrow, sMsg, arrowIds, pDataBase))
-			{
-				acedAlert(sMsg);
-			}
-
-			//空白区域检测
-			sMsg.Format(_T("方案%d : 生成空白区域检测线"), scheme + 1);
-			WD::AppendMsg(sMsg.GetString());
-			Json::Value& blanks = oneScheme["blanks"];
-			AcDbObjectIdArray blankIds;
-			if (!parsingBlanksData(blanks, sMsg, blankIds, pDataBase))
-			{
-				acedAlert(sMsg);
-			}
-		}
-		else
-		{
-			acutPrintf(_T("返回json文件数据格式解析出错!"));
-			return false;
-		}
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//排布结果车位展示
+	sMsg.Format(_T("方案%d : 生成车位"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& parkings = oneScheme["parkings"];
+	Doc_Locker _locker;
+	CEquipmentroomTool::layerSet(_T("0"), 7, pDataBase);
+	CString blockName;
+	creatNewParkingBlock(dParkingLength, dParkingWidth, blockName, pDataBase);
+	if (!parsingParkingData(parkings, sMsg, blockName, pDataBase))
+	{
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//轴线展示
+	sMsg.Format(_T("方案%d : 生成轴线"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& axis = oneScheme["grid"];
+	std::map<AcDbObjectId, AcString> idAndNumMap;
+	AcDbObjectIdArray axisIds;
+	if (parsingAxisData(axis, sMsg, idAndNumMap, axisIds, pDataBase))
+	{
+		//生成轴线标注
+		COperaAxleNetMaking::drawAxisNumber(axisIds, idAndNumMap, pDataBase);
 	}
 	else
 	{
-		acutPrintf(_T("解析回传json文件出错！"));
-		return false;
+		WD::AppendMsg(sMsg, WD::GetPos());
 	}
-	//int tagnum = 0;
-	//int addtagnum = 0;
-	//int num = 0;//横向编号
-	//CString tagvalue;//轴号属性值
-	//CString csAddtagvalue = _T("");
-	//std::map<AcDbObjectId, AcString> AxisNumberMap;
-	//for (int i = 0; i < axisIds.length(); ++i)
-	//{
-	//	COperaAxleNetMaking::LongitudinalNumbering(tagnum, addtagnum, tagvalue, csAddtagvalue);
-	//	AxisNumberMap[axisIds[i]] = tagvalue;
-	//}
-	
-
+	//车道线展示
+	sMsg.Format(_T("方案%d : 生成车道线"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& lane = oneScheme["lane"];
+	AcDbObjectIdArray RoadLineIds;
+	if (!parsingLaneData(lane, sMsg, RoadLineIds, pDataBase))
+	{
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//生成车道标注
+	sMsg.Format(_T("方案%d : 生成车道标注"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	double dTransLaneWidth = dLaneWidth * 1000;
+	if (dTransLaneWidth == 0)
+	{
+		acutPrintf(_T("车道宽度数据有误！"));
+	}
+	else
+	{
+		setLandDismensions(dTransLaneWidth, RoadLineIds, pDataBase);
+	}
+	//地库范围线展示
+	sMsg.Format(_T("方案%d : 生成地库范围线"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& scope = oneScheme["scope"];
+	if (!parsingScopeData(scope, sMsg, pDataBase))
+	{
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//方柱展示
+	sMsg.Format(_T("方案%d : 生成方柱"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& pillar = oneScheme["pillar"];
+	AcDbObjectIdArray pillarIds;
+	if (!parsingPillarData(pillar, sMsg, pillarIds, pDataBase))
+	{
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//车道方向箭头展示
+	sMsg.Format(_T("方案%d : 生成车道方向"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& arrow = oneScheme["arrow"];
+	AcDbObjectIdArray arrowIds;
+	if (!parsingArrowData(arrow, sMsg, arrowIds, pDataBase))
+	{
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//空白区域检测
+	sMsg.Format(_T("方案%d : 生成空白区域检测线"), scheme + 1);
+	WD::AppendMsg(sMsg.GetString());
+	Json::Value& blanks = oneScheme["blanks"];
+	AcDbObjectIdArray blankIds;
+	if (!parsingBlanksData(blanks, sMsg, blankIds, pDataBase))
+	{
+		WD::AppendMsg(sMsg, WD::GetPos());
+	}
+	//图层显隐控制
 	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
-	CEquipmentroomTool::setLayerClose(sAxisLayerName,pDataBase);
+	CEquipmentroomTool::setLayerClose(sAxisLayerName, pDataBase);
 	CString sAxisDimLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
-	CEquipmentroomTool::setLayerClose(sAxisDimLayerName,pDataBase);
+	CEquipmentroomTool::setLayerClose(sAxisDimLayerName, pDataBase);
 	CString setlayernameofAXSI(CEquipmentroomTool::getLayerName("dimensions_dimensiontext").c_str());
 	CEquipmentroomTool::setLayerClose(setlayernameofAXSI, pDataBase);
-	CEquipmentroomTool::layerSet(_T("0"), 7,pDataBase);
+	CEquipmentroomTool::layerSet(_T("0"), 7, pDataBase);
 	return true;
 }
 
@@ -194,7 +160,7 @@ void COperaMultiSchemeShow::creatNewParkingBlock(const double& dParkingLength, c
 {
 	double dUseLength = dParkingLength * 1000;
 	double dUseWidth = dParkingWidth * 1000;
-	if (dUseLength==0||dUseWidth==0)
+	if (dUseLength == 0 || dUseWidth == 0)
 	{
 		acutPrintf(_T("\n待生成车位的长宽数据有误！"));
 		return;
@@ -211,14 +177,14 @@ void COperaMultiSchemeShow::creatNewParkingBlock(const double& dParkingLength, c
 	pPoly->addVertexAt(3, squarePt4, 0, width, width);
 	pPoly->setClosed(true);
 	AcDbObjectId squareId;
-	pPoly->setColorIndex(6);
-	DBHelper::AppendToDatabase(squareId, pPoly,pDb);
+	pPoly->setColorIndex(253);
+	DBHelper::AppendToDatabase(squareId, pPoly, pDb);
 	pPoly->close();
 	AcDbObjectIdArray allIds;
 	allIds.append(squareId);
 	AcGePoint3d centerPt(dUseWidth / 2, dUseLength / 2, 0);
 	AcDbObjectId parkingId;
-	DBHelper::InsertBlkRef(parkingId, _T("car_1"), centerPt,pDb);
+	DBHelper::InsertBlkRef(parkingId, _T("car_1"), centerPt, pDb);
 	allIds.append(parkingId);
 	std::vector<AcDbEntity*> blockEnts;
 	for (int i = 0; i < allIds.length(); i++)
@@ -249,11 +215,11 @@ void COperaMultiSchemeShow::creatNewParkingBlock(const double& dParkingLength, c
 	}
 }
 
-void COperaMultiSchemeShow::parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, 
+void COperaMultiSchemeShow::parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt,
 	const double& parkingShowRotation, const CString& blockName, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	CString sParkingsLayer(CEquipmentroomTool::getLayerNameByJson("ordinary_parking").c_str());
-	CEquipmentroomTool::creatLayerByjson("ordinary_parking",pDb);
+	CEquipmentroomTool::creatLayerByjson("ordinary_parking", pDb);
 	AcGeVector3d pt(parkingShowPt.x, parkingShowPt.y, 0);
 	AcGeMatrix3d mat;
 	AcGeVector3d vec(0, 0, 1);
@@ -266,7 +232,7 @@ void COperaMultiSchemeShow::parkingShow(AcDbObjectId& parkingId, const AcGePoint
 AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
-	CEquipmentroomTool::creatLayerByjson("parking_axis",pDb);
+	CEquipmentroomTool::creatLayerByjson("parking_axis", pDb);
 	AcGePoint3d ptStart(axisPts[0].x, axisPts[0].y, 0);
 	AcGePoint3d ptEnd(axisPts[1].x, axisPts[1].y, 0);
 	AcDbLine *pLine = new AcDbLine(ptStart, ptEnd);
@@ -291,7 +257,7 @@ static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
 {
 	AcApDocument* pDoc = (AcApDocument*)anyVal;
 	Acad::ErrorStatus es = acDocManager->activateDocument(pDoc);
-	if (es!=eOk)
+	if (es != eOk)
 	{
 		acutPrintf(_T("文件打开失败！"));
 	}
@@ -301,43 +267,27 @@ static void ActiveDocExecute(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/)
 {
-	CString path = CEquipmentroomTool::getOpenDwgFilePath();
-	CString deleName = _T(".dwg");
-	path = path.Trim(deleName);
-	CTime t = CTime::GetCurrentTime();
-	int day = t.GetDay(); //获得几号  
-	int year = t.GetYear(); //获取年份  
-	int month = t.GetMonth(); //获取当前月份  
-	int hour = t.GetHour(); //获取当前为几时   
-	int minute = t.GetMinute(); //获取分钟  
-	int second = t.GetSecond(); //获取秒  
-								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
-	CString sDay;
-	sDay.Format(_T("%d"), day);
-	CString sYear;
-	sYear.Format(_T("%d"), year);
-	CString sMonth;
-	sMonth.Format(_T("%d"), month);
-	CString sHour;
-	sHour.Format(_T("%d"), hour);
-	CString sMinute;
-	sMinute.Format(_T("%d"), minute);
-	CString sSecond;
-	sSecond.Format(_T("%d"), second);
-	CString sNum = _T("_") + sYear + sMonth + sDay + sHour + sMinute + sSecond + _T(".dwg");
-	CString newFileName = path + sNum;
-
 	Acad::ErrorStatus es;
 	// 创建新的图形数据库，分配内存空间
-	
+
 	AcDbDatabase *pDb = new AcDbDatabase(true, false);
-	
-	if (ms_count == 0)
-		ms_count = 1;
 
-	WD::SetRange(0, ms_count + ms_count*9 + 4);
+	Json::Reader jsReader;
+	if (!jsReader.parse(ms_json, m_json)|| !m_json["result"].isArray())
+	{
+		acedAlert(_T("返回的结果格式有误。"));
+		return;
+	}
+	const Json::Value& jsArrResult = m_json["result"];
 
-	for (int i=0; i<ms_count; i++)
+	int nCount = jsArrResult.size();
+
+	if (nCount == 0)
+		nCount = 1;
+
+	WD::SetRange(0, nCount + nCount * 9 + 4);
+
+	for (int i = 0; i < nCount; i++)
 	{
 		CString sMsg;
 		sMsg.Format(_T("写入方案%d"), i + 1);
@@ -345,31 +295,31 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 
 		AcDbDatabase *pTempDb; // 临时图形数据库
 		es = rootPDb->wblock(pTempDb);
-		if (es!=eOk)
+		if (es != eOk)
 		{
 			acutPrintf(_T("\n生成图纸失败:%d。请启用必要的天正等专业软件。"), i);
 			continue;
 		}
 
 		loadModelFile(pTempDb);
-		COperaMultiSchemeShow::addEntToDb(ms_json,pTempDb,i);
+		COperaMultiSchemeShow::addEntToDb(jsArrResult[i]/*ms_json*/, pTempDb, i);
 
 		AcDbExtents extDb;
 		es = DBHelper::GetBlockExtents(extDb, ACDB_MODEL_SPACE, pTempDb);
-		if (es!=eOk)
+		if (es != eOk)
 		{
 			delete pTempDb;
 			acutPrintf(_T("\n生成图纸失败:%d"), i);
 			continue;
 		}
-		AcGeVector3d dir(1,0,0);
+		AcGeVector3d dir(1, 0, 0);
 		double lenght = extDb.maxPoint().x - extDb.minPoint().x;
 		double offset = (lenght * 1.5) * i;
 		AcGeMatrix3d mat;
 		mat.setTranslation(dir * offset);
 
 		es = pDb->insert(mat, pTempDb);
-		if (es!=eOk)
+		if (es != eOk)
 		{
 			acutPrintf(_T("\n生成图纸失败:%d"), i);
 		}
@@ -377,18 +327,18 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	}
 
 	WD::AppendMsg(_T("保存方案图纸"));
-	es = pDb->saveAs(newFileName);
+	es = pDb->saveAs(ms_newFileName);
 	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
-	
+
 	WD::AppendMsg(_T("打开排布后的图纸"));
 
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
 
-	AcApDocument* pDoc = DBHelper::OpenFile(newFileName);
+	AcApDocument* pDoc = DBHelper::OpenFile(ms_newFileName);
 
 	SetDelayExecute(ActiveDocExecute, 0, 0, (void*)pDoc, 1, false);
-	
+
 }
 
 void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
@@ -398,7 +348,7 @@ void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 	setBlockNames.insert(_T("car_1"));
 	ObjectCollector oc;
 	oc.start(pDb);
-	if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/,pDb))
+	if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/, pDb))
 	{
 		acedAlert(_T("加载模板文件出错！"));
 		return;
@@ -406,7 +356,7 @@ void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 	if (oc.m_objsAppended.length() > 0)
 	{
 		CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
-		CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext",pDb);
+		CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext", pDb);
 		//CEquipmentroomTool::layerSet(sParkingsLayer, 7,pDb);
 
 		for (int i = 0; i < oc.m_objsAppended.length(); i++)
@@ -416,15 +366,15 @@ void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 	}
 }
 
-AcDbObjectId COperaMultiSchemeShow::laneShow(const AcGePoint2dArray& lanePts,AcDbDatabase *pDb/*= acdbCurDwg()*/)
+AcDbObjectId COperaMultiSchemeShow::laneShow(const AcGePoint2dArray& lanePts, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CString sLaneLayer(CEquipmentroomTool::getLayerName("lane_center_line_and_driving_direction").c_str());
-	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction",pDb);
+	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction", pDb);
 	AcGePoint3d ptStart(lanePts[0].x, lanePts[0].y, 0);
 	AcGePoint3d ptEnd(lanePts[1].x, lanePts[1].y, 0);
 	AcDbLine *pLine = new AcDbLine(ptStart, ptEnd);
 	AcDbObjectId laneId;
-	DBHelper::AppendToDatabase(laneId,pLine,pDb);
+	DBHelper::AppendToDatabase(laneId, pLine, pDb);
 	pLine->close();
 	CEquipmentroomTool::setEntToLayer(laneId, sLaneLayer);
 	return laneId;
@@ -433,7 +383,7 @@ AcDbObjectId COperaMultiSchemeShow::laneShow(const AcGePoint2dArray& lanePts,AcD
 void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, AcDbObjectId& scopeId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CString sScopeLayer(CEquipmentroomTool::getLayerName("rangeline").c_str());
-	CEquipmentroomTool::creatLayerByjson("rangeline",pDb);
+	CEquipmentroomTool::creatLayerByjson("rangeline", pDb);
 	AcDbPolyline *pPoly = new AcDbPolyline(park_columnPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < park_columnPts.length(); i++)
@@ -441,7 +391,7 @@ void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, Ac
 		pPoly->addVertexAt(0, park_columnPts[i], 0, width, width);
 	}
 	pPoly->setClosed(true);
-	DBHelper::AppendToDatabase(scopeId,pPoly,pDb);
+	DBHelper::AppendToDatabase(scopeId, pPoly, pDb);
 	pPoly->close();
 	CEquipmentroomTool::setEntToLayer(scopeId, sScopeLayer);
 }
@@ -449,7 +399,7 @@ void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, Ac
 void COperaMultiSchemeShow::pillarShow(const AcGePoint2dArray& onePillarPts, AcDbObjectId& pillarId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CString sPillarLayer(CEquipmentroomTool::getLayerName("column").c_str());
-	CEquipmentroomTool::creatLayerByjson("column",pDb);
+	CEquipmentroomTool::creatLayerByjson("column", pDb);
 	AcDbPolyline *pPoly = new AcDbPolyline(onePillarPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < onePillarPts.length(); i++)
@@ -457,7 +407,7 @@ void COperaMultiSchemeShow::pillarShow(const AcGePoint2dArray& onePillarPts, AcD
 		pPoly->addVertexAt(0, onePillarPts[i], 0, width, width);
 	}
 	pPoly->setClosed(true);
-	DBHelper::AppendToDatabase(pillarId,pPoly,pDb);
+	DBHelper::AppendToDatabase(pillarId, pPoly, pDb);
 	pPoly->close();
 	CEquipmentroomTool::setEntToLayer(pillarId, sPillarLayer);
 }
@@ -465,7 +415,7 @@ void COperaMultiSchemeShow::pillarShow(const AcGePoint2dArray& onePillarPts, AcD
 void COperaMultiSchemeShow::arrowShow(const AcGePoint2dArray& oneArrowPts, AcDbObjectId& arrowId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CString sArrowLayer(CEquipmentroomTool::getLayerName("arrow").c_str());
-	CEquipmentroomTool::creatLayerByjson("arrow",pDb);
+	CEquipmentroomTool::creatLayerByjson("arrow", pDb);
 	AcDbPolyline *pPoly = new AcDbPolyline(oneArrowPts.length());
 	double width = 0;//线宽
 	for (int i = 0; i < oneArrowPts.length(); i++)
@@ -473,16 +423,16 @@ void COperaMultiSchemeShow::arrowShow(const AcGePoint2dArray& oneArrowPts, AcDbO
 		pPoly->addVertexAt(0, oneArrowPts[i], 0, width, width);
 	}
 	pPoly->setClosed(true);
-	DBHelper::AppendToDatabase(arrowId,pPoly,pDb);
+	DBHelper::AppendToDatabase(arrowId, pPoly, pDb);
 	pPoly->close();
 	CEquipmentroomTool::setEntToLayer(arrowId, sArrowLayer);
 }
 
-void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds,AcDbDatabase *pDb/*= acdbCurDwg()*/)
+void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
-	CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"),pDb);//创建新的标注样式
+	CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"), pDb);//创建新的标注样式
 	CString sLanesDimLayer(CEquipmentroomTool::getLayerName("dimensions_dimensiontext").c_str());
-	CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext",pDb);
+	CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext", pDb);
 	if (RoadLineIds.length() == 0)
 	{
 		acutPrintf(_T("\n没有车道信息，生成车道标注失败！"));
@@ -523,7 +473,7 @@ void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectId
 			disText.Format(_T("%d"), iDistance);
 
 			AcDbObjectId dimId;
-			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText,pDb);
+			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText, pDb);
 			CEquipmentroomTool::setEntToLayer(dimId, sLanesDimLayer);
 			pLine->close();
 			pEnt->close();
@@ -532,7 +482,7 @@ void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectId
 	}
 }
 
-AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText,AcDbDatabase *pDb/*= acdbCurDwg()*/)
+AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CString str = _T("车道轴网尺寸标注样式");
 	AcDbObjectId id;
@@ -552,7 +502,7 @@ AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, con
 	AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, ptLine, NULL, id);//创建标注实体
 	AcDbObjectId dimid;
 	AcDbObjectId dimensionId;
-	DBHelper::AppendToDatabase(dimensionId, pnewdim,pDb);
+	DBHelper::AppendToDatabase(dimensionId, pnewdim, pDb);
 
 	if (pnewdim)
 		pnewdim->close();
@@ -645,7 +595,7 @@ bool COperaMultiSchemeShow::parsingParkingData(Json::Value& parkings, CString& s
 		sMsg = _T("车位生成失败！");
 		return false;
 	}
-	
+
 }
 
 bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg)
@@ -729,8 +679,8 @@ bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLengt
 	}
 }
 
-bool COperaMultiSchemeShow::parsingAxisData(Json::Value& axis, CString& sMsg, std::map<AcDbObjectId, AcString>& idAndNumMap, 
-	AcDbObjectIdArray& axisIds,AcDbDatabase *pDb /*= acdbCurDwg()*/)
+bool COperaMultiSchemeShow::parsingAxisData(Json::Value& axis, CString& sMsg, std::map<AcDbObjectId, AcString>& idAndNumMap,
+	AcDbObjectIdArray& axisIds, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	std::vector<AcGePoint2dArray> axisesPoints;
 	std::vector<AcString> sNums;
@@ -862,7 +812,7 @@ bool COperaMultiSchemeShow::parsingScopeData(Json::Value& scope, CString& sMsg, 
 		}
 	}
 	AcDbObjectId scopeId;
-	scopeShow(scopePts,scopeId, pDb);
+	scopeShow(scopePts, scopeId, pDb);
 	if (!scopeId.isNull())
 	{
 		return true;
@@ -872,7 +822,7 @@ bool COperaMultiSchemeShow::parsingScopeData(Json::Value& scope, CString& sMsg, 
 		sMsg = _T("生成地库范围线失败！");
 		return false;
 	}
-	
+
 }
 
 bool COperaMultiSchemeShow::parsingArrowData(Json::Value& arrow, CString& sMsg, AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb /*= acdbCurDwg()*/)
@@ -986,13 +936,18 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 	std::vector<AcGePoint2dArray> blanksPoints;
 	if (blanks.isNull())
 	{
-		return true;
+		return false;
+		sMsg = _T("回传json中没有[\"result\"][\"blank\"]字段！");
 	}
 	else
 	{
 		if (blanks.isArray())
 		{
 			int nblanksSize = blanks.size();
+			if (nblanksSize==0)
+			{
+				return true;
+			}
 			for (int k = 0; k < nblanksSize; k++)
 			{
 				AcGePoint2dArray oneBlankPts;
@@ -1012,7 +967,7 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		}
 		else
 		{
-			sMsg = _T("回传json中[\"result\"][\"pillar\"]字段格式不匹配！");
+			sMsg = _T("回传json中[\"result\"][\"blank\"]字段格式不匹配！");
 			return false;
 		}
 	}
@@ -1021,7 +976,7 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		AcDbObjectId blankId;
 		//替换成云线生成api
 		COperaCheck::blankCheckShow(blanksPoints[d], blankId, pDb);
-		double dArea = GeHelper::CalcPolygonArea(blanksPoints[d])/1000000;
+		double dArea = GeHelper::CalcPolygonArea(blanksPoints[d]) / 1000000;
 		CString sArea;
 		sArea.Format(_T("%.2f"), dArea);
 		DBHelper::AddXRecord(blankId, _T("cloud_area"), sArea);
