@@ -16,13 +16,13 @@ public:
 	static void setShearWallLayerName(const CString& layerName);
 	static void blankCheckShow(const AcGePoint2dArray& blankCheckPts,AcDbObjectId& blankId, AcDbDatabase *pDb = acdbCurDwg());
 	static AcGePoint2dArray getPlineExtentPts(AcGePoint2dArray plinePts);
-	static void creatCloudLine(AcGePoint2dArray plineExtentPts, AcDbObjectId& cloudId, AcDbDatabase *pDb = acdbCurDwg());
-	static void creatCloudLine2(const AcGePoint2dArray& plineExtentPts, const AcGePoint2dArray& plinePts, AcDbObjectId& cloudId, AcDbDatabase *pDb = acdbCurDwg());
+	static void creatCloudLine(const AcGePoint2dArray& plineExtentPts, const AcGePoint2dArray& plinePts, AcDbObjectId& cloudId, AcDbDatabase *pDb = acdbCurDwg());
 	static void setCloudLineWidth(AcDbObjectId cloudLineId);
 	static void setCurrentLayer(CString layerName);
 	static AcGePoint2dArray getLineOtherPoint(const AcGePoint2d& lineStartPoint,const AcGePoint2d& lineEndPoint,const double& minArcLength, const double& maxArcLength);
-	static AcDbObjectId creatArcPline(AcGePoint2dArray points, double width,bool direc, AcDbDatabase *pDb = acdbCurDwg());
+	static AcDbObjectId creatArcPline(AcGePoint2dArray points, double width, AcDbDatabase *pDb = acdbCurDwg());
 	static int getRandNum(const int& min,const int& max);
+	static bool jugeCloudDirection(const AcGePoint2dArray &targetPts);
 	//AcGePoint2d afterMobile(AcGeVector2d moveDir,AcGePoint2d startPoint);
 	AcGePoint2dArray getOneParkPts(UINT32 parkHandle);
 	AcGePoint2dArray getOnePlineEntPts(AcDbEntity* pEntity);
@@ -31,6 +31,5 @@ public:
 	CString doubleToCString(double num);
 	int getCheckData(std::string& sMsg, std::string& json);
 	bool getDataforJson(const std::string& json, CString& sMsg);
-	void jugeCloudDirection(const AcGePoint2dArray &targetPts,int& direction);
 };
 

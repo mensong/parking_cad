@@ -327,6 +327,14 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	}
 
 	WD::AppendMsg(_T("保存方案图纸"));
+	const ACHAR* filter = _T("dwg文件|*.dwg|dxf文件|*.dxf|All Files(*.*)|*.*||");
+	WD::ShowWindow(SW_HIDE);
+	CFileDialog dlg(FALSE, NULL, NULL, OFN_OVERWRITEPROMPT, filter, NULL);
+	if (dlg.DoModal() == IDOK)
+	{
+		ms_newFileName = dlg.GetPathName();
+	}
+	WD::ShowWindow(SW_SHOW);
 	es = pDb->saveAs(ms_newFileName);
 	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
 

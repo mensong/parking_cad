@@ -76,9 +76,8 @@ public:
 	static void getParkingExtentPts(std::vector<AcGePoint2dArray>& parkingExtentPts, const std::vector<AcDbObjectId>& allChooseIds, const CString& parkingLayerName, std::map<AcDbObjectId,AcGePoint2dArray>& parkIdAndPts);
 	static CString getOpenDwgFilePath();
 	//多方案对比
-	static void creatNewDwg();
-	static bool allEntMoveAndClone(AcDbDatabase *pDataBase,double dCount = 0);
 	static AcGePoint2dArray getAllEntCreatExten();
-	static void test();
+	//打印当前时间
+	static void pritfCurTime();
 };
 

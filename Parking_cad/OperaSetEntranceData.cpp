@@ -21,16 +21,46 @@ void COperaSetEntranceData::Start()
 {
 
 	//deleParkInEntrance();
+	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction");
 	CEquipmentroomTool::creatLayerByjson("entrance");
 	creatEntrance();
 
-	////设置窗口
-	//CAcModuleResourceOverride resOverride;//资源定位
+	std::vector<AcDbEntity*> blockEnts;
+	for (int i = 0; i < m_addBlockIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		acdbOpenObject(pEnt, m_addBlockIds[i], AcDb::kForWrite);
+		//判断自定义实体的类型
+		if (pEnt == NULL)
+			continue;
+		blockEnts.push_back(pEnt);
+	}
+	if (blockEnts.size() < 1)
+		return;
 
-	//ms_EntranceDlg = new CDlgEntrance;
-	//ms_EntranceDlg->Create(CDlgEntrance::IDD, acedGetAcadDwgView());
-	//ms_EntranceDlg->ShowWindow(SW_SHOW);
-	//m_tol.setEqualPoint(200);
+	CString sBlockName = _T("entrance");
+	int iCount = 0;
+	while (hasNameOfBlock(sBlockName))
+	{
+		iCount++;
+		CString sCount;
+		sCount.Format(_T("%d"), iCount);
+		sBlockName += sCount;
+	}
+	if (!DBHelper::CreateBlock(sBlockName, blockEnts))
+	{
+		acutPrintf(_T("\n创建车位图块失败！"));
+		return;
+	}
+	for (int j = 0; j < blockEnts.size(); j++)
+	{
+		blockEnts[j]->erase();
+		blockEnts[j]->close();
+	}
+	AcDbObjectId blockId;
+	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
 }
 
 //新建标注及其样式修改
@@ -108,40 +138,6 @@ void COperaSetEntranceData::creatDimStyle(const CString &styleName)
 
 AcDbObjectId COperaSetEntranceData::creatArcDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const AcGePoint3d& pt4)
 {
-	//AcDbDatabase *pcurdb = acdbHostApplicationServices()->workingDatabase();
-	//AcDbDimStyleTable *pnewdimtable;
-	//pcurdb->getSymbolTable(pnewdimtable, AcDb::kForWrite);
-	////AcDbDimStyleTableRecord *pnewdimrecord = new AcDbDimStyleTableRecord();
-
-	//// 创建新的标注样式表记录
-	//AcDbDimStyleTableRecord *pDimStyleTblRcd = NULL;
-	//pDimStyleTblRcd = new AcDbDimStyleTableRecord();
-
-	//// 设置标注样式的特性
-	//pDimStyleTblRcd->setName(_T("出入口标注")); // 样式名称
-	//pDimStyleTblRcd->setDimasz(1);//设置箭头大小
-	//pDimStyleTblRcd->setDimzin(8);//十进制小数显示时，抑制后续零
-	//pDimStyleTblRcd->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
-	//pDimStyleTblRcd->setDimexe(200);//设置尺寸界线超出尺寸线距离为400
-	//pDimStyleTblRcd->setDimexo(100);//设置尺寸界线的起点偏移量为300
-	//pDimStyleTblRcd->setDimtxt(800);//设置文字高度
-	//pDimStyleTblRcd->setDimtad(1);//设置文字位置-垂直为上方，水平默认为居中，不用设置
-	//pDimStyleTblRcd->setDimgap(50);//设置文字位置-从尺寸线的偏移量
-	//pDimStyleTblRcd->setDimtih(0);
-	//pDimStyleTblRcd->setDimtoh(0);//设置文字对齐为：与尺寸线对齐
-	//pDimStyleTblRcd->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
-	//pDimStyleTblRcd->setDimtofl(1);//即使箭头放置于测量点之外，尺寸线也将绘制在测量点之间
-
-	//AcCmColor suiceng;
-	//suiceng.setColorIndex(3);
-	//pDimStyleTblRcd->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
-	//pDimStyleTblRcd->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
-
-	//AcDbObjectId dimrecordid;
-	//pnewdimtable->add(dimrecordid, pDimStyleTblRcd);
-	//pnewdimtable->close();
-	//pDimStyleTblRcd->close();
-
 	CString str = _T("出入口标注");
 	AcDbObjectId id;
 	////获得当前图形的标注样式表  
@@ -161,35 +157,12 @@ AcDbObjectId COperaSetEntranceData::creatArcDim(const AcGePoint3d& pt1, const Ac
 	AcDbObjectId dimensionId = CCommonFuntion::PostToModelSpace(pDim1);
 
 	return dimensionId;
-
-	//AcDbBlockTable *pBlockTable;//定义块表指针
-	//acdbHostApplicationServices()->workingDatabase()
-	//	->getSymbolTable(pBlockTable, AcDb::kForRead);
-	//AcDbBlockTableRecord *pBlockTableRecord;
-	//pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
-	//	AcDb::kForWrite);
-	//pBlockTable->close();
-	//AcDbArcDimension *pDim1 = new AcDbArcDimension(pt1, pt2, pt3, pt4, NULL,id);//AcDbRadialDimension;
-	//pDim1->setDimensionText(_T("55555"));
-	//AcDbObjectId Id;
-	//pBlockTableRecord->appendAcDbEntity(Id, pDim1);
-	//pBlockTableRecord->close();
-	//pDim1->close();
-	//return Id;
 }
 
-bool COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
+bool COperaSetEntranceData::addDim(const AcDbObjectIdArray entIds, const double  dHeight, const double dWidth)
 {
 	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-
-	double height = 0;
-	CEquipmentroomTool::getTotalArea(_T("地下室高度(单位m):"), height);
-	if (height == 0)
-	{
-		acutPrintf(_T("\n输入错误！"));
-		return false;
-	}
-	//AcDbObjectIdArray EquipmentIds;
+	CString sLaneLayer(CEquipmentroomTool::getLayerName("lane_center_line_and_driving_direction").c_str());
 	for (int i = 0; i<entIds.length(); i++)
 	{
 		AcDbEntity *pEnt = NULL;
@@ -236,11 +209,11 @@ bool COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 				AcDb::kForWrite);
 			pBlockTable->close();
 			AcDbArcDimension *pDim1 = new AcDbArcDimension(centerPt, startPt, endPt, onArcPt);//AcDbRadialDimension;
-			int showLength = 2400 * 2 + (height - 280) / 0.12;
+			double showLength = (2400 * 2 + (dHeight * 1000 - 280) / 0.12)/1000;
 			//double realLength = showLength * 1000000;
 			CString sEntranceLength;
 			//sEntranceLength.Format(_T("%.1f"), showLength);
-			sEntranceLength.Format(_T("%d"), showLength);
+			sEntranceLength.Format(_T("%.2f"), showLength);
 			pDim1->setDimensionText(sEntranceLength);
 			AcCmColor suiceng;
 			suiceng.setColorIndex(3);
@@ -254,6 +227,7 @@ bool COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			pBlockTableRecord->close();
 			pDim1->close();
 			CEquipmentroomTool::setEntToLayer(Id, sEntranceLayer);
+			m_addBlockIds.append(Id);
 		}
 		else if (pEnt->isKindOf(AcDbLine::desc()))
 		{
@@ -272,15 +246,19 @@ bool COperaSetEntranceData::test(const AcDbObjectIdArray entIds)
 			//endPt.transformBy(Linevec * 50);
 			AcGePoint3d Pt1 = startPt;
 			Pt1.transformBy(Linevec * 1000);
-			int showLength = 3600 * 2 + (height - 540) / 0.15;
+			double showLength = (3600 * 2 + (dHeight * 1000 - 540) / 0.15)/1000;
 			//double realLength = showLength * 1000000;
 			CString sEntranceLength;
 			//sEntranceLength.Format(_T("%.1f"), showLength);
-			sEntranceLength.Format(_T("%d"), showLength);
+			sEntranceLength.Format(_T("%.2f"), showLength);
 			AcDbObjectId dimId = COperaSetEntranceData::creatDim(startPt, endPt, Pt1, sEntranceLength);
 			CEquipmentroomTool::setEntToLayer(dimId, sEntranceLayer);
+			m_addBlockIds.append(dimId);
 		}
 		pEnt->close();
+		m_addBlockIds.append(entIds[i]);
+		CEquipmentroomTool::setEntToLayer(entIds[i], sLaneLayer);
+		
 	}
 	return true;
 }
@@ -295,14 +273,32 @@ void COperaSetEntranceData::creatEntrance()
 
 	if (entIds.length() <= 0)
 		return;
-
+	actrTransactionManager->startTransaction();
 	AcDbObjectIdArray useIds = COperaSetEntranceData::explodeEnty(entIds);//对实体进行炸开操作
 	if (useIds.isEmpty())
 	{
+		actrTransactionManager->abortTransaction();
 		return;
 	}
-	if (!test(useIds))
+	double height = 0;
+	CEquipmentroomTool::getTotalArea(_T("地下室高度(单位m):"), height);
+	if (height == 0)
 	{
+		acutPrintf(_T("\n输入错误！"));
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+	double inputChangdistance = 0;
+	CEquipmentroomTool::getTotalArea(_T("地下室宽度(单位m):"), inputChangdistance);
+	if (inputChangdistance == 0)
+	{
+		acutPrintf(_T("\n输入错误,生成失败！"));
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+	if (!addDim(useIds,height,inputChangdistance))
+	{
+		actrTransactionManager->abortTransaction();
 		return;
 	}
 	
@@ -325,7 +321,7 @@ void COperaSetEntranceData::creatEntrance()
 	//将用户选择的实体，以有相连为依据，分组存储
 	std::vector<std::vector<AcDbObjectId>> operaIds;
 	COperaSetEntranceData::BatchStorageEnt(useIds, operaIds);
-	double changdistance = 2500;//车道距离
+	double changdistance = (inputChangdistance*1000)/2;//车道距离
 	for (int i = 0; i < operaIds.size(); i++)
 	{
 		if (operaIds[i].empty())
@@ -397,7 +393,7 @@ void COperaSetEntranceData::creatEntrance()
 		AcDbObjectIdArray useforGetPtsID;
 		for (int g = 0; g<GuideIds.length(); g++)
 		{
-			CEquipmentroomTool::setEntToLayer(GuideIds[g], sEntranceLayer);
+			//CEquipmentroomTool::setEntToLayer(GuideIds[g], sEntranceLayer);
 			if (useIds.contains(GuideIds[g]))
 			{
 				continue;
@@ -405,10 +401,12 @@ void COperaSetEntranceData::creatEntrance()
 			useforGetPtsID.append(GuideIds[g]);
 		}
 		int count = useforGetPtsID.length();
+		addWideDim(inputChangdistance);
 		COperaSetEntranceData::creatPlinePoints(useforGetPtsID);
 		COperaSetEntranceData::changeLine2Polyline(useforGetPtsID);
 	}
-
+	//结束事务
+	actrTransactionManager->endTransaction();
 }
 
 void COperaSetEntranceData::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId)
@@ -1380,6 +1378,7 @@ AcDbObjectIdArray COperaSetEntranceData::explodeEnty(AcDbObjectIdArray& entIds)
 				AcDbEntity* entity = AcDbEntity::cast(pSubEnt);
 				AcDbObjectId entId;
 				DBHelper::AppendToDatabase(entId, entity);
+
 				returnIds.append(entId);
 				entity->close();
 			}
@@ -1515,6 +1514,57 @@ void COperaSetEntranceData::changeLine2Polyline(AcDbObjectIdArray targetEntIds)
 			continue;
 		pchangeEnt->setColorIndex(8);
 		pchangeEnt->close();
+		m_addBlockIds.append(changeColorIds[size]);
+	}
+}
+
+void COperaSetEntranceData::addWideDim(const double showWidth)
+{
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	if (m_widthLineIds.length()>0)
+	{
+		AcDbEntity *pEnt = NULL;
+		Acad::ErrorStatus es = acdbOpenObject(pEnt, m_widthLineIds[0], AcDb::kForRead);
+		if (es != eOk)
+			return;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d endPt;
+			AcGePoint3d startPt;
+			pLine->getEndPoint(endPt);
+			pLine->getStartPoint(startPt);
+			AcGeVector3d tempVec = AcGeVector3d(startPt - endPt);
+			AcGeVector3d Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
+			Linevec.normalize();
+			AcGePoint3d Pt1 = startPt;
+			Pt1.transformBy(Linevec * 1000);
+			CString sEntranceLength;
+			sEntranceLength.Format(_T("%.2f"), showWidth);
+			AcDbObjectId dimId = COperaSetEntranceData::creatDim(startPt, endPt, Pt1, sEntranceLength);
+			CEquipmentroomTool::setEntToLayer(dimId, sEntranceLayer);
+			m_addBlockIds.append(dimId);
+		}
+		pEnt->close();
+	}
+}
+
+bool COperaSetEntranceData::hasNameOfBlock(CString sBlockName)
+{
+	// 获得当前数据库的块表
+	AcDbBlockTable *pBlkTbl = NULL;
+	if (acdbCurDwg()->getBlockTable(pBlkTbl, AcDb::kForWrite) != Acad::eOk)
+		return false;
+	// 查找用户指定的块定义是否存在
+	if (pBlkTbl->has(sBlockName))
+	{
+		pBlkTbl->close();
+		return true;
+	}
+	else
+	{
+		pBlkTbl->close();
+		return false;
 	}
 }
 
@@ -1873,6 +1923,7 @@ void COperaSetEntranceData::ConnectionPoint(AcDbObjectIdArray& inputIds)
 			AcDbLine *pPline = new AcDbLine(AcGePoint3d(Linepts[i].x, Linepts[i].y, 0), endpoint);
 			AcDbObjectId plineId = COperaSetEntranceData::PostToModelSpace(pPline);
 			inputIds.append(plineId);
+			m_widthLineIds.append(plineId);
 			if (pPline)
 				pPline->close();
 		}
@@ -1914,6 +1965,7 @@ void COperaSetEntranceData::ConnectionPoint(AcDbObjectIdArray& inputIds)
 					pPline->close();
 			}
 			inputIds.append(pPolyLineId);
+			m_widthLineIds.append(pPolyLineId);
 		}
 
 	}
