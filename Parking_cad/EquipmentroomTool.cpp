@@ -1467,7 +1467,7 @@ void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo,AcDbData
 double CEquipmentroomTool::areaScale(double oldArea)
 {
 	double dScale = 0;
-	if (!CEquipmentroomTool::getTotalArea(_T("缩放程度百分比（1-100）:"), dScale))
+	if (!CEquipmentroomTool::getTotalArea(_T("塔楼投影下占比（1-100）:"), dScale))
 		return 0;
 
 	if (dScale<1||dScale>100)
@@ -1606,81 +1606,6 @@ CString CEquipmentroomTool::getOpenDwgFilePath()
 //	int stop = 0;
 //}
 
-bool CEquipmentroomTool::allEntMoveAndClone(AcDbDatabase *pDataBase,double dCount /*= 0*/)
-{
-	    AcGeMatrix3d xform;
-		AcGeVector3d VectrorPt;
-		AcGePoint2dArray extenPts = getAllEntCreatExten();
-		if (extenPts.length()!=2)
-		{
-			acutPrintf(_T("\n获取最大包围框失败！"));
-			return false;
-		}
-		AcGePoint3d endPt(extenPts[1].x, extenPts[0].y, 0);
-		AcGePoint3d starPt(extenPts[0].x, extenPts[0].y, 0);
-		VectrorPt = endPt - starPt;
-		xform.setToTranslation(VectrorPt*dCount);
-        //AcDbDatabase *pDataBase = NULL;
-		//pDataBase = acdbCurDwg();  //根据需要传入不同AcDbDatabase 就可以做到不同dwg克隆实体
-	
-		Acad::ErrorStatus es = Acad::eOk;
-			
-		//
-		AcDbBlockTable *pBlockTable = NULL;
-		es = pDataBase->getBlockTable(pBlockTable, AcDb::kForRead); //得到块表指针
-		if (Acad::eOk != es)
-			return false;
- 
-		AcDbBlockTableRecord *pBlockTableRecord = NULL;
-		es = pBlockTable->getAt(ACDB_MODEL_SPACE,pBlockTableRecord,AcDb::kForWrite);	//得到块表记录指针
-		if (Acad::eOk != es)
-			return false;
- 
-		pBlockTable->close();
-		pBlockTable = NULL;
- 
-		AcDbBlockTableRecordIterator *pBlockIter = NULL;
-		es = pBlockTableRecord->newIterator(pBlockIter);
-		if (Acad::eOk != es)
-			return false;
-		AcDbObjectId objTmpId = AcDbObjectId::kNull;
-		std::vector<AcDbEntity*> pEnts;
-		for (pBlockIter->start(); !pBlockIter->done(); pBlockIter->step())
-		{
-			pBlockIter->getEntityId(objTmpId);
-			AcDbObjectPointer<AcDbEntity> pEnt(objTmpId, AcDb::kForWrite);
-			if (pEnt.openStatus() == Acad::eOk)
-			{
-				   AcDbEntity *pEntity = NULL;
-					//pEntity = AcDbEntity::cast(pEnt->clone());//克隆不移动
-					es = pEnt->getTransformedCopy(xform,(AcDbEntity*&)pEntity); //克隆移动实体
-					if (es!=Acad::eOk)
-					{
-						continue;
-					}
-					pEnt->erase();
-					pEnts.push_back(pEntity);
-			}
-		}
-		for (int size=0; size<pEnts.size(); size++)
-		{
-			AcDbObjectId tempId;
-			//pEnts[size]->setColorIndex(1);
-			pBlockTableRecord->appendAcDbEntity(tempId, pEnts[size]);
-			pEnts[size]->close();
-		}
-
-		pBlockTableRecord->close();
-		pBlockTableRecord = NULL;
-	
-		if (pBlockIter != NULL)
-		{
-			delete pBlockIter;
-			pBlockIter = NULL;
-		}
-		return true;
-}
-
 AcGePoint2dArray CEquipmentroomTool::getAllEntCreatExten()
 {
 	AcDbDatabase *pCurDb = NULL;
@@ -1733,9 +1658,22 @@ AcGePoint2dArray CEquipmentroomTool::getAllEntCreatExten()
 	return useExtenPts;
 }
 
-//void CEquipmentroomTool::test()
-//{
-//	creatNewDwg();
-//	//getAllEntCreatExten();
-//}
+void CEquipmentroomTool::pritfCurTime()
+{
+	CTime t = CTime::GetCurrentTime();
+	int hour = t.GetHour(); //获取当前为几时   
+	int minute = t.GetMinute(); //获取分钟  
+	int second = t.GetSecond(); //获取秒  					
+
+	CString sHour;
+	sHour.Format(_T("%d"), hour);
+	CString sMinute;
+	sMinute.Format(_T("%d"), minute);
+	CString sSecond;
+	sSecond.Format(_T("%d"), second);
+	CString sNum = _T("\n") + sHour + _T(":") + sMinute + _T(":") + sSecond;
+	acutPrintf(sNum);
+}
+
+
 

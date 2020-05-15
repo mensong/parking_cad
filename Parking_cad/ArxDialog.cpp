@@ -1012,28 +1012,7 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 
 void CArxDialog::OnBnClickedOk()
 {
-	CTime t = CTime::GetCurrentTime();
-	int day = t.GetDay(); //获得几号  
-	int year = t.GetYear(); //获取年份  
-	int month = t.GetMonth(); //获取当前月份  
-	int hour = t.GetHour(); //获取当前为几时   
-	int minute = t.GetMinute(); //获取分钟  
-	int second = t.GetSecond(); //获取秒  
-								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
-	CString sDay;
-	sDay.Format(_T("%d"), day);
-	CString sYear;
-	sYear.Format(_T("%d"), year);
-	CString sMonth;
-	sMonth.Format(_T("%d"), month);
-	CString sHour;
-	sHour.Format(_T("%d"), hour);
-	CString sMinute;
-	sMinute.Format(_T("%d"), minute);
-	CString sSecond;
-	sSecond.Format(_T("%d"), second);
-	CString sNum = _T("\n") + sHour + sMinute + sSecond;
-	//acutPrintf(sNum);
+	//CEquipmentroomTool::pritfCurTime();
 	selectPort(true, true);
 }
 
@@ -1256,28 +1235,7 @@ void CArxDialog::OnBnClickedButtonPartplan()
 	int result = MessageBox(TEXT("该排布方式耗时较久，确定进行此次排布任务吗？"), TEXT("分区排布"), MB_YESNO);
 	if (result==6)
 	{
-		CTime t = CTime::GetCurrentTime();
-		int day = t.GetDay(); //获得几号  
-		int year = t.GetYear(); //获取年份  
-		int month = t.GetMonth(); //获取当前月份  
-		int hour = t.GetHour(); //获取当前为几时   
-		int minute = t.GetMinute(); //获取分钟  
-		int second = t.GetSecond(); //获取秒  
-									//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
-		CString sDay;
-		sDay.Format(_T("%d"), day);
-		CString sYear;
-		sYear.Format(_T("%d"), year);
-		CString sMonth;
-		sMonth.Format(_T("%d"), month);
-		CString sHour;
-		sHour.Format(_T("%d"), hour);
-		CString sMinute;
-		sMinute.Format(_T("%d"), minute);
-		CString sSecond;
-		sSecond.Format(_T("%d"), second);
-		CString sNum = _T("\n")+ sHour + sMinute + sSecond;
-		//acutPrintf(sNum);
+		//CEquipmentroomTool::pritfCurTime();
 		selectPort(false, true);
 	}
 }
