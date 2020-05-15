@@ -173,6 +173,15 @@ public:
 		ma = SendMessage(h, WM_WD_GETRANGE, 0, 2);
 		return S_OK;
 	}
+
+	static BOOL ShowWindow(int nCmdShow)
+	{
+		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		if (!h)
+			return FALSE;
+
+		return ::ShowWindow(h, nCmdShow);
+	}
 	
 protected:
 	static unsigned __stdcall _Execute_readAndWrite(void* arg)
