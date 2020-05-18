@@ -13,8 +13,10 @@ public:
 	static std::string ms_json;//ai返回数据待解析使用
 	static AcDbDatabase *ms_prootDb;
 	static CString ms_newFileName;
+	static CString ms_path;
+	static CString ms_name;
 	static void getJsonData(const std::string& json);
-	static void getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName);
+	static void getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName,const CString& path,const CString& name);
 	bool addEntToDb(Json::Value json, AcDbDatabase *pDataBase,int scheme = 0);
 	void creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, 

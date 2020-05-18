@@ -15,7 +15,8 @@
 std::string COperaMultiSchemeShow::ms_json;
 AcDbDatabase* COperaMultiSchemeShow::ms_prootDb;
 CString COperaMultiSchemeShow::ms_newFileName;
-
+CString COperaMultiSchemeShow::ms_path;
+CString COperaMultiSchemeShow::ms_name;
 
 COperaMultiSchemeShow::COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
@@ -40,10 +41,12 @@ void COperaMultiSchemeShow::getJsonData(const std::string& json)
 	ms_json = json;
 }
 
-void COperaMultiSchemeShow::getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName)
+void COperaMultiSchemeShow::getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName, const CString& path,const CString& name)
 {
 	Acad::ErrorStatus es = backUpDataBase->wblock(ms_prootDb);
 	ms_newFileName = fileName;
+	ms_path = path;
+	ms_name = name;
 }
 
 bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase, int scheme /*= 0*/)
@@ -329,7 +332,8 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	WD::AppendMsg(_T("保存方案图纸"));
 	const ACHAR* filter = _T("dwg文件|*.dwg|dxf文件|*.dxf|All Files(*.*)|*.*||");
 	WD::ShowWindow(SW_HIDE);
-	CFileDialog dlg(FALSE, NULL, NULL, OFN_OVERWRITEPROMPT, filter, NULL);
+	CFileDialog dlg(FALSE, NULL, ms_name, OFN_OVERWRITEPROMPT, filter, NULL);
+	dlg.m_ofn.lpstrInitialDir = ms_path;
 	if (dlg.DoModal() == IDOK)
 	{
 		ms_newFileName = dlg.GetPathName();
