@@ -1243,6 +1243,9 @@ void CArxDialog::OnBnClickedButtonPartplan()
 void CArxDialog::getDatabaseBackup()
 {
 	CString path = CEquipmentroomTool::getOpenDwgFilePath();
+
+	CString fileName = FileHelper::GetFileNameWithoutExtensionFromPathW(path.GetString()).c_str();
+	CString savePath = FileHelper::GetDirFromPathW(path.GetString()).c_str();
 	CString deleName = _T(".dwg");
 	path = path.Trim(deleName);
 	CTime t = CTime::GetCurrentTime();
@@ -1266,6 +1269,8 @@ void CArxDialog::getDatabaseBackup()
 	CString sSecond;
 	sSecond.Format(_T("%d"), second);
 	CString sNum = _T("_") + sYear + sMonth + sDay + sHour + sMinute + sSecond + _T(".dwg");
-	CString newFileName = path + sNum;
-	COperaMultiSchemeShow::getRootDataBaseAndFileName(acdbCurDwg(),newFileName);
+
+	CString newFilePathName = path + sNum;
+	CString newFileName = fileName + sNum;
+	COperaMultiSchemeShow::getRootDataBaseAndFileName(acdbCurDwg(), newFilePathName, savePath, newFileName);
 }
