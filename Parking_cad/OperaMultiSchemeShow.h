@@ -1,6 +1,7 @@
 #pragma once
 #include <json/json.h>
 #include "IOperaLog.h"
+#include "LineSelect.h"
 class COperaMultiSchemeShow :
 	public CIOperaLog
 {
@@ -28,7 +29,7 @@ public:
 	void scopeShow(const AcGePoint2dArray& park_columnPts, AcDbObjectId& scopeId, AcDbDatabase *pDb = acdbCurDwg());
 	void pillarShow(const AcGePoint2dArray& onePillarPts, AcDbObjectId& pillarId, AcDbDatabase *pDb = acdbCurDwg());
 	void arrowShow(const AcGePoint2dArray& oneArrowPts, AcDbObjectId& arrowId, AcDbDatabase *pDb = acdbCurDwg());
-	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds,AcDbDatabase *pDb = acdbCurDwg());
+	void setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds, AcDbObjectIdArray& laneDimIds, AcDbDatabase *pDb = acdbCurDwg());
 	AcDbObjectId createDimAligned(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& ptLine, const ACHAR* dimText,AcDbDatabase *pDb = acdbCurDwg());
 
 	bool parsingParkingData(Json::Value& parkings, CString& sMsg, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
@@ -40,7 +41,9 @@ public:
 	bool parsingPillarData(Json::Value& pillar, CString& sMsg, AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb = acdbCurDwg());
 	bool parsingBlanksData(Json::Value& blanks, CString& sMsg, AcDbObjectIdArray& blankIds, AcDbDatabase *pDb = acdbCurDwg());
 
+	void checkLaneDimPosition(const AcDbObjectIdArray& laneDimIds,const AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb = acdbCurDwg());
 private:
 	Json::Value m_json;
+	LineSelect m_linesel;
 };
 

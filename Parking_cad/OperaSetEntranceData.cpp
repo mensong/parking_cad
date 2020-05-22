@@ -49,7 +49,7 @@ void COperaSetEntranceData::Start()
 	}
 	if (!DBHelper::CreateBlock(sBlockName, blockEnts))
 	{
-		acutPrintf(_T("\n创建车位图块失败！"));
+		acutPrintf(_T("\n创建出入口图块失败！"));
 		return;
 	}
 	for (int j = 0; j < blockEnts.size(); j++)
@@ -190,12 +190,12 @@ bool COperaSetEntranceData::addDim(const AcDbObjectIdArray entIds, const double 
 			//EquipmentIds.append(EquipmentId);
 			AcGeVector3d endPtMoveVec = endPt - centerPt;
 			AcGeVector3d unitEndVec = endPtMoveVec.normalize();
-			endPt.transformBy(unitEndVec * 100);
+			//endPt.transformBy(unitEndVec * 1000);
 			AcGeVector3d startPtMoveVec = startPt - centerPt;
 			AcGeVector3d unitStartVec = startPtMoveVec.normalize();
 			AcGePoint3d onArcPt = result[1];
-			startPt.transformBy(unitStartVec * 100);
-			onArcPt.transformBy(unitStartVec * 500);
+			//startPt.transformBy(unitStartVec * 500);
+			onArcPt.transformBy(unitStartVec * 4000);
 			//AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
 			//AcDbArcDimension(centerPt, movedPt, endPt, startPt);
 
@@ -215,6 +215,8 @@ bool COperaSetEntranceData::addDim(const AcDbObjectIdArray entIds, const double 
 			//sEntranceLength.Format(_T("%.1f"), showLength);
 			sEntranceLength.Format(_T("%.2f"), showLength);
 			pDim1->setDimensionText(sEntranceLength);
+			pDim1->setDimexo(0);
+			pDim1->setDimexe(12);
 			AcCmColor suiceng;
 			suiceng.setColorIndex(3);
 			pDim1->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层

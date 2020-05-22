@@ -718,8 +718,8 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		AcGeVector3d tempVec = AcGeVector3d(pt1 - pt2);
 		AcGeVector3d Linevec = tempVec.rotateBy(PI / 2, AcGeVector3d(0, 0, 1));
 		Linevec.normalize();
-		AcGePoint3d Pt1 = pt1.transformBy(Linevec * 500);
-		AcGePoint3d Pt2 = pt2.transformBy(Linevec * 500);
+		AcGePoint3d Pt1 = pt1.transformBy(Linevec * 900);
+		AcGePoint3d Pt2 = pt2.transformBy(Linevec * 900);
 
 		CString disText;
 		int iDistance = ceil(movedata);
@@ -874,15 +874,17 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 		else
 		{
 			AcDbObjectId compareid;
+			//拿到第一个可用id，进行分批准备
 			for (int i = 0; i < inputId.length(); i++)
 			{
 				if (Acad::eOk != acdbOpenObject(pEnt, inputId[i], AcDb::kForRead))
 					continue;
 
 				compareid = inputId[i];
+				pEnt->close();
 				break;
 			}
-
+			//拿到起始点和终止点
 			AcDbLine *Line1 = AcDbLine::cast(pEnt);
 			AcGePoint3d startpt1;
 			AcGePoint3d endpt1;
@@ -918,7 +920,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 
 				/*	AcGePoint3dArray intersectPoints;
 				tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);*/
-
+				//根据斜率判断两条直线是否平行进行分批
 				if (IsParallel(startpt1, endpt1, startpt2, endpt2, tol))
 				{
 					vecid_1.push_back(inputId[j]);

@@ -250,7 +250,11 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			AcGePoint2d ptLeftTop(positionOfBlkRefMin.x, positionOfBlkRefMax.y);
 			double textheight = (ptLeftBottom.distanceTo(ptLeftTop))/6;
 			double textWidth = ptLeftBottom.distanceTo(ptRightBottom)/3*2;
-			AcDbObjectId textId = CEquipmentroomTool::CreateMText(tempPt2dto3d, sShowText, textheight, textWidth);
+
+			CString  textStyleName = _T("设备房用字体");
+			CEquipmentroomTool::creatTextStyle(textStyleName);
+			AcDbObjectId textStyleId = DBHelper::GetTextStyle(textStyleName);
+			AcDbObjectId textId = CEquipmentroomTool::CreateMText(tempPt2dto3d, sShowText, textheight, textWidth, textStyleId);
 			CEquipmentroomTool::textMove(tempPt2dto3d, textId);
 			pPline->close();
 			EquipmentIds.append(textId);
