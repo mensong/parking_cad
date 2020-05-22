@@ -202,7 +202,10 @@ void COperaAxleNetMaking::Start()
 
 void COperaAxleNetMaking::Start()
 {
-	AcDbObjectIdArray LineIds = ms_axisIds;
+	//AcDbObjectIdArray LineIds = ms_axisIds;
+	COperaZoomAxisNumber::deleteEntitys(_T("A-标注-尺寸标注"));
+	COperaZoomAxisNumber::deleteEntitys(_T("A-标注-轴号"));
+	AcDbObjectIdArray LineIds = CCommonFuntion::GetAllEntityId(_T("A-轴线-车库"));
 	if (LineIds.length() == 0)
 	{
 		acutPrintf(_T("\n未获取到轴线信息"));
@@ -322,35 +325,120 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 
 		if (CCommonFuntion::IsParallel(lefdownPt, rigthdownPt, startpt, endptpt, 1))
 		{
-			//轴号标注
-			COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, 1, pDb);
+			AcDbObjectIdArray tempsoritIds = sortIds;
 
+			//轴号标注
+			AcDbObjectIdArray getids;
+			int len = 0;
+			do
+			{
+				getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, 1, pDb);
+				len = sortIds.length();
+
+				sortIds.removeAll();
+				sortIds = getids;
+			} while (getids.length() >= 2 && getids.length() != len && COperaAxleNetMaking::getChangPoints(getids, rigthdownPt, rigthupPt) == 1);
+			
+
+			sortIds.removeAll();
+			sortIds = tempsoritIds;
+			AcDbObjectIdArray specaildealIds;
+			getChangPoints(sortIds, lefdownPt, rigthdownPt, rigthupPt, lefupPt);
+			do 
+			{
+			
 			//初次处理四边的轴线，标注
 			std::vector<AcDbObjectId> outIds_1;
 			COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, rigthdownPt, rigthupPt, outIds_1, pDb);
-			std::vector<AcDbObjectId> outIds_2;
-			COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, lefdownPt, lefupPt, outIds_2, pDb);
+			//std::vector<AcDbObjectId> outIds_2;
+			//COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, lefdownPt, lefupPt, outIds_2, pDb);
+			len = sortIds.length();
 
 			//还没处理的轴线
-			AcDbObjectIdArray specaildealIds = FilterIds(sortIds, outIds_1, outIds_2);
+			specaildealIds = FilterIds(sortIds, outIds_1);
+			sortIds.removeAll();
+			sortIds = specaildealIds;
+			} while (specaildealIds.length() >= 2 && specaildealIds.length() != len && getChangPoints(specaildealIds, rigthdownPt, rigthupPt)==1);
+		
+			sortIds.removeAll();
+			sortIds = tempsoritIds;
+			getChangPoints(sortIds, lefdownPt, rigthdownPt, rigthupPt, lefupPt);
+			do
+			{
+
+				//初次处理四边的轴线，标注
+				//std::vector<AcDbObjectId> outIds_1;
+				//COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, rigthdownPt, rigthupPt, outIds_1, pDb);
+				std::vector<AcDbObjectId> outIds_2;
+				COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, lefdownPt, lefupPt, outIds_2, pDb);
+				len = sortIds.length();
+
+				//还没处理的轴线
+				specaildealIds = FilterIds(sortIds, outIds_2);
+				sortIds.removeAll();
+				sortIds = specaildealIds;
+			} while (specaildealIds.length() >= 2 && specaildealIds.length() != len && getChangPoints(specaildealIds, lefdownPt, lefupPt) == 1);
+
 
 			//对还没处理的轴线，进行阈值判断来标志
-			AcDbObjectIdArray specialoutputIds_1;
-			if (specaildealIds.length() >= 2)
-				SpecialDeal(setlayernameofAXSI, specaildealIds, rigthdownPt, rigthupPt, lefdownPt, lefupPt, layername, pDb);
+			//AcDbObjectIdArray specialoutputIds_1;
+			/*if (specaildealIds.length() >= 2)
+				SpecialDeal(setlayernameofAXSI, specaildealIds, rigthdownPt, rigthupPt, lefdownPt, lefupPt, layername, pDb);*/
 		}
 		else
 		{
-			COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, 1, pDb);
+			AcDbObjectIdArray tempsoritIds = sortIds;
+			AcDbObjectIdArray getids;
+			int len = 0;
+			do
+			{
+				getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, 1, pDb);
+				len = sortIds.length();
+
+				sortIds.removeAll();
+				sortIds = getids;
+			} while (getids.length() >= 2 && getids.length() != len && COperaAxleNetMaking::getChangPoints(getids, lefdownPt, rigthdownPt) == 1);
+			
+			
+			sortIds.removeAll();
+			sortIds = tempsoritIds;
+			AcDbObjectIdArray specaildealIds;
+			getChangPoints(sortIds, lefdownPt, rigthdownPt, rigthupPt, lefupPt);
+			do 
+			{
+			
 			std::vector<AcDbObjectId> outIds_1;
 			COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, lefdownPt, rigthdownPt, outIds_1, pDb);
-			std::vector<AcDbObjectId> outIds_2;
-			COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, rigthupPt, lefupPt, outIds_2, pDb);
+			//std::vector<AcDbObjectId> outIds_2;
+		//	COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, rigthupPt, lefupPt, outIds_2, pDb);
+			len = sortIds.length();
 
-			AcDbObjectIdArray specaildealIds = FilterIds(sortIds, outIds_1, outIds_2);
-			AcDbObjectIdArray specialoutputIds_1;
+			specaildealIds = FilterIds(sortIds, outIds_1);
+			sortIds.removeAll();
+			sortIds = specaildealIds;
+			} while (specaildealIds.length() >= 2 && specaildealIds.length()!= len && getChangPoints(specaildealIds, lefdownPt, rigthdownPt) == 1);
+			
+			sortIds.removeAll();
+			sortIds = tempsoritIds;
+			getChangPoints(sortIds, lefdownPt, rigthdownPt, rigthupPt, lefupPt);
+			do
+			{
+
+				//std::vector<AcDbObjectId> outIds_1;
+				//COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, lefdownPt, rigthdownPt, outIds_1, pDb);
+				std::vector<AcDbObjectId> outIds_2;
+				COperaAxleNetMaking::InitialProcessing(setlayernameofAXSI, sortIds, rigthupPt, lefupPt, outIds_2, pDb);
+				len = sortIds.length();
+
+				specaildealIds = FilterIds(sortIds, outIds_2);
+				sortIds.removeAll();
+				sortIds = specaildealIds;
+			} while (specaildealIds.length() >= 2 && specaildealIds.length() != len && getChangPoints(specaildealIds, rigthupPt, lefupPt) == 1);
+
+
+			/*AcDbObjectIdArray specialoutputIds_1;
 			if (specaildealIds.length() >= 2)
-				SpecialDeal(setlayernameofAXSI, specaildealIds, lefdownPt, rigthdownPt, rigthupPt, lefupPt, layername, pDb);
+				SpecialDeal(setlayernameofAXSI, specaildealIds, lefdownPt, rigthdownPt, rigthupPt, lefupPt, layername, pDb);*/
 		}
 	}
 }
@@ -438,23 +526,23 @@ void COperaAxleNetMaking::DrowBigDimaligned(const CString& layerNameofAXSI, std:
 		pTempEnt->intersectWith(TempLine, AcDb::kOnBothOperands, interwithpointstemp);
 		if (interwithpointstemp.length() <= 0)
 			break;
-
-		AcGeVector3d tempVec = AcGeVector3d(interwithpoints[0] - interwithpointstemp[0]);
-
-		AcGeVector3d Linevec;
-		double pi = 3.14159265;
-		if (angle == ((int)((3 * pi / 2) * 100000000 + 0.5)) / 100000000.0)
-			Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
-		else if (angle == ((int)(pi * 100000000 + 0.5)) / 100000000.0)
-			Linevec = tempVec.rotateBy(3 * ARX_PI / 2, AcGeVector3d(0, 0, 1));
-		else if (angle == ((int)((pi / 2) * 100000000 + 0.5)) / 100000000.0)
-			Linevec = tempVec.rotateBy(3 * ARX_PI / 2, AcGeVector3d(0, 0, 1));
-		else if (angle == 0)
-			Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
-
+		//根据辅助线确定最外围标注偏移
+		AcGePoint3d pt;
+		if (pTempEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pTempEnt);
+			AcGePoint3d startpt = pLine->startPoint();
+			AcGePoint3d endpt = pLine->endPoint();
+			if (startpt.distanceTo(interwithpointstemp[0]) <= endpt.distanceTo(interwithpointstemp[0]))
+				pt = endpt;
+			else	
+				pt = startpt;
+			
+		}
+		AcGeVector3d Linevec = (interwithpointstemp[0] - pt);
 		Linevec.normalize();
-		AcGePoint3d Pt1 = interwithpoints[0].transformBy(Linevec * 500);
-		AcGePoint3d Pt2 = interwithpointstemp[0].transformBy(Linevec * 500);
+		AcGePoint3d Pt1 = interwithpoints[0].transformBy(Linevec * 1500);
+		AcGePoint3d Pt2 = interwithpointstemp[0].transformBy(Linevec * 1500);
 
 		AcGeVector3d vec = AcGeVector3d(Pt2 - Pt1);
 		CCommonFuntion::DrowDimaligned(layerNameofAXSI, Pt1, Pt2, pDb);
@@ -473,7 +561,9 @@ AcDbObjectIdArray COperaAxleNetMaking::FilterIds(AcDbObjectIdArray& inputids, st
 	AcDbObjectIdArray specaildealIds;
 	for (int num = 0; num < inputids.length(); num++)
 	{
-		if (std::find(inputids1.begin(), inputids1.end(), inputids[num]) == inputids1.end() && find(inputids2.begin(), inputids2.end(), inputids[num]) == inputids2.end())
+		if (std::find(inputids1.begin(), inputids1.end(), inputids[num]) != inputids1.end() && find(inputids2.begin(), inputids2.end(), inputids[num]) != inputids2.end())
+			continue;
+		else
 			specaildealIds.append(inputids[num]);
 	}
 	return specaildealIds;
@@ -719,8 +809,9 @@ AcGePoint3d COperaAxleNetMaking::getChangPoint(AcGePoint3d& basept, AcGeVector3d
 	return temppt;
 }
 
-void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, double zoomcoefficient /*= 1*/, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+AcDbObjectIdArray COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, double zoomcoefficient /*= 1*/, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
+	AcDbObjectIdArray outids;
 	CEquipmentroomTool::creatLayerByjson("axis_dimensions", pDb);//创建轴号所在图层
 
 	CString sBlockName = _T("_AxleNumber");
@@ -729,7 +820,10 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 	AcString filepath = DBHelper::GetArxDir() + _T("template.dwg");
 	bool es = DBHelper::ImportBlkDef(filepath, setBlockNames, pDb);
 	if (!es)
-		return;
+	{
+		return outids;
+	}
+		
 
 	double scaleFactor = 150 * zoomcoefficient;// 折线长度
 	double circleradius = 450 * zoomcoefficient;//圆半径
@@ -754,7 +848,11 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 	{
 		//避免中间短轴线参与编号
 		if (CCommonFuntion::GetLineDistance(sortIds[i], LineId) >= 2)
+		{
+			outids.append(sortIds[i]);
 			continue;
+		}
+			
 
 		//tagvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, sortIds[i]).constPtr();
 		AcString keyvalue;
@@ -808,6 +906,8 @@ void COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3
 
 	}
 	CCommonFuntion::DeleteEnt(LineId);
+
+	return outids;
 }
 
 
@@ -1120,4 +1220,69 @@ void COperaAxleNetMaking::rotateEntity(AcGePoint3d& startpt, AcGePoint3d& endpt,
 		pEnt->transformBy(mat);
 		pEnt->close();
 	}
+}
+
+bool COperaAxleNetMaking::getChangPoints(AcDbObjectIdArray& lineids, AcGePoint3d& piont1, AcGePoint3d& piont2)
+{
+	AcGePoint3dArray pts = COperaZoomAxisNumber::getLinesPoints(lineids);
+	AcGePoint3dArray fectanglepts = CMinimumRectangle::getMinRact(pts);
+	if (fectanglepts.length() != 4)
+		return false;
+
+	AcGePoint3d pt1 = fectanglepts[0];
+	AcGePoint3d pt2;
+	for (int i=1;i<fectanglepts.length();++i)
+	{
+		double dis1 = CCommonFuntion::PointToSegDist(piont1, piont2, pt1);
+		double dis2 = CCommonFuntion::PointToSegDist(piont1, piont2, fectanglepts[i]);
+		long tol = dis1 - dis2;
+		if (tol >= 0 && tol <= 1)
+			pt2 = fectanglepts[i];
+		else if (tol >= 5) 
+		{
+			pt1 = fectanglepts[i];
+		}
+			
+	}
+	piont1 = pt1;
+	piont2 = pt2;
+
+	return true;
+}
+
+bool COperaAxleNetMaking::getChangPoints(AcDbObjectIdArray& lineids, AcGePoint3d& lefdownPt, AcGePoint3d& rigthdownPt, AcGePoint3d& rigthupPt, AcGePoint3d& lefupPt)
+{
+	AcGePoint3dArray pts = COperaZoomAxisNumber::getLinesPoints(lineids);
+	AcGePoint3dArray fectanglepts = CMinimumRectangle::getMinRact(pts);
+	if (fectanglepts.length() != 4)
+		return false;
+
+	/*if (lefdownPt == fectanglepts[0])
+	lefdownPt = AcGePoint3d(0, 0, 0);
+	else
+	lefdownPt = fectanglepts[0];
+
+	if (rigthdownPt == fectanglepts[1])
+	rigthdownPt = AcGePoint3d(0, 0, 0);
+	else
+	rigthdownPt = fectanglepts[1];
+
+	if (rigthupPt == fectanglepts[2])
+	rigthupPt = AcGePoint3d(0, 0, 0);
+	else
+	rigthupPt = fectanglepts[2];
+
+	if (lefupPt == fectanglepts[3])
+	lefupPt = AcGePoint3d(0, 0, 0);
+	else
+	lefupPt = fectanglepts[3];*/
+
+	
+
+	lefdownPt = fectanglepts[0];
+	rigthdownPt = fectanglepts[1];
+	rigthupPt = fectanglepts[2];
+	lefupPt = fectanglepts[3];
+
+	return true;
 }

@@ -163,7 +163,7 @@ void CEquipmentroomTool::textMove(AcGePoint3d ptInsert, AcDbObjectId textId)
 	AcGePoint3d minPoint = textExtents.minPoint();
 	double textEnterX = (minPoint.x + maxPoint.x) / 2;
 	double textEnterY = (minPoint.y + maxPoint.y) / 2;
-	AcGePoint3d textEnter(textEnterX, textEnterY, 0);
+	AcGePoint3d textEnter(textEnterX, textEnterY, 10);
 	AcGeVector3d textMoveVec = ptInsert - textEnter;
 	pEnt->transformBy(textMoveVec);
 	pEnt->close();
@@ -999,7 +999,7 @@ void CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const 
 				if (root[inputroot][key].isArray())
 				{
 					Json::Value& keyvalue = root[inputroot][key];
-					for (int i = 0; i < keyvalue.size(); i++)
+					for (unsigned int i=0; i<keyvalue.size(); i++)
 					{
 						std::string str = keyvalue[i].asString();
 						arrayvector.push_back(str);
@@ -1020,7 +1020,7 @@ void CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const 
 		if (root[inputroot][object][key].isArray())
 		{
 			Json::Value& keyvalue = root[inputroot][key];
-			for (int i = 0; i < keyvalue.size(); i++)
+			for (unsigned int i = 0; i<keyvalue.size(); i++)
 			{
 				std::string str = keyvalue[i].asString();
 				arrayvector.push_back(str);

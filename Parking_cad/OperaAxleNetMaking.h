@@ -47,7 +47,7 @@ public:
 	static void getLinePoint(AcDbObjectId& lineid, AcGePoint3d& startpt, AcGePoint3d& endpt);
 	static AcGePoint3d getChangPoint(AcGePoint3d& basept, AcGeVector3d& moveagvec, double movedis);
 	//inputstartpt,inputendpt辅助线的两点，zoomcoefficient缩放系数，plusorminus轴号线偏折方向,outIds是轴号和与轴号相连接的绿线的ID集合
-	static void inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, double zoomcoefficient = 1, AcDbDatabase *pDb = acdbCurDwg());
+	static AcDbObjectIdArray inserAadAxleNum(AcDbObjectIdArray& sortIds, AcGePoint3d& inputstartpt, AcGePoint3d& inputendpt, double zoomcoefficient = 1, AcDbDatabase *pDb = acdbCurDwg());
 	static AcDbObjectId inserBlockRec(const AcString& sBlockName, AcGePoint3d& basept, AcGeVector3d& moveagvec, double circleradius
 		, const AcString& tagvalue, AcDbDatabase *pDb = acdbCurDwg());
 	static void dealBlock(const AcString& sBlockName, AcGePoint3d& startpt, AcGeVector3d& moveagvec1, AcGePoint3d& endpt
@@ -67,4 +67,6 @@ public:
 	static AcDbObjectId createGuideLine(AcGePoint3d& inputPt, AcGeVector3d& inputVec, double scaleFactor, AcGePoint3d& outpt, AcDbDatabase *pDb = acdbCurDwg());
 	static void rotateEntity(AcGePoint3d& startpt, AcGePoint3d& endpt,AcDbObjectId& blockid,
 		AcGePoint3d& movepoint,AcGeVector3d& vec, double circleradius,double scaleFactor);
+	static bool getChangPoints(AcDbObjectIdArray& lineids, AcGePoint3d& piont1, AcGePoint3d& piont2);
+	static bool getChangPoints(AcDbObjectIdArray& lineids, AcGePoint3d& lefdownPt, AcGePoint3d& rigthdownPt, AcGePoint3d& rigthupPt, AcGePoint3d& lefupPt);
 };

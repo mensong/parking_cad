@@ -134,12 +134,34 @@ void COperaZoomAxisNumber::Start()
 			if (CCommonFuntion::IsParallel(lefdownPt, rigthdownPt, startpt, endptpt, 1))
 			{
 				//ÖáºÅ±ê×¢
-				COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, zoomcoefficient);
+
+				AcDbObjectIdArray getids;
+				int len = 0;
+				do
+				{
+					getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, zoomcoefficient);
+					len = sortIds.length();
+
+					sortIds.removeAll();
+					sortIds = getids;
+				} while (getids.length() >= 2 && getids.length() != len && COperaAxleNetMaking::getChangPoints(getids, rigthdownPt, rigthupPt) == 1);
+
 			}
 			else
 			{
-				COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, zoomcoefficient);
+				AcDbObjectIdArray getids;
+				int len = 0;
+				do
+				{
+					getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, zoomcoefficient);
+					len = sortIds.length();
+
+					sortIds.removeAll();
+					sortIds = getids;
+				} while (getids.length() >= 2 && getids.length() != len && COperaAxleNetMaking::getChangPoints(getids, lefdownPt, rigthdownPt) == 1);
+
 			}
+
 		}
 	}
 }
