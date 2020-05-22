@@ -8,7 +8,8 @@
 
 
 // CWaitingDialogDlg 对话框
-class CWaitingDialogDlg : public CDialogEx
+class CWaitingDialogDlg 
+	: public CDialogEx
 {
 // 构造
 public:
@@ -36,10 +37,14 @@ protected:
 	afx_msg LRESULT OnMyClose(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnGetPos(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnGetRange(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnGetId(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnSetShowTime(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
 
 public:
-	
+	LONG m_id;
+	BOOL m_showTime;
+
 	CProgressCtrl m_progressCtrl;
 	CStatic m_staPrecent;
 	CStatic m_staMsg;
