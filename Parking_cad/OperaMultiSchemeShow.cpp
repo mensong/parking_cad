@@ -105,13 +105,18 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	sMsg.Format(_T("方案%d : 生成车道标注"), scheme + 1);
 	WD::AppendMsg(sMsg.GetString());
 	double dTransLaneWidth = dLaneWidth * 1000;
+	AcDbObjectIdArray laneDimIds;
 	if (dTransLaneWidth == 0)
 	{
 		acutPrintf(_T("车道宽度数据有误！"));
 	}
 	else
 	{
-		setLandDismensions(dTransLaneWidth, RoadLineIds, pDataBase);
+		setLandDismensions(dTransLaneWidth, RoadLineIds, laneDimIds, pDataBase);
+		if (laneDimIds.isEmpty())
+		{
+			WD::AppendMsg(_T("生成车道标注失败"), WD::GetPos());
+		}
 	}
 	//地库范围线展示
 	sMsg.Format(_T("方案%d : 生成地库范围线"), scheme + 1);
@@ -139,6 +144,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	{
 		WD::AppendMsg(sMsg, WD::GetPos());
 	}
+	checkLaneDimPosition(laneDimIds, arrowIds, pDataBase);
 	//空白区域检测
 	sMsg.Format(_T("方案%d : 生成空白区域检测线"), scheme + 1);
 	WD::AppendMsg(sMsg.GetString());
@@ -440,7 +446,7 @@ void COperaMultiSchemeShow::arrowShow(const AcGePoint2dArray& oneArrowPts, AcDbO
 	CEquipmentroomTool::setEntToLayer(arrowId, sArrowLayer);
 }
 
-void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds, AcDbDatabase *pDb/*= acdbCurDwg()*/)
+void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectIdArray& RoadLineIds, AcDbObjectIdArray& laneDimIds, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CCommonFuntion::creatLaneGridDimensionsDimStyle(_T("车道轴网尺寸标注样式"), pDb);//创建新的标注样式
 	CString sLanesDimLayer(CEquipmentroomTool::getLayerName("dimensions_dimensiontext").c_str());
@@ -464,6 +470,12 @@ void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectId
 			pLine->getStartPoint(startpoint);
 			AcGePoint3d endpoint;
 			pLine->getEndPoint(endpoint);
+			double length = startpoint.distanceTo(endpoint);
+			if (length<10)
+			{
+				pEnt->close();
+				continue;
+			}
 			AcGePoint3d centerpoint = AcGePoint3d((startpoint.x + endpoint.x) / 2, (startpoint.y + endpoint.y) / 2, (startpoint.z + endpoint.z) / 2);
 
 			AcGeVector3d movevec = AcGeVector3d(startpoint - endpoint);
@@ -483,12 +495,12 @@ void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectId
 			CString disText;
 			int iDistance = ceil(m_dDis);
 			disText.Format(_T("%d"), iDistance);
-
+	
 			AcDbObjectId dimId;
 			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText, pDb);
 			CEquipmentroomTool::setEntToLayer(dimId, sLanesDimLayer);
+			laneDimIds.append(dimId);
 			pLine->close();
-			pEnt->close();
 		}
 		pEnt->close();
 	}
@@ -534,7 +546,7 @@ AcDbObjectId COperaMultiSchemeShow::createDimAligned(const AcGePoint3d& pt1, con
 		pDimension->setDimexo(500);//设置尺寸界线的起点偏移量为300
 								 //pDimension->setDimtad(50);//文字位于标注线的上方
 		pDimension->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
-		pDimension->setDimtxt(900);//标注文字的高度
+		pDimension->setDimtxt(700);//标注文字的高度
 		pDimension->setDimdec(2);
 		pDimension->setDimasz(150);//箭头长度
 		pDimension->setDimlfac(1);//比例因子
@@ -679,7 +691,6 @@ bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLengt
 				std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
 				tableData.insert(value);//插入新元素
 			}
-			int gg = tableData.size();
 			COperaAddFrame::setTableDataMap(tableData);
 			return true;
 		}
@@ -1004,6 +1015,55 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 	{
 		sMsg = _T("生成空白区云线失败！");
 		return false;
+	}
+}
+
+void COperaMultiSchemeShow::checkLaneDimPosition(const AcDbObjectIdArray& laneDimIds, const AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+{
+	if (laneDimIds.isEmpty())
+	{
+		return;
+	}
+	m_linesel.init(arrowIds, pDb);
+	for (int i = 0; i < laneDimIds.length(); i++)
+	{
+		AcDbEntity* pEntity = NULL;
+		if (acdbOpenAcDbEntity(pEntity, laneDimIds[i], kForWrite) != eOk)							//这里是可读
+		{
+			continue;
+		}
+		if (pEntity->isKindOf(AcDbDimension::desc()))
+		{
+			//对标注进行操作
+			AcDbDimension *pDim = AcDbDimension::cast(pEntity);
+			AcGePoint3dArray p;//装取标注的5个点
+			pDim->getStretchPoints(p);
+			//测试看数据用
+			AcGePoint3d pt0 = p[0];
+			AcGePoint3d pt1 = p[1];
+			AcGePoint3d pt2 = p[2];
+			AcGePoint3d pt3 = p[3];
+			AcGePoint3d pt4 = p[4];
+			
+			AcGeVector3d vec = pt1 - pt3;
+			AcGeVector3d unit3dVec = vec.normalize();
+			AcGeVector2d unitvecMove(unit3dVec.x, unit3dVec.y);
+			AcGePoint2d startPt(pt2.x, pt2.y);
+			AcGePoint2d endPt(pt3.x, pt3.y);
+			startPt.transformBy(unitvecMove * 10);
+			endPt.transformBy(unitvecMove * 10);
+
+			AcDbObjectIdArray Ids = m_linesel.select(startPt, endPt);
+			AcGeMatrix3d mat;
+			mat.setTranslation(500*unit3dVec);
+			if (Ids.length()>0)
+			{
+				pDim->transformBy(mat);
+			}
+			int stop = 0;
+		}
+
+		pEntity->close();
 	}
 }
 
