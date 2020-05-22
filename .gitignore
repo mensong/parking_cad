@@ -85,3 +85,5 @@
 /WaitingDialog/Debug
 /WaitingDialog/ipch
 /WaitingDialog/*.opensdf
+/WaitingDialog/Test/Release
+/WaitingDialog/Test/Debug

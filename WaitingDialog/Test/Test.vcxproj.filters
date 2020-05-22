@@ -15,53 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\WaitingDialog.rc2">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="res\WaitingDialog.ico">
-      <Filter>资源文件</Filter>
-    </None>
+    <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WaitingDialog.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="WaitingDialogDlg.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="WaitingDialogDef.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyListBox.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WaitingDialog.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="WaitingDialogDlg.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyListBox.cpp">
+    <ClCompile Include="Test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="WaitingDialog.rc">
-      <Filter>资源文件</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

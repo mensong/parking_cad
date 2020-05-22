@@ -159,7 +159,7 @@ BOOL CWaitingDialogDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 			GetLocalTime(&st);
 			sTime.Format(_T("%.2d-%.2d %.2d:%.2d:%.2d"),
 				st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
-			sMsg.Format(_T("[%s]%s"), sTime.GetString(), pMsg->msg);
+			sMsg.Format(_T("[%s] %s"), sTime.GetString(), pMsg->msg);
 		}
 		else
 		{

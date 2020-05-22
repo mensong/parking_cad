@@ -5,6 +5,7 @@
 #pragma once
 #include "afxcmn.h"
 #include "afxwin.h"
+#include "MyListBox.h"
 
 
 // CWaitingDialogDlg ¶Ô»°¿ò
@@ -48,5 +49,5 @@ public:
 	CProgressCtrl m_progressCtrl;
 	CStatic m_staPrecent;
 	CStatic m_staMsg;
-	CListBox m_listLog;
+	CMyListBox m_listLog;
 };
