@@ -62,7 +62,7 @@
       },
       "axis_dimensions" : {
          "isprintf" : "是",
-         "layer_color" : "3",
+         "layer_color" : "255",
          "layer_linetype" : "Continuous",
          "layer_name" : "A-标注-轴号",
          "layer_width" : "0.15",
@@ -98,7 +98,7 @@
       },
       "dimensions_dimensiontext" : {
          "isprintf" : "是",
-         "layer_color" : "105",
+         "layer_color" : "255",
          "layer_linetype" : "Continuous",
          "layer_name" : "A-标注-尺寸标注",
          "layer_width" : "0.15",
