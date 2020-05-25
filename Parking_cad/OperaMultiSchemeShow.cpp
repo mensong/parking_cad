@@ -235,6 +235,7 @@ void COperaMultiSchemeShow::parkingShow(AcDbObjectId& parkingId, const AcGePoint
 	mat.setToRotation(parkingShowRotation, vec);//double = (rotation/180)*Π
 	mat.setTranslation(pt);
 	DBHelper::InsertBlkRef(parkingId, blockName, mat, pDb);
+	bool es = DBHelper::AddXRecord(parkingId, _T("实体"), _T("车位"));
 	CEquipmentroomTool::setEntToLayer(parkingId, sParkingsLayer);
 }
 
@@ -248,6 +249,7 @@ AcDbObjectId COperaMultiSchemeShow::axisShow(const AcGePoint2dArray& axisPts, Ac
 	AcDbObjectId axisId;
 	DBHelper::AppendToDatabase(axisId, pLine, pDb);
 	pLine->close();
+	bool es = DBHelper::AddXRecord(axisId, _T("实体"), _T("轴线"));
 	CEquipmentroomTool::setEntToLayer(axisId, sAxisLayer);
 	return axisId;
 }
@@ -394,6 +396,7 @@ AcDbObjectId COperaMultiSchemeShow::laneShow(const AcGePoint2dArray& lanePts, Ac
 	AcDbObjectId laneId;
 	DBHelper::AppendToDatabase(laneId, pLine, pDb);
 	pLine->close();
+	bool es = DBHelper::AddXRecord(laneId, _T("实体"), _T("车道线"));
 	CEquipmentroomTool::setEntToLayer(laneId, sLaneLayer);
 	return laneId;
 }
@@ -411,6 +414,7 @@ void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, Ac
 	pPoly->setClosed(true);
 	DBHelper::AppendToDatabase(scopeId, pPoly, pDb);
 	pPoly->close();
+	bool es = DBHelper::AddXRecord(scopeId, _T("实体"), _T("地库范围线"));
 	CEquipmentroomTool::setEntToLayer(scopeId, sScopeLayer);
 }
 
@@ -427,6 +431,7 @@ void COperaMultiSchemeShow::pillarShow(const AcGePoint2dArray& onePillarPts, AcD
 	pPoly->setClosed(true);
 	DBHelper::AppendToDatabase(pillarId, pPoly, pDb);
 	pPoly->close();
+	bool es = DBHelper::AddXRecord(pillarId, _T("实体"), _T("方柱"));
 	CEquipmentroomTool::setEntToLayer(pillarId, sPillarLayer);
 }
 
@@ -443,6 +448,7 @@ void COperaMultiSchemeShow::arrowShow(const AcGePoint2dArray& oneArrowPts, AcDbO
 	pPoly->setClosed(true);
 	DBHelper::AppendToDatabase(arrowId, pPoly, pDb);
 	pPoly->close();
+	bool es = DBHelper::AddXRecord(arrowId, _T("实体"), _T("车道箭头"));
 	CEquipmentroomTool::setEntToLayer(arrowId, sArrowLayer);
 }
 
@@ -498,6 +504,7 @@ void COperaMultiSchemeShow::setLandDismensions(double m_dDis, const AcDbObjectId
 	
 			AcDbObjectId dimId;
 			dimId = createDimAligned(movePt1, movePt2, centerpoint, disText, pDb);
+			bool es = DBHelper::AddXRecord(dimId, _T("实体"), _T("车道标注"));
 			CEquipmentroomTool::setEntToLayer(dimId, sLanesDimLayer);
 			laneDimIds.append(dimId);
 			pLine->close();
@@ -1005,6 +1012,7 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		DBHelper::AddXRecord(blankId, _T("cloud_area"), sArea);
 		CString cloudInf = _T("空白区域");
 		DBHelper::AddXRecord(blankId, _T("cloud"), cloudInf);
+		bool es = DBHelper::AddXRecord(blankId, _T("实体"), cloudInf);
 		blankIds.append(blankId);
 	}
 	if (!blankIds.isEmpty())

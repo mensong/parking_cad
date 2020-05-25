@@ -35,8 +35,8 @@ void COperaAddFrame::Start()
 	std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
 	CEquipmentroomTool::getParkingExtentPts(parkingsPoints,ids,sParkingsLayer, parkIdAndPts);
 	std::vector<AcGePoint2dArray> equipmentPoints = getPlinePointForLayer(ids, sEquipmentroomLayer);
-	std::vector<AcGePoint2dArray> outLinePoints = getPlinePointForLayer(ids, ms_sOutLineLayerName);
-	double dOutLineArea = getPloyLineArea(ids, ms_sOutLineLayerName);
+	std::vector<AcGePoint2dArray> outLinePoints = getPlinePointForLayer(ids, ms_sOutLineLayerName,false);
+	double dOutLineArea = getPloyLineArea(ids, ms_sOutLineLayerName,false);
 	double dCoreWallArea = getPloyLineArea(ids, sCoreWall);
 	double dIntersectWithParkingArea = getIntersectionArea(outLinePoints, parkingsPoints);
 	double dIntersectWithEquipmentaArea = getIntersectionArea(outLinePoints,equipmentPoints);
@@ -189,81 +189,161 @@ AcGePoint2d COperaAddFrame::GetChangePoint(AcGePoint2d& centerpt, AcGePoint2d& c
 	return pt;
 }
 
-std::vector<AcGePoint2dArray> COperaAddFrame::getPlinePointForLayer(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty)
+std::vector<AcGePoint2dArray> COperaAddFrame::getPlinePointForLayer(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty, bool isCreat/* = true*/)
 {
 	std::vector<AcGePoint2dArray> outputPoints;
 
 	for (int i = 0; i < inputIds.size(); i++)
 	{
-		AcDbEntity* pEntity = NULL;
-		if (acdbOpenAcDbEntity(pEntity, inputIds[i], kForRead) != eOk)
-			continue;
-
-		CString layername = pEntity->layer();
-		if (layername.Compare(layerNameofEnty) != 0)
+		if (isCreat)
 		{
-			if (pEntity)
-				pEntity->close();
-			continue;
-		}
-
-		if (pEntity->isKindOf(AcDbPolyline::desc()))
-		{
-			std::vector<AcGePoint2d> allPoints;//得到的所有点
-			AcDbVoidPtrArray entsTempArray;
-			AcDbPolyline *pPline = AcDbPolyline::cast(pEntity);
-			AcGeLineSeg2d line;
-			AcGeCircArc3d arc;
-			int n = pPline->numVerts();
-			for (int i = 0; i < n; i++)
+			AcString usedFor;
+			DBHelper::GetXRecord(inputIds[i], _T("实体"), usedFor);
+			if (!usedFor.isEmpty())
 			{
-				if (pPline->segType(i) == AcDbPolyline::kLine)
-				{
-					pPline->getLineSegAt(i, line);
-					AcGePoint2d startPoint;
-					AcGePoint2d endPoint;
-					startPoint = line.startPoint();
-					endPoint = line.endPoint();
-					allPoints.push_back(startPoint);
-					allPoints.push_back(endPoint);
-				}
-				else if (pPline->segType(i) == AcDbPolyline::kArc)
-				{
-					pPline->getArcSegAt(i, arc);
-					AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
-					for (int x = 0; x < result.length(); x++)
-					{
-						AcGePoint2d onArcpoint(result[x].x, result[x].y);
-						allPoints.push_back(onArcpoint);
-					}
-				}
-			}
+				AcDbEntity* pEntity = NULL;
+				if (acdbOpenAcDbEntity(pEntity, inputIds[i], kForRead) != eOk)
+					continue;
 
-			AcGePoint2dArray onePlinePts;//装取去完重的有效点
-			for (int x = 0; x < allPoints.size(); x++)
-			{
-				if (onePlinePts.contains(allPoints[x]))
+				CString layername = pEntity->layer();
+				if (layername.Compare(layerNameofEnty) != 0)
 				{
+					if (pEntity)
+						pEntity->close();
 					continue;
 				}
-				onePlinePts.append(allPoints[x]);
-			}
 
-			if (onePlinePts.length() <= 1)
+				if (pEntity->isKindOf(AcDbPolyline::desc()))
+				{
+					std::vector<AcGePoint2d> allPoints;//得到的所有点
+					AcDbVoidPtrArray entsTempArray;
+					AcDbPolyline *pPline = AcDbPolyline::cast(pEntity);
+					AcGeLineSeg2d line;
+					AcGeCircArc3d arc;
+					int n = pPline->numVerts();
+					for (int i = 0; i < n; i++)
+					{
+						if (pPline->segType(i) == AcDbPolyline::kLine)
+						{
+							pPline->getLineSegAt(i, line);
+							AcGePoint2d startPoint;
+							AcGePoint2d endPoint;
+							startPoint = line.startPoint();
+							endPoint = line.endPoint();
+							allPoints.push_back(startPoint);
+							allPoints.push_back(endPoint);
+						}
+						else if (pPline->segType(i) == AcDbPolyline::kArc)
+						{
+							pPline->getArcSegAt(i, arc);
+							AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
+							for (int x = 0; x < result.length(); x++)
+							{
+								AcGePoint2d onArcpoint(result[x].x, result[x].y);
+								allPoints.push_back(onArcpoint);
+							}
+						}
+					}
+
+					AcGePoint2dArray onePlinePts;//装取去完重的有效点
+					for (int x = 0; x < allPoints.size(); x++)
+					{
+						if (onePlinePts.contains(allPoints[x]))
+						{
+							continue;
+						}
+						onePlinePts.append(allPoints[x]);
+					}
+
+					if (onePlinePts.length() <= 1)
+						continue;
+
+					onePlinePts.append(onePlinePts[0]);
+					outputPoints.push_back(onePlinePts);
+				}
+				pEntity->close();
+			}
+		}
+		else
+		{
+			AcDbEntity* pEntity = NULL;
+			if (acdbOpenAcDbEntity(pEntity, inputIds[i], kForRead) != eOk)
 				continue;
 
-			onePlinePts.append(onePlinePts[0]);
-			outputPoints.push_back(onePlinePts);
+			CString layername = pEntity->layer();
+			if (layername.Compare(layerNameofEnty) != 0)
+			{
+				if (pEntity)
+					pEntity->close();
+				continue;
+			}
+
+			if (pEntity->isKindOf(AcDbPolyline::desc()))
+			{
+				std::vector<AcGePoint2d> allPoints;//得到的所有点
+				AcDbVoidPtrArray entsTempArray;
+				AcDbPolyline *pPline = AcDbPolyline::cast(pEntity);
+				AcGeLineSeg2d line;
+				AcGeCircArc3d arc;
+				int n = pPline->numVerts();
+				for (int i = 0; i < n; i++)
+				{
+					if (pPline->segType(i) == AcDbPolyline::kLine)
+					{
+						pPline->getLineSegAt(i, line);
+						AcGePoint2d startPoint;
+						AcGePoint2d endPoint;
+						startPoint = line.startPoint();
+						endPoint = line.endPoint();
+						allPoints.push_back(startPoint);
+						allPoints.push_back(endPoint);
+					}
+					else if (pPline->segType(i) == AcDbPolyline::kArc)
+					{
+						pPline->getArcSegAt(i, arc);
+						AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
+						for (int x = 0; x < result.length(); x++)
+						{
+							AcGePoint2d onArcpoint(result[x].x, result[x].y);
+							allPoints.push_back(onArcpoint);
+						}
+					}
+				}
+
+				AcGePoint2dArray onePlinePts;//装取去完重的有效点
+				for (int x = 0; x < allPoints.size(); x++)
+				{
+					if (onePlinePts.contains(allPoints[x]))
+					{
+						continue;
+					}
+					onePlinePts.append(allPoints[x]);
+				}
+
+				if (onePlinePts.length() <= 1)
+					continue;
+
+				onePlinePts.append(onePlinePts[0]);
+				outputPoints.push_back(onePlinePts);
+			}
+			pEntity->close();
 		}
-		pEntity->close();
+		
 	}
 	return outputPoints;
 }
 
-double COperaAddFrame::getPloyLineArea(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty)
+double COperaAddFrame::getPloyLineArea(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty, bool isCreat/* = true*/)
 {
-	std::vector<AcGePoint2dArray> vectPoints = getPlinePointForLayer(inputIds, layerNameofEnty);
-
+	std::vector<AcGePoint2dArray> vectPoints;
+	if (isCreat)
+	{
+		vectPoints = getPlinePointForLayer(inputIds, layerNameofEnty,true);
+	}
+	else
+	{
+		vectPoints = getPlinePointForLayer(inputIds, layerNameofEnty,false);
+	}
 	double totalarea = 0;
 	for (int i = 0; i < vectPoints.size(); i++)
 	{

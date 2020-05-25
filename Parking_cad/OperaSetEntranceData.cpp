@@ -60,6 +60,7 @@ void COperaSetEntranceData::Start()
 	AcDbObjectId blockId;
 	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
 	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	bool es = DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
 	CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
 }
 

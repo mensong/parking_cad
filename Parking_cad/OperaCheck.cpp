@@ -286,97 +286,103 @@ void COperaCheck::overlapShow()
 	AcDbObjectIdArray columnEntIds = DBHelper::GetEntitiesByLayerName(columnLayer);
 	for (int b=0; b<columnEntIds.length(); b++)
 	{
-		AcDbEntity* pEnt = NULL;
-		if (acdbOpenAcDbEntity(pEnt, columnEntIds[b], kForRead) != eOk)
-			continue;
-		if (pEnt->isKindOf(AcDbPolyline::desc()))
+		AcString usedFor;
+		DBHelper::GetXRecord(columnEntIds[b], _T("实体"), usedFor);
+		if (usedFor==_T("方柱"))
 		{
-			std::vector<AcGePoint2dArray> allChekParkPts;
-			AcDbExtents columnExtents;
-			DBHelper::GetEntityExtents(columnExtents, pEnt);
-			AcGePoint3d maxPoint = columnExtents.maxPoint();
-			AcGePoint3d minPoint = columnExtents.minPoint();
-			double positionMin[2];
-			double positionMax[2];
-			positionMin[0] = minPoint.x;
-			positionMin[1] = minPoint.y;
-			positionMax[0] = maxPoint.x;
-			positionMax[1] = maxPoint.y;
-			std::set<UINT32 > parkEntset;
-			rTreeOfLineFilter.Search(positionMin, positionMax, &parkEntset);
-			std::set<UINT32>::const_iterator columnEntIter;
-			for (columnEntIter = parkEntset.begin(); columnEntIter != parkEntset.end(); columnEntIter++)
+			AcDbEntity* pEnt = NULL;
+			if (acdbOpenAcDbEntity(pEnt, columnEntIds[b], kForRead) != eOk)
+				continue;
+			if (pEnt->isKindOf(AcDbPolyline::desc()))
 			{
-				UINT32 ptempEntHandle = *columnEntIter;//取得句柄
-				AcGePoint2dArray allPoints = COperaCheck::getOneParkPts(ptempEntHandle);
-				if (allPoints.length() == 0)
+				std::vector<AcGePoint2dArray> allChekParkPts;
+				AcDbExtents columnExtents;
+				DBHelper::GetEntityExtents(columnExtents, pEnt);
+				AcGePoint3d maxPoint = columnExtents.maxPoint();
+				AcGePoint3d minPoint = columnExtents.minPoint();
+				double positionMin[2];
+				double positionMax[2];
+				positionMin[0] = minPoint.x;
+				positionMin[1] = minPoint.y;
+				positionMax[0] = maxPoint.x;
+				positionMax[1] = maxPoint.y;
+				std::set<UINT32 > parkEntset;
+				rTreeOfLineFilter.Search(positionMin, positionMax, &parkEntset);
+				std::set<UINT32>::const_iterator columnEntIter;
+				for (columnEntIter = parkEntset.begin(); columnEntIter != parkEntset.end(); columnEntIter++)
 				{
-					continue;
-				}
-				allChekParkPts.push_back(allPoints);
-			}
-			AcGePoint2dArray allPoints = getOnePlineEntPts(pEnt);
-			for (int b = 0; b < allChekParkPts.size(); b++)
-			{
-				std::vector<AcGePoint2dArray> polyIntersections;
-				GeHelper::GetIntersectionOfTwoPolygon(allChekParkPts[b], allPoints, polyIntersections);
-				if (polyIntersections.size()>0)
-				{
-					for (int three = 0; three<polyIntersections.size(); three++)
+					UINT32 ptempEntHandle = *columnEntIter;//取得句柄
+					AcGePoint2dArray allPoints = COperaCheck::getOneParkPts(ptempEntHandle);
+					if (allPoints.length() == 0)
 					{
-						if (polyIntersections[three].length()<3)
+						continue;
+					}
+					allChekParkPts.push_back(allPoints);
+				}
+				AcGePoint2dArray allPoints = getOnePlineEntPts(pEnt);
+				for (int b = 0; b < allChekParkPts.size(); b++)
+				{
+					std::vector<AcGePoint2dArray> polyIntersections;
+					GeHelper::GetIntersectionOfTwoPolygon(allChekParkPts[b], allPoints, polyIntersections);
+					if (polyIntersections.size() > 0)
+					{
+						for (int three = 0; three < polyIntersections.size(); three++)
 						{
-							continue;
-						}
+							if (polyIntersections[three].length() < 3)
+							{
+								continue;
+							}
 
-						if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
-						{
-							polyIntersections[three].append(polyIntersections[three][0]);
-						}
-						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-						if (sss<50)
-						{
-							continue;
-						}
-						AcGePoint3dArray getMinRactUsePts;
-						for (int length=0; length<polyIntersections[three].length(); length++)
-						{
-							AcGePoint3d look(polyIntersections[three][length].x, polyIntersections[three][length].y, 0);
-							getMinRactUsePts.append(look);
-						}	
-						AcGePoint3dArray minRactPts = CMinimumRectangle::getMinRact(getMinRactUsePts);
-						double aspectRatio = 0;//长宽比
-						if (minRactPts.length()>3)
-						{
-							double ractLength = minRactPts[0].distanceTo(minRactPts[1]);
-							double ractWidth = minRactPts[1].distanceTo(minRactPts[2]);
-							if (ractLength>=ractWidth)
+							if (polyIntersections[three][polyIntersections[three].length() - 1] != polyIntersections[three][0])
 							{
-								aspectRatio = ractLength / ractWidth;
+								polyIntersections[three].append(polyIntersections[three][0]);
 							}
-							else
+							double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
+							if (sss < 50)
 							{
-								aspectRatio = ractWidth / ractLength;
+								continue;
 							}
+							AcGePoint3dArray getMinRactUsePts;
+							for (int length = 0; length < polyIntersections[three].length(); length++)
+							{
+								AcGePoint3d look(polyIntersections[three][length].x, polyIntersections[three][length].y, 0);
+								getMinRactUsePts.append(look);
+							}
+							AcGePoint3dArray minRactPts = CMinimumRectangle::getMinRact(getMinRactUsePts);
+							double aspectRatio = 0;//长宽比
+							if (minRactPts.length() > 3)
+							{
+								double ractLength = minRactPts[0].distanceTo(minRactPts[1]);
+								double ractWidth = minRactPts[1].distanceTo(minRactPts[2]);
+								if (ractLength >= ractWidth)
+								{
+									aspectRatio = ractLength / ractWidth;
+								}
+								else
+								{
+									aspectRatio = ractWidth / ractLength;
+								}
+							}
+							if (aspectRatio > 50)
+							{
+								continue;
+							}
+							AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
+							AcDbObjectId cloudId;
+							creatCloudLine(plineExtentPts, polyIntersections[three], cloudId);
+							double dArea = sss / 1000000;
+							CString sArea;
+							sArea.Format(_T("%.2f"), dArea);
+							DBHelper::AddXRecord(cloudId, _T("cloud_area"), sArea);
+							CString cloudInf = _T("车位与方柱重叠区域");
+							DBHelper::AddXRecord(cloudId, _T("cloud"), cloudInf);
+							bool es = DBHelper::AddXRecord(cloudId, _T("实体"), _T("重叠区域"));
 						}
-						if (aspectRatio>50)
-						{
-							continue;
-						}
-						AcGePoint2dArray plineExtentPts = getPlineExtentPts(polyIntersections[three]);
-						AcDbObjectId cloudId;
-						creatCloudLine(plineExtentPts, polyIntersections[three], cloudId);
-						double dArea = sss / 1000000;
-						CString sArea;
-						sArea.Format(_T("%.2f"), dArea);
-						DBHelper::AddXRecord(cloudId, _T("cloud_area"), sArea);
-						CString cloudInf = _T("车位与方柱重叠区域");
-						DBHelper::AddXRecord(cloudId, _T("cloud"), cloudInf);
 					}
 				}
 			}
+			pEnt->close();
 		}
-		pEnt->close();
 	}
 
 	if (ms_shearWallLayerName.IsEmpty())
@@ -386,6 +392,12 @@ void COperaCheck::overlapShow()
 	AcDbObjectIdArray shearWallEntIds = DBHelper::GetEntitiesByLayerName(ms_shearWallLayerName);
 	for (int c = 0; c<shearWallEntIds.length(); c++)
 	{
+		AcString usedFor;
+		DBHelper::GetXRecord(shearWallEntIds[c], _T("实体"), usedFor);
+		if (usedFor == _T("方柱"))
+		{
+			continue;
+		}
 		AcDbEntity* pWallEnt = NULL;
 		if (acdbOpenAcDbEntity(pWallEnt, shearWallEntIds[c], kForRead) != eOk)
 			continue;
@@ -475,6 +487,7 @@ void COperaCheck::overlapShow()
 						DBHelper::AddXRecord(cloudID, _T("cloud_area"), sArea);
 						CString cloudInf = _T("车位与剪力墙重叠区域");
 						DBHelper::AddXRecord(cloudID, _T("cloud"), cloudInf);
+						bool es = DBHelper::AddXRecord(cloudID, _T("实体"), _T("重叠区域"));
 					}
 				}
 			}
