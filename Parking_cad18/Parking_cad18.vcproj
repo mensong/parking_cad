@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="Parking_cad18"
 	ProjectGUID="{7DA312C1-0297-48F8-AEE7-7B48095B12C2}"
+	RootNamespace="Parking_cad18"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -101,6 +102,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -187,6 +189,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -273,6 +276,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -359,6 +363,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 	</Configurations>

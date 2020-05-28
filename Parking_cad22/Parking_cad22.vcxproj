@@ -98,6 +98,18 @@
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools_lib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">

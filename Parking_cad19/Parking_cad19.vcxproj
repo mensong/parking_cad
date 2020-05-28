@@ -285,6 +285,18 @@
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*19.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*19.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*19.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*19.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
