@@ -2,7 +2,7 @@
 #include "OperaAddFrame.h"
 #include "DBHelper.h"
 #include "DlgAddFrame.h"
-#include "..\..\ArxTools\GeHelper.h"
+#include "GeHelper.h"
 #include "EquipmentroomTool.h"
 
 std::map<std::string, double> COperaAddFrame::ms_mapTableData;

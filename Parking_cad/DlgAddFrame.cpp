@@ -441,14 +441,14 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 	oc.start(acdbCurDwg());
 	AcString filepath = DBHelper::GetArxDir() + _T("Mapsign.dwg");
 	DBHelper::ImportBlkDef(filepath, BlockNames);
-	if (oc.m_objsAppended.length() > 0)
+	if (oc.objsAppended().length() > 0)
 	{
 		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsign").c_str());
 		//CEquipmentroomTool::layerSet(sMapSignLayer, 7);
 		CEquipmentroomTool::creatLayerByjson("mapsign");
-		for (int i=0; i<oc.m_objsAppended.length();i++)
+		for (int i=0; i<oc.objsAppended().length();i++)
 		{
-			CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sMapSignLayer);
+			CEquipmentroomTool::setEntToLayer(oc.objsAppended()[i], sMapSignLayer);
 		}
 	}
 

@@ -30,7 +30,7 @@ COperaCheck::~COperaCheck()
 void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 {
 	ObjectCollector* oc = (ObjectCollector*)anyVal;
-	AcDbObjectIdArray appendEntIds = oc->m_objsAppended;
+	AcDbObjectIdArray appendEntIds = oc->objsAppended();
 	AcDbObjectIdArray clodLineIds;
 	for (int i=0; i<appendEntIds.length(); i++)
 	{
