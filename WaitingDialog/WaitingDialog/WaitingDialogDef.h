@@ -47,6 +47,8 @@ typedef struct WD_SETTITLE
 #define WM_WD_CLOSE		(WM_USER + 2)
 #define WM_WD_GETPOS	(WM_USER + 3)
 #define WM_WD_GETRANGE	(WM_USER + 4)
+#define WM_WD_GETID		(WM_USER + 5)
+#define WM_WD_SETSHOWTIME (WM_USER + 6)
 
 typedef struct PROCESS_READ_WRITE
 {
@@ -67,9 +69,9 @@ class WD
 {
 public:
 	//创建窗口
-	static LRESULT Create(const char* exe = NULL)
+	static LRESULT Create(const char* exe = NULL, LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (h)
 			return S_OK;
 
@@ -79,8 +81,11 @@ public:
 		else
 			sExePath = "WaitingDialog.exe";
 
+		char sId[50] = { 0 };
+		ltoa(id, sId, 10);
+
 		unsigned long exitCode = 0;
-		bool b = Execute(sExePath.c_str(), NULL, exitCode, NULL, 1000);
+		bool b = Execute(sExePath.c_str(), sId, exitCode, NULL, 1000);
 
 		if (b)
 			return S_OK;
@@ -88,9 +93,9 @@ public:
 	}
 
 	//设置窗口标题
-	static LRESULT SetTitle(const TCHAR* title)
+	static LRESULT SetTitle(const TCHAR* title, LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 
@@ -103,9 +108,9 @@ public:
 	}
 
 	//设置进度范围
-	static LRESULT SetRange(int minRange, int maxRange)
+	static LRESULT SetRange(int minRange, int maxRange, LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 
@@ -118,9 +123,9 @@ public:
 	}
 
 	//消息，curPos==-1时，进度+1
-	static LRESULT AppendMsg(const TCHAR* msg, int curPos = -1)
+	static LRESULT AppendMsg(const TCHAR* msg, int curPos = -1, LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 		
@@ -133,9 +138,9 @@ public:
 	}
 
 	//重置进度
-	static LRESULT Reset()
+	static LRESULT Reset(LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 
@@ -143,9 +148,9 @@ public:
 	}
 
 	//关闭窗口
-	static LRESULT Close()
+	static LRESULT Close(LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 
@@ -153,9 +158,9 @@ public:
 	}
 
 	//获得当前位置
-	static int GetPos()
+	static int GetPos(LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 
@@ -163,9 +168,9 @@ public:
 	}
 
 	//获得范围
-	static LRESULT GetRange(int& mi, int& ma)
+	static LRESULT GetRange(int& mi, int& ma, LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return -1;
 
@@ -174,13 +179,22 @@ public:
 		return S_OK;
 	}
 
-	static BOOL ShowWindow(int nCmdShow)
+	static BOOL ShowWindow(int nCmdShow, LONG id = NULL)
 	{
-		HWND h = FindWindow(_T("WaitingDialog"), NULL);
+		HWND h = FindWindowById(id);
 		if (!h)
 			return FALSE;
 
 		return ::ShowWindow(h, nCmdShow);
+	}
+
+	static BOOL ShowTime(BOOL show, LONG id = NULL)
+	{
+		HWND h = FindWindowById(id);
+		if (!h)
+			return FALSE;
+
+		return SendMessage(h, WM_WD_SETSHOWTIME, 0, (LPARAM)show);
 	}
 	
 protected:
@@ -289,5 +303,22 @@ protected:
 		CloseHandle(ev);
 
 		return bRet;
+	}
+
+	static HWND FindWindowById(LONG id)
+	{
+		HWND h = NULL;
+		do
+		{
+			h = ::FindWindowEx(NULL, h, _T("WaitingDialog"), NULL);
+			if (h)
+			{
+				LONG _id = SendMessage(h, WM_WD_GETID, 0, 0);
+				if (_id == id)
+					return h;
+			}
+		} while(h != 0);
+
+		return NULL;
 	}
 };

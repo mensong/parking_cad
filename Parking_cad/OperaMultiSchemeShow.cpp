@@ -373,15 +373,15 @@ void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 		acedAlert(_T("加载模板文件出错！"));
 		return;
 	}
-	if (oc.m_objsAppended.length() > 0)
+	if (oc.objsAppended().length() > 0)
 	{
 		CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
 		CEquipmentroomTool::creatLayerByjson("dimensions_dimensiontext", pDb);
 		//CEquipmentroomTool::layerSet(sParkingsLayer, 7,pDb);
 
-		for (int i = 0; i < oc.m_objsAppended.length(); i++)
+		for (int i = 0; i < oc.objsAppended().length(); i++)
 		{
-			CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sParkingsLayer);
+			CEquipmentroomTool::setEntToLayer(oc.objsAppended()[i], sParkingsLayer);
 		}
 	}
 }

@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WaitingDialog", "WaitingDialog\WaitingDialog.vcxproj", "{453924EE-ECBB-4EEB-961C-C772064BD097}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{4D15D502-ACC0-4D0F-B491-41CFF3B91DF2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{453924EE-ECBB-4EEB-961C-C772064BD097} = {453924EE-ECBB-4EEB-961C-C772064BD097}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +18,10 @@ Global
 		{453924EE-ECBB-4EEB-961C-C772064BD097}.Debug|Win32.Build.0 = Debug|Win32
 		{453924EE-ECBB-4EEB-961C-C772064BD097}.Release|Win32.ActiveCfg = Release|Win32
 		{453924EE-ECBB-4EEB-961C-C772064BD097}.Release|Win32.Build.0 = Release|Win32
+		{4D15D502-ACC0-4D0F-B491-41CFF3B91DF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4D15D502-ACC0-4D0F-B491-41CFF3B91DF2}.Debug|Win32.Build.0 = Debug|Win32
+		{4D15D502-ACC0-4D0F-B491-41CFF3B91DF2}.Release|Win32.ActiveCfg = Release|Win32
+		{4D15D502-ACC0-4D0F-B491-41CFF3B91DF2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

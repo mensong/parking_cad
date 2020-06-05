@@ -19,9 +19,6 @@
     <Filter Include="pystring">
       <UniqueIdentifier>{edc72904-c7d0-4589-a516-cd9be49215d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ArxTools">
-      <UniqueIdentifier>{43daf24a-d21c-415e-baee-f3daca4d2e14}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TangentReader">
       <UniqueIdentifier>{ba793342-b632-4694-b16f-e533ad0165b0}</UniqueIdentifier>
     </Filter>
@@ -206,57 +203,6 @@
     </ClCompile>
     <ClCompile Include="..\Parking_cad\MinimumRectangle.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\ArxProgressBar.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\CadPreviewCtrl.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\Convertor.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\DBHelper.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\DelayExecuter.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\FileHelper.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\GeHelper.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\gpc.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\JigHelper.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\LineSelect.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\LoadCuix.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\MixedHelper.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\ModulesManager.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\Opera.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\PointInPolygon.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\SDBDumyJigEntity.cpp">
-      <Filter>ArxTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\arxtools\win_iconv.cpp">
-      <Filter>ArxTools</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgFindCloud.cpp">
       <Filter>源文件</Filter>
@@ -455,66 +401,6 @@
     <ClInclude Include="..\Parking_cad\MinimumRectangle.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\arxtools\ArxProgressBar.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\AutoRegCmd.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\CadPreviewCtrl.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\ClassFactory.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\Convertor.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\DBHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\DelayExecuter.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\FileHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\GeHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\gpc.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\iconv.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\JigHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\LineSelect.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\LoadCuix.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\MixedHelper.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\ModulesManager.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\Opera.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\PointInPolygon.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\RTreeEx.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\arxtools\SDBDumyJigEntity.h">
-      <Filter>ArxTools</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\LibcurlHttp.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -536,21 +422,10 @@
       <Filter>jsoncpp</Filter>
     </None>
     <None Include="..\Parking_cad\Parking_cad.aps" />
-    <None Include="..\..\arxtools\DBHelper.inl">
-      <Filter>ArxTools</Filter>
-    </None>
-    <None Include="..\..\arxtools\设置环境变量.bat">
-      <Filter>ArxTools</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\arxtools\ReadMe.txt">
-      <Filter>ArxTools</Filter>
-    </Text>
   </ItemGroup>
 </Project>

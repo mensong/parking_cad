@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="Parking_cad18"
 	ProjectGUID="{7DA312C1-0297-48F8-AEE7-7B48095B12C2}"
+	RootNamespace="Parking_cad18"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -73,7 +74,7 @@
 				Name="VCLinkerTool"
 				OutputFile="$(outdir)/BGYParking_cad18.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;D:\ObjectARX 2010\lib-win32&quot;"
+				AdditionalLibraryDirectories="$(ArxTools_lib);&quot;D:\ObjectARX 2010\lib-win32&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Parking_cad18.pdb"
@@ -101,6 +102,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -159,7 +161,7 @@
 				Name="VCLinkerTool"
 				OutputFile="$(outdir)/BGYParking_cad18.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;D:\ObjectARX 2010\lib-x64&quot;"
+				AdditionalLibraryDirectories="$(ArxTools_lib);&quot;D:\ObjectARX 2010\lib-x64&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Parking_cad18.pdb"
@@ -187,6 +189,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -245,7 +248,7 @@
 				Name="VCLinkerTool"
 				OutputFile="$(outdir)/BGYParking_cad18.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;D:\ObjectARX 2010\lib-win32&quot;"
+				AdditionalLibraryDirectories="$(ArxTools_lib);&quot;D:\ObjectARX 2010\lib-win32&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -273,6 +276,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -331,7 +335,7 @@
 				Name="VCLinkerTool"
 				OutputFile="$(outdir)/BGYParking_cad18.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;D:\ObjectARX 2010\lib-x64&quot;"
+				AdditionalLibraryDirectories="$(ArxTools_lib);&quot;D:\ObjectARX 2010\lib-x64&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -359,6 +363,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /Y /V &quot;$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*18.*&quot; &quot;..\$(PlatformName)\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -800,170 +805,6 @@
 			Name="Miscellaneous Files"
 			Filter="reg;rgs;mak;clw;vsdir;vsz;css;inf;vcproj;csproj"
 			>
-		</Filter>
-		<Filter
-			Name="ArxTools"
-			>
-			<File
-				RelativePath="..\..\ArxTools\ArxProgressBar.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\ArxProgressBar.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\AutoRegCmd.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\CadPreviewCtrl.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\CadPreviewCtrl.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\ClassFactory.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\Convertor.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\Convertor.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\DBHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\DBHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\DBHelper.inl"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\DelayExecuter.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\DelayExecuter.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\FileHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\FileHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\GeHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\GeHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\gpc.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\gpc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\iconv.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\JigHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\JigHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\LineSelect.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\LineSelect.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\LoadCuix.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\LoadCuix.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\MixedHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\MixedHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\arxtools\ModulesManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\arxtools\ModulesManager.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\Opera.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\Opera.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\PointInPolygon.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\PointInPolygon.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\readme.txt"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\RTreeEx.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\SDBDumyJigEntity.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\SDBDumyJigEntity.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\win_iconv.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\ArxTools\设置环境变量.bat"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="jsoncpp"

@@ -12,13 +12,18 @@
 #define new DEBUG_NEW
 #endif
 
+extern CWaitingDialogApp theApp;
 
 // CWaitingDialogDlg 对话框
 
 
 CWaitingDialogDlg::CWaitingDialogDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CWaitingDialogDlg::IDD, pParent)
+	, m_showTime(TRUE)
 {
+	//AfxMessageBox(theApp.m_lpCmdLine);
+	m_id = _ttol(theApp.m_lpCmdLine);
+
 	WNDCLASS wc;
 	// 获取窗口类信息。MFC默认的所有对话框的窗口类名为 #32770
 	::GetClassInfo(AfxGetInstanceHandle(), _T("#32770"), &wc);
@@ -47,6 +52,8 @@ BEGIN_MESSAGE_MAP(CWaitingDialogDlg, CDialogEx)
 	ON_MESSAGE(WM_WD_CLOSE, OnMyClose)
 	ON_MESSAGE(WM_WD_GETPOS, OnGetPos)
 	ON_MESSAGE(WM_WD_GETRANGE, OnGetRange)
+	ON_MESSAGE(WM_WD_GETID, OnGetId)
+	ON_MESSAGE(WM_WD_SETSHOWTIME, OnSetShowTime)
 END_MESSAGE_MAP()
 
 
@@ -143,7 +150,23 @@ BOOL CWaitingDialogDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 
 		CString oldMsg;
 		m_staMsg.GetWindowText(oldMsg);
-		m_staMsg.SetWindowText(pMsg->msg);
+
+		CString sMsg;
+		if (m_showTime == TRUE)
+		{
+			SYSTEMTIME st;
+			CString sTime;
+			GetLocalTime(&st);
+			sTime.Format(_T("%.2d-%.2d %.2d:%.2d:%.2d"),
+				st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+			sMsg.Format(_T("[%s] %s"), sTime.GetString(), pMsg->msg);
+		}
+		else
+		{
+			sMsg = pMsg->msg;
+		}
+		
+		m_staMsg.SetWindowText(sMsg);
 
 		if (!oldMsg.IsEmpty())
 		{
@@ -196,4 +219,15 @@ LRESULT CWaitingDialogDlg::OnGetRange(WPARAM wParam, LPARAM lParam)
 		return ma;
 
 	return -1;
+}
+
+LRESULT CWaitingDialogDlg::OnGetId(WPARAM wParam, LPARAM lParam)
+{
+	return m_id;
+}
+
+LRESULT CWaitingDialogDlg::OnSetShowTime(WPARAM wParam, LPARAM lParam)
+{
+	m_showTime = (BOOL)lParam;
+	return 0;
 }

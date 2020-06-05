@@ -84,39 +84,34 @@
     </Link>
     <Link>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)libcurl\lib\$(PlatformToolsetVersion)\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools_lib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Link>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)libcurl\lib\$(PlatformToolsetVersion)\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools_lib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Link>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)libcurl\lib\$(PlatformToolsetVersion)\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools_lib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Link>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)libcurl\lib\$(PlatformToolsetVersion)\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools_lib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy /Y /V "$(ArxTools)\..\$(PlatformName)\$(ConfigurationName)\*22.*" "..\$(PlatformName)\$(ConfigurationName)\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\arxtools\ArxProgressBar.cpp" />
-    <ClCompile Include="..\..\arxtools\CadPreviewCtrl.cpp" />
-    <ClCompile Include="..\..\arxtools\Convertor.cpp" />
-    <ClCompile Include="..\..\arxtools\DBHelper.cpp" />
-    <ClCompile Include="..\..\arxtools\DelayExecuter.cpp" />
-    <ClCompile Include="..\..\arxtools\FileHelper.cpp" />
-    <ClCompile Include="..\..\arxtools\GeHelper.cpp" />
-    <ClCompile Include="..\..\arxtools\gpc.cpp" />
-    <ClCompile Include="..\..\arxtools\JigHelper.cpp" />
-    <ClCompile Include="..\..\arxtools\LineSelect.cpp" />
-    <ClCompile Include="..\..\arxtools\LoadCuix.cpp" />
-    <ClCompile Include="..\..\arxtools\MixedHelper.cpp" />
-    <ClCompile Include="..\..\arxtools\ModulesManager.cpp" />
-    <ClCompile Include="..\..\arxtools\Opera.cpp" />
-    <ClCompile Include="..\..\arxtools\PointInPolygon.cpp" />
-    <ClCompile Include="..\..\arxtools\SDBDumyJigEntity.cpp" />
-    <ClCompile Include="..\..\arxtools\win_iconv.cpp" />
     <ClCompile Include="..\..\Authenticate\Authenticate\HardDiskSerial.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -235,26 +230,6 @@
     <ClCompile Include="..\TangentReader\HackerWall_VD.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\arxtools\ArxProgressBar.h" />
-    <ClInclude Include="..\..\arxtools\AutoRegCmd.h" />
-    <ClInclude Include="..\..\arxtools\CadPreviewCtrl.h" />
-    <ClInclude Include="..\..\arxtools\ClassFactory.h" />
-    <ClInclude Include="..\..\arxtools\Convertor.h" />
-    <ClInclude Include="..\..\arxtools\DBHelper.h" />
-    <ClInclude Include="..\..\arxtools\DelayExecuter.h" />
-    <ClInclude Include="..\..\arxtools\FileHelper.h" />
-    <ClInclude Include="..\..\arxtools\GeHelper.h" />
-    <ClInclude Include="..\..\arxtools\gpc.h" />
-    <ClInclude Include="..\..\arxtools\iconv.h" />
-    <ClInclude Include="..\..\arxtools\JigHelper.h" />
-    <ClInclude Include="..\..\arxtools\LineSelect.h" />
-    <ClInclude Include="..\..\arxtools\LoadCuix.h" />
-    <ClInclude Include="..\..\arxtools\MixedHelper.h" />
-    <ClInclude Include="..\..\arxtools\ModulesManager.h" />
-    <ClInclude Include="..\..\arxtools\Opera.h" />
-    <ClInclude Include="..\..\arxtools\PointInPolygon.h" />
-    <ClInclude Include="..\..\arxtools\RTreeEx.h" />
-    <ClInclude Include="..\..\arxtools\SDBDumyJigEntity.h" />
     <ClInclude Include="..\..\Authenticate\Authenticate\HardDiskSerial.h" />
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\base64.h" />
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\cipher_des.h" />
@@ -321,16 +296,11 @@
     <ClInclude Include="..\TangentReader\HackerWall_VD.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\arxtools\DBHelper.inl" />
-    <None Include="..\..\arxtools\设置环境变量.bat" />
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
     <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\arxtools\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
