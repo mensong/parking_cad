@@ -521,6 +521,7 @@ void COperaCoreWall::setCoreWallData()
 	}
 	for (int j = 0; j < EquipmentIds.length(); j++)
 	{
+		bool es = DBHelper::AddXRecord(EquipmentIds[j], _T("实体"), _T("核心筒"));
 		CEquipmentroomTool::setEntToLayer(EquipmentIds[j], sCoreWallLayer);
 	}
 	CEquipmentroomTool::layerSet(_T("0"), 7);//操作完成回到零图层

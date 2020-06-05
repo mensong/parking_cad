@@ -137,6 +137,7 @@ AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaNa
 	pPoly->close();
 	//插入拓展数据
 	DBHelper::AddXData(squareId, _T("设备房类型"), areaName);
+	bool es = DBHelper::AddXRecord(squareId, _T("实体"),_T("设备房"));
 	useJigIds.append(squareId);
 	// 创建单行文字
 	AcGePoint3d ptInsert(sideLength / 2, sideLength / 2, 0);
