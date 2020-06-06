@@ -1468,14 +1468,14 @@ void CEquipmentroomTool::creatLayerByjson(const std::string& sLayerInfo,AcDbData
 double CEquipmentroomTool::areaScale(double oldArea)
 {
 	double dScale = 0;
-	if (!CEquipmentroomTool::getTotalArea(_T("塔楼投影下占比（1-100）:"), dScale))
+	if (!CEquipmentroomTool::getTotalArea(_T("塔楼外占比（1-100）:"), dScale))
 		return 0;
 
 	if (dScale<1||dScale>100)
 	{
 		dScale = 100;
 	}
-	double dnewArea = oldArea*(dScale / 100);
+	double dnewArea = oldArea*((dScale) / 100);
 	return dnewArea;
 }
 

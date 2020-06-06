@@ -271,7 +271,7 @@ bool COperaSetEntranceData::addDim(const AcDbObjectIdArray entIds, const double 
 void COperaSetEntranceData::creatEntrance()
 {
 	AcDbObjectIdArray entIds;
-	if (!COperaSetEntranceData::PromptSelectEnts(_T("请选择实体"), AcDbEntity::desc(), entIds))
+	if (!COperaSetEntranceData::PromptSelectEnts(_T("\n请选择用于生成出入口的PL线实体"), AcDbEntity::desc(), entIds))
 		return;
 
 	if (entIds.length() <= 0)
@@ -292,7 +292,7 @@ void COperaSetEntranceData::creatEntrance()
 		return;
 	}
 	double inputChangdistance = 0;
-	CEquipmentroomTool::getTotalArea(_T("地下室宽度(单位m):"), inputChangdistance);
+	CEquipmentroomTool::getTotalArea(_T("出入口宽度(单位m):"), inputChangdistance);
 	if (inputChangdistance == 0)
 	{
 		acutPrintf(_T("\n输入错误,生成失败！"));
