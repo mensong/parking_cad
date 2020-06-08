@@ -15,7 +15,7 @@ public:
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;
 	afx_msg LRESULT OnAcadKeepFocus (WPARAM, LPARAM) ;
-
+	virtual BOOL OnInitDialog();
 	DECLARE_MESSAGE_MAP()
 private:
 	// ͨ�簴ť
