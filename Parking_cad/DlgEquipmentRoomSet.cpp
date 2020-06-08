@@ -10,6 +10,9 @@
 #include "OperaLivingWaterTankSet.h"
 #include "OperaLifePumpHouseSet.h"
 #include "OperaVillageSet.h"
+#include "DlgVentilateSet.h"
+
+class CDlgVentilateSet* CDlgEquipmentRoomSet::ms_dlg = NULL;
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgEquipmentRoomSet, CAcUiDialog)
 
@@ -60,8 +63,12 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVentilate()
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
 	COperaEquipmentroomRelated::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("VentilationEquipmentroomSet "));
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	//CAcModuleResourceOverride resOverride;
+	ms_dlg = new CDlgVentilateSet(acedGetAcadDwgView());
+	ms_dlg->Create(CDlgVentilateSet::IDD, acedGetAcadDwgView());
+	ms_dlg->ShowWindow(SW_SHOW);
+	//DBHelper::CallCADCommand(_T("VentilationEquipmentroomSet "));
 }
 
 

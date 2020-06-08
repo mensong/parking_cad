@@ -29,5 +29,5 @@ public:
 	afx_msg void OnBnClickedButtonFirepoolSet();
 	afx_msg void OnBnClickedButtonCustom();
 	std::vector<AcGePoint2dArray> allPartitionPts;//分区点组
-
+	static class CDlgVentilateSet* ms_dlg;
 } ;

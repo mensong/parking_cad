@@ -30,6 +30,7 @@
 #define IDD_DIALOG_SLIDER               118
 #define IDC_CHECK_Partition             119
 #define IDD_DLG_FINDCLOUD               120
+#define IDD_DLG_VENTILATE               122
 #define IDC_COMBO_Direction             128
 #define IDC_COMBO_OutlineLayer          129
 #define IDC_COMBO_ShearwallLayer        130
@@ -71,9 +72,10 @@
 #define IDC_LIST                        183
 #define IDC_LAYERLIST                   184
 #define IDC_ANIMATE1                    184
-#define IDC_BUTTON1                     185
 #define IDC_BUTTON_CHECK                185
 #define IDC_EDIT_LIST                   186
+#define IDC_EDIT1                       186
+#define IDC_EDIT2                       187
 #define IDC_COMBO_CONFIGCHOOSE          188
 #define IDC_COMBO_LINEWIDTH             189
 #define IDC_COMBO_LINETYPE              190
@@ -83,9 +85,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        122
+#define _APS_NEXT_RESOURCE_VALUE        124
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         186
+#define _APS_NEXT_CONTROL_VALUE         188
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif
