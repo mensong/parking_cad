@@ -58,6 +58,27 @@ LRESULT CDlgEquipmentRoomSet::OnAcadKeepFocus (WPARAM, LPARAM) {
 }
 
 
+BOOL CDlgEquipmentRoomSet::OnInitDialog()
+{
+	if (FALSE == CAcUiDialog::OnInitDialog())
+		return FALSE;
+
+	//窗口置于cad窗口左侧 Add by: limingsheng
+	CRect rcCad;
+	acedGetAcadDwgView()->GetWindowRect(&rcCad);
+	CRect rc;
+	this->GetWindowRect(&rc);
+	LONG width = rc.Width();
+	LONG height = rc.Height();
+	rc.left = rcCad.left;
+	rc.right = rc.left + width;
+	rc.top = rcCad.top;
+	rc.bottom = rc.top + height;
+	this->MoveWindow(rc);
+
+	return TRUE;
+}
+
 void CDlgEquipmentRoomSet::OnBnClickedButtonVentilate()
 {
 	// TODO: 在此添加控件通知处理程序代码
