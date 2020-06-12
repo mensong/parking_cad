@@ -72,10 +72,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</TreatWarningAsError>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(SolutionDir);$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</TreatWarningAsError>
@@ -253,9 +253,6 @@
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
     <ClInclude Include="..\Parking_cad\IOperaLog.h" />
-    <ClInclude Include="..\Parking_cad\KV.h" />
-    <ClInclude Include="..\Parking_cad\LibcurlHttp.h" />
-    <ClInclude Include="..\Parking_cad\lib_bipsignin.h" />
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h" />
     <ClInclude Include="..\Parking_cad\MinimumRectangle.h" />
     <ClInclude Include="..\Parking_cad\MyEdit.h" />

@@ -1,6 +1,6 @@
 @echo off
 
-set logfile=tmp22.txt
+set logfile=build22.log
 
 echo ============================ %~n0 ============================>%logfile%
 

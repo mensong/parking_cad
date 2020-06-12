@@ -347,9 +347,6 @@
     <ClInclude Include="..\Parking_cad\DlgSlider.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\lib_bipsignin.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -389,9 +386,6 @@
     <ClInclude Include="..\Parking_cad\MyMessageBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\KV.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaMultiSchemeShow.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -399,9 +393,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\MinimumRectangle.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\LibcurlHttp.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgFindCloud.h">

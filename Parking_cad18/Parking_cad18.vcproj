@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(KV)&quot;;&quot;$(L09)&quot;;&quot;$(LibcurlHttp)&quot;;&quot;$(lib_bipsignin)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;PARKING_CAD18_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -133,7 +133,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(KV)&quot;;&quot;$(L09)&quot;;&quot;$(LibcurlHttp)&quot;;&quot;$(lib_bipsignin)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;PARKING_CAD18_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(KV)&quot;;&quot;$(L09)&quot;;&quot;$(LibcurlHttp)&quot;;&quot;$(lib_bipsignin)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-win32&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;PARKING_CAD18_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -307,7 +307,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
+				AdditionalIncludeDirectories="&quot;$(ArxTools)&quot;;&quot;$(KV)&quot;;&quot;$(L09)&quot;;&quot;$(LibcurlHttp)&quot;;&quot;$(lib_bipsignin)&quot;;&quot;$(SolutionDir)jsoncpp/include&quot;;&quot;$(SolutionDir)pystring&quot;;&quot;D:\ObjectARX 2010\inc&quot;;&quot;D:\ObjectARX 2010\inc-x64&quot;;&quot;$(SolutionDir)HackARX_SDK&quot;;&quot;$(SolutionDir)TangentReader&quot;;&quot;$(SolutionDir)&quot;;&quot;$(Authenticate)&quot;"
 				AdditionalUsingDirectories="D:\Program Files\Autodesk\AutoCAD 2016\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;PARKING_CAD18_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -649,18 +649,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\IOperaLog.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\KV.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\lib_bipsignin.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\LibcurlHttp.h"
 				>
 			</File>
 			<File
