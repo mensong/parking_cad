@@ -139,3 +139,9 @@
 /x64/Release/LibcurlHttp.pdb
 /x64/Release/lib_bipsignin.lib
 /x64/Release/lib_bipsignin.pdb
+/x64/Debug/LibcurlHttp.dll
+/x64/Debug/lib_bipsignin.dll
+/x64/Release/LibcurlHttp.dll
+/x64/Release/lib_bipsignin.dll
+/x64/Debug/KV.dll
+/x64/Release/KV.dll
