@@ -59,6 +59,9 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaCheck::Start()
 {
+	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str());
+	WD::SetTitle(_T("正在进行图纸检测中……"));
+	WD::SetRange(0, 4);
 	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
 	AcDbObjectIdArray oldCloudIds = DBHelper::GetEntitiesByLayerName(sCloudLineLayer);
 	for (int i=0; i<oldCloudIds.length(); i++)
@@ -90,12 +93,15 @@ void COperaCheck::Start()
 	totaltime = (double)(finish - start) / CLOCKS_PER_SEC;
 	/*acedGetAcadDwgView()->SetFocus();
 	DBHelper::CallCADCommandEx(_T("REGEN"));*/
+	
 	AcDbObjectIdArray allCloudIds = DBHelper::GetEntitiesByLayerName(sCloudLineLayer);
 	if (!allCloudIds.isEmpty())
 	{
+		WD::AppendMsg(_T("重叠区域管理展示"), WD::GetPos()); 
 		DBHelper::CallCADCommand(_T("FindCloudShow "));
 	}
 	int ct = 0;
+	WD::Close();
 }
 
 void COperaCheck::setUuid(const std::string& uuid)
@@ -255,7 +261,8 @@ void COperaCheck::overlapShow()
 
 	//用于直线筛选的rtree
 	RT::RTreeEx<UINT32, double, 2> rTreeOfLineFilter;
-	//获取到所有车位面域
+	//获取到所有车位面域0
+	WD::AppendMsg(_T("获取到所有车位面域"));
 	CString parkingLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
 	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(parkingLayer);
 	for (int a=0; a<allParkingIds.length(); a++)
@@ -281,9 +288,9 @@ void COperaCheck::overlapShow()
 		}
 		pEntity->close();
 	}
-
 	CString columnLayer(CEquipmentroomTool::getLayerName("column").c_str());
 	AcDbObjectIdArray columnEntIds = DBHelper::GetEntitiesByLayerName(columnLayer);
+	WD::AppendMsg(_T("车位与方柱重叠区域检测"));
 	for (int b=0; b<columnEntIds.length(); b++)
 	{
 		AcString usedFor;
@@ -390,6 +397,7 @@ void COperaCheck::overlapShow()
 		ms_shearWallLayerName = columnLayer;
 	}
 	AcDbObjectIdArray shearWallEntIds = DBHelper::GetEntitiesByLayerName(ms_shearWallLayerName);
+	WD::AppendMsg(_T("车位与剪力墙重叠区域检测"));
 	for (int c = 0; c<shearWallEntIds.length(); c++)
 	{
 		AcString usedFor;

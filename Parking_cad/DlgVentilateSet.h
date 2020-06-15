@@ -1,6 +1,7 @@
 #pragma once
 #include "resource.h"
 #include "afxwin.h"
+#include "MyEdit.h"
 
 // CDlgVentilateSet 对话框
 
@@ -21,4 +22,14 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
+	virtual BOOL OnInitDialog();
+	// 地库总面积编辑框
+	CMyEdit m_totalAreaText;
+	// 通风设备房塔楼外占比
+	CMyEdit m_porportionText;
+	void ventilateOpera(double& dTotalArea, double& dPorportion,int& roomCount);
+	static CWnd* parent_dlg;
+	static CString ms_sTotalAreaText;
+	static CString ms_sPorportionText;
+	afx_msg void OnBnClickedCancel();
 };

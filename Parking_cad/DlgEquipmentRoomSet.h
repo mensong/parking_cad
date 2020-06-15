@@ -29,5 +29,10 @@ public:
 	afx_msg void OnBnClickedButtonFirepoolSet();
 	afx_msg void OnBnClickedButtonCustom();
 	std::vector<AcGePoint2dArray> allPartitionPts;//分区点组
-	static class CDlgVentilateSet* ms_dlg;
+	static class CDlgVentilateSet* ms_ventilateDlg;
+	static class CDlgVillageSet* ms_villageDlg;
+	static class CDlgLifePumpHouseSet* ms_lifePumpHouseDlg;
+	static class CDlgLivingWaterTankSet* ms_livingWaterTankDlg;
+	static class CDlgFirePumpHouseSet* ms_firePumpHouseDlg;
+	static class CDlgFirePoolSet* ms_firePoolDlg;
 } ;
