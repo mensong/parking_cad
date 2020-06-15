@@ -3,13 +3,20 @@
 #include "DBHelper.h"
 #include "GeHelper.h"
 #include "EquipmentroomTool.h"
-#include "OperaEquipmentroomRelated.h"
 #include "OperaEquipmentRoomSet.h"
-#include "OperaFirePoolSet.h"
-#include "OperaFirePumpHouseSet.h"
-#include "OperaLivingWaterTankSet.h"
-#include "OperaLifePumpHouseSet.h"
-#include "OperaVillageSet.h"
+#include "DlgVentilateSet.h"
+#include "DlgVillageSet.h"
+#include "DlgLifePumpHouseSet.h"
+#include "DlgLivingWaterTankSet.h"
+#include "DlgFirePumpHouseSet.h"
+#include "DlgFirePoolSet.h"
+
+class CDlgVentilateSet* CDlgEquipmentRoomSet::ms_ventilateDlg = NULL;
+class CDlgVillageSet* CDlgEquipmentRoomSet::ms_villageDlg = NULL;
+class CDlgLifePumpHouseSet* CDlgEquipmentRoomSet::ms_lifePumpHouseDlg = NULL;
+class CDlgLivingWaterTankSet* CDlgEquipmentRoomSet::ms_livingWaterTankDlg = NULL;
+class CDlgFirePumpHouseSet* CDlgEquipmentRoomSet::ms_firePumpHouseDlg = NULL;
+class CDlgFirePoolSet* CDlgEquipmentRoomSet::ms_firePoolDlg = NULL;
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgEquipmentRoomSet, CAcUiDialog)
 
@@ -80,9 +87,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVentilate()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
-	COperaEquipmentroomRelated::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("VentilationEquipmentroomSet "));
+	CDlgVentilateSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	CAcModuleResourceOverride resOverride;
+	ms_ventilateDlg = new CDlgVentilateSet(acedGetAcadDwgView());
+	ms_ventilateDlg->Create(CDlgVentilateSet::IDD, acedGetAcadDwgView());
+	ms_ventilateDlg->ShowWindow(SW_SHOW);
+	//DBHelper::CallCADCommand(_T("VentilationEquipmentroomSet "));
 }
 
 
@@ -90,9 +101,14 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVillageSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
-	COperaVillageSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("VillageSet "));
+	CDlgVillageSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	CAcModuleResourceOverride resOverride;
+	ms_villageDlg = new CDlgVillageSet(acedGetAcadDwgView());
+	ms_villageDlg->Create(CDlgVillageSet::IDD, acedGetAcadDwgView());
+	ms_villageDlg->ShowWindow(SW_SHOW);
+	//Doc_Locker doc_locker;
+	//DBHelper::CallCADCommand(_T("VillageSet "));
 }
 
 
@@ -100,9 +116,14 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLifepumphouseSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
-	COperaLifePumpHouseSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("LifePumpHouseSet "));
+	CDlgLifePumpHouseSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	CAcModuleResourceOverride resOverride;
+	ms_lifePumpHouseDlg = new CDlgLifePumpHouseSet(acedGetAcadDwgView());
+	ms_lifePumpHouseDlg->Create(CDlgLifePumpHouseSet::IDD, acedGetAcadDwgView());
+	ms_lifePumpHouseDlg->ShowWindow(SW_SHOW);
+	//Doc_Locker doc_locker;
+	//DBHelper::CallCADCommand(_T("LifePumpHouseSet "));
 }
 
 
@@ -110,9 +131,14 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLivingwatertankSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
-	COperaLivingWaterTankSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("LivingwatertankSet "));
+	CDlgLivingWaterTankSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	CAcModuleResourceOverride resOverride;
+	ms_livingWaterTankDlg = new CDlgLivingWaterTankSet(acedGetAcadDwgView());
+	ms_livingWaterTankDlg->Create(CDlgLivingWaterTankSet::IDD, acedGetAcadDwgView());
+	ms_livingWaterTankDlg->ShowWindow(SW_SHOW);
+	//Doc_Locker doc_locker;
+	//DBHelper::CallCADCommand(_T("LivingwatertankSet "));
 }
 
 
@@ -120,9 +146,14 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonFirepumphouseSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
-	COperaFirePumpHouseSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("FirePumpHouseSet "));
+	CDlgFirePumpHouseSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	CAcModuleResourceOverride resOverride;
+	ms_firePumpHouseDlg = new CDlgFirePumpHouseSet(acedGetAcadDwgView());
+	ms_firePumpHouseDlg->Create(CDlgFirePumpHouseSet::IDD, acedGetAcadDwgView());
+	ms_firePumpHouseDlg->ShowWindow(SW_SHOW);
+	//Doc_Locker doc_locker;
+	//DBHelper::CallCADCommand(_T("FirePumpHouseSet "));
 }
 
 
@@ -130,9 +161,14 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonFirepoolSet()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//HideDialogHolder holder(this);
-	COperaFirePoolSet::g_dlg = COperaEquipmentRoomSet::ms_eqdlg;
-	Doc_Locker doc_locker;
-	DBHelper::CallCADCommand(_T("FirePoolSet "));
+	CDlgFirePoolSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
+	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
+	CAcModuleResourceOverride resOverride;
+	ms_firePoolDlg = new CDlgFirePoolSet(acedGetAcadDwgView());
+	ms_firePoolDlg->Create(CDlgFirePoolSet::IDD, acedGetAcadDwgView());
+	ms_firePoolDlg->ShowWindow(SW_SHOW);
+	//Doc_Locker doc_locker;
+	//DBHelper::CallCADCommand(_T("FirePoolSet "));
 }
 
 

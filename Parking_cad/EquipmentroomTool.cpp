@@ -46,7 +46,7 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 	}
 	AcGePoint3d ptBase = extsAll.minPoint();
 	CJigHelper jig;
-	jig.setDispPrompt(_T("请选择放置点："));
+	jig.setDispPrompt(_T("\n请选择放置点："));
 	jig.SetBasePoint(ptBase);
 	jig.RegisterAsJigEntity(vctJigEnt);
 	CJigHelper::RESULT ec = jig.startJig();
@@ -1676,5 +1676,22 @@ void CEquipmentroomTool::pritfCurTime()
 	acutPrintf(sNum);
 }
 
-
+bool CEquipmentroomTool::hasNameOfBlock(CString sBlockName)
+{
+	// 获得当前数据库的块表
+	AcDbBlockTable *pBlkTbl = NULL;
+	if (acdbCurDwg()->getBlockTable(pBlkTbl, AcDb::kForWrite) != Acad::eOk)
+		return false;
+	// 查找用户指定的块定义是否存在
+	if (pBlkTbl->has(sBlockName))
+	{
+		pBlkTbl->close();
+		return true;
+	}
+	else
+	{
+		pBlkTbl->close();
+		return false;
+	}
+}
 

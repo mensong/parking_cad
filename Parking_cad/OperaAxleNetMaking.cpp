@@ -815,16 +815,19 @@ AcDbObjectIdArray COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortId
 	CEquipmentroomTool::creatLayerByjson("axis_dimensions", pDb);//创建轴号所在图层
 
 	CString sBlockName = _T("_AxleNumber");
-	std::set<AcString> setBlockNames;
-	setBlockNames.insert(sBlockName);
-	AcString filepath = DBHelper::GetArxDir() + _T("template.dwg");
-	bool es = DBHelper::ImportBlkDef(filepath, setBlockNames, pDb);
-	if (!es)
+	if (!CEquipmentroomTool::hasNameOfBlock(sBlockName))
 	{
-		return outids;
+		std::set<AcString> setBlockNames;
+		setBlockNames.insert(sBlockName);
+		AcString filepath = DBHelper::GetArxDir() + _T("template.dwg");
+		bool es = DBHelper::ImportBlkDef(filepath, setBlockNames, pDb);
+		if (!es)
+		{
+			return outids;
+		}
 	}
+	
 		
-
 	double scaleFactor = 150 * zoomcoefficient;// 折线长度
 	double circleradius = 450 * zoomcoefficient;//圆半径
 	double dis = (scaleFactor + circleradius)*sin(45 * PI / 180);//折线导致增加的移动距离

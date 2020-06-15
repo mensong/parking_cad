@@ -33,160 +33,19 @@
 #include "GeHelper.h"
 #include "EquipmentroomTool.h"
 #include "LibcurlHttp.h"
+#include "ParkingLog.h"
 
-
-std::string CDlgEntrance::ms_strEntrancePostUrlPort;
-std::string CDlgEntrance::ms_strEntrancePostUrlPortV2;
-
-void CDlgEntrance::deletParkingForEntrance(std::map<AcDbObjectId, AcGePoint2d>& parkingIdAndPt, AcGePoint2dArray& useDeletParkingPts)
-{
-	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(_T("parkings"));
-	std::map<AcDbObjectId, AcGePoint2d> newParkingAndPt;
-	AcGePoint2dArray parkingPts;
-	AcDbObjectIdArray parkingIds;//图形界面剩余车位ID
-	for (int i=0; i<allParkingIds.length(); i++)
-	{
-		if (parkingIdAndPt.count(allParkingIds[i]) > 0)
-		{
-			AcDbObjectId keyId = allParkingIds[i];
-			AcGePoint2d tempPts = parkingIdAndPt[keyId];
-			std::pair<AcDbObjectId, AcGePoint2d> value(keyId, tempPts);
-			newParkingAndPt.insert(value);
-			parkingPts.append(tempPts);
-			parkingIds.append(keyId);
-		}	  
-	}
-	parkingIdAndPt.clear();
-	AcDbObjectIdArray deletIds;
-	for (int j=0; j<parkingPts.length(); j++)
-	{
-		if (GeHelper::IsPointOnPolygon(useDeletParkingPts, parkingPts[j]))
-		{
-			std::map<AcDbObjectId, AcGePoint2d>::iterator tempIter;
-			for (tempIter = newParkingAndPt.begin(); tempIter != newParkingAndPt.end(); tempIter++)
-			{
-				if (tempIter->second == parkingPts[j])
-				{
-					AcDbObjectId deletId = tempIter->first;
-					deletIds.append(deletId);
-					AcDbEntity* pEntity = NULL;
-					if (acdbOpenAcDbEntity(pEntity, deletId, kForWrite) != eOk)							//这里是可读
-					{
-						acutPrintf(_T("获取单个实体指针失败！"));
-						continue;
-					}
-					if (pEntity->isKindOf(AcDbBlockReference::desc()))
-					{
-						pEntity->erase();
-					}
-					pEntity->close();
-				}
-			}
-		}	
-	}
-	AcDbObjectIdArray lineSelectUseIds;
-	for (int g=0; g<parkingIds.length(); g++)
-	{
-		if (deletIds.contains(parkingIds[g]))
-		{
-			continue;  
-		}
-		lineSelectUseIds.append(parkingIds[g]);
-	}
-	deletParkingByLineSelect(lineSelectUseIds, useDeletParkingPts);
-}
-
-void CDlgEntrance::deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds, AcGePoint2dArray& useDeletParkingPts)
-{
-	//只能选到该id数组中的实体
-	m_parkingSel.init(parkingIds);
-	std::vector<AcDbObjectIdArray> allNeedDeletParkingIds;
-
-	useDeletParkingPts.removeLast();
-	AcGeVector2dArray vecs;
-	for (int a=0; a<useDeletParkingPts.length(); a++)
-	{
-		AcGeVector2d vec = useDeletParkingPts[(a + 1) % useDeletParkingPts.length()] - useDeletParkingPts[a];
-		vec.rotateBy(ARX_PI / 4);
-		vecs.append(vec);
-	}
-
-	int n = vecs.length();
-
-	for (int b=0; b<vecs.length(); b++)
-	{
-		AcGeVector2d unitvec = vecs[b].normalize();
-		useDeletParkingPts[b].transformBy(unitvec * 5);
-	}
-
-	for (int i=0; i<useDeletParkingPts.length();i++)
-	{
-		AcDbObjectIdArray sideSelectIds = m_parkingSel.select(useDeletParkingPts[i], useDeletParkingPts[(i + 1) % useDeletParkingPts.length()]);
-		allNeedDeletParkingIds.push_back(sideSelectIds);
-	}
-	for (int x=0; x<allNeedDeletParkingIds.size(); x++)
-	{
-		for (int y=0; y<allNeedDeletParkingIds[x].length(); y++)
-		{
-			AcDbEntity* pEntity = NULL;
-			if (acdbOpenAcDbEntity(pEntity, allNeedDeletParkingIds[x][y], kForWrite) != eOk)//这里只读即可
-			{
-				continue;
-			}
-			pEntity->erase();
-			pEntity->close();
-		}
-	}
-}
-
-void CDlgEntrance::getParkingIdAndPtMap(std::map < AcDbObjectId, AcGePoint2d>& parkingIdAndPtMap)
-{
-	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(_T("parkings"));
-	for (int i=0; i<allParkingIds.length(); i++)
-	{
-		AcDbEntity* pEntity = NULL;
-		if (acdbOpenAcDbEntity(pEntity, allParkingIds[i], kForRead) != eOk)//这里只读即可
-		{
-			acutPrintf(_T("获取单个车位信息操作失败！"));
-			continue;
-		}
-		if (pEntity->isKindOf(AcDbBlockReference::desc()))
-		{
-			AcDbBlockReference *pBlcRef = AcDbBlockReference::cast(pEntity);
-			AcGePoint3d pInsert = pBlcRef->position();
-			AcGePoint2d tempPts(pInsert.x, pInsert.y);
-			std::pair<AcDbObjectId, AcGePoint2d> value(allParkingIds[i], tempPts);
-			parkingIdAndPtMap.insert(value);
-		}
-		pEntity->close();
-	}
-}
-
-void CDlgEntrance::showEntrance(const AcGePoint2dArray& oneEntrancePts)
-{
-	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-	CEquipmentroomTool::creatLayerByjson("entrance");
-	AcDbPolyline *pPoly = new AcDbPolyline(oneEntrancePts.length());
-	double width = 0;//线宽
-	for (int i = 0; i < oneEntrancePts.length(); i++)
-	{
-		pPoly->addVertexAt(0, oneEntrancePts[i], 0, width, width);
-	}
-	pPoly->setClosed(true);
-	AcDbObjectId entranceId;
-	DBHelper::AppendToDatabase(entranceId, pPoly);
-	pPoly->close();
-	CEquipmentroomTool::setEntToLayer(entranceId, sEntranceLayer);
-}
-
+CString CDlgEntrance::ms_sBasementHeight;
+CString CDlgEntrance::ms_sEntranceWidth;
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgEntrance, CAcUiDialog)
 
 BEGIN_MESSAGE_MAP(CDlgEntrance, CAcUiDialog)
 	ON_MESSAGE(WM_ACAD_KEEPFOCUS, OnAcadKeepFocus)
-	ON_BN_CLICKED(IDC_BUTTON_GetStartPoint, &CDlgEntrance::OnBnClickedButtonGetstartpoint)
-	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CDlgEntrance::OnBnClickedButtonGetendpoint)
+	ON_WM_SIZE()
+	ON_WM_TIMER()
 	ON_BN_CLICKED(IDOK, &CDlgEntrance::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON_GETENTRANCEPL, &CDlgEntrance::OnBnClickedButtonGetentrancepl)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -208,16 +67,10 @@ static void __smartLog(bool*& data, bool isDataValid)
 void CDlgEntrance::DoDataExchange (CDataExchange *pDX) {
 	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_EDIT_STARTPOINTSHOW, m_StartPointEdit);
-	DDX_Control(pDX, IDC_EDIT_ENDPOINTSHOW, m_EndPointEdit);
-	DDX_Control(pDX, IDC_EDIT_LIMITHEIGHT, m_LimitHeight);
-	DDX_Control(pDX, IDC_EDIT_ENTRANCEWIDTH, m_EntranceWidth);
-	DDX_Control(pDX, IDC_EDIT_ONEGENTLESLOPE, m_OneGentleSlope);
-	DDX_Control(pDX, IDC_EDIT_TWOGENTLESLOPE, m_TwoGentleSlope);
-	DDX_Control(pDX, IDC_EDIT_THIREGENTLESLOPE, m_ThireGentleSlope);
-	DDX_Control(pDX, IDC_EDIT_ONEHORIZONTALDISTANCE, m_OneHorizontalDistance);
-	DDX_Control(pDX, IDC_EDIT_TWOHORIZONTALDISTANCE, m_TwoHorizontalDistance);
-	DDX_Control(pDX, IDC_EDIT_THIREHORZONTALDISTANCE, m_ThireHorizontalDistance);
+	DDX_Control(pDX, IDC_BUTTON_GETENTRANCEPL, m_btn_getEntrancePline);
+	DDX_Control(pDX, IDC_EDIT_ENTRANCEDATA, m_show_entranceData);
+	DDX_Control(pDX, IDC_EDIT_BASEMENT_HEIGHT, m_edit_basementHeight);
+	DDX_Control(pDX, IDC_EDIT_ENTRANCE_WIDTH, m_edit_entranceWidth);
 	*(end()) = true;
 }
 
@@ -228,118 +81,14 @@ LRESULT CDlgEntrance::OnAcadKeepFocus (WPARAM, LPARAM) {
 	return (TRUE) ;
 }
 
-
-void CDlgEntrance::OnBnClickedButtonGetstartpoint()
-{
-	// 拾取出入口起点
-	HideDialogHolder holder(this);
-	Doc_Locker doc_locker;
-	CString strStartPoint;
-	//提示用户输入一个点
-	ads_point pt;
-	int re = acedGetPoint(NULL, _T("\n请输入一个点作为出入口起始点："), pt);
-	if (re == RTNORM)
-	{
-		//如果点有效，继续执行
-		CompleteEditorCommand();
-		
-		CString strXPt;
-		CString strYPt;
-		strXPt.Format(_T("%.2f"), pt[X]);
-		strYPt.Format(_T("%.2f"), pt[Y]);
-		strStartPoint = _T("(") + strXPt + _T(",") + strYPt + _T(")");
-		//显示点的坐标	 
-		m_StartPointEdit.SetWindowText(strStartPoint);
-		dStartPtx = pt[X];
-		dStartPty = pt[Y];
-	}
-	else if (re == RTCAN)
-	{
-		strStartPoint = "";
-		m_StartPointEdit.SetWindowText(strStartPoint);
-		return;
-	}
-	else
-	{
-		strStartPoint = "选取了无效的点";
-		m_StartPointEdit.SetWindowText(strStartPoint);
-	}
-}
-
-
-void CDlgEntrance::OnBnClickedButtonGetendpoint()
-{
-	// 拾取出入口终点
-	// 拾取出入口起点
-	HideDialogHolder holder(this);
-	Doc_Locker doc_locker;
-	CString strEndPoint;
-	//提示用户输入一个点
-	ads_point pt;
-	int re = acedGetPoint(NULL, _T("\n输入一个点作为出入终止点："), pt);
-	if (re == RTNORM)
-	{
-		//如果点有效，继续执行
-		CompleteEditorCommand();
-
-		CString strXPt;
-		CString strYPt;
-		strXPt.Format(_T("%.2f"), pt[X]);
-		strYPt.Format(_T("%.2f"), pt[Y]);
-		strEndPoint = _T("(") + strXPt + _T(",") + strYPt + _T(")");
-		//显示点的坐标	 
-		m_EndPointEdit.SetWindowText(strEndPoint);
-		dEndPtx = pt[X];
-		dEndPty = pt[Y];
-	}
-	else if (re == RTCAN)
-	{
-		strEndPoint = "";
-		m_EndPointEdit.SetWindowText(strEndPoint);
-		return;
-	}
-	else
-	{
-		strEndPoint = "选取了无效的点";
-		m_EndPointEdit.SetWindowText(strEndPoint);
-	}
-}
-
-void CDlgEntrance::init()
-{
-	CString strLimitHeight = _T("2.2");
-	m_LimitHeight.SetWindowText(strLimitHeight);
-
-	CString strEntranceWidth = _T("5");
-	m_EntranceWidth.SetWindowText(strEntranceWidth);
-
-	CString strOneGentleSlope = _T("7.5");
-	m_OneGentleSlope.SetWindowText(strOneGentleSlope);
-
-	CString strTwoGentleSlope = _T("15");
-	m_TwoGentleSlope.SetWindowText(strTwoGentleSlope);
-
-	CString strThireGentleSlope = _T("7.5");
-	m_ThireGentleSlope.SetWindowText(strThireGentleSlope);
-
-	CString strOneHorizontalDistance = _T("10");
-	m_OneHorizontalDistance.SetWindowText(strOneHorizontalDistance);
-
-	CString strTwoHorizontalDistance = _T("10");
-	m_TwoHorizontalDistance.SetWindowText(strTwoHorizontalDistance);
-
-	CString strThireHorizontalDistance = _T("10");
-	m_ThireHorizontalDistance.SetWindowText(strThireHorizontalDistance);
-}
-
-
 BOOL CDlgEntrance::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
-	init();
-
+	m_edit_basementHeight.SetWindowText(ms_sBasementHeight);
+	m_edit_entranceWidth.SetWindowText(ms_sEntranceWidth);
+	CenterWindow();
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -347,206 +96,1751 @@ BOOL CDlgEntrance::OnInitDialog()
 
 void CDlgEntrance::OnBnClickedOk()
 {
-	CString sStartPt;
-	m_StartPointEdit.GetWindowText(sStartPt);
-	if (sStartPt == _T(""))
+	if (m_targetId.isNull())
 	{
-		acedAlert(_T("没有选择出入口起始点信息!"));
+		acedAlert(_T("没有选择用于生成出入口的多线段!"));
 		return;
 	}
-	CString strEndPt;
-	m_EndPointEdit.GetWindowText(strEndPt);
-	if (strEndPt == _T(""))
+	CString sBasementHeight;
+	m_edit_basementHeight.GetWindowText(sBasementHeight);
+	if (sBasementHeight.IsEmpty())
 	{
-		acedAlert(_T("没有选择出入口终止点信息!"));
+		acedAlert(_T("没有输入地下室高度的参数信息!"));
 		return;
 	}
-
+	CString sEtranceWidth;
+	m_edit_entranceWidth.GetWindowText(sEtranceWidth);
+	if (sEtranceWidth.IsEmpty())
+	{
+		acedAlert(_T("没有输入出入口宽度的参数信息!"));
+		return;
+	}
 	// TODO: 在此添加控件通知处理程序代码
-	CString strLimitHeight;
-	m_LimitHeight.GetWindowText(strLimitHeight);
-	CString strEntranceWidth;
-	m_EntranceWidth.GetWindowText(strEntranceWidth);
-	CString strOneGentleSlope;
-	m_OneGentleSlope.GetWindowText(strOneGentleSlope);
-	CString strTwoGentleSlope;
-	m_TwoGentleSlope.GetWindowText(strTwoGentleSlope);
-	CString strThireGentleSlope;
-	m_ThireGentleSlope.GetWindowText(strThireGentleSlope);
-	CString strOneHorizontalDistance;
-	m_OneHorizontalDistance.GetWindowText(strOneHorizontalDistance);
-	CString strTwoHorizontalDistance;
-	m_TwoHorizontalDistance.GetWindowText(strTwoHorizontalDistance);
-	CString strThireHorizontalDistance;
-	m_ThireHorizontalDistance.GetWindowText(strThireHorizontalDistance);
-
-	double dLimitHeight = _tstof(strLimitHeight.GetString());
-	double dEntranceWidth = _tstof(strEntranceWidth.GetString());
-	double dOneGentleSlope = _tstof(strOneGentleSlope.GetString());
-	double dTwoGentleSlope = _tstof(strTwoGentleSlope.GetString());
-	double dThireGentleSlope = _tstof(strThireGentleSlope.GetString());
-	double dOneHorizontalDistance = _tstof(strOneHorizontalDistance.GetString());
-	double dTwoHorizontalDistance = _tstof(strTwoHorizontalDistance.GetString());
-	double dThireHorizontalDistance = _tstof(strThireHorizontalDistance.GetString());
-
-	Json::Value root;//根节点
-	//创建子节点
-	Json::Value params;
-	//字节点属性
-	params["limit_height"] = Json::Value(dLimitHeight);
-	params["entrance_width"] = Json::Value(dEntranceWidth);
-	params["one_gentle_slope"] = Json::Value(dOneGentleSlope);
-	params["two_gentle_slope"] = Json::Value(dTwoGentleSlope);
-	params["three_gentle_slope"] = Json::Value(dThireGentleSlope);
-	params["one_horizontal_distance"] = Json::Value(dOneHorizontalDistance);
-	params["two_horizontal_distance"] = Json::Value(dTwoHorizontalDistance);
-	params["three_horizontal_distance"] = Json::Value(dThireHorizontalDistance);
-	Json::Value startpoint;
-	startpoint.append(dStartPtx);
-	startpoint.append(dStartPty);
-	params["start_point"] = Json::Value(startpoint);
-	Json::Value endpoint;
-	endpoint.append(dEndPtx);
-	endpoint.append(dEndPty);
-	params["end_point"] = Json::Value(endpoint);
-	//子节点挂到根节点上
-	root["params"] = Json::Value(params);
-	std::string strData = root.toStyledString();
-	std::string uuid;
-	int res = postToAIApi(strData, uuid,true);
-	if (res != 0)
+	double dBasementHeight = _tstof(sBasementHeight.GetString());
+	double dEtranceWidth = _tstof(sEtranceWidth.GetString());
+	Doc_Locker doc_locker;
+	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction");
+	CEquipmentroomTool::creatLayerByjson("entrance");
+	creatEntrance(dBasementHeight, dEtranceWidth);
+	std::vector<AcDbEntity*> blockEnts;
+	for (int i = 0; i < m_addBlockIds.length(); i++)
 	{
-		CString	sMsg = GL::Ansi2WideByte(uuid.c_str()).c_str();
-		acedAlert(sMsg);
+		AcDbEntity *pEnt = NULL;
+		acdbOpenObject(pEnt, m_addBlockIds[i], AcDb::kForWrite);
+		//判断自定义实体的类型
+		if (pEnt == NULL)
+			continue;
+		blockEnts.push_back(pEnt);
+	}
+	if (blockEnts.size() < 1)
+		return;
+
+	CString sBlockName = _T("entrance");
+	int iCount = 0;
+	while (CEquipmentroomTool::hasNameOfBlock(sBlockName))
+	{
+		iCount++;
+		CString sCount;
+		sCount.Format(_T("%d"), iCount);
+		sBlockName += sCount;
+	}
+	if (!DBHelper::CreateBlock(sBlockName, blockEnts))
+	{
+		acutPrintf(_T("\n创建出入口图块失败！"));
 		return;
 	}
-	CAcUiDialog::OnOK();
-}
-
-void CDlgEntrance::setEntrancePostUrl(std::string& strEntrancePostUrl)
-{
-	ms_strEntrancePostUrlPort = strEntrancePostUrl;
-}
-
-void CDlgEntrance::setEntrancePostUrlV2(std::string& strEntrancePostUrlV2)
-{
-	ms_strEntrancePostUrlPortV2 = strEntrancePostUrlV2;
-}
-
-int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
-{
-	const char * postUrl;
-	if (useV1)
+	for (int j = 0; j < blockEnts.size(); j++)
 	{
-		postUrl = ms_strEntrancePostUrlPort.c_str();
+		blockEnts[j]->erase();
+		blockEnts[j]->close();
+	}
+	AcDbObjectId blockId;
+	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	bool es = DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
+	CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
+	CAcUiDialog::OnOK();
+	ms_sBasementHeight = sBasementHeight;
+	ms_sEntranceWidth = sEtranceWidth;
+}
+
+
+void CDlgEntrance::OnBnClickedButtonGetentrancepl()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	Doc_Locker doc_locker;
+	HideDialogHolder holder(this);
+	ads_name ename; ads_point pt;
+	AcGePoint2dArray GetretreatlinePts;//装取去完重的有效点
+	if (acedEntSel(_T("\n请选择用于生成出入口的多段线实体:"), ename, pt) != RTNORM)
+	{
+		return;
+	}
+	acutPrintf(_T("\n"));
+	AcDbObjectId id;
+	acdbGetObjectId(id, ename);
+	AcDbEntity *pEnt;
+	//下面语句需要判断操作成功与否
+	acdbOpenObject(pEnt, id, AcDb::kForRead);
+	std::vector<AcGePoint2d> allPoints;//得到的所有点
+	if (pEnt->isKindOf(AcDbPolyline::desc()))
+	{
+		AcDbVoidPtrArray entsTempArray;
+		AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
+		AcGeLineSeg2d line;
+		AcGeCircArc3d arc;
+		int n = pPline->numVerts();
+		for (int i = 0; i < n; i++)
+		{
+			if (pPline->segType(i) == AcDbPolyline::kLine)
+			{
+				pPline->getLineSegAt(i, line);
+				AcGePoint2d startPoint;
+				AcGePoint2d endPoint;
+				startPoint = line.startPoint();
+				endPoint = line.endPoint();
+				//acutPrintf(_T("\n该线段起始点坐标为%.2f,%.2f"), startPoint.x, startPoint.y);
+				//acutPrintf(_T("\n该线段终止点坐标为%.2f,%.2f"), endPoint.x, endPoint.y);
+				allPoints.push_back(startPoint);
+				allPoints.push_back(endPoint);
+			}
+			else if (pPline->segType(i) == AcDbPolyline::kArc)
+			{
+				pPline->getArcSegAt(i, arc);
+				AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
+				for (int x = 0; x < result.length(); x++)
+				{
+					AcGePoint2d onArcpoint(result[x].x, result[x].y);
+					//acutPrintf(_T("\n该点%d坐标为%.2f,%.2f"), x, onArcpoint.x, onArcpoint.y);
+					allPoints.push_back(onArcpoint);
+				}
+			}
+		}
+		for (int x = 0; x < allPoints.size(); x++)
+		{
+			if (GetretreatlinePts.contains(allPoints[x]))
+			{
+				continue;
+			}
+			GetretreatlinePts.append(allPoints[x]);
+		}
+	}
+	pEnt->close();
+	CString sEntranceData;
+	for (int yy = 0; yy < GetretreatlinePts.length(); yy++)
+	{
+		CString tempStr_X;
+		CString tempStr_Y;
+		tempStr_X.Format(_T("%.2f"), GetretreatlinePts[yy].x);
+		tempStr_Y.Format(_T("%.2f"), GetretreatlinePts[yy].y);
+
+		sEntranceData += CString(_T("(")) + tempStr_X + _T(",") + tempStr_Y + _T(")");
+		m_show_entranceData.SetWindowText(sEntranceData);
+	}
+	m_targetId = id;
+}
+
+void CDlgEntrance::creatEntrance(double& dBasementHeight, double& dEntranceWidth)
+{
+	AcDbObjectIdArray useIds = CDlgEntrance::explodeEnty(m_targetId);//对实体进行炸开操作
+	if (useIds.isEmpty())
+	{
+		return;
+	}
+	if (!addDim(useIds, dBasementHeight, dEntranceWidth))
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+
+	//用户在画图的过程中，有可能因为操作失误，实体之间并没有端点与端点连接，而且端点与端点交叉，特此进行处理，如果有交叉的情况，改为连接情况。
+	/*
+	*    __|__   -->   ____
+	*      |          |
+	*                 |
+	*/
+
+	CDlgEntrance::DealIntersectEnt(useIds);
+	AcDbEntity *pEnt = NULL;
+	AcDbEntity *tempEnt = NULL;
+	AcDbObjectIdArray tempIds;
+	AcDbObjectIdArray insortIds;
+
+	//将用户选择的实体，以有相连为依据，分组存储
+	std::vector<std::vector<AcDbObjectId>> operaIds;
+	CDlgEntrance::BatchStorageEnt(useIds, operaIds);
+	double changdistance = (dEntranceWidth * 1000) / 2;//车道距离
+	for (int i = 0; i < operaIds.size(); i++)
+	{
+		if (operaIds[i].empty())
+			continue;
+		//初步将中线引出旁边两条车道线，并作两连点处理
+		/*
+		*    ____________
+		*    ——————       --> ____________
+		*    ————-|—| |	    ——————
+		|  | |		————-   | |
+		|  | |		         |  | |
+		|  | |				 |  | |
+		|  | |				 |  | |
+		*									 |  | |
+		*/
+		AcDbObjectIdArray GuideIds;//GuideIds为两边车道线id
+		CDlgEntrance::GenerateGuides(changdistance, operaIds[i], GuideIds);
+
+		//进一步处理
+		/*
+		*   ____________		   ____________
+		*   ——————      --> —————— |
+		*   -———-   | |        -———-   | |
+		|  | |  	  	  	  |  | |
+		|  | |  	  		  |  | |
+		|  | |  			  |  | |
+		|  | |  			  |  | |
+		*
+		*/
+		double inputdistance = changdistance;
+		CDlgEntrance::MultipleCycles(inputdistance, GuideIds);
+
+		std::vector<AcGePoint3dArray> allLinePts;
+		for (int count = 0; count<GuideIds.length(); count++)
+		{
+			AcGePoint3dArray linePts;
+			AcDbEntity *pEnt = NULL;
+			if (Acad::eOk != acdbOpenObject(pEnt, GuideIds[count], AcDb::kForRead))
+				continue;
+			if (pEnt->isKindOf(AcDbLine::desc()))
+			{
+				AcDbLine *pLine = AcDbLine::cast(pEnt);
+				AcGePoint3d startpoint = pLine->startPoint();
+				AcGePoint3d endpoint = pLine->endPoint();
+				linePts.append(startpoint);
+				linePts.append(endpoint);
+				int oo = 0;
+			}
+			allLinePts.push_back(linePts);
+		}
+
+
+		for (int num = 0; num < operaIds[i].size(); num++)
+			GuideIds.append(operaIds[i][num]);
+
+		//进行封闭处理
+		/*
+		*    ____________	    | ____________
+		*   —————— |  --> |—————— |
+		*   -———-   | |      |-———-   | |
+		|  | |       	     |  | |
+		|  | |               |  | |
+		|  | |               |  | |
+		|  | |               |  | |
+		*                                ------
+		*/
+		CDlgEntrance::ConnectionPoint(GuideIds);
+		CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+		AcDbObjectIdArray useforGetPtsID;
+		for (int g = 0; g<GuideIds.length(); g++)
+		{
+			//CEquipmentroomTool::setEntToLayer(GuideIds[g], sEntranceLayer);
+			if (useIds.contains(GuideIds[g]))
+			{
+				continue;
+			}
+			useforGetPtsID.append(GuideIds[g]);
+		}
+		int count = useforGetPtsID.length();
+		addWideDim(dEntranceWidth);
+		CDlgEntrance::creatPlinePoints(useforGetPtsID);
+		CDlgEntrance::changeLine2Polyline(useforGetPtsID);
+	}
+}
+
+AcDbObjectIdArray CDlgEntrance::explodeEnty(AcDbObjectId& entId)
+{
+	AcDbObjectIdArray returnIds;
+	AcDbEntity *pEnt = NULL;
+	if (Acad::eOk != acdbOpenObject(pEnt, entId, AcDb::kForWrite))
+		return returnIds;
+	if (pEnt->isKindOf(AcDbPolyline::desc()))
+	{
+		//炸开
+		AcDbVoidPtrArray ents;
+		pEnt->explode(ents);
+		//循环遍历炸开的实体
+		for (int i = 0; i < ents.length(); ++i)
+		{
+			AcDbEntity* pSubEnt = (AcDbEntity*)ents[i];
+			AcDbEntity* entity = AcDbEntity::cast(pSubEnt);
+			AcDbObjectId entId;
+			DBHelper::AppendToDatabase(entId, entity);
+
+			returnIds.append(entId);
+			entity->close();
+		}
+		pEnt->erase();
+	}
+	if (pEnt)
+		pEnt->close();
+	return returnIds;
+}
+
+bool CDlgEntrance::addDim(const AcDbObjectIdArray entIds, const double  dHeight, const double dWidth)
+{
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	CString sLaneLayer(CEquipmentroomTool::getLayerName("lane_center_line_and_driving_direction").c_str());
+	for (int i = 0; i < entIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		if (acdbOpenObject(pEnt, entIds[i], AcDb::kForRead) != eOk)
+			continue;
+
+		if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+
+			AcGeCircArc3d pGeArc(
+				pArc->center(),
+				pArc->normal(),
+				pArc->normal().perpVector(),
+				pArc->radius(),
+				pArc->startAngle(),
+				pArc->endAngle());
+			AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(pGeArc, 1);
+			AcGePoint3d endPt;
+			AcGePoint3d startPt;
+			pArc->getEndPoint(endPt);
+			pArc->getStartPoint(startPt);
+			AcGePoint3d centerPt = pArc->center();
+			//AcDbObjectId EquipmentId = pEnt->objectId();
+			//EquipmentIds.append(EquipmentId);
+			AcGeVector3d endPtMoveVec = endPt - centerPt;
+			AcGeVector3d unitEndVec = endPtMoveVec.normalize();
+			//endPt.transformBy(unitEndVec * 1000);
+			AcGeVector3d startPtMoveVec = startPt - centerPt;
+			AcGeVector3d unitStartVec = startPtMoveVec.normalize();
+			AcGePoint3d onArcPt = result[1];
+			//startPt.transformBy(unitStartVec * 500);
+			onArcPt.transformBy(unitStartVec * 4000);
+			//AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
+			//AcDbArcDimension(centerPt, movedPt, endPt, startPt);
+
+			//COperaSetEntranceData::creatArcDim(centerPt, movedPt, endPt, startPt);
+
+			AcDbBlockTable *pBlockTable;//定义块表指针
+			acdbHostApplicationServices()->workingDatabase()
+				->getSymbolTable(pBlockTable, AcDb::kForRead);
+			AcDbBlockTableRecord *pBlockTableRecord;
+			pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
+				AcDb::kForWrite);
+			pBlockTable->close();
+			AcDbArcDimension *pDim1 = new AcDbArcDimension(centerPt, startPt, endPt, onArcPt);//AcDbRadialDimension;
+			double showLength = (2400 * 2 + (dHeight * 1000 - 280) / 0.12) / 1000;
+			//double realLength = showLength * 1000000;
+			CString sEntranceLength;
+			//sEntranceLength.Format(_T("%.1f"), showLength);
+			sEntranceLength.Format(_T("%.2f"), showLength);
+			pDim1->setDimensionText(sEntranceLength);
+			pDim1->setDimexo(0);
+			pDim1->setDimexe(12);
+			AcCmColor suiceng;
+			suiceng.setColorIndex(3);
+			pDim1->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
+			pDim1->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
+			AcCmColor textcolor;
+			textcolor.setColorIndex(7);
+			pDim1->setDimclrt(textcolor);
+			AcDbObjectId Id;
+			pBlockTableRecord->appendAcDbEntity(Id, pDim1);
+			pBlockTableRecord->close();
+			pDim1->close();
+			CEquipmentroomTool::setEntToLayer(Id, sEntranceLayer);
+			m_addBlockIds.append(Id);
+		}
+		else if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d endPt;
+			AcGePoint3d startPt;
+			pLine->getEndPoint(endPt);
+			pLine->getStartPoint(startPt);
+
+			//AcGePoint3d centerpt = AcGePoint3d((startPt.x + endPt.x) / 2, (startPt.y + endPt.y) / 2, 0);
+
+			AcGeVector3d tempVec = AcGeVector3d(startPt - endPt);
+			AcGeVector3d Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
+			Linevec.normalize();
+			//startPt.transformBy(Linevec * 50);
+			//endPt.transformBy(Linevec * 50);
+			AcGePoint3d Pt1 = startPt;
+			Pt1.transformBy(Linevec * 1000);
+			double showLength = (3600 * 2 + (dHeight * 1000 - 540) / 0.15) / 1000;
+			//double realLength = showLength * 1000000;
+			CString sEntranceLength;
+			//sEntranceLength.Format(_T("%.1f"), showLength);
+			sEntranceLength.Format(_T("%.2f"), showLength);
+			AcDbObjectId dimId = CDlgEntrance::creatDim(startPt, endPt, Pt1, sEntranceLength);
+			CEquipmentroomTool::setEntToLayer(dimId, sEntranceLayer);
+			m_addBlockIds.append(dimId);
+		}
+		pEnt->close();
+		m_addBlockIds.append(entIds[i]);
+		CEquipmentroomTool::setEntToLayer(entIds[i], sLaneLayer);
+
+	}
+	return true;
+}
+
+//新建标注及其样式修改
+AcDbObjectId CDlgEntrance::creatDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const CString sLegth)
+{
+	CString str = _T("出入口标注");
+	creatDimStyle(str);
+	AcDbObjectId dimStyleId;
+	////获得当前图形的标注样式表  
+	AcDbDimStyleTable* pDimStyleTbl;
+	acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForRead);
+	if (pDimStyleTbl->has(str))
+		pDimStyleTbl->getAt(str, dimStyleId);
+	else
+	{
+		pDimStyleTbl->close();
+		return dimStyleId;
+	}
+	pDimStyleTbl->close();
+	AcDbAlignedDimension *pnewdim = new AcDbAlignedDimension(pt1, pt2, pt3, NULL, dimStyleId);//AcDbRadialDimension;
+	pnewdim->setDimensionText(sLegth);
+	pnewdim->setDimtxt(500);//标注文字的高度
+	pnewdim->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+	pnewdim->setDimtmove(1);
+	AcCmColor textcolor;
+	textcolor.setColorIndex(7);
+	pnewdim->setDimclrt(textcolor);
+	AcDbObjectId dimId;
+	DBHelper::AppendToDatabase(dimId, pnewdim);
+	if (pnewdim)
+		pnewdim->close();
+	return dimId;
+}
+
+void CDlgEntrance::creatDimStyle(const CString &styleName)
+{
+	// 获得当前图形的标注样式表
+	AcDbDimStyleTable *pDimStyleTbl = NULL;
+	acdbHostApplicationServices()->workingDatabase()->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+	if (pDimStyleTbl->has(styleName))
+	{
+		pDimStyleTbl->close();//已经存在
+		return;
+	}
+
+	// 创建新的标注样式表记录
+	AcDbDimStyleTableRecord *pDimStyleTblRcd = NULL;
+	pDimStyleTblRcd = new AcDbDimStyleTableRecord();
+
+	// 设置标注样式的特性
+	pDimStyleTblRcd->setName(styleName); // 样式名称
+	pDimStyleTblRcd->setDimasz(1);//设置箭头大小
+	pDimStyleTblRcd->setDimzin(8);//十进制小数显示时，抑制后续零
+	pDimStyleTblRcd->setDimblk(_T("_OPEN"));//设置箭头的形状为建筑标记
+	pDimStyleTblRcd->setDimexe(300);//设置尺寸界线超出尺寸线距离为400
+	pDimStyleTblRcd->setDimexo(0);//设置尺寸界线的起点偏移量为300
+	pDimStyleTblRcd->setDimtxt(800);//设置文字高度
+	pDimStyleTblRcd->setDimtad(1);//设置文字位置-垂直为上方，水平默认为居中，不用设置
+	pDimStyleTblRcd->setDimgap(50);//设置文字位置-从尺寸线的偏移量
+	pDimStyleTblRcd->setDimtih(0);
+	pDimStyleTblRcd->setDimtoh(0);//设置文字对齐为：与尺寸线对齐
+	pDimStyleTblRcd->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+	pDimStyleTblRcd->setDimtofl(1);//即使箭头放置于测量点之外，尺寸线也将绘制在测量点之间
+
+	AcCmColor suiceng;
+	suiceng.setColorIndex(3);
+	pDimStyleTblRcd->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
+	pDimStyleTblRcd->setDimclre(suiceng);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
+
+										 // 将标注样式表记录添加到标注样式表中
+	pDimStyleTbl->add(pDimStyleTblRcd);
+	pDimStyleTblRcd->close();
+	pDimStyleTbl->close();
+}
+
+void CDlgEntrance::DealIntersectEnt(AcDbObjectIdArray& inputIds)
+{
+	std::vector<AcGePoint3d> points;
+	AcDbEntity *pEnt = NULL;
+	AcDbEntity *tempEnt = NULL;
+	for (int k = 0; k < inputIds.length(); k++)
+	{
+		if (Acad::eOk != acdbOpenObject(pEnt, inputIds[k], AcDb::kForWrite))
+			continue;
+
+		for (int j = 0; j < inputIds.length(); j++)
+		{
+			if (inputIds[k] == inputIds[j])
+				continue;
+			if (Acad::eOk != acdbOpenObject(tempEnt, inputIds[j], AcDb::kForWrite))
+				continue;
+
+			AcGePoint3dArray intersectPoints;
+			tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
+			if (intersectPoints.length() > 0)
+			{
+				if (std::find(points.begin(), points.end(), intersectPoints[0]) != points.end())//存在
+				{
+					if (tempEnt)
+						tempEnt->close();
+					continue;
+				}
+				else
+				{
+					points.push_back(intersectPoints[0]);
+					DealEnt(pEnt, intersectPoints);
+					DealEnt(tempEnt, intersectPoints);
+
+				}
+
+			}
+			if (tempEnt)
+				tempEnt->close();
+		}
+		if (pEnt)
+			pEnt->close();
+	}
+	if (pEnt)
+		pEnt->close();
+}
+
+void CDlgEntrance::DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints)
+{
+	if (pEnt->isKindOf(AcDbLine::desc()))
+	{
+		AcDbLine *LinEnt = AcDbLine::cast(pEnt);
+		AcGePoint3d starpoint = LinEnt->startPoint();
+		AcGePoint3d endpoint = LinEnt->endPoint();
+		if (starpoint.distanceTo(intersectPoints[0]) <= endpoint.distanceTo(intersectPoints[0]))
+		{
+			LinEnt->setStartPoint(intersectPoints[0]);
+		}
+		else
+		{
+			LinEnt->setEndPoint(intersectPoints[0]);
+		}
+	}
+	else if (pEnt->isKindOf(AcDbPolyline::desc()))
+	{
+		AcDbPolyline *pPolyline = AcDbPolyline::cast(pEnt);
+		int num = pPolyline->numVerts();
+		AcGePoint3d starpoint;
+		AcGePoint3d endpoint;
+		pPolyline->getStartPoint(starpoint);
+		pPolyline->getEndPoint(endpoint);
+		Acad::ErrorStatus es;
+		if (starpoint.distanceTo(intersectPoints[0]) < endpoint.distanceTo(intersectPoints[0]))
+			es = pPolyline->setPointAt(0, AcGePoint2d(intersectPoints[0].x, intersectPoints[0].y));
+		else
+			es = pPolyline->setPointAt(num - 1, AcGePoint2d(intersectPoints[0].x, intersectPoints[0].y));
+	}
+	else if (pEnt->isKindOf(AcDbArc::desc()))
+	{
+		AcDbArc *pARC = AcDbArc::cast(pEnt);
+		AcGePoint3d starpoint;
+		AcGePoint3d endpoint;
+		pARC->getStartPoint(starpoint);
+		pARC->getEndPoint(endpoint);
+		AcGePoint3d centerpoint = pARC->center();
+		AcDbAttribute* pAttrib = NULL;
+		if (starpoint.distanceTo(intersectPoints[0]) < endpoint.distanceTo(intersectPoints[0]))
+		{
+			AcGeVector2d changVec = AcGeVector2d(intersectPoints[0].x - centerpoint.x, intersectPoints[0].y - centerpoint.y);
+			double startAngle = changVec.angle();
+			pARC->setStartAngle(startAngle);
+		}
+		else
+		{
+			AcGeVector2d changVec = AcGeVector2d(intersectPoints[0].x - centerpoint.x, intersectPoints[0].y - centerpoint.y);
+			double endAngle = changVec.angle();
+			pARC->setEndAngle(endAngle);
+		}
+
+
+	}
+}
+
+void CDlgEntrance::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId)
+{
+	AcDbEntity *pEnt = NULL;
+	AcDbEntity *tempEnt = NULL;
+	if (inputId.length() == 1)
+	{
+		std::vector<AcDbObjectId> tempcompare;
+		tempcompare.push_back(inputId[0]);
+		outputId.push_back(tempcompare);
 	}
 	else
 	{
-		postUrl = ms_strEntrancePostUrlPortV2.c_str();
-	}
-	//MessageBoxA(NULL, postUrl, "", 0);
-	int code = HTTP_CLIENT::Ins().post(postUrl, sData.c_str(), sData.size(), true, "application/json");
-	if (code != 200)
-	{
-		if (useV1)
+		for (int i = 0; i < inputId.length(); i++)
 		{
-			if (ms_strEntrancePostUrlPort=="")
-			{
-				sMsg = "请先进行车位排布操作！";
-			}
-			else
-			{
-				sMsg = ms_strEntrancePostUrlPort + ":网络或服务器错误。";
-			}		
-		}
-		else
-		{
-			if (ms_strEntrancePostUrlPortV2 == "")
-			{
-				sMsg = "请先进行车位排布操作！";
-			}
-			else
-			{
-				sMsg = ms_strEntrancePostUrlPortV2 + ":网络或服务器错误。";
-			}
-		}
-		return 2;
-	}
+			bool tag = true;
 
-	int len = 0;
-	std::string json = HTTP_CLIENT::Ins().getBody(len);
+			if (Acad::eOk != acdbOpenObject(pEnt, inputId[i], AcDb::kForWrite))
+				continue;
 
-	Json::Reader reader;
-	Json::Value root;
-	//从字符串中读取数据
-	AcGePoint2dArray delParkingPoints;
-	std::vector<AcGePoint2dArray> showParkingPoints;
-	if (reader.parse(json, root))
-	{
-		Json::Value& delCells = root["ent_for_del_cells"];
-		if (delCells.isArray())
-		{
-			int delCellsSize = delCells.size();
-			for (int a = 0; a < delCellsSize; a++)
+			for (int j = 0; j < inputId.length(); j++)
 			{
-				if (delCells[a].isArray())
-				{									
-					double ptX = delCells[a][0].asDouble();
-					double ptY = delCells[a][1].asDouble();
-					AcGePoint2d tempPt(ptX, ptY);
-					delParkingPoints.append(tempPt);
-				}
-			}
-		}
-		else
-		{
-			sMsg = "没有返回ent_for_del_cells字段。";
-			return 4;
-		}
-		Json::Value& entShow = root["ent_for_show"];
-		if (entShow.isArray())
-		{
-			int entShowSize = entShow.size();
-			for (int x=0; x<entShowSize; x++)
-			{
-				int oneEntShowCount = entShow[x].size();
-				AcGePoint2dArray oneEntShowPts;
-				for (int y=0; y<oneEntShowCount;y++)
-				{				
-					if (entShow[x][y].isArray())
-					{											
-							if (entShow[x][y][0].isDouble())
-							{
-								double ptX = entShow[x][y][0].asDouble();
-								double ptY = entShow[x][y][1].asDouble();
-								AcGePoint2d tempPt(ptX, ptY);
-								oneEntShowPts.append(tempPt);
-							}												
+
+				std::vector<AcDbObjectId> tempcompare;
+				if (inputId[i] == inputId[j])
+					continue;
+				if (Acad::eOk != acdbOpenObject(tempEnt, inputId[j], AcDb::kForRead))
+					continue;
+
+				//AcGePoint3dArray intersectPoints;
+				//	tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
+				if (CDlgEntrance::isIntersect(pEnt, tempEnt, 1))
+				{
+					tag = false;
+					bool ent_tag = true;
+					int ent_num = 0;
+					for (int k = 0; k < outputId.size(); k++)
+					{
+						if (std::find(outputId[k].begin(), outputId[k].end(), inputId[i]) != outputId[k].end())//存在实体ID
+						{
+							ent_tag = false;
+							ent_num = k;
+							break;
+						}
 					}
-					//装入容器
+
+					bool tement_tag = true;
+					int tempent_num = 0;
+					for (int k = 0; k < outputId.size(); k++)
+					{
+						if (std::find(outputId[k].begin(), outputId[k].end(), inputId[j]) != outputId[k].end())//存在实体ID
+						{
+
+							tement_tag = false;
+							tempent_num = k;
+							break;
+						}
+					}
+
+					if (ent_tag)
+					{
+						if (tement_tag)
+						{
+							tempcompare.push_back(inputId[i]);
+							tempcompare.push_back(inputId[j]);
+							outputId.push_back(tempcompare);
+						}
+						else
+							outputId[tempent_num].push_back(inputId[i]);
+					}
+					else
+					{
+						if (tement_tag)
+							outputId[ent_num].push_back(inputId[j]);
+						else
+						{
+							if (tempent_num != ent_num)
+							{
+								for (int Num = 0; Num < outputId[tempent_num].size(); Num++)
+								{
+									outputId[ent_num].push_back(outputId[tempent_num][Num]);
+								}
+								std::remove(outputId.begin(), outputId.end(), outputId[tempent_num]);
+							}
+						}
+					}
 				}
-				showParkingPoints.push_back(oneEntShowPts);
+				if (tempEnt)
+					tempEnt->close();
 			}
+			if (tag)
+			{
+				std::vector<AcDbObjectId> tempvector;
+				tempvector.push_back(inputId[i]);
+				outputId.push_back(tempvector);
+			}
+
+			if (pEnt)
+				pEnt->close();
+		}
+	}
+}
+
+bool CDlgEntrance::isIntersect(AcDbEntity* pEnt, AcDbEntity* pTempEnt, double tol)
+{
+	AcGePoint3d Entstartpt;
+	AcGePoint3d Entendpt;
+	CDlgEntrance::getpoint(pEnt, Entstartpt, Entendpt);
+
+	AcGePoint3d TempEntstartpt;
+	AcGePoint3d TempEntendpt;
+	CDlgEntrance::getpoint(pTempEnt, TempEntstartpt, TempEntendpt);
+
+	if (Entstartpt.distanceTo(TempEntstartpt) <= tol)
+		return true;
+	else if (Entstartpt.distanceTo(TempEntendpt) <= tol)
+		return true;
+	else if (Entendpt.distanceTo(TempEntstartpt) <= tol)
+		return true;
+	else if (Entendpt.distanceTo(TempEntendpt) <= tol)
+		return true;
+
+	return false;
+}
+
+void CDlgEntrance::getpoint(AcDbEntity* pEnt, AcGePoint3d& startpt, AcGePoint3d& endpt)
+{
+	if (pEnt->isKindOf(AcDbLine::desc()))
+	{
+		AcDbLine *pLine = AcDbLine::cast(pEnt);
+		startpt = pLine->startPoint();
+		endpt = pLine->endPoint();
+		if (pLine)
+			pLine->close();
+	}
+	else if (pEnt->isKindOf(AcDbArc::desc()))
+	{
+		AcDbArc *pArc = AcDbArc::cast(pEnt);
+		pArc->getStartPoint(startpt);
+		pArc->getEndPoint(endpt);
+		if (pArc)
+			pArc->close();
+	}
+}
+
+void CDlgEntrance::GenerateGuides(double& changdistance, std::vector<AcDbObjectId>& operaIds, AcDbObjectIdArray& GuideIds)
+{
+	AcDbEntity *pEnt = NULL;
+	AcDbEntity *tempEnt = NULL;
+
+	for (int m = 0; m < operaIds.size(); m++)
+	{
+		if (Acad::eOk != acdbOpenObject(pEnt, operaIds[m], AcDb::kForWrite))
+			continue;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *line = AcDbLine::cast(pEnt);
+			AcGePoint3d starpt = line->startPoint();
+			AcGePoint3d endpt = line->endPoint();
+
+			AcGeVector3d vect = AcGeVector3d(endpt - starpt);
+			AcGeVector3d projVect_90 = vect.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
+			projVect_90.normalize();
+
+			starpt.transformBy(projVect_90*changdistance);
+			endpt.transformBy(projVect_90*changdistance);
+
+			AcDbLine *pLine = new AcDbLine(starpt, endpt);
+
+			AcDbObjectId lineId;
+			DBHelper::AppendToDatabase(lineId, pLine);
+
+			GuideIds.append(lineId);
+			if (pLine)
+				pLine->close();
+		}
+		else if (pEnt->isKindOf(AcDbPolyline::desc()))
+		{
+			AcGePoint3dArray pts;
+			AcGePoint2dArray pts_90;
+			//如果是，定义多段线
+			AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
+			//点数量
+			int num = pPline->numVerts();
+			//在点中循环
+			for (int j = 0; j < num; j++)
+			{
+				AcGePoint3d pt;
+				pPline->getPointAt(j, pt);
+				pts.append(pt);
+			}
+			for (int j = 0; j < num - 1; j++)
+			{
+				AcGePoint3d startpt = pts[j];
+				AcGePoint3d endpt = pts[j + 1];
+
+				AcGeVector3d vect = AcGeVector3d(endpt - startpt);
+				AcGeVector3d projVect_90 = vect.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
+				projVect_90.normalize();
+				startpt.transformBy(projVect_90*changdistance);
+				endpt.transformBy(projVect_90*changdistance);
+
+				AcDbLine *pLine = new AcDbLine(startpt, endpt);
+				AcDbObjectId lineId;
+				DBHelper::AppendToDatabase(lineId, pLine);
+				GuideIds.append(lineId);
+				if (pLine)
+					pLine->close();
+			}
+
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+			AcDbArc *arc = AcDbArc::cast(pEnt);
+			AcGePoint3d arccenter = arc->center();
+			double radius = arc->radius();
+			double startAngle = arc->startAngle();
+			double endAngle = arc->endAngle();
+
+			AcDbArc *pArc1 = new AcDbArc(arccenter, radius - changdistance, startAngle, endAngle);
+			AcDbArc *pArc2 = new AcDbArc(arccenter, radius + changdistance, startAngle, endAngle);
+
+			AcDbObjectId pArcid_1;
+			DBHelper::AppendToDatabase(pArcid_1, pArc1);
+			GuideIds.append(pArcid_1);
+			AcDbObjectId pArcid_2;
+			DBHelper::AppendToDatabase(pArcid_2, pArc2);
+			GuideIds.append(pArcid_2);
+			if (pArc1)
+				pArc1->close();
+			if (pArc2)
+				pArc2->close();
+		}
+
+		if (pEnt)
+			pEnt->close();
+	}
+
+	CDlgEntrance::DealIntersectEnt(GuideIds);
+
+	for (int m = 0; m < operaIds.size(); m++)
+	{
+		if (Acad::eOk != acdbOpenObject(pEnt, operaIds[m], AcDb::kForWrite))
+			continue;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *line = AcDbLine::cast(pEnt);
+			AcGePoint3d starpt = line->startPoint();
+			AcGePoint3d endpt = line->endPoint();
+
+			AcGeVector3d vect = AcGeVector3d(endpt - starpt);
+			AcGeVector3d projVect_180 = vect.rotateBy(3 * ARX_PI / 2, AcGeVector3d(0, 0, 1));
+
+			projVect_180.normalize();
+
+			starpt.transformBy(projVect_180*changdistance);
+			endpt.transformBy(projVect_180*changdistance);
+
+			AcDbLine *pLine1 = new AcDbLine(starpt, endpt);
+			AcDbObjectId lineId_1;
+			DBHelper::AppendToDatabase(lineId_1, pLine1);
+			GuideIds.append(lineId_1);
+
+			if (pLine1)
+				pLine1->close();
+
+
+		}
+		else if (pEnt->isKindOf(AcDbPolyline::desc()))
+		{
+			AcGePoint3dArray pts;
+			AcGePoint2dArray pts_180;
+			//如果是，定义多段线
+			AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
+			//点数量
+			int num = pPline->numVerts();
+			//在点中循环
+			for (int j = 0; j < num; j++)
+			{
+				AcGePoint3d pt;
+				pPline->getPointAt(j, pt);
+				pts.append(pt);
+			}
+			for (int j = 0; j < num - 1; j++)
+			{
+				AcGePoint3d startpt = pts[j];
+				AcGePoint3d endpt = pts[j + 1];
+
+				AcGeVector3d vect = AcGeVector3d(endpt - startpt);
+				AcGeVector3d projVect_180 = vect.rotateBy(3 * ARX_PI / 2, AcGeVector3d(0, 0, 1));
+
+				projVect_180.normalize();
+
+				startpt.transformBy(projVect_180*changdistance);
+				endpt.transformBy(projVect_180*changdistance);
+
+				AcDbLine *pLine1 = new AcDbLine(startpt, endpt);
+				AcDbObjectId lineId_1;
+				DBHelper::AppendToDatabase(lineId_1, pLine1);
+				GuideIds.append(lineId_1);
+
+				if (pLine1)
+					pLine1->close();
+
+			}
+
+		}
+		if (pEnt)
+			pEnt->close();
+
+
+	}
+	CDlgEntrance::DealIntersectEnt(GuideIds);
+}
+
+void CDlgEntrance::MultipleCycles(double& inputdistance, AcDbObjectIdArray& GuideIds)
+{
+	AcDbEntity *pEnt = NULL;
+	AcDbEntity *tempEnt = NULL;
+
+	std::vector<AcGePoint3d> points;
+	std::vector<InfoStructLine> saveLineInfoVector;
+	std::vector<InfoStructArc> saveArcInfoVector;
+	std::vector<AcGePoint3d> inserpoint;
+	std::vector<AcGePoint3d> inserpoint1;
+
+	//进行延长处理，并将处理前的端点信息存储起来，为后续处理完之后，恢复最旁边的端点，然后进行封闭处理
+	CDlgEntrance::SpecialSaveEntInfo(inputdistance, GuideIds, saveLineInfoVector, saveArcInfoVector, inserpoint1);
+	CDlgEntrance::DealIntersectEnt(GuideIds);
+
+	//因为第一次延长处理，有时并不能一次性可以，需要重复几次，但这一块代码其实是不严谨的，需要优化。
+	for (int i = 0; i < 2; i++)
+	{
+		std::vector<InfoStructLine> saveLineInfoVector1;
+		std::vector<InfoStructArc> saveArcInfoVector1;
+		CDlgEntrance::SpecialSaveEntInfo(inputdistance, GuideIds, saveLineInfoVector1, saveArcInfoVector1, inserpoint);
+		CDlgEntrance::DealIntersectEnt(GuideIds);
+	}
+
+	//恢复端点
+#if 1 
+	for (int i = 0; i < GuideIds.length(); i++)
+	{
+		if (Acad::eOk != acdbOpenObject(pEnt, GuideIds[i], AcDb::kForWrite))
+			continue;
+
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			InfoStructLine tempStrcut;
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d starpoint = pLine->startPoint();
+			AcGePoint3d endpoint = pLine->endPoint();
+
+			if (std::find(inserpoint.begin(), inserpoint.end(), starpoint) != inserpoint.end())//存在
+			{
+				for (int j = 0; j < saveLineInfoVector.size(); j++)
+				{
+					if (saveLineInfoVector[j].entId == GuideIds[i])
+					{
+						AcGePoint3d temp = saveLineInfoVector[j].startpoint;
+						pLine->setStartPoint(temp);
+						break;
+					}
+				}
+			}
+			if (std::find(inserpoint.begin(), inserpoint.end(), endpoint) != inserpoint.end())
+			{
+				for (int j = 0; j < saveLineInfoVector.size(); j++)
+				{
+					if (saveLineInfoVector[j].entId == GuideIds[i])
+					{
+						AcGePoint3d temp = saveLineInfoVector[j].endpoint;
+						pLine->setEndPoint(temp);
+						break;
+					}
+				}
+			}
+
+			if (pLine)
+				pLine->close();
+
+		}
+		else if (pEnt->isKindOf(AcDbPolyline::desc()))
+		{
+
+			AcDbPolyline *pPolyLine = AcDbPolyline::cast(pEnt);
+			int num = pPolyLine->numVerts();
+			AcGePoint3d startpoint;
+			pPolyLine->getStartPoint(startpoint);
+			AcGePoint3d endpoint;
+			pPolyLine->getEndPoint(endpoint);
+
+			if (std::find(inserpoint.begin(), inserpoint.end(), startpoint) != inserpoint.end())//存在
+			{
+				for (int j = 0; j < saveLineInfoVector.size(); j++)
+				{
+					if (saveLineInfoVector[j].entId == GuideIds[i])
+					{
+						pPolyLine->setPointAt(0, AcGePoint2d(saveLineInfoVector[j].startpoint.x, saveLineInfoVector[j].startpoint.y));
+						break;
+					}
+				}
+			}
+			if (std::find(inserpoint.begin(), inserpoint.end(), endpoint) != inserpoint.end())
+			{
+				for (int j = 0; j < saveLineInfoVector.size(); j++)
+				{
+					if (saveLineInfoVector[j].entId == GuideIds[i])
+					{
+						pPolyLine->setPointAt(num - 1, AcGePoint2d(saveLineInfoVector[j].endpoint.x, saveLineInfoVector[j].endpoint.y));
+						break;
+					}
+				}
+			}
+
+			if (pPolyLine)
+				pPolyLine->close();
+
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+
+			AcGePoint3d startpoint;
+			AcGePoint3d endpoint;
+			pArc->getStartPoint(startpoint);
+			pArc->getEndPoint(endpoint);
+
+			if (std::find(inserpoint.begin(), inserpoint.end(), startpoint) != inserpoint.end())//存在
+			{
+				for (int j = 0; j < saveArcInfoVector.size(); j++)
+				{
+					if (saveArcInfoVector[j].entId == GuideIds[i])
+					{
+						pArc->setStartAngle(saveArcInfoVector[j].startAngle);
+						break;
+					}
+				}
+			}
+			if (std::find(inserpoint.begin(), inserpoint.end(), endpoint) != inserpoint.end())
+			{
+				for (int j = 0; j < saveArcInfoVector.size(); j++)
+				{
+					if (saveArcInfoVector[j].entId == GuideIds[i])
+					{
+						pArc->setEndAngle(saveArcInfoVector[j].endAngle);
+						break;
+					}
+				}
+			}
+			if (pArc)
+				pArc->close();
+		}
+
+		if (pEnt)
+			pEnt->close();
+	}
+#endif
+}
+
+void CDlgEntrance::SpecialSaveEntInfo(double& movedistance, AcDbObjectIdArray& inputIds, std::vector<InfoStructLine>& saveLineInfoVector,
+	std::vector<InfoStructArc>& saveArcInfoVector, std::vector<AcGePoint3d>& inserpoint)
+{
+	double changdistance = movedistance;
+	std::vector<AcGePoint3d> points;
+
+	//先提取相连点存储在容器points里
+	for (int i = 0; i < inputIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		AcDbEntity *ptempEnt = NULL;
+		if (Acad::eOk != acdbOpenObject(pEnt, inputIds[i], AcDb::kForWrite))
+			continue;
+		for (int k = 0; k < inputIds.length(); k++)
+		{
+
+			if (inputIds[k] == inputIds[i])
+				continue;
+			if (Acad::eOk != acdbOpenObject(ptempEnt, inputIds[k], AcDb::kForWrite))
+				continue;
+			AcGePoint3dArray intersectPoints;
+			ptempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
+			if (intersectPoints.length() > 0)
+			{
+				if (std::find(points.begin(), points.end(), intersectPoints[0]) == points.end())
+				{
+					points.push_back(intersectPoints[0]);
+				}
+			}
+			if (ptempEnt)
+				ptempEnt->close();
+
+		}
+		if (pEnt)
+			pEnt->close();
+	}
+
+	//如果实体的端点没有在points里，则需要进行拉伸操作
+	for (int i = 0; i < inputIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		if (Acad::eOk != acdbOpenObject(pEnt, inputIds[i], AcDb::kForWrite))
+			continue;
+
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			InfoStructLine tempStrcut;
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d startpoint = pLine->startPoint();
+			AcGePoint3d endpoint = pLine->endPoint();
+
+			if (std::find(points.begin(), points.end(), startpoint) == points.end())
+			{
+
+
+				tempStrcut.startpoint = startpoint;
+				AcGeVector3d vec = AcGeVector3d(startpoint - endpoint);
+				vec.normalize();
+				startpoint.transformBy(vec*changdistance);
+				inserpoint.push_back(startpoint);
+				pLine->setStartPoint(startpoint);
+
+			}
+			if (std::find(points.begin(), points.end(), endpoint) == points.end())
+			{
+
+				tempStrcut.endpoint = endpoint;
+				AcGeVector3d vec = AcGeVector3d(endpoint - startpoint);
+				vec.normalize();
+				endpoint.transformBy(vec*changdistance);
+				inserpoint.push_back(endpoint);
+				pLine->setEndPoint(endpoint);
+
+			}
+			tempStrcut.entId = inputIds[i];
+			saveLineInfoVector.push_back(tempStrcut);
+
+			if (pLine)
+				pLine->close();
+
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+
+			InfoStructArc tempStrcut;
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+
+			double radius = pArc->radius();
+			double startAngle = pArc->startAngle();
+			double endAngle = pArc->endAngle();
+			AcGePoint3d startpoint;
+			AcGePoint3d endpoint;
+			pArc->getStartPoint(startpoint);
+			pArc->getEndPoint(endpoint);
+			double changAngle = changdistance / radius;
+
+			if (std::find(points.begin(), points.end(), startpoint) == points.end())
+			{
+
+				tempStrcut.startAngle = startAngle;
+				double tempstartAnle = startAngle - changAngle;
+				pArc->setStartAngle(tempstartAnle);
+				AcGePoint3d startpt;
+				pArc->getStartPoint(startpt);
+				inserpoint.push_back(startpt);
+			}
+			if (std::find(points.begin(), points.end(), endpoint) == points.end())
+			{
+				tempStrcut.endAngle = endAngle;
+				double tempendAngle = endAngle + changAngle;
+				pArc->setEndAngle(tempendAngle);
+				AcGePoint3d endpt;
+				pArc->getEndPoint(endpt);
+				inserpoint.push_back(endpt);
+			}
+			tempStrcut.entId = inputIds[i];
+			saveArcInfoVector.push_back(tempStrcut);
+
+			if (pArc)
+				pArc->close();
+
+		}
+
+		if (pEnt)
+			pEnt->close();
+	}
+}
+
+void CDlgEntrance::ConnectionPoint(AcDbObjectIdArray& inputIds)
+{
+	std::vector<AcGePoint3d> points;
+	AcGePoint2dArray dealpoints;
+	/*
+	AcDbEntity *pEnt = NULL;
+	AcDbEntity *tempEnt = NULL;*/
+
+
+	for (int i = 0; i < inputIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		AcDbEntity *tempEnt = NULL;
+		if (Acad::eOk != acdbOpenObject(pEnt, inputIds[i], AcDb::kForRead))
+			continue;
+		for (int j = 0; j < inputIds.length(); j++)
+		{
+			if (inputIds[j] == inputIds[i])
+				continue;
+			if (Acad::eOk != acdbOpenObject(tempEnt, inputIds[j], AcDb::kForRead))
+				continue;
+			AcGePoint3dArray intersectPoints;
+			tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
+			if (intersectPoints.length() > 0)
+			{
+				if (std::find(points.begin(), points.end(), intersectPoints[0]) == points.end())//存在
+				{
+					//tempEnt->close();
+					/*	continue;
+					}
+					else
+					{*/
+					points.push_back(intersectPoints[0]);
+				}
+
+			}
+			if (tempEnt)
+				tempEnt->close();
+		}
+		if (pEnt)
+			pEnt->close();
+	}
+
+	for (int i = 0; i < inputIds.length(); i++)
+	{
+
+		AcDbEntity *pEnt = NULL;
+		if (Acad::eOk != acdbOpenObject(pEnt, inputIds[i], AcDb::kForRead))
+			continue;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			InfoStructLine tempStrcut;
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d startpoint = pLine->startPoint();
+			AcGePoint3d endpoint = pLine->endPoint();
+			if (std::find(points.begin(), points.end(), startpoint) == points.end())//不存在
+			{
+				dealpoints.append(AcGePoint2d(startpoint.x, startpoint.y));
+			}
+			if (std::find(points.begin(), points.end(), endpoint) == points.end())//不存在
+			{
+				dealpoints.append(AcGePoint2d(endpoint.x, endpoint.y));
+			}
+			if (pLine)
+				pLine->close();
+
+		}
+		else if (pEnt->isKindOf(AcDbPolyline::desc()))
+		{
+
+			AcDbPolyline *pPolyLine = AcDbPolyline::cast(pEnt);
+			AcGePoint3d startpoint;
+			//pPolyLine->getStartPoint(startpoint);
+			int num = pPolyLine->numVerts();
+			AcGePoint2d temppoint;
+			pPolyLine->getPointAt(0, temppoint);
+			startpoint = AcGePoint3d(temppoint.x, temppoint.y, 0);
+			AcGePoint3d endpoint;
+			pPolyLine->getPointAt(num - 1, temppoint);
+			endpoint = AcGePoint3d(temppoint.x, temppoint.y, 0);
+			if (std::find(points.begin(), points.end(), startpoint) == points.end())
+			{
+				dealpoints.append(AcGePoint2d(startpoint.x, startpoint.y));
+			}
+			if (std::find(points.begin(), points.end(), endpoint) == points.end())
+			{
+				dealpoints.append(AcGePoint2d(endpoint.x, endpoint.y));
+			}
+			if (pPolyLine)
+				pPolyLine->close();
+
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+			AcGePoint3d startpoint;
+			AcGePoint3d endpoint;
+			pArc->getStartPoint(startpoint);
+			pArc->getEndPoint(endpoint);
+			if (std::find(points.begin(), points.end(), startpoint) == points.end())
+			{
+				dealpoints.append(AcGePoint2d(startpoint.x, startpoint.y));
+			}
+			if (std::find(points.begin(), points.end(), endpoint) == points.end())
+			{
+				dealpoints.append(AcGePoint2d(endpoint.x, endpoint.y));
+			}
+			if (pArc)
+				pArc->close();
+		}
+		pEnt->close();
+	}
+
+	std::vector<AcGePoint2dArray> Pointsvect;
+	std::vector<AcGePoint2d> comparepoints;
+	for (int m = 0; m<dealpoints.length(); m++)
+	{
+		if (find(comparepoints.begin(), comparepoints.end(), dealpoints[m]) != comparepoints.end())
+			continue;
+		for (int i = 0; i < dealpoints.length(); i++)
+		{
+			if (dealpoints[m] == dealpoints[i])
+				continue;
+			if (find(comparepoints.begin(), comparepoints.end(), dealpoints[i]) != comparepoints.end())
+				continue;
+
+			for (int k = 0; k < dealpoints.length(); k++)
+			{
+				if (dealpoints[i] == dealpoints[k] || dealpoints[m] == dealpoints[k])
+					continue;
+				if (find(comparepoints.begin(), comparepoints.end(), dealpoints[k]) != comparepoints.end())
+					continue;
+				if (CDlgEntrance::IsOnLine(dealpoints[m], dealpoints[i], dealpoints[k]))
+				{
+					AcGePoint2dArray polyLinePt;
+					polyLinePt.append(dealpoints[m]);
+					polyLinePt.append(dealpoints[i]);
+					polyLinePt.append(dealpoints[k]);
+					Pointsvect.push_back(polyLinePt);
+					comparepoints.push_back(dealpoints[m]);
+					comparepoints.push_back(dealpoints[i]);
+					comparepoints.push_back(dealpoints[k]);
+					break;
+				}
+			}
+
+		}
+	}
+
+	//直线与圆弧相切的情况
+	if (dealpoints.length()>6)
+	{
+		AcGePoint2dArray Linepts;
+		std::vector<AcGePoint2d> compareTemp;
+		for (int i = 0; i<dealpoints.length(); i++)
+		{
+			if (find(comparepoints.begin(), comparepoints.end(), dealpoints[i]) != comparepoints.end())
+				continue;
+			Linepts.append(dealpoints[i]);
+		}
+
+		for (int i = 0; i < Linepts.length() - 1; i++)
+		{
+			if (find(compareTemp.begin(), compareTemp.end(), Linepts[i]) != compareTemp.end())
+				continue;
+			AcGePoint3d endpoint;
+			double distdata = 0;
+			for (int m = 0; m<Linepts.length(); m++)
+			{
+				if (Linepts[m] == Linepts[i])
+					continue;
+				if (find(compareTemp.begin(), compareTemp.end(), Linepts[m]) != compareTemp.end())
+					continue;
+				if (distdata == 0)
+				{
+					distdata = Linepts[i].distanceTo(Linepts[m]);
+					if (Linepts.length() == 2)
+						endpoint = AcGePoint3d(Linepts[m].x, Linepts[m].y, 0);
+
+				}
+				else if (Linepts[i].distanceTo(Linepts[m]) <= distdata)
+				{
+					distdata = Linepts[i].distanceTo(Linepts[m]);
+					endpoint = AcGePoint3d(Linepts[m].x, Linepts[m].y, 0);
+					compareTemp.push_back(Linepts[i]);
+					compareTemp.push_back(Linepts[m]);
+				}
+
+
+			}
+			AcDbLine *pPline = new AcDbLine(AcGePoint3d(Linepts[i].x, Linepts[i].y, 0), endpoint);
+			AcDbObjectId plineId;
+			DBHelper::AppendToDatabase(plineId, pPline);
+			inputIds.append(plineId);
+			m_widthLineIds.append(plineId);
+			if (pPline)
+				pPline->close();
+		}
+	}
+
+	for (int num = 0; num < Pointsvect.size(); num++)
+	{
+		if (Pointsvect[num].length() == 3)
+		{
+			double dis1 = Pointsvect[num].at(0).distanceTo(Pointsvect[num].at(1));
+			double dis2 = Pointsvect[num].at(0).distanceTo(Pointsvect[num].at(2));
+			double dis3 = Pointsvect[num].at(1).distanceTo(Pointsvect[num].at(2));
+
+			double arr[] = { dis1,dis2,dis3 };
+			std::sort(arr, arr + 3);
+			AcDbObjectId pPolyLineId;
+			if (arr[2] == dis1)
+			{
+				AcDbLine *pPline = new AcDbLine(AcGePoint3d(Pointsvect[num].at(0).x, Pointsvect[num].at(0).y, 0), AcGePoint3d(Pointsvect[num].at(1).x
+					, Pointsvect[num].at(1).y, 0));
+				DBHelper::AppendToDatabase(pPolyLineId, pPline);
+				if (pPline)
+					pPline->close();
+			}
+			else if (arr[2] == dis2)
+			{
+				AcDbLine *pPline = new AcDbLine(AcGePoint3d(Pointsvect[num].at(0).x, Pointsvect[num].at(0).y, 0), AcGePoint3d(Pointsvect[num].at(2).x
+					, Pointsvect[num].at(2).y, 0));
+				DBHelper::AppendToDatabase(pPolyLineId, pPline);
+				if (pPline)
+					pPline->close();
+			}
+			else if (arr[2] == dis3)
+			{
+				AcDbLine *pPline = new AcDbLine(AcGePoint3d(Pointsvect[num].at(1).x, Pointsvect[num].at(1).y, 0), AcGePoint3d(Pointsvect[num].at(2).x
+					, Pointsvect[num].at(2).y, 0));
+				DBHelper::AppendToDatabase(pPolyLineId, pPline);
+				if (pPline)
+					pPline->close();
+			}
+			inputIds.append(pPolyLineId);
+			m_widthLineIds.append(pPolyLineId);
+		}
+
+	}
+}
+
+bool CDlgEntrance::IsOnLine(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt3)
+{
+	AcGeVector3d vec1 = AcGeVector3d(pt2.x - pt1.x, pt2.y - pt1.y, 0);
+	AcGeVector3d vec2 = AcGeVector3d(pt3.x - pt1.x, pt3.y - pt1.y, 0);
+	double pi = 3.14159265;// 35897931;
+						   //double angle = vec1.angleTo(vec2);
+	double angle = ((int)((vec1.angleTo(vec2)) * 100000000 + 0.5)) / 100000000.0;
+	if (angle == pi || angle == 0)
+		return true;
+	else
+		return false;
+}
+
+void CDlgEntrance::addWideDim(const double showWidth)
+{
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	if (m_widthLineIds.length() > 0)
+	{
+		AcDbEntity *pEnt = NULL;
+		Acad::ErrorStatus es = acdbOpenObject(pEnt, m_widthLineIds[0], AcDb::kForRead);
+		if (es != eOk)
+			return;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d endPt;
+			AcGePoint3d startPt;
+			pLine->getEndPoint(endPt);
+			pLine->getStartPoint(startPt);
+			AcGeVector3d tempVec = AcGeVector3d(startPt - endPt);
+			AcGeVector3d Linevec = tempVec.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
+			Linevec.normalize();
+			AcGePoint3d Pt1 = startPt;
+			Pt1.transformBy(Linevec * 1000);
+			CString sEntranceLength;
+			sEntranceLength.Format(_T("%.2f"), showWidth);
+			AcDbObjectId dimId = CDlgEntrance::creatDim(startPt, endPt, Pt1, sEntranceLength);
+			CEquipmentroomTool::setEntToLayer(dimId, sEntranceLayer);
+			m_addBlockIds.append(dimId);
+		}
+		pEnt->close();
+	}
+}
+
+void CDlgEntrance::creatPlinePoints(const AcDbObjectIdArray allLineIds)
+{
+	std::vector<AcGePoint2dArray> allLinePts;
+	for (int m = 0; m < allLineIds.length(); m++)
+	{
+		AcDbEntity *pEnt = NULL;
+		if (Acad::eOk != acdbOpenObject(pEnt, allLineIds[m], AcDb::kForRead))
+			continue;
+		AcGePoint2dArray linePts;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *line = AcDbLine::cast(pEnt);
+			AcGePoint3d starpt = line->startPoint();
+			AcGePoint3d endpt = line->endPoint();
+			AcGePoint2d start2dPt(starpt.x, starpt.y);
+			AcGePoint2d enf2dPt(endpt.x, endpt.y);
+			linePts.append(start2dPt);
+			linePts.append(enf2dPt);
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+			AcGeCircArc3d pGeArc(
+				pArc->center(),
+				pArc->normal(),
+				pArc->normal().perpVector(),
+				pArc->radius(),
+				pArc->startAngle(),
+				pArc->endAngle());
+			AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(pGeArc, 18);
+			for (int length = 0; length < result.length(); length++)
+			{
+				AcGePoint2d temp(result[length].x, result[length].y);
+				linePts.append(temp);
+			}
+		}
+		else if (pEnt->isKindOf(AcDbPolyline::desc()))
+		{
+			AcDbVoidPtrArray entsTempArray;
+			AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
+			AcGeLineSeg2d line;
+			AcGeCircArc3d arc;
+			int n = pPline->numVerts();
+			for (int i = 0; i < n; i++)
+			{
+				AcGePoint2dArray linePoints;//得到的所有点
+				if (pPline->segType(i) == AcDbPolyline::kLine)
+				{
+					pPline->getLineSegAt(i, line);
+					AcGePoint2d startPoint;
+					AcGePoint2d endPoint;
+					startPoint = line.startPoint();
+					endPoint = line.endPoint();
+					linePoints.append(startPoint);
+					linePoints.append(endPoint);
+				}
+				else if (pPline->segType(i) == AcDbPolyline::kArc)
+				{
+					pPline->getArcSegAt(i, arc);
+					AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 16);
+					for (int x = 0; x < result.length(); x++)
+					{
+						AcGePoint2d onArcpoint(result[x].x, result[x].y);
+						linePoints.append(onArcpoint);
+					}
+				}
+				if (!linePoints.isEmpty())
+				{
+					allLinePts.push_back(linePoints);
+				}
+			}
+		}
+		if (!linePts.isEmpty())
+		{
+			allLinePts.push_back(linePts);
+		}
+		if (pEnt)
+			pEnt->close();
+	}
+
+	AcGePoint2dArray resultPts;
+	AcGePoint2d targetPts = allLinePts[0][0];
+	AcGePoint2dArray nextUsedPts = allLinePts[0];
+	AcGePoint2d plinePt;
+	if (!CDlgEntrance::checkClosed(targetPts, allLinePts))
+	{
+		return;
+	}
+	resultPts.append(targetPts);
+	AcGePoint2d firstPt = targetPts;
+	bool flag = true;
+	do
+	{
+		AcGePoint2d tempplinePt = CDlgEntrance::getPlineNextPoint(targetPts, nextUsedPts, allLinePts, resultPts);
+		targetPts = tempplinePt;
+		resultPts.append(tempplinePt);
+		if (firstPt == tempplinePt || resultPts.length() > 100)
+		{
+			flag = false;
+		}
+	} while (flag);
+	for (int o = 0; o < resultPts.length(); o++)
+	{
+		AcGePoint2d show = resultPts[o];
+		int re = resultPts.length();
+	}
+	deleParkInEntrance(resultPts);
+}
+
+bool CDlgEntrance::checkClosed(const AcGePoint2d checkPt, const std::vector<AcGePoint2dArray> allLinePts)
+{
+	int count = 0;
+	for (int i = 0; i < allLinePts.size(); i++)
+	{
+		for (int j = 0; j < allLinePts[i].length(); j++)
+		{
+			AcGePoint2d debugShow = allLinePts[i][j];
+			if (checkPt == allLinePts[i][j])
+			{
+				count++;
+			}
+		}
+	}
+	if (count == 1 || count == 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+AcGePoint2d CDlgEntrance::getPlineNextPoint(const AcGePoint2d targetPt, AcGePoint2dArray &nextUsedPts,
+	const std::vector<AcGePoint2dArray> allLinePts, AcGePoint2dArray &resultPts)
+{
+	for (int a = 0; a < allLinePts.size(); a++)
+	{
+		if (allLinePts[a] == nextUsedPts)
+		{
+			continue;
+		}
+		AcGePoint2d startPt = allLinePts[a][0];
+		int size = allLinePts[a].length();
+		AcGePoint2d endPt = allLinePts[a][size - 1];
+		if (targetPt == startPt)
+		{
+			nextUsedPts = allLinePts[a];
+			if (size > 2)
+			{
+				for (int v = 1; v < size - 1; v++)
+				{
+					resultPts.append(allLinePts[a][v]);
+				}
+			}
+			return endPt;
+		}
+		else if (targetPt == endPt)
+		{
+			nextUsedPts = allLinePts[a];
+			if (size > 2)
+			{
+				for (int v = 1; v < size - 1; v++)
+				{
+					resultPts.append(allLinePts[a][v]);
+				}
+			}
+			return startPt;
+		}
+	}
+	AcGePoint2d errorPt(0, 0);
+	return errorPt;
+}
+
+
+void CDlgEntrance::deleParkInEntrance(const AcGePoint2dArray plinePts)
+{
+	CString parkingLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
+	AcDbObjectIdArray allParkingIds = DBHelper::GetEntitiesByLayerName(parkingLayer);
+	std::vector<AcDbObjectId> parkIds;
+	for (int i = 0; i < allParkingIds.length(); i++)
+	{
+		parkIds.push_back(allParkingIds[i]);
+	}
+	std::vector<AcGePoint2dArray> parkingsPoints;
+	std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
+	CEquipmentroomTool::getParkingExtentPts(parkingsPoints, parkIds, parkingLayer, parkIdAndPts);
+	for (int j = 0; j < parkIdAndPts.size(); j++)
+	{
+		std::vector<AcGePoint2dArray> polyIntersections;
+		GeHelper::GetIntersectionOfTwoPolygon(plinePts, parkingsPoints[j], polyIntersections);
+		if (polyIntersections.size() != 0)
+		{
+			for (int look = 0; look < parkingsPoints[j].length(); look++)
+			{
+				AcGePoint2d show = parkingsPoints[j][look];
+				int ka = 0;
+			}
+
+			std::map<AcDbObjectId, AcGePoint2dArray>::iterator tempIter;
+			for (tempIter = parkIdAndPts.begin(); tempIter != parkIdAndPts.end(); tempIter++)
+			{
+				if (tempIter->second == parkingsPoints[j])
+				{
+					AcDbObjectId deletId = tempIter->first;
+					AcDbEntity* pEntity = NULL;
+					if (acdbOpenAcDbEntity(pEntity, deletId, kForWrite) != eOk)							//这里是可读
+					{
+						acutPrintf(_T("获取单个实体指针失败！"));
+						continue;
+					}
+					if (pEntity->isKindOf(AcDbBlockReference::desc()))
+					{
+						pEntity->erase();
+					}
+					pEntity->close();
+				}
+			}
+		}
+	}
+
+}
+
+
+void CDlgEntrance::changeLine2Polyline(AcDbObjectIdArray targetEntIds)
+{
+	AcDbEntity *pEnt = NULL;
+	AcDbObjectIdArray changeColorIds;
+	for (int i = 0; i < targetEntIds.length(); i++)
+	{
+		if (Acad::eOk != acdbOpenObject(pEnt, targetEntIds[i], AcDb::kForWrite))
+			continue;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine *pLine = AcDbLine::cast(pEnt);
+			AcGePoint3d starpoint = pLine->startPoint();
+			AcGePoint3d endpoint = pLine->endPoint();
+
+			AcGePoint2d startpt2d(starpoint.x, starpoint.y);
+			AcGePoint2d endpt2d(endpoint.x, endpoint.y);
+			AcDbPolyline *pPoly = new AcDbPolyline(1);
+			double width = 100;//正方形线宽/满足条件变形成矩形
+			pPoly->addVertexAt(0, startpt2d, 0, width, width);
+			pPoly->addVertexAt(1, endpt2d, 0, width, width);
+			pPoly->setClosed(false);
+			AcDbObjectId lineId;
+			DBHelper::AppendToDatabase(lineId, pPoly);
+			pPoly->close();
+			changeColorIds.append(lineId);
+			pEnt->erase();
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+			AcDbArc *pArc = AcDbArc::cast(pEnt);
+			AcGeCircArc3d pGeArc(
+				pArc->center(),
+				pArc->normal(),
+				pArc->normal().perpVector(),
+				pArc->radius(),
+				pArc->startAngle(),
+				pArc->endAngle());
+			AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(pGeArc, 1);
+			AcGePoint3d midArcPt = result[1];
+			double radiu = pArc->radius();
+			AcGePoint3d startPt;
+			pArc->getStartPoint(startPt);
+			AcGePoint3d endPt;
+			pArc->getEndPoint(endPt);
+			AcGePoint3d centerPt = pArc->center();
+			AcGePoint3d midPt;
+			midPt.x = (startPt.x + endPt.x) / 2;
+			midPt.y = (startPt.y + endPt.y) / 2;
+			midPt.z = 0;
+			//double dis = midArcPt.distanceTo(midPt);
+			double bowLength = midArcPt.distanceTo(midPt);
+			double chordLength = startPt.distanceTo(endPt);
+			double bulge = (2 * bowLength) / chordLength;
+			AcDbPolyline *pPline = new AcDbPolyline(1);
+			AcGePoint2d startpt2d(startPt.x, startPt.y);
+			AcGePoint2d endpt2d(endPt.x, endPt.y);
+			pPline->addVertexAt(0, startpt2d, bulge, 100, 100);
+			pPline->addVertexAt(1, endpt2d, bulge, 100, 100);
+			pPline->setClosed(false);
+			AcDbObjectId polyId;
+			DBHelper::AppendToDatabase(polyId, pPline);
+			pPline->close();
+			changeColorIds.append(polyId);
+			pEnt->erase();
 		}
 		else
 		{
-			sMsg = "没有返回ent_for_del_cells字段。";
-			return 4;
+			pEnt->close();
 		}
-		int gg = delParkingPoints.length();
-		int jj = showParkingPoints.size();
-		Doc_Locker _locker;
-		CEquipmentroomTool::layerSet(_T("0"), 7);
-		std::map < AcDbObjectId, AcGePoint2d> parkingIdAndPtMap;
-		getParkingIdAndPtMap(parkingIdAndPtMap);
-		deletParkingForEntrance(parkingIdAndPtMap, delParkingPoints);
-		for (int b=0; b<showParkingPoints.size(); b++)
-		{
-			showEntrance(showParkingPoints[b]);
-		}
-		CEquipmentroomTool::layerSet(_T("0"), 7);
-		return 0;
 	}
-	sMsg = "json解析错误";
-	return 4;
+	AcDbEntity *pchangeEnt = NULL;
+	for (int size = 0; size < changeColorIds.length(); size++)
+	{
+		if (Acad::eOk != acdbOpenObject(pchangeEnt, changeColorIds[size], AcDb::kForWrite))
+			continue;
+		pchangeEnt->setColorIndex(8);
+		pchangeEnt->close();
+		m_addBlockIds.append(changeColorIds[size]);
+	}
 }

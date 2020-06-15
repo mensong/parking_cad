@@ -6,6 +6,9 @@
 #include "MinimumRectangle.h"
 #include "DBHelper.h"
 #include <algorithm>
+#include "DlgZoomAxisNum.h"
+
+class CDlgZoomAxisNum* COperaZoomAxisNumber::ms_zoomAxisNumDlg = NULL;
 
 REG_CMD(COperaZoomAxisNumber, BGY, COZSN);
 
@@ -21,40 +24,43 @@ COperaZoomAxisNumber::~COperaZoomAxisNumber()
 
 void COperaZoomAxisNumber::Start()
 {
-	double zoomcoefficient;//轴号缩放系数
-	if (acedGetReal(_T("请输入缩放倍数:"), &zoomcoefficient) != RTNORM)
-		return;
+	CAcModuleResourceOverride resOverride;//资源定位
+	ms_zoomAxisNumDlg = new CDlgZoomAxisNum(acedGetAcadDwgView());
+	ms_zoomAxisNumDlg->Create(CDlgZoomAxisNum::IDD, acedGetAcadDwgView());
+	ms_zoomAxisNumDlg->ShowWindow(SW_SHOW);
+}
 
+bool COperaZoomAxisNumber::axisNumZoomOpera(double& scaleValue)
+{
 	//获取配置文件中轴线所在图层
 	CString sAxisLayerName(CEquipmentroomTool::getLayerName("parking_axis").c_str());
 	AcDbObjectIdArray axisIds = DBHelper::GetEntitiesByLayerName(sAxisLayerName);
 	if (axisIds.length() == 0)
 	{
 		acutPrintf(_T("\n未获取到轴线信息"));
-		return;
+		return false;
 	}
 
 	//删除轴号
 	CString sAadAxleNumLayerName(CEquipmentroomTool::getLayerName("axis_dimensions").c_str());
 	COperaZoomAxisNumber::deleteEntitys(sAadAxleNumLayerName);
 
-	CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
-	const ACHAR *layername = sAxisLayer;//轴线所在图层
-
-	/*std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(LineIds);
-	for (int i=0; i<idsvec.size(); ++i)
-	{
-		for (int k = 0; k < idsvec[i].size(); ++k)
-		{
-		AcDbEntity *pEnt = NULL;
-		if(acdbOpenObject(pEnt, idsvec[i][k], AcDb::kForWrite)!=eOk)
-		continue;
-
-		pEnt->setColorIndex(i);
-		pEnt->close();
-		}
-	}
-	return;*/
+	//CString sAxisLayer(CEquipmentroomTool::getLayerName("parking_axis").c_str());
+	//const ACHAR *layername = sAxisLayer;
+	////轴线所在图层
+	//std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(LineIds);
+	//for (int i=0; i<idsvec.size(); ++i)
+	//{
+	//	for (int k = 0; k < idsvec[i].size(); ++k)
+	//	{
+	//		AcDbEntity *pEnt = NULL;
+	//		if(acdbOpenObject(pEnt, idsvec[i][k], AcDb::kForWrite)!=eOk)
+	//			continue;
+	//		pEnt->setColorIndex(i);
+	//		pEnt->close();
+	//	}
+	//}
+	//return;
 
 	std::vector<std::vector<AcDbObjectId>> idsvec = batchStorageAxis(axisIds);
 	for (int idsvecNum = 0; idsvecNum < idsvec.size(); ++idsvecNum)
@@ -139,7 +145,7 @@ void COperaZoomAxisNumber::Start()
 				int len = 0;
 				do
 				{
-					getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, zoomcoefficient);
+					getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, rigthdownPt, rigthupPt, scaleValue);
 					len = sortIds.length();
 
 					sortIds.removeAll();
@@ -153,7 +159,7 @@ void COperaZoomAxisNumber::Start()
 				int len = 0;
 				do
 				{
-					getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, zoomcoefficient);
+					getids = COperaAxleNetMaking::inserAadAxleNum(sortIds, lefdownPt, rigthdownPt, scaleValue);
 					len = sortIds.length();
 
 					sortIds.removeAll();
@@ -164,8 +170,8 @@ void COperaZoomAxisNumber::Start()
 
 		}
 	}
+	return true;
 }
-
 
 AcGePoint3dArray COperaZoomAxisNumber::getLinesPoints(AcDbObjectIdArray& LineIds)
 {
@@ -245,13 +251,13 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 
 		for (int k = i + 1; k<AxisIds.length(); ++k)
 		{
-			AcDbEntity *pEnt_ = NULL;
-			if (acdbOpenObject(pEnt_, AxisIds[k], AcDb::kForRead) != eOk)
+			AcDbEntity *pTempEnt = NULL;
+			if (acdbOpenObject(pTempEnt, AxisIds[k], AcDb::kForRead) != eOk)
 				continue;
 			AcDbObjectId id_2 = AxisIds[k];
 
 			AcGePoint3dArray interwithpoints;
-			pEnt->intersectWith(pEnt_, AcDb::kOnBothOperands, interwithpoints);
+			pEnt->intersectWith(pTempEnt, AcDb::kOnBothOperands, interwithpoints);
 			if (interwithpoints.length() <= 0)
 			{
 				//不相交，不做处理
@@ -290,8 +296,8 @@ std::vector<std::vector<AcDbObjectId>> COperaZoomAxisNumber::batchStorageAxis(Ac
 				}
 			}
 
-			if (pEnt_)
-				pEnt_->close();
+			if (pTempEnt)
+				pTempEnt->close();
 		}
 
 		if (pEnt)

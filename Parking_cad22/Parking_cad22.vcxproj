@@ -174,9 +174,16 @@
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgFindCloud.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgFirePoolSet.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgFirePumpHouseSet.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgLifePumpHouseSet.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSlider.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgVentilateSet.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgVillageSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgZoomAxisNum.cpp" />
     <ClCompile Include="..\Parking_cad\DocData.cpp" />
     <ClCompile Include="..\Parking_cad\EquipmentroomTool.cpp" />
     <ClCompile Include="..\Parking_cad\IOperaLog.cpp" />
@@ -189,21 +196,15 @@
     <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCheck.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
-    <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFindCloudShow.cpp" />
-    <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp" />
-    <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaGergul.cpp" />
-    <ClCompile Include="..\Parking_cad\OperaLifePumpHouseSet.cpp" />
-    <ClCompile Include="..\Parking_cad\OperaLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaMultiSchemeShow.cpp" />
     <ClCompile Include="..\Parking_cad\OperaParkingSpaceShow.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
     <ClCompile Include="..\Parking_cad\OperaTest.cpp" />
-    <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaZoomAxisNumber.cpp" />
     <ClCompile Include="..\Parking_cad\PaletteCmpResTwoCad.cpp" />
     <ClCompile Include="..\Parking_cad\PaletteSetCmpRes.cpp" />
@@ -247,9 +248,16 @@
     <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\DlgFindCloud.h" />
+    <ClInclude Include="..\Parking_cad\DlgFirePoolSet.h" />
+    <ClInclude Include="..\Parking_cad\DlgFirePumpHouseSet.h" />
+    <ClInclude Include="..\Parking_cad\DlgLifePumpHouseSet.h" />
+    <ClInclude Include="..\Parking_cad\DlgLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
     <ClInclude Include="..\Parking_cad\DlgSlider.h" />
+    <ClInclude Include="..\Parking_cad\DlgVentilateSet.h" />
+    <ClInclude Include="..\Parking_cad\DlgVillageSet.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
+    <ClInclude Include="..\Parking_cad\DlgZoomAxisNum.h" />
     <ClInclude Include="..\Parking_cad\DocData.h" />
     <ClInclude Include="..\Parking_cad\EquipmentroomTool.h" />
     <ClInclude Include="..\Parking_cad\IOperaLog.h" />
@@ -265,21 +273,15 @@
     <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h" />
     <ClInclude Include="..\Parking_cad\OperaCheck.h" />
     <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
-    <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFindCloudShow.h" />
-    <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h" />
-    <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h" />
     <ClInclude Include="..\Parking_cad\OperaGergul.h" />
-    <ClInclude Include="..\Parking_cad\OperaLifePumpHouseSet.h" />
-    <ClInclude Include="..\Parking_cad\OperaLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\OperaModuleCall.h" />
     <ClInclude Include="..\Parking_cad\OperaMultiSchemeShow.h" />
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h" />
     <ClInclude Include="..\Parking_cad\OperaSetConfig.h" />
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
     <ClInclude Include="..\Parking_cad\OperaTest.h" />
-    <ClInclude Include="..\Parking_cad\OperaVillageSet.h" />
     <ClInclude Include="..\Parking_cad\OperaZoomAxisNumber.h" />
     <ClInclude Include="..\Parking_cad\PaletteCmpResTwoCad.h" />
     <ClInclude Include="..\Parking_cad\PaletteSetCmpRes.h" />
@@ -294,6 +296,7 @@
     <ClInclude Include="..\TangentReader\HackerLineStair.h" />
     <ClInclude Include="..\TangentReader\HackerRectStair.h" />
     <ClInclude Include="..\TangentReader\HackerWall_VD.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
@@ -301,6 +304,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Parking_cad\zoom.ico" />
+    <Image Include="..\Parking_cad\zoom_down.ico" />
+    <Image Include="..\Parking_cad\zoom_up.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

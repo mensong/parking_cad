@@ -16,7 +16,8 @@ public:
 	//删除指定图层所有的实体
 	static void deleteEntitys(const AcString& layername);
 
-	std::vector<std::vector<AcDbObjectId>> batchStorageAxis(AcDbObjectIdArray& AxisIds);
-
+	static std::vector<std::vector<AcDbObjectId>> batchStorageAxis(AcDbObjectIdArray& AxisIds);
+	static class CDlgZoomAxisNum* ms_zoomAxisNumDlg;
+	static bool axisNumZoomOpera(double& scaleValue);
 };
 
