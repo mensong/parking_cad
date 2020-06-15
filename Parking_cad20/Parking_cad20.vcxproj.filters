@@ -57,25 +57,7 @@
     <ClCompile Include="..\Parking_cad\MyEdit.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaEquipmentroomRelated.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaFirePoolSet.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaFirePumpHouseSet.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaLifePumpHouseSet.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaLivingWaterTankSet.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\OperaParkingSpaceShow.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\OperaVillageSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp">
@@ -210,6 +192,27 @@
     <ClCompile Include="..\Parking_cad\PaletteSetCmpRes.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgFirePoolSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgFirePumpHouseSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgLifePumpHouseSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgLivingWaterTankSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgVentilateSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgVillageSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgZoomAxisNum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -236,25 +239,7 @@
     <ClInclude Include="..\Parking_cad\MyEdit.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaEquipmentroomRelated.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaFirePoolSet.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaFirePumpHouseSet.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaLifePumpHouseSet.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaLivingWaterTankSet.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\OperaVillageSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\PictureEx.h">
@@ -395,6 +380,27 @@
     <ClInclude Include="..\Parking_cad\PaletteSetCmpRes.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgFirePoolSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgFirePumpHouseSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgLifePumpHouseSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgLivingWaterTankSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgVentilateSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgVillageSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgZoomAxisNum.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
@@ -406,5 +412,16 @@
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Parking_cad\zoom.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\Parking_cad\zoom_down.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\Parking_cad\zoom_up.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

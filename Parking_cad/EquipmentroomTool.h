@@ -79,5 +79,6 @@ public:
 	static AcGePoint2dArray getAllEntCreatExten();
 	//打印当前时间
 	static void pritfCurTime();
+	static bool hasNameOfBlock(CString sBlockName);
 };
 

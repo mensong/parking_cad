@@ -407,6 +407,22 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgFirePoolSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgFirePumpHouseSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgLifePumpHouseSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgLivingWaterTankSet.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgSetConfig.cpp"
 				>
 			</File>
@@ -415,7 +431,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgVentilateSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgVillageSet.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgZoomAxisNum.cpp"
 				>
 			</File>
 			<File
@@ -467,10 +495,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\OperaEquipmentroomRelated.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\OperaEquipmentRoomSet.cpp"
 				>
 			</File>
@@ -479,23 +503,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\OperaFirePoolSet.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaFirePumpHouseSet.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\OperaGergul.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaLifePumpHouseSet.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaLivingWaterTankSet.cpp"
 				>
 			</File>
 			<File
@@ -520,10 +528,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaTest.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaVillageSet.cpp"
 				>
 			</File>
 			<File
@@ -628,6 +632,22 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgFirePoolSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgFirePumpHouseSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgLifePumpHouseSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgLivingWaterTankSet.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgSetConfig.h"
 				>
 			</File>
@@ -636,7 +656,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgVentilateSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgVillageSet.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgWaiting.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgZoomAxisNum.h"
 				>
 			</File>
 			<File
@@ -688,10 +720,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\OperaEquipmentroomRelated.h"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\OperaEquipmentRoomSet.h"
 				>
 			</File>
@@ -700,23 +728,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\OperaFirePoolSet.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaFirePumpHouseSet.h"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\OperaGergul.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaLifePumpHouseSet.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaLivingWaterTankSet.h"
 				>
 			</File>
 			<File
@@ -741,10 +753,6 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaTest.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Parking_cad\OperaVillageSet.h"
 				>
 			</File>
 			<File
@@ -786,6 +794,18 @@
 			>
 			<File
 				RelativePath="..\Parking_cad\Parking_cad.rc"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\zoom.ico"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\zoom_down.ico"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\zoom_up.ico"
 				>
 			</File>
 		</Filter>

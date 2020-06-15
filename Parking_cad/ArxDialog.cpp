@@ -65,6 +65,8 @@ BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
 	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CArxDialog::OnBnClickedButtonGetendpoint)
 	ON_BN_CLICKED(IDC_BUTTON_MANYSHOW, &CArxDialog::OnBnClickedButtonManyshow)
 	ON_BN_CLICKED(IDC_BUTTON_PARTPLAN, &CArxDialog::OnBnClickedButtonPartplan)
+	ON_BN_CLICKED(IDC_BTN_SELOUTLINELAYER, &CArxDialog::OnBnClickedBtnSeloutlinelayer)
+	ON_BN_CLICKED(IDC_BTN_SHEARWALLLAYER, &CArxDialog::OnBnClickedBtnShearwalllayer)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -1273,4 +1275,70 @@ void CArxDialog::getDatabaseBackup()
 	CString newFilePathName = path + sNum;
 	CString newFileName = fileName + sNum;
 	COperaMultiSchemeShow::getRootDataBaseAndFileName(acdbCurDwg(), newFilePathName, savePath, newFileName);
+}
+
+
+void CArxDialog::OnBnClickedBtnSeloutlinelayer()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	HideDialogHolder holder(this);
+	Doc_Locker doc_locker;
+
+	ads_name ename; ads_point pt;
+	if (acedEntSel(_T("\n请选择建筑外轮廓线图层中的任意实体:"), ename, pt) != RTNORM)
+	{
+		return;
+	}
+	acutPrintf(_T("\n"));
+	AcDbObjectId id;
+	acdbGetObjectId(id, ename);
+	AcDbEntity *pEnt = NULL;
+	//下面语句需要判断操作成功与否
+	Acad::ErrorStatus es;
+	es = acdbOpenObject(pEnt, id, AcDb::kForRead);
+	if (es!=eOk)
+	{
+		return;
+	}
+	m_sOutlineLayer = pEnt->layer();
+	pEnt->close();
+	if (!m_sOutlineLayer.IsEmpty())
+	{
+		int n = m_outlineLayer.FindStringExact(0, m_sOutlineLayer);
+		if (n >= 0)
+			m_outlineLayer.SetCurSel(n);
+	}
+}
+
+
+void CArxDialog::OnBnClickedBtnShearwalllayer()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	HideDialogHolder holder(this);
+	Doc_Locker doc_locker;
+
+	ads_name ename; ads_point pt;
+	if (acedEntSel(_T("\n请选择剪力墙图层中的任意实体:"), ename, pt) != RTNORM)
+	{
+		return;
+	}
+	acutPrintf(_T("\n"));
+	AcDbObjectId id;
+	acdbGetObjectId(id, ename);
+	AcDbEntity *pEnt = NULL;
+	//下面语句需要判断操作成功与否
+	Acad::ErrorStatus es;
+	es = acdbOpenObject(pEnt, id, AcDb::kForRead);
+	if (es != eOk)
+	{
+		return;
+	}
+	m_sShearwallLayer = pEnt->layer();
+	pEnt->close();
+	if (!m_sShearwallLayer.IsEmpty())
+	{
+		int n = m_shearwallLayer.FindStringExact(0, m_sShearwallLayer);
+		if (n >= 0)
+			m_shearwallLayer.SetCurSel(n);
+	}
 }

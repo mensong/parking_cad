@@ -30,20 +30,30 @@
 #include "Resource.h"
 #include "MyEdit.h"
 #include <vector>
-#include "LineSelect.h"
 //-----------------------------------------------------------------------------
+
+struct InfoStructLine
+{
+	AcDbObjectId entId;
+	AcGePoint3d startpoint;
+	AcGePoint3d endpoint;
+};
+struct InfoStructArc
+{
+	AcDbObjectId entId;
+	double startAngle;
+	double endAngle;
+};
+
 class CDlgEntrance : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgEntrance)
 
 public:
 	CDlgEntrance (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
 
-	enum { IDD = IDD_DIALOG_ENTRANCE} ;
-
-	double dStartPtx;
-	double dStartPty;
-	double dEndPtx;
-	double dEndPty;
+	enum {
+		IDD = IDD_DLG_ENTRANCESET
+	};
 
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;
@@ -51,43 +61,45 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedButtonGetstartpoint();
-	afx_msg void OnBnClickedButtonGetendpoint();
-	void init();
-private:
-	// 展示出入口起始点编辑框
-	CEdit m_StartPointEdit;
-	// 出入口终止点展示编辑框
-	CEdit m_EndPointEdit;
-	// 限高编辑框
-	CMyEdit m_LimitHeight;
-	// 出入口宽度编辑框
-	CMyEdit m_EntranceWidth;
-	// 缓坡1坡度
-	CMyEdit m_OneGentleSlope;
-	// 缓坡2坡度
-	CMyEdit m_TwoGentleSlope;
-	// 缓坡3坡度
-	CMyEdit m_ThireGentleSlope;
-	// 缓坡1水平距离
-	CMyEdit m_OneHorizontalDistance;
-	// 缓坡2水平距离
-	CMyEdit m_TwoHorizontalDistance;
-	// 缓坡3水平距离
-	CMyEdit m_ThireHorizontalDistance;
-public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedOk();
-	int CDlgEntrance::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1);
-	static void setEntrancePostUrl(std::string& strEntrancePostUrl);
-	static std::string ms_strEntrancePostUrlPort;
-	static void setEntrancePostUrlV2(std::string& strEntrancePostUrlV2);
-	static std::string ms_strEntrancePostUrlPortV2;
-
-	void deletParkingForEntrance(std::map<AcDbObjectId,AcGePoint2d>& parkingIdAndPt, AcGePoint2dArray& useDeletParkingPts);
-	void deletParkingByLineSelect(const AcDbObjectIdArray& parkingIds, AcGePoint2dArray& useDeletParkingPts);
-	void getParkingIdAndPtMap(std::map < AcDbObjectId, AcGePoint2d>& parkingIdAndPtMap);
-	void showEntrance(const AcGePoint2dArray& oneEntrancePts);
-
-	LineSelect m_parkingSel;
+	// 获取出入口多线段数据按钮
+	CButton m_btn_getEntrancePline;
+	// 选取到的出入口数据展示
+	CEdit m_show_entranceData;
+	// 地下室高度编辑框
+	CMyEdit m_edit_basementHeight;
+	// 出入口宽度编辑框
+	CMyEdit m_edit_entranceWidth;
+	afx_msg void OnBnClickedButtonGetentrancepl();
+	void creatEntrance(double& dBasementHeight, double& dEntranceWidth);
+	AcDbObjectIdArray explodeEnty(AcDbObjectId& entId);
+	bool addDim(const AcDbObjectIdArray entIds, const double  dHeight, const double dWidth);
+	AcDbObjectId creatDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const CString sLegth);
+	void creatDimStyle(const CString &styleName);
+	void DealIntersectEnt(AcDbObjectIdArray& inputIds);
+	void DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints);
+	void BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId);
+	bool isIntersect(AcDbEntity* pEnt, AcDbEntity* pTempEnt, double tol);
+	void getpoint(AcDbEntity* pEnt, AcGePoint3d& startpt, AcGePoint3d& endpt);
+	void GenerateGuides(double& changdistance, std::vector<AcDbObjectId>& operaIds, AcDbObjectIdArray& GuideIds);
+	void MultipleCycles(double& inputdistance, AcDbObjectIdArray& GuideIds);
+	void SpecialSaveEntInfo(double& movedistance, AcDbObjectIdArray& inputIds, std::vector<InfoStructLine>& saveLineInfoVector,
+		std::vector<InfoStructArc>& saveArcInfoVector, std::vector<AcGePoint3d>& inserpoint);
+	void ConnectionPoint(AcDbObjectIdArray& inputIds);
+	bool IsOnLine(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt3);
+	void addWideDim(const double showWidth);
+	void creatPlinePoints(const AcDbObjectIdArray allLineIds);
+	bool checkClosed(const AcGePoint2d checkPt, const std::vector<AcGePoint2dArray> allLinePts);
+	AcGePoint2d getPlineNextPoint(const AcGePoint2d targetPt, AcGePoint2dArray &nextUsedPts,
+		const std::vector<AcGePoint2dArray> allLinePts, AcGePoint2dArray &resultPts);
+	void deleParkInEntrance(const AcGePoint2dArray plinePts);
+	void changeLine2Polyline(AcDbObjectIdArray targetEntIds);
+	static CString ms_sBasementHeight;
+	static CString ms_sEntranceWidth;
+protected:
+	AcDbObjectId m_targetId;
+	AcDbObjectIdArray m_addBlockIds;
+	AcDbObjectIdArray m_widthLineIds;
+	AcGePoint3d m_insertPoint;
 } ;

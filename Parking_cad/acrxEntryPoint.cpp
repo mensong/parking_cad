@@ -50,37 +50,37 @@ public:
 		// TODO: Load dependencies here
 		ModulesManager::Instance().addDir(DBHelper::GetArxDirA());
 
-		char serial[MAX_PATH];
-		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
-		std::string session = serial;
-		KV::Ins().SetStrA("mac", serial);
+		//char serial[MAX_PATH];
+		//HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
+		//std::string session = serial;
+		//KV::Ins().SetStrA("mac", serial);
 
-		CDlgBipLogin dlgLogin;
-		if (dlgLogin.DoModal() != IDOK)
-		{
-			ModulesManager::Relaese();
-			return AcRx::kRetError;
-		}
-		if (!dlgLogin.loginSuccess)
-		{
-			ModulesManager::Relaese();
-			return AcRx::kRetError;
-		}
+		//CDlgBipLogin dlgLogin;
+		//if (dlgLogin.DoModal() != IDOK)
+		//{
+		//	ModulesManager::Relaese();
+		//	return AcRx::kRetError;
+		//}
+		//if (!dlgLogin.loginSuccess)
+		//{
+		//	ModulesManager::Relaese();
+		//	return AcRx::kRetError;
+		//}
 
-		KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());//使用这个判定是否加载了主模块
-		KV::Ins().SetStrW(_T("user_name"), dlgLogin.userName.GetString());
-		KV::Ins().SetStrW(_T("group_udid"), dlgLogin.groupUdid.GetString());
-		CString sAllow;
-		sAllow.Format(_T("%d"), dlgLogin.allow);
-		KV::Ins().SetStrW(_T("allow"), sAllow.GetString());
-		KV::Ins().SetStrW(_T("descr"), dlgLogin.descr.GetString());
-		KV::Ins().SetStrW(_T("reg_time"), dlgLogin.regTime.GetString());
-		KV::Ins().SetStrW(_T("last_signin_time"), dlgLogin.lastSigninTime.GetString());
-		CString sSigninCount;
-		sSigninCount.Format(_T("%d"), dlgLogin.signinCount);
-		KV::Ins().SetStrW(_T("signin_count"), sSigninCount.GetString());
+		//KV::Ins().SetStrW(_T("bip_id"), dlgLogin.bipId.GetString());//使用这个判定是否加载了主模块
+		//KV::Ins().SetStrW(_T("user_name"), dlgLogin.userName.GetString());
+		//KV::Ins().SetStrW(_T("group_udid"), dlgLogin.groupUdid.GetString());
+		//CString sAllow;
+		//sAllow.Format(_T("%d"), dlgLogin.allow);
+		//KV::Ins().SetStrW(_T("allow"), sAllow.GetString());
+		//KV::Ins().SetStrW(_T("descr"), dlgLogin.descr.GetString());
+		//KV::Ins().SetStrW(_T("reg_time"), dlgLogin.regTime.GetString());
+		//KV::Ins().SetStrW(_T("last_signin_time"), dlgLogin.lastSigninTime.GetString());
+		//CString sSigninCount;
+		//sSigninCount.Format(_T("%d"), dlgLogin.signinCount);
+		//KV::Ins().SetStrW(_T("signin_count"), sSigninCount.GetString());
 
-		acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
+		//acutPrintf(_T("\n登录成功，用户名：%s\n"), dlgLogin.userName.GetString());
 
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;

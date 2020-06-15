@@ -155,4 +155,6 @@ public:
 	CButton m_btPartPlanOK;
 	afx_msg void OnBnClickedButtonPartplan();
 	void getDatabaseBackup();
+	afx_msg void OnBnClickedBtnSeloutlinelayer();
+	afx_msg void OnBnClickedBtnShearwalllayer();
 } ;
