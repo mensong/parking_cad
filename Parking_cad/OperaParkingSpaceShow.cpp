@@ -142,27 +142,6 @@ void COperaParkingSpaceShow::Start()
 		return;
 	}
 
-	//AcString sTemplateFile = DBHelper::GetArxDir() + _T("template.dwg");
-	//std::set<AcString> setBlockNames;
-	//setBlockNames.insert(_T("car_1"));
-	//ObjectCollector oc;
-	//oc.start(acdbCurDwg());
-	//if (!DBHelper::ImportBlkDef(sTemplateFile, setBlockNames/*_T("Parking_1")*/))
-	//{
-	//	acedAlert(_T("加载模板文件出错！"));
-	//	return;
-	//}
-	//if (oc.m_objsAppended.length() > 0)
-	//{
-	//	CString sParkingsLayer(CEquipmentroomTool::getLayerName("ordinary_parking").c_str());
-	//	CEquipmentroomTool::layerSet(sParkingsLayer, 7);
-
-	//	for (int i = 0; i < oc.m_objsAppended.length(); i++)
-	//	{
-	//		CEquipmentroomTool::setEntToLayer(oc.m_objsAppended[i], sParkingsLayer);
-	//	}
-	//}
-
 	//强行切换值wcs
 	DBHelper::CallCADCommand(_T("UCS W "));
 

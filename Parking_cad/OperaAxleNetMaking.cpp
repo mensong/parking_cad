@@ -232,7 +232,7 @@ void COperaAxleNetMaking::drawAxisNumber(AcDbObjectIdArray& LineIds, std::map<Ac
 	for (int i = 0; i < LineIds.length(); ++i)
 	{
 		AcString keyvalue = COperaAxleNetMaking::getTagvaluefromMap(AxisNumberMap, LineIds[i]).constPtr();
-		bool es = DBHelper::AddXRecord(LineIds[i], _T("ÖáºÅ"), keyvalue);
+		DBHelper::AddXRecord(LineIds[i], _T("ÖáºÅ"), keyvalue);
 
 		CString batchNum;
 
@@ -820,8 +820,7 @@ AcDbObjectIdArray COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortId
 		std::set<AcString> setBlockNames;
 		setBlockNames.insert(sBlockName);
 		AcString filepath = DBHelper::GetArxDir() + _T("template.dwg");
-		bool es = DBHelper::ImportBlkDef(filepath, setBlockNames, pDb);
-		if (!es)
+		if (DBHelper::ImportBlkDef(filepath, setBlockNames, pDb) != Acad::eOk)
 		{
 			return outids;
 		}

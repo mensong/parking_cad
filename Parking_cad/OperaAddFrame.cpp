@@ -103,7 +103,7 @@ void COperaAddFrame::Start()
 		if (!isHasBlockName(_T("Í¼¿ò"), setblockname))
 			setblockname = _T("Í¼¿ò1");
 		
-		if (!DBHelper::CreateBlock(setblockname, vcEnts))
+		if (Acad::eOk != DBHelper::CreateBlock(setblockname, vcEnts))
 		{
 			acutPrintf(_T("\n´´½¨Í¼¿òÍ¼¿éÊ§°Ü£¡"));
 		}
@@ -112,7 +112,7 @@ void COperaAddFrame::Start()
 		pOutermostFrame->close();
 
 		AcDbObjectId idEnt;
-		if (DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0)))
+		if (Acad::eOk == DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0)))
 		{
 			CString strPictureframeLayer(CEquipmentroomTool::getLayerName("pictureframe").c_str());
 			CEquipmentroomTool::creatLayerByjson("pictureframe");

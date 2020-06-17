@@ -411,7 +411,6 @@
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
-    <None Include="..\Parking_cad\Parking_cad.aps" />
     <None Include="..\Parking_cad\zoom.ico">
       <Filter>资源文件</Filter>
     </None>

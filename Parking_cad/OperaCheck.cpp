@@ -383,7 +383,7 @@ void COperaCheck::overlapShow()
 							DBHelper::AddXRecord(cloudId, _T("cloud_area"), sArea);
 							CString cloudInf = _T("车位与方柱重叠区域");
 							DBHelper::AddXRecord(cloudId, _T("cloud"), cloudInf);
-							bool es = DBHelper::AddXRecord(cloudId, _T("实体"), _T("重叠区域"));
+							DBHelper::AddXRecord(cloudId, _T("实体"), _T("重叠区域"));
 						}
 					}
 				}
@@ -495,7 +495,7 @@ void COperaCheck::overlapShow()
 						DBHelper::AddXRecord(cloudID, _T("cloud_area"), sArea);
 						CString cloudInf = _T("车位与剪力墙重叠区域");
 						DBHelper::AddXRecord(cloudID, _T("cloud"), cloudInf);
-						bool es = DBHelper::AddXRecord(cloudID, _T("实体"), _T("重叠区域"));
+						DBHelper::AddXRecord(cloudID, _T("实体"), _T("重叠区域"));
 					}
 				}
 			}

@@ -358,7 +358,7 @@ bool CDlgAddFrame::setBlockInserPoint(std::string& Textstr)
 	AcGeMatrix3d mat;
 	mat.setToScaling(mMultiple, mInserPicPoint);
 	AcDbObjectId mInserblockId;
-	if (DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat))
+	if (DBHelper::InsertBlkRefWithAttribute(mInserblockId, _T("车库指标表格"), mInserPicPoint, mAttrMap, &mat) == Acad::eOk)
 	{
 		CEquipmentroomTool::layerSet(_T("0"), 7);
 		CString sMapSignLayer(CEquipmentroomTool::getLayerName("mapsign").c_str());
@@ -479,7 +479,6 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 	for (; !pIter->done(); pIter->step())
 	{
 		AcDbEntity *pEnt;
-		AcDbBlockReference *pBlkRef;
 		if (pIter->getEntity(pEnt, kForRead) == eOk)
 		{
 			AcDbExtents tempextens;

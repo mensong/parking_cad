@@ -144,7 +144,7 @@ void CDlgEntrance::OnBnClickedOk()
 		sCount.Format(_T("%d"), iCount);
 		sBlockName += sCount;
 	}
-	if (!DBHelper::CreateBlock(sBlockName, blockEnts))
+	if (Acad::eOk != DBHelper::CreateBlock(sBlockName, blockEnts))
 	{
 		acutPrintf(_T("\n创建出入口图块失败！"));
 		return;
@@ -157,7 +157,7 @@ void CDlgEntrance::OnBnClickedOk()
 	AcDbObjectId blockId;
 	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
 	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-	bool es = DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
+	DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
 	CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
 	CAcUiDialog::OnOK();
 	ms_sBasementHeight = sBasementHeight;
