@@ -431,6 +431,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgToolbarNav.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgVentilateSet.cpp"
 				>
 			</File>
@@ -515,6 +519,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaNavToolbar.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.cpp"
 				>
 			</File>
@@ -540,6 +548,14 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\PaletteSetDrawingAbnormalCheck.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteSetToolbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteToolbar.cpp"
 				>
 			</File>
 			<File
@@ -660,6 +676,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgToolbarNav.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgVentilateSet.h"
 				>
 			</File>
@@ -744,6 +764,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaNavToolbar.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.h"
 				>
 			</File>
@@ -769,6 +793,14 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\PaletteSetDrawingAbnormalCheck.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteSetToolbar.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\PaletteToolbar.h"
 				>
 			</File>
 			<File

@@ -87,6 +87,7 @@
     <ClCompile Include="..\Parking_cad\DlgLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSlider.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgToolbarNav.cpp" />
     <ClCompile Include="..\Parking_cad\DlgVentilateSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgVillageSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp" />
@@ -108,6 +109,7 @@
     <ClCompile Include="..\Parking_cad\OperaGergul.cpp" />
     <ClCompile Include="..\Parking_cad\OperaModuleCall.cpp" />
     <ClCompile Include="..\Parking_cad\OperaMultiSchemeShow.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaNavToolbar.cpp" />
     <ClCompile Include="..\Parking_cad\OperaParkingSpaceShow.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
@@ -115,6 +117,8 @@
     <ClCompile Include="..\Parking_cad\OperaZoomAxisNumber.cpp" />
     <ClCompile Include="..\Parking_cad\PaletteDrawingAbnormalCheck.cpp" />
     <ClCompile Include="..\Parking_cad\PaletteSetDrawingAbnormalCheck.cpp" />
+    <ClCompile Include="..\Parking_cad\PaletteSetToolbar.cpp" />
+    <ClCompile Include="..\Parking_cad\PaletteToolbar.cpp" />
     <ClCompile Include="..\Parking_cad\ParkingLog.cpp" />
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
@@ -162,6 +166,7 @@
     <ClInclude Include="..\Parking_cad\DlgLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
     <ClInclude Include="..\Parking_cad\DlgSlider.h" />
+    <ClInclude Include="..\Parking_cad\DlgToolbarNav.h" />
     <ClInclude Include="..\Parking_cad\DlgVentilateSet.h" />
     <ClInclude Include="..\Parking_cad\DlgVillageSet.h" />
     <ClInclude Include="..\Parking_cad\DlgWaiting.h" />
@@ -183,6 +188,7 @@
     <ClInclude Include="..\Parking_cad\OperaGergul.h" />
     <ClInclude Include="..\Parking_cad\OperaModuleCall.h" />
     <ClInclude Include="..\Parking_cad\OperaMultiSchemeShow.h" />
+    <ClInclude Include="..\Parking_cad\OperaNavToolbar.h" />
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h" />
     <ClInclude Include="..\Parking_cad\OperaSetConfig.h" />
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
@@ -190,6 +196,8 @@
     <ClInclude Include="..\Parking_cad\OperaZoomAxisNumber.h" />
     <ClInclude Include="..\Parking_cad\PaletteDrawingAbnormalCheck.h" />
     <ClInclude Include="..\Parking_cad\PaletteSetDrawingAbnormalCheck.h" />
+    <ClInclude Include="..\Parking_cad\PaletteSetToolbar.h" />
+    <ClInclude Include="..\Parking_cad\PaletteToolbar.h" />
     <ClInclude Include="..\Parking_cad\ParkingLog.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />

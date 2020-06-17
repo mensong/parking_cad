@@ -58,6 +58,7 @@
 #define IDC_BUTTON_FIREPOOL_SET         144
 #define IDI_ICON_ZOOM                   144
 #define IDC_BUTTON_CUSTOM               145
+#define IDD_DLG_TOOLBAR                 147
 #define IDC_BUTTON_GETENDPOINT          161
 #define IDC_EDIT_SHOWENDPOINT           163
 #define IDC_EDIT_USER                   163
@@ -102,14 +103,16 @@
 #define IDC_SHOW_SCALEVALUE             210
 #define IDC_BTN_SELOUTLINELAYER         213
 #define IDC_BTN_SHEARWALLLAYER          214
+#define IDC_TREE1                       215
+#define IDC_TREE_NAV                    215
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        147
+#define _APS_NEXT_RESOURCE_VALUE        149
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         215
+#define _APS_NEXT_CONTROL_VALUE         216
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

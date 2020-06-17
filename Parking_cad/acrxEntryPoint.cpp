@@ -116,7 +116,9 @@ public:
 		LoadCuix::Load(filepath);
 		LoadCuix::ShowToolbarAsyn(_T("ÖÇÄÜµØ¿â"));
 		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
-				
+		
+		DBHelper::CallCADCommand(_T("aipaknav "));
+
 		return (retCode) ;
 	}
 

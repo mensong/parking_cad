@@ -79,6 +79,7 @@ extern AcApDataManager<CDocData> DocVars ;
 
 #include <vector>
 #include <string>
+#include <ArxTools.h>
 #include "ParkingLog.h"
 #include "../WaitingDialog/WaitingDialog/WaitingDialogDef.h"
 
