@@ -535,11 +535,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\PaletteCmpResTwoCad.cpp"
+				RelativePath="..\Parking_cad\PaletteDrawingAbnormalCheck.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\PaletteSetCmpRes.cpp"
+				RelativePath="..\Parking_cad\PaletteSetDrawingAbnormalCheck.cpp"
 				>
 			</File>
 			<File
@@ -593,6 +593,10 @@
 						UsePrecompiledHeader="1"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\TreeCtrlBT.cpp"
+				>
 			</File>
 		</Filter>
 		<Filter
@@ -760,11 +764,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\PaletteCmpResTwoCad.h"
+				RelativePath="..\Parking_cad\PaletteDrawingAbnormalCheck.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\PaletteSetCmpRes.h"
+				RelativePath="..\Parking_cad\PaletteSetDrawingAbnormalCheck.h"
 				>
 			</File>
 			<File
@@ -785,6 +789,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\StdAfx.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\TreeCtrlBT.h"
 				>
 			</File>
 		</Filter>

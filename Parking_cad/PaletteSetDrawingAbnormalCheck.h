@@ -20,46 +20,57 @@
 //
 
 //-----------------------------------------------------------------------------
-//----- CmpResPalette.h : Declaration of the CCmpResPalette
+//----- MyPaletteSet.h : Declaration of the CMyPaletteSet
 //-----------------------------------------------------------------------------
 #pragma once
 
 //-----------------------------------------------------------------------------
 #include "adui.h"
-#include "DlgFindCloud.h"
 
 //-----------------------------------------------------------------------------
-class CPaletteCmpResTwoCad 
-	: public CAdUiPalette 
+class CPaletteSetDrawingAbnormalCheck 
+	: public CAdUiPaletteSet
 {
-	DECLARE_DYNAMIC (CPaletteCmpResTwoCad)
+	DECLARE_DYNAMIC (CPaletteSetDrawingAbnormalCheck)
 
 public:
-	static void show();
+	virtual ~CPaletteSetDrawingAbnormalCheck();
 
 public:
-	static CPaletteCmpResTwoCad* instance();
+	static void Refresh();
+
+	// 创建单实例对象
+	static CPaletteSetDrawingAbnormalCheck* Instance();
+
+	static void Destroy();
+
+	// 停靠位置
+	static CRect DockRect();
 
 public:
-	CDlgFindCloud* m_pChildDlg;
-
-public:
-	CPaletteCmpResTwoCad (HINSTANCE hInstance =NULL) ;
-	virtual ~CPaletteCmpResTwoCad () ;
-
-	//- Called by the palette set when the palette is made active
-	virtual void OnSetActive () ;
-	//- Called by AutoCAD to steal focus from the palette
-	virtual bool CanFrameworkTakeFocus () ;
+	// 设置可见性
+	void SetVisible(bool bVisible = true);
 	
-	void clearCmpResult();
-
 protected:
-	static CPaletteCmpResTwoCad* ms_palette;
+	CPaletteSetDrawingAbnormalCheck();
 
-protected:
-	afx_msg int OnCreate (LPCREATESTRUCT lpCreateStruct) ;
-	afx_msg void OnSize (UINT nType, int cx, int cy) ;
+	//计算停靠位置
+	virtual CSize CalcFixedLayout (BOOL bStretch, BOOL bHorz);
+
+	virtual BOOL CanFloat() const{return FALSE;};
+
+	// 允许改变大小 
+	virtual BOOL CanBeResized() const{ return TRUE;}; 
+	
+	virtual void PaletteActivated(CAdUiPalette* pActivated, CAdUiPalette* pDeactivated);
+
+	 virtual BOOL OnCommand (WPARAM wParam, LPARAM lParam);
+
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnDestroy();
 
 	DECLARE_MESSAGE_MAP()
+
+private:
+	static CPaletteSetDrawingAbnormalCheck* s_pPaletteSet;
 } ;

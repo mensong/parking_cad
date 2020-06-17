@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "OperaFindCloudShow.h"
-#include "PaletteCmpResTwoCad.h"
+#include "PaletteDrawingAbnormalCheck.h"
 
 
 COperaFindCloudShow::COperaFindCloudShow()
@@ -14,7 +14,7 @@ COperaFindCloudShow::~COperaFindCloudShow()
 
 void COperaFindCloudShow::Start()
 {
-	CPaletteCmpResTwoCad::show();
+	CPaletteDrawingAbnormalCheck::show();
 }
 
 

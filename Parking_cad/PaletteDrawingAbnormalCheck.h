@@ -20,57 +20,46 @@
 //
 
 //-----------------------------------------------------------------------------
-//----- MyPaletteSet.h : Declaration of the CMyPaletteSet
+//----- CmpResPalette.h : Declaration of the CCmpResPalette
 //-----------------------------------------------------------------------------
 #pragma once
 
 //-----------------------------------------------------------------------------
 #include "adui.h"
+#include "DlgFindCloud.h"
 
 //-----------------------------------------------------------------------------
-class CPaletteSetCmpRes 
-	: public CAdUiPaletteSet
+class CPaletteDrawingAbnormalCheck 
+	: public CAdUiPalette 
 {
-	DECLARE_DYNAMIC (CPaletteSetCmpRes)
+	DECLARE_DYNAMIC (CPaletteDrawingAbnormalCheck)
 
 public:
-	virtual ~CPaletteSetCmpRes();
+	static void show();
 
 public:
-	static void Refresh();
-
-	// 创建单实例对象
-	static CPaletteSetCmpRes* Instance();
-
-	static void Destroy();
-
-	// 停靠位置
-	static CRect DockRect();
+	static CPaletteDrawingAbnormalCheck* instance();
 
 public:
-	// 设置可见性
-	void SetVisible(bool bVisible = true);
+	CDlgFindCloud* m_pChildDlg;
+
+public:
+	CPaletteDrawingAbnormalCheck (HINSTANCE hInstance =NULL) ;
+	virtual ~CPaletteDrawingAbnormalCheck () ;
+
+	//- Called by the palette set when the palette is made active
+	virtual void OnSetActive () ;
+	//- Called by AutoCAD to steal focus from the palette
+	virtual bool CanFrameworkTakeFocus () ;
 	
+	void clearCmpResult();
+
 protected:
-	CPaletteSetCmpRes();
+	static CPaletteDrawingAbnormalCheck* ms_palette;
 
-	//计算停靠位置
-	virtual CSize CalcFixedLayout (BOOL bStretch, BOOL bHorz);
-
-	virtual BOOL CanFloat() const{return FALSE;};
-
-	// 允许改变大小 
-	virtual BOOL CanBeResized() const{ return TRUE;}; 
-	
-	virtual void PaletteActivated(CAdUiPalette* pActivated, CAdUiPalette* pDeactivated);
-
-	 virtual BOOL OnCommand (WPARAM wParam, LPARAM lParam);
-
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnDestroy();
+protected:
+	afx_msg int OnCreate (LPCREATESTRUCT lpCreateStruct) ;
+	afx_msg void OnSize (UINT nType, int cx, int cy) ;
 
 	DECLARE_MESSAGE_MAP()
-
-private:
-	static CPaletteSetCmpRes* s_pPaletteSet;
 } ;

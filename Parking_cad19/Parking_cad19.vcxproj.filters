@@ -186,12 +186,6 @@
     <ClCompile Include="..\Parking_cad\OperaFindCloudShow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\PaletteCmpResTwoCad.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\PaletteSetCmpRes.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgFirePoolSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -211,6 +205,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgZoomAxisNum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\PaletteDrawingAbnormalCheck.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\PaletteSetDrawingAbnormalCheck.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\TreeCtrlBT.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -374,12 +377,6 @@
     <ClInclude Include="..\Parking_cad\OperaFindCloudShow.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\PaletteCmpResTwoCad.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\PaletteSetCmpRes.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgFirePoolSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -401,6 +398,15 @@
     <ClInclude Include="..\Parking_cad\DlgZoomAxisNum.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\PaletteDrawingAbnormalCheck.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\PaletteSetDrawingAbnormalCheck.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\TreeCtrlBT.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
@@ -420,5 +426,6 @@
     <None Include="..\Parking_cad\zoom_up.ico">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
 </Project>

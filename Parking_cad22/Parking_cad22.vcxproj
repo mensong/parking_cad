@@ -206,8 +206,8 @@
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
     <ClCompile Include="..\Parking_cad\OperaTest.cpp" />
     <ClCompile Include="..\Parking_cad\OperaZoomAxisNumber.cpp" />
-    <ClCompile Include="..\Parking_cad\PaletteCmpResTwoCad.cpp" />
-    <ClCompile Include="..\Parking_cad\PaletteSetCmpRes.cpp" />
+    <ClCompile Include="..\Parking_cad\PaletteDrawingAbnormalCheck.cpp" />
+    <ClCompile Include="..\Parking_cad\PaletteSetDrawingAbnormalCheck.cpp" />
     <ClCompile Include="..\Parking_cad\ParkingLog.cpp" />
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
@@ -218,6 +218,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\TreeCtrlBT.cpp" />
     <ClCompile Include="..\pystring\pystring.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -280,13 +281,14 @@
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
     <ClInclude Include="..\Parking_cad\OperaTest.h" />
     <ClInclude Include="..\Parking_cad\OperaZoomAxisNumber.h" />
-    <ClInclude Include="..\Parking_cad\PaletteCmpResTwoCad.h" />
-    <ClInclude Include="..\Parking_cad\PaletteSetCmpRes.h" />
+    <ClInclude Include="..\Parking_cad\PaletteDrawingAbnormalCheck.h" />
+    <ClInclude Include="..\Parking_cad\PaletteSetDrawingAbnormalCheck.h" />
     <ClInclude Include="..\Parking_cad\ParkingLog.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />
     <ClInclude Include="..\Parking_cad\resource.h" />
     <ClInclude Include="..\Parking_cad\StdAfx.h" />
+    <ClInclude Include="..\Parking_cad\TreeCtrlBT.h" />
     <ClInclude Include="..\pystring\pystring.h" />
     <ClInclude Include="..\TangentReader\HackerArcStair.h" />
     <ClInclude Include="..\TangentReader\HackerColumn_VD.h" />
@@ -297,7 +299,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
-    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />

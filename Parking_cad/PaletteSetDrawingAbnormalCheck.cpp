@@ -24,32 +24,32 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "resource.h"
-#include "PaletteSetCmpRes.h"
+#include "PaletteSetDrawingAbnormalCheck.h"
 //#include "CadDiffFramework.h"
 //#include "CadDiffOneCadFramework.h"
 
 static CLSID CLSID_TUNNLESECTION_PALETTESET = { 0x76e12808, 0x4eb1, 0x47a0, { 0xad, 0x38, 0xfd, 0x5c, 0xec, 0x70, 0x8a, 0x38 } };
 
-CPaletteSetCmpRes* CPaletteSetCmpRes::s_pPaletteSet = NULL;
+CPaletteSetDrawingAbnormalCheck* CPaletteSetDrawingAbnormalCheck::s_pPaletteSet = NULL;
 
-IMPLEMENT_DYNAMIC(CPaletteSetCmpRes, CAdUiPaletteSet)
+IMPLEMENT_DYNAMIC(CPaletteSetDrawingAbnormalCheck, CAdUiPaletteSet)
 
-BEGIN_MESSAGE_MAP(CPaletteSetCmpRes, CAdUiPaletteSet)
+BEGIN_MESSAGE_MAP(CPaletteSetDrawingAbnormalCheck, CAdUiPaletteSet)
 	ON_WM_CREATE()
 	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
-CPaletteSetCmpRes::~CPaletteSetCmpRes()
+CPaletteSetDrawingAbnormalCheck::~CPaletteSetDrawingAbnormalCheck()
 {
 	s_pPaletteSet = NULL;
 }
 
-CPaletteSetCmpRes::CPaletteSetCmpRes()
+CPaletteSetDrawingAbnormalCheck::CPaletteSetDrawingAbnormalCheck()
 {
 
 }
 
-CSize CPaletteSetCmpRes::CalcFixedLayout(BOOL bStretch, BOOL bHorz)
+CSize CPaletteSetDrawingAbnormalCheck::CalcFixedLayout(BOOL bStretch, BOOL bHorz)
 {
 	CSize size = CAdUiPaletteSet::CalcFixedLayout(bStretch, bHorz);
 	if (size.cx < 300)
@@ -57,7 +57,7 @@ CSize CPaletteSetCmpRes::CalcFixedLayout(BOOL bStretch, BOOL bHorz)
 	return size/*DockRect().Size()*/;
 }
 
-int CPaletteSetCmpRes::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int CPaletteSetDrawingAbnormalCheck::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CAdUiPaletteSet::OnCreate(lpCreateStruct) == -1)
 	{
@@ -67,14 +67,14 @@ int CPaletteSetCmpRes::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void CPaletteSetCmpRes::OnDestroy()
+void CPaletteSetDrawingAbnormalCheck::OnDestroy()
 {
 	CAdUiPaletteSet::OnDestroy();
 
 	delete s_pPaletteSet;
 }
 
-void CPaletteSetCmpRes::PaletteActivated(CAdUiPalette* pActivated, CAdUiPalette* pDeactivated)
+void CPaletteSetDrawingAbnormalCheck::PaletteActivated(CAdUiPalette* pActivated, CAdUiPalette* pDeactivated)
 {
 	CAdUiPaletteSet::PaletteActivated(pActivated, pDeactivated);
 
@@ -85,7 +85,7 @@ void CPaletteSetCmpRes::PaletteActivated(CAdUiPalette* pActivated, CAdUiPalette*
 	//}
 }
 
-BOOL CPaletteSetCmpRes::OnCommand(WPARAM wParam, LPARAM lParam)
+BOOL CPaletteSetDrawingAbnormalCheck::OnCommand(WPARAM wParam, LPARAM lParam)
 {
 	BOOL b = CAdUiPaletteSet::OnCommand(wParam, lParam);
 
@@ -104,13 +104,13 @@ BOOL CPaletteSetCmpRes::OnCommand(WPARAM wParam, LPARAM lParam)
 	return b;
 }
 
-CPaletteSetCmpRes* CPaletteSetCmpRes::Instance()
+CPaletteSetDrawingAbnormalCheck* CPaletteSetDrawingAbnormalCheck::Instance()
 {
 	if (!s_pPaletteSet)
 	{
 		CAcModuleResourceOverride resOverride; 
 
-		s_pPaletteSet = new CPaletteSetCmpRes;
+		s_pPaletteSet = new CPaletteSetDrawingAbnormalCheck;
 		CRect rect(0,0,200,500);	
 		s_pPaletteSet->Create(_T("Í¼Ö½¼ì²â½á¹û"), WS_OVERLAPPED|WS_DLGFRAME, rect, acedGetAcadFrame());
 		s_pPaletteSet->EnableDocking(CBRS_ALIGN_ANY);
@@ -121,7 +121,7 @@ CPaletteSetCmpRes* CPaletteSetCmpRes::Instance()
 	return s_pPaletteSet;
 }
 
-void CPaletteSetCmpRes::Destroy()
+void CPaletteSetDrawingAbnormalCheck::Destroy()
 {
 	if (s_pPaletteSet)
 	{
@@ -131,7 +131,7 @@ void CPaletteSetCmpRes::Destroy()
 	}
 }
 
-CRect CPaletteSetCmpRes::DockRect()
+CRect CPaletteSetDrawingAbnormalCheck::DockRect()
 {
 	long nHight = 0;
 	if (!s_pPaletteSet)
@@ -166,7 +166,7 @@ CRect CPaletteSetCmpRes::DockRect()
 	return dockRect;
 }
 
-void CPaletteSetCmpRes::SetVisible(bool bVisible /*= true*/)
+void CPaletteSetDrawingAbnormalCheck::SetVisible(bool bVisible /*= true*/)
 {
 	CMDIFrameWnd *pAcadFrame = acedGetAcadFrame();
 	//s_pPaletteSet->RestoreControlBar();

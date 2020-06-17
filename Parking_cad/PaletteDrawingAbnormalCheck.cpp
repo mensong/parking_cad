@@ -24,16 +24,16 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "resource.h"
-#include "PaletteCmpResTwoCad.h"
-#include "PaletteSetCmpRes.h"
+#include "PaletteDrawingAbnormalCheck.h"
+#include "PaletteSetDrawingAbnormalCheck.h"
 
-CPaletteCmpResTwoCad* CPaletteCmpResTwoCad::ms_palette = NULL;
+CPaletteDrawingAbnormalCheck* CPaletteDrawingAbnormalCheck::ms_palette = NULL;
 
 
 //-----------------------------------------------------------------------------
-IMPLEMENT_DYNAMIC (CPaletteCmpResTwoCad, CAdUiPalette)
+IMPLEMENT_DYNAMIC (CPaletteDrawingAbnormalCheck, CAdUiPalette)
 
-BEGIN_MESSAGE_MAP(CPaletteCmpResTwoCad, CAdUiPalette)
+BEGIN_MESSAGE_MAP(CPaletteDrawingAbnormalCheck, CAdUiPalette)
 	ON_WM_CREATE()
 	ON_WM_SIZE()
 	ON_WM_SIZING()
@@ -41,13 +41,13 @@ END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
 
-void CPaletteCmpResTwoCad::show()
+void CPaletteDrawingAbnormalCheck::show()
 {
-	int nCount = CPaletteSetCmpRes::Instance()->GetPaletteCount();
+	int nCount = CPaletteSetDrawingAbnormalCheck::Instance()->GetPaletteCount();
 	for (int i=0; i<nCount; ++i)
 	{
-		CPaletteCmpResTwoCad* pPalette = (CPaletteCmpResTwoCad*)CPaletteSetCmpRes::Instance()->GetPalette(i);
-		CPaletteSetCmpRes::Instance()->RemovePalette(pPalette);
+		CPaletteDrawingAbnormalCheck* pPalette = (CPaletteDrawingAbnormalCheck*)CPaletteSetDrawingAbnormalCheck::Instance()->GetPalette(i);
+		CPaletteSetDrawingAbnormalCheck::Instance()->RemovePalette(pPalette);
 		if (pPalette->m_pChildDlg)
 		{
 			pPalette->m_pChildDlg->DestroyMe();
@@ -56,19 +56,19 @@ void CPaletteCmpResTwoCad::show()
 		delete pPalette;
 	}
 
-	CPaletteCmpResTwoCad::instance();
-	CPaletteSetCmpRes::Instance()->SetVisible(true);
+	CPaletteDrawingAbnormalCheck::instance();
+	CPaletteSetDrawingAbnormalCheck::Instance()->SetVisible(true);
 }
 
-CPaletteCmpResTwoCad* CPaletteCmpResTwoCad::instance()
+CPaletteDrawingAbnormalCheck* CPaletteDrawingAbnormalCheck::instance()
 {
 	if (!ms_palette)
 	{
 		CAcModuleResourceOverride resOverride; 
 
-		CPaletteSetCmpRes* paletteSet = CPaletteSetCmpRes::Instance();
+		CPaletteSetDrawingAbnormalCheck* paletteSet = CPaletteSetDrawingAbnormalCheck::Instance();
 
-		ms_palette = new CPaletteCmpResTwoCad();
+		ms_palette = new CPaletteDrawingAbnormalCheck();
 		ms_palette->Create(WS_CHILD | WS_VISIBLE, _T("图纸对比结果"), paletteSet, PS_EDIT_NAME);
 		paletteSet->AddPalette(ms_palette);
 	}
@@ -76,21 +76,21 @@ CPaletteCmpResTwoCad* CPaletteCmpResTwoCad::instance()
 	return ms_palette;
 }
 
-CPaletteCmpResTwoCad::CPaletteCmpResTwoCad (HINSTANCE hInstance) 
+CPaletteDrawingAbnormalCheck::CPaletteDrawingAbnormalCheck (HINSTANCE hInstance) 
 	: CAdUiPalette ()
 	, m_pChildDlg(NULL) 
 {
 }
 
 //-----------------------------------------------------------------------------
-CPaletteCmpResTwoCad::~CPaletteCmpResTwoCad () 
+CPaletteDrawingAbnormalCheck::~CPaletteDrawingAbnormalCheck () 
 {
 	ms_palette = NULL;
 }
 
 //-----------------------------------------------------------------------------
 //- Used to add a dialog resource
-int CPaletteCmpResTwoCad::OnCreate (LPCREATESTRUCT lpCreateStruct) {
+int CPaletteDrawingAbnormalCheck::OnCreate (LPCREATESTRUCT lpCreateStruct) {
 	if ( CAdUiPalette::OnCreate (lpCreateStruct) == -1 )
 		return (-1) ;
 
@@ -107,25 +107,25 @@ int CPaletteCmpResTwoCad::OnCreate (LPCREATESTRUCT lpCreateStruct) {
 
 //-----------------------------------------------------------------------------
 //- Called by the palette set when the palette is made active
-void CPaletteCmpResTwoCad::OnSetActive () {
+void CPaletteDrawingAbnormalCheck::OnSetActive () {
 	CAdUiPalette::OnSetActive () ;
 }
 
 //-----------------------------------------------------------------------------
 //- Called by AutoCAD to steal focus from the palette
-bool CPaletteCmpResTwoCad::CanFrameworkTakeFocus () {
+bool CPaletteDrawingAbnormalCheck::CanFrameworkTakeFocus () {
 	//- Not simply calling IsFloating() (a BOOL) avoids warning C4800
 	return (GetPaletteSet ()->IsFloating () == TRUE ? true : false) ;
 }
 
-void CPaletteCmpResTwoCad::clearCmpResult()
+void CPaletteDrawingAbnormalCheck::clearCmpResult()
 {
 	if (m_pChildDlg)
 		m_pChildDlg->clearCmpResult();
 }
 
 //-----------------------------------------------------------------------------
-void CPaletteCmpResTwoCad::OnSize (UINT nType, int cx, int cy) {
+void CPaletteDrawingAbnormalCheck::OnSize (UINT nType, int cx, int cy) {
 	CAdUiPalette::OnSize (nType, cx, cy) ;
 	//- If valid
 	if ( ::IsWindow (m_pChildDlg->GetSafeHwnd ()) ) {
