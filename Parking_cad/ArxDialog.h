@@ -91,8 +91,6 @@ protected:
 protected:
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange (CDataExchange *pDX) ;
-	virtual void OnOK();
-	virtual void OnCancel();
 	afx_msg LRESULT OnAcadKeepFocus (WPARAM, LPARAM) ;
 	DECLARE_MESSAGE_MAP()
 

@@ -97,6 +97,7 @@ public:
 	void changeLine2Polyline(AcDbObjectIdArray targetEntIds);
 	static CString ms_sBasementHeight;
 	static CString ms_sEntranceWidth;
+
 protected:
 	AcDbObjectId m_targetId;
 	AcDbObjectIdArray m_addBlockIds;

@@ -145,12 +145,13 @@ void COperaParkingSpaceShow::Start()
 	//强行切换值wcs
 	DBHelper::CallCADCommand(_T("UCS W "));
 
-
-	//设置窗口
-	CAcModuleResourceOverride resOverride;//资源定位
-
-	ms_dlg = new CArxDialog;
-	ms_dlg->Create(CArxDialog::IDD, acedGetAcadDwgView());
+	if (!ms_dlg)
+	{
+		//设置窗口
+		CAcModuleResourceOverride resOverride;//资源定位
+		ms_dlg = new CArxDialog;
+		ms_dlg->Create(CArxDialog::IDD, acedGetAcadDwgView());
+	}
 	ms_dlg->ShowWindow(SW_SHOW);
 	m_tol.setEqualPoint(200);
 }

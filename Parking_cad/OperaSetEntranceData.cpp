@@ -16,13 +16,17 @@ COperaSetEntranceData::~COperaSetEntranceData()
 
 void COperaSetEntranceData::Start()
 {
-	//设置窗口
-	CAcModuleResourceOverride resOverride;//资源定位
+	if (!ms_EntranceDlg)
+	{
+		//设置窗口
+		CAcModuleResourceOverride resOverride;//资源定位
 
-	ms_EntranceDlg = new CDlgEntrance;
-	ms_EntranceDlg->Create(CDlgEntrance::IDD, acedGetAcadDwgView());
-	ms_EntranceDlg->ShowWindow(SW_SHOW);
+		ms_EntranceDlg = new CDlgEntrance;
+		ms_EntranceDlg->Create(CDlgEntrance::IDD, acedGetAcadDwgView());
+	}
+
 	m_tol.setEqualPoint(200);
+	ms_EntranceDlg->ShowWindow(SW_SHOW);
 }
 
 

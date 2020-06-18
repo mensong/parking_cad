@@ -89,9 +89,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVentilate()
 	//HideDialogHolder holder(this);
 	CDlgVentilateSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
-	CAcModuleResourceOverride resOverride;
-	ms_ventilateDlg = new CDlgVentilateSet(acedGetAcadDwgView());
-	ms_ventilateDlg->Create(CDlgVentilateSet::IDD, acedGetAcadDwgView());
+
+	if (!ms_ventilateDlg)
+	{
+		CAcModuleResourceOverride resOverride;
+		ms_ventilateDlg = new CDlgVentilateSet(acedGetAcadDwgView());
+		ms_ventilateDlg->Create(CDlgVentilateSet::IDD, acedGetAcadDwgView());
+	}
 	ms_ventilateDlg->ShowWindow(SW_SHOW);
 	//DBHelper::CallCADCommand(_T("VentilationEquipmentroomSet "));
 }
@@ -103,9 +107,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonVillageSet()
 	//HideDialogHolder holder(this);
 	CDlgVillageSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
-	CAcModuleResourceOverride resOverride;
-	ms_villageDlg = new CDlgVillageSet(acedGetAcadDwgView());
-	ms_villageDlg->Create(CDlgVillageSet::IDD, acedGetAcadDwgView());
+
+	if (!ms_villageDlg)
+	{
+		CAcModuleResourceOverride resOverride;
+		ms_villageDlg = new CDlgVillageSet(acedGetAcadDwgView());
+		ms_villageDlg->Create(CDlgVillageSet::IDD, acedGetAcadDwgView());
+	}
 	ms_villageDlg->ShowWindow(SW_SHOW);
 	//Doc_Locker doc_locker;
 	//DBHelper::CallCADCommand(_T("VillageSet "));
@@ -118,9 +126,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLifepumphouseSet()
 	//HideDialogHolder holder(this);
 	CDlgLifePumpHouseSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
-	CAcModuleResourceOverride resOverride;
-	ms_lifePumpHouseDlg = new CDlgLifePumpHouseSet(acedGetAcadDwgView());
-	ms_lifePumpHouseDlg->Create(CDlgLifePumpHouseSet::IDD, acedGetAcadDwgView());
+
+	if (!ms_lifePumpHouseDlg)
+	{
+		CAcModuleResourceOverride resOverride;
+		ms_lifePumpHouseDlg = new CDlgLifePumpHouseSet(acedGetAcadDwgView());
+		ms_lifePumpHouseDlg->Create(CDlgLifePumpHouseSet::IDD, acedGetAcadDwgView());
+	}
 	ms_lifePumpHouseDlg->ShowWindow(SW_SHOW);
 	//Doc_Locker doc_locker;
 	//DBHelper::CallCADCommand(_T("LifePumpHouseSet "));
@@ -133,9 +145,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonLivingwatertankSet()
 	//HideDialogHolder holder(this);
 	CDlgLivingWaterTankSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
-	CAcModuleResourceOverride resOverride;
-	ms_livingWaterTankDlg = new CDlgLivingWaterTankSet(acedGetAcadDwgView());
-	ms_livingWaterTankDlg->Create(CDlgLivingWaterTankSet::IDD, acedGetAcadDwgView());
+
+	if (!ms_livingWaterTankDlg)
+	{
+		CAcModuleResourceOverride resOverride;
+		ms_livingWaterTankDlg = new CDlgLivingWaterTankSet(acedGetAcadDwgView());
+		ms_livingWaterTankDlg->Create(CDlgLivingWaterTankSet::IDD, acedGetAcadDwgView());
+	}
 	ms_livingWaterTankDlg->ShowWindow(SW_SHOW);
 	//Doc_Locker doc_locker;
 	//DBHelper::CallCADCommand(_T("LivingwatertankSet "));
@@ -148,9 +164,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonFirepumphouseSet()
 	//HideDialogHolder holder(this);
 	CDlgFirePumpHouseSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
-	CAcModuleResourceOverride resOverride;
-	ms_firePumpHouseDlg = new CDlgFirePumpHouseSet(acedGetAcadDwgView());
-	ms_firePumpHouseDlg->Create(CDlgFirePumpHouseSet::IDD, acedGetAcadDwgView());
+
+	if (!ms_firePumpHouseDlg)
+	{
+		CAcModuleResourceOverride resOverride;
+		ms_firePumpHouseDlg = new CDlgFirePumpHouseSet(acedGetAcadDwgView());
+		ms_firePumpHouseDlg->Create(CDlgFirePumpHouseSet::IDD, acedGetAcadDwgView());
+	}
 	ms_firePumpHouseDlg->ShowWindow(SW_SHOW);
 	//Doc_Locker doc_locker;
 	//DBHelper::CallCADCommand(_T("FirePumpHouseSet "));
@@ -163,9 +183,13 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonFirepoolSet()
 	//HideDialogHolder holder(this);
 	CDlgFirePoolSet::parent_dlg = COperaEquipmentRoomSet::ms_eqdlg;
 	COperaEquipmentRoomSet::ms_eqdlg->ShowWindow(SW_HIDE);
-	CAcModuleResourceOverride resOverride;
-	ms_firePoolDlg = new CDlgFirePoolSet(acedGetAcadDwgView());
-	ms_firePoolDlg->Create(CDlgFirePoolSet::IDD, acedGetAcadDwgView());
+
+	if (!ms_firePoolDlg)
+	{
+		CAcModuleResourceOverride resOverride;
+		ms_firePoolDlg = new CDlgFirePoolSet(acedGetAcadDwgView());
+		ms_firePoolDlg->Create(CDlgFirePoolSet::IDD, acedGetAcadDwgView());
+	}
 	ms_firePoolDlg->ShowWindow(SW_SHOW);
 	//Doc_Locker doc_locker;
 	//DBHelper::CallCADCommand(_T("FirePoolSet "));

@@ -17,11 +17,14 @@ COperaSetConfig::~COperaSetConfig()
 
 void COperaSetConfig::Start()
 {
-	//设置窗口
-	CAcModuleResourceOverride resOverride;//资源定位
+	if (!ms_SetConfigDlg)
+	{
+		//设置窗口
+		CAcModuleResourceOverride resOverride;//资源定位
 
-	ms_SetConfigDlg = new CDlgSetConfig;
-	ms_SetConfigDlg->Create(CDlgSetConfig::IDD, acedGetAcadDwgView());
+		ms_SetConfigDlg = new CDlgSetConfig;
+		ms_SetConfigDlg->Create(CDlgSetConfig::IDD, acedGetAcadDwgView());
+	}
 	ms_SetConfigDlg->ShowWindow(SW_SHOW);
 	m_tol.setEqualPoint(200);
 }

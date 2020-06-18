@@ -142,8 +142,15 @@ void CDlgToolbarNav::OnNMClickTreeNav(NMHDR *pNMHDR, LRESULT *pResult)
 		return;
 	}
 
-	acedGetAcadDwgView()->SetFocus();
-	DBHelper::CallCADCommand(m_commands[i]);
-
+	SetDelayExecute(ExecCommand, 0, 0, &m_commands[i], 200, true);
+		
 	*pResult = 0;
+}
+
+void __stdcall CDlgToolbarNav::ExecCommand(WPARAM wp, LPARAM lp, void* anyVal)
+{
+	const CString* pCmd = (const CString*)anyVal;
+
+	acedGetAcadDwgView()->SetFocus();
+	DBHelper::CallCADCommand(*pCmd);
 }

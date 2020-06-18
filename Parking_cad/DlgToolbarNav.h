@@ -17,6 +17,9 @@ public:
 	enum { IDD = IDD_DLG_TOOLBAR };
 
 protected:
+	static void __stdcall ExecCommand(WPARAM wp, LPARAM lp, void* anyVal);
+
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
 	virtual BOOL OnInitDialog();
 	virtual void OnOK() override;

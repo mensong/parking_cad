@@ -24,9 +24,12 @@ COperaZoomAxisNumber::~COperaZoomAxisNumber()
 
 void COperaZoomAxisNumber::Start()
 {
-	CAcModuleResourceOverride resOverride;//资源定位
-	ms_zoomAxisNumDlg = new CDlgZoomAxisNum(acedGetAcadDwgView());
-	ms_zoomAxisNumDlg->Create(CDlgZoomAxisNum::IDD, acedGetAcadDwgView());
+	if (!ms_zoomAxisNumDlg)
+	{
+		CAcModuleResourceOverride resOverride;//资源定位
+		ms_zoomAxisNumDlg = new CDlgZoomAxisNum(acedGetAcadDwgView());
+		ms_zoomAxisNumDlg->Create(CDlgZoomAxisNum::IDD, acedGetAcadDwgView());
+	}
 	ms_zoomAxisNumDlg->ShowWindow(SW_SHOW);
 }
 

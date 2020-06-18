@@ -272,22 +272,6 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 	*(end()) = true;
 }
 
-void CArxDialog::OnOK()
-{
-	CAcUiDialog::OnOK();
-
-	this->DestroyWindow();
-	delete this;
-}
-
-void CArxDialog::OnCancel()
-{
-	CAcUiDialog::OnOK();
-
-	this->DestroyWindow();
-	delete this;
-}
-
 //-----------------------------------------------------------------------------
 //----- Needed for modeless dialogs to keep focus.
 //----- Return FALSE to not keep the focus, return TRUE to keep the focus
