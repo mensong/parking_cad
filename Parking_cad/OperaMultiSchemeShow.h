@@ -16,7 +16,10 @@ public:
 	static CString ms_newFileName;
 	static CString ms_path;
 	static CString ms_name;
+	static CString ms_sOutLineLayerName;
+	static CString ms_sShearWallLayeNmae;
 	static void getJsonData(const std::string& json);
+	static void setLayerNameToEntUse(const CString& sOutLineLayerName,const CString& sShearWallLayerName);
 	static void getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName,const CString& path,const CString& name);
 	bool addEntToDb(Json::Value json, AcDbDatabase *pDataBase,int scheme = 0);
 	void creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
