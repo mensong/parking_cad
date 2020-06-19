@@ -85,12 +85,12 @@ BOOL CDlgEntrance::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	// TODO:  在此添加额外的初始化
 	m_edit_basementHeight.SetWindowText(ms_sBasementHeight);
 	m_edit_entranceWidth.SetWindowText(ms_sEntranceWidth);
-	CenterWindow();
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE;
 }
 
 
