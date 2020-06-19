@@ -37,6 +37,7 @@ BEGIN_MESSAGE_MAP(CDlgFindCloud, CAcUiDialog)
 	ON_NOTIFY(NM_CLICK, IDC_LIST, &CDlgFindCloud::OnNMClickList)
 	ON_BN_CLICKED(IDOK, &CDlgFindCloud::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_BUTTON_CHECK, &CDlgFindCloud::OnBnClickedButtonCheck)
+	ON_BN_CLICKED(IDC_CHK_SHOW_CLOUDLINE_LAYER, &CDlgFindCloud::OnBnClickedChkShowCloudlineLayer)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -46,6 +47,7 @@ CDlgFindCloud::CDlgFindCloud (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NU
 void CDlgFindCloud::DestroyMe()
 {
 	this->OnOK();
+	delete this;
 }
 
 void CDlgFindCloud::clearCmpResult()
@@ -57,6 +59,7 @@ void CDlgFindCloud::clearCmpResult()
 void CDlgFindCloud::DoDataExchange (CDataExchange *pDX) {
 	CAdUiBaseDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST, m_listRes);
+	DDX_Control(pDX, IDC_CHK_SHOW_CLOUDLINE_LAYER, m_chkShowCloudLayer);
 }
 
 //-----------------------------------------------------------------------------
@@ -148,7 +151,7 @@ void CDlgFindCloud::init(bool isRefresh /*= false*/)
 	if (!isRefresh)
 	{
 		m_listRes.InsertColumn(m_listRes.GetHeaderCtrl()->GetItemCount(), _T("检测出区域"), LVCFMT_LEFT, 150);
-		m_listRes.InsertColumn(m_listRes.GetHeaderCtrl()->GetItemCount(), _T("区域面积(m²)"), LVCFMT_LEFT, 150);
+		m_listRes.InsertColumn(m_listRes.GetHeaderCtrl()->GetItemCount(), _T("区域面积(m²)"), LVCFMT_LEFT, 95);
 	}
 	int iBlankCount = 0;
 	int iColumnOverlapCount = 0;
@@ -191,6 +194,8 @@ void CDlgFindCloud::init(bool isRefresh /*= false*/)
 	}
 	m_listRes.SetExtendedStyle(m_listRes.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 	m_listRes.ModifyStyle(0, LVS_SINGLESEL | LVS_SHOWSELALWAYS);
+
+	refreshChkLayer();
 }
 
 void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
@@ -218,4 +223,61 @@ void CDlgFindCloud::OnBnClickedButtonCheck()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	DBHelper::CallCADCommand(_T("CHECK "));
+}
+
+
+void CDlgFindCloud::OnBnClickedChkShowCloudlineLayer()
+{
+	Doc_Locker _locker;
+
+	CString sCloudLineLayerName(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	AcDbLayerTable* pLT = NULL;
+	Acad::ErrorStatus es = acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead);
+	if (Acad::eOk != es)
+	{
+		acedAlert(_T("操作图层失败。"));
+		return;
+	}
+
+	AcDbLayerTableRecord* pLTR = NULL;
+	es = pLT->getAt(sCloudLineLayerName.GetString(), pLTR, AcDb::kForWrite);
+	pLT->close();
+	if (Acad::eOk != es)
+	{
+		acedAlert(_T("操作图层失败。"));
+		return;
+	}
+
+	pLTR->setIsOff((FALSE == m_chkShowCloudLayer.GetCheck()));
+
+	pLTR->close();
+
+	//acedGetAcadDwgView()->RedrawWindow();
+	actrTransactionManager->flushGraphics();
+	acedUpdateDisplay();
+}
+
+void CDlgFindCloud::refreshChkLayer()
+{
+	Doc_Locker _locker;
+
+	CString sCloudLineLayerName(CEquipmentroomTool::getLayerName("cloud_line").c_str());
+	AcDbLayerTable* pLT = NULL;
+	Acad::ErrorStatus es = acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead);
+	if (Acad::eOk != es)
+	{
+		return;
+	}
+
+	AcDbLayerTableRecord* pLTR = NULL;
+	es = pLT->getAt(sCloudLineLayerName.GetString(), pLTR, AcDb::kForWrite);
+	pLT->close();
+	if (Acad::eOk != es)
+	{
+		return;
+	}
+
+	m_chkShowCloudLayer.SetCheck((pLTR->isOff() ? FALSE : TRUE));
+
+	pLTR->close();
 }

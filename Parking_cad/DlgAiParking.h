@@ -158,4 +158,5 @@ public:
 	afx_msg void OnBnClickedBtnSeloutlinelayer();
 	afx_msg void OnBnClickedBtnShearwalllayer();
 	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 } ;

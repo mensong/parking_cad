@@ -30,8 +30,7 @@ BOOL CDlgToolbarNav::OnInitDialog()
 		return FALSE;
 
 	m_tree.EnableRootBk(TRUE);
-	CPaintDC dc(this);
-	m_tree.SetBackgroudColor(dc.GetBkColor());
+	m_tree.SetBackgroudColor(GetSysColor(COLOR_3DFACE));
 	m_tree.ModifyStyle(0, TVS_SHOWSELALWAYS, 0);
 
 	HTREEITEM hRoot;

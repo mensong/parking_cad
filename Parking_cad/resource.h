@@ -103,8 +103,11 @@
 #define IDC_SHOW_SCALEVALUE             210
 #define IDC_BTN_SELOUTLINELAYER         213
 #define IDC_BTN_SHEARWALLLAYER          214
-#define IDC_TREE1                       215
 #define IDC_TREE_NAV                    215
+#define IDC_STATIC1                     216
+#define IDC_STATIC2                     217
+#define IDC_STATIC3                     218
+#define IDC_CHK_SHOW_CLOUDLINE_LAYER    218
 
 // Next default values for new objects
 // 
@@ -112,7 +115,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        149
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         216
+#define _APS_NEXT_CONTROL_VALUE         219
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

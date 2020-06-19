@@ -28,6 +28,7 @@
 #include "adui.h"
 #include "afxcmn.h"
 #include "resource.h"
+#include "afxwin.h"
 //-----------------------------------------------------------------------------
 class CDlgFindCloud : public CAcUiDialog {
 	DECLARE_DYNAMIC (CDlgFindCloud)
@@ -39,6 +40,9 @@ public:
 
 	void DestroyMe();
 	void clearCmpResult();
+
+	void refreshChkLayer();
+
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;
 	afx_msg LRESULT OnAcadKeepFocus (WPARAM, LPARAM) ;
@@ -56,4 +60,6 @@ public:
 	void init(bool isRefresh = false);
 	void reDraw(const AcDbObjectId& targetId);
 	afx_msg void OnBnClickedButtonCheck();
+	CButton m_chkShowCloudLayer;
+	afx_msg void OnBnClickedChkShowCloudlineLayer();
 } ;
