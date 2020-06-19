@@ -72,10 +72,7 @@ void COperaAddFrame::Start()
 		picAttributedata["SPC"] = 33;
 		picAttributedata["H"] = 3.55;
 		picAttributedata["HT"] = 1;*/
-
-		
-		
-		std::string sPicAttributeText = setPicAttributeData(SPvalue, SPF1area, CPvalue, SPF2area, picAttributedata);
+		std::string sPicAttributeText = setPicAttributeData(SPvalue, SPF1area, CPvalue, SPF2area, picAttributedata, ids);
 
 		dlg.setBlockInserPoint(sPicAttributeText);
 		std::vector<AcDbEntity*> vcEnts;
@@ -388,17 +385,41 @@ double COperaAddFrame::getNumberOfCars(std::vector<AcDbObjectId>& inputIds, cons
 	return (double)num;
 }
 
-std::string COperaAddFrame::setPicAttributeData(double SPvalue, double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata)
+std::string COperaAddFrame::setPicAttributeData(double SPvalue, double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata, std::vector<AcDbObjectId>& inputIds)
 {
-	//"SP=4865|SPT=3740|SPF=1125|SPF1=210|SPF2=450|SPF3=463|CP=132|JSPC=25|SPC=33|H=3.55|HT=1"
-	//double SPvalue = getPicAttributeValue(picAttributedata, "SP");
-	//double SPF2value = getPicAttributeValue(picAttributedata, "SPF2");
-	double SPF3value = getPicAttributeValue(picAttributedata, "SPF3");
-	double SPF4value = getPicAttributeValue(picAttributedata, "SPF4");
-	double SPF5value = getPicAttributeValue(picAttributedata, "SPF5");
-	//double CPvalue = getPicAttributeValue(picAttributedata, "CP");
-	double Hvalue = getPicAttributeValue(picAttributedata, "H");
-	double HTvalue = getPicAttributeValue(picAttributedata, "HT");
+	double SPF3value = 0;
+	double SPF4value = 0;
+	double SPF5value = 0;
+	double Hvalue = 0;
+	double HTvalue = 0;
+	for (int i = 0; i < inputIds.size(); i++)
+	{
+		AcString XRecordText;
+		DBHelper::GetXRecord(inputIds[i], _T("实体"), XRecordText);
+		if (XRecordText == _T("地库范围线"))
+		{
+			AcString sSPF3value;
+			DBHelper::GetXRecord(inputIds[i], _T("SPF3"), sSPF3value);
+			SPF3value = _tstof(sSPF3value);
+			AcString sSPF4value;
+			DBHelper::GetXRecord(inputIds[i], _T("SPF4"), sSPF4value);
+			SPF4value = _tstof(sSPF4value);
+			AcString sSPF5value;
+			DBHelper::GetXRecord(inputIds[i], _T("SPF5"), sSPF5value);
+			SPF5value = _tstof(sSPF5value);
+			AcString sHvalue;
+			DBHelper::GetXRecord(inputIds[i], _T("H"), sHvalue);
+			Hvalue = _tstof(sHvalue);
+			AcString sHTvalue;
+			DBHelper::GetXRecord(inputIds[i], _T("HT"), sHTvalue);
+			HTvalue = _tstof(sHTvalue);
+		}
+	}
+	//double SPF3value = getPicAttributeValue(picAttributedata, "SPF3");
+	//double SPF4value = getPicAttributeValue(picAttributedata, "SPF4");
+	//double SPF5value = getPicAttributeValue(picAttributedata, "SPF5");
+	//double Hvalue = getPicAttributeValue(picAttributedata, "H");
+	//double HTvalue = getPicAttributeValue(picAttributedata, "HT");
 
 	double SPFvalue = (SPF1value / 1000000) + (SPF2value / 1000000) + SPF3value + SPF4value + SPF5value;
 	double SPTvalue = (SPvalue/ 1000000) - SPFvalue;

@@ -41,13 +41,8 @@
          "ACAD_ISO13W100",
          "ACAD_ISO14W100",
          "ACAD_ISO15W100",
-         "FENCELINE1",
-         "FENCELINE2",
-         "TRACKS",
-         "BATTING",
          "HOT_WATER_SUPPLY",
-         "GAS_LINE",
-         "ZIGZAG"
+         "GAS_LINE"
       ]
    },
    "layer_config" : {
@@ -62,12 +57,12 @@
       },
       "axis_dimensions" : {
          "isprintf" : "是",
-         "layer_color" : "255",
-         "layer_linetype" : "Continuous",
+         "layer_color" : "1",
+         "layer_linetype" : "CENTER2",
          "layer_name" : "A-标注-轴号",
          "layer_width" : "0.15",
          "professional_attributes" : "标注",
-         "transparency" : ""
+         "transparency" : "36%"
       },
       "cloud_line" : {
          "isprintf" : "否",
@@ -85,7 +80,7 @@
          "layer_name" : "S-墙柱-COLU",
          "layer_width" : "0.2",
          "professional_attributes" : "结构",
-         "transparency" : ""
+         "transparency" : "36%"
       },
       "core_wall" : {
          "isprintf" : "否",
@@ -130,7 +125,7 @@
          "layer_name" : "A-车库-车道中线",
          "layer_width" : "0.09",
          "professional_attributes" : "地库",
-         "transparency" : ""
+         "transparency" : "60%"
       },
       "mapsign" : {
          "isprintf" : "是",
@@ -175,7 +170,7 @@
          "layer_name" : "G-用地-地库范围线",
          "layer_width" : "0.4",
          "professional_attributes" : "用地",
-         "transparency" : ""
+         "transparency" : "20%"
       }
    },
    "params" : {
