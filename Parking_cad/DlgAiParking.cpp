@@ -68,7 +68,6 @@ BEGIN_MESSAGE_MAP(CDlgAiParking, CAcUiDialog)
 	ON_BN_CLICKED(IDC_BTN_SELOUTLINELAYER, &CDlgAiParking::OnBnClickedBtnSeloutlinelayer)
 	ON_BN_CLICKED(IDC_BTN_SHEARWALLLAYER, &CDlgAiParking::OnBnClickedBtnShearwalllayer)
 	ON_WM_SHOWWINDOW()
-	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -947,7 +946,7 @@ void CDlgAiParking::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 		return;
 	}
 	CDlgWaiting::setUuid(uuid, useV1, useManyShow);
-
+	COperaMultiSchemeShow::setLayerNameToEntUse(outlineLayer, shearwallLaye);
 	CAcModuleResourceOverride resOverride;//资源定位
 	CDlgWaiting* pWaitDlg = new CDlgWaiting;
 	pWaitDlg->Create(CDlgWaiting::IDD, acedGetAcadDwgView());
@@ -1260,7 +1259,7 @@ void CDlgAiParking::OnBnClickedBtnSeloutlinelayer()
 	HideDialogHolder holder(this);
 	Doc_Locker doc_locker;
 
-	/*ads_name ename; ads_point pt;
+	ads_name ename; ads_point pt;
 	if (acedEntSel(_T("\n请选择建筑外轮廓线图层中的任意实体:"), ename, pt) != RTNORM)
 	{
 		return;
@@ -1272,24 +1271,12 @@ void CDlgAiParking::OnBnClickedBtnSeloutlinelayer()
 	//下面语句需要判断操作成功与否
 	Acad::ErrorStatus es;
 	es = acdbOpenObject(pEnt, id, AcDb::kForRead);
-	if (es != eOk)
+	if (es!=eOk)
 	{
 		return;
 	}
 	m_sOutlineLayer = pEnt->layer();
-	pEnt->close();*/
-
-	AcDbPolyline* pPL = NULL;
-	Acad::ErrorStatus es = DBHelper::SelectAEntity<AcDbPolyline>(pPL, AcDb::kForRead, _T("\n选择建筑外轮廓线图层中的多段线:"));
-	if (es != Acad::eOk)
-	{
-		acedAlert(_T("请选择建筑外轮廓线图层中的多段线。"));
-		return;
-	}
-
-	m_sOutlineLayer = DBHelper::AcStringFree(pPL->layer()).constPtr();
-	pPL->close();
-
+	pEnt->close();
 	if (!m_sOutlineLayer.IsEmpty())
 	{
 		int n = m_outlineLayer.FindStringExact(0, m_sOutlineLayer);
@@ -1305,7 +1292,6 @@ void CDlgAiParking::OnBnClickedBtnShearwalllayer()
 	HideDialogHolder holder(this);
 	Doc_Locker doc_locker;
 
-	/*
 	ads_name ename; ads_point pt;
 	if (acedEntSel(_T("\n请选择剪力墙图层中的任意实体:"), ename, pt) != RTNORM)
 	{
@@ -1324,19 +1310,6 @@ void CDlgAiParking::OnBnClickedBtnShearwalllayer()
 	}
 	m_sShearwallLayer = pEnt->layer();
 	pEnt->close();
-	*/
-
-	AcDbPolyline* pPL = NULL;
-	Acad::ErrorStatus es = DBHelper::SelectAEntity<AcDbPolyline>(pPL, AcDb::kForRead, _T("\n选择剪力墙图层中的多段线:"));
-	if (es != Acad::eOk)
-	{
-		acedAlert(_T("请选择剪力墙图层中的多段线。"));
-		return;
-	}
-
-	m_sShearwallLayer = DBHelper::AcStringFree(pPL->layer()).constPtr();
-	pPL->close();
-
 	if (!m_sShearwallLayer.IsEmpty())
 	{
 		int n = m_shearwallLayer.FindStringExact(0, m_sShearwallLayer);
@@ -1349,20 +1322,4 @@ void CDlgAiParking::OnBnClickedBtnShearwalllayer()
 void CDlgAiParking::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CAcUiDialog::OnShowWindow(bShow, nStatus);
-}
-
-
-HBRUSH CDlgAiParking::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
-{
-	HBRUSH hbr = CAcUiDialog::OnCtlColor(pDC, pWnd, nCtlColor);
-
-	int nCtl = pWnd->GetDlgCtrlID();
-	if (nCtl == IDC_STATIC1 || nCtl == IDC_STATIC2 || nCtl == IDC_STATIC3)
-	{
-		pDC->SetTextColor(RGB(255, 0, 0)); //字体颜色
-		//pDC->SetBkColor(RGB(0, 0, 255)); //字体背景色
-		//hbr = CreateSolidBrush(RGB(255, 255, 255));//控件背景色
-	}
-
-	return hbr;
 }

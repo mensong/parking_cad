@@ -17,6 +17,8 @@ AcDbDatabase* COperaMultiSchemeShow::ms_prootDb;
 CString COperaMultiSchemeShow::ms_newFileName;
 CString COperaMultiSchemeShow::ms_path;
 CString COperaMultiSchemeShow::ms_name;
+CString COperaMultiSchemeShow::ms_sOutLineLayerName;
+CString COperaMultiSchemeShow::ms_sShearWallLayeNmae;
 
 COperaMultiSchemeShow::COperaMultiSchemeShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
 	: CIOperaLog(group, cmd, alias, cmdFlag)
@@ -39,6 +41,12 @@ void COperaMultiSchemeShow::Start()
 void COperaMultiSchemeShow::getJsonData(const std::string& json)
 {
 	ms_json = json;
+}
+
+void COperaMultiSchemeShow::setLayerNameToEntUse(const CString& sOutLineLayerName, const CString& sShearWallLayerName)
+{
+	ms_sOutLineLayerName = sOutLineLayerName;
+	ms_sShearWallLayeNmae = sShearWallLayerName;
 }
 
 void COperaMultiSchemeShow::getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName, const CString& path,const CString& name)
@@ -337,7 +345,6 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 		}
 		delete pTempDb;
 	}
-
 	WD::AppendMsg(_T("保存方案图纸"));
 	const ACHAR* filter = _T("dwg文件|*.dwg|dxf文件|*.dxf|All Files(*.*)|*.*||");
 	WD::ShowWindow(SW_HIDE);
@@ -436,6 +443,8 @@ void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, Ac
 	DBHelper::AddXRecord(scopeId, _T("H"), sHvalue);
 	DBHelper::AddXRecord(scopeId, _T("HT"), sHTvalue);
 	DBHelper::AddXRecord(scopeId, _T("实体"), _T("地库范围线"));
+	bool re = DBHelper::AddXRecord(scopeId, _T("外轮廓图层名"), ms_sOutLineLayerName);
+	DBHelper::AddXRecord(scopeId, _T("剪力墙图层名"), ms_sShearWallLayeNmae);
 	CEquipmentroomTool::setEntToLayer(scopeId, sScopeLayer);
 }
 

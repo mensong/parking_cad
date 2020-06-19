@@ -394,7 +394,19 @@ void COperaCheck::overlapShow()
 
 	if (ms_shearWallLayerName.IsEmpty())
 	{
-		ms_shearWallLayerName = columnLayer;
+		CString sScopeLayer(CEquipmentroomTool::getLayerName("rangeline").c_str());
+		AcDbObjectIdArray scopeIds = DBHelper::GetEntitiesByLayerName(sScopeLayer);
+		for (int length = 0; length < scopeIds.length(); length++)
+		{
+			AcString sSheraWallLayerName;
+			DBHelper::GetXRecord(scopeIds[length], _T("剪力墙图层名"), sSheraWallLayerName);
+			if (!sSheraWallLayerName.isEmpty())
+			{
+				ms_shearWallLayerName = sSheraWallLayerName;
+				break;
+			}
+		}
+		//ms_shearWallLayerName = columnLayer;
 	}
 	AcDbObjectIdArray shearWallEntIds = DBHelper::GetEntitiesByLayerName(ms_shearWallLayerName);
 	WD::AppendMsg(_T("车位与剪力墙重叠区域检测"));

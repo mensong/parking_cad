@@ -35,6 +35,19 @@ void COperaAddFrame::Start()
 	std::map<AcDbObjectId, AcGePoint2dArray> parkIdAndPts;
 	CEquipmentroomTool::getParkingExtentPts(parkingsPoints,ids,sParkingsLayer, parkIdAndPts);
 	std::vector<AcGePoint2dArray> equipmentPoints = getPlinePointForLayer(ids, sEquipmentroomLayer);
+	if (ms_sOutLineLayerName.IsEmpty())
+	{
+		for (int size=0; size<ids.size();size++)
+		{
+			AcString sOutLineLayerName;
+			DBHelper::GetXRecord(ids[size], _T("ÍâÂÖÀªÍ¼²ãÃû"), sOutLineLayerName);
+			if (!sOutLineLayerName.isEmpty())
+			{
+				ms_sOutLineLayerName = sOutLineLayerName;
+				break;
+			}
+		}
+	}
 	std::vector<AcGePoint2dArray> outLinePoints = getPlinePointForLayer(ids, ms_sOutLineLayerName,false);
 	double dOutLineArea = getPloyLineArea(ids, ms_sOutLineLayerName,false);
 	double dCoreWallArea = getPloyLineArea(ids, sCoreWall);
