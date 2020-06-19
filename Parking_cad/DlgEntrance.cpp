@@ -85,12 +85,12 @@ BOOL CDlgEntrance::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
-	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
-
 	// TODO:  在此添加额外的初始化
 	m_edit_basementHeight.SetWindowText(ms_sBasementHeight);
 	m_edit_entranceWidth.SetWindowText(ms_sEntranceWidth);
-	return TRUE; 
+	CenterWindow();
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // 异常: OCX 属性页应返回 FALSE
 }
 
 
@@ -122,43 +122,43 @@ void CDlgEntrance::OnBnClickedOk()
 	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction");
 	CEquipmentroomTool::creatLayerByjson("entrance");
 	creatEntrance(dBasementHeight, dEtranceWidth);
-	std::vector<AcDbEntity*> blockEnts;
-	for (int i = 0; i < m_addBlockIds.length(); i++)
-	{
-		AcDbEntity *pEnt = NULL;
-		acdbOpenObject(pEnt, m_addBlockIds[i], AcDb::kForWrite);
-		//判断自定义实体的类型
-		if (pEnt == NULL)
-			continue;
-		blockEnts.push_back(pEnt);
-	}
-	if (blockEnts.size() < 1)
-		return;
+	//std::vector<AcDbEntity*> blockEnts;
+	//for (int i = 0; i < m_addBlockIds.length(); i++)
+	//{
+	//	AcDbEntity *pEnt = NULL;
+	//	acdbOpenObject(pEnt, m_addBlockIds[i], AcDb::kForWrite);
+	//	//判断自定义实体的类型
+	//	if (pEnt == NULL)
+	//		continue;
+	//	blockEnts.push_back(pEnt);
+	//}
+	//if (blockEnts.size() < 1)
+	//	return;
 
-	CString sBlockName = _T("entrance");
-	int iCount = 0;
-	while (CEquipmentroomTool::hasNameOfBlock(sBlockName))
-	{
-		iCount++;
-		CString sCount;
-		sCount.Format(_T("%d"), iCount);
-		sBlockName += sCount;
-	}
-	if (Acad::eOk != DBHelper::CreateBlock(sBlockName, blockEnts))
-	{
-		acutPrintf(_T("\n创建出入口图块失败！"));
-		return;
-	}
-	for (int j = 0; j < blockEnts.size(); j++)
-	{
-		blockEnts[j]->erase();
-		blockEnts[j]->close();
-	}
-	AcDbObjectId blockId;
-	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
-	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-	DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
-	CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
+	//CString sBlockName = _T("entrance");
+	//int iCount = 0;
+	//while (CEquipmentroomTool::hasNameOfBlock(sBlockName))
+	//{
+	//	iCount++;
+	//	CString sCount;
+	//	sCount.Format(_T("%d"), iCount);
+	//	sBlockName += sCount;
+	//}
+	//if (!DBHelper::CreateBlock(sBlockName, blockEnts))
+	//{
+	//	acutPrintf(_T("\n创建出入口图块失败！"));
+	//	return;
+	//}
+	//for (int j = 0; j < blockEnts.size(); j++)
+	//{
+	//	blockEnts[j]->erase();
+	//	blockEnts[j]->close();
+	//}
+	//AcDbObjectId blockId;
+	//DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
+	//CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	//bool es = DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
+	//CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
 	CAcUiDialog::OnOK();
 	ms_sBasementHeight = sBasementHeight;
 	ms_sEntranceWidth = sEtranceWidth;
@@ -419,12 +419,8 @@ bool CDlgEntrance::addDim(const AcDbObjectIdArray entIds, const double  dHeight,
 			AcGeVector3d startPtMoveVec = startPt - centerPt;
 			AcGeVector3d unitStartVec = startPtMoveVec.normalize();
 			AcGePoint3d onArcPt = result[1];
-			//startPt.transformBy(unitStartVec * 500);
-			onArcPt.transformBy(unitStartVec * 4000);
-			//AcGePoint3dArray result = GeHelper::CalcArcFittingPoints(arc, 3);
-			//AcDbArcDimension(centerPt, movedPt, endPt, startPt);
-
-			//COperaSetEntranceData::creatArcDim(centerPt, movedPt, endPt, startPt);
+			//startPt.transformBy(unitStartVec * 1000);
+			onArcPt.transformBy(unitStartVec * 1000);
 
 			AcDbBlockTable *pBlockTable;//定义块表指针
 			acdbHostApplicationServices()->workingDatabase()
@@ -440,8 +436,10 @@ bool CDlgEntrance::addDim(const AcDbObjectIdArray entIds, const double  dHeight,
 			//sEntranceLength.Format(_T("%.1f"), showLength);
 			sEntranceLength.Format(_T("%.2f"), showLength);
 			pDim1->setDimensionText(sEntranceLength);
+			//pDim1->setDimtix(0);//设置标注文字始终绘制在尺寸界线之间
+			pDim1->setDimtxt(500);
 			pDim1->setDimexo(0);
-			pDim1->setDimexe(12);
+			pDim1->setDimexe(300);
 			AcCmColor suiceng;
 			suiceng.setColorIndex(3);
 			pDim1->setDimclrd(suiceng);//为尺寸线、箭头和标注引线指定颜色，0为随图层
