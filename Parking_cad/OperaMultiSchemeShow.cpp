@@ -61,7 +61,8 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	Json::Value& data = oneScheme["data"];
 	sMsg.Format(_T("方案%d : 车位指标表"), scheme + 1);
 	WD::AppendMsg(sMsg.GetString());
-	if (!parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg))
+	std::map < std::string, double > tableData;
+	if (!parsingData(data, dParkingLength, dParkingWidth, dLaneWidth, sMsg, tableData))
 	{
 		WD::AppendMsg(sMsg, WD::GetPos());
 	}
@@ -122,7 +123,7 @@ bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase
 	sMsg.Format(_T("方案%d : 生成地库范围线"), scheme + 1);
 	WD::AppendMsg(sMsg.GetString());
 	Json::Value& scope = oneScheme["scope"];
-	if (!parsingScopeData(scope, sMsg, pDataBase))
+	if (!parsingScopeData(scope, sMsg, tableData, pDataBase))
 	{
 		WD::AppendMsg(sMsg, WD::GetPos());
 	}
@@ -401,7 +402,7 @@ AcDbObjectId COperaMultiSchemeShow::laneShow(const AcGePoint2dArray& lanePts, Ac
 	return laneId;
 }
 
-void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, AcDbObjectId& scopeId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
+void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, AcDbObjectId& scopeId, std::map < std::string, double >& tableData, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	CString sScopeLayer(CEquipmentroomTool::getLayerName("rangeline").c_str());
 	CEquipmentroomTool::creatLayerByjson("rangeline", pDb);
@@ -414,6 +415,26 @@ void COperaMultiSchemeShow::scopeShow(const AcGePoint2dArray& park_columnPts, Ac
 	pPoly->setClosed(true);
 	DBHelper::AppendToDatabase(scopeId, pPoly, pDb);
 	pPoly->close();
+	double SPF3value = getPicAttributeValue(tableData, "SPF3");
+	CString sSPF3value;
+	sSPF3value.Format(_T("%.2f"), SPF3value);
+	double SPF4value = getPicAttributeValue(tableData, "SPF4");
+	CString sSPF4value;
+	sSPF4value.Format(_T("%.2f"), SPF4value);
+	double SPF5value = getPicAttributeValue(tableData, "SPF5");
+	CString sSPF5value;
+	sSPF5value.Format(_T("%.2f"), SPF5value);
+	double Hvalue = getPicAttributeValue(tableData, "H");
+	CString sHvalue;
+	sHvalue.Format(_T("%.2f"), Hvalue);
+	double HTvalue = getPicAttributeValue(tableData, "HT");
+	CString sHTvalue;
+	sHTvalue.Format(_T("%.2f"), HTvalue);
+	DBHelper::AddXRecord(scopeId, _T("SPF3"), sSPF3value);
+	DBHelper::AddXRecord(scopeId, _T("SPF4"), sSPF4value);
+	DBHelper::AddXRecord(scopeId, _T("SPF5"), sSPF5value);
+	DBHelper::AddXRecord(scopeId, _T("H"), sHvalue);
+	DBHelper::AddXRecord(scopeId, _T("HT"), sHTvalue);
 	DBHelper::AddXRecord(scopeId, _T("实体"), _T("地库范围线"));
 	CEquipmentroomTool::setEntToLayer(scopeId, sScopeLayer);
 }
@@ -629,7 +650,7 @@ bool COperaMultiSchemeShow::parsingParkingData(Json::Value& parkings, CString& s
 
 }
 
-bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg)
+bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLength, double& dParkingWidth, double& dLaneWidth, CString& sMsg, std::map < std::string, double >& tableData)
 {
 	if (data.isNull())
 	{
@@ -645,7 +666,6 @@ bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLengt
 			dLaneWidth = data["lane_width"].asDouble();
 			std::vector<double> dataVector;
 			std::vector<std::string> strDataNameVector;
-			std::map < std::string, double > tableData;
 
 			double dSp = data["Sp"].asDouble();
 			strDataNameVector.push_back("SP");
@@ -698,7 +718,6 @@ bool COperaMultiSchemeShow::parsingData(Json::Value& data, double& dParkingLengt
 				std::pair<std::string, double> value(strDataNameVector[i], dataVector[i]);
 				tableData.insert(value);//插入新元素
 			}
-			COperaAddFrame::setTableDataMap(tableData);
 			return true;
 		}
 		else
@@ -814,7 +833,7 @@ bool COperaMultiSchemeShow::parsingLaneData(Json::Value& lane, CString& sMsg, Ac
 	}
 }
 
-bool COperaMultiSchemeShow::parsingScopeData(Json::Value& scope, CString& sMsg, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+bool COperaMultiSchemeShow::parsingScopeData(Json::Value& scope, CString& sMsg, std::map < std::string, double >& tableData, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	AcGePoint2dArray scopePts;
 	if (scope.isNull())
@@ -842,7 +861,7 @@ bool COperaMultiSchemeShow::parsingScopeData(Json::Value& scope, CString& sMsg, 
 		}
 	}
 	AcDbObjectId scopeId;
-	scopeShow(scopePts, scopeId, pDb);
+	scopeShow(scopePts, scopeId, tableData, pDb);
 	if (!scopeId.isNull())
 	{
 		return true;
@@ -1024,6 +1043,15 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		sMsg = _T("生成空白区云线失败！");
 		return false;
 	}
+}
+
+double COperaMultiSchemeShow::getPicAttributeValue(std::map<std::string, double>& picAttributedata, const std::string& picAttributeTage)
+{
+	//通过key找value
+	if (picAttributedata.count(picAttributeTage) > 0)
+		return picAttributedata[picAttributeTage];
+
+	return 0;
 }
 
 void COperaMultiSchemeShow::checkLaneDimPosition(const AcDbObjectIdArray& laneDimIds, const AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb /*= acdbCurDwg()*/)

@@ -16,7 +16,7 @@ public:
 	static std::vector<AcGePoint2dArray> getPlinePointForLayer(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty, bool isCreat = true);
 	static double getPloyLineArea(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty, bool isCreat = true);
 	static double getNumberOfCars(std::vector<AcDbObjectId>& inputIds, const AcString& layerNameofEnty);
-	static std::string setPicAttributeData(double SPvalue, double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata);
+	static std::string setPicAttributeData(double SPvalue, double SPF1value, double CPvalue, double SPF2value, std::map<std::string, double>& picAttributedata, std::vector<AcDbObjectId>& inputIds);
 	static double getPicAttributeValue(std::map<std::string, double>& picAttributedata, const std::string& picAttributeTage);
 	static std::string setStringData(double inputValue, const std::string& Keydata);
 	//static bool isHasBlockName(const AcString& blockname, AcString& outblockname);

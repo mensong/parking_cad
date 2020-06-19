@@ -41,13 +41,8 @@
          "ACAD_ISO13W100",
          "ACAD_ISO14W100",
          "ACAD_ISO15W100",
-         "FENCELINE1",
-         "FENCELINE2",
-         "TRACKS",
-         "BATTING",
          "HOT_WATER_SUPPLY",
-         "GAS_LINE",
-         "ZIGZAG"
+         "GAS_LINE"
       ]
    },
    "layer_config" : {
