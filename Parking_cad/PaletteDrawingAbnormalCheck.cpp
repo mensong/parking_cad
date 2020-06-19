@@ -94,9 +94,10 @@ int CPaletteDrawingAbnormalCheck::OnCreate (LPCREATESTRUCT lpCreateStruct) {
 	if ( CAdUiPalette::OnCreate (lpCreateStruct) == -1 )
 		return (-1) ;
 
-	CAcModuleResourceOverride resOverride;
 	CRect rect;
 	GetClientRect(&rect);
+
+	CAcModuleResourceOverride resOverride;//资源定位
 	m_pChildDlg = new CDlgFindCloud;
 	m_pChildDlg->Create(CDlgFindCloud::IDD, this);
 	m_pChildDlg->MoveWindow(rect);

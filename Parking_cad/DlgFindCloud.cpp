@@ -26,7 +26,6 @@
 #include "resource.h"
 #include "DlgFindCloud.h"
 #include <set>
-#include "DBHelper.h"
 #include "EquipmentroomTool.h"
 
 //-----------------------------------------------------------------------------

@@ -96,6 +96,8 @@ int CPaletteToolbar::OnCreate (LPCREATESTRUCT lpCreateStruct) {
 
 	CRect rect;
 	GetClientRect(&rect);
+
+	CAcModuleResourceOverride resOverride;//资源定位
 	m_pChildDlg = new CDlgToolbarNav;
 	m_pChildDlg->Create(CDlgToolbarNav::IDD, this);
 	m_pChildDlg->MoveWindow(rect);

@@ -3,7 +3,7 @@
 #include "resource.h"
 #include <vector>
 //-----------------------------------------------------------------------------
-class CDlgEquipmentRoomSet : public CAcUiDialog 
+class CDlgEquipmentRoomSet : public CAcUiDialog
 {
 	DECLARE_DYNAMIC (CDlgEquipmentRoomSet)
 

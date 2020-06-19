@@ -379,15 +379,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\ArxDialog.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\CommonFuntion.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\Parking_cad\DlgAddFrame.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgAiParking.cpp"
 				>
 			</File>
 			<File
@@ -427,7 +427,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\DlgSlider.cpp"
+				RelativePath="..\Parking_cad\DlgSliderTransparency.cpp"
 				>
 			</File>
 			<File
@@ -620,10 +620,6 @@
 			Filter="h;hh;hxx"
 			>
 			<File
-				RelativePath="..\Parking_cad\ArxDialog.h"
-				>
-			</File>
-			<File
 				RelativePath="..\Parking_cad\Boundary.h"
 				>
 			</File>
@@ -633,6 +629,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\DlgAddFrame.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\DlgAiParking.h"
 				>
 			</File>
 			<File
@@ -672,7 +672,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Parking_cad\DlgSlider.h"
+				RelativePath="..\Parking_cad\DlgSliderTransparency.h"
 				>
 			</File>
 			<File

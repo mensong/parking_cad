@@ -32,20 +32,22 @@
 #include <vector>
 
 //-----------------------------------------------------------------------------
-class CArxDialog
-	: public CAcUiDialog 
+class CDlgAiParking
+	: public CAcUiDialog
 {
-	DECLARE_DYNAMIC (CArxDialog)
+	DECLARE_DYNAMIC (CDlgAiParking)
 
 public:
-	CArxDialog (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
-	~CArxDialog();
+	CDlgAiParking (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
+	~CDlgAiParking();
 
 	enum { IDD = IDD_ARX_MODAL} ;
 
+public:
+	void Reload();
+
 	CString m_sOutlineLayer;
 	CString m_sShearwallLayer;
-	int m_nDirectionCombo;
 	CString m_sStartPoint;
 	CString m_strEndPoint;
 	CString m_strXPt;
@@ -80,7 +82,7 @@ public:
 protected:
 	void loadoutlineLayers();
 	void loadshearwallLayers();
-	void loaddirectionCombo();
+
 	bool compare(AcGePoint2dArray& targetPts, AcGePoint2d &comparePt);
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, bool bClosed = true);
 	std::vector<AcGePoint2dArray> getPlinePointForLayer(CString& layername, std::vector<int>& types);
@@ -155,4 +157,5 @@ public:
 	void getDatabaseBackup();
 	afx_msg void OnBnClickedBtnSeloutlinelayer();
 	afx_msg void OnBnClickedBtnShearwalllayer();
+	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
 } ;

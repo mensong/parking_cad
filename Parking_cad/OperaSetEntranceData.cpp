@@ -20,7 +20,6 @@ void COperaSetEntranceData::Start()
 	{
 		//设置窗口
 		CAcModuleResourceOverride resOverride;//资源定位
-
 		ms_EntranceDlg = new CDlgEntrance;
 		ms_EntranceDlg->Create(CDlgEntrance::IDD, acedGetAcadDwgView());
 	}

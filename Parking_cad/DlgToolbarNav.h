@@ -6,7 +6,7 @@
 // CDlgToolbarNav ¶Ô»°¿ò
 
 class CDlgToolbarNav 
-	: public CDlgArxTools
+	: public CAcUiDialog
 {
 	DECLARE_DYNAMIC(CDlgToolbarNav)
 

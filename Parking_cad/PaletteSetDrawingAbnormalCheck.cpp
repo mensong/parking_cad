@@ -108,8 +108,6 @@ CPaletteSetDrawingAbnormalCheck* CPaletteSetDrawingAbnormalCheck::Instance()
 {
 	if (!s_pPaletteSet)
 	{
-		CAcModuleResourceOverride resOverride; 
-
 		s_pPaletteSet = new CPaletteSetDrawingAbnormalCheck;
 		CRect rect(0,0,200,500);	
 		s_pPaletteSet->Create(_T("Í¼Ö½¼ì²â½á¹û"), WS_OVERLAPPED|WS_DLGFRAME, rect, acedGetAcadFrame());

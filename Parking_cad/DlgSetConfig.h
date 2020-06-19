@@ -30,11 +30,13 @@
 #include "Resource.h"
 #include "afxcmn.h"
 #include "ListCtrlCustom.h"
-#include "DlgSlider.h"
+#include "DlgSliderTransparency.h"
 #include "json\value.h"
 
 //-----------------------------------------------------------------------------
-class CDlgSetConfig : public CAcUiDialog {
+class CDlgSetConfig 
+	: public CAcUiDialog
+{
 	DECLARE_DYNAMIC (CDlgSetConfig)
 
 public:
@@ -84,7 +86,7 @@ public:
 	// 图层线型下拉框
 	CComboBox m_LineTypeCombo;
 	// 透明度控制窗口
-	CDlgSlider* m_SliderDialog;
+	CDlgSliderTransparency* m_SliderDialog;
 
 	CString m_sLineStyle;
 	void initLinetypeCombo();

@@ -11,7 +11,8 @@
 #define LifePumpHouse 80000000.0//生活泵房面积
 CWnd* CDlgLifePumpHouseSet::parent_dlg = NULL;
 CString CDlgLifePumpHouseSet::ms_sPorportionText;
-IMPLEMENT_DYNAMIC(CDlgLifePumpHouseSet, CDialogEx)
+
+IMPLEMENT_DYNAMIC(CDlgLifePumpHouseSet, CAcUiDialog)
 
 CDlgLifePumpHouseSet::CDlgLifePumpHouseSet(CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(CDlgLifePumpHouseSet::IDD, pParent)
@@ -105,9 +106,10 @@ void CDlgLifePumpHouseSet::lifePumpHouseSetOpera(double& dPorportion)
 BOOL CDlgLifePumpHouseSet::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
+
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	// TODO:  在此添加额外的初始化
 	m_textProportion.SetWindowText(ms_sPorportionText);
-	CenterWindow();
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE; 
 }

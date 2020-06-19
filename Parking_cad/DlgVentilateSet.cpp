@@ -13,6 +13,7 @@
 CWnd* CDlgVentilateSet::parent_dlg = NULL;
 CString CDlgVentilateSet::ms_sTotalAreaText;
 CString CDlgVentilateSet::ms_sPorportionText;
+
 IMPLEMENT_DYNAMIC(CDlgVentilateSet, CAcUiDialog)
 
 CDlgVentilateSet::CDlgVentilateSet(CWnd* pParent /*=NULL*/)
@@ -100,13 +101,12 @@ BOOL CDlgVentilateSet::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	m_totalAreaText.SetWindowText(ms_sTotalAreaText);
 	m_porportionText.SetWindowText(ms_sPorportionText);
-	// TODO:  在此添加额外的初始化
-	CenterWindow();
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE;
 }
 
 void CDlgVentilateSet::ventilateOpera(double& dTotalArea, double& dPorportion,int& roomCount)

@@ -1009,10 +1009,10 @@ bool COperaMultiSchemeShow::parsingBlanksData(Json::Value& blanks, CString& sMsg
 		double dArea = GeHelper::CalcPolygonArea(blanksPoints[d]) / 1000000;
 		CString sArea;
 		sArea.Format(_T("%.2f"), dArea);
-		DBHelper::AddXRecord(blankId, _T("cloud_area"), sArea);
+		Acad::ErrorStatus es = DBHelper::AddXRecord(blankId, _T("cloud_area"), sArea);
 		CString cloudInf = _T("空白区域");
-		DBHelper::AddXRecord(blankId, _T("cloud"), cloudInf);
-		DBHelper::AddXRecord(blankId, _T("实体"), cloudInf);
+		es = DBHelper::AddXRecord(blankId, _T("cloud"), cloudInf);
+		es = DBHelper::AddXRecord(blankId, _T("实体"), cloudInf);
 		blankIds.append(blankId);
 	}
 	if (!blankIds.isEmpty())

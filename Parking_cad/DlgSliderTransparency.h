@@ -30,13 +30,17 @@
 #include "afxwin.h"
 
 //-----------------------------------------------------------------------------
-class CDlgSlider : public CAcUiDialog {
-	DECLARE_DYNAMIC (CDlgSlider)
+class CDlgSliderTransparency 
+	: public CAcUiDialog 
+{
+	DECLARE_DYNAMIC (CDlgSliderTransparency)
 
 public:
-	CDlgSlider (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
+	CDlgSliderTransparency (CWnd *pParent =NULL, HINSTANCE hInstance =NULL) ;
 
 	enum { IDD = IDD_DIALOG_SLIDER} ;
+
+	void SetPercent(const CString& percentStr);//25%
 
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;

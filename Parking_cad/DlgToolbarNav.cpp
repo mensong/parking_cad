@@ -6,10 +6,10 @@
 
 // CDlgToolbarNav ¶Ô»°¿ò
 
-IMPLEMENT_DYNAMIC(CDlgToolbarNav, CDlgArxTools)
+IMPLEMENT_DYNAMIC(CDlgToolbarNav, CAcUiDialog)
 
 CDlgToolbarNav::CDlgToolbarNav(CWnd* pParent /*=NULL*/)
-	: CDlgArxTools(IDD_DLG_TOOLBAR, pParent)
+	: CAcUiDialog(IDD_DLG_TOOLBAR, pParent)
 {
 
 }
@@ -20,13 +20,13 @@ CDlgToolbarNav::~CDlgToolbarNav()
 
 void CDlgToolbarNav::DoDataExchange(CDataExchange* pDX)
 {
-	CDlgArxTools::DoDataExchange(pDX);
+	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_TREE_NAV, m_tree);
 }
 
 BOOL CDlgToolbarNav::OnInitDialog()
 {
-	if (CDlgArxTools::OnInitDialog() == FALSE)
+	if (CAcUiDialog::OnInitDialog() == FALSE)
 		return FALSE;
 
 	m_tree.EnableRootBk(TRUE);
@@ -95,7 +95,7 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	return TRUE;
 }
 
-BEGIN_MESSAGE_MAP(CDlgToolbarNav, CDlgArxTools)
+BEGIN_MESSAGE_MAP(CDlgToolbarNav, CAcUiDialog)
 	ON_WM_SIZE()
 	ON_NOTIFY(NM_CLICK, IDC_TREE_NAV, &CDlgToolbarNav::OnNMClickTreeNav)
 END_MESSAGE_MAP()
@@ -106,7 +106,7 @@ END_MESSAGE_MAP()
 
 void CDlgToolbarNav::OnSize(UINT nType, int cx, int cy)
 {
-	CDlgArxTools::OnSize(nType, cx, cy);
+	CAcUiDialog::OnSize(nType, cx, cy);
 
 	if (::IsWindow(m_tree.GetSafeHwnd()))
 	{

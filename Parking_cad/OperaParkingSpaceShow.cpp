@@ -4,11 +4,10 @@
 #include "stdafx.h"
 #include "OperaParkingSpaceShow.h"
 #include "DBHelper.h"
-#include "ArxDialog.h"
+#include "DlgAiParking.h"
 #include <fstream>
 #include <json/json.h>
 #include "DlgWaiting.h"
-#include "ArxDialog.h"
 #include "FileHelper.h"
 #include "DlgEntrance.h"
 #include "Convertor.h"
@@ -17,7 +16,7 @@
 #include "EquipmentroomTool.h"
 #include "OperaCheck.h"
 
-class CArxDialog* COperaParkingSpaceShow::ms_dlg = NULL;
+class CDlgAiParking* COperaParkingSpaceShow::ms_dlg = NULL;
 
 
 COperaParkingSpaceShow::COperaParkingSpaceShow(const AcString& group, const AcString& cmd, const AcString& alias, Adesk::Int32 cmdFlag)
@@ -118,7 +117,7 @@ void COperaParkingSpaceShow::Start()
 			std::string strPostUrl = decrypt(postUrlOne);
 			std::string strGetUrl = decrypt(getUrlOne);
 			//std::string strEntrancePostUrl = decrypt(entrancePostUrl);
-			CArxDialog::setPostUrlPortone(strPostUrl);
+			CDlgAiParking::setPostUrlPortone(strPostUrl);
 			CDlgWaiting::setGetUrlPortOne(strGetUrl);
 			//COperaCheck::setGetCheckUrl(strEntrancePostUrl);
 			std::string postUrlTwo = root["params"]["part_posturl"].asString();
@@ -127,7 +126,7 @@ void COperaParkingSpaceShow::Start()
 			std::string strPartGetUrl = decrypt(getUrlTwo);
 			//std::string strEntrancePostUrlV2 = root["params"]["entrance_posturlv2"].asString();
 			CDlgWaiting::setGetUrlPortTwo(strPartGetUrl);
-			CArxDialog::setPostUrlPorttwo(strPartPostUrl);
+			CDlgAiParking::setPostUrlPorttwo(strPartPostUrl);
 			//CDlgEntrance::setEntrancePostUrlV2(strEntrancePostUrlV2);
 		}
 		else
@@ -149,9 +148,10 @@ void COperaParkingSpaceShow::Start()
 	{
 		//设置窗口
 		CAcModuleResourceOverride resOverride;//资源定位
-		ms_dlg = new CArxDialog;
-		ms_dlg->Create(CArxDialog::IDD, acedGetAcadDwgView());
+		ms_dlg = new CDlgAiParking;
+		ms_dlg->Create(CDlgAiParking::IDD, acedGetAcadDwgView());
 	}
+	ms_dlg->Reload();
 	ms_dlg->ShowWindow(SW_SHOW);
 	m_tol.setEqualPoint(200);
 }

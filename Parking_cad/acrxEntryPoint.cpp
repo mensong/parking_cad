@@ -79,6 +79,7 @@ public:
 		std::string session = serial;
 		KV::Ins().SetStrA("mac", serial);
 
+		CAcModuleResourceOverride resOverride;//资源定位
 		CDlgBipLogin dlgLogin;
 		if (dlgLogin.DoModal() != IDOK)
 		{

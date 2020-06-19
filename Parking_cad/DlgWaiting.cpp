@@ -6,7 +6,7 @@
 #include "afxdialogex.h"
 //#include <atomic>
 #include "DBHelper.h"
-#include "ArxDialog.h"
+#include "DlgAiParking.h"
 #include "Convertor.h"
 #include <json/json.h>
 #include "ModulesManager.h"
@@ -35,7 +35,6 @@ int g_nShowedCount = 0;
 
 static UINT WINAPI _ThreadAnimation(LPVOID pParam)
 {
-	CAcModuleResourceOverride resOverride;
 	g_dlg->DoModal();
 
 	delete g_dlg;
@@ -145,7 +144,7 @@ BOOL CDlgWaiting::OnInitDialog()
 {
 	BOOL bRet = CAcUiDialog::OnInitDialog();
 
-	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+	DlgHelper::AdjustPosition(this, DlgHelper::CENTER);
 
 	AcString strFile = DBHelper::GetArxDir() + _T("\\loading.gif");
 	if (m_ctrlGif.Load(strFile.constPtr()))

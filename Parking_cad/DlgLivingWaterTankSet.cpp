@@ -11,6 +11,7 @@
 CWnd* CDlgLivingWaterTankSet::parent_dlg = NULL;
 CString CDlgLivingWaterTankSet::ms_sHouseHoldsText;
 CString CDlgLivingWaterTankSet::ms_sPorportionText;
+
 IMPLEMENT_DYNAMIC(CDlgLivingWaterTankSet, CAcUiDialog)
 
 CDlgLivingWaterTankSet::CDlgLivingWaterTankSet(CWnd* pParent /*=NULL*/)
@@ -112,12 +113,11 @@ BOOL CDlgLivingWaterTankSet::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	// TODO:  在此添加额外的初始化
 	m_houseHoldsEdit.SetWindowText(ms_sHouseHoldsText);
 	m_porportionText.SetWindowText(ms_sPorportionText);
-	// TODO:  在此添加额外的初始化
-	CenterWindow();
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE;
 }

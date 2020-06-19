@@ -24,7 +24,7 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "resource.h"
-#include "ArxDialog.h"
+#include "DlgAiParking.h"
 #include "DBHelper.h"
 #include "GeHelper.h"
 
@@ -45,53 +45,66 @@
 #include "LibcurlHttp.h"
 #include "OperaMultiSchemeShow.h"
 
-std::string CArxDialog::ms_posturlPortone;
-std::string CArxDialog::ms_posturlPorttwo;
+std::string CDlgAiParking::ms_posturlPortone;
+std::string CDlgAiParking::ms_posturlPorttwo;
 
 
 //-----------------------------------------------------------------------------
-IMPLEMENT_DYNAMIC(CArxDialog, CAcUiDialog)
+IMPLEMENT_DYNAMIC(CDlgAiParking, CAcUiDialog)
 
-BEGIN_MESSAGE_MAP(CArxDialog, CAcUiDialog)
+BEGIN_MESSAGE_MAP(CDlgAiParking, CAcUiDialog)
 	ON_MESSAGE(WM_ACAD_KEEPFOCUS, OnAcadKeepFocus)
-	ON_BN_CLICKED(IDC_BUTTON_GetRetreatline, &CArxDialog::OnBnClickedButtonGetretreatline)
-	ON_BN_CLICKED(IDC_BUTTON_GetStartPoint, &CArxDialog::OnBnClickedButtonGetstartpoint)
-	ON_BN_CLICKED(IDOK, &CArxDialog::OnBnClickedOk)
-	ON_BN_CLICKED(IDC_RADIO_OtherLength, &CArxDialog::OnBnClickedRadioOtherlength)
-	ON_BN_CLICKED(IDC_RADIO_Default, &CArxDialog::OnBnClickedRadioDefault)
+	ON_BN_CLICKED(IDC_BUTTON_GetRetreatline, &CDlgAiParking::OnBnClickedButtonGetretreatline)
+	ON_BN_CLICKED(IDC_BUTTON_GetStartPoint, &CDlgAiParking::OnBnClickedButtonGetstartpoint)
+	ON_BN_CLICKED(IDOK, &CDlgAiParking::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_RADIO_OtherLength, &CDlgAiParking::OnBnClickedRadioOtherlength)
+	ON_BN_CLICKED(IDC_RADIO_Default, &CDlgAiParking::OnBnClickedRadioDefault)
 	ON_WM_TIMER()
-	ON_BN_CLICKED(IDC_CHECK_Partition, &CArxDialog::OnBnClickedCheckPartition)
-	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CArxDialog::OnEnKillfocusEditNonConvexlevel)
-	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CArxDialog::OnBnClickedButtonGetendpoint)
-	ON_BN_CLICKED(IDC_BUTTON_MANYSHOW, &CArxDialog::OnBnClickedButtonManyshow)
-	ON_BN_CLICKED(IDC_BUTTON_PARTPLAN, &CArxDialog::OnBnClickedButtonPartplan)
-	ON_BN_CLICKED(IDC_BTN_SELOUTLINELAYER, &CArxDialog::OnBnClickedBtnSeloutlinelayer)
-	ON_BN_CLICKED(IDC_BTN_SHEARWALLLAYER, &CArxDialog::OnBnClickedBtnShearwalllayer)
+	ON_BN_CLICKED(IDC_CHECK_Partition, &CDlgAiParking::OnBnClickedCheckPartition)
+	ON_EN_KILLFOCUS(IDC_EDIT_NON_CONVEXLEVEL, &CDlgAiParking::OnEnKillfocusEditNonConvexlevel)
+	ON_BN_CLICKED(IDC_BUTTON_GETENDPOINT, &CDlgAiParking::OnBnClickedButtonGetendpoint)
+	ON_BN_CLICKED(IDC_BUTTON_MANYSHOW, &CDlgAiParking::OnBnClickedButtonManyshow)
+	ON_BN_CLICKED(IDC_BUTTON_PARTPLAN, &CDlgAiParking::OnBnClickedButtonPartplan)
+	ON_BN_CLICKED(IDC_BTN_SELOUTLINELAYER, &CDlgAiParking::OnBnClickedBtnSeloutlinelayer)
+	ON_BN_CLICKED(IDC_BTN_SHEARWALLLAYER, &CDlgAiParking::OnBnClickedBtnShearwalllayer)
+	ON_WM_SHOWWINDOW()
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
-CArxDialog::CArxDialog(CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog(CArxDialog::IDD, pParent, hInstance) {
+CDlgAiParking::CDlgAiParking(CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog(CDlgAiParking::IDD, pParent, hInstance) {
 }
 
-CArxDialog::~CArxDialog() {
+CDlgAiParking::~CDlgAiParking() {
 
 	COperaParkingSpaceShow::ms_dlg = NULL;
 }
 
-void CArxDialog::setPostUrlPortone(std::string& posturlPortone)
+void CDlgAiParking::Reload()
+{
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
+	loadoutlineLayers();
+	loadshearwallLayers();
+	//加载天正所有线型
+	COperaSetConfig::loadAllLinetype();
+}
+
+void CDlgAiParking::setPostUrlPortone(std::string& posturlPortone)
 {
 	ms_posturlPortone = posturlPortone;
 }
 
-void CArxDialog::setPostUrlPorttwo(std::string& posturlPorttwo)
+void CDlgAiParking::setPostUrlPorttwo(std::string& posturlPorttwo)
 {
 	ms_posturlPorttwo = posturlPorttwo;
 }
 
 //-----------------------------------------------------------------------------
-void CArxDialog::loadoutlineLayers()
+void CDlgAiParking::loadoutlineLayers()
 {
 	Doc_Locker _locker;
+
+	m_outlineLayer.ResetContent();
 
 	AcDbLayerTable* pLT = NULL;
 	if (acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead) != Acad::eOk)
@@ -152,9 +165,11 @@ void CArxDialog::loadoutlineLayers()
 			m_outlineLayer.SetCurSel(n);
 	}
 }
-void CArxDialog::loadshearwallLayers()
+void CDlgAiParking::loadshearwallLayers()
 {
 	Doc_Locker _locker;
+
+	m_shearwallLayer.ResetContent();
 
 	AcDbLayerTable* pLT = NULL;
 	if (acdbCurDwg()->getLayerTable(pLT, AcDb::kForRead) != Acad::eOk)
@@ -176,7 +191,7 @@ void CArxDialog::loadshearwallLayers()
 			break;
 
 		bool bHasSetDef = false;
-
+				
 		pLTIter->setSkipHidden(true);
 		for (pLTIter->start(); !pLTIter->done(); pLTIter->step())
 		{
@@ -217,24 +232,6 @@ void CArxDialog::loadshearwallLayers()
 			m_shearwallLayer.SetCurSel(n);
 	}
 }
-void CArxDialog::loaddirectionCombo()
-{
-	int nRow = m_directionCombo.AddString(_T("垂直排布"));
-	m_directionCombo.SetItemData(nRow, 1);
-
-	nRow = m_directionCombo.AddString(_T("水平排布"));
-	m_directionCombo.SetItemData(nRow, 0);
-	m_directionCombo.SetCurSel(nRow);
-
-	if (m_nDirectionCombo != -1)
-	{
-		for (int i = 0; i < m_directionCombo.GetCount(); ++i)
-		{
-			if (m_directionCombo.GetItemData(i) == m_nDirectionCombo)
-				m_directionCombo.SetCurSel(i);
-		}
-	}
-}
 
 static void __smartLog(bool*& data, bool isDataValid)
 {
@@ -247,7 +244,7 @@ static void __smartLog(bool*& data, bool isDataValid)
 	}
 }
 //-----------------------------------------------------------------------------
-void CArxDialog::DoDataExchange(CDataExchange *pDX) {
+void CDlgAiParking::DoDataExchange(CDataExchange *pDX) {
 	Smart<bool*> end(new bool(false), __smartLog);
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_OutlineLayer, m_outlineLayer);
@@ -275,21 +272,15 @@ void CArxDialog::DoDataExchange(CDataExchange *pDX) {
 //-----------------------------------------------------------------------------
 //----- Needed for modeless dialogs to keep focus.
 //----- Return FALSE to not keep the focus, return TRUE to keep the focus
-LRESULT CArxDialog::OnAcadKeepFocus(WPARAM, LPARAM) {
+LRESULT CDlgAiParking::OnAcadKeepFocus(WPARAM, LPARAM) {
 	return (TRUE);
 }
 
-BOOL CArxDialog::OnInitDialog()
+BOOL CDlgAiParking::OnInitDialog()
 {
 	// TODO:  在此添加额外的初始化
 	BOOL bRet = CAcUiDialog::OnInitDialog();
-
-	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
-
-	loadoutlineLayers();
-	loadshearwallLayers();
-	loaddirectionCombo();
-
+		
 	m_outlineLayer.SetDroppedWidth(200);
 	m_shearwallLayer.SetDroppedWidth(200);
 
@@ -308,14 +299,11 @@ BOOL CArxDialog::OnInitDialog()
 	GetDlgItem(IDC_EDIT_SHOWVALUE)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_CHECK_Partition)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_CHECK_MANYSHOW)->ShowWindow(SW_HIDE);
-	
-	//加载天正所有线型
-	COperaSetConfig::loadAllLinetype();
-
+		
 	return bRet;
 }
 
-void CArxDialog::OnBnClickedButtonGetretreatline()
+void CDlgAiParking::OnBnClickedButtonGetretreatline()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	HideDialogHolder holder(this);
@@ -395,7 +383,7 @@ void CArxDialog::OnBnClickedButtonGetretreatline()
 }
 
 
-bool CArxDialog::compare(AcGePoint2dArray& targetPts, AcGePoint2d &comparePt)
+bool CDlgAiParking::compare(AcGePoint2dArray& targetPts, AcGePoint2d &comparePt)
 {
 	for (int i = 0; i < targetPts.length(); i++)
 	{
@@ -407,7 +395,7 @@ bool CArxDialog::compare(AcGePoint2dArray& targetPts, AcGePoint2d &comparePt)
 	return false;
 }
 
-std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layername, bool bClosed/* = true*/)
+std::vector<AcGePoint2dArray> CDlgAiParking::getPlinePointForLayer(CString& layername, bool bClosed/* = true*/)
 {
 	std::vector<AcGePoint2dArray> outputPoints;
 	AcDbObjectIdArray entIds;
@@ -483,7 +471,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 	return outputPoints;
 }
 
-std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layername, std::vector<int>& types)
+std::vector<AcGePoint2dArray> CDlgAiParking::getPlinePointForLayer(CString& layername, std::vector<int>& types)
 {
 	std::vector<AcGePoint2dArray> outputPoints;
 	AcDbObjectIdArray entIds;
@@ -595,7 +583,7 @@ std::vector<AcGePoint2dArray> CArxDialog::getPlinePointForLayer(CString& layerna
 	return outputPoints;
 }
 
-void CArxDialog::setInitData()
+void CDlgAiParking::setInitData()
 {
 	m_strLength = _T("5.1");
 	m_editLength.SetWindowText(m_strLength);
@@ -620,9 +608,15 @@ void CArxDialog::setInitData()
 
 	m_sParkingCount = _T("0");
 	m_ParkingCount.SetWindowText(m_sParkingCount);
+
+	int nRow = m_directionCombo.AddString(_T("垂直排布"));
+	m_directionCombo.SetItemData(nRow, 1);
+	nRow = m_directionCombo.AddString(_T("水平排布"));
+	m_directionCombo.SetItemData(nRow, 0);
+	m_directionCombo.SetCurSel(nRow);
 }
 
-int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
+int CDlgAiParking::postToAIApi(const std::string& sData, std::string& sMsg, const bool& useV1)
 {
 	const char * postUrl;
 	if (useV1)
@@ -714,7 +708,7 @@ int CArxDialog::postToAIApi(const std::string& sData, std::string& sMsg, const b
 	return 4;
 }
 
-void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
+void CDlgAiParking::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 {
 	// TODO: 在此添加控件通知处理程序代码
 
@@ -953,9 +947,6 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 	}
 	CDlgWaiting::setUuid(uuid, useV1, useManyShow);
 
-	//CDlgWaiting::Show(true);
-	//CDlgWaiting dlg;
-	//dlg.DoModal();
 	CAcModuleResourceOverride resOverride;//资源定位
 	CDlgWaiting* pWaitDlg = new CDlgWaiting;
 	pWaitDlg->Create(CDlgWaiting::IDD, acedGetAcadDwgView());
@@ -963,7 +954,7 @@ void CArxDialog::selectPort(const bool& useV1,bool useManyShow /*= false*/)
 	CAcUiDialog::OnOK();
 }
 
-void CArxDialog::OnBnClickedButtonGetstartpoint()
+void CDlgAiParking::OnBnClickedButtonGetstartpoint()
 {
 	HideDialogHolder holder(this);
 	Doc_Locker doc_locker;
@@ -996,7 +987,7 @@ void CArxDialog::OnBnClickedButtonGetstartpoint()
 }
 
 
-void CArxDialog::OnBnClickedOk()
+void CDlgAiParking::OnBnClickedOk()
 {
 	//CEquipmentroomTool::pritfCurTime();
 	selectPort(true, true);
@@ -1004,7 +995,7 @@ void CArxDialog::OnBnClickedOk()
 
 
 
-void CArxDialog::OnBnClickedRadioOtherlength()
+void CDlgAiParking::OnBnClickedRadioOtherlength()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	GetDlgItem(IDC_EDIT_Length)->ShowWindow(SW_SHOW);
@@ -1012,7 +1003,7 @@ void CArxDialog::OnBnClickedRadioOtherlength()
 }
 
 
-void CArxDialog::OnBnClickedRadioDefault()
+void CDlgAiParking::OnBnClickedRadioDefault()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	GetDlgItem(IDC_EDIT_Length)->ShowWindow(SW_HIDE);
@@ -1022,7 +1013,7 @@ void CArxDialog::OnBnClickedRadioDefault()
 }
 
 
-void CArxDialog::OnTimer(UINT_PTR nIDEvent)
+void CDlgAiParking::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 
@@ -1032,7 +1023,7 @@ void CArxDialog::OnTimer(UINT_PTR nIDEvent)
 
 
 
-void CArxDialog::OnBnClickedCheckPartition()
+void CDlgAiParking::OnBnClickedCheckPartition()
 {
 	// TODO: 在此添加控件通知处理程序代码
   	if (1 == m_checkPartition.GetCheck())
@@ -1159,7 +1150,7 @@ void CArxDialog::OnBnClickedCheckPartition()
 }
 
 
-void CArxDialog::OnEnKillfocusEditNonConvexlevel()
+void CDlgAiParking::OnEnKillfocusEditNonConvexlevel()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CString sTempNonLev;
@@ -1172,7 +1163,7 @@ void CArxDialog::OnEnKillfocusEditNonConvexlevel()
 	}
 }
 
-void CArxDialog::OnBnClickedButtonGetendpoint()
+void CDlgAiParking::OnBnClickedButtonGetendpoint()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	HideDialogHolder holder(this);
@@ -1206,7 +1197,7 @@ void CArxDialog::OnBnClickedButtonGetendpoint()
 }
 
 
-void CArxDialog::OnBnClickedButtonManyshow()
+void CDlgAiParking::OnBnClickedButtonManyshow()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	selectPort(true,true);
@@ -1215,7 +1206,7 @@ void CArxDialog::OnBnClickedButtonManyshow()
 
 
 
-void CArxDialog::OnBnClickedButtonPartplan()
+void CDlgAiParking::OnBnClickedButtonPartplan()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	int result = MessageBox(TEXT("该排布方式耗时较久，确定进行此次排布任务吗？"), TEXT("分区排布"), MB_YESNO);
@@ -1226,7 +1217,7 @@ void CArxDialog::OnBnClickedButtonPartplan()
 	}
 }
 
-void CArxDialog::getDatabaseBackup()
+void CDlgAiParking::getDatabaseBackup()
 {
 	CString path = CEquipmentroomTool::getOpenDwgFilePath();
 
@@ -1262,7 +1253,7 @@ void CArxDialog::getDatabaseBackup()
 }
 
 
-void CArxDialog::OnBnClickedBtnSeloutlinelayer()
+void CDlgAiParking::OnBnClickedBtnSeloutlinelayer()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	HideDialogHolder holder(this);
@@ -1295,7 +1286,7 @@ void CArxDialog::OnBnClickedBtnSeloutlinelayer()
 }
 
 
-void CArxDialog::OnBnClickedBtnShearwalllayer()
+void CDlgAiParking::OnBnClickedBtnShearwalllayer()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	HideDialogHolder holder(this);
@@ -1325,4 +1316,10 @@ void CArxDialog::OnBnClickedBtnShearwalllayer()
 		if (n >= 0)
 			m_shearwallLayer.SetCurSel(n);
 	}
+}
+
+
+void CDlgAiParking::OnShowWindow(BOOL bShow, UINT nStatus)
+{
+	CAcUiDialog::OnShowWindow(bShow, nStatus);
 }

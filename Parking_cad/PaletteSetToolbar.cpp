@@ -106,10 +106,8 @@ CPaletteSetToolbar* CPaletteSetToolbar::Instance()
 {
 	if (!s_pPaletteSet)
 	{
-		CAcModuleResourceOverride resOverride; 
-
 		s_pPaletteSet = new CPaletteSetToolbar;
-		CRect rect(0,0,120,500);	
+		CRect rect(0,0,120,400);	
 		s_pPaletteSet->Create(_T("智能地库设计系统"), WS_OVERLAPPED|WS_DLGFRAME, rect, acedGetAcadFrame());
 		s_pPaletteSet->EnableDocking(CBRS_ALIGN_ANY);
 		s_pPaletteSet->DockControlBar(AFX_IDW_DOCKBAR_LEFT, &rect);

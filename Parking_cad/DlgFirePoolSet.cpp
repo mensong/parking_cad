@@ -15,6 +15,7 @@ CString CDlgFirePoolSet::ms_sStoreyHeightText;
 CString CDlgFirePoolSet::ms_sPorportionText;
 bool CDlgFirePoolSet::ms_bConsider;
 bool CDlgFirePoolSet::ms_bMunicipalWaterSupply;
+
 IMPLEMENT_DYNAMIC(CDlgFirePoolSet, CAcUiDialog)
 
 void CDlgFirePoolSet::setConsiderState(bool& bConsider)
@@ -134,6 +135,9 @@ void CDlgFirePoolSet::OnBnClickedCancel()
 BOOL CDlgFirePoolSet::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
+
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	m_editStoreyHeight.SetWindowText(ms_sStoreyHeightText);
 	m_editFPProportion.SetWindowText(ms_sPorportionText);
 	if (ms_bConsider)
@@ -144,8 +148,7 @@ BOOL CDlgFirePoolSet::OnInitDialog()
 	{
 		m_checkSupply.SetCheck(1);
 	}
-	// TODO:  在此添加额外的初始化
-	CenterWindow();
+	
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }

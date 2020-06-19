@@ -12,6 +12,7 @@
 CWnd* CDlgFirePumpHouseSet::parent_dlg = NULL;
 CString CDlgFirePumpHouseSet::ms_sPorportionText;
 bool CDlgFirePumpHouseSet::ms_bMunicipalWaterSupply;
+
 IMPLEMENT_DYNAMIC(CDlgFirePumpHouseSet, CAcUiDialog)
 
 void CDlgFirePumpHouseSet::setWaterSupplyState(bool& bWaterSupply)
@@ -110,16 +111,15 @@ BOOL CDlgFirePumpHouseSet::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	// TODO:  在此添加额外的初始化
 	m_porportionText.SetWindowText(ms_sPorportionText);
 	if (ms_bMunicipalWaterSupply)
 	{
 		m_checkWaterSuppply.SetCheck(1);
 	}
-	// TODO:  在此添加额外的初始化
-	CenterWindow();
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE; 
 }
 
 void CDlgFirePumpHouseSet::villageSetOpera(double& dPorportion, bool& isMunicipalWaterSupply)

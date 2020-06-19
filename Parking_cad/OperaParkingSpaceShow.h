@@ -9,7 +9,7 @@ public:
 	~COperaParkingSpaceShow();
 	virtual void Start();
 
-	static class CArxDialog* ms_dlg;
+	static class CDlgAiParking* ms_dlg;
 
 	bool setDesKey(const std::string& key);
 	std::string decrypt(const std::string& code);

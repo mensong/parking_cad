@@ -218,7 +218,7 @@ BOOL CDlgAddFrame::OnInitDialog()
 	if (!CAcUiDialog::OnInitDialog())
 		return FALSE;
 
-	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
 
 	((CButton*)GetDlgItem(IDC_RAD_A0))->SetCheck(TRUE);
 	OnBnClickedRadA0();

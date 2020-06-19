@@ -108,8 +108,10 @@ void COperaAddFrame::Start()
 			acutPrintf(_T("\n´´½¨Í¼¿òÍ¼¿éÊ§°Ü£¡"));
 		}
 		
-		pFrame->close();
-		pOutermostFrame->close();
+		for (int i=0; i<vcEnts.size(); ++i)
+		{
+			delete vcEnts[i];
+		}
 
 		AcDbObjectId idEnt;
 		if (Acad::eOk == DBHelper::InsertBlkRef(idEnt, setblockname, AcGePoint3d(0, 0, 0)))

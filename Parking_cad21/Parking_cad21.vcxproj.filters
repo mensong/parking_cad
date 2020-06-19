@@ -42,9 +42,6 @@
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\ArxDialog.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -150,9 +147,6 @@
     <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\DlgSlider.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -228,6 +222,12 @@
     <ClCompile Include="..\Parking_cad\OperaNavToolbar.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgAiParking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgSliderTransparency.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -238,9 +238,6 @@
     </ClInclude>
     <ClInclude Include="..\pystring\pystring.h">
       <Filter>pystring</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\ArxDialog.h">
-      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h">
       <Filter>头文件</Filter>
@@ -425,13 +422,16 @@
     <ClInclude Include="..\Parking_cad\PaletteToolbar.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgToolbarNav.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaNavToolbar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgAiParking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgSliderTransparency.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

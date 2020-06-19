@@ -25,7 +25,6 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "DlgSetConfig.h"
-
 #include <fstream>
 #include <iostream>
 #include <json/json.h>
@@ -34,6 +33,7 @@
 #include "EquipmentroomTool.h"
 #include "OperaSetConfig.h"
 //-----------------------------------------------------------------------------
+
 IMPLEMENT_DYNAMIC (CDlgSetConfig, CAcUiDialog)
 
 BEGIN_MESSAGE_MAP(CDlgSetConfig, CAcUiDialog)
@@ -87,7 +87,7 @@ LRESULT CDlgSetConfig::OnAcadKeepFocus (WPARAM, LPARAM) {
 
 void CDlgSetConfig::OnBnClickedOk()
 {
-	// TODO: 在此添加控件通知处理程序代码
+	OnEditerEnter();
 
     std::vector<std::vector<std::string>> items;
     int max_row = 0, max_col = 0;
@@ -213,18 +213,20 @@ BOOL CDlgSetConfig::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 	
-	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
+	init();
 
 	//加载天正所有线型
 	COperaSetConfig::loadAllLinetype();
+	initLinetypeCombo();
 
 	m_EditTest.ShowWindow(SW_HIDE);
 	m_PrintableCombo.ShowWindow(SW_HIDE);
 	m_LineWidthCombo.ShowWindow(SW_HIDE);
 	m_LineTypeCombo.ShowWindow(SW_HIDE);
 	// TODO:  在此添加额外的初始化
-	init();
-
+	
 	m_PrintableCombo.SetDroppedWidth(100);
 	m_LineWidthCombo.SetDroppedWidth(100);
 
@@ -248,9 +250,7 @@ BOOL CDlgSetConfig::OnInitDialog()
 	nLineType = m_LineTypeCombo.AddString(_T("DASH"));
 	nLineType = m_LineTypeCombo.AddString(_T("ACAD_ISO05W100"));
 	nLineType = m_LineTypeCombo.AddString(_T("DOTE"));*/
-
-	initLinetypeCombo();
-
+	
 	//m_ctrlConfigSetList.InsertColumn(0, _T(""), LVCFMT_LEFT, 0);
 	//m_mpColumnName[_T("强排专业实体")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("强排专业实体"), LVCFMT_CENTER, 150);
 	m_mpColumnName[_T("序号")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("序号"), LVCFMT_CENTER, 50);
@@ -266,8 +266,8 @@ BOOL CDlgSetConfig::OnInitDialog()
 	m_ctrlConfigSetList.SetRowHeight(20);
 
 	CAcModuleResourceOverride resOverride;//资源定位
-	m_SliderDialog = new CDlgSlider();
-	m_SliderDialog->Create(CDlgSlider::IDD, &m_ctrlConfigSetList);
+	m_SliderDialog = new CDlgSliderTransparency();
+	m_SliderDialog->Create(CDlgSliderTransparency::IDD, &m_ctrlConfigSetList);
 	m_SliderDialog->ShowWindow(SW_HIDE);
 
 	std::vector<std::string> layerconfigs;
@@ -307,8 +307,7 @@ BOOL CDlgSetConfig::OnInitDialog()
 		setListValueText(i, sCount, sProfessionalAttributes, sLayerName, sLayerColor, sLayerLinetype, sLayerWidth, sTransparency, sIsPrintf);
 	}
 	
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE;
 }
 
 void CDlgSetConfig::init()
@@ -360,7 +359,6 @@ void CDlgSetConfig::init()
 		acedAlert(_T("获取数据失败！"));
 		return;
 	}
-
 }
 
 
@@ -494,24 +492,6 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 			sColor.Format(_T("%d"), nColor);
 			m_ctrlConfigSetList.SetItemText(pNMItemActivate->iItem, pNMItemActivate->iSubItem, sColor);
 			m_ctrlConfigSetList.SetFocus();
-			
-			//m_EditTest.SetWindowText(sColor);
-			//m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, &m_EditTest, false, false, false);
-			//m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
-			//m_nLastRow = pNMItemActivate->iItem;
-			//m_nLastCol = pNMItemActivate->iSubItem;
-			//m_EditTest.SetFocus();
-			//if (m_EditTest.IsWindowVisible())
-			//{
-			//	CString sText;
-			//	m_EditTest.GetWindowText(sText);
-			//	m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
-			//	/*m_EditTest.SetWindowText(_T(""));
-			//	m_EditTest.ShowWindow(SW_HIDE);*/
-			//}
-			//m_ctrlConfigSetList.SetFocus();
-			//m_EditTest.SetWindowText(_T(""));
-			//m_EditTest.ShowWindow(SW_HIDE);
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("是否打印")])
 		{
@@ -542,9 +522,7 @@ void CDlgSetConfig::OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 		}
 		else if (pNMItemActivate->iSubItem == m_mpColumnName[_T("淡显")])
 		{
-			m_SliderDialog->m_EditShowValue.SetWindowText(sOldText);
-			CString s;
-			m_SliderDialog->m_EditShowValue.GetWindowText(s);
+			m_SliderDialog->SetPercent(sOldText);
 			m_ctrlConfigSetList.SetItemExCtrl(pNMItemActivate->iItem, pNMItemActivate->iSubItem, m_SliderDialog, false, false, false);
 			m_ctrlConfigSetList.SetItemExCtrlVisible(pNMItemActivate->iItem, pNMItemActivate->iSubItem, true, true);
 			m_nLastRow = pNMItemActivate->iItem;

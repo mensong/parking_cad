@@ -74,9 +74,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp" />
-    <ClCompile Include="..\Parking_cad\ArxDialog.cpp" />
     <ClCompile Include="..\Parking_cad\CommonFuntion.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgAiParking.cpp" />
     <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
@@ -86,7 +86,7 @@
     <ClCompile Include="..\Parking_cad\DlgLifePumpHouseSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgLivingWaterTankSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
-    <ClCompile Include="..\Parking_cad\DlgSlider.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgSliderTransparency.cpp" />
     <ClCompile Include="..\Parking_cad\DlgToolbarNav.cpp" />
     <ClCompile Include="..\Parking_cad\DlgVentilateSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgVillageSet.cpp" />
@@ -152,10 +152,10 @@
     <ClInclude Include="..\..\Authenticate\DES_CBC_5\utils.h" />
     <ClInclude Include="..\jsoncpp\src\json_tool.h" />
     <ClInclude Include="..\jsoncpp\src\version.h" />
-    <ClInclude Include="..\Parking_cad\ArxDialog.h" />
     <ClInclude Include="..\Parking_cad\Boundary.h" />
     <ClInclude Include="..\Parking_cad\CommonFuntion.h" />
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
+    <ClInclude Include="..\Parking_cad\DlgAiParking.h" />
     <ClInclude Include="..\Parking_cad\DlgBipLogin.h" />
     <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
@@ -166,6 +166,7 @@
     <ClInclude Include="..\Parking_cad\DlgLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
     <ClInclude Include="..\Parking_cad\DlgSlider.h" />
+    <ClInclude Include="..\Parking_cad\DlgSliderTransparency.h" />
     <ClInclude Include="..\Parking_cad\DlgToolbarNav.h" />
     <ClInclude Include="..\Parking_cad\DlgVentilateSet.h" />
     <ClInclude Include="..\Parking_cad\DlgVillageSet.h" />

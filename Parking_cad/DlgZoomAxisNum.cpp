@@ -11,6 +11,7 @@
 
 // CDlgZoomAxisNum 对话框
 CString CDlgZoomAxisNum::ms_sStepValue = "1";
+
 IMPLEMENT_DYNAMIC(CDlgZoomAxisNum, CAcUiDialog)
 
 void __stdcall CDlgZoomAxisNum::delayDownClick(WPARAM wp, LPARAM lp, void* anyVal)
@@ -167,6 +168,8 @@ BOOL CDlgZoomAxisNum::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+
 	// TODO:  在此添加额外的初始化
 	HICON m_IconBtn_Down = AfxGetApp()->LoadIcon(IDI_ICON_DOWN);//导入Icon资源，利用m_IconBtn_Down来存储句柄。
 	SetIcon(m_IconBtn_Down,FALSE);
@@ -183,8 +186,7 @@ BOOL CDlgZoomAxisNum::OnInitDialog()
 	CString sScaleValue;
 	sScaleValue.Format(_T("%.1f"), dScaleValue);
 	m_show_ScaleValue.SetWindowText(sScaleValue);
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // 异常: OCX 属性页应返回 FALSE
+	return TRUE;
 }
 
 

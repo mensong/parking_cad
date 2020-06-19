@@ -42,9 +42,6 @@
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Parking_cad\ArxDialog.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgWaiting.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -136,9 +133,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Parking_cad\DlgSlider.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\ListCtrlCustom.cpp">
@@ -234,6 +228,12 @@
     <ClCompile Include="..\Parking_cad\PaletteToolbar.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgAiParking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgSliderTransparency.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -244,9 +244,6 @@
     </ClInclude>
     <ClInclude Include="..\pystring\pystring.h">
       <Filter>pystring</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Parking_cad\ArxDialog.h">
-      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgWaiting.h">
       <Filter>头文件</Filter>
@@ -344,9 +341,6 @@
     <ClInclude Include="..\Parking_cad\DlgBipLogin.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\DlgSlider.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -401,9 +395,6 @@
     <ClInclude Include="..\Parking_cad\OperaFindCloudShow.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgVentilateSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -444,6 +435,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\PaletteToolbar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgAiParking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgSliderTransparency.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

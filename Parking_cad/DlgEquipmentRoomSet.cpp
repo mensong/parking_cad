@@ -67,18 +67,7 @@ BOOL CDlgEquipmentRoomSet::OnInitDialog()
 	if (FALSE == CAcUiDialog::OnInitDialog())
 		return FALSE;
 
-	//´°¿ÚÖÃÓÚcad´°¿Ú×ó²à Add by: limingsheng
-	CRect rcCad;
-	acedGetAcadDwgView()->GetWindowRect(&rcCad);
-	CRect rc;
-	this->GetWindowRect(&rc);
-	LONG width = rc.Width();
-	LONG height = rc.Height();
-	rc.left = rcCad.left;
-	rc.right = rc.left + width;
-	rc.top = rcCad.top;
-	rc.bottom = rc.top + height;
-	this->MoveWindow(rc);
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
 
 	return TRUE;
 }

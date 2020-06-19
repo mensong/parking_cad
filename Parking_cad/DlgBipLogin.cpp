@@ -80,7 +80,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 	if (CAcUiDialog::OnInitDialog() != TRUE)
 		return FALSE;
 
-	CenterWindow(GetDesktopWindow());//窗口至于屏幕中间
+	DlgHelper::AdjustPosition(this, DlgHelper::CENTER);
 
 #if 0
 	BIP_SIGNIN::Ins().WriteConfigFile(

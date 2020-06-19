@@ -1,6 +1,7 @@
 #pragma once
 #include "IOperaLog.h"
 #include "DlgSetConfig.h"
+
 class COperaSetConfig :
 	public CIOperaLog
 {
@@ -9,7 +10,6 @@ public:
 	~COperaSetConfig();
 	virtual void Start();
 	AcGeTol m_tol;
-	static class CDlgSetConfig* ms_SetConfigDlg;
 
 	//获取acad.lin文件里的线型名称
 	static std::vector<CString> getACADLINtag();
