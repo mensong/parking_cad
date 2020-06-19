@@ -2560,13 +2560,14 @@ Please click Finish to exit.
 <Event>
 <Name>On Post Uninstall</Name>
 <Args/>
-<Script>File.Delete(SessionVar.Expand("%AppFolder%\\Support\\18\\x64\\license.lst"));
-File.Delete(SessionVar.Expand("%AppFolder%\\Support\\19\\x64\\license.lst"));
-File.Delete(SessionVar.Expand("%AppFolder%\\Support\\20\\x64\\license.lst"));
-File.Delete(SessionVar.Expand("%AppFolder%\\Support\\21\\x64\\license.lst"));
-File.Delete(SessionVar.Expand("%AppFolder%\\Support\\22\\x64\\license.lst"));
+<Script>--删除快捷方式
+Shell.DeleteShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"));
 
-Shell.DeleteShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"));</Script>
+--删除注册表信息
+regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
+if (Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, regBasePath)) then
+	Registry.DeleteKey(HKEY_LOCAL_MACHINE, regBasePath);
+end</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -2738,7 +2739,16 @@ g_HandleSystemReboot();
 <Event>
 <Name>On Startup</Name>
 <Args/>
-<Script/>
+<Script>--首先卸载系统中已安装的版本
+regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
+if (Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, regBasePath)) then
+	Dialog.Message("已存在旧版本", "已存在旧版本，请先卸载旧版本再安装。", MB_OK, MB_ICONEXCLAMATION);
+	Uninstaller = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", true);
+	UninstallData = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", true);
+	Shell.Execute(Uninstaller, "", UninstallData, "");
+	Application.Exit();
+end
+</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -2761,7 +2771,14 @@ g_HandleSystemReboot();
 <Name>On Post Install</Name>
 <Args/>
 <Script>
-Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\default.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);</Script>
+Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\default.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);
+
+--创建卸载信息，方便下次重安装时卸载
+regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
+Registry.CreateKey(HKEY_LOCAL_MACHINE, regBasePath);
+Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", SessionVar.Expand("%AppFolder%\\uninstall.exe"), REG_SZ);
+Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", SessionVar.Expand("\"/U:%AppFolder%\\Uninstall\\uninstall.xml\""), REG_SZ);
+Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", SessionVar.Expand("%ProductVer%"), REG_SZ);</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>

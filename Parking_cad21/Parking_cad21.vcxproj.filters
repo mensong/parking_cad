@@ -350,9 +350,6 @@
     <ClInclude Include="..\Parking_cad\DlgBipLogin.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Parking_cad\DlgSlider.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\ListCtrlCustom.h">
       <Filter>头文件</Filter>
     </ClInclude>

@@ -165,7 +165,6 @@
     <ClInclude Include="..\Parking_cad\DlgLifePumpHouseSet.h" />
     <ClInclude Include="..\Parking_cad\DlgLivingWaterTankSet.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
-    <ClInclude Include="..\Parking_cad\DlgSlider.h" />
     <ClInclude Include="..\Parking_cad\DlgSliderTransparency.h" />
     <ClInclude Include="..\Parking_cad\DlgToolbarNav.h" />
     <ClInclude Include="..\Parking_cad\DlgVentilateSet.h" />
