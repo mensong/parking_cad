@@ -40,7 +40,6 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	HTREEITEM hChild = m_tree.InsertItem(_T(" 图层设置"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("SetConfig "));
-
 	m_tree.Expand(hRoot, TVE_EXPAND);
 
 	//
@@ -54,32 +53,30 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	m_commands.push_back(_T("CoreWall "));
 	hChild = m_tree.InsertItem(_T(" AI计算"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("ParkingSpaceShow "));
-	hChild = m_tree.InsertItem(_T(" 轴网显隐"), hRoot, TVI_LAST);
-	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("AxisShowOrHide "));
-
+	m_commands.push_back(_T("ParkingSpaceShow "));	
 	m_tree.Expand(hRoot, TVE_EXPAND);
 
 	//
 	hRoot = m_tree.InsertItem(_T("设计工具"), TVI_ROOT, TVI_LAST);
 	m_tree.SetItemData(hRoot, -1);
-	hChild = m_tree.InsertItem(_T(" 出入口生成"), hRoot, TVI_LAST);
+	hChild = m_tree.InsertItem(_T(" 轴网显隐"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("SetEntranceData "));
-	hChild = m_tree.InsertItem(_T(" 车位合规测算"), hRoot, TVI_LAST);
-	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("BlockList "));
-	hChild = m_tree.InsertItem(_T(" 图纸异常检测"), hRoot, TVI_LAST);
-	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("Check "));
+	m_commands.push_back(_T("AxisShowOrHide "));
 	hChild = m_tree.InsertItem(_T(" 轴号缩放"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("COZSN "));
+	hChild = m_tree.InsertItem(_T(" 出入口生成"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("SetEntranceData "));
+	hChild = m_tree.InsertItem(_T(" 图纸异常检测"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("Check "));
+	hChild = m_tree.InsertItem(_T(" 车位合规测算"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("BlockList "));
 	hChild = m_tree.InsertItem(_T(" 添加指标表及图框"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("AddFrame "));
-
 	m_tree.Expand(hRoot, TVE_EXPAND);
 
 	//
@@ -88,7 +85,6 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	hChild = m_tree.InsertItem(_T(" 标准楼型库"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("BGYBL "));
-
 	m_tree.Expand(hRoot, TVE_EXPAND);
 
 	return TRUE;

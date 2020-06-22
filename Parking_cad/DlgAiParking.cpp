@@ -68,6 +68,7 @@ BEGIN_MESSAGE_MAP(CDlgAiParking, CAcUiDialog)
 	ON_BN_CLICKED(IDC_BTN_SELOUTLINELAYER, &CDlgAiParking::OnBnClickedBtnSeloutlinelayer)
 	ON_BN_CLICKED(IDC_BTN_SHEARWALLLAYER, &CDlgAiParking::OnBnClickedBtnShearwalllayer)
 	ON_WM_SHOWWINDOW()
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
@@ -1322,4 +1323,19 @@ void CDlgAiParking::OnBnClickedBtnShearwalllayer()
 void CDlgAiParking::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CAcUiDialog::OnShowWindow(bShow, nStatus);
+}
+
+HBRUSH CDlgAiParking::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CAcUiDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	int nCtl = pWnd->GetDlgCtrlID();
+	if (nCtl == IDC_STATIC1 || nCtl == IDC_STATIC2 || nCtl == IDC_STATIC3)
+	{
+		pDC->SetTextColor(RGB(255, 0, 0)); //字体颜色
+		//pDC->SetBkColor(RGB(0, 0, 255)); //字体背景色
+		//hbr = CreateSolidBrush(RGB(255, 255, 255));//控件背景色
+	}
+
+	return hbr;
 }

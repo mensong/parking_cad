@@ -43,7 +43,7 @@ void COperaAddFrame::Start()
 			DBHelper::GetXRecord(ids[size], _T("ÍâÂÖÀªÍ¼²ãÃû"), sOutLineLayerName);
 			if (!sOutLineLayerName.isEmpty())
 			{
-				ms_sOutLineLayerName = sOutLineLayerName;
+				ms_sOutLineLayerName = sOutLineLayerName.constPtr();
 				break;
 			}
 		}

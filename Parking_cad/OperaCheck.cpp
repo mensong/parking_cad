@@ -402,7 +402,7 @@ void COperaCheck::overlapShow()
 			DBHelper::GetXRecord(scopeIds[length], _T("ºÙ¡¶«ΩÕº≤„√˚"), sSheraWallLayerName);
 			if (!sSheraWallLayerName.isEmpty())
 			{
-				ms_shearWallLayerName = sSheraWallLayerName;
+				ms_shearWallLayerName = sSheraWallLayerName.constPtr();
 				break;
 			}
 		}
