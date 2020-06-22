@@ -57,12 +57,12 @@
       },
       "axis_dimensions" : {
          "isprintf" : "是",
-         "layer_color" : "1",
-         "layer_linetype" : "CENTER2",
+         "layer_color" : "255",
+         "layer_linetype" : "Continuous",
          "layer_name" : "A-标注-轴号",
          "layer_width" : "0.15",
          "professional_attributes" : "标注",
-         "transparency" : "36%"
+         "transparency" : ""
       },
       "cloud_line" : {
          "isprintf" : "否",
@@ -80,7 +80,7 @@
          "layer_name" : "S-墙柱-COLU",
          "layer_width" : "0.2",
          "professional_attributes" : "结构",
-         "transparency" : "36%"
+         "transparency" : ""
       },
       "core_wall" : {
          "isprintf" : "否",
@@ -125,7 +125,7 @@
          "layer_name" : "A-车库-车道中线",
          "layer_width" : "0.09",
          "professional_attributes" : "地库",
-         "transparency" : "60%"
+         "transparency" : ""
       },
       "mapsign" : {
          "isprintf" : "是",
@@ -170,7 +170,7 @@
          "layer_name" : "G-用地-地库范围线",
          "layer_width" : "0.4",
          "professional_attributes" : "用地",
-         "transparency" : "20%"
+         "transparency" : ""
       }
    },
    "params" : {
