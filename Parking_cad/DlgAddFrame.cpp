@@ -439,7 +439,7 @@ bool CDlgAddFrame::InpromDRenceFromDWG(const double& inputLen)
 
 	ObjectCollector oc;
 	oc.start(acdbCurDwg());
-	AcString filepath = DBHelper::GetArxDir() + _T("Mapsign.dwg");
+	AcString filepath = (GetUserDir() + _T("Mapsign.dwg")).GetString();
 	DBHelper::ImportBlkDef(filepath, BlockNames);
 	if (oc.objsAppended().length() > 0)
 	{

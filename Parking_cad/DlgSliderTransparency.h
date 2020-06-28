@@ -41,9 +41,10 @@ public:
 	enum { IDD = IDD_DIALOG_SLIDER} ;
 
 	void SetPercent(const CString& percentStr);//25%
-
+			
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;
+	virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 	afx_msg LRESULT OnAcadKeepFocus (WPARAM, LPARAM) ;
 
 	DECLARE_MESSAGE_MAP()

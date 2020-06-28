@@ -176,7 +176,7 @@ void CDlgSetConfig::OnBnClickedOk()
 	std::string strData = m_root.toStyledString();
 	Json::StyledWriter sw;
 	std::ofstream os;
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	os.open(sConfigFile.c_str());
 	if (!os.is_open())
 	{
@@ -314,7 +314,7 @@ void CDlgSetConfig::init()
 {
 
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 
@@ -619,7 +619,15 @@ void CDlgSetConfig::OnEditerEnter()
 		//设置值
 		CString sText;
 		m_SliderDialog->m_EditShowValue.GetWindowText(sText);
-		m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+
+		CString sTextTest = sText;
+		sTextTest.Replace(_T("%"), _T(""));
+		int nPercent = _ttoi(sTextTest.GetString());
+		if (nPercent >= 0 && nPercent <= 100)
+		{
+			m_ctrlConfigSetList.SetItemText(m_nLastRow, m_nLastCol, sText);
+		}
+		
 		//恢复编辑框
 		m_SliderDialog->m_EditShowValue.SetWindowText(_T(""));
 		m_SliderDialog->ShowWindow(SW_HIDE);

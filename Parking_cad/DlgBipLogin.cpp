@@ -122,7 +122,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 		}
 	}
 
-	std::string sIni4u7h = DBHelper::GetArxDirA() + "4u7h.ini";
+	std::string sIni4u7h = GetUserDirA() + "4u7h.ini";
 	if (::PathFileExistsA(sIni4u7h.c_str()))
 	{
 		char mm[1024];
@@ -168,14 +168,12 @@ void CDlgBipLogin::OnBnClickedOk()
 
 	std::string aUser = GL::WideByte2Ansi(sBip.GetString());
 	std::string aPassword = GL::WideByte2Ansi(sPassword.GetString());
-
-	LibBipSignIn* bip = BIP_SIGNIN::Ins().CreateSingnIn();
-
-	int nRet = bip->init((DBHelper::GetArxDirA() + CONFIG_FILE).c_str(), CONFIG_ENCRYPT_KEY, CONFIG_ENCRYPT_CHAIN);
+	
+	int nRet = BIP_SIGNIN::Ins().init((GetUserDirA() + CONFIG_FILE).c_str(), CONFIG_ENCRYPT_KEY, CONFIG_ENCRYPT_CHAIN);
 	if (nRet == 0)
 	{
 		const char* errMsg = NULL;
-		nRet = bip->login(aUser.c_str(), aPassword.c_str(), &errMsg);
+		nRet = BIP_SIGNIN::Ins().login(aUser.c_str(), aPassword.c_str(), &errMsg, "password");
 		if (nRet != 0)
 		{
 			std::wstring wErrMsg = GL::Ansi2WideByte(errMsg);
@@ -190,7 +188,7 @@ void CDlgBipLogin::OnBnClickedOk()
 		}
 
 		UserInfo ui;
-		nRet = bip->getUserInfo(ui);
+		nRet = BIP_SIGNIN::Ins().getUserInfo(ui);
 		if (nRet == 0)
 		{
 			int code = HTTP_CLIENT::Ins().get_a(m_get_userUrl.c_str(), true, "udid", aUser.c_str(), NULL);
@@ -272,7 +270,7 @@ void CDlgBipLogin::OnBnClickedOk()
 				::MessageBox(NULL, _T("ÆäËü´íÎó£¡"), _T("´íÎó"), MB_OK | MB_ICONERROR);
 			}
 		}
-		bip->uninit();
+		BIP_SIGNIN::Ins().uninit();
 	}
 	else
 	{
@@ -281,9 +279,7 @@ void CDlgBipLogin::OnBnClickedOk()
 		CParkingLog::AddLog(LOG_BIP_LOGIN, 1, sErrMsg, 1, sBip);
 		AfxMessageBox(sErrMsg);
 	}
-
-	BIP_SIGNIN::Ins().ReleaseSingnIn(bip);
-
+	
 	if (!loginSuccess)
 		return;
 

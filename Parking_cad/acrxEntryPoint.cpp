@@ -112,13 +112,20 @@ public:
 		
 		// TODO: Add your initialization code here
 		AUTO_REG_CMD::Init();
-		
-		AcString filepath = DBHelper::GetArxDir() + _T("parking_cad.cuix");
+				
+		AcString filepath = (GetUserDir() + _T("parking_cad.cuix")).GetString();
 		LoadCuix::Load(filepath);
 		LoadCuix::ShowToolbarAsyn(_T("智能地库"));
 		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
 		
 		DBHelper::CallCADCommand(_T("aipaknav "));
+
+		//设置cad窗口标题
+		CMDIFrameWnd *pCadWin = acedGetAcadFrame();
+		CString sTitle;
+		sTitle.Format(_T("智能地库设计系统 登录:%s"), dlgLogin.userName);
+		pCadWin->SetWindowText(sTitle);
+		pCadWin->UpdateWindow();
 
 		return (retCode) ;
 	}

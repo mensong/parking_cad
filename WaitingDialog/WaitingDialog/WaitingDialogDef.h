@@ -235,7 +235,11 @@ protected:
 			return false;
 		}
 
-		int nCmdLen = (strlen(szFile) + (szParam?strlen(szParam):0) + 4) * sizeof(char);
+		int nCmdLen = 0;
+		if (szParam)
+			nCmdLen = (strlen(szFile) + strlen(szParam) + 4) * sizeof(char);
+		else
+			nCmdLen = (strlen(szFile) + 4) * sizeof(char);
 		char* szCmd = (char*)_alloca(nCmdLen);//_alloca在栈上申请的，会自动释放
 		memset(szCmd, 0, nCmdLen);
 		strcpy(szCmd, "\"");

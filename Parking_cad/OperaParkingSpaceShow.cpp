@@ -98,7 +98,7 @@ void COperaParkingSpaceShow::Start()
 #endif
 
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;

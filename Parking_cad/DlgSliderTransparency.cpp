@@ -26,6 +26,7 @@
 #include "resource.h"
 #include "DlgSliderTransparency.h"
 #include "DBHelper.h"
+#include "DlgSetConfig.h"
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_DYNAMIC (CDlgSliderTransparency, CAcUiDialog)
@@ -37,7 +38,8 @@ BEGIN_MESSAGE_MAP(CDlgSliderTransparency, CAcUiDialog)
 END_MESSAGE_MAP()
 
 //-----------------------------------------------------------------------------
-CDlgSliderTransparency::CDlgSliderTransparency (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) : CAcUiDialog (CDlgSliderTransparency::IDD, pParent, hInstance) {
+CDlgSliderTransparency::CDlgSliderTransparency (CWnd *pParent /*=NULL*/, HINSTANCE hInstance /*=NULL*/) 
+	: CAcUiDialog (CDlgSliderTransparency::IDD, pParent, hInstance) {
 }
 
 void CDlgSliderTransparency::SetPercent(const CString& percentStr)
@@ -47,6 +49,20 @@ void CDlgSliderTransparency::SetPercent(const CString& percentStr)
 	s.Replace(_T("%"), _T(""));
 	int percent = _ttoi(s.GetString());
 	m_SliderControl.SetPos(percent);
+}
+
+BOOL CDlgSliderTransparency::PreTranslateMessage(MSG* pMsg)
+{
+	if ((pMsg->message == WM_KEYDOWN) && (pMsg->wParam == VK_RETURN))
+	{
+		CDlgSetConfig* pDlgConfig = dynamic_cast<CDlgSetConfig*>(GetParent()->GetParent());
+		if (pDlgConfig)
+		{
+			pDlgConfig->OnEditerEnter();
+		}
+	}
+	
+	return CAcUiDialog::PreTranslateMessage(pMsg);
 }
 
 static void __smartLog(bool*& data, bool isDataValid)

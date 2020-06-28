@@ -371,7 +371,7 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 
 void COperaMultiSchemeShow::loadModelFile(AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
-	AcString sTemplateFile = DBHelper::GetArxDir() + _T("template.dwg");
+	AcString sTemplateFile = (GetUserDir() + _T("template.dwg")).GetString();
 	std::set<AcString> setBlockNames;
 	setBlockNames.insert(_T("car_1"));
 	ObjectCollector oc;

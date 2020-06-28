@@ -25,4 +25,22 @@
 //------  StdAfx.obj will contain the pre-compiled type information
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
-#include "DBHelper.h"
+#include <shlobj.h> 
+
+std::string GetUserDirA()
+{
+	char szDir[MAX_PATH];
+	SHGetSpecialFolderPathA(NULL, szDir, CSIDL_APPDATA, 0);
+	std::string sDir = szDir;
+	sDir += "\\碧桂园车库智能设计系统\\";
+	return sDir;
+}
+
+CString GetUserDir()
+{
+	TCHAR szDir[MAX_PATH];
+	SHGetSpecialFolderPath(NULL, szDir, CSIDL_APPDATA, 0);
+	CString sDir = szDir;
+	sDir += _T("\\碧桂园车库智能设计系统\\");
+	return sDir;
+}

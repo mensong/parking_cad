@@ -819,7 +819,7 @@ AcDbObjectIdArray COperaAxleNetMaking::inserAadAxleNum(AcDbObjectIdArray& sortId
 	{
 		std::set<AcString> setBlockNames;
 		setBlockNames.insert(sBlockName);
-		AcString filepath = DBHelper::GetArxDir() + _T("template.dwg");
+		AcString filepath = (GetUserDir() + _T("template.dwg")).GetString();
 		if (DBHelper::ImportBlkDef(filepath, setBlockNames, pDb) != Acad::eOk)
 		{
 			return outids;

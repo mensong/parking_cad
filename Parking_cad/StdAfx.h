@@ -103,3 +103,7 @@ extern AcApDataManager<CDocData> DocVars ;
 #define LOG_OPERA_SetConfig _T("opera_SetConfig")
 #define LOG_OPERA_SetEntranceData _T("opera_SetEntranceData")
 #define LOG_OPERA_VillageSet _T("opera_VillageSet")
+
+//获得用户文件夹
+std::string GetUserDirA();
+CString GetUserDir();

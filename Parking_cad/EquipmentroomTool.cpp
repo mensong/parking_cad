@@ -85,6 +85,11 @@ bool CEquipmentroomTool::jigShow(AcDbObjectIdArray useJigIds, double sideLength)
 	}
 }
 
+std::string CEquipmentroomTool::getConfigPath()
+{
+	return GetUserDirA() + "ParkingConfig.json";
+}
+
 AcDbObjectIdArray CEquipmentroomTool::createArea(double areaSize, CString areaName, double& sideLength, double& limitLength, bool limitType)
 {
 	sideLength = sqrt(areaSize);
@@ -904,7 +909,7 @@ void CEquipmentroomTool::creatTextStyle(CString& textStyleName)
 std::string CEquipmentroomTool::getLayerName(const std::string& strLayer)
 {
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
@@ -938,7 +943,7 @@ std::string CEquipmentroomTool::getLayerName(const std::string& strLayer)
 std::string CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key)
 {
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
@@ -986,7 +991,7 @@ std::string CEquipmentroomTool::getJsonInformation(const std::string& inputroot,
 void CEquipmentroomTool::getJsonInformation(const std::string& inputroot, const std::string& object, const std::string& key, std::vector<std::string>& arrayvector)
 {
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
@@ -1222,7 +1227,7 @@ bool CEquipmentroomTool::getLayerConfigForJson(const std::string& sLayerInfo, st
 	std::string& sLayerName, std::string& sLayerColor, std::string& sLayerLinetype, std::string& sLayerWidth, std::string& sIsPrintf, std::string& sTransparency)
 {
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
@@ -1387,7 +1392,7 @@ bool CEquipmentroomTool::layerConfigSet(const CString& layerName, const CString&
 std::string CEquipmentroomTool::getLayerNameByJson(const std::string& sLayerInfo)
 {
 	//从文件中读取
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = CEquipmentroomTool::getConfigPath();
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;

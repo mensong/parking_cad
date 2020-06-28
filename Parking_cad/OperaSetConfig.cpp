@@ -71,7 +71,7 @@ void COperaSetConfig::loadAllLinetype()
 {
 	std::vector<CString> tagvaluevector = COperaSetConfig::getACADLINtag();
 
-	AcString acadlinfilepath = DBHelper::GetArxDir() + _T("ACAD.LIN");
+	AcString acadlinfilepath = (GetUserDir() + _T("ACAD.LIN")).GetString();
 	for (int i = 0; i < tagvaluevector.size(); ++i)
 	{
 		AcDbObjectId linetypeid;

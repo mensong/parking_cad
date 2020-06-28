@@ -14,6 +14,8 @@ public:
 		return (i >= -TolerantValue) && (i <= TolerantValue);
 	}
 
+	static std::string getConfigPath();
+
 	/*根据输入面积创建面域*/
 	static AcDbObjectIdArray createArea(double areaSize, CString areaName, double& sideLength, double& limitLength, bool limitType=true);
 	/*文字位移，使其居中于设备房*/

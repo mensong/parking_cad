@@ -2778,7 +2778,18 @@ regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
 Registry.CreateKey(HKEY_LOCAL_MACHINE, regBasePath);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", SessionVar.Expand("%AppFolder%\\uninstall.exe"), REG_SZ);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", SessionVar.Expand("\"/U:%AppFolder%\\Uninstall\\uninstall.xml\""), REG_SZ);
-Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", SessionVar.Expand("%ProductVer%"), REG_SZ);</Script>
+Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", SessionVar.Expand("%ProductVer%"), REG_SZ);
+
+--复制公共文件
+AppDataPath = Registry.GetValue(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "AppData", true);
+--Dialog.Message("", AppDataPath);
+dataPath = AppDataPath..SessionVar.Expand("\\%ProductName%");
+if not Folder.DoesExist(dataPath) then
+	Folder.Create(dataPath);
+end
+params = "\""..SessionVar.Expand("%AppFolder%\\Support\\CommonData").."\" \""..dataPath.."\"";
+--Dialog.Message("", params);
+Shell.Execute(SessionVar.Expand("%AppFolder%\\Support\\CopyFiles.exe"), "open", params);</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
