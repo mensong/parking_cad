@@ -656,7 +656,8 @@ void CDlgSetConfig::initLinetypeCombo()
 
 			AcString name;
 			pLTR->getName(name);
-			m_LineTypeCombo.AddString(name);
+			if (name != _T("") && name != _T("ByLayer") && name != _T("ByBlock"))
+				m_LineTypeCombo.AddString(name);
 
 			pLTR->close();
 		}
