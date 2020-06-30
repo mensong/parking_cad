@@ -20,7 +20,7 @@ public:
 	static void setCloudLineWidth(AcDbObjectId cloudLineId);
 	static void setCurrentLayer(CString layerName);
 	static AcGePoint2dArray getLineOtherPoint(const AcGePoint2d& lineStartPoint,const AcGePoint2d& lineEndPoint,const double& minArcLength, const double& maxArcLength);
-	static AcDbObjectId creatArcPline(AcGePoint2dArray points, double width, AcDbDatabase *pDb = acdbCurDwg());
+	static AcDbObjectId creatArcPline(AcGePoint2dArray points, double startWidth, double endWidth, AcDbDatabase *pDb = acdbCurDwg());
 	static int getRandNum(const int& min,const int& max);
 	static bool jugeCloudDirection(const AcGePoint2dArray &targetPts);
 	//AcGePoint2d afterMobile(AcGeVector2d moveDir,AcGePoint2d startPoint);

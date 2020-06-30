@@ -218,13 +218,14 @@ void CDlgFindCloud::reDraw(const AcDbObjectId& targetId)
 	}
 }
 
-
-void CDlgFindCloud::OnBnClickedButtonCheck()
+void __stdcall CDlgFindCloud::DelayClickCheck(WPARAM wp, LPARAM lp, void* anyVal)
 {
-	// TODO: 在此添加控件通知处理程序代码
 	DBHelper::CallCADCommand(_T("CHECK "));
 }
-
+void CDlgFindCloud::OnBnClickedButtonCheck()
+{
+	SetDelayExecute(DelayClickCheck, 0, 0, NULL, 1000, true);
+}
 
 void CDlgFindCloud::OnBnClickedChkShowCloudlineLayer()
 {
@@ -281,3 +282,4 @@ void CDlgFindCloud::refreshChkLayer()
 
 	pLTR->close();
 }
+

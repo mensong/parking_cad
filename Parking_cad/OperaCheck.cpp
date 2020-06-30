@@ -626,14 +626,11 @@ void COperaCheck::creatCloudLine(const AcGePoint2dArray& plineExtentPts, const A
 	minPoint.transformBy(dirMove.negate() * 50);
 	double distance = minPoint.distanceTo(maxPoint);
 	double minArcLength = distance / 20;
-	double maxArcLength = minArcLength * 2;
+	double maxArcLength = minArcLength * 3;
+	double startWidth = distance / 100;
+
 	AcGePoint2dArray plineUsePts;
-	AcGePoint2dArray overlapPionts;
-	for (int cc=0;cc<plinePts.length();cc++)
-	{
-		AcGePoint2d sa = plinePts[cc];
-		int ggg = 0;
-	}
+
 	//获取到云线点组
 	for (int length = 0; length < plinePts.length() - 1; length++)
 	{
@@ -654,7 +651,7 @@ void COperaCheck::creatCloudLine(const AcGePoint2dArray& plineExtentPts, const A
 		int sss = 0;
 	}
 	Doc_Locker _locker;
-	cloudId = COperaCheck::creatArcPline(plineUsePts, 10, pDb);
+	cloudId = COperaCheck::creatArcPline(plineUsePts, startWidth, 0, pDb);
 	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
 	CEquipmentroomTool::setEntToLayer(cloudId, sCloudLineLayer);
 }
@@ -717,6 +714,8 @@ AcGePoint2dArray COperaCheck::getLineOtherPoint(const AcGePoint2d& lineStartPoin
 	}
 	int sum = 0;
 	std::vector<int> moveDistances;
+	//根据系统时间设置随机数种子
+	srand((unsigned)time(NULL));
 	while (sum < lineDistance)
 	{
 		int temp = getRandNum(minArcLength, maxArcLength);
@@ -742,7 +741,7 @@ AcGePoint2dArray COperaCheck::getLineOtherPoint(const AcGePoint2d& lineStartPoin
 	return allUsePts;
 }
 
-AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width, AcDbDatabase *pDb/* = acdbCurDwg()*/)
+AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double startWidth, double endWidth, AcDbDatabase *pDb/* = acdbCurDwg()*/)
 {
 	int numCount = points.length();
 	double bulge = 0;
@@ -762,7 +761,7 @@ AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width, A
 	AcDbPolyline *pPline = new AcDbPolyline(numCount);
 	for (int i=0; i<numCount; i++)
 	{
-		pPline->addVertexAt(i, points.at(i), bulge, width, width);
+		pPline->addVertexAt(i, points.at(i), bulge, startWidth, endWidth);
 	}
 	DBHelper::AppendToDatabase(polyId, pPline,pDb);
 	pPline->close();
@@ -770,9 +769,7 @@ AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double width, A
 }
 
 int COperaCheck::getRandNum(const int& min, const int& max)
-{
-	//根据系统时间设置随机数种子
-	srand((unsigned)time(NULL));
+{	
 	int inum = rand() % (max - min + 1) + min;
 	return inum;
 }

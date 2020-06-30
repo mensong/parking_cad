@@ -43,11 +43,14 @@ public:
 
 	void refreshChkLayer();
 
+	static void __stdcall DelayClickCheck(WPARAM wp, LPARAM lp, void* anyVal);
+
 protected:
 	virtual void DoDataExchange (CDataExchange *pDX) ;
 	afx_msg LRESULT OnAcadKeepFocus (WPARAM, LPARAM) ;
 
 	DECLARE_MESSAGE_MAP()
+
 public:
 	// id¡–±Ì
 	CListCtrl m_listRes;
