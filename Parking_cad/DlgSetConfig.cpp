@@ -253,11 +253,11 @@ BOOL CDlgSetConfig::OnInitDialog()
 	
 	//m_ctrlConfigSetList.InsertColumn(0, _T(""), LVCFMT_LEFT, 0);
 	//m_mpColumnName[_T("强排专业实体")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("强排专业实体"), LVCFMT_CENTER, 150);
-	m_mpColumnName[_T("序号")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("序号"), LVCFMT_CENTER, 50);
+	m_mpColumnName[_T("序号")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("序号"), LVCFMT_CENTER, 40);
 	m_mpColumnName[_T("专业属性")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("专业属性"), LVCFMT_CENTER, 100);
-	m_mpColumnName[_T("图层名称")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层名称"), LVCFMT_CENTER, 200);
-	m_mpColumnName[_T("图层颜色")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层颜色"), LVCFMT_CENTER, 60);
-	m_mpColumnName[_T("图层线型")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("图层线型"), LVCFMT_CENTER, 120);
+	m_mpColumnName[_T("图层名称")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("名称"), LVCFMT_CENTER, 200);
+	m_mpColumnName[_T("图层颜色")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("颜色"), LVCFMT_CENTER, 50);
+	m_mpColumnName[_T("图层线型")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("线型"), LVCFMT_CENTER, 120);
 	m_mpColumnName[_T("线宽")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("线宽"), LVCFMT_CENTER, 50);
 	m_mpColumnName[_T("是否打印")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("是否打印"), LVCFMT_CENTER, 60);
 	m_mpColumnName[_T("淡显")] = m_ctrlConfigSetList.InsertColumn(m_ctrlConfigSetList.GetHeaderCtrl()->GetItemCount(), _T("透明度"), LVCFMT_CENTER, 150);

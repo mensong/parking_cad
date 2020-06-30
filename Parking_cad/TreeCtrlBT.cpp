@@ -228,8 +228,8 @@ void CTreeCtrlBT::GradientFillRect( CDC *pDC, CRect &rect, COLORREF col_from, CO
 	vert[1].x      = rect.right;
 	vert[1].y      = rect.bottom; 
 	vert[1].Alpha  = 0x0000;
-	vert[1].Red    = GetB(col_to) << 8;
-	vert[1].Green  = GetB(col_to) << 8;
+	vert[1].Red    = GetR(col_to) << 8;
+	vert[1].Green  = GetG(col_to) << 8;
 	vert[1].Blue   = GetB(col_to) << 8;
 	
 	mesh.UpperLeft  = 0;
@@ -287,8 +287,8 @@ void CTreeCtrlBT::DrawItem( CDC *pDC )
 		
 		has_children = ItemHasChildren( show_item ) || parent == NULL;
 		
-		selected = (state & TVIS_SELECTED) && ((this == GetFocus()) || 
-			(tree_style & TVS_SHOWSELALWAYS));
+		selected = (state & TVIS_SELECTED) && 
+			((this == GetFocus()) || (tree_style & TVS_SHOWSELALWAYS));
 		
 		if ( GetItemRect( show_item, rc_item, TRUE ) )//获取某一项的矩形区域
 		{
