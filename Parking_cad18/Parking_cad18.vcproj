@@ -423,6 +423,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgResetEntityLayer.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgSetConfig.cpp"
 				>
 			</File>
@@ -524,6 +528,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaResetEntityLayer.cpp"
 				>
 			</File>
 			<File
@@ -668,6 +676,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgResetEntityLayer.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgSetConfig.h"
 				>
 			</File>
@@ -769,6 +781,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaParkingSpaceShow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaResetEntityLayer.h"
 				>
 			</File>
 			<File

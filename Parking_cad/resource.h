@@ -59,6 +59,7 @@
 #define IDI_ICON_ZOOM                   144
 #define IDC_BUTTON_CUSTOM               145
 #define IDD_DLG_TOOLBAR                 147
+#define IDD_DIALOG_RESETENTITYLAYER     149
 #define IDC_BUTTON_GETENDPOINT          161
 #define IDC_EDIT_SHOWENDPOINT           163
 #define IDC_EDIT_USER                   163
@@ -108,14 +109,18 @@
 #define IDC_STATIC2                     217
 #define IDC_STATIC3                     218
 #define IDC_CHK_SHOW_CLOUDLINE_LAYER    218
+#define IDC_LIST1                       219
+#define IDC_COMBOX_CREATEID             220
+#define IDC_BUTTON1                     221
+#define IDC_BUTTON_TRUE                 221
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        149
+#define _APS_NEXT_RESOURCE_VALUE        151
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         219
+#define _APS_NEXT_CONTROL_VALUE         222
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

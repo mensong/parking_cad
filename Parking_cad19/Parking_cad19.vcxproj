@@ -85,6 +85,7 @@
     <ClCompile Include="..\Parking_cad\DlgFirePumpHouseSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgLifePumpHouseSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgLivingWaterTankSet.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgResetEntityLayer.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\DlgSliderTransparency.cpp" />
     <ClCompile Include="..\Parking_cad\DlgToolbarNav.cpp" />
@@ -111,6 +112,7 @@
     <ClCompile Include="..\Parking_cad\OperaMultiSchemeShow.cpp" />
     <ClCompile Include="..\Parking_cad\OperaNavToolbar.cpp" />
     <ClCompile Include="..\Parking_cad\OperaParkingSpaceShow.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaResetEntityLayer.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
     <ClCompile Include="..\Parking_cad\OperaTest.cpp" />
@@ -164,6 +166,7 @@
     <ClInclude Include="..\Parking_cad\DlgFirePumpHouseSet.h" />
     <ClInclude Include="..\Parking_cad\DlgLifePumpHouseSet.h" />
     <ClInclude Include="..\Parking_cad\DlgLivingWaterTankSet.h" />
+    <ClInclude Include="..\Parking_cad\DlgResetEntityLayer.h" />
     <ClInclude Include="..\Parking_cad\DlgSetConfig.h" />
     <ClInclude Include="..\Parking_cad\DlgSlider.h" />
     <ClInclude Include="..\Parking_cad\DlgSliderTransparency.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="..\Parking_cad\OperaMultiSchemeShow.h" />
     <ClInclude Include="..\Parking_cad\OperaNavToolbar.h" />
     <ClInclude Include="..\Parking_cad\OperaParkingSpaceShow.h" />
+    <ClInclude Include="..\Parking_cad\OperaResetEntityLayer.h" />
     <ClInclude Include="..\Parking_cad\OperaSetConfig.h" />
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
     <ClInclude Include="..\Parking_cad\OperaTest.h" />
