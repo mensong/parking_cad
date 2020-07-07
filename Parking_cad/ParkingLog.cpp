@@ -29,7 +29,7 @@ bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	Json::FastWriter jsWriter;
 	std::string sJson = jsWriter.write(js);
 
-	int code = HTTP_CLIENT::Ins().post(add_log_url.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
+	int code = HTTP_CLIENT::Ins().post(add_log_url.c_str(), sJson.c_str(), sJson.size(), "application/json");
 	if (code != 200)
 		return false;
 

@@ -19,10 +19,12 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
+	afx_msg LRESULT OnAcadKeepFocus(WPARAM, LPARAM);
 	virtual BOOL OnInitDialog();
 	virtual BOOL DestroyWindow();
+	virtual void OnCancel() override;
 	DECLARE_MESSAGE_MAP()
-
+			
 private:
 	std::vector<std::string> vecTargetlayer;
 
@@ -35,9 +37,6 @@ public:
 	void deleteLayer(CString& layername, AcDbDatabase *pDb = acdbCurDwg());
 
 public:
-	afx_msg LRESULT OnAcadKeepFocus(WPARAM, LPARAM);
-	afx_msg void OnClose();
-	afx_msg void OnOK();
 	CListCtrl m_list;
 
 	int e_Item;    //刚编辑的行  

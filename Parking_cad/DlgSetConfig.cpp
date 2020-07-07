@@ -213,7 +213,7 @@ BOOL CDlgSetConfig::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 	
-	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT, acedGetAcadDwgView()->GetParent()->GetParent());
 
 	init();
 

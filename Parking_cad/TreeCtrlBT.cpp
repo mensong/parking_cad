@@ -28,7 +28,6 @@ CTreeCtrlBT::CTreeCtrlBT()
 	m_clrRoot_from    = RGB( 80, 80, 80 );
 	m_clrRoot_to      = RGB( 180, 180, 180 );
 
-	m_hItemSelect     = NULL;
 	m_hItemMouseMove  = NULL;
 	m_pCurDrawItemMsg = NULL;
 
@@ -89,6 +88,8 @@ BEGIN_MESSAGE_MAP(CTreeCtrlBT, CTreeCtrl)
 	ON_WM_PAINT()
 	ON_WM_SIZE()
 	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONUP()
+	ON_WM_LBUTTONDOWN()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -107,27 +108,6 @@ void CTreeCtrlBT::PreSubclassWindow()
 
 BOOL CTreeCtrlBT::PreTranslateMessage(MSG* pMsg)
 {
-	if (pMsg->message == WM_LBUTTONDOWN)
-	{
-		HTREEITEM hItem = getMouseItemBT();
-		SelectItem(hItem);
-	}
-	//else if (pMsg->message == WM_LBUTTONDBLCLK)
-	//{
-	//	HTREEITEM hItem = getMouseItemBT();
-	//	if (hItem)
-	//	{
-	//		UINT nState = GetItemState(hItem, TVIS_EXPANDED);
-	//		if ((nState & TVIS_EXPANDED) != 0) //展开的
-	//		{
-	//			Expand(hItem, TVE_COLLAPSE);
-	//		}
-	//		else
-	//		{
-	//			Expand(hItem, TVE_EXPAND);
-	//		}
-	//	}
-	//}
 	return CTreeCtrl::PreTranslateMessage(pMsg);
 }
 
@@ -279,7 +259,7 @@ void CTreeCtrlBT::DrawItem( CDC *pDC )
 		return;
 	
 	tree_style = ::GetWindowLong( m_hWnd, GWL_STYLE ); //获取TREE的类型
-	
+		
 	do
 	{
 		state = GetItemState( show_item, TVIF_STATE );//获取某一项的状态
@@ -758,7 +738,6 @@ HTREEITEM CTreeCtrlBT::InsertItemEx(HTREEITEM hParent, LPCTSTR lpszItem, LPCTSTR
 
 void CTreeCtrlBT::OnMouseMove(UINT nFlags, CPoint point) 
 {
-	// TODO: Add your message handler code here and/or call default
 	CTreeCtrl::OnMouseMove(nFlags, point);
 
 	m_ptOldMouse = point;
@@ -778,9 +757,17 @@ void CTreeCtrlBT::OnMouseMove(UINT nFlags, CPoint point)
 	}
 }
 
-HTREEITEM CTreeCtrlBT::getSelectedItemBT()
+void CTreeCtrlBT::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	return m_hItemSelect;
+	HTREEITEM hItem = getMouseItemBT();
+	SelectItem(hItem);
+
+	CTreeCtrl::OnLButtonDown(nFlags, point);
+}
+
+void CTreeCtrlBT::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	CTreeCtrl::OnLButtonUp(nFlags, point);
 }
 
 HTREEITEM CTreeCtrlBT::getMouseItemBT()

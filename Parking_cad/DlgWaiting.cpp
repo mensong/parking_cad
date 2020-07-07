@@ -281,7 +281,7 @@ int CDlgWaiting::getStatus(std::string& json, std::string& sMsg, CString& sIndex
 	const char * sendUrl = tempUrl.c_str();
 
 	HTTP_CLIENT::Ins().setTimeout(60);
-	int code = HTTP_CLIENT::Ins().get(sendUrl, true);
+	int code = HTTP_CLIENT::Ins().get(sendUrl);
 	if (code != 200)
 	{
 		char szCode[10];
@@ -355,7 +355,7 @@ int CDlgWaiting::getJsonForLocal(std::string& json, std::string& sMsg, CString& 
 	//MessageBoxA(NULL, sendUrl, "url", MB_OK);
 
 	HTTP_CLIENT::Ins().setTimeout(60);
-	int code = HTTP_CLIENT::Ins().get(sendUrl, true);
+	int code = HTTP_CLIENT::Ins().get(sendUrl);
 
 	if (code != 200)
 	{

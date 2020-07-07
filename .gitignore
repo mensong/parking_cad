@@ -160,3 +160,5 @@
 /x64/Release/WriteConfigFile.exe
 /x64/Release/WriteConfigFile.pdb
 /Publish/out/Support/CommonData
+/x64/Release/BlockList.bak
+/x64/Release/*.err

@@ -1,6 +1,18 @@
 @echo off
 ::cd /d %~dp0
 
+rd /S /Q .\out\Support\18\x86\
+rd /S /Q .\out\Support\18\x64\
+rd /S /Q .\out\Support\19\x86\
+rd /S /Q .\out\Support\19\x64\
+rd /S /Q .\out\Support\20\x86\
+rd /S /Q .\out\Support\20\x64\
+rd /S /Q .\out\Support\21\x86\
+rd /S /Q .\out\Support\21\x64\
+rd /S /Q .\out\Support\22\x86\
+rd /S /Q .\out\Support\22\x64\
+rd /S /Q .\out\Support\CommonData\
+
 mkdir .\out\Support\18\x86\
 mkdir .\out\Support\18\x64\
 mkdir .\out\Support\19\x86\
@@ -17,9 +29,8 @@ copy /Y /V ..\x64\Release\*.ini .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\*.LIN .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\Notice.html .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\template.dwg .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.dwg .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\ParkingConfig.json .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\Mapsign.dwg .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\parking_cad.cuix .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\parking_cad.mnr .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\parking_cad_light.mnr .\out\Support\CommonData\

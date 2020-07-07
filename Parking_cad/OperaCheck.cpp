@@ -134,7 +134,7 @@ int COperaCheck::getCheckData(std::string& sMsg, std::string& json)
 	const char * sendUrl = tempUrl.c_str();
 	
 	HTTP_CLIENT::Ins().setTimeout(60);
-	int code = HTTP_CLIENT::Ins().get(sendUrl, true);
+	int code = HTTP_CLIENT::Ins().get(sendUrl);
 	if (code != 200)
 	{
 		char szCode[10];

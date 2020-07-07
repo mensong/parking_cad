@@ -1617,7 +1617,7 @@ end
 <CfgFile>uninstall.xml</CfgFile>
 <UninstallFilesFolder>%AppFolder%\Uninstall</UninstallFilesFolder>
 <UninstallEXELocation>%AppFolder%\uninstall.exe</UninstallEXELocation>
-<AllowSilent>0</AllowSilent>
+<AllowSilent>1</AllowSilent>
 <StartSilent>0</StartSilent>
 <ShowBGWindow>0</ShowBGWindow>
 <MainWindowSettings>
@@ -1631,7 +1631,7 @@ end
 <UseCustomIcon>0</UseCustomIcon>
 <CustomIcon/>
 <HideTaskbarIcon>0</HideTaskbarIcon>
-<AlwaysOnTop>0</AlwaysOnTop>
+<AlwaysOnTop>1</AlwaysOnTop>
 <Headline>%ProductName% Uninstall</Headline>
 <HeadingFont>
 <FontData>
@@ -2742,10 +2742,12 @@ g_HandleSystemReboot();
 <Script>--首先卸载系统中已安装的版本
 regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
 if (Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, regBasePath)) then
-	Dialog.Message("已存在旧版本", "已存在旧版本，请先卸载旧版本再安装。", MB_OK, MB_ICONEXCLAMATION);
-	Uninstaller = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", true);
-	UninstallData = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", true);
-	Shell.Execute(Uninstaller, "", UninstallData, "");
+	ask = Dialog.Message("卸载旧版本", "已存在旧版本，是否先卸载旧版本?", MB_YESNO, MB_ICONEXCLAMATION, MB_DEFBUTTON1);
+	if (ask == IDYES) then
+		Uninstaller = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", true);
+		UninstallData = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", true);
+		Shell.Execute(Uninstaller, "", UninstallData, "");
+	end
 	Application.Exit();
 end
 </Script>
@@ -2777,7 +2779,7 @@ Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductNa
 regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
 Registry.CreateKey(HKEY_LOCAL_MACHINE, regBasePath);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", SessionVar.Expand("%AppFolder%\\uninstall.exe"), REG_SZ);
-Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", SessionVar.Expand("\"/U:%AppFolder%\\Uninstall\\uninstall.xml\""), REG_SZ);
+Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", SessionVar.Expand("\"/U:%AppFolder%\\Uninstall\\uninstall.xml\" \"/S\""), REG_SZ);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", SessionVar.Expand("%ProductVer%"), REG_SZ);
 
 --复制公共文件
@@ -2910,8 +2912,8 @@ g_HandleSystemReboot();
 </CodeSignCertificatePasswordSHA1>
 <CodeSignDescription/>
 <CodeSignDescriptionURL/>
-<UseCustomIcon>0</UseCustomIcon>
-<CustomIconFile/>
+<UseCustomIcon>1</UseCustomIcon>
+<CustomIconFile>.\out\icon.ico</CustomIconFile>
 <ResourceFileVersion>9.5.2.0</ResourceFileVersion>
 <ResourceProductVersion>9.5.2.0</ResourceProductVersion>
 <ResourceCompanyName>Indigo Rose Corporation</ResourceCompanyName>

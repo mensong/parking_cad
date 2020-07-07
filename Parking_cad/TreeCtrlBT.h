@@ -96,8 +96,6 @@ public:
 
 	//获取某一项信息
 	ITEM_MSG* GetItemMsg(HTREEITEM hItem) const;
-	//获取当前选择项目
-	HTREEITEM getSelectedItemBT();
 	//获取当前鼠标所在的项目
 	HTREEITEM getMouseItemBT();
 
@@ -134,6 +132,8 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	//}}AFX_MSG
 
 	DECLARE_MESSAGE_MAP()
@@ -171,7 +171,6 @@ protected:
 	CFont			m_FontRoots;		//根节点字体
 	CFont			m_FontChild;		//子节点字体
 
-	HTREEITEM		m_hItemSelect;		//当前选中的项目句柄
 	HTREEITEM       m_hItemMouseMove;	//当前鼠标所在的句柄
 	CPoint			m_ptOldMouse;		//上一次鼠标所在的位置
 

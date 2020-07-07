@@ -191,7 +191,7 @@ void CDlgBipLogin::OnBnClickedOk()
 		nRet = BIP_SIGNIN::Ins().getUserInfo(ui);
 		if (nRet == 0)
 		{
-			int code = HTTP_CLIENT::Ins().get_a(m_get_userUrl.c_str(), true, "udid", aUser.c_str(), NULL);
+			int code = HTTP_CLIENT::Ins().get_a(m_get_userUrl.c_str(), "udid", aUser.c_str(), NULL);
 
 			if (code == 200)
 			{
@@ -254,7 +254,7 @@ void CDlgBipLogin::OnBnClickedOk()
 					js["descr"] = GL::WideByte2Utf8(L"来自客户端申请的用户");
 					Json::FastWriter jsWriter;
 					std::string sJson = jsWriter.write(js);
-					int code = HTTP_CLIENT::Ins().post(m_add_userUrl.c_str(), sJson.c_str(), sJson.size(), true, "application/json");
+					int code = HTTP_CLIENT::Ins().post(m_add_userUrl.c_str(), sJson.c_str(), sJson.size(), "application/json");
 					if (code == 200)
 					{
 						AfxMessageBox(_T("申请成功，请等待审核。"));

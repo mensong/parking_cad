@@ -36,10 +36,14 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	HTREEITEM hRoot;
 	//
 	hRoot = m_tree.InsertItem(_T("设置"), TVI_ROOT, TVI_LAST);
+	m_tree.SelectItem(hRoot);
 	m_tree.SetItemData(hRoot, -1);
 	HTREEITEM hChild = m_tree.InsertItem(_T(" 图层设置"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("SetConfig "));
+	hChild = m_tree.InsertItem(_T(" 标准图层转换"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("RSENTL "));
 	m_tree.Expand(hRoot, TVE_EXPAND);
 
 	//
@@ -86,7 +90,7 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("BGYBL "));
 	m_tree.Expand(hRoot, TVE_EXPAND);
-
+		
 	return TRUE;
 }
 
@@ -123,7 +127,7 @@ void CDlgToolbarNav::OnCancel()
 
 void CDlgToolbarNav::OnNMClickTreeNav(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	HTREEITEM hItem = m_tree.getMouseItemBT();
+	HTREEITEM hItem = m_tree.GetSelectedItem();
 	if (!hItem)
 	{
 		*pResult = 0;
@@ -146,6 +150,9 @@ void __stdcall CDlgToolbarNav::ExecCommand(WPARAM wp, LPARAM lp, void* anyVal)
 {
 	const CString* pCmd = (const CString*)anyVal;
 
-	acedGetAcadDwgView()->SetFocus();
-	DBHelper::CallCADCommand(*pCmd);
+	if (acedGetAcadDwgView())
+	{
+		acedGetAcadDwgView()->SetFocus();
+		DBHelper::CallCADCommand(*pCmd);
+	}
 }

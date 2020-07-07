@@ -86,9 +86,17 @@ BOOL CDlgResetEntityLayer::DestroyWindow()
 	return TRUE;
 }
 
+void CDlgResetEntityLayer::OnCancel()
+{
+	CAcUiDialog::OnClose();
+	DestroyWindow();//销毁对话框
+
+	delete this;
+}
+
 bool CDlgResetEntityLayer::readConfig(std::map<std::string, std::string>& keywordmap)
 {
-	std::string sConfigFile = DBHelper::GetArxDirA() + "ParkingConfig.json";
+	std::string sConfigFile = GetUserDirA() + "ParkingConfig.json";
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
@@ -389,17 +397,7 @@ LRESULT CDlgResetEntityLayer::OnAcadKeepFocus(WPARAM, LPARAM)
 	return (TRUE);
 }
 
-void CDlgResetEntityLayer::OnClose()
-{
-
-	CAcUiDialog::OnClose();
-	DestroyWindow();//销毁对话框
-
-	delete this;
-}
-
 BEGIN_MESSAGE_MAP(CDlgResetEntityLayer, CAcUiDialog)
-	ON_WM_CLOSE()
 	ON_MESSAGE(WM_ACAD_KEEPFOCUS, OnAcadKeepFocus)
 	ON_NOTIFY(NM_CLICK, IDC_LIST1, &CDlgResetEntityLayer::OnNMClickList1)
 	ON_BN_CLICKED(IDC_BUTTON_TRUE, &CDlgResetEntityLayer::OnBnClickedButtonTrue)
@@ -506,10 +504,6 @@ void CDlgResetEntityLayer::OnKillfocusCcomboBox()
 		distroyCcombobox(&m_list, &m_comBox, e_Item, e_SubItem);
 		haveccomboboxcreate = false;
 	}
-}
-
-void CDlgResetEntityLayer::OnOK()
-{
 }
 
 void CDlgResetEntityLayer::OnBnClickedButtonTrue()

@@ -630,7 +630,7 @@ int CDlgAiParking::postToAIApi(const std::string& sData, std::string& sMsg, cons
 	}
 	//MessageBoxA(NULL, postUrl, "", 0);
 	
-	int code = HTTP_CLIENT::Ins().post(postUrl, sData.c_str(), sData.size(), true, "application/json");
+	int code = HTTP_CLIENT::Ins().post(postUrl, sData.c_str(), sData.size(), "application/json");
 	if (code != 200)
 	{
 		if (useV1)
