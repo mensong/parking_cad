@@ -479,5 +479,8 @@
     <Image Include="..\Parking_cad\zoom.ico">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="..\Parking_cad\icon.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

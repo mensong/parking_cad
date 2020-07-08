@@ -80,6 +80,11 @@ BOOL CDlgBipLogin::OnInitDialog()
 	if (CAcUiDialog::OnInitDialog() != TRUE)
 		return FALSE;
 
+	//ÉèÖÃ´°¿ÚÍ¼±ê
+	m_hIcon = AfxGetApp()->LoadIcon(IDI_ICON_AIPARK);
+	SetIcon(m_hIcon, TRUE);   // Set big icon
+	SetIcon(m_hIcon, FALSE);  // Set small icon
+		
 	DlgHelper::AdjustPosition(this, DlgHelper::CENTER);
 
 #if 0
@@ -148,6 +153,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 BEGIN_MESSAGE_MAP(CDlgBipLogin, CAcUiDialog)
 	ON_BN_CLICKED(IDOK, &CDlgBipLogin::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &CDlgBipLogin::OnBnClickedCancel)
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
@@ -332,4 +338,34 @@ void CDlgBipLogin::OnBnClickedCancel()
 	_savePwd();
 
 	CAcUiDialog::OnCancel();
+}
+
+
+HBRUSH CDlgBipLogin::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CAcUiDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	switch (pWnd->GetDlgCtrlID())
+	{
+	case IDC_STATIC1:
+	case IDC_STATIC2:
+	case IDC_CHK_SAVE_PWD:
+	{
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(0, 0, 0));
+
+		CRect rc;
+		pWnd->GetWindowRect(&rc);
+		ScreenToClient(&rc);
+		CDC* dc = GetDC();
+		pDC->BitBlt(0, 0, rc.Width(), rc.Height(), dc, rc.left, rc.top, SRCCOPY);
+		ReleaseDC(dc);
+
+		return (HBRUSH)GetStockObject(HOLLOW_BRUSH);
+	}
+	default:
+		break;
+	}
+
+	return hbr;
 }

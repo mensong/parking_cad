@@ -316,6 +316,7 @@
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Parking_cad\icon.ico" />
     <Image Include="..\Parking_cad\zoom.ico" />
     <Image Include="..\Parking_cad\zoom_down.ico" />
     <Image Include="..\Parking_cad\zoom_up.ico" />

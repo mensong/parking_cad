@@ -41,9 +41,11 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
+	HICON m_hIcon;//Í¼±ê
 	afx_msg void OnBnClickedOk();
 	CEdit m_editUser;
 	CEdit m_editPassword;
 	CButton m_chkSavePwd;
 	afx_msg void OnBnClickedCancel();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 };

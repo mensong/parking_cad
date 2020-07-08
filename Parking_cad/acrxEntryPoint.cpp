@@ -110,14 +110,20 @@ public:
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
 		
-		// TODO: Add your initialization code here
 		AUTO_REG_CMD::Init();
-				
+		
+		//加载工具条
 		AcString filepath = (GetUserDir() + _T("parking_cad.cuix")).GetString();
 		LoadCuix::Load(filepath);
-		LoadCuix::ShowToolbarAsyn(_T("智能地库"));
-		LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
+		std::string sCheckToobar = GetUserDirA() + "toolbar.shown";
+		if (!FileHelper::IsFileExitstA(sCheckToobar))
+		{//只加载一次
+			LoadCuix::ShowToolbarAsyn(_T("智能地库"));
+			LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
+			FileHelper::WriteFile(sCheckToobar.c_str(), "1", 1);//标记一下已经加载过图标
+		}
 		
+		//加载侧边栏
 		DBHelper::CallCADCommand(_T("aipaknav "));
 
 		//设置cad窗口标题
