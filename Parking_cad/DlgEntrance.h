@@ -78,7 +78,7 @@ public:
 	AcDbObjectId creatDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, const CString sLegth);
 	void creatDimStyle(const CString &styleName);
 	void DealIntersectEnt(AcDbObjectIdArray& inputIds);
-	void DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints);
+	bool DealEnt(AcDbEntity* pEnt, AcGePoint3d& intersectPoint);
 	void BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId);
 	bool isIntersect(AcDbEntity* pEnt, AcDbEntity* pTempEnt, double tol);
 	void getpoint(AcDbEntity* pEnt, AcGePoint3d& startpt, AcGePoint3d& endpt);
@@ -87,6 +87,7 @@ public:
 	void SpecialSaveEntInfo(double& movedistance, AcDbObjectIdArray& inputIds, std::vector<InfoStructLine>& saveLineInfoVector,
 		std::vector<InfoStructArc>& saveArcInfoVector, std::vector<AcGePoint3d>& inserpoint);
 	void ConnectionPoint(AcDbObjectIdArray& inputIds);
+	bool findPoint(AcGePoint3d& startpt, AcGePoint3d& endpt, std::vector<AcGePoint3d>& points, AcGePoint3dArray& outpts, int tol= 0 );
 	bool IsOnLine(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt3);
 	void addWideDim(const double showWidth);
 	void creatPlinePoints(const AcDbObjectIdArray allLineIds);

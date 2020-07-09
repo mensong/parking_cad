@@ -199,8 +199,7 @@ void CDlgEntrance::OnBnClickedButtonGetentrancepl()
 				AcGePoint2d endPoint;
 				startPoint = line.startPoint();
 				endPoint = line.endPoint();
-				//acutPrintf(_T("\n该线段起始点坐标为%.2f,%.2f"), startPoint.x, startPoint.y);
-				//acutPrintf(_T("\n该线段终止点坐标为%.2f,%.2f"), endPoint.x, endPoint.y);
+			
 				allPoints.push_back(startPoint);
 				allPoints.push_back(endPoint);
 			}
@@ -211,7 +210,6 @@ void CDlgEntrance::OnBnClickedButtonGetentrancepl()
 				for (int x = 0; x < result.length(); x++)
 				{
 					AcGePoint2d onArcpoint(result[x].x, result[x].y);
-					//acutPrintf(_T("\n该点%d坐标为%.2f,%.2f"), x, onArcpoint.x, onArcpoint.y);
 					allPoints.push_back(onArcpoint);
 				}
 			}
@@ -253,14 +251,6 @@ void CDlgEntrance::creatEntrance(double& dBasementHeight, double& dEntranceWidth
 		return;
 	}
 
-	//用户在画图的过程中，有可能因为操作失误，实体之间并没有端点与端点连接，而且端点与端点交叉，特此进行处理，如果有交叉的情况，改为连接情况。
-	/*
-	*    __|__   -->   ____
-	*      |          |
-	*                 |
-	*/
-
-	CDlgEntrance::DealIntersectEnt(useIds);
 	AcDbEntity *pEnt = NULL;
 	AcDbEntity *tempEnt = NULL;
 	AcDbObjectIdArray tempIds;
@@ -279,29 +269,28 @@ void CDlgEntrance::creatEntrance(double& dBasementHeight, double& dEntranceWidth
 		*    ____________
 		*    ——————       --> ____________
 		*    ————-|—| |	    ——————
-		|  | |		————-   | |
-		|  | |		         |  | |
-		|  | |				 |  | |
-		|  | |				 |  | |
+		              |  | |		————-   | |
+		              |  | |		         |  | |
+		              |  | |				 |  | |
+		              |  | |				 |  | |
 		*									 |  | |
 		*/
 		AcDbObjectIdArray GuideIds;//GuideIds为两边车道线id
 		CDlgEntrance::GenerateGuides(changdistance, operaIds[i], GuideIds);
-
 		//进一步处理
 		/*
 		*   ____________		   ____________
 		*   ——————      --> —————— |
 		*   -———-   | |        -———-   | |
-		|  | |  	  	  	  |  | |
-		|  | |  	  		  |  | |
-		|  | |  			  |  | |
-		|  | |  			  |  | |
+		               |  | |  	  	  	  |  | |
+		               |  | |  	  		  |  | |
+		               |  | |  			  |  | |
+		               |  | |  			  |  | |
 		*
 		*/
 		double inputdistance = changdistance;
 		CDlgEntrance::MultipleCycles(inputdistance, GuideIds);
-
+		
 		std::vector<AcGePoint3dArray> allLinePts;
 		for (int count = 0; count<GuideIds.length(); count++)
 		{
@@ -330,11 +319,11 @@ void CDlgEntrance::creatEntrance(double& dBasementHeight, double& dEntranceWidth
 		*    ____________	    | ____________
 		*   —————— |  --> |—————— |
 		*   -———-   | |      |-———-   | |
-		|  | |       	     |  | |
-		|  | |               |  | |
-		|  | |               |  | |
-		|  | |               |  | |
-		*                                ------
+		               |  | |       	    | | |
+		               |  | |               | | |
+		               |  | |               | | |
+		               |  | |               | | |
+		*                                   -----
 		*/
 		CDlgEntrance::ConnectionPoint(GuideIds);
 		CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
@@ -582,18 +571,13 @@ void CDlgEntrance::DealIntersectEnt(AcDbObjectIdArray& inputIds)
 			tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
 			if (intersectPoints.length() > 0)
 			{
-				if (std::find(points.begin(), points.end(), intersectPoints[0]) != points.end())//存在
+				AcGePoint3d pt = intersectPoints[0];
+				if (std::find(points.begin(), points.end(), pt) == points.end())//存在
 				{
-					if (tempEnt)
-						tempEnt->close();
-					continue;
-				}
-				else
-				{
-					points.push_back(intersectPoints[0]);
-					DealEnt(pEnt, intersectPoints);
-					DealEnt(tempEnt, intersectPoints);
-
+					
+					if (DealEnt(pEnt, pt))
+						if(DealEnt(tempEnt, pt))
+							points.push_back(pt);		
 				}
 
 			}
@@ -603,39 +587,24 @@ void CDlgEntrance::DealIntersectEnt(AcDbObjectIdArray& inputIds)
 		if (pEnt)
 			pEnt->close();
 	}
-	if (pEnt)
-		pEnt->close();
 }
 
-void CDlgEntrance::DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints)
+bool CDlgEntrance::DealEnt(AcDbEntity* pEnt, AcGePoint3d& intersectPoint)
 {
 	if (pEnt->isKindOf(AcDbLine::desc()))
 	{
 		AcDbLine *LinEnt = AcDbLine::cast(pEnt);
 		AcGePoint3d starpoint = LinEnt->startPoint();
 		AcGePoint3d endpoint = LinEnt->endPoint();
-		if (starpoint.distanceTo(intersectPoints[0]) <= endpoint.distanceTo(intersectPoints[0]))
+		if (starpoint.distanceTo(intersectPoint) <= endpoint.distanceTo(intersectPoint))
 		{
-			LinEnt->setStartPoint(intersectPoints[0]);
+			LinEnt->setStartPoint(intersectPoint);
 		}
 		else
 		{
-			LinEnt->setEndPoint(intersectPoints[0]);
+			LinEnt->setEndPoint(intersectPoint);
 		}
-	}
-	else if (pEnt->isKindOf(AcDbPolyline::desc()))
-	{
-		AcDbPolyline *pPolyline = AcDbPolyline::cast(pEnt);
-		int num = pPolyline->numVerts();
-		AcGePoint3d starpoint;
-		AcGePoint3d endpoint;
-		pPolyline->getStartPoint(starpoint);
-		pPolyline->getEndPoint(endpoint);
-		Acad::ErrorStatus es;
-		if (starpoint.distanceTo(intersectPoints[0]) < endpoint.distanceTo(intersectPoints[0]))
-			es = pPolyline->setPointAt(0, AcGePoint2d(intersectPoints[0].x, intersectPoints[0].y));
-		else
-			es = pPolyline->setPointAt(num - 1, AcGePoint2d(intersectPoints[0].x, intersectPoints[0].y));
+		
 	}
 	else if (pEnt->isKindOf(AcDbArc::desc()))
 	{
@@ -645,22 +614,20 @@ void CDlgEntrance::DealEnt(AcDbEntity* pEnt, AcGePoint3dArray& intersectPoints)
 		pARC->getStartPoint(starpoint);
 		pARC->getEndPoint(endpoint);
 		AcGePoint3d centerpoint = pARC->center();
-		AcDbAttribute* pAttrib = NULL;
-		if (starpoint.distanceTo(intersectPoints[0]) < endpoint.distanceTo(intersectPoints[0]))
+		if (starpoint.distanceTo(endpoint) == centerpoint.distanceTo(endpoint))
+			return false;
+		if (starpoint.distanceTo(intersectPoint) < endpoint.distanceTo(intersectPoint))
 		{
-			AcGeVector2d changVec = AcGeVector2d(intersectPoints[0].x - centerpoint.x, intersectPoints[0].y - centerpoint.y);
-			double startAngle = changVec.angle();
-			pARC->setStartAngle(startAngle);
+			AcGeVector2d changVec = AcGeVector2d(intersectPoint.x - centerpoint.x, intersectPoint.y - centerpoint.y);
+			pARC->setStartAngle(changVec.angle());
 		}
 		else
 		{
-			AcGeVector2d changVec = AcGeVector2d(intersectPoints[0].x - centerpoint.x, intersectPoints[0].y - centerpoint.y);
-			double endAngle = changVec.angle();
-			pARC->setEndAngle(endAngle);
+			AcGeVector2d changVec = AcGeVector2d(intersectPoint.x - centerpoint.x, intersectPoint.y - centerpoint.y);
+			pARC->setEndAngle(changVec.angle());
 		}
-
-
 	}
+	return true;
 }
 
 void CDlgEntrance::BatchStorageEnt(AcDbObjectIdArray& inputId, std::vector<std::vector<AcDbObjectId>>& outputId)
@@ -838,41 +805,6 @@ void CDlgEntrance::GenerateGuides(double& changdistance, std::vector<AcDbObjectI
 			if (pLine)
 				pLine->close();
 		}
-		else if (pEnt->isKindOf(AcDbPolyline::desc()))
-		{
-			AcGePoint3dArray pts;
-			AcGePoint2dArray pts_90;
-			//如果是，定义多段线
-			AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
-			//点数量
-			int num = pPline->numVerts();
-			//在点中循环
-			for (int j = 0; j < num; j++)
-			{
-				AcGePoint3d pt;
-				pPline->getPointAt(j, pt);
-				pts.append(pt);
-			}
-			for (int j = 0; j < num - 1; j++)
-			{
-				AcGePoint3d startpt = pts[j];
-				AcGePoint3d endpt = pts[j + 1];
-
-				AcGeVector3d vect = AcGeVector3d(endpt - startpt);
-				AcGeVector3d projVect_90 = vect.rotateBy(ARX_PI / 2, AcGeVector3d(0, 0, 1));
-				projVect_90.normalize();
-				startpt.transformBy(projVect_90*changdistance);
-				endpt.transformBy(projVect_90*changdistance);
-
-				AcDbLine *pLine = new AcDbLine(startpt, endpt);
-				AcDbObjectId lineId;
-				DBHelper::AppendToDatabase(lineId, pLine);
-				GuideIds.append(lineId);
-				if (pLine)
-					pLine->close();
-			}
-
-		}
 		else if (pEnt->isKindOf(AcDbArc::desc()))
 		{
 			AcDbArc *arc = AcDbArc::cast(pEnt);
@@ -930,49 +862,8 @@ void CDlgEntrance::GenerateGuides(double& changdistance, std::vector<AcDbObjectI
 
 
 		}
-		else if (pEnt->isKindOf(AcDbPolyline::desc()))
-		{
-			AcGePoint3dArray pts;
-			AcGePoint2dArray pts_180;
-			//如果是，定义多段线
-			AcDbPolyline *pPline = AcDbPolyline::cast(pEnt);
-			//点数量
-			int num = pPline->numVerts();
-			//在点中循环
-			for (int j = 0; j < num; j++)
-			{
-				AcGePoint3d pt;
-				pPline->getPointAt(j, pt);
-				pts.append(pt);
-			}
-			for (int j = 0; j < num - 1; j++)
-			{
-				AcGePoint3d startpt = pts[j];
-				AcGePoint3d endpt = pts[j + 1];
-
-				AcGeVector3d vect = AcGeVector3d(endpt - startpt);
-				AcGeVector3d projVect_180 = vect.rotateBy(3 * ARX_PI / 2, AcGeVector3d(0, 0, 1));
-
-				projVect_180.normalize();
-
-				startpt.transformBy(projVect_180*changdistance);
-				endpt.transformBy(projVect_180*changdistance);
-
-				AcDbLine *pLine1 = new AcDbLine(startpt, endpt);
-				AcDbObjectId lineId_1;
-				DBHelper::AppendToDatabase(lineId_1, pLine1);
-				GuideIds.append(lineId_1);
-
-				if (pLine1)
-					pLine1->close();
-
-			}
-
-		}
 		if (pEnt)
 			pEnt->close();
-
-
 	}
 	CDlgEntrance::DealIntersectEnt(GuideIds);
 }
@@ -1255,43 +1146,116 @@ void CDlgEntrance::ConnectionPoint(AcDbObjectIdArray& inputIds)
 {
 	std::vector<AcGePoint3d> points;
 	AcGePoint2dArray dealpoints;
-	/*
-	AcDbEntity *pEnt = NULL;
-	AcDbEntity *tempEnt = NULL;*/
-
 
 	for (int i = 0; i < inputIds.length(); i++)
 	{
 		AcDbEntity *pEnt = NULL;
-		AcDbEntity *tempEnt = NULL;
 		if (Acad::eOk != acdbOpenObject(pEnt, inputIds[i], AcDb::kForRead))
 			continue;
+		AcGeLineSeg3d *pGeLine=NULL;
+		AcGeCircArc3d *pGeArc=NULL;
+		bool flag = true;
+		if (pEnt->isKindOf(AcDbLine::desc()))
+		{
+			AcDbLine* pLine = AcDbLine::cast(pEnt);
+			pGeLine = new AcGeLineSeg3d(pLine->startPoint(), pLine->endPoint());
+		}
+		else if (pEnt->isKindOf(AcDbArc::desc()))
+		{
+			AcDbArc* pArc = AcDbArc::cast(pEnt);
+			pGeArc = new AcGeCircArc3d(pArc->center(),pArc->normal(),pArc->normal().perpVector(),pArc->radius(),pArc->startAngle(),pArc->endAngle());
+		}
+
+		AcGeLineSeg3d *pTempGeLine = NULL;
+		AcGeCircArc3d *pTempGeArc = NULL;
 		for (int j = 0; j < inputIds.length(); j++)
 		{
 			if (inputIds[j] == inputIds[i])
 				continue;
+			AcDbEntity *tempEnt = NULL;
 			if (Acad::eOk != acdbOpenObject(tempEnt, inputIds[j], AcDb::kForRead))
 				continue;
-			AcGePoint3dArray intersectPoints;
-			tempEnt->intersectWith(pEnt, AcDb::kOnBothOperands, intersectPoints);
-			if (intersectPoints.length() > 0)
+			
+			if (tempEnt->isKindOf(AcDbLine::desc()))
 			{
-				if (std::find(points.begin(), points.end(), intersectPoints[0]) == points.end())//存在
+				AcDbLine* pLine = AcDbLine::cast(tempEnt);
+				pTempGeLine = new AcGeLineSeg3d(pLine->startPoint(), pLine->endPoint());
+
+				
+			}
+			else if (tempEnt->isKindOf(AcDbArc::desc()))
+			{
+				AcDbArc* pArc = AcDbArc::cast(tempEnt);
+				pTempGeArc = new AcGeCircArc3d(pArc->center(), pArc->normal(), pArc->normal().perpVector(), pArc->radius(), pArc->startAngle(), pArc->endAngle());
+
+			}
+			
+			AcGeTol tol;
+			tol.setEqualPoint(1);
+			Adesk::Boolean bRec;
+			AcGePoint3d intersectPoint1;
+			AcGePoint3d intersectPoint2;
+			if (pGeLine)
+			{
+				if (pTempGeLine)
 				{
-					//tempEnt->close();
-					/*	continue;
-					}
-					else
-					{*/
-					points.push_back(intersectPoints[0]);
+					bRec = pGeLine->intersectWith(*pTempGeLine, intersectPoint1,tol);
+				}
+				else if(pTempGeArc)
+				{
+					int num = 1;
+					bRec = pTempGeArc->intersectWith(*pGeLine, num, intersectPoint1,intersectPoint2,tol);
+					
+				}
+			}
+			else if(pGeArc)
+			{
+				if (pTempGeLine)
+				{
+					int num = 1;
+					bRec = pGeArc->intersectWith(*pTempGeLine, num, intersectPoint1, intersectPoint2, tol);
+				}
+				else if (pTempGeArc)
+				{
+					int num = 1;
+					bRec =  pGeArc->intersectWith(*pTempGeArc, num, intersectPoint1, intersectPoint2, tol);
+				}
+
+			}
+		
+			if (bRec)
+			{
+				if (std::find(points.begin(), points.end(), intersectPoint1) == points.end())
+				{
+					points.push_back(intersectPoint1);
 				}
 
 			}
 			if (tempEnt)
 				tempEnt->close();
+			if (pTempGeLine)
+			{
+				delete pTempGeLine;
+				pTempGeLine = NULL;
+			}
+			if (pTempGeArc)
+			{
+				delete pTempGeArc;
+				pTempGeArc = NULL;
+			}
 		}
 		if (pEnt)
 			pEnt->close();
+		if (pGeLine)
+		{
+			delete pGeLine;
+			pGeLine = NULL;
+		}
+		if (pGeArc)
+		{
+			delete pGeArc;
+			pGeArc = NULL;
+		}
 	}
 
 	for (int i = 0; i < inputIds.length(); i++)
@@ -1306,14 +1270,14 @@ void CDlgEntrance::ConnectionPoint(AcDbObjectIdArray& inputIds)
 			AcDbLine *pLine = AcDbLine::cast(pEnt);
 			AcGePoint3d startpoint = pLine->startPoint();
 			AcGePoint3d endpoint = pLine->endPoint();
-			if (std::find(points.begin(), points.end(), startpoint) == points.end())//不存在
+			AcGePoint3dArray pts;
+			if (!findPoint(startpoint, endpoint, points, pts, 3))
 			{
-				dealpoints.append(AcGePoint2d(startpoint.x, startpoint.y));
-			}
-			if (std::find(points.begin(), points.end(), endpoint) == points.end())//不存在
-			{
-				dealpoints.append(AcGePoint2d(endpoint.x, endpoint.y));
-			}
+				for (int ptSizenum = 0; ptSizenum < pts.length(); ptSizenum++)
+				{
+					dealpoints.append(AcGePoint2d(pts[ptSizenum].x, pts[ptSizenum].y));
+				}
+			}	
 			if (pLine)
 				pLine->close();
 
@@ -1323,22 +1287,18 @@ void CDlgEntrance::ConnectionPoint(AcDbObjectIdArray& inputIds)
 
 			AcDbPolyline *pPolyLine = AcDbPolyline::cast(pEnt);
 			AcGePoint3d startpoint;
-			//pPolyLine->getStartPoint(startpoint);
-			int num = pPolyLine->numVerts();
-			AcGePoint2d temppoint;
-			pPolyLine->getPointAt(0, temppoint);
-			startpoint = AcGePoint3d(temppoint.x, temppoint.y, 0);
+			pPolyLine->getStartPoint(startpoint);
 			AcGePoint3d endpoint;
-			pPolyLine->getPointAt(num - 1, temppoint);
-			endpoint = AcGePoint3d(temppoint.x, temppoint.y, 0);
-			if (std::find(points.begin(), points.end(), startpoint) == points.end())
+			pPolyLine->getEndPoint(endpoint);
+			AcGePoint3dArray pts;
+			if (!findPoint(startpoint, endpoint, points, pts, 3))
 			{
-				dealpoints.append(AcGePoint2d(startpoint.x, startpoint.y));
+				for (int ptSizenum = 0; ptSizenum < pts.length(); ptSizenum++)
+				{
+					dealpoints.append(AcGePoint2d(pts[ptSizenum].x, pts[ptSizenum].y));
+				}
 			}
-			if (std::find(points.begin(), points.end(), endpoint) == points.end())
-			{
-				dealpoints.append(AcGePoint2d(endpoint.x, endpoint.y));
-			}
+			
 			if (pPolyLine)
 				pPolyLine->close();
 
@@ -1351,13 +1311,13 @@ void CDlgEntrance::ConnectionPoint(AcDbObjectIdArray& inputIds)
 			AcGePoint3d endpoint;
 			pArc->getStartPoint(startpoint);
 			pArc->getEndPoint(endpoint);
-			if (std::find(points.begin(), points.end(), startpoint) == points.end())
+			AcGePoint3dArray pts;
+			if (!findPoint(startpoint, endpoint, points, pts, 3))
 			{
-				dealpoints.append(AcGePoint2d(startpoint.x, startpoint.y));
-			}
-			if (std::find(points.begin(), points.end(), endpoint) == points.end())
-			{
-				dealpoints.append(AcGePoint2d(endpoint.x, endpoint.y));
+				for (int ptSizenum = 0; ptSizenum < pts.length(); ptSizenum++)
+				{
+					dealpoints.append(AcGePoint2d(pts[ptSizenum].x, pts[ptSizenum].y));
+				}
 			}
 			if (pArc)
 				pArc->close();
@@ -1492,6 +1452,34 @@ void CDlgEntrance::ConnectionPoint(AcDbObjectIdArray& inputIds)
 		}
 
 	}
+}
+
+bool CDlgEntrance::findPoint(AcGePoint3d& startpt, AcGePoint3d& endpt, std::vector<AcGePoint3d>& points, AcGePoint3dArray& outpts, int tol/*= 0 */)
+{
+	int num = 0;
+	for (int i=0; i<points.size();i++)
+	{
+		if (startpt.distanceTo(points[i]) <= tol)
+		{
+			outpts.append(endpt);
+			num++;
+		}
+		if (endpt.distanceTo(points[i]) <= tol)
+		{
+			outpts.append(startpt);
+			num++;
+		}
+	}
+	if (num >= 2)
+		return true;
+
+	if (num == 0)
+	{
+		outpts.append(startpt);
+		outpts.append(endpt);
+	}
+
+	return false;
 }
 
 bool CDlgEntrance::IsOnLine(AcGePoint2d& pt1, AcGePoint2d& pt2, AcGePoint2d& pt3)

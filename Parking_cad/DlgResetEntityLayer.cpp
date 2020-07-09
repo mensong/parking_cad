@@ -477,7 +477,7 @@ void CDlgResetEntityLayer::createCcombobox(NM_LISTVIEW  *pEditCtrl, CComboBox *c
 	Item = pEditCtrl->iItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
 	SubItem = pEditCtrl->iSubItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
 	havecreat = true;
-	createccomboboxobj->Create(WS_CHILD | WS_VISIBLE | CBS_DROPDOWN | CBS_OEMCONVERT, CRect(0, 0, 0, 0), this, IDC_COMBOX_CREATEID);
+	createccomboboxobj->Create(WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | CBS_OEMCONVERT, CRect(0, 0, 0, 0), this, IDC_COMBOX_CREATEID);
 	createccomboboxobj->SetFont(this->GetFont(), FALSE);//设置字体,不设置这里的话上面的字会很突兀的感觉
 	createccomboboxobj->SetParent(&m_list);//将list control设置为父窗口,生成的Ccombobox才能正确定位,这个也很重要
 	CRect  EditRect;
@@ -545,7 +545,7 @@ void CDlgResetEntityLayer::OnBnClickedButtonTrue()
 	if (flag)
 	{
 		AfxMessageBox(_T("完成！"));
-		OnClose();
+		OnCancel();
 	}
 
 }
