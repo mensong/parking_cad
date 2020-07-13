@@ -1688,10 +1688,10 @@ end
 <OverwriteCtrlPanel>1</OverwriteCtrlPanel>
 <OverwriteSC>1</OverwriteSC>
 <CreateCPEntry>1</CreateCPEntry>
-<RegKeyName>%ProductName%%ProductVer%</RegKeyName>
+<RegKeyName>%ProductName%</RegKeyName>
 <CPDesc>%ProductName%</CPDesc>
-<UseCustomCPIcon>0</UseCustomCPIcon>
-<CustCPIconFN/>
+<UseCustomCPIcon>1</UseCustomCPIcon>
+<CustCPIconFN>%AppFolder%\icon.ico</CustCPIconFN>
 <CustCPIconIndex>0</CustCPIconIndex>
 <CPSIPublisher>%CompanyName%</CPSIPublisher>
 <CPSIPublisherURL>%CompanyURL%</CPSIPublisherURL>
@@ -1709,13 +1709,13 @@ end
 <CreateAppFldSC>1</CreateAppFldSC>
 <AppFldSCDesc>Uninstall %ProductName%</AppFldSCDesc>
 <SCComment>Removes %ProductName% from your computer.</SCComment>
-<UseCustomAppFldSCIcon>0</UseCustomAppFldSCIcon>
-<AppFldCustomIconFN/>
+<UseCustomAppFldSCIcon>1</UseCustomAppFldSCIcon>
+<AppFldCustomIconFN>%AppFolder%\icon.ico</AppFldCustomIconFN>
 <AppFolderSCIconIndex>0</AppFolderSCIconIndex>
 <LFCreate>1</LFCreate>
 <LFFilename>%TempFolder%\%ProductName% Uninstall Log.txt</LFFilename>
 <LFCmdLineOverride>0</LFCmdLineOverride>
-<LFWriteMode>0</LFWriteMode>
+<LFWriteMode>1</LFWriteMode>
 <LFActionDetailLevel>1</LFActionDetailLevel>
 <BeforeScreens>
 <Screen>
@@ -2580,7 +2580,12 @@ end</Script>
 -- Defined in _SUF70_Global_Functions.lua
 -- Do not edit this script unless you know what your are doing
 g_HandleSystemReboot();
-</Script>
+
+-- Run reinstall
+path = INIFile.GetValue(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), "Reinstall", "path");
+if (String.Length(path) &gt; 0) then
+	File.Run(path, "", "", SW_SHOWNORMAL, false);
+end</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -2739,7 +2744,8 @@ g_HandleSystemReboot();
 <Event>
 <Name>On Startup</Name>
 <Args/>
-<Script>--首先卸载系统中已安装的版本
+<Script>
+--首先卸载系统中已安装的版本
 regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
 if (Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, regBasePath)) then
 	ask = Dialog.Message("卸载旧版本", "已存在旧版本，是否先卸载旧版本?", MB_YESNO, MB_ICONEXCLAMATION, MB_DEFBUTTON1);
@@ -2747,10 +2753,15 @@ if (Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, regBasePath)) then
 		Uninstaller = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", true);
 		UninstallData = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", true);
 		Shell.Execute(Uninstaller, "", UninstallData, "");
+		
+		-- 写reinstall信息
+		INIFile.SetValue(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), "Reinstall", "path", _SourceFilename);
 	end
 	Application.Exit();
 end
-</Script>
+
+-- 删除reinstall信息
+File.Delete(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), false, false, true);</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -2773,14 +2784,13 @@ end
 <Name>On Post Install</Name>
 <Args/>
 <Script>--新建快捷方式
-Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\OpenInCad.exe"), "", "", SessionVar.Expand("%AppFolder%\\icon.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);
+Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\CheckUpdate.exe"), "", "", SessionVar.Expand("%AppFolder%\\icon.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);
 
 --创建卸载信息，方便下次重安装时卸载
 regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
 Registry.CreateKey(HKEY_LOCAL_MACHINE, regBasePath);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", SessionVar.Expand("%AppFolder%\\uninstall.exe"), REG_SZ);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", SessionVar.Expand("\"/U:%AppFolder%\\Uninstall\\uninstall.xml\" \"/S\""), REG_SZ);
-Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", SessionVar.Expand("%ProductVer%"), REG_SZ);
 
 --复制公共文件
 AppDataPath = Registry.GetValue(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "AppData", true);
@@ -2791,7 +2801,8 @@ if not Folder.DoesExist(dataPath) then
 end
 params = "\""..SessionVar.Expand("%AppFolder%\\Support\\CommonData").."\" \""..dataPath.."\"";
 --Dialog.Message("", params);
-Shell.Execute(SessionVar.Expand("%AppFolder%\\Support\\CopyFiles.exe"), "open", params);</Script>
+Shell.Execute(SessionVar.Expand("%AppFolder%\\Support\\CopyFiles.exe"), "open", params);
+</Script>
 <BookMarks count="0">
 </BookMarks>
 </Event>
@@ -2845,7 +2856,7 @@ g_HandleSystemReboot();
 </SessionVar>
 <SessionVar>
 <Name>%ProductVer%</Name>
-<Value>1.2.2</Value>
+<Value>1.3.0</Value>
 <Type>1</Type>
 </SessionVar>
 <SessionVar>
@@ -2888,7 +2899,7 @@ g_HandleSystemReboot();
 <PostBuildProg/>
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
-<Filename>碧桂园车库智能设计系统V1.2.2.exe</Filename>
+<Filename>碧桂园车库智能设计系统V1.3.0.exe</Filename>
 <OutputFolder>D:\</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>0</CustomSegSize>

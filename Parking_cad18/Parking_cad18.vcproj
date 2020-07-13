@@ -849,6 +849,10 @@
 			Filter="rc;ico;bmp;cur;jpg;gif"
 			>
 			<File
+				RelativePath="..\Parking_cad\icon.ico"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\Parking_cad.rc"
 				>
 			</File>
@@ -1330,6 +1334,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath="..\Parking_cad\logo.png"
+			>
+		</File>
 		<File
 			RelativePath="..\Parking_cad\Parking_cad.aps"
 			>

@@ -1714,7 +1714,7 @@ template<> BOOL AFXAPI CompareElements<AcGePoint3d, AcGePoint3d>
 	{
 		// 获得当前图形的标注样式表
 		AcDbDimStyleTable *pDimStyleTbl = NULL;
-	Acad:; ErrorStatus es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
+		Acad::ErrorStatus es = pDb->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);
 		if (pDimStyleTbl->has(stylename))
 		{
 			pDimStyleTbl->close();//已经存在
