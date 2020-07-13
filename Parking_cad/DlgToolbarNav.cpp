@@ -88,7 +88,7 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	m_tree.SetItemData(hRoot, -1);
 	hChild = m_tree.InsertItem(_T(" ±ê×¼Â¥ÐÍ¿â"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("BGYBL "));
+	m_commands.push_back(_T("TBuilding "));
 	m_tree.Expand(hRoot, TVE_EXPAND);
 		
 	return TRUE;
