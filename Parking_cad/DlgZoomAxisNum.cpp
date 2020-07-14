@@ -25,7 +25,6 @@ void __stdcall CDlgZoomAxisNum::delayDownClick(WPARAM wp, LPARAM lp, void* anyVa
 	double updataValue = dScaleValue - dStepValue;
 	if (updataValue<=0)
 	{
-		acedAlert(_T("\nÖáºÅËõÐ¡³¬³ö·¶Î§£¡"));
 		return;
 	}
 	if (!COperaZoomAxisNumber::axisNumZoomOpera(updataValue))
