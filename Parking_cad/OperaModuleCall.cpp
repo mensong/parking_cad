@@ -48,12 +48,12 @@ void COperaModuleCall::mirrorJigshow(const CString& blockName)
 	if (vctJigEnt.size() < 1)
 		return;
 	bool staus = true;
+	CJigHelper jig;
+	jig.setDispPrompt(_T("请选择放置点或者输入H、V进行水平、垂直镜像显示："));
+	jig.SetBasePoint(insertPt);
+	jig.RegisterAsJigEntity(vctJigEnt);
 	do
 	{
-		CJigHelper jig;
-		jig.setDispPrompt(_T("请选择放置点或者输入H、V进行水平、垂直镜像显示："));
-		jig.SetBasePoint(insertPt);
-		jig.RegisterAsJigEntity(vctJigEnt);
 		CJigHelper::RESULT ec = jig.startJig();
 		if (ec == CJigHelper::RET_STRING)
 		{
