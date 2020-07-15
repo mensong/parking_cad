@@ -23,9 +23,14 @@ void __stdcall CDlgZoomAxisNum::delayDownClick(WPARAM wp, LPARAM lp, void* anyVa
 	Doc_Locker doc_locker;
 	double dScaleValue = pThis->getCurrentScale();
 	double updataValue = dScaleValue - dStepValue;
+	if (updataValue<=0)
+	{
+		return;
+	}
 	if (!COperaZoomAxisNumber::axisNumZoomOpera(updataValue))
 	{
 		acedAlert(_T("\nÖáºÅËõÐ¡²Ù×÷Ê§°Ü£¡"));
+		return;
 	}
 	double dNewScaleValue = pThis->getCurrentScale();
 	CString sNewScaleValue;
@@ -47,6 +52,7 @@ void __stdcall CDlgZoomAxisNum::delayUpClick(WPARAM wp, LPARAM lp, void* anyVal)
 	if (!COperaZoomAxisNumber::axisNumZoomOpera(updataValue))
 	{
 		acedAlert(_T("\nÖáºÅ·Å´ó²Ù×÷Ê§°Ü£¡"));
+		return;
 	}
 	double dNewScaleValue = pThis->getCurrentScale();
 	CString sNewScaleValue;

@@ -5,6 +5,12 @@
 #include <Convertor.h>
 #include "LibcurlHttp.h"
 #include "KV.h"
+#include "ParkingLogDef.h"
+
+void CParkingLog::Init()
+{
+	MessageCenter::registerMessage("add_log", _addLogHandle);
+}
 
 bool CParkingLog::AddLog(const CString& type, int error, const CString& descr,
 	int trigger_count /*= 0*/, CString& user_udid/*=_T("")*/)
@@ -47,4 +53,13 @@ bool CParkingLog::AddLogA(const std::string& type, int error, const std::string&
 {
 	return AddLog(GL::Ansi2WideByte(type.c_str()).c_str(), error, GL::Ansi2WideByte(descr.c_str()).c_str(),
 		trigger_count, CString(const_cast<TCHAR*>(GL::Ansi2WideByte(user_udid.c_str()).c_str())));
+}
+
+void CParkingLog::_addLogHandle(const char* name, void* data)
+{
+	ParkingLogContext* pContext = (ParkingLogContext*)data;
+
+	AddLog(pContext->type, pContext->error, pContext->descr, pContext->trigger_count, pContext->user_udid);
+
+	delete pContext;
 }

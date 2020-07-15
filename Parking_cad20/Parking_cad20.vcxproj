@@ -208,6 +208,7 @@
     <ClInclude Include="..\Parking_cad\PaletteSetToolbar.h" />
     <ClInclude Include="..\Parking_cad\PaletteToolbar.h" />
     <ClInclude Include="..\Parking_cad\ParkingLog.h" />
+    <ClInclude Include="..\Parking_cad\ParkingLogDef.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />
     <ClInclude Include="..\Parking_cad\resource.h" />
@@ -222,12 +223,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
-    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Parking_cad\icon.ico" />
+    <Image Include="..\Parking_cad\logo.png" />
     <Image Include="..\Parking_cad\zoom.ico" />
     <Image Include="..\Parking_cad\zoom_down.ico" />
     <Image Include="..\Parking_cad\zoom_up.ico" />

@@ -455,9 +455,6 @@
     <ClInclude Include="..\Parking_cad\DlgSliderTransparency.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgResetEntityLayer.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -468,6 +465,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaDimensionAdjustment.h">
+	<Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ParkingLogDef.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -492,6 +492,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="..\Parking_cad\icon.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\Parking_cad\logo.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

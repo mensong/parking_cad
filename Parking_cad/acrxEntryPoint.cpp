@@ -34,6 +34,7 @@
 #include "DlgBipLogin.h"
 #include "Authenticate\HardDiskSerial.h"
 #include "KV.h"
+#include "ParkingLog.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -73,6 +74,9 @@ public:
 		FreeLibrary(h);
 		acutPrintf(_T("%s\n"), szModuleName);
 #endif
+		
+		//初始化日志
+		CParkingLog::Init();
 
 		char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
@@ -123,8 +127,8 @@ public:
 			FileHelper::WriteFile(sCheckToobar.c_str(), "1", 1);//标记一下已经加载过图标
 		}
 		
-		//加载侧边栏
-		DBHelper::CallCADCommand(_T("aipaknav "));
+		//加载侧边栏		
+		DBHelper::CallCADCommandEx(_T("aipaknav"));
 
 		//设置cad窗口标题
 		CMDIFrameWnd *pCadWin = acedGetAcadFrame();
@@ -132,7 +136,7 @@ public:
 		sTitle.Format(_T("智能地库设计系统 登录:%s"), dlgLogin.userName);
 		pCadWin->SetWindowText(sTitle);
 		pCadWin->UpdateWindow();
-
+				
 		return (retCode) ;
 	}
 

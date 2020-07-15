@@ -456,6 +456,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaDimensionAdjustment.h">
+	  <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\ParkingLogDef.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -477,6 +480,11 @@
     <None Include="..\Parking_cad\zoom_up.ico">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="..\Parking_cad\Parking_cad.aps" />
+    <None Include="..\Parking_cad\icon.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Parking_cad\logo.png">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>
