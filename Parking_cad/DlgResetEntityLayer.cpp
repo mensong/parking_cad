@@ -28,6 +28,7 @@ void CDlgResetEntityLayer::DoDataExchange(CDataExchange* pDX)
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, m_list);
 	DDX_Control(pDX, IDC_COMBOX_CREATEID, m_comBox);
+	DDX_Control(pDX, IDC_STATIC1, m_standardlayersNum);
 }
 
 BOOL CDlgResetEntityLayer::OnInitDialog()
@@ -45,6 +46,7 @@ BOOL CDlgResetEntityLayer::OnInitDialog()
 	m_list.InsertColumn(1, _T("原图层"), LVCFMT_CENTER, rect.Width() * 0.48, 1);
 	m_list.InsertColumn(2, _T("目标图层"), LVCFMT_CENTER, rect.Width() * 0.48, 2);
 
+	standardlayersNum = 0;
 	std::map<std::string, std::string> keywordmap;
 	if (readConfig(keywordmap))
 	{
@@ -71,7 +73,12 @@ BOOL CDlgResetEntityLayer::OnInitDialog()
 			m_list.SetItemText(k, 2, _T("不处理"));
 		}
 
-	} 
+	
+	}
+	CString strNum;
+	strNum.Format(_T("当前标准图层总数为：%d"), standardlayersNum);
+	m_standardlayersNum.SetWindowText(strNum);
+
 	ComneedSave = false;
 	return TRUE;
 }
@@ -308,7 +315,11 @@ void CDlgResetEntityLayer::getAllLayers(std::map<std::string, std::string>& keyw
 			}
 		}
 		else
+		{
+			standardlayersNum++;
 			flag = false;
+		}
+			
 
 		if (flag)
 		{
@@ -482,11 +493,6 @@ void CDlgResetEntityLayer::OnNMClickList1(NMHDR *pNMHDR, LRESULT *pResult)
 		{
 			hideCombox();
 		}
-		else
-		{
-			m_list.SetItemText(m_ComItem, m_ComSubItem, _T("不处理"));
-			m_comBox.ShowWindow(SW_HIDE);
-		}
 		ComneedSave = false;
 
 		return;
@@ -575,7 +581,7 @@ void CDlgResetEntityLayer::OnBnClickedButtonTrue()
 
 	if (flag)
 	{
-		AfxMessageBox(_T("完成！"));
+		//AfxMessageBox(_T("完成！"));
 		OnCancel();
 	}
 

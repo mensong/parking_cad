@@ -28,6 +28,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 			
 private:
+	int standardlayersNum;
 	std::vector<std::string> vecTargetlayer;
 
 public:
@@ -50,4 +51,5 @@ public:
 	int m_ComItem; // 要加入Combo Box 的行   
 	int m_ComSubItem; //要加入Combo Box的列 为了区别才这样定义,下面的两个bool类型也一样  
 	bool  ComneedSave;	
+	CStatic m_standardlayersNum;
 };
