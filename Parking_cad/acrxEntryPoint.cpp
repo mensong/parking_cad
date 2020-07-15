@@ -127,8 +127,8 @@ public:
 			FileHelper::WriteFile(sCheckToobar.c_str(), "1", 1);//标记一下已经加载过图标
 		}
 		
-		//加载侧边栏
-		DBHelper::CallCADCommand(_T("aipaknav "));
+		//加载侧边栏		
+		DBHelper::CallCADCommandEx(_T("aipaknav"));
 
 		//设置cad窗口标题
 		CMDIFrameWnd *pCadWin = acedGetAcadFrame();
@@ -136,9 +136,7 @@ public:
 		sTitle.Format(_T("智能地库设计系统 登录:%s"), dlgLogin.userName);
 		pCadWin->SetWindowText(sTitle);
 		pCadWin->UpdateWindow();
-
-
-
+				
 		return (retCode) ;
 	}
 

@@ -39,32 +39,11 @@ bool COperaParkingSpaceShow::setDesKey(const std::string& key)
 
 std::string COperaParkingSpaceShow::decrypt(const std::string& code)
 {
-	/*char sDeBase64[2048];
-	int nDeBase64Len = 0;
-	base64_decode(code.c_str(), code.size(), (unsigned char*)sDeBase64, nDeBase64Len);
-	char sDeDes[1024];
-	int nDeDesLen = 0;
-	GL::DES_cbc_decrypt(sDeBase64, nDeBase64Len, sDeDes, nDeDesLen,
-		m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
-	sDeDes[nDeDesLen] = '\0';
-	std::string strResultUrl(sDeDes, sDeDes+strlen(sDeDes));
-	return strResultUrl;*/
-
 	return GL::DES_cbc_decrypt_base64(code.c_str(), code.size(), m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 }
 
 std::string COperaParkingSpaceShow::encrypt(const std::string& sData)
 {
-	/*char mmCode[1024];
-	int nOutLen = 0;
-	GL::DES_cbc_encrypt(sData.c_str(), sData.size(), mmCode, nOutLen, m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
-	char szBase64[1024 * 2];
-	int nBase64 = 0;
-	base64_encode((const unsigned char*)mmCode, nOutLen, szBase64, nBase64);
-	szBase64[nBase64] = '\0';
-	std::string code(szBase64, szBase64 + strlen(szBase64));
-	return code;*/
-
 	return GL::DES_cbc_encrypt_base64(sData.c_str(), sData.size(), m_desKey.c_str(), m_desKey.size(), m_desKey.c_str(), m_desKey.size());
 }
 
