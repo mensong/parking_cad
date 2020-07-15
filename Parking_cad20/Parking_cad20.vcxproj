@@ -78,6 +78,7 @@
     <ClCompile Include="..\Parking_cad\DlgAddFrame.cpp" />
     <ClCompile Include="..\Parking_cad\DlgAiParking.cpp" />
     <ClCompile Include="..\Parking_cad\DlgBipLogin.cpp" />
+    <ClCompile Include="..\Parking_cad\DlgDimensionAdjustment.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEntrance.cpp" />
     <ClCompile Include="..\Parking_cad\DlgEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\DlgFindCloud.cpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="..\Parking_cad\OperaAxleNetMaking.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCheck.cpp" />
     <ClCompile Include="..\Parking_cad\OperaCoreWall.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaDimensionAdjustment.cpp" />
     <ClCompile Include="..\Parking_cad\OperaEquipmentRoomSet.cpp" />
     <ClCompile Include="..\Parking_cad\OperaFindCloudShow.cpp" />
     <ClCompile Include="..\Parking_cad\OperaGergul.cpp" />
@@ -159,6 +161,7 @@
     <ClInclude Include="..\Parking_cad\DlgAddFrame.h" />
     <ClInclude Include="..\Parking_cad\DlgAiParking.h" />
     <ClInclude Include="..\Parking_cad\DlgBipLogin.h" />
+    <ClInclude Include="..\Parking_cad\DlgDimensionAdjustment.h" />
     <ClInclude Include="..\Parking_cad\DlgEntrance.h" />
     <ClInclude Include="..\Parking_cad\DlgEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\DlgFindCloud.h" />
@@ -187,6 +190,7 @@
     <ClInclude Include="..\Parking_cad\OperaAxleNetMaking.h" />
     <ClInclude Include="..\Parking_cad\OperaCheck.h" />
     <ClInclude Include="..\Parking_cad\OperaCoreWall.h" />
+    <ClInclude Include="..\Parking_cad\OperaDimensionAdjustment.h" />
     <ClInclude Include="..\Parking_cad\OperaEquipmentRoomSet.h" />
     <ClInclude Include="..\Parking_cad\OperaFindCloudShow.h" />
     <ClInclude Include="..\Parking_cad\OperaGergul.h" />

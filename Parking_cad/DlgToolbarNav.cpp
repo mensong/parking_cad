@@ -59,6 +59,9 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	hChild = m_tree.InsertItem(_T(" 轴号缩放"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("COZSN "));
+	hChild = m_tree.InsertItem(_T(" 缩放尺寸标注样式"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("CODADJIUST "));
 	hChild = m_tree.InsertItem(_T(" 出入口生成"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("SetEntranceData "));
