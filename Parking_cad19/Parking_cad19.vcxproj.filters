@@ -234,6 +234,12 @@
     <ClCompile Include="..\Parking_cad\OperaResetEntityLayer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\DlgDimensionAdjustment.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Parking_cad\OperaDimensionAdjustment.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Parking_cad\DlgWaiting.h">
@@ -444,6 +450,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaResetEntityLayer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\DlgDimensionAdjustment.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\OperaDimensionAdjustment.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

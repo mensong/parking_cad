@@ -395,6 +395,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgDimensionAdjustment.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgEntrance.cpp"
 				>
 			</File>
@@ -500,6 +504,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaCoreWall.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaDimensionAdjustment.cpp"
 				>
 			</File>
 			<File
@@ -648,6 +656,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\DlgDimensionAdjustment.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\DlgEntrance.h"
 				>
 			</File>
@@ -753,6 +765,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaCoreWall.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaDimensionAdjustment.h"
 				>
 			</File>
 			<File

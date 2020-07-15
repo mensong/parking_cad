@@ -61,6 +61,7 @@
 #define IDD_DLG_TOOLBAR                 147
 #define IDD_DIALOG_RESETENTITYLAYER     149
 #define IDI_ICON_AIPARK                 152
+#define IDD_DIALOG_DIMADJUSTMENT        153
 #define IDC_BUTTON_GETENDPOINT          161
 #define IDC_EDIT_SHOWENDPOINT           163
 #define IDC_EDIT_USER                   163
@@ -115,14 +116,16 @@
 #define IDC_BUTTON1                     221
 #define IDC_BUTTON_TRUE                 221
 #define IDC_STA_BK                      222
+#define IDC_BUTTON_NUM_UP               223
+#define IDC_BUTTON_NUM_DOWN             224
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        153
+#define _APS_NEXT_RESOURCE_VALUE        155
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         223
+#define _APS_NEXT_CONTROL_VALUE         225
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

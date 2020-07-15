@@ -27,6 +27,7 @@ void CDlgResetEntityLayer::DoDataExchange(CDataExchange* pDX)
 {
 	CAcUiDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, m_list);
+	DDX_Control(pDX, IDC_COMBOX_CREATEID, m_comBox);
 }
 
 BOOL CDlgResetEntityLayer::OnInitDialog()
@@ -39,10 +40,10 @@ BOOL CDlgResetEntityLayer::OnInitDialog()
 	// 获取编程语言列表视图控件的位置和大小   
 	m_list.GetClientRect(&rect);
 	// 为列表视图控件添加全行选中和栅格风格   
-	m_list.SetExtendedStyle(m_list.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_LIST /*| LVS_EX_CHECKBOXES*/);
+	m_list.SetExtendedStyle(m_list.GetExtendedStyle() | LVS_EX_FULLROWSELECT |LVS_LIST );
 	m_list.InsertColumn(0, _T(""), LVCFMT_RIGHT, rect.Width() * 0, 0);
-	m_list.InsertColumn(1, _T("原图层"), LVCFMT_CENTER, rect.Width() * 1 / 2, 1);
-	m_list.InsertColumn(2, _T("目标图层"), LVCFMT_CENTER, rect.Width() * 1 / 2, 2);
+	m_list.InsertColumn(1, _T("原图层"), LVCFMT_CENTER, rect.Width() * 0.48, 1);
+	m_list.InsertColumn(2, _T("目标图层"), LVCFMT_CENTER, rect.Width() * 0.48, 2);
 
 	std::map<std::string, std::string> keywordmap;
 	if (readConfig(keywordmap))
@@ -70,10 +71,8 @@ BOOL CDlgResetEntityLayer::OnInitDialog()
 			m_list.SetItemText(k, 2, _T("不处理"));
 		}
 
-	}
-
-	haveccomboboxcreate = false;//初始化标志位，表示还没有创建下拉列表框
-
+	} 
+	ComneedSave = false;
 	return TRUE;
 }
 
@@ -94,9 +93,61 @@ void CDlgResetEntityLayer::OnCancel()
 	delete this;
 }
 
-bool CDlgResetEntityLayer::readConfig(std::map<std::string, std::string>& keywordmap)
+BOOL CDlgResetEntityLayer::PreTranslateMessage(MSG* pMsg)
+{
+	if (pMsg->message == WM_MOUSEWHEEL)
+	{
+		if (ComneedSave)
+		{
+			hideCombox();
+			ComneedSave = false;
+		}
+		POINT pos;
+		GetCursorPos(&pos);
+		pMsg->hwnd = WindowFromPoint(pos)->GetSafeHwnd();
+	}
+	return CDialog::PreTranslateMessage(pMsg);
+}
+
+bool CDlgResetEntityLayer::readParkingConfig()
 {
 	std::string sConfigFile = GetUserDirA() + "ParkingConfig.json";
+	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
+	Json::Reader reader;
+	Json::Value root;
+
+	
+	if (reader.parse(sConfigStr, root))
+	{
+		vecTargetlayer.push_back("不处理");
+		Json::Value &jsLayerNames = root["layer_config"];
+		if (!jsLayerNames.isNull())
+		{
+			std::vector<std::string> vecLayernames = jsLayerNames.getMemberNames();
+			for (int i = 0; i < vecLayernames.size(); i++)
+			{
+				std::string  strLayerName = jsLayerNames[vecLayernames[i]]["layer_name"].asString();
+				vecTargetlayer.push_back(strLayerName);
+			}
+		}
+		else
+		{
+			acedAlert(_T("ParkingConfig配置文件字段格式不匹配！"));
+			return false;
+		}
+	}
+	else
+	{
+		acedAlert(_T("读取ParkingConfig配置文件失败！"));
+		return false;
+	}
+
+	return true;
+}
+
+bool CDlgResetEntityLayer::readConfig(std::map<std::string, std::string>& keywordmap)
+{
+	std::string sConfigFile = GetUserDirA() + "resetentitylayerconfig.json";
 	std::string sConfigStr = FileHelper::ReadText(sConfigFile.c_str());
 	Json::Reader reader;
 	Json::Value root;
@@ -105,19 +156,8 @@ bool CDlgResetEntityLayer::readConfig(std::map<std::string, std::string>& keywor
 	{
 		if (reader.parse(sConfigStr, root))
 		{
-			vecTargetlayer.push_back("不处理");
-			Json::Value &jsLayerNames = root["layer_config"];
-			if (!jsLayerNames.isNull())
-			{
-				std::vector<std::string> vecLayernames = jsLayerNames.getMemberNames();
-				for (int i = 0; i < vecLayernames.size(); i++)
-				{
-					std::string  strLayerName = root["layer_config"][vecLayernames[i]]["layer_name"].asString();
-					vecTargetlayer.push_back(strLayerName);
-				}
-			}
-			else
-				throw 1;
+			if (!readParkingConfig())
+				return false;
 
 			Json::Value &jsSideSlopeType = root["resetentitylayer"];
 			if (!jsSideSlopeType.isNull())
@@ -392,6 +432,29 @@ void CDlgResetEntityLayer::deleteLayer(CString& layername, AcDbDatabase *pDb/* =
 		pLayerTbl->close();
 }
 
+int CDlgResetEntityLayer::setCombox(CString& text)
+{
+	int num = 0;
+	m_comBox.ResetContent();
+	for (int i = 0; i < vecTargetlayer.size(); i++)
+	{
+		CString str = vecTargetlayer[i].c_str();
+		if (str.Compare(text) == 0)
+			num = i;
+		m_comBox.AddString(str);
+	}
+
+	return num;
+}
+
+void CDlgResetEntityLayer::hideCombox()
+{
+	CString strCom;
+	m_comBox.GetWindowText(strCom);
+	m_list.SetItemText(m_ComItem, m_ComSubItem, strCom);
+	m_comBox.ShowWindow(SW_HIDE);
+}
+
 LRESULT CDlgResetEntityLayer::OnAcadKeepFocus(WPARAM, LPARAM)
 {
 	return (TRUE);
@@ -401,109 +464,77 @@ BEGIN_MESSAGE_MAP(CDlgResetEntityLayer, CAcUiDialog)
 	ON_MESSAGE(WM_ACAD_KEEPFOCUS, OnAcadKeepFocus)
 	ON_NOTIFY(NM_CLICK, IDC_LIST1, &CDlgResetEntityLayer::OnNMClickList1)
 	ON_BN_CLICKED(IDC_BUTTON_TRUE, &CDlgResetEntityLayer::OnBnClickedButtonTrue)
-	ON_CBN_KILLFOCUS(IDC_COMBOX_CREATEID, &CDlgResetEntityLayer::OnKillfocusCcomboBox)
+	ON_CBN_SELCHANGE(IDC_COMBOX_CREATEID, &CDlgResetEntityLayer::OnCbnSelchangeComboxCreateid)
 END_MESSAGE_MAP()
 
 void CDlgResetEntityLayer::OnNMClickList1(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-	// TODO: 在此添加控件通知处理程序代码
+	// TODO: 在此添加控件通知处理程序代码  
+  
 	NM_LISTVIEW  *pEditCtrl = (NM_LISTVIEW *)pNMHDR;
-	if (pEditCtrl->iItem == -1)//点击到非工作区
+	CRect  ComRect;
+
+	if (pEditCtrl->iItem == -1)
 	{
-		if (haveccomboboxcreate == true)//如果之前创建了下拉列表框就销毁掉
+		//当点击其他区域时,显示内容  
+		if (ComneedSave)
 		{
-			distroyCcombobox(&m_list, &m_comBox, e_Item, e_SubItem);
-			haveccomboboxcreate = false;
-		}
-	}
-	else if (pEditCtrl->iSubItem != 2)
-	{
-		if (haveccomboboxcreate == true)//如果之前创建了编辑框就销毁掉
-		{
-			distroyCcombobox(&m_list, &m_comBox, e_Item, e_SubItem);
-			haveccomboboxcreate = false;
+			hideCombox();
 		}
 		else
 		{
-			e_Item = pEditCtrl->iItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
-			e_SubItem = pEditCtrl->iSubItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
+			m_list.SetItemText(m_ComItem, m_ComSubItem, _T("不处理"));
+			m_comBox.ShowWindow(SW_HIDE);
+		}
+		ComneedSave = false;
+
+		return;
+	}  
+	else if(pEditCtrl->iSubItem != 2)
+	{
+		if (ComneedSave)
+		{
+			hideCombox();
+			ComneedSave = false;
+			
+		}
+		else
+		{
+			m_ComItem = pEditCtrl->iItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
+			m_ComSubItem = pEditCtrl->iSubItem;
+			m_comBox.ShowWindow(SW_HIDE);
 		}
 	}
 	else
 	{
-		if (haveccomboboxcreate == true)
+		if (ComneedSave)
 		{
-			if (!(e_Item == pEditCtrl->iItem && e_SubItem == pEditCtrl->iSubItem))//如果点中的单元格不是之前创建好的
+			if (!(m_ComItem == pEditCtrl->iItem && m_ComSubItem == pEditCtrl->iSubItem))//如果点中的单元格不是之前创建好的
 			{
-				distroyCcombobox(&m_list, &m_comBox, e_Item, e_SubItem);
-				haveccomboboxcreate = false;
-				createCcombobox(pEditCtrl, &m_comBox, e_Item, e_SubItem, haveccomboboxcreate);//创建编辑框
-				for (int i = 0; i < vecTargetlayer.size(); i++)
-				{
-					CString str = vecTargetlayer[i].c_str();
-					m_comBox.AddString(str);
-				}
-				m_comBox.ShowDropDown();//自动下拉
-			}
-			else//点中的单元格是之前创建好的
-			{
-				m_comBox.SetFocus();//设置为焦点 
-			}
+				hideCombox();
+				ComneedSave = false;		
+			}		
 		}
 		else
 		{
-			e_Item = pEditCtrl->iItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
-			e_SubItem = pEditCtrl->iSubItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
-			createCcombobox(pEditCtrl, &m_comBox, e_Item, e_SubItem, haveccomboboxcreate);//创建编辑框
-			for (int i = 0; i < vecTargetlayer.size(); i++)
-			{
-				CString str = vecTargetlayer[i].c_str();
-				m_comBox.AddString(str);
-			}
-			m_comBox.ShowDropDown();//自动下拉
-		}
-	}
+			m_ComItem = pEditCtrl->iItem; //行数  
+			m_ComSubItem = pEditCtrl->iSubItem; //列数  
+			m_list.GetSubItemRect(m_ComItem, m_ComSubItem, LVIR_LABEL, ComRect);
 
+			CString  ComstrItem;
+			m_comBox.SetParent(&m_list);
+			ComstrItem = m_list.GetItemText(m_ComItem, m_ComSubItem);
+			ComRect.SetRect(ComRect.left, ComRect.top, ComRect.left + m_list.GetColumnWidth(m_ComSubItem), ComRect.bottom);
+			m_comBox.MoveWindow(&ComRect);
+			m_comBox.ShowWindow(SW_SHOW);
+			m_comBox.SetCurSel(setCombox(ComstrItem));	
+			m_comBox.ShowDropDown();
+			ComneedSave = true;
+		}	
+	}
 
 	*pResult = 0;
-}
-
-//创建单元格下拉列表框函数
-//pEditCtrl为列表对象指针，createccombobox为下拉列表框指针对象，
-//Item为创建单元格在列表中的行，SubItem则为列，havecreat为对象创建标准
-void CDlgResetEntityLayer::createCcombobox(NM_LISTVIEW  *pEditCtrl, CComboBox *createccomboboxobj, int &Item, int &SubItem, bool &havecreat)
-{
-	Item = pEditCtrl->iItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
-	SubItem = pEditCtrl->iSubItem;//将点中的单元格的行赋值给“刚编辑过的行”以便后期处理
-	havecreat = true;
-	createccomboboxobj->Create(WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | CBS_OEMCONVERT, CRect(0, 0, 0, 0), this, IDC_COMBOX_CREATEID);
-	createccomboboxobj->SetFont(this->GetFont(), FALSE);//设置字体,不设置这里的话上面的字会很突兀的感觉
-	createccomboboxobj->SetParent(&m_list);//将list control设置为父窗口,生成的Ccombobox才能正确定位,这个也很重要
-	CRect  EditRect;
-	m_list.GetSubItemRect(e_Item, e_SubItem, LVIR_LABEL, EditRect);//获取单元格的空间位置信息
-	EditRect.SetRect(EditRect.left + 1, EditRect.top + 1, EditRect.left + m_list.GetColumnWidth(e_SubItem) - 1, EditRect.bottom - 1);//+1和-1可以让编辑框不至于挡住列表框中的网格线
-	CString strItem = m_list.GetItemText(e_Item, e_SubItem);//获得相应单元格字符
-	createccomboboxobj->SetWindowText(strItem);//将单元格字符显示在编辑框上
-	createccomboboxobj->MoveWindow(&EditRect);//将编辑框位置放在相应单元格上
-	createccomboboxobj->ShowWindow(SW_SHOW);//显示编辑框在单元格上面
-}
-
-void CDlgResetEntityLayer::distroyCcombobox(CListCtrl *list, CComboBox* distroyccomboboxobj, int &Item, int &SubItem)
-{
-	CString meditdata;
-	distroyccomboboxobj->GetWindowTextW(meditdata);
-	list->SetItemText(Item, SubItem, meditdata);//更新相应单元格字符
-	distroyccomboboxobj->DestroyWindow();//销毁对象，有创建就要有销毁，不然会报错
-}
-
-void CDlgResetEntityLayer::OnKillfocusCcomboBox()
-{
-	if (haveccomboboxcreate == true)//如果之前创建了下拉列表框就销毁掉
-	{
-		distroyCcombobox(&m_list, &m_comBox, e_Item, e_SubItem);
-		haveccomboboxcreate = false;
-	}
 }
 
 void CDlgResetEntityLayer::OnBnClickedButtonTrue()
@@ -550,4 +581,12 @@ void CDlgResetEntityLayer::OnBnClickedButtonTrue()
 
 }
 
-
+void CDlgResetEntityLayer::OnCbnSelchangeComboxCreateid()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CString strCom;
+	m_comBox.GetWindowText(strCom);
+	m_list.SetItemText(m_ComItem, m_ComSubItem, strCom);
+	m_comBox.ShowWindow(SW_HIDE);
+	ComneedSave = false;
+}
