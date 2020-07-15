@@ -34,6 +34,7 @@
 #include "DlgBipLogin.h"
 #include "Authenticate\HardDiskSerial.h"
 #include "KV.h"
+#include "ParkingLog.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -73,6 +74,9 @@ public:
 		FreeLibrary(h);
 		acutPrintf(_T("%s\n"), szModuleName);
 #endif
+		
+		//初始化日志
+		CParkingLog::Init();
 
 		char serial[MAX_PATH];
 		HardDiskSerial::GetSerial(serial, MAX_PATH, 0);
@@ -132,6 +136,8 @@ public:
 		sTitle.Format(_T("智能地库设计系统 登录:%s"), dlgLogin.userName);
 		pCadWin->SetWindowText(sTitle);
 		pCadWin->UpdateWindow();
+
+
 
 		return (retCode) ;
 	}

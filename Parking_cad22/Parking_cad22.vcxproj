@@ -296,6 +296,7 @@
     <ClInclude Include="..\Parking_cad\PaletteSetToolbar.h" />
     <ClInclude Include="..\Parking_cad\PaletteToolbar.h" />
     <ClInclude Include="..\Parking_cad\ParkingLog.h" />
+    <ClInclude Include="..\Parking_cad\ParkingLogDef.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />
     <ClInclude Include="..\Parking_cad\resource.h" />
@@ -307,7 +308,6 @@
     <ClInclude Include="..\TangentReader\HackerLineStair.h" />
     <ClInclude Include="..\TangentReader\HackerRectStair.h" />
     <ClInclude Include="..\TangentReader\HackerWall_VD.h" />
-    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl" />
@@ -317,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Parking_cad\icon.ico" />
+    <Image Include="..\Parking_cad\logo.png" />
     <Image Include="..\Parking_cad\zoom.ico" />
     <Image Include="..\Parking_cad\zoom_down.ico" />
     <Image Include="..\Parking_cad\zoom_up.ico" />

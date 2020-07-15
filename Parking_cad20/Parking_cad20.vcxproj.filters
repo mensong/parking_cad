@@ -446,12 +446,14 @@
     <ClInclude Include="..\Parking_cad\OperaResetEntityLayer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Parking_cad\ParkingLogDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jsoncpp\src\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
-    <None Include="..\Parking_cad\Parking_cad.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Parking_cad\Parking_cad.rc">
@@ -466,6 +468,12 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="..\Parking_cad\zoom_up.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\Parking_cad\icon.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\Parking_cad\logo.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

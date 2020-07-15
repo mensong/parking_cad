@@ -34,18 +34,8 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	m_tree.ModifyStyle(0, TVS_SHOWSELALWAYS, 0);
 
 	HTREEITEM hRoot;
-	//
-	hRoot = m_tree.InsertItem(_T("设置"), TVI_ROOT, TVI_LAST);
-	m_tree.SelectItem(hRoot);
-	m_tree.SetItemData(hRoot, -1);
-	HTREEITEM hChild = m_tree.InsertItem(_T(" 图层设置"), hRoot, TVI_LAST);
-	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("SetConfig "));
-	hChild = m_tree.InsertItem(_T(" 标准图层转换"), hRoot, TVI_LAST);
-	m_tree.SetItemData(hChild, m_commands.size());
-	m_commands.push_back(_T("RSENTL "));
-	m_tree.Expand(hRoot, TVE_EXPAND);
-
+	HTREEITEM hChild;
+	
 	//
 	hRoot = m_tree.InsertItem(_T("智能地库方案"), TVI_ROOT, TVI_LAST);
 	m_tree.SetItemData(hRoot, -1);
@@ -90,7 +80,19 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("TBuilding "));
 	m_tree.Expand(hRoot, TVE_EXPAND);
-		
+	
+	//
+	hRoot = m_tree.InsertItem(_T("设置"), TVI_ROOT, TVI_LAST);
+	m_tree.SelectItem(hRoot);
+	m_tree.SetItemData(hRoot, -1);
+	hChild = m_tree.InsertItem(_T(" 图层设置"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("SetConfig "));
+	//hChild = m_tree.InsertItem(_T(" 标准图层转换"), hRoot, TVI_LAST);
+	//m_tree.SetItemData(hChild, m_commands.size());
+	//m_commands.push_back(_T("RSENTL "));
+	m_tree.Expand(hRoot, TVE_EXPAND);
+
 	return TRUE;
 }
 

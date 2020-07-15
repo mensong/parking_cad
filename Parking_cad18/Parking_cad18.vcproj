@@ -824,6 +824,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\ParkingLogDef.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\PictureEx.h"
 				>
 			</File>
@@ -1336,10 +1340,6 @@
 		</Filter>
 		<File
 			RelativePath="..\Parking_cad\logo.png"
-			>
-		</File>
-		<File
-			RelativePath="..\Parking_cad\Parking_cad.aps"
 			>
 		</File>
 	</Files>
