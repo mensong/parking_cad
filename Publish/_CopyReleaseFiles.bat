@@ -27,13 +27,13 @@ mkdir .\out\Support\CommonData\
 
 copy /Y /V ..\x64\Release\*.ini .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\*.LIN .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\NoPicture.bmp .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\Notice.html .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.bmp .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.html .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\*.dwg .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\ParkingConfig.json .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\parking_cad.cuix .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\parking_cad.mnr .\out\Support\CommonData\
-copy /Y /V ..\x64\Release\parking_cad_light.mnr .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.json .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.cuix .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.mnr .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.mnr .\out\Support\CommonData\
 
 copy /Y /V ..\x64\Release\loading.gif .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\exchange.ico .\out\Support\18\x64\

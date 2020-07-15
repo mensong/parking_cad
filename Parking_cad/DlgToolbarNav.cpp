@@ -91,9 +91,9 @@ BOOL CDlgToolbarNav::OnInitDialog()
 	hChild = m_tree.InsertItem(_T(" 图层设置"), hRoot, TVI_LAST);
 	m_tree.SetItemData(hChild, m_commands.size());
 	m_commands.push_back(_T("SetConfig "));
-	//hChild = m_tree.InsertItem(_T(" 标准图层转换"), hRoot, TVI_LAST);
-	//m_tree.SetItemData(hChild, m_commands.size());
-	//m_commands.push_back(_T("RSENTL "));
+	hChild = m_tree.InsertItem(_T(" 标准图层转换"), hRoot, TVI_LAST);
+	m_tree.SetItemData(hChild, m_commands.size());
+	m_commands.push_back(_T("RSENTL "));
 	m_tree.Expand(hRoot, TVE_EXPAND);
 
 	return TRUE;
