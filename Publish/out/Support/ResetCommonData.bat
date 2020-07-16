@@ -5,5 +5,3 @@ rd /S /Q %targetDir%
 mkdir %targetDir%
 mkdir %targetDir%
 CopyFiles.exe ".\CommonData" %targetDir%
-
-pause

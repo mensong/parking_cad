@@ -69,7 +69,7 @@ public:
 	afx_msg void OnNMDblclkLayerlist(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnNMClickLayerlist(NMHDR *pNMHDR, LRESULT *pResult);
 	void setListValueText(int hitRow, const CString& sCount, const CString& sAttribute, const CString& sLayerName,
-		const CString& sLayerColor,const CString& sLayerLinetype,const CString& sLayerLineWidth, const CString& sTransparency, const CString& isPrint = "是");
+		const CString& sLayerColor,const CString& sLayerLinetype,const CString& sLayerLineWidth, CString sTransparency, const CString& isPrint = "是");
 	std::map<CString, int> m_mpColumnName;
 	// 层表记录
 	CListCtrlCustom m_ctrlConfigSetList;

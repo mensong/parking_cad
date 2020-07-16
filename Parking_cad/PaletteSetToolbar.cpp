@@ -62,6 +62,8 @@ int CPaletteSetToolbar::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
+	EnableDocking(CBRS_ALIGN_ANY);//停靠位置必须在最前面
+
 	return 0;
 }
 
@@ -107,7 +109,7 @@ CPaletteSetToolbar* CPaletteSetToolbar::Instance()
 	if (!s_pPaletteSet)
 	{
 		s_pPaletteSet = new CPaletteSetToolbar;
-		CRect rect(0,0,120,400);	
+		CRect rect(0, 0, 120, 500);
 		s_pPaletteSet->Create(_T("智能地库设计系统"), WS_OVERLAPPED|WS_DLGFRAME, rect, acedGetAcadFrame());
 		s_pPaletteSet->EnableDocking(CBRS_ALIGN_ANY);
 		s_pPaletteSet->DockControlBar(AFX_IDW_DOCKBAR_LEFT, &rect);
@@ -125,41 +127,6 @@ void CPaletteSetToolbar::Destroy()
 
 		delete s_pPaletteSet;		
 	}
-}
-
-CRect CPaletteSetToolbar::DockRect()
-{
-	long nHight = 0;
-	if (!s_pPaletteSet)
-	{
-		CRect rect;
-		::GetWindowRect(acedGetAcadFrame()->m_hWndMDIClient, &rect);
-		acedGetAcadFrame()->ScreenToClient(&rect);
-
-		nHight = rect.bottom - rect.top;
-	}
-	else
-	{
-		CRect rect;
-		s_pPaletteSet->GetWindowRect(&rect);
-		s_pPaletteSet->ScreenToClient(&rect);
-		nHight = rect.bottom - rect.top;
-		if (s_pPaletteSet->IsFloating())
-		{
-			::GetWindowRect(acedGetAcadFrame()->m_hWndMDIClient, &rect);
-			acedGetAcadFrame()->ScreenToClient(&rect);
-
-			nHight = rect.bottom - rect.top;
-			if (nHight < 600)
-			{
-				nHight = 600;
-			}
-		}
-	}
-
-	CRect dockRect(0, 0, 300, nHight);
-
-	return dockRect;
 }
 
 void CPaletteSetToolbar::SetVisible(bool bVisible /*= true*/)

@@ -146,8 +146,8 @@ BOOL CDlgWaiting::OnInitDialog()
 
 	DlgHelper::AdjustPosition(this, DlgHelper::CENTER);
 
-	AcString strFile = DBHelper::GetArxDir() + _T("\\loading.gif");
-	if (m_ctrlGif.Load(strFile.constPtr()))
+	CString strFile = GetUserDir() + _T("\\loading.gif");
+	if (m_ctrlGif.Load(strFile))
 	{
 		m_ctrlGif.Draw();
 	}

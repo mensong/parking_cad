@@ -558,8 +558,12 @@ void CDlgSetConfig::OnNMClickLayerlist(NMHDR *pNMHDR, LRESULT *pResult)
 }
 
 void CDlgSetConfig::setListValueText(int hitRow, const CString& sCount, const CString& sAttribute, 
-	const CString& sLayerName, const CString& sLayerColor, const CString& sLayerLinetype, const CString& sLayerLineWidth,const CString& sTransparency, const CString& isPrint /*= "是"*/)
+	const CString& sLayerName, const CString& sLayerColor, const CString& sLayerLinetype, 
+	const CString& sLayerLineWidth, CString sTransparency, const CString& isPrint /*= "是"*/)
 {
+	if (sTransparency.IsEmpty())
+		sTransparency = _T("0%");
+
 	m_ctrlConfigSetList.InsertItem(hitRow, _T("")); // 插入行
 	m_ctrlConfigSetList.SetItemText(hitRow, 0, sCount);
 	m_ctrlConfigSetList.SetItemText(hitRow, 1, sAttribute);

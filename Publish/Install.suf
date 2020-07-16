@@ -2581,7 +2581,7 @@ end</Script>
 -- Do not edit this script unless you know what your are doing
 g_HandleSystemReboot();
 
--- Run reinstall
+-- 运行 reinstall
 path = INIFile.GetValue(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), "Reinstall", "path");
 if (String.Length(path) &gt; 0) then
 	File.Run(path, "", "", SW_SHOWNORMAL, false);
@@ -2755,7 +2755,18 @@ if (Registry.DoesKeyExist(HKEY_LOCAL_MACHINE, regBasePath)) then
 		Shell.Execute(Uninstaller, "", UninstallData, "");
 		
 		-- 写reinstall信息
+		LastVersion = Registry.GetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", true);
 		INIFile.SetValue(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), "Reinstall", "path", _SourceFilename);
+		INIFile.SetValue(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), "Reinstall", "last_version", LastVersion);
+		
+		--删除用户文件
+		if (String.Length(LastVersion) == 0 or LastVersion == "1.3.0" or LastVersion == "1.3.1") then
+			dataPath = SessionVar.Expand("%ApplicationDataFolder%\\%ProductName%");
+			dataPathBak = SessionVar.Expand("%ApplicationDataFolder%\\%ProductName%-"..LastVersion);
+			Folder.Rename(dataPath, dataPathBak);
+			Folder.DeleteTree(dataPath);
+		end
+		
 	end
 	Application.Exit();
 end
@@ -2791,11 +2802,13 @@ regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
 Registry.CreateKey(HKEY_LOCAL_MACHINE, regBasePath);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Uninstaller", SessionVar.Expand("%AppFolder%\\uninstall.exe"), REG_SZ);
 Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "UninstallData", SessionVar.Expand("\"/U:%AppFolder%\\Uninstall\\uninstall.xml\" \"/S\""), REG_SZ);
+Registry.SetValue(HKEY_LOCAL_MACHINE, regBasePath, "Version", SessionVar.Expand("%ProductVer%"), REG_SZ);
 
 --复制公共文件
-AppDataPath = Registry.GetValue(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "AppData", true);
---Dialog.Message("", AppDataPath);
-dataPath = AppDataPath..SessionVar.Expand("\\%ProductName%");
+--AppDataPath = Registry.GetValue(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "AppData", true);
+--dataPath = AppDataPath..SessionVar.Expand("\\%ProductName%");
+dataPath = SessionVar.Expand("%ApplicationDataFolder%\\%ProductName%");
+--Dialog.Message("", dataPath);
 if not Folder.DoesExist(dataPath) then
 	Folder.Create(dataPath);
 end

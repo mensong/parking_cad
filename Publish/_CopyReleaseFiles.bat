@@ -34,33 +34,25 @@ copy /Y /V ..\x64\Release\*.json .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\*.cuix .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\*.mnr .\out\Support\CommonData\
 copy /Y /V ..\x64\Release\*.mnr .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.gif .\out\Support\CommonData\
+copy /Y /V ..\x64\Release\*.ico .\out\Support\CommonData\
 
-copy /Y /V ..\x64\Release\loading.gif .\out\Support\18\x64\
-copy /Y /V ..\x64\Release\exchange.ico .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\*18.arx .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\*.dll .\out\Support\18\x64\
 copy /Y /V ..\x64\Release\*.exe .\out\Support\18\x64\
 
-copy /Y /V ..\x64\Release\loading.gif .\out\Support\19\x64\
-copy /Y /V ..\x64\Release\exchange.ico .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\*19.arx .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\*.dll .\out\Support\19\x64\
 copy /Y /V ..\x64\Release\*.exe .\out\Support\19\x64\
 
-copy /Y /V ..\x64\Release\loading.gif .\out\Support\20\x64\
-copy /Y /V ..\x64\Release\exchange.ico .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\*20.arx .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\*.dll .\out\Support\20\x64\
 copy /Y /V ..\x64\Release\*.exe .\out\Support\20\x64\
 
-copy /Y /V ..\x64\Release\loading.gif .\out\Support\21\x64\
-copy /Y /V ..\x64\Release\exchange.ico .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\*21.arx .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\*.dll .\out\Support\21\x64\
 copy /Y /V ..\x64\Release\*.exe .\out\Support\21\x64\
 
-copy /Y /V ..\x64\Release\loading.gif .\out\Support\22\x64\
-copy /Y /V ..\x64\Release\exchange.ico .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\*22.arx .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\*.dll .\out\Support\22\x64\
 copy /Y /V ..\x64\Release\*.exe .\out\Support\22\x64\

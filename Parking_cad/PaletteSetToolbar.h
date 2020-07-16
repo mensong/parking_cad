@@ -43,10 +43,7 @@ public:
 	static CPaletteSetToolbar* Instance();
 
 	static void Destroy();
-
-	// 停靠位置
-	static CRect DockRect();
-
+	
 public:
 	// 设置可见性
 	void SetVisible(bool bVisible = true);

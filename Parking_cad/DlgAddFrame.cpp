@@ -230,7 +230,7 @@ BOOL CDlgAddFrame::OnInitDialog()
 
 void CDlgAddFrame::setExchangeButtonImg()
 {
-	AcString ImgPath = DBHelper::GetArxDir() + _T("exchange.ico");
+	CString ImgPath = GetUserDir() + _T("exchange.ico");
 
 	HICON hBitmap = (HICON)::LoadImage(
 		NULL,
