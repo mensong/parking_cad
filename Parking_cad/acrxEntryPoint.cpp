@@ -119,7 +119,12 @@ public:
 		//加载工具条
 		AcString filepath = (GetUserDir() + _T("parking_cad.cuix")).GetString();
 		LoadCuix::Load(filepath);
-		std::string sCheckToobar = GetUserDirA() + "toolbar.shown";
+		char szCadVer[10];//保证每个CAD都有展示工具条的机会
+		sprintf(szCadVer, "%d.%d", DBHelper::CadMajorVersion(), DBHelper::CadMinorVersion());
+		std::string sCheckToobar = GetUserDirA() + szCadVer + "\\";
+		if (!FileHelper::IsFolderExistA(sCheckToobar))
+			FileHelper::CreateMultipleDirectoryA(sCheckToobar.c_str());
+		sCheckToobar += "toolbar.shown";
 		if (!FileHelper::IsFileExitstA(sCheckToobar))
 		{//只加载一次
 			LoadCuix::ShowToolbarAsyn(_T("智能地库"));
