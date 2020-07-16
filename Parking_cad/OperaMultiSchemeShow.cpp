@@ -34,8 +34,14 @@ void COperaMultiSchemeShow::Start()
 {
 	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str());
 	WD::SetTitle(_T("正在生成地库排布方案……"));
+	if (ms_prootDb==NULL)
+	{
+		WD::AppendMsg(_T("图形数据库拷贝失败"), WD::GetPos());
+		return;
+	}
 	creatNewDwg(ms_prootDb);
 	delete ms_prootDb;
+	ms_prootDb = NULL;
 }
 
 void COperaMultiSchemeShow::getJsonData(const std::string& json)
@@ -55,6 +61,11 @@ void COperaMultiSchemeShow::getRootDataBaseAndFileName(AcDbDatabase* backUpDataB
 	ms_newFileName = fileName;
 	ms_path = path;
 	ms_name = name;
+}
+
+void COperaMultiSchemeShow::getRootDataBase(AcDbDatabase* backUpDataBase)
+{
+	Acad::ErrorStatus es = backUpDataBase->wblock(ms_prootDb);
 }
 
 bool COperaMultiSchemeShow::addEntToDb(Json::Value json, AcDbDatabase *pDataBase, int scheme /*= 0*/)
@@ -348,22 +359,25 @@ void COperaMultiSchemeShow::creatNewDwg(AcDbDatabase *rootPDb /*= acdbCurDwg()*/
 	WD::AppendMsg(_T("保存方案图纸"));
 	const ACHAR* filter = _T("dwg文件|*.dwg|dxf文件|*.dxf|All Files(*.*)|*.*||");
 	WD::ShowWindow(SW_HIDE);
-	CFileDialog dlg(FALSE, NULL, ms_name, OFN_OVERWRITEPROMPT, filter, NULL);
+	m_num = getCurTimeNum();
+	CString useName = ms_name + m_num;
+	CFileDialog dlg(FALSE, NULL, useName, OFN_OVERWRITEPROMPT, filter, NULL);
 	dlg.m_ofn.lpstrInitialDir = ms_path;
+	CString useNewFileName = ms_newFileName + m_num;
 	if (dlg.DoModal() == IDOK)
 	{
-		ms_newFileName = dlg.GetPathName();
+		useNewFileName = dlg.GetPathName();
 	}
 	WD::ShowWindow(SW_SHOW);
-	es = pDb->saveAs(ms_newFileName);
+	es = pDb->saveAs(useNewFileName);
 	delete pDb;  //pDb不是数据库的常驻对象，必须手工销毁
-
+	pDb = NULL;
 	WD::AppendMsg(_T("打开排布后的图纸"));
 
 	Doc_Locker _locker;
 	//static ACHAR *pData = newFileName;//_T("C:\\Users\\admin\\Desktop\\CAD测试用图纸\\示例1.dwg");
 
-	AcApDocument* pDoc = DBHelper::OpenFile(ms_newFileName);
+	AcApDocument* pDoc = DBHelper::OpenFile(useNewFileName);
 
 	SetDelayExecute(ActiveDocExecute, 0, 0, (void*)pDoc, 1, false);
 
@@ -1110,6 +1124,32 @@ void COperaMultiSchemeShow::checkLaneDimPosition(const AcDbObjectIdArray& laneDi
 
 		pEntity->close();
 	}
+}
+
+CString COperaMultiSchemeShow::getCurTimeNum()
+{
+	CTime t = CTime::GetCurrentTime();
+	int day = t.GetDay(); //获得几号  
+	int year = t.GetYear(); //获取年份  
+	int month = t.GetMonth(); //获取当前月份  
+	int hour = t.GetHour(); //获取当前为几时   
+	int minute = t.GetMinute(); //获取分钟  
+	int second = t.GetSecond(); //获取秒  
+								//int w = t.GetDayOfWeek(); //获取星期几，注意1为星期天，7为星期六</span>
+	CString sDay;
+	sDay.Format(_T("%d"), day);
+	CString sYear;
+	sYear.Format(_T("%d"), year);
+	CString sMonth;
+	sMonth.Format(_T("%d"), month);
+	CString sHour;
+	sHour.Format(_T("%d"), hour);
+	CString sMinute;
+	sMinute.Format(_T("%d"), minute);
+	CString sSecond;
+	sSecond.Format(_T("%d"), second);
+	CString sNum = _T("_") + sYear + sMonth + sDay + sHour + sMinute + sSecond + _T(".dwg");
+	return sNum;
 }
 
 REG_CMD_P(COperaMultiSchemeShow, BGY, MultiSchemeShow);//多方案排布展示

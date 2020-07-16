@@ -141,10 +141,9 @@ private:
 	CMyEdit m_Non_Convexlevel;
 	// 分区编辑框
 	CEdit m_PartitionLineEdit;
-
-private:
 	// 显示车位排布终点数据
 	CEdit m_EditShowEndPoint;
+	AcDbDatabase *m_prootDb;
 public:
 	afx_msg void OnBnClickedButtonGetendpoint();
 	afx_msg void OnBnClickedButtonManyshow();
