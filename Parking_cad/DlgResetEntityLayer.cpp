@@ -224,58 +224,46 @@ bool CDlgResetEntityLayer::readConfig(std::map<std::string, std::string>& keywor
 
 }
 
-int CharInString(const wchar_t findedChar, const wchar_t* theChars)
+std::vector<std::string> myToupper(std::vector<std::string>& inputVect)
 {
-	int i = 0;
-	while (*theChars != '\0')
+	std::vector<std::string> tempVect;
+	for (int i=0; i<inputVect.size();i++)
 	{
-		if (findedChar == *theChars)
-		{
-			return i;
-			break;
-		}
-		++theChars;
-		++i;
+		std::string str = inputVect[i];
+		transform(str.begin(), str.end(), str.begin(), ::toupper);
+		tempVect.push_back(str);
 	}
-	return -1;
 
+	return tempVect;
 }
 
-bool StringA_In_StringB(const wchar_t* chars1, const wchar_t* chars2)
+std::set<std::string, struct _SortStrLen> getSet(std::map<std::string, std::string>& keywordmap)
 {
-	int indexOfFirstLetter = CharInString(*chars1, chars2);
-	if (indexOfFirstLetter != -1)
+	std::set<std::string, struct _SortStrLen> myset;
+	std::map<std::string, std::string>::iterator iter;
+	for (iter = keywordmap.begin(); iter != keywordmap.end(); iter++)
 	{
-		while (*chars1 != '\0'&& *++chars1 == chars2[++indexOfFirstLetter])
-		{
-		}
-		if (*chars1 == '\0')
-			return TRUE;
-		else
-		{
-			return FALSE;
-		}
+		std::string str = iter->first;
+		myset.insert(str);
 	}
-	else
-		return FALSE;
 
+	return myset;
 }
-ACHAR* ChartoACHAR(const char* src)
-{
-	size_t srcsize = strlen(src) + 1;
-	size_t newsize = srcsize;
-	size_t convertedChars = 0;
-	wchar_t *wcstring;
-	wcstring = new wchar_t[newsize];
-	mbstowcs_s(&convertedChars, wcstring, srcsize, src, _TRUNCATE);
 
-	return wcstring;
+std::string getValue(std::string& key, std::map<std::string, std::string>& keywordmap)
+{
+	if (keywordmap.count(key) > 0)
+		return keywordmap[key];
+
+	return "";
 }
 
 void CDlgResetEntityLayer::getAllLayers(std::map<std::string, std::string>& keywordmap, std::map<std::string, std::string>& outkeywordmap, std::vector<CString>& vecMismatchlayer)
 {
 	Doc_Locker _lock;
 	vecMismatchlayer.clear();
+	std::vector<std::string> transformTargetlayerVec = myToupper(vecTargetlayer);
+	std::set<std::string, struct _SortStrLen> myset = getSet(keywordmap);
 
 	Acad::ErrorStatus es;
 	AcDbLayerTable *pLayerTable = NULL;
@@ -300,15 +288,19 @@ void CDlgResetEntityLayer::getAllLayers(std::map<std::string, std::string>& keyw
 
 		bool flag = true;
 		std::string slayername = CT2A(csLayername);
-		if (std::find(vecTargetlayer.begin(), vecTargetlayer.end(), slayername) == vecTargetlayer.end())
+		std::string templayername = slayername;
+
+		transform(templayername.begin(), templayername.end(), templayername.begin(), ::toupper);
+		if (std::find(transformTargetlayerVec.begin(), transformTargetlayerVec.end(), templayername) == transformTargetlayerVec.end())
 		{
-			std::map<std::string, std::string>::iterator iter;
-			for (iter = keywordmap.begin(); iter != keywordmap.end(); iter++)
+			std::set<std::string, struct _SortStrLen>::iterator iter;
+			for (iter = myset.begin(); iter != myset.end(); iter++)
 			{
-				std::string str = iter->first;
-				if (StringA_In_StringB(ChartoACHAR(str.c_str()), pLayerName))
+				std::string str = *iter;
+				transform(str.begin(), str.end(), str.begin(), ::toupper);
+				if (strstr(templayername.c_str(), str.c_str()) != NULL)
 				{
-					outkeywordmap[slayername] = iter->second;
+					outkeywordmap[slayername] = getValue((std::string&)*iter,keywordmap);
 					flag = false;
 					break;
 				}
