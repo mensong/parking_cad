@@ -21,6 +21,7 @@ public:
 	static void getJsonData(const std::string& json);
 	static void setLayerNameToEntUse(const CString& sOutLineLayerName,const CString& sShearWallLayerName);
 	static void getRootDataBaseAndFileName(AcDbDatabase* backUpDataBase, const CString& fileName,const CString& path,const CString& name);
+	static void getRootDataBase(AcDbDatabase* backUpDataBase);
 	bool addEntToDb(Json::Value json, AcDbDatabase *pDataBase,int scheme = 0);
 	void creatNewParkingBlock(const double& dParkingLength, const double& dParkingWidth, CString& blockName, AcDbDatabase *pDb = acdbCurDwg());
 	void parkingShow(AcDbObjectId& parkingId, const AcGePoint2d& parkingShowPt, const double& parkingShowRotation, 
@@ -45,8 +46,10 @@ public:
 	bool parsingBlanksData(Json::Value& blanks, CString& sMsg, AcDbObjectIdArray& blankIds, AcDbDatabase *pDb = acdbCurDwg());
 	double getPicAttributeValue(std::map<std::string, double>& picAttributedata, const std::string& picAttributeTage);
 	void checkLaneDimPosition(const AcDbObjectIdArray& laneDimIds,const AcDbObjectIdArray& arrowIds, AcDbDatabase *pDb = acdbCurDwg());
+	CString getCurTimeNum();
 private:
 	Json::Value m_json;
 	LineSelect m_linesel;
+	CString m_num;
 };
 

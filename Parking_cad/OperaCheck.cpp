@@ -345,7 +345,7 @@ void COperaCheck::overlapShow()
 								polyIntersections[three].append(polyIntersections[three][0]);
 							}
 							double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-							if (sss < 50)
+							if (sss < 10000)
 							{
 								continue;
 							}
@@ -469,7 +469,7 @@ void COperaCheck::overlapShow()
 							AcGePoint2d look = polyIntersections[three][length];
 						}*/
 						double sss = GeHelper::CalcPolygonArea(polyIntersections[three]);
-						if (sss<50)
+						if (sss<10000)
 						{
 							continue;
 						}
