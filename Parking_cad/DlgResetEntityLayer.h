@@ -4,6 +4,17 @@
 #include <vector>
 #include "afxwin.h"
 
+struct _SortStrLen
+{
+	bool operator()(const std::string& _Left, const std::string& _Right) const
+	{
+		if (_Left.size() != _Right.size())
+			return (_Left.size() > _Right.size());
+		
+		return _Left < _Right;
+	}
+};
+
 // CDlgResetEntityLayer ¶Ô»°¿ò
 
 class CDlgResetEntityLayer : public CAcUiDialog
