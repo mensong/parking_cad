@@ -8,7 +8,12 @@
 
 void oneProcess(LONG id)
 {
-	WD::Create(NULL, id);
+	RECT rc;
+	rc.top = 0;
+	rc.left = 0;
+	rc.right = -1;
+	rc.bottom = -1;
+	WD::Create(NULL, id, &rc);
 	WD::Reset(id);
 
 	WD::SetTitle(_T("Test waiting......"), id);

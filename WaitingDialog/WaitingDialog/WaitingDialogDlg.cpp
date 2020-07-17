@@ -20,10 +20,26 @@ extern CWaitingDialogApp theApp;
 CWaitingDialogDlg::CWaitingDialogDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CWaitingDialogDlg::IDD, pParent)
 	, m_showTime(TRUE)
+	, m_id(0)
 {
-	//AfxMessageBox(theApp.m_lpCmdLine);
-	m_id = _ttol(theApp.m_lpCmdLine);
+	m_rc.left = -1;
+	m_rc.top = -1;
+	m_rc.right = -1;
+	m_rc.bottom = -1;
 
+	//WaitingDialog.exe id left top right bottom
+	if (__argc >= 2)
+		m_id = _ttol(__targv[1]);
+	if (__argc >= 4)
+	{
+		m_rc.left = _ttol(__targv[2]);
+		m_rc.top = _ttol(__targv[3]);
+	}
+	if (__argc >= 5)
+		m_rc.right = _ttol(__targv[4]);
+	if (__argc >= 6)
+		m_rc.bottom = _ttol(__targv[5]);
+	
 	WNDCLASS wc;
 	// 获取窗口类信息。MFC默认的所有对话框的窗口类名为 #32770
 	::GetClassInfo(AfxGetInstanceHandle(), _T("#32770"), &wc);
@@ -54,6 +70,7 @@ BEGIN_MESSAGE_MAP(CWaitingDialogDlg, CDialogEx)
 	ON_MESSAGE(WM_WD_GETRANGE, OnGetRange)
 	ON_MESSAGE(WM_WD_GETID, OnGetId)
 	ON_MESSAGE(WM_WD_SETSHOWTIME, OnSetShowTime)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -62,7 +79,7 @@ END_MESSAGE_MAP()
 BOOL CWaitingDialogDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-
+	
 	// 设置此对话框的图标。当应用程序主窗口不是对话框时，框架将自动
 	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
@@ -73,10 +90,11 @@ BOOL CWaitingDialogDlg::OnInitDialog()
 	m_staMsg.SetWindowText(_T(""));
 	m_staPrecent.SetWindowText(_T(""));
 
-	ModifyStyleEx(WS_EX_APPWINDOW,WS_EX_TOOLWINDOW);//从任务栏中去掉.
+	ModifyStyleEx(WS_EX_APPWINDOW, WS_EX_TOOLWINDOW);//从任务栏中去掉.
 	::SetWindowPos(this->GetSafeHwnd(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);//置顶
-	this->CenterWindow();
 
+	SetTimer(1, 0, NULL);
+	
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -123,7 +141,6 @@ HCURSOR CWaitingDialogDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-
 
 
 BOOL CWaitingDialogDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
@@ -183,6 +200,12 @@ BOOL CWaitingDialogDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 		this->SetWindowText(pTitle->title);
 		return TRUE;
 	}
+	else if (pCopyDataStruct->cbData == sizeof(WD_RECT))
+	{
+		WD_RECT* pRect = (WD_RECT*)pCopyDataStruct->lpData;
+		this->MoveWindow(&(pRect->rc));
+		return TRUE;
+	}
 
 	return CDialogEx::OnCopyData(pWnd, pCopyDataStruct);
 }
@@ -200,7 +223,7 @@ LRESULT CWaitingDialogDlg::OnReset(WPARAM wParam, LPARAM lParam)
 LRESULT CWaitingDialogDlg::OnMyClose(WPARAM wParam, LPARAM lParam)
 {
 	this->DestroyWindow();
-	return 0;
+	return S_OK;
 }
 
 LRESULT CWaitingDialogDlg::OnGetPos(WPARAM wParam, LPARAM lParam)
@@ -229,5 +252,35 @@ LRESULT CWaitingDialogDlg::OnGetId(WPARAM wParam, LPARAM lParam)
 LRESULT CWaitingDialogDlg::OnSetShowTime(WPARAM wParam, LPARAM lParam)
 {
 	m_showTime = (BOOL)lParam;
-	return 0;
+	return S_OK;
+}
+
+
+void CWaitingDialogDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	if (nIDEvent == 1)
+	{
+		KillTimer(nIDEvent);
+		if (m_rc.left != -1 && m_rc.top != -1)
+		{
+			if (m_rc.right == -1 || m_rc.bottom == -1)
+			{
+				RECT rc;
+				this->GetWindowRect(&rc);
+				if (m_rc.right == -1)
+					m_rc.right = m_rc.left + (rc.right - rc.left);
+				if (m_rc.bottom == -1)
+					m_rc.bottom = m_rc.top + (rc.bottom - rc.top);
+			}
+
+			MoveWindow(&m_rc);
+		}
+		else
+		{
+			CenterWindow();
+		}
+		return;
+	}
+
+	CDialogEx::OnTimer(nIDEvent);
 }

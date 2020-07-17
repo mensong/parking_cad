@@ -44,10 +44,12 @@ protected:
 
 public:
 	LONG m_id;
+	RECT m_rc;
 	BOOL m_showTime;
 
 	CProgressCtrl m_progressCtrl;
 	CStatic m_staPrecent;
 	CStatic m_staMsg;
 	CMyListBox m_listLog;
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };

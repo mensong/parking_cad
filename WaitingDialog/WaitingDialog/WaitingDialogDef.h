@@ -43,12 +43,32 @@ typedef struct WD_SETTITLE
 	}
 } WD_SETTITLE;
 
+typedef struct WD_RECT
+{
+	RECT rc;
+
+	WD_RECT()
+	{
+		memset(&rc, 0, sizeof(rc));
+	}
+
+	WD_RECT(LONG left, LONG top, LONG right, LONG bottom)
+	{
+		rc.left = left;
+		rc.top = top;
+		rc.right = right;
+		rc.bottom = bottom;
+	}
+} WD_RECT;
+
+
 #define WM_WD_RESET		(WM_USER + 1)
 #define WM_WD_CLOSE		(WM_USER + 2)
 #define WM_WD_GETPOS	(WM_USER + 3)
 #define WM_WD_GETRANGE	(WM_USER + 4)
 #define WM_WD_GETID		(WM_USER + 5)
 #define WM_WD_SETSHOWTIME (WM_USER + 6)
+
 
 typedef struct PROCESS_READ_WRITE
 {
@@ -69,7 +89,7 @@ class WD
 {
 public:
 	//创建窗口
-	static LRESULT Create(const char* exe = NULL, LONG id = NULL)
+	static LRESULT Create(const char* exe = NULL, LONG id = NULL, RECT* pRect = NULL)
 	{
 		HWND h = FindWindowById(id);
 		if (h)
@@ -81,14 +101,24 @@ public:
 		else
 			sExePath = "WaitingDialog.exe";
 
-		char sId[50] = { 0 };
-		ltoa(id, sId, 10);
-
+		char szParam[256] = { 0 };
+		if (!pRect)
+		{
+			ltoa(id, szParam, 10);
+		}
+		else
+		{
+			sprintf(szParam, "%d %d %d %d %d", id, pRect->left, pRect->top, pRect->right, pRect->bottom);
+		}
+		
 		unsigned long exitCode = 0;
-		bool b = Execute(sExePath.c_str(), sId, exitCode, NULL, 1000);
-
+		bool b = Execute(sExePath.c_str(), szParam, exitCode, NULL, 1000);
+				
 		if (b)
+		{			
 			return S_OK;
+		}
+
 		return -1;
 	}
 
@@ -103,8 +133,8 @@ public:
 		COPYDATASTRUCT cds;
 		cds.dwData = 0;
 		cds.lpData = &t;
-		cds.cbData = sizeof(WD_SETTITLE);
-		return SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
+		cds.cbData = sizeof(t);
+		return ::SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
 	}
 
 	//设置进度范围
@@ -118,8 +148,8 @@ public:
 		COPYDATASTRUCT cds;
 		cds.dwData = 0;
 		cds.lpData = &r;
-		cds.cbData = sizeof(WD_RANGE);
-		return SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
+		cds.cbData = sizeof(r);
+		return ::SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
 	}
 
 	//消息，curPos==-1时，进度+1
@@ -133,8 +163,8 @@ public:
 		COPYDATASTRUCT cds;
 		cds.dwData = 0;
 		cds.lpData = &m;
-		cds.cbData = sizeof(WD_MSG);
-		return SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
+		cds.cbData = sizeof(m);
+		return ::SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
 	}
 
 	//重置进度
@@ -144,7 +174,7 @@ public:
 		if (!h)
 			return -1;
 
-		return SendMessage(h, WM_WD_RESET, 0, 0);
+		return ::SendMessage(h, WM_WD_RESET, 0, 0);
 	}
 
 	//关闭窗口
@@ -154,7 +184,7 @@ public:
 		if (!h)
 			return -1;
 
-		return SendMessage(h, WM_WD_CLOSE, 0, 0);
+		return ::SendMessage(h, WM_WD_CLOSE, 0, 0);
 	}
 
 	//获得当前位置
@@ -164,7 +194,7 @@ public:
 		if (!h)
 			return -1;
 
-		return SendMessage(h, WM_WD_GETPOS, 0, 0);
+		return ::SendMessage(h, WM_WD_GETPOS, 0, 0);
 	}
 
 	//获得范围
@@ -174,8 +204,8 @@ public:
 		if (!h)
 			return -1;
 
-		mi = SendMessage(h, WM_WD_GETRANGE, 0, 1);
-		ma = SendMessage(h, WM_WD_GETRANGE, 0, 2);
+		mi = ::SendMessage(h, WM_WD_GETRANGE, 0, 1);
+		ma = ::SendMessage(h, WM_WD_GETRANGE, 0, 2);
 		return S_OK;
 	}
 
@@ -188,15 +218,39 @@ public:
 		return ::ShowWindow(h, nCmdShow);
 	}
 
-	static BOOL ShowTime(BOOL show, LONG id = NULL)
+	static LRESULT ShowTime(BOOL show, LONG id = NULL)
+	{
+		HWND h = FindWindowById(id);
+		if (!h)
+			return -1;
+
+		return ::SendMessage(h, WM_WD_SETSHOWTIME, 0, (LPARAM)show);
+	}
+	
+	static BOOL MoveWindow(LONG left, LONG top, LONG right = -1, LONG bottom = -1, LONG id = NULL)
 	{
 		HWND h = FindWindowById(id);
 		if (!h)
 			return FALSE;
 
-		return SendMessage(h, WM_WD_SETSHOWTIME, 0, (LPARAM)show);
+		if (right == 0 || bottom == 0)
+		{
+			RECT rcOld;
+			::GetWindowRect(h, &rcOld);
+			if (right == -1)
+				right = left + (rcOld.right - rcOld.left);
+			if (bottom == -1)
+				bottom = top + (rcOld.bottom - rcOld.top);
+		}
+		
+		WD_RECT rc(left, top, right, bottom);
+		COPYDATASTRUCT cds;
+		cds.dwData = 0;
+		cds.lpData = &rc;
+		cds.cbData = sizeof(rc);
+		return ::SendMessage(h, WM_COPYDATA, 0, (LPARAM)&cds);
 	}
-	
+
 protected:
 	static unsigned __stdcall _Execute_readAndWrite(void* arg)
 	{
