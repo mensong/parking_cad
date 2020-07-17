@@ -81,7 +81,7 @@ extern AcApDataManager<CDocData> DocVars ;
 #include <string>
 #include <ArxTools.h>
 #include "ParkingLog.h"
-#include "../WaitingDialog/WaitingDialog/WaitingDialogDef.h"
+#include <WaitingDialogDef.h>
 
 #define LOG_BIP_LOGIN _T("bip_login")
 #define LOG_MISS_MOD _T("miss_mod")

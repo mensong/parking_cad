@@ -16,9 +16,6 @@
     <Filter Include="jsoncpp">
       <UniqueIdentifier>{1b07ff92-494b-4c38-a23f-0e584607c233}</UniqueIdentifier>
     </Filter>
-    <Filter Include="pystring">
-      <UniqueIdentifier>{441b7562-b790-4ec4-897d-470d1398f5d6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TangentReader">
       <UniqueIdentifier>{1b679fe5-0779-4fe8-b4fb-ea7d16fed824}</UniqueIdentifier>
     </Filter>
@@ -35,9 +32,6 @@
     </ClCompile>
     <ClCompile Include="..\jsoncpp\src\json_writer.cpp">
       <Filter>jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\pystring\pystring.cpp">
-      <Filter>pystring</Filter>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\acrxEntryPoint.cpp">
       <Filter>源文件</Filter>
@@ -248,9 +242,6 @@
     <ClInclude Include="..\jsoncpp\src\version.h">
       <Filter>jsoncpp</Filter>
     </ClInclude>
-    <ClInclude Include="..\pystring\pystring.h">
-      <Filter>pystring</Filter>
-    </ClInclude>
     <ClInclude Include="..\Parking_cad\DlgWaiting.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -456,7 +447,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\OperaDimensionAdjustment.h">
-	  <Filter>头文件</Filter>
+      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\ParkingLogDef.h">
       <Filter>头文件</Filter>

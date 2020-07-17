@@ -1,7 +1,7 @@
 ::cd /d %~dp0
 
-start /wait build18.bat
-start /wait build19.bat
-start /wait build20.bat
-start /wait build21.bat
-start /wait build22.bat
+start /B build18.bat
+start /B build19.bat
+start /B build20.bat
+start /B build21.bat
+start /B build22.bat

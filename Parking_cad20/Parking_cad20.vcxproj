@@ -134,12 +134,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Parking_cad\TreeCtrlBT.cpp" />
-    <ClCompile Include="..\pystring\pystring.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="..\TangentReader\HackerArcStair.cpp" />
     <ClCompile Include="..\TangentReader\HackerColumn_VD.cpp" />
     <ClCompile Include="..\TangentReader\HackerLineStair.cpp" />
@@ -214,7 +208,6 @@
     <ClInclude Include="..\Parking_cad\resource.h" />
     <ClInclude Include="..\Parking_cad\StdAfx.h" />
     <ClInclude Include="..\Parking_cad\TreeCtrlBT.h" />
-    <ClInclude Include="..\pystring\pystring.h" />
     <ClInclude Include="..\TangentReader\HackerArcStair.h" />
     <ClInclude Include="..\TangentReader\HackerColumn_VD.h" />
     <ClInclude Include="..\TangentReader\HackerLineStair.h" />
@@ -282,10 +275,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);$(WD);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);$(WD);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);$(WD);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ArxTools);$(KV);$(L09);$(LibcurlHttp);$(lib_bipsignin);$(SolutionDir)jsoncpp/include;$(SolutionDir)pystring;$(SolutionDir)HackARX_SDK;$(Authenticate);$(WD);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
       <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</TreatWarningAsError>

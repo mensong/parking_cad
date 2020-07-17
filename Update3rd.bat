@@ -51,5 +51,16 @@ copy /Y /V "%LibcurlHttp%\..\x64\Release\*.*" ".\x64\Release\"
 copy /Y /V "%LibcurlHttp%\..\Win32\Debug\*.*" ".\Win32\Debug\"
 copy /Y /V "%LibcurlHttp%\..\Win32\Release\*.*" ".\Win32\Release\"
 
+::WD
+if not DEFINED WD ( 
+	echo ÇëÏÈ°²×°WD
+	goto :end 
+)
+copy /Y /V "%WD%\..\bin\*.*" ".\x64\Debug\"
+copy /Y /V "%WD%\..\bin\*.*" ".\x64\Release\"
+copy /Y /V "%WD%\..\bin\*.*" ".\Win32\Debug\"
+copy /Y /V "%WD%\..\bin\*.*" ".\Win32\Release\"
+
+
 :end
 pause
