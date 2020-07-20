@@ -32,7 +32,13 @@ COperaMultiSchemeShow::~COperaMultiSchemeShow()
 
 void COperaMultiSchemeShow::Start()
 {
-	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str());
+	const LONG wdWidth = 550;
+	RECT rc;
+	DlgHelper::GetAcadMDIClient()->GetWindowRect(&rc);
+	rc.left = rc.left + (rc.right - rc.left - wdWidth) / 2;
+	rc.right = rc.left + wdWidth;
+	rc.bottom = -1;
+	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str(), NULL, &rc);
 	WD::SetTitle(_T("正在生成地库排布方案……"));
 	if (ms_prootDb==NULL)
 	{

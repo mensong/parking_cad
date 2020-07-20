@@ -59,7 +59,13 @@ void __stdcall ExeObjsCllecoter(WPARAM wp, LPARAM lp, void* anyVal)
 
 void COperaCheck::Start()
 {
-	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str());
+	const LONG wdWidth = 550;
+	RECT rc;
+	DlgHelper::GetAcadMDIClient()->GetWindowRect(&rc);
+	rc.left = rc.left + (rc.right - rc.left - wdWidth) / 2;
+	rc.right = rc.left + wdWidth;
+	rc.bottom = -1;
+	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str(), NULL, &rc);
 	WD::SetTitle(_T("正在进行图纸检测中……"));
 	WD::SetRange(0, 4);
 	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
