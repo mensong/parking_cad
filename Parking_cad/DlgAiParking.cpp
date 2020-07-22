@@ -527,6 +527,10 @@ std::vector<AcGePoint2dArray> CDlgAiParking::getPlinePointForLayer(CString& laye
 			{
 				types.push_back(6);
 			}
+			else if(value == _T("自定义设备房"))
+			{
+				types.push_back(7);
+			}
 			else
 			{
 				pEntity->close();

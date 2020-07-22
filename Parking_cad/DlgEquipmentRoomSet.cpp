@@ -235,11 +235,12 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 		return;
 	//拿到用户选择多线段实体指针
 	AcDbObjectIdArray EquipmentIds;
+	AcDbObjectId EquipmentId;
 	for (int i = 0; i < vctEquipmentEnt.size(); i++) 
 	{
 		if (vctEquipmentEnt[i]->isKindOf(AcDbPolyline::desc()))
 		{
-			AcDbObjectId EquipmentId = vctEquipmentEnt[i]->objectId();
+			EquipmentId = vctEquipmentEnt[i]->objectId();
 			EquipmentIds.append(EquipmentId);
 			std::vector<AcGePoint2d> allPoints;//得到的所有点
 			AcDbVoidPtrArray entsTempArray;
@@ -331,6 +332,7 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 		}
 		vctEquipmentEnt[i]->close();
 	}
+	Acad::ErrorStatus es = DBHelper::AddXData(EquipmentId, _T("设备房类型"), _T("自定义设备房"));
 	CEquipmentroomTool::setEntToLayer(EquipmentIds);
 	CEquipmentroomTool::layerSet(_T("0"), 7);//操作完成回到零图层
 }
