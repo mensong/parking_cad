@@ -38,7 +38,12 @@ BOOL CDlgDimensionAdjustment::OnInitDialog()
 	HICON m_Icon_Zoom = AfxGetApp()->LoadIcon(IDI_ICON_ZOOM);//导入Icon资源，利用m_Icon_Zoom来存储句柄。
 	SetIcon(m_Icon_Zoom, FALSE);
 	m_edit_StepValue.SetWindowText(ms_sStepValue);
-
+	Doc_Locker doc_locker;
+	double dScaleValue = getCurrentScale();
+	CString sScaleValue;
+	sScaleValue.Format(_T("%.1f"), dScaleValue);
+	m_show_ScaleValue.SetWindowText(sScaleValue);
+	 
 	return TRUE;
 }
 
@@ -144,13 +149,15 @@ void __stdcall CDlgDimensionAdjustment::delayDownClick(WPARAM wp, LPARAM lp, voi
 	double dStepValue = _tstof(sStepValue.GetString());
 	Doc_Locker doc_locker;
 	double dScaleValue = pThis->getCurrentScale();
-	if (dScaleValue > 0)
+	double updataValue = dScaleValue - dStepValue;
+	if (updataValue <= 0)
 	{
-		double updataValue = dScaleValue - dStepValue;
-		if (!setCurrentScale(updataValue))
-		{
-			acedAlert(_T("\n修改车道轴网尺寸标注样式比例失败！"));
-		}
+		return;
+	}
+	if (!setCurrentScale(updataValue))
+	{
+		acedAlert(_T("\n修改车道轴网尺寸标注样式比例失败！"));
+		return;
 	}
 	double dNewScaleValue = pThis->getCurrentScale();
 	CString sNewScaleValue;
