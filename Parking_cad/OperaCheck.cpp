@@ -68,6 +68,7 @@ void COperaCheck::Start()
 	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str(), NULL, &rc);
 	WD::SetTitle(_T("正在进行图纸检测中……"));
 	WD::SetRange(0, 4);
+	WD::SetParentProcess(::GetCurrentProcessId());
 	CString sCloudLineLayer(CEquipmentroomTool::getLayerName("cloud_line").c_str());
 	AcDbObjectIdArray oldCloudIds = DBHelper::GetEntitiesByLayerName(sCloudLineLayer);
 	for (int i=0; i<oldCloudIds.length(); i++)

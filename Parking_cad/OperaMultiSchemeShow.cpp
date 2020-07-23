@@ -40,6 +40,7 @@ void COperaMultiSchemeShow::Start()
 	rc.bottom = -1;
 	WD::Create((DBHelper::GetArxDirA() + "WaitingDialog.exe").c_str(), NULL, &rc);
 	WD::SetTitle(_T("正在生成地库排布方案……"));
+	WD::SetParentProcess(::GetCurrentProcessId());
 	if (ms_prootDb==NULL)
 	{
 		WD::AppendMsg(_T("图形数据库拷贝失败"), WD::GetPos());
