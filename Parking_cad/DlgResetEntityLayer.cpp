@@ -35,7 +35,7 @@ BOOL CDlgResetEntityLayer::OnInitDialog()
 {
 	CAcUiDialog::OnInitDialog();
 
-	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
+	DlgHelper::AdjustPosition(this, DlgHelper::CENTER);
 
 	CRect rect;
 	// 获取编程语言列表视图控件的位置和大小   

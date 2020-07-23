@@ -82,8 +82,6 @@ CDlgAiParking::~CDlgAiParking() {
 
 void CDlgAiParking::Reload()
 {
-	DlgHelper::AdjustPosition(this, DlgHelper::TOP_LEFT);
-
 	loadoutlineLayers();
 	loadshearwallLayers();
 	//加载天正所有线型
@@ -281,7 +279,9 @@ BOOL CDlgAiParking::OnInitDialog()
 {
 	// TODO:  在此添加额外的初始化
 	BOOL bRet = CAcUiDialog::OnInitDialog();
-		
+	
+	DlgHelper::AdjustPosition(this, DlgHelper::CENTER);
+
 	m_outlineLayer.SetDroppedWidth(200);
 	m_shearwallLayer.SetDroppedWidth(200);
 
