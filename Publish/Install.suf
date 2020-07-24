@@ -2795,7 +2795,7 @@ File.Delete(_TempFolder..SessionVar.Expand("\\Reinstall_%ProductName%.ini"), fal
 <Name>On Post Install</Name>
 <Args/>
 <Script>--新建快捷方式
-Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\CheckUpdate.exe"), "", "", SessionVar.Expand("%AppFolder%\\icon.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);
+Shell.CreateShortcut(Shell.GetFolder(SHF_DESKTOP), SessionVar.Expand("%ProductName%"), SessionVar.Expand("%AppFolder%\\Launcher.exe"), "", "", SessionVar.Expand("%AppFolder%\\icon.ico"), 0, SW_SHOWNORMAL, nil, "", START_OPTION_DEFAULT);
 
 --创建卸载信息，方便下次重安装时卸载
 regBasePath = "Software\\"..SessionVar.Expand("%ProductName%");
