@@ -868,7 +868,10 @@ AcDbObjectId CEquipmentroomTool::CreateHatch( const CString& patName, const AcGe
 
 	// 显示填充对象
 	es = pHatch->evaluateHatch();
-
+	AcCmColor color;//设置图层颜色
+	int iLayerColor = 255;
+	color.setColorIndex(iLayerColor);
+	es = pHatch->setColor(color);
 	// 添加到模型空间
 	AcDbObjectId hatchId;
 	DBHelper::AppendToDatabase(hatchId, pHatch);

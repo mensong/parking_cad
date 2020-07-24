@@ -302,7 +302,8 @@ void CDlgEquipmentRoomSet::OnBnClickedButtonCustom()
 			allPartitionPts.push_back(onePlinePts);
 			AcGeDoubleArray test;
 			onePlinePts.append(onePlinePts[0]);
-			CEquipmentroomTool::CreateHatch( _T("ANSI31"), onePlinePts, test);
+			AcDbObjectId hatchId = CEquipmentroomTool::CreateHatch(_T("ANSI31"), onePlinePts, test);
+			EquipmentIds.append(hatchId);
 
 			//AcDbObjectId textId = CEquipmentroomTool::CreateText(tempPt2dto3d, sShowText, dArea / 10000);
 			AcDbExtents boundaryOfBlk;
