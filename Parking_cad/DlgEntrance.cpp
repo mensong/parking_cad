@@ -122,43 +122,46 @@ void CDlgEntrance::OnBnClickedOk()
 	CEquipmentroomTool::creatLayerByjson("lane_center_line_and_driving_direction");
 	CEquipmentroomTool::creatLayerByjson("entrance");
 	creatEntrance(dBasementHeight, dEtranceWidth);
-	//std::vector<AcDbEntity*> blockEnts;
-	//for (int i = 0; i < m_addBlockIds.length(); i++)
-	//{
-	//	AcDbEntity *pEnt = NULL;
-	//	acdbOpenObject(pEnt, m_addBlockIds[i], AcDb::kForWrite);
-	//	//判断自定义实体的类型
-	//	if (pEnt == NULL)
-	//		continue;
-	//	blockEnts.push_back(pEnt);
-	//}
-	//if (blockEnts.size() < 1)
-	//	return;
 
-	//CString sBlockName = _T("entrance");
-	//int iCount = 0;
-	//while (CEquipmentroomTool::hasNameOfBlock(sBlockName))
-	//{
-	//	iCount++;
-	//	CString sCount;
-	//	sCount.Format(_T("%d"), iCount);
-	//	sBlockName += sCount;
-	//}
-	//if (!DBHelper::CreateBlock(sBlockName, blockEnts))
-	//{
-	//	acutPrintf(_T("\n创建出入口图块失败！"));
-	//	return;
-	//}
-	//for (int j = 0; j < blockEnts.size(); j++)
-	//{
-	//	blockEnts[j]->erase();
-	//	blockEnts[j]->close();
-	//}
-	//AcDbObjectId blockId;
-	//DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
-	//CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
-	//bool es = DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
-	//CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
+	std::vector<AcDbEntity*> blockEnts;
+	for (int i = 0; i < m_addBlockIds.length(); i++)
+	{
+		AcDbEntity *pEnt = NULL;
+		acdbOpenObject(pEnt, m_addBlockIds[i], AcDb::kForWrite);
+		//判断自定义实体的类型
+		if (pEnt == NULL)
+			continue;
+		blockEnts.push_back(pEnt);
+	}
+	if (blockEnts.size() < 1)
+		return;
+
+	CString sBlockName = _T("entrance");
+	int iCount = 0;
+	while (CEquipmentroomTool::hasNameOfBlock(sBlockName))
+	{
+		iCount++;
+		CString sCount;
+		sCount.Format(_T("%d"), iCount);
+		sBlockName += sCount;
+	}
+	Acad::ErrorStatus es = DBHelper::CreateBlock(sBlockName, blockEnts);
+	if (es != eOk)
+	{
+		acutPrintf(_T("\n创建出入口图块失败！"));
+		return;
+	}
+	for (int j = 0; j < blockEnts.size(); j++)
+	{
+		blockEnts[j]->erase();
+		//blockEnts[j]->close();
+	}
+	AcDbObjectId blockId;
+	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
+	CString sEntranceLayer(CEquipmentroomTool::getLayerName("entrance").c_str());
+	es = DBHelper::AddXRecord(blockId, _T("实体"), _T("出入口"));
+	CEquipmentroomTool::setEntToLayer(blockId, sEntranceLayer);
+
 	CAcUiDialog::OnOK();
 	ms_sBasementHeight = sBasementHeight;
 	ms_sEntranceWidth = sEtranceWidth;
