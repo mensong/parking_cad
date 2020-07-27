@@ -1688,7 +1688,7 @@ bool CEquipmentroomTool::hasNameOfBlock(CString sBlockName)
 {
 	// 获得当前数据库的块表
 	AcDbBlockTable *pBlkTbl = NULL;
-	if (acdbCurDwg()->getBlockTable(pBlkTbl, AcDb::kForWrite) != Acad::eOk)
+	if (acdbCurDwg()->getBlockTable(pBlkTbl, AcDb::kForRead) != Acad::eOk)
 		return false;
 	// 查找用户指定的块定义是否存在
 	if (pBlkTbl->has(sBlockName))
