@@ -154,7 +154,7 @@ void CDlgEntrance::OnBnClickedOk()
 	for (int j = 0; j < blockEnts.size(); j++)
 	{
 		blockEnts[j]->erase();
-		//blockEnts[j]->close();
+		blockEnts[j]->close();
 	}
 	AcDbObjectId blockId;
 	DBHelper::InsertBlkRef(blockId, sBlockName, AcGePoint3d::kOrigin);
