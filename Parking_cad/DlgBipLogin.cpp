@@ -214,6 +214,7 @@ void CDlgBipLogin::OnBnClickedOk()
 					std::string jreg_time = js["reg_time"].asString();
 					std::string jlast_signin_time = js["last_signin_time"].asString();
 					int jsignin_count = js["signin_count"].asInt();
+					std::string jexpire_time = js["expire_time"].asString();
 
 					std::wstring wName = GL::Utf82WideByte(jname.c_str());
 					if (jallow == 1)
@@ -234,9 +235,13 @@ void CDlgBipLogin::OnBnClickedOk()
 
 						loginSuccess = true;
 					}
-					else
+					else if (jallow == 2)
 					{
 						AfxMessageBox(_T("未开通用户权限，请联系管理员。"));
+					}
+					else if (jallow == 3)
+					{
+						AfxMessageBox(_T("用户已过期，请联系管理员。"));
 					}
 				}					
 			}
