@@ -1818,10 +1818,7 @@ void CDlgEntrance::changeLine2Polyline(AcDbObjectIdArray targetEntIds)
 			changeColorIds.append(polyId);
 			pEnt->erase();
 		}
-		else
-		{
-			pEnt->close();
-		}
+		pEnt->close();
 	}
 	AcDbEntity *pchangeEnt = NULL;
 	for (int size = 0; size < changeColorIds.length(); size++)
