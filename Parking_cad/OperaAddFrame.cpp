@@ -436,9 +436,14 @@ std::string COperaAddFrame::setPicAttributeData(double SPvalue, double SPF1value
 
 	double SPFvalue = (SPF1value / 1000000) + (SPF2value / 1000000) + SPF3value + SPF4value + SPF5value;
 	double SPTvalue = (SPvalue/ 1000000) - SPFvalue;
-	double JSPCvalue = SPTvalue / CPvalue;
-	double SPCvalue = (SPTvalue + (SPF1value / 1000000) + (SPF2value/ 1000000)) / CPvalue;
-
+	double JSPCvalue = 0;
+	double SPCvalue = 0;
+	if (CPvalue!=0)
+	{
+		JSPCvalue = SPTvalue / CPvalue;
+		SPCvalue = (SPTvalue + (SPF1value / 1000000) + (SPF2value / 1000000)) / CPvalue;
+	}
+	
 	std::string sAttributeData = setStringData(SPvalue/ 1000000, "SP") + "|" + setStringData(SPTvalue, "SPT") + "|"
 		+ setStringData(SPFvalue, "SPF") + "|" + setStringData((SPF1value / 1000000), "SPF1") + "|"
 		+ setStringData(SPF2value/ 1000000, "SPF2") + "|" + setStringData(SPF3value, "SPF3") + "|"
