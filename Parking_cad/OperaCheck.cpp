@@ -237,6 +237,46 @@ bool COperaCheck::getDataforJson(const std::string& json, CString& sMsg)
 }
 
 
+AcGePoint2dArray COperaCheck::curvePartPointsHandle(AcGePoint2dArray& plinePts, const double& minArcLength)
+{
+	AcGePoint2dArray deletePts;
+	AcGePoint2dArray usePts;
+	for (int i=0; i<plinePts.length()-1; i++)
+	{
+		AcGePoint2d pt1 = plinePts[i];
+		AcGePoint2d pt2 = plinePts[i + 1];
+		if (deletePts.contains(plinePts[i]))
+		{
+			continue;
+		}
+		usePts.append(plinePts[i]);
+		double distance = plinePts[i].distanceTo(plinePts[i + 1]);
+		if (distance<minArcLength)
+		{
+			int n = i + 1;
+			deletePts.append(plinePts[i + 1]);
+			while (distance<minArcLength)
+			{
+				n++;
+				distance = plinePts[i].distanceTo(plinePts[n]);
+				if (distance<minArcLength)
+				{
+					deletePts.append(plinePts[n]);
+				}
+			}
+		}
+	}
+	if (usePts[usePts.length() - 1] != usePts[0])
+	{
+		usePts.append(usePts[0]);
+	}
+	int size = usePts.length();
+	AcGePoint2d start = usePts[0];
+	AcGePoint2d mid = usePts[1];
+	AcGePoint2d end = usePts[usePts.length()-1];
+	return usePts;
+}
+
 bool COperaCheck::jugeCloudDirection(const AcGePoint2dArray &targetPts)
 {
 	double d = 0;
@@ -255,7 +295,7 @@ bool COperaCheck::jugeCloudDirection(const AcGePoint2dArray &targetPts)
 
 }
 
-void COperaCheck::blankCheckShow(const AcGePoint2dArray& blankCheckPts, AcDbObjectId& blankId, AcDbDatabase *pDb /*= acdbCurDwg()*/)
+void COperaCheck::blankCheckShow(AcGePoint2dArray& blankCheckPts, AcDbObjectId& blankId, AcDbDatabase *pDb /*= acdbCurDwg()*/)
 {
 	CEquipmentroomTool::creatLayerByjson("cloud_line",pDb);
 	AcGePoint2dArray plineExtentPts = getPlineExtentPts(blankCheckPts);
@@ -621,7 +661,7 @@ AcGePoint2dArray COperaCheck::getPlineExtentPts(AcGePoint2dArray plinePts)
 	return plineExtentPts;
 }
 
-void COperaCheck::creatCloudLine(const AcGePoint2dArray& plineExtentPts, const AcGePoint2dArray& plinePts, AcDbObjectId& cloudId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
+void COperaCheck::creatCloudLine(const AcGePoint2dArray& plineExtentPts, AcGePoint2dArray& plinePts, AcDbObjectId& cloudId, AcDbDatabase *pDb/*= acdbCurDwg()*/)
 {
 	//TODO: 杨兵
 	AcGePoint2d minPoint = plineExtentPts[0];
@@ -637,12 +677,13 @@ void COperaCheck::creatCloudLine(const AcGePoint2dArray& plineExtentPts, const A
 	double startWidth = distance / 100;
 
 	AcGePoint2dArray plineUsePts;
-
+	double limitArcLength = (minArcLength + maxArcLength) / 2;
+	AcGePoint2dArray  returnPts = curvePartPointsHandle(plinePts, limitArcLength);
 	//获取到云线点组
-	for (int length = 0; length < plinePts.length() - 1; length++)
+	for (int length = 0; length < returnPts.length() - 1; length++)
 	{
-		AcGePoint2dArray cloudArcPt = COperaCheck::getLineOtherPoint(plinePts[length], plinePts[length + 1], minArcLength, maxArcLength);
-		plineUsePts.append(plinePts[length]);
+		AcGePoint2dArray cloudArcPt = COperaCheck::getLineOtherPoint(returnPts[length], returnPts[length + 1], minArcLength, maxArcLength);
+		plineUsePts.append(returnPts[length]);
 		for (int size = 0; size < cloudArcPt.length(); size++)
 		{
 			AcGePoint2d look = cloudArcPt[size];

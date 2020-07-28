@@ -14,9 +14,9 @@ public:
 	static std::string ms_strGetCheckUrl;
 	static CString ms_shearWallLayerName;
 	static void setShearWallLayerName(const CString& layerName);
-	static void blankCheckShow(const AcGePoint2dArray& blankCheckPts,AcDbObjectId& blankId, AcDbDatabase *pDb = acdbCurDwg());
+	static void blankCheckShow(AcGePoint2dArray& blankCheckPts,AcDbObjectId& blankId, AcDbDatabase *pDb = acdbCurDwg());
 	static AcGePoint2dArray getPlineExtentPts(AcGePoint2dArray plinePts);
-	static void creatCloudLine(const AcGePoint2dArray& plineExtentPts, const AcGePoint2dArray& plinePts, AcDbObjectId& cloudId, AcDbDatabase *pDb = acdbCurDwg());
+	static void creatCloudLine(const AcGePoint2dArray& plineExtentPts, AcGePoint2dArray& plinePts, AcDbObjectId& cloudId, AcDbDatabase *pDb = acdbCurDwg());
 	static void setCloudLineWidth(AcDbObjectId cloudLineId);
 	static void setCurrentLayer(CString layerName);
 	static AcGePoint2dArray getLineOtherPoint(const AcGePoint2d& lineStartPoint,const AcGePoint2d& lineEndPoint,const double& minArcLength, const double& maxArcLength);
@@ -31,5 +31,6 @@ public:
 	CString doubleToCString(double num);
 	int getCheckData(std::string& sMsg, std::string& json);
 	bool getDataforJson(const std::string& json, CString& sMsg);
+	static AcGePoint2dArray curvePartPointsHandle(AcGePoint2dArray& plinePts,const double& minArcLength);
 };
 
