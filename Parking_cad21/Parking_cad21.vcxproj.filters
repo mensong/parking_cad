@@ -234,6 +234,9 @@
     <ClCompile Include="..\Parking_cad\OperaDimensionAdjustment.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Parking_cad\RegOperator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\jsoncpp\src\json_tool.h">
@@ -447,6 +450,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Parking_cad\ParkingLogDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Parking_cad\RegOperator.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

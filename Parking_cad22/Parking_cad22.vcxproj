@@ -220,6 +220,7 @@
     <ClCompile Include="..\Parking_cad\Parking_cad.cpp" />
     <ClCompile Include="..\Parking_cad\PictureEx.cpp" />
     <ClCompile Include="..\Parking_cad\PointKey.cpp" />
+    <ClCompile Include="..\Parking_cad\RegOperator.cpp" />
     <ClCompile Include="..\Parking_cad\StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -297,6 +298,7 @@
     <ClInclude Include="..\Parking_cad\ParkingLogDef.h" />
     <ClInclude Include="..\Parking_cad\PictureEx.h" />
     <ClInclude Include="..\Parking_cad\PointKey.h" />
+    <ClInclude Include="..\Parking_cad\RegOperator.h" />
     <ClInclude Include="..\Parking_cad\resource.h" />
     <ClInclude Include="..\Parking_cad\StdAfx.h" />
     <ClInclude Include="..\Parking_cad\TreeCtrlBT.h" />

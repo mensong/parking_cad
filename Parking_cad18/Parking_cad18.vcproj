@@ -591,6 +591,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\RegOperator.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\StdAfx.cpp"
 				>
 				<FileConfiguration
@@ -849,6 +853,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\PointKey.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\RegOperator.h"
 				>
 			</File>
 			<File

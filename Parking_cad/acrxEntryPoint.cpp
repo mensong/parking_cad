@@ -35,6 +35,7 @@
 #include "Authenticate\HardDiskSerial.h"
 #include "KV.h"
 #include "ParkingLog.h"
+#include "RegOperator.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("BGY")
@@ -135,10 +136,24 @@ public:
 		//加载侧边栏		
 		DBHelper::CallCADCommandEx(_T("aipaknav"));
 
+		//获得当前版本
+		CString sVer;
+		CRegOperator reg(HKEY_LOCAL_MACHINE);
+		CRegOperator regProj = reg.OpenKey(
+			"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\碧桂园车库智能设计系统", false);
+		if (regProj.IsValid())
+		{
+			std::string sVerInstalled;
+			if (TRUE == regProj.ReadValue("DisplayVersion", sVerInstalled))
+			{
+				sVer = sVerInstalled.c_str();
+			}
+		}
+
 		//设置cad窗口标题
 		CMDIFrameWnd *pCadWin = acedGetAcadFrame();
 		CString sTitle;
-		sTitle.Format(_T("智能地库设计系统 登录:%s"), dlgLogin.userName);
+		sTitle.Format(_T("智能地库设计系统V%s 登录:%s "), sVer.GetString(), dlgLogin.userName);
 		pCadWin->SetWindowText(sTitle);
 		pCadWin->UpdateWindow();
 				
