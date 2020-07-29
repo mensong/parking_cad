@@ -266,8 +266,16 @@ AcGePoint2dArray COperaCheck::curvePartPointsHandle(AcGePoint2dArray& plinePts, 
 			}
 		}
 	}
+
 	if (usePts[usePts.length() - 1] != usePts[0])
 	{
+		/*double endDistance = usePts[usePts.length() - 1].distanceTo(usePts[0]);
+		if (endDistance < minArcLength)
+		{
+			usePts.removeFirst();
+			AcGePoint2d show = usePts[0];
+			int stop = 0;
+		}*/
 		usePts.append(usePts[0]);
 	}
 	int size = usePts.length();
@@ -680,19 +688,40 @@ void COperaCheck::creatCloudLine(const AcGePoint2dArray& plineExtentPts, AcGePoi
 	double limitArcLength = (minArcLength + maxArcLength) / 2;
 	AcGePoint2dArray  returnPts = curvePartPointsHandle(plinePts, limitArcLength);
 	//获取到云线点组
+	plineUsePts.append(returnPts[0]);
 	for (int length = 0; length < returnPts.length() - 1; length++)
 	{
 		AcGePoint2dArray cloudArcPt = COperaCheck::getLineOtherPoint(returnPts[length], returnPts[length + 1], minArcLength, maxArcLength);
-		plineUsePts.append(returnPts[length]);
 		for (int size = 0; size < cloudArcPt.length(); size++)
 		{
 			AcGePoint2d look = cloudArcPt[size];
 			plineUsePts.append(cloudArcPt[size]);
 		}
 	}
-	//设置闭合
+	//设置闭合收尾	
+	AcGePoint2d endPtShow = plineUsePts.last();
 	if (plineUsePts.length() > 2 && plineUsePts[plineUsePts.length() - 1] != plineUsePts[0])
-		plineUsePts.append(plineUsePts[0]);
+	{
+		double endDistance = plineUsePts.last().distanceTo(plineUsePts[0]);
+		if (endDistance<minArcLength)
+		{
+			plineUsePts.last() = plineUsePts[0];
+		}
+		else
+		{
+			plineUsePts.append(plineUsePts[0]);
+		}
+	}
+	else
+	{
+		double endCloseDistance = plineUsePts.last().distanceTo(plineUsePts[plineUsePts.length() - 2]);
+		if (endCloseDistance<minArcLength)
+		{
+			plineUsePts[plineUsePts.length() - 2] = plineUsePts.last();
+			plineUsePts.removeLast();
+		}
+	}
+
 	for (int zz = 0; zz < plineUsePts.length(); zz++)
 	{
 		AcGePoint2d show = plineUsePts[zz];
@@ -777,7 +806,10 @@ AcGePoint2dArray COperaCheck::getLineOtherPoint(const AcGePoint2d& lineStartPoin
 	{
 		moveDistances.back() = newNum;
 	}
-	moveDistances.pop_back();
+	else
+	{
+		moveDistances.pop_back();
+	}
 	AcGeVector2d dirVec = lineEndPoint - lineStartPoint;
 	AcGeVector2d vecDirMove = dirVec.normalize();
 	AcGePoint2d lineMidPoint = lineStartPoint;
@@ -793,7 +825,7 @@ AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double startWid
 {
 	int numCount = points.length();
 	double bulge = 0;
-	AcDbObjectId polyId;
+	AcDbObjectId polyId; 
 	if (numCount < 3)
 	{
 		return polyId;
@@ -809,6 +841,7 @@ AcDbObjectId COperaCheck::creatArcPline(AcGePoint2dArray points, double startWid
 	AcDbPolyline *pPline = new AcDbPolyline(numCount);
 	for (int i=0; i<numCount; i++)
 	{
+		AcGePoint2d look = points.at(i);
 		pPline->addVertexAt(i, points.at(i), bulge, startWidth, endWidth);
 	}
 	DBHelper::AppendToDatabase(polyId, pPline,pDb);
