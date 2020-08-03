@@ -63,4 +63,3 @@ copy /Y /V "%WD%\..\bin\*.*" ".\Win32\Release\"
 
 
 :end
-pause

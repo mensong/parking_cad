@@ -14,7 +14,7 @@ COperaTest::~COperaTest()
 
 void COperaTest::Start()
 {
-	
+	MessageCenter::sendMessage("toolbar", false, true);
 }
 
 REG_CMD(COperaTest, BGY, mytest);
