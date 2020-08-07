@@ -117,6 +117,7 @@
     <ClCompile Include="..\Parking_cad\OperaResetEntityLayer.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetConfig.cpp" />
     <ClCompile Include="..\Parking_cad\OperaSetEntranceData.cpp" />
+    <ClCompile Include="..\Parking_cad\OperaShowToolbar.cpp" />
     <ClCompile Include="..\Parking_cad\OperaTest.cpp" />
     <ClCompile Include="..\Parking_cad\OperaZoomAxisNumber.cpp" />
     <ClCompile Include="..\Parking_cad\PaletteDrawingAbnormalCheck.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="..\Parking_cad\OperaResetEntityLayer.h" />
     <ClInclude Include="..\Parking_cad\OperaSetConfig.h" />
     <ClInclude Include="..\Parking_cad\OperaSetEntranceData.h" />
+    <ClInclude Include="..\Parking_cad\OperaShowToolbar.h" />
     <ClInclude Include="..\Parking_cad\OperaTest.h" />
     <ClInclude Include="..\Parking_cad\OperaZoomAxisNumber.h" />
     <ClInclude Include="..\Parking_cad\PaletteDrawingAbnormalCheck.h" />

@@ -111,8 +111,7 @@ public:
 		AUTO_REG_CMD::Init();
 		
 		//加载工具条
-		SetWinActivationExecute(adsw_acadMainWnd(), ShowToobarExecute, 0, 0, (void*)true, 1, false);
-		MessageCenter::registerMessage("toolbar", ToolbarMessage);
+		DBHelper::CallCADCommand(_T("ParkingToolbar "));
 
 		//加载侧边栏		
 		DBHelper::CallCADCommandEx(_T("aipaknav"));
@@ -139,41 +138,6 @@ public:
 		pCadWin->UpdateWindow();
 				
 		return (retCode) ;
-	}
-
-	static void ToolbarMessage(const char* name, void* data)
-	{
-		ShowToobarExecute(0, 0, data);
-	}
-
-	static void ShowToobarExecute(WPARAM wp, LPARAM lp, void* anyVal)
-	{
-		bool checkOnce = (bool)anyVal;
-
-		//加载工具条
-		AcString filepath = (GetUserDir() + _T("parking_cad.cuix")).GetString();
-		LoadCuix::Load(filepath);
-
-		if (checkOnce)
-		{
-			std::string sCheckToobar;
-			AcString sCadVer = DBHelper::CadVersionString();
-			sCheckToobar = GetUserDirA() + GL::WideByte2Ansi(sCadVer.constPtr()) + "\\";
-			if (!FileHelper::IsFolderExistA(sCheckToobar))
-				FileHelper::CreateMultipleDirectoryA(sCheckToobar.c_str());
-			sCheckToobar += "toolbar.shown";
-			if (!FileHelper::IsFileExitstA(sCheckToobar))
-			{//只加载一次
-				LoadCuix::ShowToolbarAsyn(_T("智能地库"));
-				LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
-				FileHelper::WriteFile(sCheckToobar.c_str(), "1", 1);//标记一下已经加载过图标
-			}
-		}
-		else
-		{
-			LoadCuix::ShowToolbarAsyn(_T("智能地库"));
-			LoadCuix::SetUnloadOnExit(_T("PARKING_CAD"));
-		}
 	}
 
 	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) 

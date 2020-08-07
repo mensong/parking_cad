@@ -27,6 +27,11 @@
 #include "StdAfx.h"
 #include <shlobj.h> 
 
+//static void initConfigs()
+//{
+//	DBHelper::GetArxDirA() + "..\\..\\"
+//}
+
 std::string GetUserDirA()
 {
 	char szDir[MAX_PATH];

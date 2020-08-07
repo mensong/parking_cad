@@ -551,6 +551,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Parking_cad\OperaShowToolbar.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Parking_cad\OperaTest.cpp"
 				>
 			</File>
@@ -813,6 +817,10 @@
 			</File>
 			<File
 				RelativePath="..\Parking_cad\OperaSetEntranceData.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Parking_cad\OperaShowToolbar.h"
 				>
 			</File>
 			<File

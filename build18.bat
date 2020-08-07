@@ -62,12 +62,12 @@ goto finally
 
 :error
 echo 生成有错误，请查看%logfile%
-::notepad %logfile%
+notepad %logfile%
 echo ============================ 生成错误 ============================>>%logfile%
-webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var?status=3"
+::webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var?status=3"
 goto finally
 
 :finally
-webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
+::webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
 
 exit

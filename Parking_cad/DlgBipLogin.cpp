@@ -128,6 +128,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 	}
 
 	std::string sIni4u7h = GetUserDirA() + "4u7h.ini";
+	//MessageBoxA(NULL, sIni4u7h.c_str(), "", MB_OK);
 	if (::PathFileExistsA(sIni4u7h.c_str()))
 	{
 		char mm[1024];
@@ -143,7 +144,7 @@ BOOL CDlgBipLogin::OnInitDialog()
 	}
 	if (m_get_userUrl.empty() || m_add_userUrl.empty())
 	{
-		::MessageBox(NULL, _T("缺少4u7h,ini配置文件！"), _T("缺少文件"), MB_OK | MB_ICONERROR);
+		::MessageBox(NULL, _T("缺少4u7h.ini配置文件！"), _T("缺少文件"), MB_OK | MB_ICONERROR);
 		return FALSE;
 	}
 
