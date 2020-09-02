@@ -1,11 +1,13 @@
 @echo off
 
-set logfile=build18.log
+call readConfig.bat
+
+set logfile=%BUILD_LOG_PREX%18.log
 
 echo ============================ %~n0 ============================>%logfile%
 
 call "%VS90COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
-devenv "Parking_cad18.sln" /Build "Release|x64" >>%logfile%
+devenv "%PROJECT_NAME%18.sln" /Build "Release|x64" >>%logfile%
 
 find "Ê§°Ü 1 ¸ö" %logfile%
 if %errorlevel% equ 0 (

@@ -1,11 +1,13 @@
 @echo off
 
-set logfile=build22.log
+call readConfig.bat
+
+set logfile=%BUILD_LOG_PREX%22.log
 
 echo ============================ %~n0 ============================>%logfile%
 
 call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
-devenv "Parking_cad22.sln" /Build "Release|x64" >>%logfile%
+devenv "%PROJECT_NAME%22.sln" /Build "Release|x64" >>%logfile%
 
 find "Ê§°Ü 1 ¸ö" %logfile%
 if %errorlevel% equ 0 (

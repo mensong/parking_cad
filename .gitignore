@@ -162,3 +162,14 @@
 /Publish/out/Support/CommonData
 /x64/Release/BlockList.bak
 /x64/Release/*.err
+/Parking_cad19/Release
+/Parking_cad20/Release
+/Parking_cad21/Release
+/Parking_cad21/Debug
+/Parking_cad22/Release
+/Parking_cad22/Debug
+/clean18.log
+/clean19.log
+/clean20.log
+/clean21.log
+/clean22.log

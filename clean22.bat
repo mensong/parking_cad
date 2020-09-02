@@ -2,12 +2,15 @@
 
 call readConfig.bat
 
-set logfile=%BUILD_LOG_PREX%20.log
+set logfile=%CLEAN_LOG_PREX%22.log
 
 echo ============================ %~n0 ============================>%logfile%
 
-call "%VS110COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
-devenv "%PROJECT_NAME%20.sln" /Build "Release|x64" >>%logfile%
+call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+devenv "%PROJECT_NAME%22.sln" /Clean "Release|x64" >>%logfile%
+devenv "%PROJECT_NAME%22.sln" /Clean "Debug|x64" >>%logfile%
+devenv "%PROJECT_NAME%22.sln" /Clean "Release|x86" >>%logfile%
+devenv "%PROJECT_NAME%22.sln" /Clean "Debug|x86" >>%logfile%
 
 find "失败 1 个" %logfile%
 if %errorlevel% equ 0 (
@@ -65,11 +68,7 @@ goto finally
 :error
 echo 生成有错误，请查看%logfile%
 notepad %logfile%
-echo ============================ 生成错误 ============================>>%logfile%
-::webclient.vbs "http://127.0.0.1:8000/devops-cpp/set-var?status=3"
 goto finally
 
 :finally
-::webclient.vbs "http://127.0.0.1:8000/devops-cpp/concat-var" "%logfile%"
-
 exit

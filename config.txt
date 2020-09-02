@@ -1,0 +1,3 @@
+PROJECT_NAME=Parking_cad
+BUILD_LOG_PREX=build
+CLEAN_LOG_PREX=clean
