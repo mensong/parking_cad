@@ -58,11 +58,17 @@ void COperaParkingSpaceShow::Start()
 	//std::string part_posturl	= encrypt("http://parking-v2.asdfqwer.net:81/auto/park");
 	//std::string part_geturl		= encrypt("http://parking-v2.asdfqwer.net:81/auto/query/");
 
-	std::string posturl			= encrypt("http://parking-v2.asdfqwer.net:81/guo/park");
-	std::string geturl			= encrypt("http://parking-v2.asdfqwer.net:81/guo/query/");
-	//std::string check_geturl	= encrypt("http://parking.asdfqwer.net:8080/parking/check/");
-	std::string part_posturl	= encrypt("http://parking.asdfqwer.net:8080/parking/auto/park");
-	std::string part_geturl		= encrypt("http://parking.asdfqwer.net:8080/parking/auto/query/");
+	//std::string posturl			= encrypt("http://parking-v2.orzgod.com:88/guo/park");
+	//std::string geturl			= encrypt("http://parking-v2.orzgod.com:88/guo/query/");
+	////std::string check_geturl	= encrypt("http://parking.orzgod.com:86/parking/check/");
+	//std::string part_posturl	= encrypt("http://parking.orzgod.com:86/parking/auto/park");
+	//std::string part_geturl		= encrypt("http://parking.orzgod.com:86/parking/auto/query/");
+
+	std::string posturl			= encrypt("http://10.8.202.199:81/guo/park");
+	std::string geturl			= encrypt("http://10.8.202.199:81/guo/query/");
+	//std::string check_geturl	= encrypt("http://10.8.202.199:81/parking/check/");
+	std::string part_posturl	= encrypt("http://10.8.202.199:81/parking/auto/park");
+	std::string part_geturl		= encrypt("http://10.8.202.199:81/parking/auto/query/");
 
 	Json::Value jsTest;
 	jsTest["params"]["posturl"] = posturl;

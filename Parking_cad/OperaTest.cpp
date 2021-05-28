@@ -14,7 +14,7 @@ COperaTest::~COperaTest()
 
 void COperaTest::Start()
 {
-	MessageCenter::sendMessage("toolbar", false, true);
+	//DBHelper::CallCADCommand(_T("(load \"D:\\自动坡度坡长ssl.lsp\")"));
 }
 
 REG_CMD(COperaTest, BGY, mytest);
