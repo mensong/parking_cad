@@ -64,11 +64,11 @@ void COperaParkingSpaceShow::Start()
 	//std::string part_posturl	= encrypt("http://parking.orzgod.com:86/parking/auto/park");
 	//std::string part_geturl		= encrypt("http://parking.orzgod.com:86/parking/auto/query/");
 
-	std::string posturl			= encrypt("http://10.8.202.199:81/guo/park");
-	std::string geturl			= encrypt("http://10.8.202.199:81/guo/query/");
+	std::string posturl			= encrypt("https://aisruat.bgy.com.cn/carbarnApi/park");
+	std::string geturl			= encrypt("https://aisruat.bgy.com.cn/carbarnApi/query/");
 	//std::string check_geturl	= encrypt("http://10.8.202.199:81/parking/check/");
-	std::string part_posturl	= encrypt("http://10.8.202.199:81/parking/auto/park");
-	std::string part_geturl		= encrypt("http://10.8.202.199:81/parking/auto/query/");
+	std::string part_posturl	= encrypt("https://aisruat.bgy.com.cn/carbarnApi/parking/auto/park");
+	std::string part_geturl		= encrypt("https://aisruat.bgy.com.cn/carbarnApi/parking/auto/query/");
 
 	Json::Value jsTest;
 	jsTest["params"]["posturl"] = posturl;

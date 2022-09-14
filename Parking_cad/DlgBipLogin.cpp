@@ -195,7 +195,7 @@ void CDlgBipLogin::OnBnClickedOk()
 		}
 
 		UserInfo ui;
-		nRet = BIP_SIGNIN::Ins().getUserInfo(ui);
+		nRet = BIP_SIGNIN::Ins().get_user_info(&ui);
 		if (nRet == 0)
 		{
 			int code = HTTP_CLIENT::Ins().get_a(m_get_userUrl.c_str(), "udid", aUser.c_str(), NULL);
